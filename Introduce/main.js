@@ -1,7 +1,8 @@
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
-var roleSpawnEnergyTransfer = require('role.spawn.energy.transfer');
+var roleEnergyTransferer = require('role.energy.transferer');
+var roleSpawnEnergyTransferer = require('role.spawn.energy.transferer');
 
 module.exports.loop = function () {
 
@@ -49,7 +50,7 @@ module.exports.loop = function () {
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
         if(creep.memory.role == 'creep') {
-            roleSpawnEnergyTransfer.run(creep);
+            roleSpawnEnergyTransferer.run(creep);
         }
         if(creep.memory.role == 'builder') {
             roleBuilder.run(creep);
