@@ -19,11 +19,13 @@ var roleUpgrader = {
                 creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
             }
             else {
+                creep.say('stop U1');
                 creep.memory.upgrading = false;
                 roleHarvester.run(creep);
             }
         }
         else {
+            creep.say('stop U2');
             creep.memory.upgrading = false;
             roleHarvester.run(creep);
         }
