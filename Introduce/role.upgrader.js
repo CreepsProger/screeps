@@ -7,25 +7,22 @@ var roleUpgrader = {
 
         if(creep.memory.upgrading && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.upgrading = false;
-            creep.say('stop upgrading');
         }
 
         if(!creep.memory.upgrading && creep.store.getFreeCapacity() == 0) {
             creep.memory.upgrading = true;
-            creep.say('⚡ upgrade');
         }
 
         if(creep.memory.upgrading) {
             var err = creep.upgradeController(creep.room.controller);
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
-                creep.say('⚡');
+                creep.say('🛠');
             }
             else if(!err) {
-                creep.say('⚡');
+                creep.say('🛠');
             }
             else {
-                creep.say('-');
                 creep.memory.upgrading = false;
                 roleHarvester.run(creep);
             }
