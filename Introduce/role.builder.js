@@ -16,7 +16,6 @@ var roleBuilder = {
             if(targets.length > 0) {
                 creep.memory.building = true;
                 creep.memory.target = targets[0].id;
-                creep.say('🚧 build');
             }
         }
 
@@ -30,7 +29,7 @@ var roleBuilder = {
                 creep.say('🚧');
             }
             else {
-                creep.say('🚧' + err);
+                creep.say('🚧' + err, true);
                 creep.memory.building = false;
                 roleUpgrader.run(creep);
             }
