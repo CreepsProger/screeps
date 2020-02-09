@@ -27,7 +27,7 @@ module.exports.loop = function () {
         }
     }
 
-    var creeps = _.filter(Game.creeps, (creep) => creep.memory.role != 'creep');
+    var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
     console.log('Creeps: ' + creeps.length);
 
     if(creeps.length < 3) {
@@ -46,7 +46,7 @@ module.exports.loop = function () {
             {align: 'left', opacity: 0.8});
     }
     
-    for(var name in creeps) {
+    for(var name in Game.creeps) {
         var creep = Game.creeps[name];
         if(creep.memory.role == 'creep') {
             roleSpawnEnergyTransfer.run(creep);
