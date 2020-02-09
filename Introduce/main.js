@@ -2,6 +2,11 @@
 var roleEnergyTransfererToSpawns = require('role.energy.transferer.to.spawns');
 
 //var fn = function () { return mainSettings.init(); };
+var ticksToCheckCreepsNumber = 10;
+var creepsNumber = 0;
+var totalCapacity = 0;
+var totalFreeCapacity = 0;
+var totalUsedCapacity = 0;
 
 module.exports.loop = function () {
 
@@ -21,9 +26,11 @@ module.exports.loop = function () {
       }
    }
 
-   var totalCapacity = 0;
-   var totalFreeCapacity = 0;
-   var totalUsedCapacity = 0;
+   if(Game.time % ticksToCheckCreepsNumber = 0) {
+       totalCapacity = 0;
+       totalFreeCapacity = 0;
+       totalUsedCapacity = 0;
+   }
 
    for(var name in Memory.creeps) {
       var creep = Game.creeps[name];
@@ -37,12 +44,15 @@ module.exports.loop = function () {
          totalUsedCapacity += creep.store.getUsedCapacity();
       }
    }
-   console.log('totals Capacity/FreeCapacity/UsedCapacity :', totalCapacity, totalFreeCapacity, totalUsedCapacity);
-   
-   var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
-   console.log('Creeps: ' + creeps.length);
 
-   if(creeps.length < 10) {
+    if(Game.time % ticksToCheckCreepsNumber = 0) {
+       console.log('totals Capacity/FreeCapacity/UsedCapacity :', totalCapacity, totalFreeCapacity, totalUsedCapacity);
+       var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
+       creepsNumber = creeps.length;
+       console.log('Creeps Number: ' + creepsNumber);
+   }
+
+   if(creepsNumber < 10) {
       var newName = 'Creep' + Game.time;
       console.log('Spawning new creep: ' + newName);
       Game.spawns['Spawn1'].spawnCreep([WORK,WORK,CARRY,MOVE], newName,
