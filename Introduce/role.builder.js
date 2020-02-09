@@ -10,17 +10,21 @@ var roleBuilder = {
             creep.memory.building = false;
             creep.say('stop building');
         }
+            
         if(!creep.memory.building && creep.store.getFreeCapacity() == 0) {
-            creep.memory.building = true;
-            creep.say('🚧 build');
+            var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
+            if(targets.length > 0) {
+                creep.memory.building = true;
+                creep.memory.target = targets[0].id;
+                creep.say('🚧 build');
+            }
         }
 
         if(creep.memory.building) {
-            var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-            if(targets.length) {
-                if(creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
-                }
+            creep.say('🚧');
+            var target = Game.getObjectById(creep.memory.target);
+            if(creep.build(target) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
             }
             else {
                 creep.memory.building = false;
