@@ -18,11 +18,10 @@ var roleUpgrader = {
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
             }
-            while(!err) {
-                err = creep.upgradeController(creep.room.controller);
+            if(!err) {
                 creep.say('⚡' + err);
             }
-            if(err) {
+            else {
                 creep.say('⚡' + err);
                 creep.memory.upgrading = false;
                 roleHarvester.run(creep);
