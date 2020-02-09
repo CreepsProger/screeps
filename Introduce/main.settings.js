@@ -4,13 +4,13 @@ var mainSettings = {
         console.log('Checking 1 settings');
 
         console.log('creeps number = ', Memory.settings.creeps.number);
-        return function () { return mainSettings.check2() };
+        return function () { return mainSettings.check2(); };
     }
     check2: function() {
         console.log('Checking 2 settings');
 
         console.log('creeps number = ', Memory.settings.creeps.number);
-        return function () { return mainSettings.check1() };
+        return function () { return mainSettings.check1(); };
     }
     init: function() {
         console.log('Initializing settings');
