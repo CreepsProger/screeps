@@ -15,12 +15,15 @@ var roleUpgrader = {
         }
         if(creep.memory.upgrading) {
             var err = creep.upgradeController(creep.room.controller);
-            creep.say('⚡' + err);
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
             }
-            else {
-//                creep.say('stop U1');
+            while(!err) {
+                err = creep.upgradeController(creep.room.controller);
+                creep.say('⚡' + err);
+            }
+            if(err) {
+                creep.say('⚡' + err);
                 creep.memory.upgrading = false;
                 roleHarvester.run(creep);
             }
