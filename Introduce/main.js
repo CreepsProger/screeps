@@ -35,7 +35,7 @@ module.exports.loop = function () {
          console.log('Clearing non-existing creep memory:', name);
       }
       else {
-         Memory.totals.Capacity += creep.store.getCapacity();
+         Memory.totals.Capacity = Memory.totals.Capacity + creep.store.getCapacity();
          Memory.totals.FreeCapacity += creep.store.getFreeCapacity();
          Memory.totals.UsedCapacity += creep.store.getUsedCapacity();
       }
