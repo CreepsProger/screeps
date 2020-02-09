@@ -24,12 +24,12 @@ var roleBuilder = {
             var err = creep.build(target);
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
+                creep.say('🚧');
             }
-            if(!err) {
+            else if(!err) {
                 creep.say('🚧');
             }
             else {
-                creep.say('🚧' + err, true);
                 creep.memory.building = false;
                 roleUpgrader.run(creep);
             }
