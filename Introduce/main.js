@@ -26,7 +26,7 @@ module.exports.loop = function () {
       }
    }
 
-   if(Game.time % ticksToCheckCreepsNumber = 0) {
+   if(Game.time % ticksToCheckCreepsNumber == 0) {
        totalCapacity = 0;
        totalFreeCapacity = 0;
        totalUsedCapacity = 0;
@@ -45,7 +45,7 @@ module.exports.loop = function () {
       }
    }
 
-    if(Game.time % ticksToCheckCreepsNumber = 0) {
+   if(Game.time % ticksToCheckCreepsNumber == 0) {
        console.log('totals Capacity/FreeCapacity/UsedCapacity :', totalCapacity, totalFreeCapacity, totalUsedCapacity);
        var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
        creepsNumber = creeps.length;
