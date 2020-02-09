@@ -55,7 +55,7 @@ module.exports.loop = function () {
                   , Memory.totals.FreeCapacity
                   , Memory.totals.UsedCapacity);
        
-       if(Memory.totals.FreeCapacity < Memory.totals.UsedCapacity && !Game.spawns['Spawn1'].spawning) {
+       if(Memory.totals.FreeCapacity <= Memory.totals.UsedCapacity && !Game.spawns['Spawn1'].spawning) {
            var err = ERR_NOT_ENOUGH_ENERGY;
            var newName = 'Creep' + Game.time;
 
