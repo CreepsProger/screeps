@@ -4,10 +4,9 @@ var roleEnergyTransfererToSpawns = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
- 
+
         if(creep.memory.transfering.energy.to.spawns && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.transfering.energy.to.spawns = false;
-            creep.say('stop E->Spawns');
         }
 
         if(!creep.memory.transfering.energy.to.spawns && creep.store.getFreeCapacity() == 0) {
@@ -21,22 +20,25 @@ var roleEnergyTransfererToSpawns = {
             if(targets.length > 0) {
                 creep.memory.transfering.energy.to.spawns = true;
                 creep.memory.target = targets[0].id;
-                creep.say('E->Spawns');
             }
         }
 
         if(creep.memory.transfering.energy.to.spawns) {
             var target = Game.getObjectById(creep.memory.target);
-            if(creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+            var err = creep.transfer(target, RESOURCE_ENERGY);
+            if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
+                creep.say('⚡☀️');
+            }
+            else if(!err) {
+                creep.say('⚡☀️');
             }
             else {
                 creep.memory.transfering.energy.to.spawns = false;
-                roleEnergyTransfererToAll.run(creep);
+            roleEnergyTransfererToAll.run(creep);
             }
         }
         else {
-            creep.memory.transfering.energy.to.spawns = false;
             roleEnergyTransfererToAll.run(creep);
         }
     }
