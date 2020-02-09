@@ -5,7 +5,7 @@ var fn = function () { return mainSettings.init(); };
 
 module.exports.loop = function () {
 
-    fn();
+   // fn();
 
     var tower = Game.getObjectById('TOWER_ID');
     if(tower) {
