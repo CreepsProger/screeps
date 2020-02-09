@@ -1,6 +1,9 @@
+var mainSettings = require('main.settings');
 var roleEnergyTransfererToSpawns = require('role.energy.transferer.to.spawns');
 
 module.exports.loop = function () {
+
+    mainSettings.init();
 
     var tower = Game.getObjectById('TOWER_ID');
     if(tower) {
