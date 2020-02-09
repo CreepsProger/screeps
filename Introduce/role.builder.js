@@ -23,10 +23,12 @@ var roleBuilder = {
                 }
             }
             else {
+                creep.memory.building = false;
                 roleUpgrader.run(creep);
             }
         }
         else {
+            creep.memory.building = false;
             roleUpgrader.run(creep);
         }
     }
