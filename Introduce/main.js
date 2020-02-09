@@ -3,7 +3,7 @@ var roleEnergyTransfererToSpawns = require('role.energy.transferer.to.spawns');
 
 //var fn = function () { return mainSettings.init(); };
 var ticksToCheckCreepsNumber = 10;
-var creepsNumber = 0;
+var creepsNumber = 1000000;
 var totalCapacity = 0;
 var totalFreeCapacity = 0;
 var totalUsedCapacity = 0;
