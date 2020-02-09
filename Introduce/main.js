@@ -21,9 +21,9 @@ module.exports.loop = function () {
       }
    }
 
-   number totalCapacity = 0;
-   number totalFreeCapacity = 0;
-   number totalUsedCapacity = 0;
+   var totalCapacity = 0;
+   var totalFreeCapacity = 0;
+   var totalUsedCapacity = 0;
 
    for(var name in Memory.creeps) {
       var creep = Game.creeps[name];
