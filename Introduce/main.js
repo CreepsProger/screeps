@@ -1,7 +1,7 @@
 var mainSettings = require('main.settings');
 var roleEnergyTransfererToSpawns = require('role.energy.transferer.to.spawns');
 
-var fn = mainSettings.init;
+var fn = function () { return mainSettings.init(); };
 
 module.exports.loop = function () {
 
