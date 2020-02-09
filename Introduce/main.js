@@ -22,14 +22,11 @@ module.exports.loop = function () {
       }
    }
 
-   if(Game.time % ticksToCheckCreepsNumber == 0) {
+   if(Game.time % ticksToCheckCreepsNumber == 0 || Game.time < 1) {
        Memory.totals = { Capacity: 0
                        , FreeCapacity: 0
                        , UsedCapacity: 0
                        };
-       Memory.totals.Capacity = 0;
-       Memory.totals.FreeCapacity = 0;
-       Memory.totals.UsedCapacity = 0;
    }
 
    for(var name in Memory.creeps) {
@@ -39,7 +36,7 @@ module.exports.loop = function () {
          console.log('Clearing non-existing creep memory:', name);
       }
       else {
-         Memory.totals.Capacity = Memory.totals.Capacity + creep.store.getCapacity();
+         Memory.totals.Capacity += creep.store.getCapacity();
          Memory.totals.FreeCapacity += creep.store.getFreeCapacity();
          Memory.totals.UsedCapacity += creep.store.getUsedCapacity();
       }
