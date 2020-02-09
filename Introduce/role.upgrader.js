@@ -19,7 +19,7 @@ var roleUpgrader = {
                 creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
             }
             if(!err) {
-                creep.say('⚡' + err);
+                creep.say('⚡');
             }
             else {
                 creep.say('⚡' + err);
@@ -28,7 +28,6 @@ var roleUpgrader = {
             }
         }
         else {
-            creep.memory.upgrading = false;
             roleHarvester.run(creep);
         }
     }
