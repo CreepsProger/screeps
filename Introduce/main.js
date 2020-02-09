@@ -1,7 +1,7 @@
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
-var roleSpawnEnergyTransfer = ('role.spawn.energy.transfer');
+var roleSpawnEnergyTransfer = require('role.spawn.energy.transfer');
 
 module.exports.loop = function () {
 
