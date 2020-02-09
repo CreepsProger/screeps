@@ -21,18 +21,21 @@ var roleBuilder = {
         }
 
         if(creep.memory.building) {
-            creep.say('🚧');
             var target = Game.getObjectById(creep.memory.target);
-            if(creep.build(target) == ERR_NOT_IN_RANGE) {
+            var err = creep.build(target);
+            if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
             }
+            if(!err) {
+                creep.say('🚧');
+            }
             else {
+                creep.say('🚧' + err);
                 creep.memory.building = false;
                 roleUpgrader.run(creep);
             }
         }
         else {
-            creep.memory.building = false;
             roleUpgrader.run(creep);
         }
     }
