@@ -8,12 +8,12 @@ var roleSpawnEnergyTransferer = {
     /** @param {Creep} creep **/
     run: function(creep) {
 
-        if(creep.memory.transfering && creep.store[RESOURCE_ENERGY] == 0) {
-            creep.memory.transfering = false;
+        if(creep.memory.transfering.energy.to.spawn && creep.store[RESOURCE_ENERGY] == 0) {
+            creep.memory.transfering.energy.to.spawn = false;
             creep.say('stop transfering');
         }
 
-        if(!creep.memory.transfering && creep.store.getFreeCapacity() == 0) {
+        if(!creep.memory.transfering.energy.to.spawn && creep.store.getFreeCapacity() == 0) {
             var targets = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => {
                      return (structure.structureType == STRUCTURE_SPAWN) &&
@@ -22,24 +22,24 @@ var roleSpawnEnergyTransferer = {
             });
         
             if(targets.length > 0) {
-                creep.memory.transfering = true;
+                creep.memory.transfering.energy.to.spawn = true;
                 creep.memory.target = targets[0].id;
-                creep.say('transfer energy to a spawn');
+                creep.say('E->Spawn');
             }
         }
 
-        if(creep.memory.transfering) {
+        if(creep.memory.transfering.energy.to.spawn) {
             var target = Game.getObjectById(creep.memory.target);
             if(creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
             }
             else {
-                creep.memory.transfering = false;
+                creep.memory.transfering.energy.to.spawn = false;
                 roleEnergyTransferer.run(creep);
             }
         }
         else {
-            creep.memory.transfering = false;
+            creep.memory.transfering.energy.to.spawn = false;
             roleEnergyTransferer.run(creep);
         }
     }
