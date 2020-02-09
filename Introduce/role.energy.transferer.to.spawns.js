@@ -5,6 +5,8 @@ var roleEnergyTransfererToSpawns = {
     /** @param {Creep} creep **/
     run: function(creep) {
 
+        creep.memory = {transfering: { energy: { to: { _: '_'}}}};
+
         if(creep.memory.transfering.energy.to.spawns && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.transfering.energy.to.spawns = false;
             creep.say('stop E->Spawns');
