@@ -31,7 +31,7 @@ module.exports.loop = function () {
         var newName = 'Creep' + Game.time;
         console.log('Spawning new creep: ' + newName);
         Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName,
-            {memory: {role: 'creep'}});
+            {memory: {role: 'creep'}, {transfering: { energy: { to: { all: false}}}}});
     }
 
     if(Game.spawns['Spawn1'].spawning) {
