@@ -24,8 +24,7 @@ var roleBuilder = {
             var err = creep.build(target);
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-                string bb('🚧 bb');
-                creep.say('🚧' + bb.charCodeAt(0));
+                creep.say('🚧😎');
             }
             else if(!err) {
                 creep.say('🚧');
