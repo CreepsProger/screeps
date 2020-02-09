@@ -1,4 +1,4 @@
-var roleSpawnEnergyTransfer = require('role.spawn.energy.transfer');
+var roleBuilder = require('role.builder');
 
 var roleEnergyTransferer = {
 
