@@ -1,8 +1,9 @@
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
+var roleEnergyTransferer = require('role.energy.transferer');
 
-var roleSpawnEnergyTransfer = {
+var roleSpawnEnergyTransferer = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
@@ -34,14 +35,14 @@ var roleSpawnEnergyTransfer = {
             }
             else {
                 creep.memory.transfering = false;
-                roleBuilder.run(creep);
+                roleEnergyTransferer.run(creep);
             }
         }
         else {
             creep.memory.transfering = false;
-            roleBuilder.run(creep);
+            roleEnergyTransferer.run(creep);
         }
     }
 };
 
-module.exports = roleSpawnEnergyTransfer;
+module.exports = roleSpawnEnergyTransferer;
