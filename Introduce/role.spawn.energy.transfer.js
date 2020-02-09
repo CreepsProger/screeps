@@ -33,10 +33,12 @@ var roleSpawnEnergyTransfer = {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
             }
             else {
+                creep.memory.transfering = false;
                 roleBuilder.run(creep);
             }
         }
         else {
+            creep.memory.transfering = false;
             roleBuilder.run(creep);
         }
     }
