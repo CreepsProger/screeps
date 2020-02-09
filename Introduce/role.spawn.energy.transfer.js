@@ -24,6 +24,9 @@ var roleSpawnEnergyTransfer = {
                 creep.memory.transfering = true;
                 creep.say('transfer energy to a spawn');
             }
+            else {
+                creep.memory.transfering = false;
+            }
         }
 
         if(creep.memory.transfering) {
