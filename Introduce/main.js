@@ -5,53 +5,63 @@ var roleEnergyTransfererToSpawns = require('role.energy.transferer.to.spawns');
 
 module.exports.loop = function () {
 
-   // fn();
+    // fn();
 
-    var tower = Game.getObjectById('TOWER_ID');
-    if(tower) {
-        var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-            filter: (structure) => structure.hits < structure.hitsMax
-        });
-        if(closestDamagedStructure) {
-            tower.repair(closestDamagedStructure);
-        }
+   var tower = Game.getObjectById('TOWER_ID');
+   if(tower) {
+      var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
+         filter: (structure) => structure.hits < structure.hitsMax
+      });
+      if(closestDamagedStructure) {
+         tower.repair(closestDamagedStructure);
+      }
+      var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+      if(closestHostile) {
+         tower.attack(closestHostile);
+      }
+   }
 
-        var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-        if(closestHostile) {
-            tower.attack(closestHostile);
-        }
-    }
+   number totalCapacity = 0;
+   number totalFreeCapacity = 0;
+   number totalUsedCapacity = 0;
 
-    for(var name in Memory.creeps) {
-        if(!Game.creeps[name]) {
-            delete Memory.creeps[name];
-            console.log('Clearing non-existing creep memory:', name);
-        }
-    }
+   for(var name in Memory.creeps) {
+      var creep = Game.creeps[name];
+      if(!creep) {
+         delete Memory.creeps[name];
+         console.log('Clearing non-existing creep memory:', name);
+      }
+      else {
+         totalCapacity += creep.store.getCapacity();
+         totalFreeCapacity += creep.store.getFreeCapacity();
+         totalUsedCapacity += creep.store.getUsedCapacity();
+      }
+   }
+   console.log('totals Capacity/FreeCapacity/UsedCapacity :', totalCapacity, totalFreeCapacity, totalUsedCapacity);
+   
+   var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
+   console.log('Creeps: ' + creeps.length);
 
-    var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
-    console.log('Creeps: ' + creeps.length);
-
-    if(creeps.length < 10) {
-        var newName = 'Creep' + Game.time;
-        console.log('Spawning new creep: ' + newName);
-        Game.spawns['Spawn1'].spawnCreep([WORK,WORK,CARRY,MOVE], newName,
-            {memory: {role: 'creep', transfering: { energy: { to: { all: false}}}}});
-    }
-
-    if(Game.spawns['Spawn1'].spawning) {
-        var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
-        Game.spawns['Spawn1'].room.visual.text(
-            '🛠️' + spawningCreep.memory.role,
-            Game.spawns['Spawn1'].pos.x + 1,
-            Game.spawns['Spawn1'].pos.y,
-            {align: 'left', opacity: 0.8});
-    }
-    
-    for(var name in Game.creeps) {
-        var creep = Game.creeps[name];
-        if(creep.memory.role == 'creep') {
-            roleEnergyTransfererToSpawns.run(creep);
-        }
-    }
+   if(creeps.length < 10) {
+      var newName = 'Creep' + Game.time;
+      console.log('Spawning new creep: ' + newName);
+      Game.spawns['Spawn1'].spawnCreep([WORK,WORK,CARRY,MOVE], newName,
+                                       {memory: {role: 'creep', transfering: { energy: { to: { all: false}}}}});
+   }
+   
+   if(Game.spawns['Spawn1'].spawning) {
+      var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
+      Game.spawns['Spawn1'].room.visual.text(
+         '🛠️' + spawningCreep.memory.role,
+         Game.spawns['Spawn1'].pos.x + 1,
+         Game.spawns['Spawn1'].pos.y,
+         {align: 'left', opacity: 0.8});
+   }
+   
+   for(var name in Game.creeps) {
+      var creep = Game.creeps[name];
+      if(creep.memory.role == 'creep') {
+         roleEnergyTransfererToSpawns.run(creep);
+      }
+   }
 }
