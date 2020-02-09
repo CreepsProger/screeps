@@ -22,16 +22,14 @@ var roleSpawnEnergyTransfer = {
         
             if(targets.length > 0) {
                 creep.memory.transfering = true;
+                creep.memory.target = targets[0];
                 creep.say('transfer energy to a spawn');
-            }
-            else {
-                creep.memory.transfering = false;
             }
         }
 
         if(creep.memory.transfering) {
-            if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
+            if(creep.transfer(creep.memory.target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(creep.memory.target, {visualizePathStyle: {stroke: '#ffffff'}});
             }
             else {
                 roleBuilder.run(creep);
