@@ -22,6 +22,9 @@ var roleBuilder = {
                     creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
                 }
             }
+            else {
+                roleUpgrader.run(creep);
+            }
         }
         else {
             roleUpgrader.run(creep);
