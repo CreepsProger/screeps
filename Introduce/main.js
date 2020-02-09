@@ -26,7 +26,7 @@ module.exports.loop = function () {
         }
     }
 
-    var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builders');
+    var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     console.log('Builders: ' + builders.length);
 
     if(builders.length < 2) {
