@@ -23,6 +23,10 @@ module.exports.loop = function () {
    }
 
    if(Game.time % ticksToCheckCreepsNumber == 0) {
+       Memory.totals = { Capacity: 0
+                       , FreeCapacity: 0
+                       , UsedCapacity: 0
+                       };
        Memory.totals.Capacity = 0;
        Memory.totals.FreeCapacity = 0;
        Memory.totals.UsedCapacity = 0;
