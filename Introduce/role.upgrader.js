@@ -9,10 +9,12 @@ var roleUpgrader = {
             creep.memory.upgrading = false;
             creep.say('stop upgrading');
         }
+
         if(!creep.memory.upgrading && creep.store.getFreeCapacity() == 0) {
             creep.memory.upgrading = true;
             creep.say('⚡ upgrade');
         }
+
         if(creep.memory.upgrading) {
             var err = creep.upgradeController(creep.room.controller);
             if(err == ERR_NOT_IN_RANGE) {
