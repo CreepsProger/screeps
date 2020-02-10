@@ -26,6 +26,8 @@ module.exports.loop = function () {
        Memory.totals = { Capacity: 0
                        , FreeCapacity: 0
                        , UsedCapacity: 0
+                       , HarvestersMovementsValue: 0
+                       , HarvestersMovementsCount: 0
                        };
    }
 
