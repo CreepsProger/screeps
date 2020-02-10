@@ -2,7 +2,7 @@
 var roleEnergyTransfererToSpawns = require('role.energy.transferer.to.spawns');
 
 //var fn = function () { return mainSettings.init(); };
-var ticksToCheckCreepsNumber = 50;
+var ticksToCheckCreepsNumber = 20;
 
 module.exports.loop = function () {
 
