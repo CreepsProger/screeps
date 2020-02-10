@@ -1,6 +1,6 @@
-var roleEnergyHarvester = {
+var maxHarvesterMovementsToSource = 100;
 
-    var maxHarvesterMovementsToSource = 100;
+var roleEnergyHarvester = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
