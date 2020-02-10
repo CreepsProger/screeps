@@ -28,6 +28,7 @@ var roleEnergyHarvester = {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                 creep.memory.movements += 1;
                 if(creep.memory.lastmovements && creep.memory.lastmovements < 2 * creep.memory.movements) {
+                    creep.memory.movements = 0;
                     creep.memory.harvesting = false;
                     creep.memory.target_index += 1;
                     creep.say('❓');
