@@ -40,9 +40,21 @@ var roleEnergyHarvester = {
                     creep.memory.harvesting = false;
                     creep.memory.target_index += 1;
                     creep.say('❓');
-                    
-  
                 }
+                else if(Memory.totals.HarvestersMovementsAvg && Memory.totals.HarvestersMovementsAvg * 2 < creep.memory.movements) {
+                   console.log( '✒️', Game.time
+                              , '⚡ ❓ harvesting failed by movements / HMA :'
+                              , creep.memory.movements
+                              , '/'
+                              , Memory.totals.HarvestersMovementsAvg
+                              , 'for creep:' 
+                              , creep.name);
+                    creep.memory.movements = 0;
+                    creep.memory.lastmovements = 0;
+                    creep.memory.harvesting = false;
+                    creep.memory.target_index += 1;
+                    creep.say('❓❓');
+                } 
                 else {
                     creep.say('⚡');
                 }
