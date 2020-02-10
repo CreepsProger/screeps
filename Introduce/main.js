@@ -26,10 +26,13 @@ module.exports.loop = function () {
        Memory.totals = { Capacity: 0
                        , FreeCapacity: 0
                        , UsedCapacity: 0
-                       , HarvestersMovementsValue: 0
-                       , HarvestersMovementsCount: 0
-                       , HarvestersMovementsAvg: 0
                        };
+   }
+   if(Game.time % (ticksToCheckCreepsNumber * 3) == 1) {
+       Memory.harvestersMovements = { Value: 0
+                                    , Count: 0
+                                    , Avg: 0
+                                    };
    }
 
    for(var name in Memory.creeps) {
@@ -52,14 +55,16 @@ module.exports.loop = function () {
        Memory.totals.CreepsNumber = creeps.length;
 
        console.log( '✒️', Game.time
-                  , 'Creeps Number:', Memory.totals.CreepsNumber
-                  , 'totals C/FC/UC/HMV/HMC/HMA:'
+                  , 'Creeps Number:'
+                  , Memory.totals.CreepsNumber
+                  , 'C/FC/UC:'
                   , Memory.totals.Capacity
                   , Memory.totals.FreeCapacity
                   , Memory.totals.UsedCapacity
-                  , Memory.totals.HarvestersMovementsValue
-                  , Memory.totals.HarvestersMovementsCount
-                  , Memory.totals.HarvestersMovementsAvg);
+                  , 'hmV/hmC/hmA:'
+                  , Memory.harvestersMovements.Value
+                  , Memory.harvestersMovements.Count
+                  , Memory.harvestersMovements.Avg);
        
        if(Memory.totals.FreeCapacity <= Memory.totals.UsedCapacity && !Game.spawns['Spawn1'].spawning) {
            var err = ERR_NOT_ENOUGH_ENERGY;
