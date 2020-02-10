@@ -28,16 +28,17 @@ var roleEnergyHarvester = {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                 creep.memory.movements += 1;
                 if(creep.memory.lastmovements && creep.memory.lastmovements < 2 * creep.memory.movements) {
+                   console.log( '✒️', Game.time
+                              , '⚡ ❓ harvesting failed by long movement:'
+                              , creep.memory.movements
+                              , 'for creep:' 
+                              , creep.name);
                     creep.memory.movements = 0;
                     creep.memory.harvesting = false;
                     creep.memory.target_index += 1;
                     creep.say('❓');
                     
-                    console.log( '✒️', Game.time
-                        , '⚡ ❓ harvesting failed by long movement:'
-                        , creep.memory.movements
-                        , 'for creep:' 
-                        , creep.name);
+  
                 }
                 else {
                     creep.say('⚡');
