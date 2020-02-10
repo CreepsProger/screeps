@@ -28,6 +28,7 @@ module.exports.loop = function () {
                        , UsedCapacity: 0
                        , HarvestersMovementsValue: 0
                        , HarvestersMovementsCount: 0
+                       , HarvestersMovementsAvg: 0
                        };
    }
 
@@ -52,10 +53,13 @@ module.exports.loop = function () {
 
        console.log( '✒️', Game.time
                   , 'Creeps Number:', Memory.totals.CreepsNumber
-                  , 'totals Capacity/FreeCapacity/UsedCapacity:'
+                  , 'totals C/FC/UC/HMV/HMC/HMA:'
                   , Memory.totals.Capacity
                   , Memory.totals.FreeCapacity
-                  , Memory.totals.UsedCapacity);
+                  , Memory.totals.UsedCapacity
+                  , Memory.totals.HarvestersMovementsValue
+                  , Memory.totals.HarvestersMovementsCount
+                  , Memory.totals.HarvestersMovementsAvg);
        
        if(Memory.totals.FreeCapacity <= Memory.totals.UsedCapacity && !Game.spawns['Spawn1'].spawning) {
            var err = ERR_NOT_ENOUGH_ENERGY;
