@@ -60,38 +60,14 @@ module.exports.loop = function () {
            var newName = 'Creep' + Game.time;
 
            if(err == ERR_NOT_ENOUGH_ENERGY) {
-               newName = 'Creep-WWWWCCM-' + Game.time;
-               err = Game.spawns['Spawn1'].spawnCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,MOVE]
-                                                     , newName
-                                                     , {memory: {role: 'creep', transfering: { energy: { to: { all: false}}}}});
-           }
-           if(err == ERR_NOT_ENOUGH_ENERGY) {
-               newName = 'Creep-WWWCCMM-' + Game.time;
-               err = Game.spawns['Spawn1'].spawnCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE]
+               newName = 'Creep-WWWWCCCM-' + Game.time;
+               err = Game.spawns['Spawn1'].spawnCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE]
                                                      , newName
                                                      , {memory: {role: 'creep', transfering: { energy: { to: { all: false}}}}});
            }
            if(err == ERR_NOT_ENOUGH_ENERGY) {
                newName = 'Creep-WWWWCCM-' + Game.time;
                err = Game.spawns['Spawn1'].spawnCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,MOVE]
-                                                     , newName
-                                                     , {memory: {role: 'creep', transfering: { energy: { to: { all: false}}}}});
-           }
-           if(err == ERR_NOT_ENOUGH_ENERGY) {
-               newName = 'Creep-WWWWCMM-' + Game.time;
-               err = Game.spawns['Spawn1'].spawnCreep([WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE]
-                                                     , newName
-                                                     , {memory: {role: 'creep', transfering: { energy: { to: { all: false}}}}});
-           }
-           if(err == ERR_NOT_ENOUGH_ENERGY) {
-               newName = 'Creep-WWWCMMM-' + Game.time;
-               err = Game.spawns['Spawn1'].spawnCreep([WORK,WORK,WORK,CARRY,MOVE,MOVE,MOVE]
-                                                     , newName
-                                                     , {memory: {role: 'creep', transfering: { energy: { to: { all: false}}}}});
-           }
-           if(err == ERR_NOT_ENOUGH_ENERGY) {
-               newName = 'Creep-WWWCCMM-' + Game.time;
-               err = Game.spawns['Spawn1'].spawnCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE]
                                                      , newName
                                                      , {memory: {role: 'creep', transfering: { energy: { to: { all: false}}}}});
            }
@@ -102,44 +78,14 @@ module.exports.loop = function () {
                                                      , {memory: {role: 'creep', transfering: { energy: { to: { all: false}}}}});
            }
            if(err == ERR_NOT_ENOUGH_ENERGY) {
-               newName = 'Creep-WWWCMM-' + Game.time;
-               err = Game.spawns['Spawn1'].spawnCreep([WORK,WORK,WORK,CARRY,MOVE,MOVE]
-                                                     , newName
-                                                     , {memory: {role: 'creep', transfering: { energy: { to: { all: false}}}}});
-           }
-           if(err == ERR_NOT_ENOUGH_ENERGY) {
-               newName = 'Creep-WWCCMM-' + Game.time;
-               err = Game.spawns['Spawn1'].spawnCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE]
-                                                     , newName
-                                                     , {memory: {role: 'creep', transfering: { energy: { to: { all: false}}}}});
-           }
-           if(err == ERR_NOT_ENOUGH_ENERGY) {
                newName = 'Creep-WWWCM-' + Game.time;
                err = Game.spawns['Spawn1'].spawnCreep([WORK,WORK,WORK,CARRY,MOVE]
                                                      , newName
                                                      , {memory: {role: 'creep', transfering: { energy: { to: { all: false}}}}});
            }
            if(err == ERR_NOT_ENOUGH_ENERGY) {
-               newName = 'Creep-WWCCM-' + Game.time;
-               err = Game.spawns['Spawn1'].spawnCreep([WORK,WORK,CARRY,CARRY,MOVE]
-                                                     , newName
-                                                     , {memory: {role: 'creep', transfering: { energy: { to: { all: false}}}}});
-           }
-           if(err == ERR_NOT_ENOUGH_ENERGY) {
-               newName = 'Creep-WWCMM-' + Game.time;
-               err = Game.spawns['Spawn1'].spawnCreep([WORK,WORK,CARRY,MOVE,MOVE]
-                                                     , newName
-                                                     , {memory: {role: 'creep', transfering: { energy: { to: { all: false}}}}});
-           }
-           if(err == ERR_NOT_ENOUGH_ENERGY) {
                newName = 'Creep-WWCM-' + Game.time;
                err = Game.spawns['Spawn1'].spawnCreep([WORK,WORK,CARRY,MOVE]
-                                                     , newName
-                                                     , {memory: {role: 'creep', transfering: { energy: { to: { all: false}}}}});
-           }
-           if(err == ERR_NOT_ENOUGH_ENERGY) {
-               newName = 'Creep-WCM-' + Game.time;
-               err = Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE]
                                                      , newName
                                                      , {memory: {role: 'creep', transfering: { energy: { to: { all: false}}}}});
            }
