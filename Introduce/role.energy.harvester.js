@@ -1,4 +1,4 @@
-var roleEnergyHarvester = {
+Loopvar roleEnergyHarvester = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
@@ -27,7 +27,7 @@ var roleEnergyHarvester = {
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                 creep.memory.movements += 1;
-                if(creep.memory.lastmovements && creep.memory.lastmovements < 2 * creep.memory.movements) {
+                if(creep.memory.lastmovements && creep.memory.lastmovements * 2 < creep.memory.movements) {
                    console.log( '✒️', Game.time
                               , '⚡ ❓ harvesting failed by movements / lastmovements :'
                               , creep.memory.movements
