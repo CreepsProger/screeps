@@ -64,7 +64,7 @@ var roleEnergyHarvester = {
                 
                 Memory.totals.HarvestersMovementsValue += creep.memory.movements;
                 Memory.totals.HarvestersMovementsCount += 1;
-                Memory.totals.HarvestersMovementsAvg = Memory.totals.HarvestersMovementsValue / Memory.totals.HarvestersMovementsCount;
+                Memory.totals.HarvestersMovementsAvg = Math.floor(Memory.totals.HarvestersMovementsValue / Memory.totals.HarvestersMovementsCount) ;
 
                 creep.memory.lastmovements = creep.memory.movements;
                 creep.memory.movements = 0;
