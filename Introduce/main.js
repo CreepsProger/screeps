@@ -22,7 +22,7 @@ module.exports.loop = function () {
       }
    }
 
-   if(Game.time % ticksToCheckCreepsNumber == 0 || Game.time < 1) {
+   if(Game.time % ticksToCheckCreepsNumber == 0) {
        Memory.totals = { Capacity: 0
                        , FreeCapacity: 0
                        , UsedCapacity: 0
