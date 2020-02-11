@@ -3,20 +3,22 @@ var roleEnergyTransfererToSpawns = require('role.energy.transferer.to.spawns');
 
 var ticksToCheckCreepsNumber = 20;
 
-function updateMovingAverage(v,ma) { 
+function updateMovingAverage(x { 
    console.log( '✒️', Game.time
                    , 'updateMovingAverage');
-   ma.summ += v - ma.v[ma.i];
-   ma.v[ma.i] = v;
-   ma.i = (ma.i + 1) % ma.v.length;
+   movingAverage.delta = x.v - movingAverage.vs[movingAverage.i];
+   movingAverage.summ += movingAverage.delta;
+   movingAverage.ma = movingAverage.summ / movingAverage.vs.length;
+   movingAverage.vs[movingAverage.i] = x.v;
+   movingAverage.i = (movingAverage.i + 1) % movingAverage.vs.length;
 } 
 
 module.exports.loop = function () {
 
-   if(Game.time == 0 || !Memory.commit0006) {
-      Memory.commit0006 = true;
+   if(Game.time == 0 || !Memory.commit0007) {
+      Memory.commit0007 = true;
       console.log( '✒️', Game.time
-                      , 'Commit0006');
+                      , 'Commit0007');
 
       Memory.totals
            = { Capacity: 0
@@ -25,13 +27,9 @@ module.exports.loop = function () {
              };
 
        Memory.harvestersMovements
-           = { Value: 0
-             , Count: 0
-             ,   Avg: 0
-             , movingAverage : { Value : { v : [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0 }
-             ,                   Count : { v : [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0 }
-             ,                     Avg : { v : [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0 }
-                               }
+           = { Value: { v: 0, { movingAverage: { vs: [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0, delta: 0, ma:0 }}}
+             , Count: { v: 0, { movingAverage: { vs: [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0, delta: 0, ma:0 }}}
+             ,   Avg: { v: 0, { movingAverage: { vs: [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0, delta: 0, ma:0 }}}
              };
    }
 
@@ -54,7 +52,9 @@ module.exports.loop = function () {
                        , FreeCapacity: 0
                        , UsedCapacity: 0
                        };
-      updateMovingAverage(Memory.harvestersMovements.Value,Memory.harvestersMovements.movingAverage.Value);
+      updateMovingAverage(Memory.harvestersMovements.Value);
+      updateMovingAverage(Memory.harvestersMovements.Count);
+      updateMovingAverage(Memory.harvestersMovements.Avg);
    }
 
    for(var name in Memory.creeps) {
@@ -87,8 +87,10 @@ module.exports.loop = function () {
                   , Memory.harvestersMovements.Value
                   , Memory.harvestersMovements.Count
                   , Memory.harvestersMovements.Avg
-                  , 'mahmV/:'
-                  , Memory.harvestersMovements.movingAverage.Value.summ);
+                  , 'hmVd/hmCd/hmAd:'
+                  , Memory.harvestersMovements.movingAverage.Value.delta);
+                  , Memory.harvestersMovements.movingAverage.Count.delta);
+                  , Memory.harvestersMovements.movingAverage.Avg.delta);
        
        if(Memory.totals.FreeCapacity <= Memory.totals.UsedCapacity && !Game.spawns['Spawn1'].spawning) {
            var err = ERR_NOT_ENOUGH_ENERGY;
