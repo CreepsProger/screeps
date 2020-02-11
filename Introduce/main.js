@@ -6,9 +6,8 @@ var ticksToCheckCreepsNumber = 20;
 function updateMovingAverage(v,ma) { 
    console.log( '✒️', Game.time
                    , 'updateMovingAverage');
-   ma.summ -= ma.v[ma.i];
+   ma.summ += v - ma.v[ma.i];
    ma.v[ma.i] = v;
-   ma.summ += v;
    ma.i = (ma.i + 1) % ma.v.length;
 } 
 
