@@ -28,7 +28,7 @@ module.exports.loop = function () {
                        , UsedCapacity: 0
                        };
    }
-   if(Game.time % (ticksToCheckCreepsNumber * 3) == 1) {
+   if(Game.time % (ticksToCheckCreepsNumber * 5) == 1) {
        Memory.harvestersMovements = { Value: 0
                                     , Count: 0
                                     , Avg: 0
