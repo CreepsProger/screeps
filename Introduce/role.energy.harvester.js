@@ -48,9 +48,12 @@ var roleEnergyHarvester = {
             else if(!err) {
                 creep.say('⚡');
                 
-                Memory.harvestersMovements.Value += creep.memory.movements;
-                Memory.harvestersMovements.Count += 1;
-                Memory.harvestersMovements.Avg = Math.floor(Memory.harvestersMovements.Value / Memory.harvestersMovements.Count) ;
+                if(creep.memory.lasterr != 0)
+                {
+                    Memory.harvestersMovements.Value += creep.memory.movements;
+                    Memory.harvestersMovements.Count += 1;
+                    Memory.harvestersMovements.Avg = Math.floor(Memory.harvestersMovements.Value / Memory.harvestersMovements.Count) ;
+                }
                 creep.memory.movements = 0;
             }
             else {
@@ -63,6 +66,7 @@ var roleEnergyHarvester = {
                 creep.memory.target_index = 0;
                 creep.memory.harvesting = false;
             }
+            creep.memory.lasterr = err;
         }
     }
 };
