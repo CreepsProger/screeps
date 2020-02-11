@@ -85,9 +85,10 @@ module.exports.loop = function () {
                   , Memory.harvestersMovements.Value.v
                   , Memory.harvestersMovements.Count.v
                   , Memory.harvestersMovements.Avg.v
-                  , 'hmVd/hmCd/hmAd:'
+                  , 'hmVd/hmCd/hmdA/hmAd:'
                   , Memory.harvestersMovements.Value.movingAverage.delta
                   , Memory.harvestersMovements.Count.movingAverage.delta
+                  , Math.floor(Memory.harvestersMovements.Value.movingAverage.delta / Memory.harvestersMovements.Count.movingAverage.delta)
                   , Memory.harvestersMovements.Avg.movingAverage.delta);
        
        if(Memory.totals.FreeCapacity <= Memory.totals.UsedCapacity && !Game.spawns['Spawn1'].spawning) {
