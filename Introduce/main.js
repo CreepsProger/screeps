@@ -14,10 +14,10 @@ function updateMovingAverage(v,ma) {
 
 module.exports.loop = function () {
 
-   if(Game.time == 0 || !Memory.commit0005) {
-      Memory.commit0005 = true;
+   if(Game.time == 0 || !Memory.commit0006) {
+      Memory.commit0006 = true;
       console.log( '✒️', Game.time
-                      , 'Commit0005');
+                      , 'Commit0006');
 
       Memory.totals
            = { Capacity: 0
@@ -55,7 +55,7 @@ module.exports.loop = function () {
                        , FreeCapacity: 0
                        , UsedCapacity: 0
                        };
-      updateMovingAverage({v:Memory.harvestersMovements.Value},{ma:Memory.harvestersMovements.movingAverage.Value});
+      updateMovingAverage(Memory.harvestersMovements.Value,Memory.harvestersMovements.movingAverage.Value);
    }
 
    for(var name in Memory.creeps) {
