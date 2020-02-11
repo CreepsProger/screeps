@@ -15,10 +15,10 @@ function updateMovingAverage(x) {
 
 module.exports.loop = function () {
 
-   if(Game.time == 0 || !Memory.commit0007) {
-      Memory.commit0007 = true;
+   if(Game.time == 0 || !Memory.commit0008) {
+      Memory.commit0008 = true;
       console.log( '✒️', Game.time
-                      , 'Commit0007');
+                      , 'Commit0008');
 
       Memory.totals
            = { Capacity: 0
@@ -88,8 +88,8 @@ module.exports.loop = function () {
                   , Memory.harvestersMovements.Count
                   , Memory.harvestersMovements.Avg
                   , 'hmVd/hmCd/hmAd:'
-                  , Memory.harvestersMovements.movingAverage.Value.delta);
-                  , Memory.harvestersMovements.movingAverage.Count.delta);
+                  , Memory.harvestersMovements.movingAverage.Value.delta
+                  , Memory.harvestersMovements.movingAverage.Count.delta
                   , Memory.harvestersMovements.movingAverage.Avg.delta);
        
        if(Memory.totals.FreeCapacity <= Memory.totals.UsedCapacity && !Game.spawns['Spawn1'].spawning) {
