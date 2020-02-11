@@ -1,5 +1,5 @@
+var roleEnergyTransfererToSpawns = require('role.energy.transferer.to.spawns');
 //var mainSettings = require('main.settings');
-//var roleEnergyTransfererToSpawns = require('role.energy.transferer.to.spawns');
 
 var ticksToCheckCreepsNumber = 20;
 
@@ -9,6 +9,7 @@ module.exports.loop = function () {
                    , 'Commit0001'
                );
    return;
+
    if(Game.time == 0 || !Memory.commit0001) { Memory.commit0001 = true;
        Memory.totals
            = { Capacity: 0
