@@ -5,10 +5,10 @@ var ticksToCheckCreepsNumber = 20;
 
 module.exports.loop = function () {
 
-   if(Game.time == 0 || !Memory.commit0003) {
-      Memory.commit0003 = true;
+   if(Game.time == 0 || !Memory.commit0004) {
+      Memory.commit0004 = true;
       console.log( '✒️', Game.time
-                      , 'Commit0003');
+                      , 'Commit0004');
 
       Memory.totals
            = { Capacity: 0
@@ -52,7 +52,7 @@ module.exports.loop = function () {
        var new1stValue = Memory.harvestersMovements.Value;
        Memory.harvestersMovements.movingAverage.Value.v[index] = new1stValue;
        Memory.harvestersMovements.movingAverage.Value.summ += new1stValue;
-       Memory.harvestersMovements.movingAverage.Value.i = (index + 1) % Memory.harvestersMovements.movingAverage.Values.v.length;
+       Memory.harvestersMovements.movingAverage.Value.i = (index + 1) % Memory.harvestersMovements.movingAverage.Value.v.length;
    }
 
    for(var name in Memory.creeps) {
