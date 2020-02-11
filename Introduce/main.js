@@ -15,10 +15,10 @@ function updateMovingAverage(x) {
 
 module.exports.loop = function () {
 
-   if(Game.time == 0 || !Memory.commit0009) {
-      Memory.commit0009 = true;
+   if(Game.time == 0 || !Memory.commit0010) {
+      Memory.commit0010 = true;
       console.log( '✒️', Game.time
-                      , 'Commit0009');
+                      , 'Commit00010');
 
       Memory.totals
            = { Capacity: 0
@@ -82,13 +82,13 @@ module.exports.loop = function () {
                   , Memory.totals.FreeCapacity
                   , Memory.totals.UsedCapacity
                   , 'hmV/hmC/hmA:'
-                  , Memory.harvestersMovements.Value
-                  , Memory.harvestersMovements.Count
-                  , Memory.harvestersMovements.Avg
+                  , Memory.harvestersMovements.Value.v
+                  , Memory.harvestersMovements.Count.v
+                  , Memory.harvestersMovements.Avg.v
                   , 'hmVd/hmCd/hmAd:'
-                  , Memory.harvestersMovements.movingAverage.Value.delta
-                  , Memory.harvestersMovements.movingAverage.Count.delta
-                  , Memory.harvestersMovements.movingAverage.Avg.delta);
+                  , Memory.harvestersMovements.Value.movingAverage.delta
+                  , Memory.harvestersMovements.Count.movingAverage.delta
+                  , Memory.harvestersMovements.Avg.movingAverage.delta);
        
        if(Memory.totals.FreeCapacity <= Memory.totals.UsedCapacity && !Game.spawns['Spawn1'].spawning) {
            var err = ERR_NOT_ENOUGH_ENERGY;
