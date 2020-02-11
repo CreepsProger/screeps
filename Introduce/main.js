@@ -5,17 +5,17 @@ var ticksToCheckCreepsNumber = 20;
 
 module.exports.loop = function () {
 
-   if(Game.time == 0 || !Memory.commit0002) {
-      Memory.commit0002 = true;
+   if(Game.time == 0 || !Memory.commit0003) {
+      Memory.commit0003 = true;
       console.log( '✒️', Game.time
-                      , 'Commit0002');
+                      , 'Commit0003');
 
       Memory.totals
            = { Capacity: 0
              , FreeCapacity: 0
              , UsedCapacity: 0
              };
-/*
+
        Memory.harvestersMovements
            = { Value: 0
              , Count: 0
@@ -25,7 +25,6 @@ module.exports.loop = function () {
              ,                     Avg : { v : [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0 }
                                }
              };
-*/
    }
 
    var tower = Game.getObjectById('TOWER_ID');
