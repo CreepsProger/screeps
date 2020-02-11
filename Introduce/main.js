@@ -3,12 +3,21 @@ var roleEnergyTransfererToSpawns = require('role.energy.transferer.to.spawns');
 
 var ticksToCheckCreepsNumber = 20;
 
+function updateMovingAverage(v,ma) { 
+   console.log( '✒️', Game.time
+                   , 'updateMovingAverage');
+   ma.summ -= ma.v[ma.i];
+   ma.v[ma.i] = v;
+   ma.summ += v;
+   ma.i = (ma.i + 1) % ma.v.length;
+} 
+
 module.exports.loop = function () {
 
-   if(Game.time == 0 || !Memory.commit0004) {
-      Memory.commit0004 = true;
+   if(Game.time == 0 || !Memory.commit0005) {
+      Memory.commit0005 = true;
       console.log( '✒️', Game.time
-                      , 'Commit0004');
+                      , 'Commit0005');
 
       Memory.totals
            = { Capacity: 0
@@ -46,13 +55,7 @@ module.exports.loop = function () {
                        , FreeCapacity: 0
                        , UsedCapacity: 0
                        };
-       var index = Memory.harvestersMovements.movingAverage.Value.i;
-       var oldNthValue = Memory.harvestersMovements.movingAverage.Value.v[index];
-       Memory.harvestersMovements.movingAverage.Value.summ -= oldNthValue;
-       var new1stValue = Memory.harvestersMovements.Value;
-       Memory.harvestersMovements.movingAverage.Value.v[index] = new1stValue;
-       Memory.harvestersMovements.movingAverage.Value.summ += new1stValue;
-       Memory.harvestersMovements.movingAverage.Value.i = (index + 1) % Memory.harvestersMovements.movingAverage.Value.v.length;
+      updateMovingAverage({v:Memory.harvestersMovements.Value},{ma:Memory.harvestersMovements.movingAverage.Value});
    }
 
    for(var name in Memory.creeps) {
