@@ -1,10 +1,6 @@
 //var mainSettings = require('main.settings');
 var roleEnergyTransfererToSpawns = require('role.energy.transferer.to.spawns');
 
-       Memory.harvestersMovements = { Value: 0
-                                    , Count: 0
-                                    , Avg: 0
-                                    };
 var ticksToCheckCreepsNumber = 20;
 
 module.exports.loop = function () {
@@ -23,7 +19,6 @@ module.exports.loop = function () {
              ,                 Count : { v : [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0 }
              ,                   Avg : { v : [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0 }
              };
-       var arr = [1, -1, 2, -2, 3];
    }
 
    var tower = Game.getObjectById('TOWER_ID');
