@@ -53,7 +53,7 @@ module.exports.loop = function () {
        Memory.harvestersMovements.movingAverage.Value.summ += new1stValue;
        Memory.harvestersMovements.movingAverage.Value.i = (index + 1) % Memory.harvestersMovements.movingAverage.Values.v.length;
    }
-
+*/
    for(var name in Memory.creeps) {
       var creep = Game.creeps[name];
       if(!creep) {
