@@ -15,16 +15,18 @@ module.exports.loop = function () {
              , FreeCapacity: 0
              , UsedCapacity: 0
              };
+/*
        Memory.harvestersMovements
            = { Value: 0
              , Count: 0
              ,   Avg: 0
-             , movingAverage : Value : { v : [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0 }
-             ,                 Count : { v : [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0 }
-             ,                   Avg : { v : [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0 }
+             , movingAverage : { Value : { v : [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0 }
+             ,                   Count : { v : [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0 }
+             ,                     Avg : { v : [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0 }
+                               }
              };
+*/
    }
-/*
 
    var tower = Game.getObjectById('TOWER_ID');
    if(tower) {
@@ -53,7 +55,7 @@ module.exports.loop = function () {
        Memory.harvestersMovements.movingAverage.Value.summ += new1stValue;
        Memory.harvestersMovements.movingAverage.Value.i = (index + 1) % Memory.harvestersMovements.movingAverage.Values.v.length;
    }
-*/
+
    for(var name in Memory.creeps) {
       var creep = Game.creeps[name];
       if(!creep) {
