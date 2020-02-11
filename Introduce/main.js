@@ -1,12 +1,30 @@
 //var mainSettings = require('main.settings');
 var roleEnergyTransfererToSpawns = require('role.energy.transferer.to.spawns');
 
-//var fn = function () { return mainSettings.init(); };
+       Memory.harvestersMovements = { Value: 0
+                                    , Count: 0
+                                    , Avg: 0
+                                    };
 var ticksToCheckCreepsNumber = 20;
 
 module.exports.loop = function () {
 
-    // fn();
+   if(Game.time == 0) {
+       Memory.totals
+           = { Capacity: 0
+             , FreeCapacity: 0
+             , UsedCapacity: 0
+             };
+       Memory.harvestersMovements
+           = { Value: 0
+             , Count: 0
+             ,   Avg: 0
+             , movingAverage : Value : { v : [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0 }
+             ,                 Count : { v : [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0 }
+             ,                   Avg : { v : [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0 }
+             };
+       var arr = [1, -1, 2, -2, 3];
+   }
 
    var tower = Game.getObjectById('TOWER_ID');
    if(tower) {
@@ -27,12 +45,13 @@ module.exports.loop = function () {
                        , FreeCapacity: 0
                        , UsedCapacity: 0
                        };
-   }
-   if(Game.time % (ticksToCheckCreepsNumber * 10) == 1) {
-       Memory.harvestersMovements = { Value: 0
-                                    , Count: 0
-                                    , Avg: 0
-                                    };
+       var index = Memory.harvestersMovements.movingAverage.Value.i;
+       var oldNthValue = Memory.harvestersMovements.movingAverage.Value.v[index];
+       Memory.harvestersMovements.movingAverage.Value.summ -= oldNthValue;
+       var new1stValue = Memory.harvestersMovements.Value;
+       Memory.harvestersMovements.movingAverage.Value.v[index] = new1stValue;
+       Memory.harvestersMovements.movingAverage.Value.summ += new1stValue;
+       Memory.harvestersMovements.movingAverage.Value.i = (index + 1) % Memory.harvestersMovements.movingAverage.Values.v.length;
    }
 
    for(var name in Memory.creeps) {
@@ -64,7 +83,9 @@ module.exports.loop = function () {
                   , 'hmV/hmC/hmA:'
                   , Memory.harvestersMovements.Value
                   , Memory.harvestersMovements.Count
-                  , Memory.harvestersMovements.Avg);
+                  , Memory.harvestersMovements.Avg
+                  , 'mahmV/:'
+                  , Memory.harvestersMovements.movingAverage.Value.summ);
        
        if(Memory.totals.FreeCapacity <= Memory.totals.UsedCapacity && !Game.spawns['Spawn1'].spawning) {
            var err = ERR_NOT_ENOUGH_ENERGY;
