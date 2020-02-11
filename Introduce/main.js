@@ -3,7 +3,7 @@ var roleEnergyTransfererToSpawns = require('role.energy.transferer.to.spawns');
 
 var ticksToCheckCreepsNumber = 20;
 
-function updateMovingAverage(x { 
+function updateMovingAverage(x) { 
    console.log( '✒️', Game.time
                    , 'updateMovingAverage');
    movingAverage.delta = x.v - movingAverage.vs[movingAverage.i];
