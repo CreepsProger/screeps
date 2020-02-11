@@ -4,8 +4,8 @@ var roleEnergyTransfererToSpawns = require('role.energy.transferer.to.spawns');
 var ticksToCheckCreepsNumber = 20;
 
 function updateMovingAverage(x) { 
-   console.log( '✒️', Game.time
-                   , 'updateMovingAverage');
+//    console.log( '✒️', Game.time
+//                    , 'updateMovingAverage');
    x.movingAverage.delta = x.v - x.movingAverage.vs[x.movingAverage.i];
    x.movingAverage.summ += x.movingAverage.delta;
    x.movingAverage.ma = x.movingAverage.summ / x.movingAverage.vs.length;
@@ -15,10 +15,10 @@ function updateMovingAverage(x) {
 
 module.exports.loop = function () {
 
-   if(Game.time == 0 || !Memory.commit0011) {
-      Memory.commit0011 = true;
+   if(Game.time == 0 || !Memory.commit0012) {
+      Memory.commit0012 = true;
       console.log( '✒️', Game.time
-                      , 'Commit00011');
+                      , 'Commit00012');
 
       Memory.totals
            = { Capacity: 0
