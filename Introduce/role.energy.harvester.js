@@ -50,9 +50,9 @@ var roleEnergyHarvester = {
                 
                 if(creep.memory.lasterr != 0)
                 {
-                    Memory.harvestersMovements.Value += creep.memory.movements;
-                    Memory.harvestersMovements.Count += 1;
-                    Memory.harvestersMovements.Avg = Math.floor(Memory.harvestersMovements.Value / Memory.harvestersMovements.Count) ;
+                    Memory.harvestersMovements.Value.v += creep.memory.movements;
+                    Memory.harvestersMovements.Count.v += 1;
+                    Memory.harvestersMovements.Avg.v = Math.floor(Memory.harvestersMovements.Value.v / Memory.harvestersMovements.Count.v) ;
                 }
                 creep.memory.movements = 0;
             }
