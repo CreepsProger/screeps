@@ -8,8 +8,8 @@ module.exports.loop = function () {
    console.log( '✒️', Game.time
                    , 'Commit0001'
                );
-   return;
-
+}
+/*
    if(Game.time == 0 || !Memory.commit0001) { Memory.commit0001 = true;
        Memory.totals
            = { Capacity: 0
