@@ -9,7 +9,7 @@ var ticksToCheckCreepsNumber = 20;
 
 module.exports.loop = function () {
 
-   if(Game.time == 0) {
+   if(Game.time == 0 || !Memory.commit0001) { Memory.commit0001 = true;
        Memory.totals
            = { Capacity: 0
              , FreeCapacity: 0
