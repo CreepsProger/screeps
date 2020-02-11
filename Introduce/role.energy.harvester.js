@@ -1,4 +1,4 @@
-var maxHarvesterMovementsToSource = 100;
+var maxHarvesterMovementsToSource = 200;
 
 var roleEnergyHarvester = {
 
