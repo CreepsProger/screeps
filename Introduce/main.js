@@ -6,19 +6,19 @@ var ticksToCheckCreepsNumber = 20;
 function updateMovingAverage(x) { 
    console.log( '✒️', Game.time
                    , 'updateMovingAverage');
-   movingAverage.delta = x.v - movingAverage.vs[movingAverage.i];
-   movingAverage.summ += movingAverage.delta;
-   movingAverage.ma = movingAverage.summ / movingAverage.vs.length;
-   movingAverage.vs[movingAverage.i] = x.v;
-   movingAverage.i = (movingAverage.i + 1) % movingAverage.vs.length;
+   x.movingAverage.delta = x.v - x.movingAverage.vs[x.movingAverage.i];
+   x.movingAverage.summ += x.movingAverage.delta;
+   x.movingAverage.ma = x.movingAverage.summ / x.movingAverage.vs.length;
+   x.movingAverage.vs[x.movingAverage.i] = x.v;
+   x.movingAverage.i = (x.movingAverage.i + 1) % x.movingAverage.vs.length;
 } 
 
 module.exports.loop = function () {
 
-   if(Game.time == 0 || !Memory.commit0010) {
-      Memory.commit0010 = true;
+   if(Game.time == 0 || !Memory.commit0011) {
+      Memory.commit0011 = true;
       console.log( '✒️', Game.time
-                      , 'Commit00010');
+                      , 'Commit00011');
 
       Memory.totals
            = { Capacity: 0
