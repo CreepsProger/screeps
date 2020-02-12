@@ -1,4 +1,5 @@
 var roleEnergyTransfererToSpawns = require('role.energy.transferer.to.spawns');
+var roleEnergyTransfererToNearestLighter;
 
 function lookNearestLighterAtPosition(room,hitsMax,x,y) { 
     var nearestLighter;
@@ -13,8 +14,6 @@ function lookNearestLighterAtPosition(room,hitsMax,x,y) {
     });
     return nearestLighter;
 }
-
-var thisFunctionCalls = 0;
 
 function lookNearestLighterForCreep(creep) {
     var nearestLighter;
@@ -44,6 +43,8 @@ function lookNearestLighterForCreep(creep) {
 //                     , nearestLighters);
     return nearestLighters;
 }
+
+var thisFunctionCalls = 0;
 
 var roleEnergyTransfererToNearestLighter = {
 
