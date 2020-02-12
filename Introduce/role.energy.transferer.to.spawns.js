@@ -36,7 +36,7 @@ var roleEnergyTransfererToSpawns = {
             }
             else {
                 creep.memory.transfering.energy.to.spawns = false;
-            roleEnergyTransfererToAll.run(creep);
+                roleEnergyTransfererToAll.run(creep);
             }
         }
         else {
