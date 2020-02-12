@@ -16,15 +16,16 @@ function updateMovingAverage(x) {
 
 module.exports.loop = function () {
 
-   if(Game.time == 0 || !Memory.commit0016) {
-      Memory.commit0016 = true;
+   if(Game.time == 0 || !Memory.commit0017) {
+      Memory.commit0017 = true;
       console.log( '✒️', Game.time
-                      , 'Commit 0016');
+                      , 'Commit 0017');
 
       Memory.totals
            = { Capacity: 0
              , FreeCapacity: 0
-             , UsedCapacity: 0 };
+             , UsedCapacity: 0
+             , hitsMax: 0};
 
        Memory.harvestersMovements
            = { Value: { v: 0, movingAverage: { vs: [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0, delta: 0, ma:0 }}
@@ -47,10 +48,11 @@ module.exports.loop = function () {
    }
 
    if(Game.time % ticksToCheckCreepsNumber == 0) {
-       Memory.totals = { Capacity: 0
+       Memory.totals = { CreepsNumber: 0
+                       , Capacity: 0
                        , FreeCapacity: 0
                        , UsedCapacity: 0
-                       };
+                       , HitsMax: 0};
       updateMovingAverage(Memory.harvestersMovements.Value);
       updateMovingAverage(Memory.harvestersMovements.Count);
       updateMovingAverage(Memory.harvestersMovements.Avg);
@@ -65,19 +67,24 @@ module.exports.loop = function () {
                     , name);
       }
       else {
+         Memory.totals.CreepsNumber += 1;
          Memory.totals.Capacity += creep.store.getCapacity();
          Memory.totals.FreeCapacity += creep.store.getFreeCapacity();
          Memory.totals.UsedCapacity += creep.store.getUsedCapacity();
+         Memory.totals.HitsMax += creep.store.hitsMax;
       }
    }
 
    if(Game.time % ticksToCheckCreepsNumber == 0) {
-       var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
-       Memory.totals.CreepsNumber = creeps.length;
+//        var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
+//        Memory.totals.CreepsNumber = creeps.length;
 
        console.log( '✒️', Game.time
                   , 'Creeps Number:'
                   , Memory.totals.CreepsNumber
+                  , 'H/aH:'
+                  , Memory.totals.HitsMax
+                  , Memory.totals.HitsMax / Memory.totals.CreepsNumber
                   , 'C/FC/UC:'
                   , Memory.totals.Capacity
                   , Memory.totals.FreeCapacity
