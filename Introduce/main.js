@@ -156,8 +156,8 @@ module.exports.loop = function () {
 //                   , creep);
 
       if(creep.memory.role == 'creep') {
-         //require('role.energy.harvester').run(creep);
-         roleEnergyTransfererToNearestLighter.run(creep);
+         require('role.energy.harvester').run(creep);
+         //roleEnergyTransfererToNearestLighter.run(creep);
       }
    }
 }
