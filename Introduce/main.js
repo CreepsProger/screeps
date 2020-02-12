@@ -1,4 +1,5 @@
-var roleEnergyTransfererToSpawns = require('role.energy.transferer.to.spawns');
+var roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
+
 //var mainSettings = require('main.settings');
 
 var ticksToCheckCreepsNumber = 20;
@@ -145,7 +146,7 @@ module.exports.loop = function () {
    for(var name in Game.creeps) {
       var creep = Game.creeps[name];
       if(creep.memory.role == 'creep') {
-         roleEnergyTransfererToSpawns.run(creep);
+         roleEnergyTransfererToNearestLighter.run(creep);
       }
    }
 }
