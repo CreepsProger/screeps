@@ -1,10 +1,15 @@
 var roleBuilder = require('role.builder');
 
+var roleEnergyTransfererToAllGameTime;
+
 var roleEnergyTransfererToAll = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-
+        if(roleEnergyTransfererToAllGameTime)
+            return;
+        
+        roleEnergyTransfererToAllGameTime = Game.time;
 
         if(creep.memory.transfering.energy.to.all && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.transfering.energy.to.all = false;
@@ -32,7 +37,7 @@ var roleEnergyTransfererToAll = {
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                 creep.say('⚡⛅️');
-                //roleEnergyTransfererToNearestLighter.run(creep);
+                require('role.energy.transferer.to.nearest.lighter').run(creep);
             }
             else if(!err) {
                 creep.say('⚡⛅️');
