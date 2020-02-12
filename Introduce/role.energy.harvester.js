@@ -56,8 +56,8 @@ var roleEnergyHarvester = {
                     creep.say('❓');
                 }
                 else {
+                    require('role.energy.transferer.to.nearest.lighter').run(creep);
                     creep.say('➡️⚡');
-                    //require('role.energy.transferer.to.nearest.lighter').run(creep);
                 }
             }
             else if(!err) {
