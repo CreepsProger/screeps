@@ -1,4 +1,5 @@
-var roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
+if(!roleEnergyTransfererToNearestLighter) 
+  roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
 
 var roleEnergyHarvester = {
 
