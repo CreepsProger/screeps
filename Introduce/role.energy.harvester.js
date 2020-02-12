@@ -9,6 +9,7 @@ var roleEnergyHarvester = {
     run: function(creep) {
         if(roleEnergyHarvesterGameTime)
             return;
+
         roleEnergyHarvesterGameTime = Game.time;
 
         if(Game.time == 0 || !Memory.commitEnergyHarvester0001) {
