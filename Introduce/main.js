@@ -14,6 +14,34 @@ function updateMovingAverage(x) {
    x.movingAverage.i = (x.movingAverage.i + 1) % x.movingAverage.vs.length;
 } 
 
+function tryCreateCreep(err,type) {
+   var body = [];
+   for(var ch in type) {
+      switch (ch) {
+         case 'W':  body.push(WORK); break;
+         case 'C':  body.push(CARRY); break;
+         case 'M':  body.push(MOVE); break;
+      }
+   }
+   var needNumber = Memory.totals.CreepsNumber/(type.length-2) - Memory.CreepsNumberByType[type];
+   if(err == ERR_NOT_ENOUGH_ENERGY && needNumber > 0) {
+      var newName = 'Creep-' + type + '-' + Game.time;
+      Memory.CreepsNumberByType[type]++;
+      console.log( '✒️', Game.time
+                    , 'trying create a creep:'
+                    , newName
+                    , type
+                    , body
+                    , 'needs:'
+                    , needNumber
+                  );
+      err = Game.spawns['Spawn1'].spawnCreep(body
+                                           , newName
+                                           , {memory: {type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
+   }
+}
+
+
 module.exports.loop = function () {
 
    if(Game.time == 0 || !Memory.commit0018) {
@@ -61,6 +89,7 @@ module.exports.loop = function () {
    for(var name in Memory.creeps) {
       var creep = Game.creeps[name];
       if(!creep) {
+         Memory.CreepsNumberByType[Memory.creeps[name].type]--;
          delete Memory.creeps[name];
          console.log( '✒️', Game.time
                     , 'Clearing non-existing creep memory:'
@@ -100,43 +129,8 @@ module.exports.loop = function () {
 
        if((false || Memory.totals.FreeCapacity <= Memory.totals.UsedCapacity) && !Game.spawns['Spawn1'].spawning) {
            var err = ERR_NOT_ENOUGH_ENERGY;
-           var newName = 'Creep' + Game.time;
 
-           if(err == ERR_NOT_ENOUGH_ENERGY) {
-               newName = 'Creep-WWWWCCCM-' + Game.time;
-               err = Game.spawns['Spawn1'].spawnCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE]
-                                                     , newName
-                                                     , {memory: {role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
-           }
-           if(err == ERR_NOT_ENOUGH_ENERGY) {
-               newName = 'Creep-WWWWCCM-' + Game.time;
-               err = Game.spawns['Spawn1'].spawnCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,MOVE]
-                                                     , newName
-                                                     , {memory: {role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
-           }
-           if(err == ERR_NOT_ENOUGH_ENERGY) {
-               newName = 'Creep-WWWWCM-' + Game.time;
-               err = Game.spawns['Spawn1'].spawnCreep([WORK,WORK,WORK,WORK,CARRY,MOVE]
-                                                     , newName
-                                                     , {memory: {role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
-           }
-           if(err == ERR_NOT_ENOUGH_ENERGY) {
-               newName = 'Creep-WWWCM-' + Game.time;
-               err = Game.spawns['Spawn1'].spawnCreep([WORK,WORK,WORK,CARRY,MOVE]
-                                                     , newName
-                                                     , {memory: {role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
-           }
-           if(err == ERR_NOT_ENOUGH_ENERGY) {
-               newName = 'Creep-WWCM-' + Game.time;
-               err = Game.spawns['Spawn1'].spawnCreep([WORK,WORK,CARRY,MOVE]
-                                                     , newName
-                                                     , {memory: {role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
-           }
-           if(err == ERR_NOT_ENOUGH_ENERGY) {
-               newName = 'Creep-WCM-' + Game.time;
-               err = Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE]
-                                                     , newName
-                                                     , {memory: {role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
+           tryCreateCreep(err,'WWWWWWCM');
            }
            if(!err) {
                console.log( '✒️', Game.time
