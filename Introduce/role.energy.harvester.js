@@ -13,8 +13,8 @@ var roleEnergyHarvester = {
                        , 'Commit EnergyHarvester 0003');
         }
 
-        if(roleEnergyHarvesterCall++ > 10)
-            return;
+//         if(roleEnergyHarvesterCall++ > 10)
+//             return;
 
         if(!creep.memory.target_index) 
            creep.memory.target_index = 0;
@@ -59,7 +59,7 @@ var roleEnergyHarvester = {
                     creep.say('❓');
                 }
                 else {
-                    require('role.energy.transferer.to.nearest.lighter').run(creep);
+                    //require('role.energy.transferer.to.nearest.lighter').run(creep);
                     creep.say('➡️⚡');
                 }
             }
