@@ -126,6 +126,12 @@ module.exports.loop = function () {
                                                      , newName
                                                      , {memory: {role: 'creep', transfering: { energy: { to: { all: false}}}}});
            }
+           if(err == ERR_NOT_ENOUGH_ENERGY) {
+               newName = 'Creep-WCM-' + Game.time;
+               err = Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE]
+                                                     , newName
+                                                     , {memory: {role: 'creep', transfering: { energy: { to: { all: false}}}}});
+           }
            if(!err) {
                console.log( '✒️', Game.time
                           , 'Spawning new creep:'
