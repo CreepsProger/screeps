@@ -1,5 +1,3 @@
-var roleEnergyHarvester = require('role.energy.harvester');
-
 var roleUpgrader = {
 
     /** @param {Creep} creep **/
