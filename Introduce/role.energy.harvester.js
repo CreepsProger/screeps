@@ -16,7 +16,7 @@ var roleEnergyHarvester = {
 //         if(roleEnergyHarvesterCall++ > 10)
 //             return;
 
-        if(!creep.memory.target_index) 
+        if(!creep.memory.target_index && creep.memory.n) 
            creep.memory.target_index = creep.memory.n;
         
         if(creep.memory.harvesting && creep.store[RESOURCE_ENERGY] == 0) {
@@ -32,7 +32,7 @@ var roleEnergyHarvester = {
 //                         , creep.name);
             if(targets.length > 0) {
                 creep.memory.harvesting = true;
-                creep.memory.target = targets[creep.memory.target_index % targets.length].id;
+                creep.memory.target = targets[(creep.memory.target_index + 1) % targets.length].id;
             }
         }
 
