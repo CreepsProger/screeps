@@ -141,13 +141,13 @@ module.exports.loop = function () {
          tryCreateCreep(err,'WWWCM');
          tryCreateCreep(err,'WWCM');
          tryCreateCreep(err,'WCM');
-         tryCreateCreep(err,'WCMM);
-         tryCreateCreep(err,'WCCMM);
-         tryCreateCreep(err,'WCCMMM);
-         tryCreateCreep(err,'WCCMMMM);
-         tryCreateCreep(err,'WCCCMMMM);
-         tryCreateCreep(err,'WCCCMMMMM);
-         tryCreateCreep(err,'WCCCMMMMMM);
+         tryCreateCreep(err,'WCMM');
+         tryCreateCreep(err,'WCCMM');
+         tryCreateCreep(err,'WCCMMM');
+         tryCreateCreep(err,'WCCMMMM');
+         tryCreateCreep(err,'WCCCMMMM');
+         tryCreateCreep(err,'WCCCMMMMM');
+         tryCreateCreep(err,'WCCCMMMMMM');
 
          if(!err) {
                console.log( '✒️', Game.time
