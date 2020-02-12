@@ -29,6 +29,9 @@ function tryCreateCreep(prev_err,type) {
    var needNumber = Memory.totals.CreepsNumber/(type.length-2) - existsNumber;
    if(prev_err && needNumber > 0) {
       var newName = 'Creep-' + type + '-' + Game.time;
+      prev_err = Game.spawns['Spawn1'].spawnCreep(body
+                                           , newName
+                                           , {memory: {type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
       console.log( '✒️', Game.time
                     , 'trying create a creep:'
                     , newName
@@ -38,10 +41,9 @@ function tryCreateCreep(prev_err,type) {
                     , existsNumber
                     , 'needs:'
                     , needNumber
+                    , 'err:'
+                    , prev_err
                   );
-      prev_err = Game.spawns['Spawn1'].spawnCreep(body
-                                           , newName
-                                           , {memory: {type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
       if(!prev_err)
          Memory.CreepsNumberByType[type]++;
    }
