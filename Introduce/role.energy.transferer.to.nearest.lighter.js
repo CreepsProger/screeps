@@ -50,10 +50,10 @@ var roleEnergyTransfererToNearestLighter = {
     /** @param {Creep} creep **/
     run: function(creep) {
 
-        if(Game.time == 0 || !Memory.commitEnergyTransfererToNearestLighter0002) {
-            Memory.commitEnergyTransfererToNearestLighter0002 = true;
+        if(Game.time == 0 || !Memory.commitEnergyTransfererToNearestLighter0003) {
+            Memory.commitEnergyTransfererToNearestLighter0003 = true;
             console.log( '✒️', Game.time
-                       , 'Commit EnergyTransfererToNearestLighter 0002');
+                       , 'Commit EnergyTransfererToNearestLighter 0003');
             
             for(var name in Game.creeps) {
                 var creep = Game.creeps[name];
