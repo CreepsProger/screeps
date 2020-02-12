@@ -151,9 +151,9 @@ module.exports.loop = function () {
    
    for(var name in Game.creeps) {
       var creep = Game.creeps[name];
-      console.log( '✒️', Game.time
-                  , 'go'
-                  , creep);
+//       console.log( '✒️', Game.time
+//                   , 'go'
+//                   , creep);
 
       if(creep.memory.role == 'creep') {
          require('role.energy.harvester').run(creep);
