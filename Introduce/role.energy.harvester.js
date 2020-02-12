@@ -13,6 +13,9 @@ var roleEnergyHarvester = {
                        , 'Commit EnergyHarvester 0003');
         }
 
+        if(roleEnergyHarvesterCall++ > 10)
+            return;
+
         if(!creep.memory.target_index) 
            creep.memory.target_index = 0;
         
