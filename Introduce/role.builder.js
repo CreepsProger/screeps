@@ -24,7 +24,7 @@ var roleBuilder = {
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                 creep.say('➡️🚧');
-                roleEnergyTransfererToNearestLighter.run(creep);
+                require('role.energy.transferer.to.nearest.lighter').run(creep);
             }
             else if(!err) {
                 creep.say('🚧');
