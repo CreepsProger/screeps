@@ -14,6 +14,8 @@ function lookNearestLighterAtPosition(room,hitsMax,x,y) {
     return nearestLighter;
 }
 
+var thisFunctionCalls = 0;
+
 function lookNearestLighterForCreep(creep) {
     var nearestLighter;
     var nearestLighters = [];
@@ -81,7 +83,12 @@ var roleEnergyTransfererToNearestLighter = {
             }
             else {
                 creep.memory.transfering.energy.to.nearest.lighter = false;
-                roleEnergyTransfererToNearestLighter.run(creep);
+                if(thisFunctionCalls++ < 8) {
+                    roleEnergyTransfererToNearestLighter.run(creep);
+                }
+                else {
+                    roleEnergyTransfererToSpawns.run(creep);
+                }
             }
         }
         else {
