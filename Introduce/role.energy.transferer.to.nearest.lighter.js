@@ -36,10 +36,10 @@ function lookNearestLighterForCreep(creep) {
     nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.pos.x-1,creep.pos.y+1);
     if(nearestLighter) nearestLighters.push(nearestLighter); 
 
-//     console.log( '✒️', Game.time
-//                     , 'NearestLighterForCreep'
-//                     , creep.name
-//                     , nearestLighters);
+    console.log( '✒️', Game.time
+                    , 'NearestLighterForCreep'
+                    , creep.name
+                    , nearestLighters);
     return nearestLighters;
 }
 
@@ -50,10 +50,10 @@ var roleEnergyTransfererToNearestLighter = {
     /** @param {Creep} creep **/
     run: function(creep) {
 
-        if(Game.time == 0 || !Memory.commitEnergyTransfererToNearestLighter0001) {
-            Memory.commitEnergyTransfererToNearestLighter0001 = true;
+        if(Game.time == 0 || !Memory.commitEnergyTransfererToNearestLighter0002) {
+            Memory.commitEnergyTransfererToNearestLighter0002 = true;
             console.log( '✒️', Game.time
-                       , 'Commit EnergyTransfererToNearestLighter 0001');
+                       , 'Commit EnergyTransfererToNearestLighter 0002');
             
             for(var name in Game.creeps) {
                 var creep = Game.creeps[name];
@@ -66,16 +66,16 @@ var roleEnergyTransfererToNearestLighter = {
         }
 
         if(!creep.memory.transfering.energy.to.nearest.lighter && creep.store[RESOURCE_ENERGY] > 0) {
-//            var targets = lookNearestLighterForCreep(creep);
-             var targets = creep.room.find(FIND_MY_CREEPS, {
-                 filter: (nearestLighter) => {
-                      return (nearestLighter.store.getFreeCapacity() > 0 &&
-                         Math.abs(nearestLighter.pos.x - creep.pos.x) <= 1 &&
-                         Math.abs(nearestLighter.pos.y - creep.pos.y) <= 1 &&
-                         nearestLighter.hitsMax < creep.hitsMax &&
-                         nearestLighter.id != creep.id);
-                 }
-             });
+            var targets = lookNearestLighterForCreep(creep);
+//              var targets = creep.room.find(FIND_MY_CREEPS, {
+//                  filter: (nearestLighter) => {
+//                       return (nearestLighter.store.getFreeCapacity() > 0 &&
+//                          Math.abs(nearestLighter.pos.x - creep.pos.x) <= 1 &&
+//                          Math.abs(nearestLighter.pos.y - creep.pos.y) <= 1 &&
+//                          nearestLighter.hitsMax < creep.hitsMax &&
+//                          nearestLighter.id != creep.id);
+//                  }
+//              });
         
             if(targets.length > thisFunctionCalls) {
                 creep.memory.transfering.energy.to.nearest.lighter = true;
