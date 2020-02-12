@@ -1,26 +1,12 @@
 var roleEnergyTransfererToSpawns = require('role.energy.transferer.to.spawns');
 
-function lookNearestLighterAtPosition(room,hitsMax,ticksToLive,x,y) { 
+function lookNearestLighterAtPosition(room,weight,x,y) { 
     var nearestLighter;
     var look = room.lookAt(x,y);
     look.forEach(function(lookObject) {
         if(lookObject.type == LOOK_CREEPS) {
             if(lookObject[LOOK_CREEPS].store.getFreeCapacity() > 0 &&
-               (lookObject[LOOK_CREEPS].hitsMax < hitsMax) ) {
-                nearestLighter = lookObject[LOOK_CREEPS];
-            }
-        }
-    });
-    return nearestLighter;
-}
-
-function lookNearestYangerAtPosition(room,hitsMax,ticksToLive,x,y) { 
-    var nearestLighter;
-    var look = room.lookAt(x,y);
-    look.forEach(function(lookObject) {
-        if(lookObject.type == LOOK_CREEPS) {
-            if(lookObject[LOOK_CREEPS].store.getFreeCapacity() > 0 &&
-               lookObject[LOOK_CREEPS].ticksToLive > ticksToLive) {
+               (lookObject[LOOK_CREEPS].memory.weight < weight) ) {
                 nearestLighter = lookObject[LOOK_CREEPS];
             }
         }
@@ -31,49 +17,25 @@ function lookNearestYangerAtPosition(room,hitsMax,ticksToLive,x,y) {
 function lookNearestLighterForCreep(creep) {
     var nearestLighter;
     var nearestLighters = [];
-    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.ticksToLive,creep.pos.x+1,creep.pos.y-1);
+    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.memory.weight,creep.pos.x+1,creep.pos.y-1);
     if(nearestLighter) nearestLighters.push(nearestLighter);
-    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.ticksToLive,creep.pos.x+1,creep.pos.y);
+    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.memory.weight,creep.pos.x+1,creep.pos.y);
     if(nearestLighter) nearestLighters.push(nearestLighter);
-    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.ticksToLive,creep.pos.x+1,creep.pos.y+1);
+    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.memory.weight,creep.pos.x+1,creep.pos.y+1);
     if(nearestLighter) nearestLighters.push(nearestLighter);
-    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.ticksToLive,creep.pos.x,creep.pos.y-1);
+    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.memory.weight,creep.pos.x,creep.pos.y-1);
     if(nearestLighter) nearestLighters.push(nearestLighter);
-    //nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.ticksToLive,creep.pos.x,creep.pos.y);
+    //nearestLighter = lookNearestLighterAtPosition(creep.room,creep.memory.weight,creep.pos.x,creep.pos.y);
     //if(nearestLighter) nearestLighters.push(nearestLighter);
-    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.ticksToLive,creep.pos.x,creep.pos.y+1);
+    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.memory.weight,creep.pos.x,creep.pos.y+1);
     if(nearestLighter) nearestLighters.push(nearestLighter);
-    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.ticksToLive,creep.pos.x-1,creep.pos.y-1);
+    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.memory.weight,creep.pos.x-1,creep.pos.y-1);
     if(nearestLighter) nearestLighters.push(nearestLighter);
-    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.ticksToLive,creep.pos.x-1,creep.pos.y);
+    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.memory.weight,creep.pos.x-1,creep.pos.y);
     if(nearestLighter) nearestLighters.push(nearestLighter);
-    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.ticksToLive,creep.pos.x-1,creep.pos.y+1);
+    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.memory.weight,creep.pos.x-1,creep.pos.y+1);
     if(nearestLighter) nearestLighters.push(nearestLighter); 
 
-    var nearestYanger;
-    nearestYanger = lookNearestYangerAtPosition(creep.room,creep.hitsMax,creep.ticksToLive,creep.pos.x+1,creep.pos.y-1);
-    if(nearestYanger) nearestLighters.push(nearestYanger);
-    nearestYanger = lookNearestYangerAtPosition(creep.room,creep.hitsMax,creep.ticksToLive,creep.pos.x+1,creep.pos.y);
-    if(nearestYanger) nearestLighters.push(nearestYanger);
-    nearestYanger = lookNearestYangerAtPosition(creep.room,creep.hitsMax,creep.ticksToLive,creep.pos.x+1,creep.pos.y+1);
-    if(nearestYanger) nearestLighters.push(nearestYanger);
-    nearestYanger = lookNearestYangerAtPosition(creep.room,creep.hitsMax,creep.ticksToLive,creep.pos.x,creep.pos.y-1);
-    if(nearestYanger) nearestLighters.push(nearestYanger);
-    //nearestYanger = lookNearestYangerAtPosition(creep.room,creep.hitsMax,creep.ticksToLive,creep.pos.x,creep.pos.y);
-    //if(nearestYanger) nearestLighters.push(nearestYanger);
-    nearestYanger = lookNearestYangerAtPosition(creep.room,creep.hitsMax,creep.ticksToLive,creep.pos.x,creep.pos.y+1);
-    if(nearestYanger) nearestLighters.push(nearestYanger);
-    nearestYanger = lookNearestYangerAtPosition(creep.room,creep.hitsMax,creep.ticksToLive,creep.pos.x-1,creep.pos.y-1);
-    if(nearestYanger) nearestLighters.push(nearestYanger);
-    nearestYanger = lookNearestYangerAtPosition(creep.room,creep.hitsMax,creep.ticksToLive,creep.pos.x-1,creep.pos.y);
-    if(nearestYanger) nearestLighters.push(nearestYanger);
-    nearestYanger = lookNearestYangerAtPosition(creep.room,creep.hitsMax,creep.ticksToLive,creep.pos.x-1,creep.pos.y+1);
-    if(nearestYanger) nearestLighters.push(nearestYanger);
-
-//     console.log( '✒️', Game.time
-//                     , 'NearestLighterForCreep'
-//                     , creep.name
-//                     , nearestLighters);
     return nearestLighters;
 }
 
