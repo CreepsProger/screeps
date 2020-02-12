@@ -2,7 +2,7 @@ var roleEnergyTransfererToSpawns = require('role.energy.transferer.to.spawns');
 
 function lookNearestLighterAtPosition(room,hitsMax,x,y) { 
     var nearestLighter;
-    const look = room.lookAt(x,y);
+    var look = room.lookAt(x,y);
     look.forEach(function(lookObject) {
         if(lookObject.type == LOOK_CREEPS) {
             if(lookObject[LOOK_CREEPS].store.getFreeCapacity() > 0 &&
@@ -88,7 +88,9 @@ var roleEnergyTransfererToNearestLighter = {
             var err = creep.transfer(target, RESOURCE_ENERGY);
             console.log( '✒️', Game.time
                        , 'try transfer to'
-                       , target.name );
+                       , target.name
+                       , 'err:' 
+                       , err);
 
             if(!err) {
                 creep.say('⚡🐇');
