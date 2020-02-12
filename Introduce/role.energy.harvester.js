@@ -1,21 +1,21 @@
 //if(!roleEnergyTransfererToNearestLighter) 
 //  roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
 
-var roleEnergyHarvesterGameTime;
+var roleEnergyHarvesterGameTime = 0;
 
 var roleEnergyHarvester = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-        if(roleEnergyHarvesterGameTime)
+        if(roleEnergyHarvesterGameTime == Game.time)
             return;
 
         roleEnergyHarvesterGameTime = Game.time;
 
-        if(Game.time == 0 || !Memory.commitEnergyHarvester0002) {
-            Memory.commitEnergyHarvester0002 = true;
+        if(Game.time == 0 || !Memory.commitEnergyHarvester0003) {
+            Memory.commitEnergyHarvester0003 = true;
             console.log( '✒️', Game.time
-                       , 'Commit EnergyHarvester 0002');
+                       , 'Commit EnergyHarvester 0003');
         }
 
         if(!creep.memory.target_index) 
