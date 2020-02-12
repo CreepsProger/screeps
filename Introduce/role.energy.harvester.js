@@ -22,11 +22,11 @@ var roleEnergyHarvester = {
 
         if(!creep.memory.harvesting && creep.store.getFreeCapacity() > 0) {
             var targets = creep.room.find(FIND_SOURCES);
-            console.log( '✒️', Game.time
-                        , '⚡ source targets:'
-                        , targets
-                        , 'for creep:'
-                        , creep.name);
+//             console.log( '✒️', Game.time
+//                         , '⚡ source targets:'
+//                         , targets
+//                         , 'for creep:'
+//                         , creep.name);
             if(targets.length > 0) {
                 creep.memory.harvesting = true;
                 creep.memory.target = targets[creep.memory.target_index % targets.length].id;
