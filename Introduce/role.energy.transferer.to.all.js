@@ -1,4 +1,5 @@
 var roleBuilder = require('role.builder');
+var roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
 
 var roleEnergyTransfererToAll = {
 
@@ -32,6 +33,7 @@ var roleEnergyTransfererToAll = {
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                 creep.say('⚡⛅️');
+                roleEnergyTransfererToNearestLighter.run(creep);
             }
             else if(!err) {
                 creep.say('⚡⛅️');
