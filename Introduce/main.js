@@ -32,7 +32,7 @@ function tryCreateCreep(type) {
    var existsNumber = 0;
    if(Memory.CreepsNumberByType[type])
       existsNumber = Memory.CreepsNumberByType[type];
-   var needNumber = Math.ceil(Memory.totals.CreepsNumber * 100 / weight - existsNumber);
+   var needNumber = Math.floor(Memory.totals.CreepsNumber * 100 / weight - existsNumber);
    if(err != 0 && needNumber > 0) {
       var newName = 'Creep-' + type + '-' + Game.time;
       err = Game.spawns['Spawn1'].spawnCreep(body
