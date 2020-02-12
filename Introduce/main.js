@@ -44,8 +44,12 @@ function tryCreateCreep(err,type) {
                     , 'err:'
                     , err
                   );
-      if(!err)
+      if(!err) {
+         console.log( '✒️', Game.time
+                         , 'Spawning new creep:'
+                         , newName);
          Memory.CreepsNumberByType[type]++;
+      }
    }
 }
 
@@ -153,12 +157,6 @@ module.exports.loop = function () {
          tryCreateCreep(err,'WCCCMMMM');
          tryCreateCreep(err,'WCCCMMMMM');
          tryCreateCreep(err,'WCCCMMMMMM');
-
-         if(!err) {
-               console.log( '✒️', Game.time
-                          , 'Spawning new creep:'
-                          , newName);
-         }
       }
    }
 
