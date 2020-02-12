@@ -50,7 +50,7 @@ var roleEnergyHarvester = {
                 else {
                     creep.say('➡️⚡');
                     //roleEnergyTransfererToNearestLighter(creep);
-                    if(thisFunctionCalls++ > 1)
+                    if(thisFunctionCalls++ < 10)
                         require('role.energy.transferer.to.nearest.lighter').run(creep);
                 }
             }
