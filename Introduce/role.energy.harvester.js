@@ -1,16 +1,16 @@
 //if(!roleEnergyTransfererToNearestLighter) 
 //  roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
 
-var roleEnergyHarvesterCalls = 0;
+var roleEnergyHarvesterGameTime;
 
 var roleEnergyHarvester = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-        if(!creep.memory.movements)
-            creep.memory.movements = 0;
-        if(!creep.memory.target_index)
-            creep.memory.target_index = 0;
+        if(roleEnergyHarvesterGameTime)
+            return;
+        
+        roleEnergyHarvesterGameTime = Game.time;
 
         if(creep.memory.harvesting && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.harvesting = false;
@@ -31,7 +31,7 @@ var roleEnergyHarvester = {
             var err = creep.harvest(target);
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-                if(! creep.memory.starttimemoving)
+                if(!creep.memory.starttimemoving)
                     creep.memory.starttimemoving = Game.time;
                 if(Game.time - creep.memory.starttimemoving > maxHarvesterMovementsToSource) {
                    console.log( '✒️', Game.time
@@ -42,7 +42,6 @@ var roleEnergyHarvester = {
                               , 'for creep:' 
                               , creep.name);
                     creep.memory.starttimemoving = 0;
-                    creep.memory.lastmovements = 0;
                     creep.memory.harvesting = false;
                     creep.memory.target_index += 1;
                     creep.say('❓');
@@ -50,8 +49,7 @@ var roleEnergyHarvester = {
                 else {
                     creep.say('➡️⚡');
                     //roleEnergyTransfererToNearestLighter(creep);
-                    if(roleEnergyHarvesterCalls++ < 5)
-                        require('role.energy.transferer.to.nearest.lighter').run(creep);
+                    require('role.energy.transferer.to.nearest.lighter').run(creep);
                 }
             }
             else if(!err) {
@@ -59,11 +57,11 @@ var roleEnergyHarvester = {
                 
                 if(creep.memory.lasterr != 0)
                 {
-                    Memory.harvestersMovements.Value.v += creep.memory.movements;
+                    Memory.harvestersMovements.Value.v += Game.time - creep.memory.starttimemoving;
                     Memory.harvestersMovements.Count.v += 1;
                     Memory.harvestersMovements.Avg.v = Math.floor(Memory.harvestersMovements.Value.v / Memory.harvestersMovements.Count.v) ;
                 }
-                creep.memory.movements = 0;
+                creep.memory.starttimemoving = 0;
             }
             else if(err != -4) {
                 console.log( '✒️', Game.time
@@ -71,7 +69,7 @@ var roleEnergyHarvester = {
                     , err
                     , 'for creep:' 
                     , creep.name);
-                creep.memory.movements = 0;
+                creep.memory.starttimemoving = 0;
                 creep.memory.target_index = 0;
                 creep.memory.harvesting = false;
             }
