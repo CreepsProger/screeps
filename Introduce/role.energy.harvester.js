@@ -16,9 +16,10 @@ var roleEnergyHarvester = {
             Memory.commitEnergyHarvester0002 = true;
             console.log( '✒️', Game.time
                        , 'Commit EnergyHarvester 0002');
-            
-            creep.memory.target_index = 0;
         }
+
+        if(!creep.memory.target_index) 
+           creep.memory.target_index = 0;
         
         if(creep.memory.harvesting && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.harvesting = false;
