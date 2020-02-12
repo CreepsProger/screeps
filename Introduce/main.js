@@ -23,7 +23,10 @@ function tryCreateCreep(prev_err,type) {
          case 'M':  body.push(MOVE); break;
       }
    }
-   var needNumber = Memory.totals.CreepsNumber/(type.length-2) - Memory.CreepsNumberByType[type];
+   var existsNumber = 0;
+   if(Memory.CreepsNumberByType[type])
+      existsNumber = Memory.CreepsNumberByType[type];
+   var needNumber = Memory.totals.CreepsNumber/(type.length-2) - existsNumber;
    if(prev_err && needNumber > 0) {
       var newName = 'Creep-' + type + '-' + Game.time;
       console.log( '✒️', Game.time
@@ -133,6 +136,18 @@ module.exports.loop = function () {
          var err = ERR_NOT_ENOUGH_ENERGY;
          
          tryCreateCreep(err,'WWWWWWCM');
+         tryCreateCreep(err,'WWWWWCM');
+         tryCreateCreep(err,'WWWWCM');
+         tryCreateCreep(err,'WWWCM');
+         tryCreateCreep(err,'WWCM');
+         tryCreateCreep(err,'WCM');
+         tryCreateCreep(err,'WCMM);
+         tryCreateCreep(err,'WCCMM);
+         tryCreateCreep(err,'WCCMMM);
+         tryCreateCreep(err,'WCCMMMM);
+         tryCreateCreep(err,'WCCCMMMM);
+         tryCreateCreep(err,'WCCCMMMMM);
+         tryCreateCreep(err,'WCCCMMMMMM);
 
          if(!err) {
                console.log( '✒️', Game.time
