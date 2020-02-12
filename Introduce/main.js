@@ -37,7 +37,7 @@ function tryCreateCreep(type) {
       var newName = 'Creep-' + type + '-' + Game.time;
       err = Game.spawns['Spawn1'].spawnCreep(body
                                            , newName
-                                           , {memory: {weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
+                                           , {memory: {n: Memory.CreepsCounter, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
       console.log( '✒️', Game.time
                     , 'trying create a creep:'
                     , newName
@@ -55,6 +55,7 @@ function tryCreateCreep(type) {
                          , 'Spawning new creep:'
                          , newName);
          Memory.CreepsNumberByType[type]++;
+         Memory.CreepsCounter++;
       }
    }
    return err;
@@ -63,11 +64,11 @@ function tryCreateCreep(type) {
 
 module.exports.loop = function () {
 
-   if(Game.time == 0 || !Memory.commit0019) {
-      Memory.commit0019 = true;
+   if(Game.time == 0 || !Memory.commit0021) {
+      Memory.commit0020 = true;
       console.log( '✒️', Game.time
-                      , 'Commit 0019');
-
+                      , 'Commit 0020');
+      Memory.CreepsCounter = 0
       Memory.CreepsNumberByType = {};
       Memory.totals = { CreepsNumber: 0
                       , Capacity: 0
