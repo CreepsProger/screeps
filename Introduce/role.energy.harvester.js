@@ -1,6 +1,8 @@
 //if(!roleEnergyTransfererToNearestLighter) 
 //  roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
 
+var thisFunctionCalls = 0;
+
 var roleEnergyHarvester = {
 
     /** @param {Creep} creep **/
@@ -47,7 +49,8 @@ var roleEnergyHarvester = {
                 else {
                     creep.say('➡️⚡');
                     //roleEnergyTransfererToNearestLighter(creep);
-                  require('role.energy.transferer.to.nearest.lighter').run(creep);
+                    if(thisFunctionCalls++ > 1)
+                        require('role.energy.transferer.to.nearest.lighter').run(creep);
                 }
             }
             else if(!err) {
