@@ -16,16 +16,16 @@ function updateMovingAverage(x) {
 
 module.exports.loop = function () {
 
-   if(Game.time == 0 || !Memory.commit0017) {
-      Memory.commit0017 = true;
+   if(Game.time == 0 || !Memory.commit0018) {
+      Memory.commit0018 = true;
       console.log( '✒️', Game.time
-                      , 'Commit 0017');
+                      , 'Commit 0018');
 
-      Memory.totals
-           = { Capacity: 0
-             , FreeCapacity: 0
-             , UsedCapacity: 0
-             , hitsMax: 0};
+      Memory.totals = { CreepsNumber: 0
+                      , Capacity: 0
+                      , FreeCapacity: 0
+                      , UsedCapacity: 0
+                      , HitsMax: 0};
 
        Memory.harvestersMovements
            = { Value: { v: 0, movingAverage: { vs: [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0, delta: 0, ma:0 }}
@@ -66,20 +66,17 @@ module.exports.loop = function () {
                     , 'Clearing non-existing creep memory:'
                     , name);
       }
-      else {
-         Memory.totals.CreepsNumber += 1;
+   }
+
+   if(Game.time % ticksToCheckCreepsNumber == 0) {
+         var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
+         Memory.totals.CreepsNumber = creeps.length;
          Memory.totals.Capacity += creep.store.getCapacity();
          Memory.totals.FreeCapacity += creep.store.getFreeCapacity();
          Memory.totals.UsedCapacity += creep.store.getUsedCapacity();
          Memory.totals.HitsMax += creep.store.hitsMax;
-      }
-   }
 
-   if(Game.time % ticksToCheckCreepsNumber == 0) {
-//        var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
-//        Memory.totals.CreepsNumber = creeps.length;
-
-       console.log( '✒️', Game.time
+         console.log( '✒️', Game.time
                   , 'Creeps Number:'
                   , Memory.totals.CreepsNumber
                   , 'H/aH:'
@@ -98,7 +95,7 @@ module.exports.loop = function () {
                   , Memory.harvestersMovements.Count.movingAverage.delta
                   , Math.floor(Memory.harvestersMovements.Value.movingAverage.delta / Memory.harvestersMovements.Count.movingAverage.delta)
                   , Memory.harvestersMovements.Avg.movingAverage.delta);
-       
+
        if((false || Memory.totals.FreeCapacity <= Memory.totals.UsedCapacity) && !Game.spawns['Spawn1'].spawning) {
            var err = ERR_NOT_ENOUGH_ENERGY;
            var newName = 'Creep' + Game.time;
