@@ -1,5 +1,5 @@
 var roleBuilder = require('role.builder');
-var roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
+// var roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
 
 var roleEnergyTransfererToAll = {
 
