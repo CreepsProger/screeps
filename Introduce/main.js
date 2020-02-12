@@ -120,9 +120,10 @@ module.exports.loop = function () {
 
    if(Game.time % ticksToCheckCreepsNumber == 0) {
 //          var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
-         Memory.totals.CreepsNumber = Game.creeps.length;
+         Memory.totals.CreepsNumber = 0;
          for(var name in Game.creeps) {
             var creep = Game.creeps[name];
+            Memory.totals.CreepsNumber += 1;
             Memory.totals.Capacity += creep.store.getCapacity();
             Memory.totals.FreeCapacity += creep.store.getFreeCapacity();
             Memory.totals.UsedCapacity += creep.store.getUsedCapacity();
