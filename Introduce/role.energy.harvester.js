@@ -12,10 +12,10 @@ var roleEnergyHarvester = {
 
         roleEnergyHarvesterGameTime = Game.time;
 
-        if(Game.time == 0 || !Memory.commitEnergyHarvester0001) {
-            Memory.commitEnergyHarvester0001 = true;
+        if(Game.time == 0 || !Memory.commitEnergyHarvester0002) {
+            Memory.commitEnergyHarvester0002 = true;
             console.log( '✒️', Game.time
-                       , 'Commit EnergyHarvester 0001');
+                       , 'Commit EnergyHarvester 0002');
             
             creep.memory.target_index = 0;
         }
