@@ -13,7 +13,7 @@ var roleEnergyHarvester = {
         roleEnergyHarvesterGameTime = Game.time;
 
         if(Game.time == 0 || !Memory.commitEnergyHarvester0001) {
-            Memory.commitEnergyHarvester0001) = true;
+            Memory.commitEnergyHarvester0001 = true;
             console.log( '✒️', Game.time
                        , 'Commit EnergyHarvester 0001');
             
