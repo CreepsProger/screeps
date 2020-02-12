@@ -97,7 +97,7 @@ var roleEnergyTransfererToNearestLighter = {
             }
             else {
                 creep.memory.transfering.energy.to.nearest.lighter = false;
-                if(thisFunctionCalls++ < 9) {
+                if(thisFunctionCalls++ < 2) {
                     roleEnergyTransfererToNearestLighter.run(creep);
                 }
                 else {
