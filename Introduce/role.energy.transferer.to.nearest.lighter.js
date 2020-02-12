@@ -69,9 +69,9 @@ var roleEnergyTransfererToNearestLighter = {
 //                 }
 //             });
         
-            if(targets.length > 0) {
+            if(targets.length > thisFunctionCalls) {
                 creep.memory.transfering.energy.to.nearest.lighter = true;
-                creep.memory.target = targets[0].id;
+                creep.memory.target = targets[thisFunctionCalls].id;
             }
         }
 
@@ -83,7 +83,7 @@ var roleEnergyTransfererToNearestLighter = {
             }
             else {
                 creep.memory.transfering.energy.to.nearest.lighter = false;
-                if(thisFunctionCalls++ < 8) {
+                if(thisFunctionCalls++ < 9) {
                     roleEnergyTransfererToNearestLighter.run(creep);
                 }
                 else {
