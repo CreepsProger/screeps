@@ -1,3 +1,4 @@
+var roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
 var roleUpgrader = require('role.upgrader');
 
 var roleBuilder = {
@@ -24,6 +25,7 @@ var roleBuilder = {
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                 creep.say('➡️🚧');
+                roleEnergyTransfererToNearestLighter.run(creep);
             }
             else if(!err) {
                 creep.say('🚧');
