@@ -1,3 +1,5 @@
+var roleEnergyTransfererToAll = require('role.energy.transferer.to.all');
+
 var roleEnergyTransfererToSpawns = {
 
     /** @param {Creep} creep **/
@@ -27,7 +29,7 @@ var roleEnergyTransfererToSpawns = {
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                 creep.say('⚡☀️');
-                roleEnergyTransfererToNearestLighter.run(creep);
+                //roleEnergyTransfererToNearestLighter.run(creep);
             }
             else if(!err) {
                 creep.say('⚡☀️');
