@@ -21,7 +21,7 @@ var roleEnergyTransfererToNearestLighter = {
             creep.memory.transfering.energy.to.nearest.lighter = false;
         }
 
-        if(!creep.memory.transfering.energy.to.nearest.lighter && creep.store.getFreeCapacity() == 0) {
+        if(!creep.memory.transfering.energy.to.nearest.lighter && creep.store[RESOURCE_ENERGY] > 0) {
             var targets = creep.room.find(FIND_MY_CREEPS, {
                 filter: (nearestLighter) => {
                      return (nearestLighter.store.getFreeCapacity() > 0 &&
