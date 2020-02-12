@@ -1,4 +1,4 @@
-var roleEnergyTransfererToSpawn = require('role.energy.transferer.to.spawn');
+var roleEnergyTransfererToSpawns = require('role.energy.transferer.to.spawns');
 
 var roleEnergyTransfererToNearestLighter = {
 
@@ -39,7 +39,7 @@ var roleEnergyTransfererToNearestLighter = {
             }
         }
         else {
-            roleEnergyTransfererToSpawn.run(creep);
+            roleEnergyTransfererToSpawns.run(creep);
         }
     }
 };
