@@ -34,6 +34,8 @@ function tryCreateCreep(prev_err,type) {
                     , newName
                     , type
                     , body
+                    , 'exists:'
+                    , existsNumber
                     , 'needs:'
                     , needNumber
                   );
