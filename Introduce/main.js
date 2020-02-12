@@ -65,11 +65,11 @@ function tryCreateCreep(type) {
 module.exports.loop = function () {
 
    if(Game.time == 0 || !Memory.commit0021) {
-      Memory.commit0020 = true;
+      Memory.commit0021 = true;
       console.log( '✒️', Game.time
-                      , 'Commit 0020');
-      Memory.CreepsCounter = 0
-      Memory.CreepsNumberByType = {};
+                      , 'Commit 0021');
+//       Memory.CreepsCounter = 0
+//       Memory.CreepsNumberByType = {};
       Memory.totals = { CreepsNumber: 0
                       , Capacity: 0
                       , FreeCapacity: 0
