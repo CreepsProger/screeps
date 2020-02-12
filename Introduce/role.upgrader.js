@@ -18,7 +18,7 @@ var roleUpgrader = {
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
                 creep.say('🛠');
-                require('role.energy.transferer.to.nearest.lighter').run(creep);
+                //require('role.energy.transferer.to.nearest.lighter').run(creep);
             }
             else if(!err) {
                 creep.say('🛠');
