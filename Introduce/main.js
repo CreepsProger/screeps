@@ -90,7 +90,8 @@ module.exports.loop = function () {
    for(var name in Memory.creeps) {
       var creep = Game.creeps[name];
       if(!creep) {
-         Memory.CreepsNumberByType[Memory.creeps[name].type]--;
+         if(Memory.creeps[name].type)
+            Memory.CreepsNumberByType[Memory.creeps[name].type]--;
          delete Memory.creeps[name];
          console.log( '✒️', Game.time
                     , 'Clearing non-existing creep memory:'
