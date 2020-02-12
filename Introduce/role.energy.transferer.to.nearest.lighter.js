@@ -6,7 +6,7 @@ function lookNearestLighterAtPosition(room,hitsMax,ticksToLive,x,y) {
     look.forEach(function(lookObject) {
         if(lookObject.type == LOOK_CREEPS) {
             if(lookObject[LOOK_CREEPS].store.getFreeCapacity() > 0 &&
-               (lookObject[LOOK_CREEPS].hitsMax < hitsMax || lookObject[LOOK_CREEPS].ticksToLive > ticksToLive) {
+               (lookObject[LOOK_CREEPS].hitsMax < hitsMax || lookObject[LOOK_CREEPS].ticksToLive > ticksToLive) ) {
                 nearestLighter = lookObject[LOOK_CREEPS];
             }
         }
