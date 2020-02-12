@@ -1,4 +1,4 @@
-var roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
+// var roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
 var roleUpgrader = require('role.upgrader');
 
 var roleBuilder = {
