@@ -28,11 +28,11 @@ function tryCreateCreep(type) {
          case 'M':  body.push(MOVE); Ms += 1; break;
       }
    }
-   var weight = Math.floor(100 (Ws + 2*Cs + Ms) / Ms);
+   var weight = Math.floor(100 * (Ws + 2*Cs + Ms) / Ms);
    var existsNumber = 0;
    if(Memory.CreepsNumberByType[type])
       existsNumber = Memory.CreepsNumberByType[type];
-   var needNumber = Math.ceil10(Memory.totals.CreepsNumber * 100 /(weight) - existsNumber);
+   var needNumber = Math.ceil10(Memory.totals.CreepsNumber * 100 / weight - existsNumber);
    if(err != 0 && needNumber > 0) {
       var newName = 'Creep-' + type + '-' + Game.time;
       err = Game.spawns['Spawn1'].spawnCreep(body
