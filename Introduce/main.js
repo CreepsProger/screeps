@@ -16,22 +16,23 @@ function updateMovingAverage(x) {
 
 function tryCreateCreep(err,type) {
    var body = [];
+   var weight = 0;
    for (var i = 0; i < type.length; i++) {
       switch (type.charAt(i)) {
-         case 'W':  body.push(WORK); break;
-         case 'C':  body.push(CARRY); break;
-         case 'M':  body.push(MOVE); break;
+         case 'W':  body.push(WORK); weight += 3; break;
+         case 'C':  body.push(CARRY); weight += 2; break;
+         case 'M':  body.push(MOVE); weight += 1; break;
       }
    }
    var existsNumber = 0;
    if(Memory.CreepsNumberByType[type])
       existsNumber = Memory.CreepsNumberByType[type];
-   var needNumber = Memory.totals.CreepsNumber/(type.length-2) - existsNumber;
-   if(err && needNumber > 0) {
+   var needNumber = Memory.totals.CreepsNumber/(weight) - existsNumber;
+   if(err != 0 && needNumber > 0) {
       var newName = 'Creep-' + type + '-' + Game.time;
       err = Game.spawns['Spawn1'].spawnCreep(body
                                            , newName
-                                           , {memory: {type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
+                                           , {memory: {weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
       console.log( '✒️', Game.time
                     , 'trying create a creep:'
                     , newName
