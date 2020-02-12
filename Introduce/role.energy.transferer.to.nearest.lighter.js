@@ -1,5 +1,3 @@
-var roleEnergyTransfererToSpawns = require('role.energy.transferer.to.spawns');
-
 function lookNearestLighterAtPosition(room,hitsMax,x,y) { 
     var nearestLighter;
     const look = room.lookAt(x,y);
