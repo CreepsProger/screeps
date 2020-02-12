@@ -38,7 +38,7 @@ var roleEnergyHarvester = {
             }
         }
 
-        var maxHarvesterMovementsToSource = Math.max(100,Math.floor(2 * Memory.harvestersMovements.Value.movingAverage.delta / Memory.harvestersMovements.Count.movingAverage.delta));
+        var maxHarvesterMovementsToSource = Math.max(200,Math.floor(2 * Memory.harvestersMovements.Value.movingAverage.delta / Memory.harvestersMovements.Count.movingAverage.delta));
 
         if(creep.memory.harvesting) {
             var target = Game.getObjectById(creep.memory.target);
