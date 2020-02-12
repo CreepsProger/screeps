@@ -1,17 +1,12 @@
 //if(!roleEnergyTransfererToNearestLighter) 
 //  roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
 
-var roleEnergyHarvesterGameTime = 0;
+var roleEnergyHarvesterCall = 0;
 
 var roleEnergyHarvester = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-        if(roleEnergyHarvesterGameTime == Game.time)
-            return;
-
-        roleEnergyHarvesterGameTime = Game.time;
-
         if(Game.time == 0 || !Memory.commitEnergyHarvester0003) {
             Memory.commitEnergyHarvester0003 = true;
             console.log( '✒️', Game.time
