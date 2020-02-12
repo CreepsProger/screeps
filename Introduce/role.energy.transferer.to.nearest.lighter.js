@@ -38,10 +38,10 @@ function lookNearestLighterForCreep(creep) {
     nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.pos.x-1,creep.pos.y+1);
     if(nearestLighter) nearestLighters.push(nearestLighter); 
 
-    console.log( '✒️', Game.time
-                    , 'NearestLighterForCreep'
-                    , creep.name
-                    , nearestLighters);
+//     console.log( '✒️', Game.time
+//                     , 'NearestLighterForCreep'
+//                     , creep.name
+//                     , nearestLighters);
     return nearestLighters;
 }
 
