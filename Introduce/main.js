@@ -71,10 +71,12 @@ module.exports.loop = function () {
    if(Game.time % ticksToCheckCreepsNumber == 0) {
          var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
          Memory.totals.CreepsNumber = creeps.length;
-         Memory.totals.Capacity += creep.store.getCapacity();
-         Memory.totals.FreeCapacity += creep.store.getFreeCapacity();
-         Memory.totals.UsedCapacity += creep.store.getUsedCapacity();
-         Memory.totals.HitsMax += creep.store.hitsMax;
+         for(var name in Memory.creeps) {
+            Memory.totals.Capacity += creep.store.getCapacity();
+            Memory.totals.FreeCapacity += creep.store.getFreeCapacity();
+            Memory.totals.UsedCapacity += creep.store.getUsedCapacity();
+            Memory.totals.HitsMax += creep.store.hitsMax;
+         }
 
          console.log( '✒️', Game.time
                   , 'Creeps Number:'
