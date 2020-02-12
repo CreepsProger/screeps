@@ -118,13 +118,10 @@ var roleEnergyTransfererToNearestLighter = {
         if(creep.memory.transfering.energy.to.nearest.lighter) {
             var target = Game.getObjectById(creep.memory.target);
             var err = creep.transfer(target, RESOURCE_ENERGY);
-            console.log( '✒️', Game.time
-                       , creep. name, 'try transfer to'
-                       , target.name
-                       , 'err:' 
-                       , err);
-
             if(!err) {
+                console.log( '✒️', Game.time
+                           , creep.name, 'transfer energy to'
+                           , target.name);
                 creep.say('⚡🐇');
             }
             else {
