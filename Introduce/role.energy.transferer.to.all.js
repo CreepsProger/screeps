@@ -44,7 +44,7 @@ var roleEnergyTransfererToAll = {
             }
             else {
                 creep.memory.transfering.energy.to.all = false;
-            roleBuilder.run(creep);
+                roleBuilder.run(creep);
             }
         }
         else {
