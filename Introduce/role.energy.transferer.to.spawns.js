@@ -1,4 +1,5 @@
 var roleEnergyTransfererToAll = require('role.energy.transferer.to.all');
+var roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
 
 var roleEnergyTransfererToSpawns = {
 
