@@ -16,8 +16,8 @@ function updateMovingAverage(x) {
 
 function tryCreateCreep(prev_err,type) {
    var body = [];
-   for (var i = 0; i < type.length; i++) {
-      switch (type.charAt(i)) {
+   for (var ch of type) {
+      switch (ch) {
          case 'W':  body.push(WORK); break;
          case 'C':  body.push(CARRY); break;
          case 'M':  body.push(MOVE); break;
