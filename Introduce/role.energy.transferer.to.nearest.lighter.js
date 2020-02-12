@@ -43,8 +43,6 @@ function lookNearestLighterForCreep(creep) {
     return nearestLighters;
 }
 
-var thisFunctionCalls = 0;
-
 var roleEnergyTransfererToNearestLighter = {
 
     /** @param {Creep} creep **/
@@ -77,9 +75,9 @@ var roleEnergyTransfererToNearestLighter = {
 //                  }
 //              });
         
-            if(targets.length > thisFunctionCalls) {
+            if(targets.length > 0) {
                 creep.memory.transfering.energy.to.nearest.lighter = true;
-                creep.memory.target = targets[thisFunctionCalls].id;
+                creep.memory.target = targets[0].id;
             }
         }
 
@@ -97,12 +95,7 @@ var roleEnergyTransfererToNearestLighter = {
             }
             else {
                 creep.memory.transfering.energy.to.nearest.lighter = false;
-                if(thisFunctionCalls++ < 2) {
-                    roleEnergyTransfererToNearestLighter.run(creep);
-                }
-                else {
-                    roleEnergyTransfererToSpawns.run(creep);
-                }
+                roleEnergyTransfererToSpawns.run(creep);
             }
         }
         else {
