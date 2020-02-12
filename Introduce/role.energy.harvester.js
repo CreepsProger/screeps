@@ -32,7 +32,8 @@ var roleEnergyHarvester = {
 //                         , creep.name);
             if(targets.length > 0) {
                 creep.memory.harvesting = true;
-                creep.memory.target = targets[(creep.memory.target_index + 1) % targets.length].id;
+//                 creep.memory.target = targets[(creep.memory.target_index + 1) % targets.length].id;
+                creep.memory.target = targets[0].id;
             }
         }
 
