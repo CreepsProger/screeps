@@ -74,7 +74,7 @@ var roleEnergyHarvester = {
                 }
                 creep.memory.starttimemoving = 0;
             }
-            else /*if(err != -4)*/ {
+            else if(err != -4) {
                 console.log( '✒️', Game.time
                     , '⚡ harvesting failed with err:'
                     , err
