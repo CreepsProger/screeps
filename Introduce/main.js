@@ -14,7 +14,7 @@ function updateMovingAverage(x) {
    x.movingAverage.i = (x.movingAverage.i + 1) % x.movingAverage.vs.length;
 } 
 
-function tryCreateCreep(err,type) {
+function tryCreateCreep(prev_err,type) {
    var body = [];
    for(var ch in type) {
       switch (ch) {
@@ -24,9 +24,8 @@ function tryCreateCreep(err,type) {
       }
    }
    var needNumber = Memory.totals.CreepsNumber/(type.length-2) - Memory.CreepsNumberByType[type];
-   if(err == ERR_NOT_ENOUGH_ENERGY && needNumber > 0) {
+   if(prev_err && needNumber > 0) {
       var newName = 'Creep-' + type + '-' + Game.time;
-      Memory.CreepsNumberByType[type]++;
       console.log( '✒️', Game.time
                     , 'trying create a creep:'
                     , newName
@@ -35,9 +34,11 @@ function tryCreateCreep(err,type) {
                     , 'needs:'
                     , needNumber
                   );
-      err = Game.spawns['Spawn1'].spawnCreep(body
+      prev_err = Game.spawns['Spawn1'].spawnCreep(body
                                            , newName
                                            , {memory: {type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
+      if(!prev_err)
+         Memory.CreepsNumberByType[type]++;
    }
 }
 
@@ -127,17 +128,17 @@ module.exports.loop = function () {
                   , Math.floor(Memory.harvestersMovements.Value.movingAverage.delta / Memory.harvestersMovements.Count.movingAverage.delta)
                   , Memory.harvestersMovements.Avg.movingAverage.delta);
 
-       if((false || Memory.totals.FreeCapacity <= Memory.totals.UsedCapacity) && !Game.spawns['Spawn1'].spawning) {
-           var err = ERR_NOT_ENOUGH_ENERGY;
+      if((false || Memory.totals.FreeCapacity <= Memory.totals.UsedCapacity) && !Game.spawns['Spawn1'].spawning) {
+         var err = ERR_NOT_ENOUGH_ENERGY;
+         
+         tryCreateCreep(err,'WWWWWWCM');
 
-           tryCreateCreep(err,'WWWWWWCM');
-           }
-           if(!err) {
+         if(!err) {
                console.log( '✒️', Game.time
                           , 'Spawning new creep:'
                           , newName);
-           }
-       }
+         }
+      }
    }
 
    if(Game.spawns['Spawn1'].spawning) {
