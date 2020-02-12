@@ -16,10 +16,10 @@ function updateMovingAverage(x) {
 
 module.exports.loop = function () {
 
-   if(Game.time == 0 || !Memory.commit0012) {
-      Memory.commit0012 = true;
+   if(Game.time == 0 || !Memory.commit0013) {
+      Memory.commit0013 = true;
       console.log( '✒️', Game.time
-                      , 'Commit00012');
+                      , 'Commit 0013');
 
       Memory.totals
            = { Capacity: 0
