@@ -1,3 +1,7 @@
+var roleEnergyHarvester = require('role.energy.harvester');
+var roleUpgrader = require('role.upgrader');
+var roleBuilder = require('role.builder');
+
 var roleEnergyTransfererToAll = {
 
     /** @param {Creep} creep **/
@@ -30,7 +34,7 @@ var roleEnergyTransfererToAll = {
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                 creep.say('⚡⛅️');
-                roleEnergyTransfererToNearestLighter.run(creep);
+                //roleEnergyTransfererToNearestLighter.run(creep);
             }
             else if(!err) {
                 creep.say('⚡⛅️');
