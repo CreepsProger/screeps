@@ -19,20 +19,29 @@ var thisFunctionCalls = 0;
 function lookNearestLighterForCreep(creep) {
     var nearestLighter;
     var nearestLighters = [];
-    if(nearestLighter) nearestLighters.push(nearestLighter); nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.pos.x+1,creep.pos.y-1);
-    if(nearestLighter) nearestLighters.push(nearestLighter); nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.pos.x+1,creep.pos.y);
-    if(nearestLighter) nearestLighters.push(nearestLighter); nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.pos.x+1,creep.pos.y+1);
-    if(nearestLighter) nearestLighters.push(nearestLighter); nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.pos.x,creep.pos.y-1);
-    //if(nearestLighter) nearestLighters.push(nearestLighter); nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.pos.x,creep.pos.y);
-    if(nearestLighter) nearestLighters.push(nearestLighter); nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.pos.x,creep.pos.y+1);
-    if(nearestLighter) nearestLighters.push(nearestLighter); nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.pos.x-1,creep.pos.y-1);
-    if(nearestLighter) nearestLighters.push(nearestLighter); nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.pos.x-1,creep.pos.y);
-    if(nearestLighter) nearestLighters.push(nearestLighter); nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.pos.x-1,creep.pos.y+1);
+    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.pos.x+1,creep.pos.y-1);
+    if(nearestLighter) nearestLighters.push(nearestLighter);
+    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.pos.x+1,creep.pos.y);
+    if(nearestLighter) nearestLighters.push(nearestLighter);
+    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.pos.x+1,creep.pos.y+1);
+    if(nearestLighter) nearestLighters.push(nearestLighter);
+    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.pos.x,creep.pos.y-1);
+    if(nearestLighter) nearestLighters.push(nearestLighter);
+    //nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.pos.x,creep.pos.y);
+    //if(nearestLighter) nearestLighters.push(nearestLighter);
+    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.pos.x,creep.pos.y+1);
+    if(nearestLighter) nearestLighters.push(nearestLighter);
+    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.pos.x-1,creep.pos.y-1);
+    if(nearestLighter) nearestLighters.push(nearestLighter);
+    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.pos.x-1,creep.pos.y);
+    if(nearestLighter) nearestLighters.push(nearestLighter);
+    nearestLighter = lookNearestLighterAtPosition(creep.room,creep.hitsMax,creep.pos.x-1,creep.pos.y+1);
+    if(nearestLighter) nearestLighters.push(nearestLighter); 
 
-//     console.log( '✒️', Game.time
-//                     , 'NearestLighterForCreep'
-//                     , creep.name
-//                     , nearestLighters);
+    console.log( '✒️', Game.time
+                    , 'NearestLighterForCreep'
+                    , creep.name
+                    , nearestLighters);
     return nearestLighters;
 }
 
