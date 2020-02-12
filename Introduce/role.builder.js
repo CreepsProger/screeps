@@ -16,10 +16,10 @@ var roleBuilder = {
                 creep.memory.building = true;
                 creep.memory.target = targets[1].id;
             }
-            else if(targets.length > 0) {
-                creep.memory.building = true;
-                creep.memory.target = targets[0].id;
-            }
+//             else if(targets.length > 0) {
+//                 creep.memory.building = true;
+//                 creep.memory.target = targets[0].id;
+//             }
         }
 
         if(creep.memory.building) {
