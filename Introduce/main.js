@@ -14,7 +14,8 @@ function updateMovingAverage(x) {
    x.movingAverage.i = (x.movingAverage.i + 1) % x.movingAverage.vs.length;
 } 
 
-function tryCreateCreep(err,type) {
+function tryCreateCreep(type) {
+   var err;
    var body = [];
    var weight = 0;
    var Ws = 0;
@@ -31,7 +32,7 @@ function tryCreateCreep(err,type) {
    var existsNumber = 0;
    if(Memory.CreepsNumberByType[type])
       existsNumber = Memory.CreepsNumberByType[type];
-   var needNumber = Memory.totals.CreepsNumber * 100 /(weight) - existsNumber;
+   var needNumber = Math.ceil10(Memory.totals.CreepsNumber * 100 /(weight) - existsNumber);
    if(err != 0 && needNumber > 0) {
       var newName = 'Creep-' + type + '-' + Game.time;
       err = Game.spawns['Spawn1'].spawnCreep(body
@@ -56,6 +57,7 @@ function tryCreateCreep(err,type) {
          Memory.CreepsNumberByType[type]++;
       }
    }
+   return err;
 }
 
 
@@ -149,19 +151,19 @@ module.exports.loop = function () {
       if((false || Memory.totals.FreeCapacity <= Memory.totals.UsedCapacity) && !Game.spawns['Spawn1'].spawning) {
          var err = ERR_NOT_ENOUGH_ENERGY;
          
-         tryCreateCreep(err,'WWWWWWCM');
-         tryCreateCreep(err,'WWWWWCM');
-         tryCreateCreep(err,'WWWWCM');
-         tryCreateCreep(err,'WWWCM');
-         tryCreateCreep(err,'WWCM');
-         tryCreateCreep(err,'WCM');
-         tryCreateCreep(err,'WCMM');
-         tryCreateCreep(err,'WCCMM');
-         tryCreateCreep(err,'WCCMMM');
-         tryCreateCreep(err,'WCCMMMM');
-         tryCreateCreep(err,'WCCCMMMM');
-         tryCreateCreep(err,'WCCCMMMMM');
-         tryCreateCreep(err,'WCCCMMMMMM');
+         if(err) err = tryCreateCreep('WWWWWWCM');
+         if(err) err = tryCreateCreep('WWWWWCM');
+         if(err) err = tryCreateCreep('WWWWCM');
+         if(err) err = tryCreateCreep('WWWCM');
+         if(err) err = tryCreateCreep('WWCM');
+         if(err) err = tryCreateCreep('WCM');
+         if(err) err = tryCreateCreep('WCMM');
+         if(err) err = tryCreateCreep('WCCMM');
+         if(err) err = tryCreateCreep('WCCMMM');
+         if(err) err = tryCreateCreep('WCCMMMM');
+         if(err) err = tryCreateCreep('WCCCMMMM');
+         if(err) err = tryCreateCreep('WCCCMMMMM');
+         if(err) err = tryCreateCreep('WCCCMMMMMM');
       }
    }
 
