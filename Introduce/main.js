@@ -75,7 +75,7 @@ module.exports.loop = function () {
             Memory.totals.Capacity += creep.store.getCapacity();
             Memory.totals.FreeCapacity += creep.store.getFreeCapacity();
             Memory.totals.UsedCapacity += creep.store.getUsedCapacity();
-            Memory.totals.HitsMax += creep.store.hitsMax;
+            Memory.totals.HitsMax += creep.hitsMax;
          }
 
          console.log( '✒️', Game.time
