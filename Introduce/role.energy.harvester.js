@@ -3,8 +3,8 @@ var roleEnergyHarvester = {
     /** @param {Creep} creep **/
     run: function(creep) {
         var commit = 3;
-        if(!Memory.commits &&
-           !Memory.commits.EnergyHarvester &&
+        if(!Memory.commits ||
+           !Memory.commits.EnergyHarvester ||
            !Memory.commits.EnergyHarvester[commit]) {
             Memory.commits.EnergyHarvester = {};
             Memory.commits.EnergyHarvester[commit] = true;
