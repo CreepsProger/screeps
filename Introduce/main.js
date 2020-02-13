@@ -66,7 +66,7 @@ function tryCreateCreep(err, type, Weight1) {
 }
 
 module.exports.loop = function () {
-   var commit = 19;
+   var commit = 20;
    if(!Memory.commits.main ||
       Memory.commits.main != commit) {
       Memory.commits.main = commit;
@@ -187,7 +187,7 @@ module.exports.loop = function () {
 
       if(((Memory.totals.CreepsNumber < 8) || (Memory.totals.FreeCapacity <= Memory.totals.UsedCapacity)) && !Game.spawns['Spawn1'].spawning) {
          var err = ERR_NOT_ENOUGH_ENERGY;
-         
+         err = tryCreateCreep(err, 'WWWWCCM'); // W
          err = tryCreateCreep(err, 'WWWWWWWCM'); // W
          err = tryCreateCreep(err, 'WCMMMMMMM');
          err = tryCreateCreep(err, 'WCCMMMMMM');
