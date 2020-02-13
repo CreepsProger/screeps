@@ -15,7 +15,7 @@ function updateMovingAverage(x) {
 } 
 
 function tryCreateCreep(type) {
-   var err;
+   var err = ERR_NOT_OWNER;
    var body = [];
    var weight = 0;
    var Ws = 0;
@@ -36,12 +36,8 @@ function tryCreateCreep(type) {
    if(creepsNumber < 10)
       creepsNumber = 10;
    var needNumber = Math.floor(creepsNumber * 100 / weight - existsNumber);
-   if(err != 0 && needNumber > 0) {
-      var newName = 'Creep-' + type + '-' + Game.time;
-      err = Game.spawns['Spawn1'].spawnCreep(body
-                                           , newName
-                                           , {memory: {n: Memory.CreepsCounter, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
-      console.log( '✒️', Game.time
+   var newName = 'Creep-' + type + '-' + Game.time;
+   console.log( '✒️', Game.time
                     , 'trying create a creep:'
                     , newName
                     , type
@@ -50,9 +46,15 @@ function tryCreateCreep(type) {
                     , existsNumber
                     , 'needs:'
                     , needNumber
-                    , 'err:'
-                    , err
+                    , 'weight:'
+                    , weight
                   );
+   if(needNumber > 0) {
+      
+      err = Game.spawns['Spawn1'].spawnCreep(body
+                                           , newName
+                                           , {memory: {n: Memory.CreepsCounter, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
+
       if(!err) {
          console.log( '✒️', Game.time
                          , 'Spawning new creep:'
