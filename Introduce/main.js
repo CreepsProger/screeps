@@ -34,7 +34,7 @@ function tryCreateCreep(err, type, min = 0) {
    var creepsNumber = Memory.totals.CreepsNumber;
    if(creepsNumber < 8)
       creepsNumber = 8;
-   var needsNumber = Math.max(min,Math.floor(creepsNumber * 100 / weight - existsNumber));
+   var needsNumber = Math.max(min,Math.floor(creepsNumber * 100 / weight)) - existsNumber;
    var newName = 'Creep-' + type + '-' + Game.time;
    console.log( '✒️', Game.time
                     , 'trying create a creep:'
