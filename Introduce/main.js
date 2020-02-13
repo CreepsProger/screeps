@@ -68,7 +68,7 @@ function tryCreateCreep(type) {
 
 
 module.exports.loop = function () {
-   var commit = 4;
+   var commit = 5;
    if(!Memory.commits.main ||
       Memory.commits.main != commit) {
       Memory.commits.main = commit;
@@ -97,7 +97,7 @@ module.exports.loop = function () {
                      , 'Memory.CreepsCounter:'
                      , Memory.CreepsCounter
                      , 'Memory.CreepsNumberByType:'
-                     , Memory.CreepsNumberByType);
+                     , Memory.CreepsNumberByType.map());
 
       Memory.totals = { CreepsNumber: 0
                       , Capacity: 0
