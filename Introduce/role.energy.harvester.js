@@ -3,16 +3,14 @@ var roleEnergyHarvester = {
     /** @param {Creep} creep **/
     run: function(creep) {
         var commit = 3;
-        if(!Memory.commits ||
-           !Memory.commits.EnergyHarvester ||
-           !Memory.commits.EnergyHarvester[commit]) {
-            Memory.commits = {EnergyHarvester: {}};
-            Memory.commits.EnergyHarvester[commit] = true;
+        if(!Memory.commits.EnergyHarvester ||
+           Memory.commits.EnergyHarvester != commit) {
+            Memory.commits.EnergyHarvester = commit;
             console.log( '✒️', Game.time
-                       , 'Commit EnergyHarvester'
-                       , commit);
+                             , 'Commit EnergyHarvester'
+                             , Memory.commits.EnergyHarvester);
         }
-
+        
         if(!creep.memory.target_index && creep.memory.n) 
            creep.memory.target_index = creep.memory.n;
 
