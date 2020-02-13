@@ -76,7 +76,7 @@ module.exports.loop = function () {
                   , Memory.commits.main);
 
       Memory.CreepsCounter = 0;
-      Memory.CreepsNumberByType = [];
+      Memory.CreepsNumberByType = {};
 
       for(var name in Game.creeps) {
          var creep = Game.creeps[name];
