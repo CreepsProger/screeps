@@ -5,7 +5,7 @@ var roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.ne
 var ticksToCheckCreepsNumber = 20;
 
 function updateMovingAverage(x) { 
-//    console.log( '✒️', Math.floor(Game.time) /10000, Game.time %10000
+//    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 //                    , 'updateMovingAverage');
    x.movingAverage.delta = x.v - x.movingAverage.vs[x.movingAverage.i];
    x.movingAverage.summ += x.movingAverage.delta;
@@ -36,7 +36,7 @@ function tryCreateCreep(err, type, min = 0) {
       creepsNumber = 8;
    var needsNumber = Math.max(min,Math.floor(creepsNumber * 100 / weight)) - existsNumber;
    var newName = 'Creep-' + type + '-' + Game.time % 10000;
-   console.log( '✒️', Math.floor(Game.time) /10000, Game.time %10000
+   console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                     , 'trying create a creep:'
                     , newName
                     , type
@@ -53,7 +53,7 @@ function tryCreateCreep(err, type, min = 0) {
                                            , newName
                                            , {memory: {n: Memory.CreepsCounter, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
       if(!err) {
-         console.log( '✒️', Math.floor(Game.time) /10000, Game.time %10000
+         console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                           , 'Spawning new creep:'
                           , newName);
          if(!Memory.CreepsNumberByType[type])
@@ -70,7 +70,7 @@ module.exports.loop = function () {
    if(!Memory.commits.main ||
       Memory.commits.main != commit) {
       Memory.commits.main = commit;
-      console.log( '✒️', Math.floor(Game.time) /10000, Game.time %10000
+      console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                   , 'Commit main'
                   , Memory.commits.main);
 
@@ -85,7 +85,7 @@ module.exports.loop = function () {
             Memory.CreepsNumberByType[creep.memory.type] = 0;
          Memory.CreepsNumberByType[creep.memory.type]++;
 
-         console.log( '✒️', Math.floor(Game.time) /10000, Game.time %10000
+         console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                      , 'Commit main'
                      , commit
                      , creep
@@ -95,7 +95,7 @@ module.exports.loop = function () {
                      , Memory.CreepsCounter);
       }
          
-      console.log( '✒️', Math.floor(Game.time) /10000, Game.time %10000
+      console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                      , 'Commit main'
                      , commit
                      , 'Memory.CreepsCounter:'
@@ -147,7 +147,7 @@ module.exports.loop = function () {
          if(Memory.creeps[name].type)
             Memory.CreepsNumberByType[Memory.creeps[name].type]--;
          delete Memory.creeps[name];
-         console.log( '✒️', Math.floor(Game.time) /10000, Game.time %10000
+         console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                     , 'Clearing non-existing creep memory:'
                     , name);
       }
@@ -165,7 +165,7 @@ module.exports.loop = function () {
             Memory.totals.HitsMax += creep.hitsMax;
          }
 
-         console.log( '✒️', Math.floor(Game.time) /10000, Game.time %10000
+         console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                   , 'Creeps Number:'
                   , Memory.totals.CreepsNumber
                   , 'H/aH:'
@@ -210,7 +210,7 @@ module.exports.loop = function () {
    
    for(var name in Game.creeps) {
       var creep = Game.creeps[name];
-//       console.log( '✒️', Math.floor(Game.time) /10000, Game.time %10000
+//       console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 //                   , 'go'
 //                   , creep);
 
