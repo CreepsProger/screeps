@@ -94,10 +94,10 @@ module.exports.loop = function () {
                      , Memory.CreepsCounter);
       }
 
-//       var print_map = '';
-//       for (var v in Memory.CreepsNumberByType) {
-//          print_map += ' ' + v;
-//       }
+      var print_map = '';
+      for (var v in Memory.CreepsNumberByType) {
+         print_map += ' ' + v;
+      }
          
       console.log( '✒️', Game.time
                      , 'Commit main'
