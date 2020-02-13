@@ -14,8 +14,7 @@ function updateMovingAverage(x) {
    x.movingAverage.i = (x.movingAverage.i + 1) % x.movingAverage.vs.length;
 } 
 
-function tryCreateCreep(type) {
-   var err = ERR_NOT_OWNER;
+function tryCreateCreep(err, type, Weight1) {
    var body = [];
    var weight = 0;
    var Ws = 0;
@@ -49,7 +48,7 @@ function tryCreateCreep(type) {
                     , 'weight:'
                     , weight
                   );
-   if(needNumber > 0) {
+   if(err && needNumber > 0) {
       err = Game.spawns['Spawn1'].spawnCreep(body
                                            , newName
                                            , {memory: {n: Memory.CreepsCounter, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
@@ -189,19 +188,40 @@ module.exports.loop = function () {
       if(((Memory.totals.CreepsNumber < 8) || (Memory.totals.FreeCapacity <= Memory.totals.UsedCapacity)) && !Game.spawns['Spawn1'].spawning) {
          var err = ERR_NOT_ENOUGH_ENERGY;
          
-         if(err) err = tryCreateCreep('WWWWWWCM');
-         if(err) err = tryCreateCreep('WWWWWCM');
-         if(err) err = tryCreateCreep('WWWWCM');
-         if(err) err = tryCreateCreep('WWWCM');
-         if(err) err = tryCreateCreep('WWCM');
-         if(err) err = tryCreateCreep('WCM');
-         if(err) err = tryCreateCreep('WCMM');
-         if(err) err = tryCreateCreep('WCCMM');
-         if(err) err = tryCreateCreep('WCCMMM');
-         if(err) err = tryCreateCreep('WCCMMMM');
-         if(err) err = tryCreateCreep('WCCCMMMM');
-         if(err) err = tryCreateCreep('WCCCMMMMM');
-         if(err) err = tryCreateCreep('WCCCMMMMMM');
+         err = tryCreateCreep(err, 'WWWWWWWCM'); // W
+         err = tryCreateCreep(err, 'WCMMMMMMM');
+         err = tryCreateCreep(err, 'WCCMMMMMM');
+         err = tryCreateCreep(err, 'WCCCMMMMM');
+         err = tryCreateCreep(err, 'WCCCCMMMM');
+         err = tryCreateCreep(err, 'WCCCCCMMM');
+         err = tryCreateCreep(err, 'WCCCCCCMM');
+         err = tryCreateCreep(err, 'WCCCCCCCM');
+         err = tryCreateCreep(err, 'WWWWWWCM'); // W
+         err = tryCreateCreep(err, 'WCMMMMMM');
+         err = tryCreateCreep(err, 'WCCMMMMM');
+         err = tryCreateCreep(err, 'WCCCMMMM');
+         err = tryCreateCreep(err, 'WCCCCMMM');
+         err = tryCreateCreep(err, 'WCCCCCMM');
+         err = tryCreateCreep(err, 'WCCCCCCM');
+         err = tryCreateCreep(err, 'WWWWWCM'); // W
+         err = tryCreateCreep(err, 'WCMMMMM');
+         err = tryCreateCreep(err, 'WCCMMMM');
+         err = tryCreateCreep(err, 'WCCCMMM');
+         err = tryCreateCreep(err, 'WCCCCMM');
+         err = tryCreateCreep(err, 'WCCCCCM');
+         err = tryCreateCreep(err, 'WWWWCM'); // W
+         err = tryCreateCreep(err, 'WCMMMM');
+         err = tryCreateCreep(err, 'WCCMMM');
+         err = tryCreateCreep(err, 'WCCCMM');
+         err = tryCreateCreep(err, 'WCCCCM');
+         err = tryCreateCreep(err, 'WWWCM'); // W
+         err = tryCreateCreep(err, 'WCMMM');
+         err = tryCreateCreep(err, 'WCCMM');
+         err = tryCreateCreep(err, 'WCCCM');
+         err = tryCreateCreep(err, 'WWCM'); // W
+         err = tryCreateCreep(err, 'WCMM');
+         err = tryCreateCreep(err, 'WCCM');
+         err = tryCreateCreep(err, 'WCM');
       }
    }
 
