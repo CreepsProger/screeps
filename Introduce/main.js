@@ -67,7 +67,7 @@ function tryCreateCreep(type) {
 }
 
 module.exports.loop = function () {
-   var commit = 7;
+   var commit = 8;
    if(!Memory.commits.main ||
       Memory.commits.main != commit) {
       Memory.commits.main = commit;
@@ -91,8 +91,8 @@ module.exports.loop = function () {
       }
 
       var print_map = '';
-      for (let entry in Memory.CreepsNumberByType)
-         print_map += entry;
+      for (let [k,v] in Memory.CreepsNumberByType)
+         print_map += ' ' + k + ':' + v;
          
       console.log( '✒️', Game.time
                      , 'Commit main'
