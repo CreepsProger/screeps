@@ -14,7 +14,7 @@ function updateMovingAverage(x) {
    x.movingAverage.i = (x.movingAverage.i + 1) % x.movingAverage.vs.length;
 } 
 
-function tryCreateCreep(err, type, Weight1) {
+function tryCreateCreep(err, type, min = 0) {
    var body = [];
    var weight = 0;
    var Ws = 0;
@@ -34,7 +34,7 @@ function tryCreateCreep(err, type, Weight1) {
    var creepsNumber = Memory.totals.CreepsNumber;
    if(creepsNumber < 8)
       creepsNumber = 8;
-   var needsNumber = Math.floor(creepsNumber * 100 / weight - existsNumber);
+   var needsNumber = Math.max(min,Math.floor(creepsNumber * 100 / weight - existsNumber));
    var newName = 'Creep-' + type + '-' + Game.time;
    console.log( '✒️', Game.time
                     , 'trying create a creep:'
@@ -187,11 +187,11 @@ module.exports.loop = function () {
 
       if(((Memory.totals.CreepsNumber < 8) || (Memory.totals.FreeCapacity <= Memory.totals.UsedCapacity)) && !Game.spawns['Spawn1'].spawning) {
          var err = ERR_NOT_ENOUGH_ENERGY;
-         err = tryCreateCreep(err, 'WWWWWCM'); // W
-         err = tryCreateCreep(err, 'WWWWCM'); // W
-         err = tryCreateCreep(err, 'WWWWCCM'); // W
-         err = tryCreateCreep(err, 'WWWCCM'); // W
-         err = tryCreateCreep(err, 'WWWCM'); // W
+         err = tryCreateCreep(err, 'WWWWWCM'); // W 600
+         err = tryCreateCreep(err, 'WWWWCCM',4); // W 550
+         err = tryCreateCreep(err, 'WWWWCM'); // W 500
+         err = tryCreateCreep(err, 'WWWCCM'); // W 450
+         err = tryCreateCreep(err, 'WWWCM'); // W 400
          err = tryCreateCreep(err, 'WWWWWWWCM'); // W
          err = tryCreateCreep(err, 'WCMMMMMMM');
          err = tryCreateCreep(err, 'WCCMMMMMM');
