@@ -56,9 +56,9 @@ function tryCreateCreep(err, type, Weight1) {
          console.log( '✒️', Game.time
                           , 'Spawning new creep:'
                           , newName);
-         if(!Memory.CreepsNumberByType[creep.memory.type])
-            Memory.CreepsNumberByType[creep.memory.type] = 0;
-         Memory.CreepsNumberByType[creep.memory.type]++;
+         if(!Memory.CreepsNumberByType[type])
+            Memory.CreepsNumberByType[type] = 0;
+         Memory.CreepsNumberByType[type]++;
          Memory.CreepsCounter++;
       }
    }
@@ -66,7 +66,7 @@ function tryCreateCreep(err, type, Weight1) {
 }
 
 module.exports.loop = function () {
-   var commit = 17;
+   var commit = 18;
    if(!Memory.commits.main ||
       Memory.commits.main != commit) {
       Memory.commits.main = commit;
