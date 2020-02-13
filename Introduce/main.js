@@ -106,7 +106,7 @@ module.exports.loop = function () {
                      , Memory.CreepsCounter
                      , 'Memory.CreepsNumberByType:'
                      , Memory.CreepsNumberByType
-                     , Object.fromEntries(Memory.CreepsNumberByType);
+                     , Object.fromEntries(Memory.CreepsNumberByType)
                      , print_map);
 
       Memory.totals = { CreepsNumber: 0
