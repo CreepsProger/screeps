@@ -32,9 +32,9 @@ function tryCreateCreep(err, type, Weight1) {
    if(Memory.CreepsNumberByType[type])
       existsNumber = Memory.CreepsNumberByType[type];
    var creepsNumber = Memory.totals.CreepsNumber;
-   if(creepsNumber < 10)
-      creepsNumber = 10;
-   var needNumber = Math.floor(creepsNumber * 100 / weight - existsNumber);
+   if(creepsNumber < 8)
+      creepsNumber = 8;
+   var needsNumber = Math.floor(creepsNumber * 100 / weight - existsNumber);
    var newName = 'Creep-' + type + '-' + Game.time;
    console.log( '✒️', Game.time
                     , 'trying create a creep:'
@@ -44,11 +44,11 @@ function tryCreateCreep(err, type, Weight1) {
                     , 'exists:'
                     , existsNumber
                     , 'needs:'
-                    , needNumber
+                    , needsNumber
                     , 'weight:'
                     , weight
                   );
-   if(err && needNumber > 0) {
+   if(err && needsNumber > 0) {
       err = Game.spawns['Spawn1'].spawnCreep(body
                                            , newName
                                            , {memory: {n: Memory.CreepsCounter, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
@@ -170,7 +170,7 @@ module.exports.loop = function () {
                   , Memory.totals.CreepsNumber
                   , 'H/aH:'
                   , Memory.totals.HitsMax
-                  , Memory.totals.HitsMax / Memory.totals.CreepsNumber
+                  , Math.floor(Memory.totals.HitsMax / Memory.totals.CreepsNumber)
                   , 'C/FC/UC:'
                   , Memory.totals.Capacity
                   , Memory.totals.FreeCapacity
