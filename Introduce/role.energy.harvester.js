@@ -1,23 +1,18 @@
-//if(!roleEnergyTransfererToNearestLighter) 
-//  roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
-
-var roleEnergyHarvesterCall = 0;
-
 var roleEnergyHarvester = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-        if(Game.time == 0 || !Memory.commitEnergyHarvester0003) {
-            Memory.commitEnergyHarvester0003 = true;
+        var commit = 3;
+        if(!Memory.commits.EnergyHarvester[commit]) {
+            Memory.commits.EnergyHarvester[commit] = true;
             console.log( '✒️', Game.time
-                       , 'Commit EnergyHarvester 0003');
+                       , 'Commit EnergyHarvester'
+                       , commit);
         }
 
-//         if(roleEnergyHarvesterCall++ > 10)
-//             return;
         if(!creep.memory.target_index && creep.memory.n) 
            creep.memory.target_index = creep.memory.n;
-        
+
         if(!creep.memory.target_index) 
            creep.memory.target_index = 0;
 
@@ -36,6 +31,7 @@ var roleEnergyHarvester = {
                 creep.memory.harvesting = true;
                 creep.memory.target = targets[creep.memory.target_index % targets.length].id;
 //                 creep.memory.target = targets[0].id;
+                creep.memory.starttimemoving = Game.time;
             }
         }
 
@@ -46,9 +42,8 @@ var roleEnergyHarvester = {
             var err = creep.harvest(target);
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-                if(!creep.memory.starttimemoving)
-                    creep.memory.starttimemoving = Game.time;
-                if(Game.time - creep.memory.starttimemoving > maxHarvesterMovementsToSource) {
+                if(creep.memory.starttimemoving &&
+                   Game.time - creep.memory.starttimemoving > maxHarvesterMovementsToSource) {
                    console.log( '✒️', Game.time
                               , '⚡ ❓ harvesting failed by timemovements > maxHarvesterMovementsToSource :'
                               , Game.time - creep.memory.starttimemoving
@@ -56,38 +51,35 @@ var roleEnergyHarvester = {
                               , maxHarvesterMovementsToSource
                               , 'for creep:' 
                               , creep.name);
-                    creep.memory.starttimemoving = 0;
                     creep.memory.harvesting = false;
                     creep.memory.target_index += 1;
                     creep.say('❓');
                 }
                 else {
-                    //require('role.energy.transferer.to.nearest.lighter').run(creep);
                     creep.say('➡️⚡');
                 }
             }
             else if(!err) {
                 creep.say('⚡');
-                
-                if(creep.memory.lasterr != 0)
+
+                if(creep.memory.starttimemoving)
                 {
                     Memory.harvestersMovements.Value.v += Game.time - creep.memory.starttimemoving;
                     Memory.harvestersMovements.Count.v += 1;
                     Memory.harvestersMovements.Avg.v = Math.floor(Memory.harvestersMovements.Value.v / Memory.harvestersMovements.Count.v) ;
+                    creep.memory.starttimemoving = 0;
                 }
-                creep.memory.starttimemoving = 0;
             }
-            else if(err != -4) {
-                console.log( '✒️', Game.time
-                    , '⚡ harvesting failed with err:'
-                    , err
-                    , 'for creep:' 
-                    , creep.name);
-                creep.memory.starttimemoving = 0;
-                creep.memory.target_index = 0;
+            else {
+                if(err != -4) {
+                    console.log( '✒️', Game.time
+                                , '⚡ harvesting failed with err:'
+                                , err
+                                , 'for creep:' 
+                                , creep.name);
+                }
                 creep.memory.harvesting = false;
             }
-            creep.memory.lasterr = err;
         }
     }
 };
