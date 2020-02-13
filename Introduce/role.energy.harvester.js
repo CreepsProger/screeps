@@ -23,7 +23,7 @@ var roleEnergyHarvester = {
 
         if(!creep.memory.harvesting && creep.store.getFreeCapacity() > 0) {
             var targets = creep.room.find(FIND_SOURCES);
-//             console.log( '✒️', Game.time
+//             console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 //                         , '⚡ source targets:'
 //                         , targets
 //                         , 'for creep:'
@@ -45,7 +45,7 @@ var roleEnergyHarvester = {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                 if(creep.memory.starttimemoving &&
                    Game.time - creep.memory.starttimemoving > maxHarvesterMovementsToSource) {
-                   console.log( '✒️', Game.time
+                   console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                               , '⚡ ❓ harvesting failed by timemovements > maxHarvesterMovementsToSource :'
                               , Game.time - creep.memory.starttimemoving
                               , '>'
@@ -73,7 +73,7 @@ var roleEnergyHarvester = {
             }
             else {
                 if(err != ERR_BUSY && err != ERR_NOT_ENOUGH_RESOURCES) {
-                    console.log( '✒️', Game.time
+                    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                                 , '⚡ harvesting failed with err:'
                                 , err
                                 , 'for creep:' 
