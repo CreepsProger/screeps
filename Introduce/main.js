@@ -187,9 +187,9 @@ module.exports.loop = function () {
 
       if(((Memory.totals.CreepsNumber < 8) || (Memory.totals.FreeCapacity <= Memory.totals.UsedCapacity)) && !Game.spawns['Spawn1'].spawning) {
          var err = ERR_NOT_ENOUGH_ENERGY;
-         err = tryCreateCreep(err, 'WWWWCCM',4); // E 550
-         err = tryCreateCreep(err, 'WCCCCMMMMM',2); // E 550
-         err = tryCreateCreep(err, 'WWCCMMMMM',4); // E 550
+         err = tryCreateCreep(err, 'WWWWCCM',2); // E 550
+         err = tryCreateCreep(err, 'WCCCMMMMMM',2); // E 550
+         err = tryCreateCreep(err, 'WWCCMMMMM',2); // E 550
          err = tryCreateCreep(err, 'WCMMMMMMMM',2); // E 550
          err = tryCreateCreep(err, 'WWWWCM'); // E 500
          err = tryCreateCreep(err, 'WWWCCM'); // E 450
