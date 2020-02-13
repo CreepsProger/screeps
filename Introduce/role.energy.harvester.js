@@ -2,7 +2,7 @@ var roleEnergyHarvester = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-        var commit = 3;
+        var commit = 4;
         if(!Memory.commits.EnergyHarvester ||
            Memory.commits.EnergyHarvester != commit) {
             Memory.commits.EnergyHarvester = commit;
@@ -72,7 +72,7 @@ var roleEnergyHarvester = {
                 }
             }
             else {
-                if(err != -4) {
+                if(err != ERR_BUSY && err != ERR_NOT_ENOUGH_RESOURCES) {
                     console.log( '✒️', Game.time
                                 , '⚡ harvesting failed with err:'
                                 , err
