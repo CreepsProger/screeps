@@ -6,7 +6,7 @@ var roleEnergyHarvester = {
         if(!Memory.commits ||
            !Memory.commits.EnergyHarvester ||
            !Memory.commits.EnergyHarvester[commit]) {
-            Memory.commits.EnergyHarvester = {};
+            Memory.commits = {EnergyHarvester: {}};
             Memory.commits.EnergyHarvester[commit] = true;
             console.log( '✒️', Game.time
                        , 'Commit EnergyHarvester'
