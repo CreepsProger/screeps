@@ -69,8 +69,8 @@ function tryCreateCreep(type) {
 
 module.exports.loop = function () {
    var commit = 3;
-   if(Memory.commits.main[commit]) {
-      Memory.commits = {main: {}};
+   if(Memory.commits._ && Memory.commits.main[commit]) {
+      Memory.commits = {_:1, main: {}};
       Memory.commits.main[commit] = true;
       console.log( '✒️', Game.time
                   , 'Commit main'
