@@ -57,7 +57,9 @@ function tryCreateCreep(type) {
          console.log( '✒️', Game.time
                           , 'Spawning new creep:'
                           , newName);
-         Memory.CreepsNumberByType[type]++;
+         if(!Memory.CreepsNumberByType[creep.memory.type])
+            Memory.CreepsNumberByType[creep.memory.type] = 0;
+         Memory.CreepsNumberByType[creep.memory.type]++;
          Memory.CreepsCounter++;
       }
    }
@@ -78,12 +80,12 @@ module.exports.loop = function () {
 
       for(var name in Game.creeps) {
          var creep = Game.creeps[name];
-//          Memory.CreepsNumberByType = new Map([]);
 
          Memory.CreepsCounter++;
          if(!Memory.CreepsNumberByType[creep.memory.type])
             Memory.CreepsNumberByType[creep.memory.type] = 0;
          Memory.CreepsNumberByType[creep.memory.type]++;
+
          console.log( '✒️', Game.time
                      , 'Commit main'
                      , commit
@@ -93,11 +95,6 @@ module.exports.loop = function () {
                      , Memory.CreepsNumberByType[creep.memory.type]
                      , Memory.CreepsCounter);
       }
-
-      var print_map = '';
-      for (var v in Memory.CreepsNumberByType) {
-         print_map += ' ' + v;
-      }
          
       console.log( '✒️', Game.time
                      , 'Commit main'
@@ -106,8 +103,7 @@ module.exports.loop = function () {
                      , Memory.CreepsCounter
                      , 'Memory.CreepsNumberByType:'
                      , Memory.CreepsNumberByType
-                     , JSON.stringify(Memory.CreepsNumberByType)
-                     , print_map);
+                     , JSON.stringify(Memory.CreepsNumberByType));
 
       Memory.totals = { CreepsNumber: 0
                       , Capacity: 0
