@@ -76,7 +76,7 @@ module.exports.loop = function () {
                   , Memory.commits.main);
 
       Memory.CreepsCounter = 0;
-      Memory.CreepsNumberByType = {};
+      Memory.CreepsNumberByType = [];
 
       for(var name in Game.creeps) {
          var creep = Game.creeps[name];
@@ -91,8 +91,9 @@ module.exports.loop = function () {
       }
 
       var print_map = '';
-      for (let [k,v] in Memory.CreepsNumberByType)
-         print_map += ' ' + k + ':' + v;
+      for (var v in Memory.CreepsNumberByType) {
+         print_map += ' ' + v;
+      }
          
       console.log( '✒️', Game.time
                      , 'Commit main'
@@ -100,7 +101,8 @@ module.exports.loop = function () {
                      , 'Memory.CreepsCounter:'
                      , Memory.CreepsCounter
                      , 'Memory.CreepsNumberByType:'
-                     , Memory.CreepsNumberByType, print_map);
+                     , Memory.CreepsNumberByType
+                     , print_map);
 
       Memory.totals = { CreepsNumber: 0
                       , Capacity: 0
