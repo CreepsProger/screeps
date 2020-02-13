@@ -67,7 +67,7 @@ function tryCreateCreep(type) {
 }
 
 module.exports.loop = function () {
-   var commit = 16;
+   var commit = 17;
    if(!Memory.commits.main ||
       Memory.commits.main != commit) {
       Memory.commits.main = commit;
