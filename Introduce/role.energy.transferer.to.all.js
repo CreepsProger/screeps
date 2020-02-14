@@ -12,23 +12,26 @@ var roleEnergyTransfererToAll = {
             var target;
             if(!target) {
                 creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
-                filter: (structure) => {
-                     return (structure.structureType == STRUCTURE_EXTENSION) &&
-                        structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-                }
-            });
-            if(!target) {
-                creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
-                filter: (structure) => {
-                     return (structure.structureType == STRUCTURE_TOWER) &&
-                         structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+                    filter: (structure) => {
+                        return (structure.structureType == STRUCTURE_EXTENSION) &&
+                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+                    }
                 });
             }
             if(!target) {
                 creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
-                filter: (structure) => {
-                     return (structure.structureType == STRUCTURE_CONTAINER) &&
-                         structure.store.getFreeCapacity(RESOURCE_ENERGY) > structure.store.getCapacity(RESOURCE_ENERGY)/2;
+                    filter: (structure) => {
+                        return (structure.structureType == STRUCTURE_TOWER) &&
+                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+                    }
+                });
+            }
+            if(!target) {
+                creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+                    filter: (structure) => {
+                        return (structure.structureType == STRUCTURE_CONTAINER) &&
+                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > structure.store.getCapacity(RESOURCE_ENERGY)/2;
+                    }
                 });
             }
             if(target) {
