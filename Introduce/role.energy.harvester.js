@@ -68,7 +68,7 @@ var roleEnergyHarvester = {
             else if(!err) {
                 creep.say('⚡');
 
-                if(creep.memory.starttimemoving)
+                if(creep.memory.starttimemoving) {
                     Memory.harvestersMovements.Value.v += Game.time - creep.memory.starttimemoving;
                     Memory.harvestersMovements.Count.v += 1;
                     Memory.harvestersMovements.Avg.v = Math.floor(Memory.harvestersMovements.Value.v / Memory.harvestersMovements.Count.v) ;
