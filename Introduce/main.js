@@ -230,11 +230,11 @@ module.exports.loop = function () {
       if(!Spawn.spawning) {
          var err = ERR_NOT_ENOUGH_ENERGY;
 
-         if(CL == 3) err = tryCreateCreep(err, 238, 2); // E 800
-         if(CL == 3) err = tryCreateCreep(err, 426, 1); // E 800
-         if(CL == 3) err = tryCreateCreep(err, 631, 2); // E 800
-         if(CL == 3) err = tryCreateCreep(err, 266, 1); // E 800
+         if(CL == 3) err = tryCreateCreep(err, 239, 2); // E 800
+         if(CL == 3) err = tryCreateCreep(err, 328, 2); // E 800
          if(CL == 3) err = tryCreateCreep(err, 444, 2); // E 800
+         if(CL == 3) err = tryCreateCreep(err, 631, 1); // E 800
+         if(CL == 3) err = tryCreateCreep(err, 711, 1); // E 800
 
          if(CL == 2) err = tryCreateCreep(err, 213, 2); // E 550
          if(CL == 2) err = tryCreateCreep(err, 421, 4); // E 550
