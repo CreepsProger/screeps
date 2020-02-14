@@ -1,6 +1,6 @@
 var roleBuilder = require('role.builder');
 
-var roleEnergyTransfererToAll = {
+var roleEnergyTransferer = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
@@ -12,10 +12,12 @@ var roleEnergyTransfererToAll = {
            (creep.store[RESOURCE_ENERGY] > creep.store.getCapacity()/2 ||
             (creep.memory.rerun && creep.store[RESOURCE_ENERGY] > 0))) {
             var target;
+
             if(!target) {
                 target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
                     filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_EXTENSION) &&
+                        return (structure.structureType == STRUCTURE_EXTENSION ||
+                                structure.structureType == STRUCTURE_SPAWN) &&
                             structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                     }
                 });
@@ -65,4 +67,4 @@ var roleEnergyTransfererToAll = {
     }
 };
 
-module.exports = roleEnergyTransfererToAll;
+module.exports = roleEnergyTransferer;
