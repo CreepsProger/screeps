@@ -37,7 +37,7 @@ function tryCreateCreep(err, type_n, min = 0) {
    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                     , 'trying create a creep:'
                     , newName
-                    , type
+                    , type_n
                     , body
                     , 'exists:'
                     , existsNumber
