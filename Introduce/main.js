@@ -120,6 +120,12 @@ module.exports.loop = function () {
                , 'Flags:'
                , JSON.stringify(Game.flags));
 
+   const RACS = 'Remeve all constructions sites';
+   if(Game.flags[RACS] {
+         console.log( '🇧🇶', Math.trunc(Game.time/10000), Game.time%10000
+                          , 'RACS:'
+                          , Game.flags[RACS]);
+   }
    if(Game.flags.length > 0) {
       for(var flag in Game.flags) {
          console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
