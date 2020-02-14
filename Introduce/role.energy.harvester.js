@@ -38,7 +38,7 @@ var roleEnergyHarvester = {
                     console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                                 , '⚡' + creep.name + '❓❓ no source! rerun role.energy.transferer.to.nearest.lighter'
                                 , creep.memory.rerun);
-                    require('role.energy.transferer.to.nearest.lighter').run();
+                    require('role.energy.transferer.to.nearest.lighter').run(creep);
                 }
             }
         }
