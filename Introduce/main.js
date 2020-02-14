@@ -227,14 +227,18 @@ module.exports.loop = function () {
          if(CL == 3) err = tryCreateCreep(err, 631, 2); // E 800
          if(CL == 3) err = tryCreateCreep(err, 266, 2); // E 800
          if(CL == 3) err = tryCreateCreep(err, 426, 4); // E 800
+
+         if(CL == 2) err = tryCreateCreep(err, 213, 2); // E 550
          if(CL == 2) err = tryCreateCreep(err, 421, 4); // E 550
          if(CL == 2) err = tryCreateCreep(err, 323, 8); // E 550
-         if(CL == 2) err = tryCreateCreep(err, 213, 4); // E 400
+         if(CL == 2) err = tryCreateCreep(err, 213, 2); // E 400
          if(CL == 2) err = tryCreateCreep(err, 311, 4); // E 400
          if(CL == 2) err = tryCreateCreep(err, 133, 4); // E 400
-         if(CL == 1) err = tryCreateCreep(err, 211',4); // E 300
-         if(CL == 1) err = tryCreateCreep(err, 122',4); // E 300
-         if(CL == 1) err = tryCreateCreep(err, 113',4); // E 300
+
+         if(CL == 1) err = tryCreateCreep(err, 113, 2); // E 300
+         if(CL == 1) err = tryCreateCreep(err, 211, 4); // E 300
+         if(CL == 1) err = tryCreateCreep(err, 122, 4); // E 300
+         if(CL == 1) err = tryCreateCreep(err, 113, 4); // E 300
       }
    }
 
