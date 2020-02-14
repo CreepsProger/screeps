@@ -11,18 +11,24 @@ var roleEnergyTransfererToAll = {
         if(!creep.memory.transfering.energy.to.all && creep.store[RESOURCE_ENERGY] > creep.store.getCapacity()/2) {
             var target;
             if(!target) {
-                creep.pos.findClosestByPath(STRUCTURE_EXTENSION, {
-                    filter: (structure) => structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
+                creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+                filter: (structure) => {
+                     return (structure.structureType == STRUCTURE_EXTENSION) &&
+                        structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+                }
+            });
+            if(!target) {
+                creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+                filter: (structure) => {
+                     return (structure.structureType == STRUCTURE_TOWER) &&
+                         structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
                 });
             }
             if(!target) {
-                creep.pos.findClosestByPath(STRUCTURE_TOWER, {
-                    filter: (structure) => structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
-                });
-            }
-            if(!target) {
-                creep.pos.findClosestByPath(STRUCTURE_CONTAINER, {
-                    filter: (structure) => structure.store.getFreeCapacity(RESOURCE_ENERGY) > structure.store.getCapacity(RESOURCE_ENERGY)/2
+                creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+                filter: (structure) => {
+                     return (structure.structureType == STRUCTURE_CONTAINER) &&
+                         structure.store.getFreeCapacity(RESOURCE_ENERGY) > structure.store.getCapacity(RESOURCE_ENERGY)/2
                 });
             }
             if(target) {
