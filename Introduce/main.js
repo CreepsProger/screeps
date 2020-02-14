@@ -14,21 +14,21 @@ function updateMovingAverage(x) {
    x.movingAverage.i = (x.movingAverage.i + 1) % x.movingAverage.vs.length;
 } 
 
-function tryCreateCreep(err, type_n, min = 0) {
+function tryCreateCreep(err, type, min = 0) {
    var body = [];
    var weight = 0;
-   var As = Math.trunc(type_n/1000);
-   var Ws = Math.trunc(type_n%1000/100);
-   var Cs = Math.trunc(type_n%1000%100/10);
-   var Ms = Math.trunc(type_n%1000%100%10);
+   var As = Math.trunc(type/1000);
+   var Ws = Math.trunc(type%1000/100);
+   var Cs = Math.trunc(type%1000%100/10);
+   var Ms = Math.trunc(type%1000%100%10);
    for (var i = 0; i < As; i++) {body.push(ATACK);}
    for (var i = 0; i < Ws; i++) {body.push(WORK);}
    for (var i = 0; i < Cs; i++) {body.push(CARRY);}
    for (var i = 0; i < Ms; i++) {body.push(MOVE);}
    var weight = Math.floor(100 * (Ws + 2*Cs + Ms) / (Ms + As));
    var existsNumber = 0;
-   if(Memory.CreepsNumberByType[type_n])
-      existsNumber = Memory.CreepsNumberByType[type_n];
+   if(Memory.CreepsNumberByType[type])
+      existsNumber = Memory.CreepsNumberByType[type];
    var creepsNumber = Memory.totals.CreepsNumber;
    if(creepsNumber < 8)
       creepsNumber = 8;
@@ -39,7 +39,7 @@ function tryCreateCreep(err, type_n, min = 0) {
    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                     , 'trying create a creep:'
                     , newName
-                    , type_n
+                    , type
                     , body
                     , 'exists:'
                     , existsNumber
@@ -51,14 +51,14 @@ function tryCreateCreep(err, type_n, min = 0) {
    if(err && needsNumber > 0) {
       err = Game.spawns['Spawn1'].spawnCreep(body
                                            , newName
-                                           , {memory: {n: Memory.CreepsCounter, weight: weight, type_n: type_n, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
+                                           , {memory: {n: Memory.CreepsCounter, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
       if(!err) {
          console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                           , 'Spawning new creep:'
                           , newName);
-         if(!Memory.CreepsNumberByType[type_n])
-            Memory.CreepsNumberByType[type_n] = 0;
-         Memory.CreepsNumberByType[type_n]++;
+         if(!Memory.CreepsNumberByType[type])
+            Memory.CreepsNumberByType[type] = 0;
+         Memory.CreepsNumberByType[type]++;
          Memory.CreepsCounter++;
       }
    }
