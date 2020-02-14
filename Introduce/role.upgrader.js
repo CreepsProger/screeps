@@ -9,8 +9,9 @@ var roleUpgrader = {
             creep.memory.upgrading = false;
         }
 
-        //TODO: creep.memory.rerun
-        if(!creep.memory.upgrading && creep.store[RESOURCE_ENERGY] > 0 && creep.memory.rerun) {
+        if(!creep.memory.upgrading &&
+           (creep.store[RESOURCE_ENERGY] > creep.store.getCapacity()/2 ||
+            (creep.memory.rerun && creep.store[RESOURCE_ENERGY] > 0))) {
             creep.memory.upgrading = true;
         }
 
@@ -19,7 +20,6 @@ var roleUpgrader = {
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
                 creep.say('🛠');
-                //require('role.energy.transferer.to.nearest.lighter').run(creep);
             }
             else if(!err) {
                 creep.say('🛠');
