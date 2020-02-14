@@ -9,7 +9,7 @@ var roleUpgrader = {
             creep.memory.upgrading = false;
         }
 
-        if(!creep.memory.upgrading && creep.store.getFreeCapacity() == 0) {
+        if(!creep.memory.upgrading && creep.store[RESOURCE_ENERGY] > creep.store.getCapacity()/2) {
             creep.memory.upgrading = true;
         }
 
