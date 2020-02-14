@@ -6,7 +6,7 @@ var roleEnergyHarvester = {
         if(!Memory.commits.EnergyHarvester ||
            Memory.commits.EnergyHarvester != commit) {
             Memory.commits.EnergyHarvester = commit;
-            console.log( '✒️', Game.time
+            console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                              , 'Commit EnergyHarvester'
                              , Memory.commits.EnergyHarvester);
         }
@@ -22,36 +22,41 @@ var roleEnergyHarvester = {
         }
 
         if(!creep.memory.harvesting && creep.store.getFreeCapacity() > 0) {
-            var targets = creep.room.find(FIND_SOURCES);
-//             console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-//                         , '⚡ source targets:'
-//                         , targets
-//                         , 'for creep:'
-//                         , creep.name);
+            var targets = creep.room.find(FIND_SOURCES, {
+                filter: (source) => source.energy > 0
+            });
             if(targets.length > 0) {
                 creep.memory.harvesting = true;
                 creep.memory.target = targets[creep.memory.target_index % targets.length].id;
 //                 creep.memory.target = targets[0].id;
                 creep.memory.starttimemoving = Game.time;
             }
+            else
+            {
+                if(!creep.memory.rerun) {
+                    creep.memory.rerun = 1;
+                    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+                                , '⚡' + creep.name + '❓❓ no source! rerun role.energy.transferer.to.nearest.lighter'
+                                , creep.memory.rerun);
+                    require('role.energy.transferer.to.nearest.lighter').run();
+                }
+            }
         }
-
+ 
         var maxHarvesterMovementsToSource = Math.max(100,Math.floor(2 * Memory.harvestersMovements.Value.movingAverage.delta / Memory.harvestersMovements.Count.movingAverage.delta));
 
         if(creep.memory.harvesting) {
             var target = Game.getObjectById(creep.memory.target);
             var err = creep.harvest(target);
             if(err == ERR_NOT_IN_RANGE) {
-                creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
+                creep.moveTo(trget, {visualizePaathStyle: {stroke: '#ffffff'}});
                 if(creep.memory.starttimemoving &&
                    Game.time - creep.memory.starttimemoving > maxHarvesterMovementsToSource) {
                    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-                              , '⚡ ❓ harvesting failed by timemovements > maxHarvesterMovementsToSource :'
+                              , '⚡' + creep.name + '❓ harvesting failed by timemovements > maxHarvesterMovementsToSource :'
                               , Game.time - creep.memory.starttimemoving
                               , '>'
-                              , maxHarvesterMovementsToSource
-                              , 'for creep:' 
-                              , creep.name);
+                              , maxHarvesterMovementsToSource);
                     creep.memory.harvesting = false;
                     creep.memory.target_index += 1;
                     creep.say('❓');
@@ -64,9 +69,7 @@ var roleEnergyHarvester = {
                 creep.say('⚡');
 
                 if(creep.memory.starttimemoving)
-                {
-                    Memory.harvestersMovements.Value.v += Game.time - creep.memory.starttimemoving;
-                    Memory.harvestersMovements.Count.v += 1;
+                      Memory.harvestersMovements.Count.v += 1;
                     Memory.harvestersMovements.Avg.v = Math.floor(Memory.harvestersMovements.Value.v / Memory.harvestersMovements.Count.v) ;
                     creep.memory.starttimemoving = 0;
                 }
