@@ -1,8 +1,8 @@
 var roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
 
-//var mainSettings = require('main.settings');
-
+var commit = 26;
 var ticksToCheckCreepsNumber = 20;
+//var mainSettings = require('main.settings');
 
 function updateMovingAverage(x) { 
 //    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
@@ -66,7 +66,7 @@ function tryCreateCreep(err, type, min = 0) {
 }
 
 module.exports.loop = function () {
-   var commit = 25;
+
    if(!Memory.commits.main ||
       Memory.commits.main != commit) {
       Memory.commits.main = commit;
