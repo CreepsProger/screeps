@@ -183,7 +183,9 @@ module.exports.loop = function () {
                     , name);
       }
    }
-
+   
+   var Spawn = Game.spawns['Spawn1'];
+   
    if(Game.time % ticksToCheckCreepsNumber == 0) {
 //          var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
          Memory.totals.CreepsNumber = 0;
@@ -217,7 +219,6 @@ module.exports.loop = function () {
                   , Memory.harvestersMovements.Avg.movingAverage.delta
                   , JSON.stringify(Memory.CreepsNumberByType));
 
-      var Spawn = Game.spawns['Spawn1'];
       var Controller = Spawn.room.controller;
       const CL = Controller.level;
 
