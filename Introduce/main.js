@@ -217,28 +217,33 @@ module.exports.loop = function () {
                   , Memory.harvestersMovements.Avg.movingAverage.delta
                   , JSON.stringify(Memory.CreepsNumberByType));
 
-      if(((Memory.totals.CreepsNumber < 8) || (Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Game.spawns['Spawn1'].spawning) {
+      var Spawn = Game.spawns['Spawn1'];
+      var Controller = Spawn.room.controller;
+      const CL = Controller.level;
+
+      if(((Memory.totals.CreepsNumber < 8) || (Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Spawn.spawning) {
          var err = ERR_NOT_ENOUGH_ENERGY;
-         if(Game.gcl == 3) err = tryCreateCreep(err, 'WWWWWWCCCM',2); // E 550+250=800
-         if(Game.gcl == 3) err = tryCreateCreep(err, 'WWCCCCCCMMMMMM',2); // E 550+250=800
-         if(Game.gcl == 3) err = tryCreateCreep(err, 'WWWWCCMMMMMM',4); // E 550+250=800
-         if(Game.gcl == 2) err = tryCreateCreep(err, 'WWWWCCM',4); // E 550
-         if(Game.gcl == 2) err = tryCreateCreep(err, 'WWWCCMMM',8); // E 550
-         if(Game.gcl == 2) err = tryCreateCreep(err, 'WWCMMM',4); // E 400
-         if(Game.gcl == 2) err = tryCreateCreep(err, 'WWWCM',4); // E 400
-         if(Game.gcl == 2) err = tryCreateCreep(err, 'WCCCMMM',4); // E 400
-         if(Game.gcl == 1) err = tryCreateCreep(err, 'WWCM',4); // E 300
-         if(Game.gcl == 1) err = tryCreateCreep(err, 'WCCMM',4); // E 300
-         if(Game.gcl == 1) err = tryCreateCreep(err, 'WCMMM',4); // E 300
+
+         if(CL == 3) err = tryCreateCreep(err, 'WWWWWWCCCM',2); // E 550+250=800
+         if(CL == 3) err = tryCreateCreep(err, 'WWCCCCCCMMMMMM',2); // E 550+250=800
+         if(CL == 3) err = tryCreateCreep(err, 'WWWWCCMMMMMM',4); // E 550+250=800
+         if(CL == 2) err = tryCreateCreep(err, 'WWWWCCM',4); // E 550
+         if(CL == 2) err = tryCreateCreep(err, 'WWWCCMMM',8); // E 550
+         if(CL == 2) err = tryCreateCreep(err, 'WWCMMM',4); // E 400
+         if(CL == 2) err = tryCreateCreep(err, 'WWWCM',4); // E 400
+         if(CL == 2) err = tryCreateCreep(err, 'WCCCMMM',4); // E 400
+         if(CL == 1) err = tryCreateCreep(err, 'WWCM',4); // E 300
+         if(CL == 1) err = tryCreateCreep(err, 'WCCMM',4); // E 300
+         if(CL == 1) err = tryCreateCreep(err, 'WCMMM',4); // E 300
       }
    }
 
-   if(Game.spawns['Spawn1'].spawning) {
-      var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
-      Game.spawns['Spawn1'].room.visual.text(
+   if(Spawn.spawning) {
+      var spawningCreep = Game.creeps[Spawn.spawning.name];
+      Spawn.room.visual.text(
          '🛠️' + spawningCreep.memory.role,
-         Game.spawns['Spawn1'].pos.x + 1,
-         Game.spawns['Spawn1'].pos.y,
+         Spawn.pos.x + 1,
+         Spawn.pos.y,
          {align: 'left', opacity: 0.8});
    }
    
