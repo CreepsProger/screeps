@@ -222,7 +222,7 @@ module.exports.loop = function () {
       var Controller = Spawn.room.controller;
       const CL = Controller.level;
 
-      if(((Memory.totals.CreepsNumber < 8) || (Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Spawn.spawning) {
+      if(((Memory.totals.CreepsNumber < 8) || (2 * Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Spawn.spawning) {
          var err = ERR_NOT_ENOUGH_ENERGY;
 
          if(CL == 3) err = tryCreateCreep(err, 'WWWWCCMMMMMM',2); // E 800
