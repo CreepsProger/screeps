@@ -25,14 +25,14 @@ var roleEnergyHarvester = {
             var targets = creep.room.find(FIND_SOURCES, {
                 filter: (source) => source.energy > 0
             });
+
             if(targets.length > 0) {
                 creep.memory.harvesting = true;
                 creep.memory.target = targets[creep.memory.target_index % targets.length].id;
 //                 creep.memory.target = targets[0].id;
                 creep.memory.starttimemoving = Game.time;
             }
-            else
-            {
+            else {
                 if(!creep.memory.rerun) {
                     creep.memory.rerun = 1;
                     console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
@@ -49,7 +49,7 @@ var roleEnergyHarvester = {
             var target = Game.getObjectById(creep.memory.target);
             var err = creep.harvest(target);
             if(err == ERR_NOT_IN_RANGE) {
-                creep.moveTo(trget, {visualizePaathStyle: {stroke: '#ffffff'}});
+                creep.moveTo(target, {visualizePaathStyle: {stroke: '#ffffff'}});
                 if(creep.memory.starttimemoving &&
                    Game.time - creep.memory.starttimemoving > maxHarvesterMovementsToSource) {
                    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
@@ -77,10 +77,8 @@ var roleEnergyHarvester = {
             else {
                 if(err != ERR_BUSY && err != ERR_NOT_ENOUGH_RESOURCES) {
                     console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-                                , '⚡ harvesting failed with err:'
-                                , err
-                                , 'for creep:' 
-                                , creep.name);
+                                , '⚡' + creep.name +' harvesting failed with err:'
+                                , err);
                 }
                 creep.memory.harvesting = false;
             }
