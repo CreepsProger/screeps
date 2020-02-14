@@ -10,11 +10,11 @@ var roleEnergyTransfererToSpawns = {
         }
 
         if(!creep.memory.transfering.energy.to.spawns &&
-           ((creep.store[RESOURCE_ENERGY] > creep.store.getCapacity()/2) ||
-            (creep.memory.rerun && creep.store[RESOURCE_ENERGY] > 0)){
+           (creep.store[RESOURCE_ENERGY] > creep.store.getCapacity()/2 ||
+            (creep.memory.rerun && creep.store[RESOURCE_ENERGY] > 0))) {
             var targets = creep.room.find(FIND_MY_STRUCTURES, {
                 filter: (structure) => {
-                     return (structure.structureType == STRUCTURE_SPAWN) &&
+                    return (structure.structureType == STRUCTURE_SPAWN) &&
                         structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                 }
             });
