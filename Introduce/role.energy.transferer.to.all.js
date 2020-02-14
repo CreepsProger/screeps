@@ -10,21 +10,24 @@ var roleEnergyTransfererToAll = {
 
         if(!creep.memory.transfering.energy.to.all && creep.store[RESOURCE_ENERGY] > creep.store.getCapacity()/2) {
             var targets = creep.room.find(FIND_STRUCTURES, {
-                filter: (structure) => {return (structure.structureType == STRUCTURE_SPAWN ||
+                filter: (structure) => {
+                    return (structure.structureType == STRUCTURE_SPAWN ||
                         structure.structureType == STRUCTURE_EXTENSION) &&
                         structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                 }
             });
             if(targets.length == 0) {
                 targets = creep.room.find(FIND_STRUCTURES, {
-                filter: (structure) => {return (structure.structureType == STRUCTURE_TOWER) &&
+                filter: (structure) => {
+                    return (structure.structureType == STRUCTURE_TOWER) &&
                         structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                 }
             });
             if(targets.length == 0) {
                 targets = creep.room.find(FIND_STRUCTURES, {
-                filter: (structure) => {return (structure.structureType == STRUCTURE_CONTAINER) &&
-                        structure.store.getFreeCapacity(RESOURCE_ENERGY) > structure.store.getCapacity(RESOURCE_ENERGY)/2;
+                filter: (structure) => {
+                    return (structure.structureType == STRUCTURE_CONTAINER) &&
+                        structure.store.getFreeCapacity(RESOURCE_ENERGY) > structure.store.getCapacity()/2;
                 }
             });
             if(targets.length > 0) {
