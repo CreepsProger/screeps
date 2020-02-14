@@ -122,12 +122,14 @@ module.exports.loop = function () {
 
    const RACS = 'RACS'; //Remeve all constructions sites';
    if(Game.flags[RACS]) {
-         console.log( '🇧🇶', Math.trunc(Game.time/10000), Game.time%10000
-                          , RACS
-                          , JSON.stringify(Game.flags[RACS]));
+      console.log( '🇧🇶', Math.trunc(Game.time/10000), Game.time%10000
+                       , RACS
+                       , JSON.stringify(Game.flags[RACS])
+                       , JSON.stringify(Game.constructionSites));
    }
-   if(Game.flags.length > 0) {
-      for(var flag in Game.flags) {
+   for(var name in Memory.flags) {
+      var flag = Game.flags[name];
+      if(flag) {
          console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                           , 'flag:'
                           , flag);
