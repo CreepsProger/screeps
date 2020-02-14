@@ -118,7 +118,7 @@ module.exports.loop = function () {
 
    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                , 'Flags:'
-               , Game.flags);
+               , JSON.stringify(Game.flags));
 
    if(Game.flags.length > 0) {
       for(var flag in Game.flags) {
