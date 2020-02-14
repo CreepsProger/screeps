@@ -8,7 +8,9 @@ var roleEnergyTransfererToAll = {
             creep.memory.transfering.energy.to.all = false;
         }
 
-        if(!creep.memory.transfering.energy.to.all && creep.store[RESOURCE_ENERGY] > creep.store.getCapacity(RESOURCE_ENERGY)/2) {
+        if(!creep.memory.transfering.energy.to.all &&
+           (creep.store[RESOURCE_ENERGY] > creep.store.getCapacity()/2 ||
+            (creep.memory.rerun && creep.store[RESOURCE_ENERGY] > 0))) {
             var target;
             if(!target) {
                 target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
