@@ -116,7 +116,7 @@ module.exports.loop = function () {
              ,   Avg: { v: 0, movingAverage: { vs: [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0, delta: 0, ma:0 }}};
    }
 
-   var tower = Game.getObjectById('TOWER_ID');
+   var tower = Game.getObjectById('5e45eb20d4e9fbbbbb4bee7d');
    if(tower) {
       var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
          filter: (structure) => structure.hits < structure.hitsMax
