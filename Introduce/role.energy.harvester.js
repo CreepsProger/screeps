@@ -35,9 +35,10 @@ var roleEnergyHarvester = {
             else {
                 if(!creep.memory.rerun) {
                     creep.memory.rerun = 1;
-                    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-                                , '⚡' + creep.name + '❓❓ no source! rerun role.energy.transferer.to.nearest.lighter'
-                                , creep.memory.rerun);
+//                     console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+//                                 , '⚡' + creep.name + '❓❓ no source! rerun role.energy.transferer.to.nearest.lighter'
+//                                 , creep.memory.rerun);
+                    creep.say('⚡❓❓');
                     require('role.energy.transferer.to.nearest.lighter').run(creep);
                 }
             }
@@ -59,7 +60,7 @@ var roleEnergyHarvester = {
                               , maxHarvesterMovementsToSource);
                     creep.memory.harvesting = false;
                     creep.memory.target_index += 1;
-                    creep.say('❓');
+                    creep.say('⚡❓');
                 }
                 else {
                     creep.say('➡️⚡');
