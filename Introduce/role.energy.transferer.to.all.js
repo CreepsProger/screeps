@@ -8,7 +8,7 @@ var roleEnergyTransfererToAll = {
             creep.memory.transfering.energy.to.all = false;
         }
 
-        if(!creep.memory.transfering.energy.to.all && creep.store.getFreeCapacity() == 0) {
+        if(!creep.memory.transfering.energy.to.all && creep.store[RESOURCE_ENERGY] > creep.store.getCapacity()/2) {
             var targets = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => {
                      return (structure.structureType == STRUCTURE_EXTENSION ||
