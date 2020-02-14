@@ -26,8 +26,8 @@ function tryCreateCreep(err, type_n, min = 0) {
    for (var i = 0; i < Ms; i++) {body.push(MOVE);}
    var weight = Math.floor(100 * (Ws + 2*Cs + Ms) / Ms);
    var existsNumber = 0;
-   if(Memory.CreepsNumberByType[type])
-      existsNumber = Memory.CreepsNumberByType[type];
+   if(Memory.CreepsNumberByType[type_n])
+      existsNumber = Memory.CreepsNumberByType[type_n];
    var creepsNumber = Memory.totals.CreepsNumber;
    if(creepsNumber < 8)
       creepsNumber = 8;
