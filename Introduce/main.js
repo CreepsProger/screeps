@@ -17,9 +17,10 @@ function updateMovingAverage(x) {
 function tryCreateCreep(err, type_n, min = 0) {
    var body = [];
    var weight = 0;
-   var Ws = Math.trunc(type_n/100);
-   var Cs = Math.trunc(type_n%100/10);
-   var Ms = Math.trunc(type_n%100%10);
+   var As = Math.trunc(type_n/1000);
+   var Ws = Math.trunc(type_n%1000/100);
+   var Cs = Math.trunc(type_n%1000%100/10);
+   var Ms = Math.trunc(type_n%1000%100%10);
    for (var i = 0; i < Ws; i++) {body.push(WORK);}
    for (var i = 0; i < Cs; i++) {body.push(CARRY);}
    for (var i = 0; i < Ms; i++) {body.push(MOVE);}
@@ -31,7 +32,8 @@ function tryCreateCreep(err, type_n, min = 0) {
    if(creepsNumber < 8)
       creepsNumber = 8;
    var needsNumber = Math.max(min,Math.floor(creepsNumber * 100 / weight)) - existsNumber;
-   var newName = 'creep-' + Ws,toString(16) + Cs,toString(16) + Ms,toString(16) + '-' + Game.time % 10000;
+//   var newName = 'creep-' + Ws,toString(16) + Cs,toString(16) + Ms,toString(16) + '-' + Game.time % 10000;
+   var newName = 'creep-' + As + Ws + Cs + Ms + '-' + Game.time % 10000;
    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                     , 'trying create a creep:'
                     , newName
