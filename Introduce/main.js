@@ -68,11 +68,15 @@ function tryCreateCreep(err, type_n, min = 0) {
 module.exports.loop = function () {
 
    if(!Memory.commits.main ||
-      Memory.commits.main != commit) {
+      Memory.commits.main != commit ||
+      Game.flags['commit']) {
       Memory.commits.main = commit;
       console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                   , 'Commit main'
-                  , Memory.commits.main);
+                  , Memory.commits.main
+                  , Game.flags['commit']);
+      if(Game.flags['commit'])
+         Game.flags['commit'].remove();
 
       Memory.CreepsCounter = 0;
       Memory.CreepsNumberByType = {};
