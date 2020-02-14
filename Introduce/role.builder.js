@@ -12,13 +12,13 @@ var roleBuilder = {
             
         if(!creep.memory.building && creep.store[RESOURCE_ENERGY] > creep.store.getCapacity()/2) {
             var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-            if(targets.length > 0) {
+            if(targets.length > 1) {
                 creep.memory.building = true;
-                creep.memory.target = targets[1].id;
+                creep.memory.target = targets[0].id;
             }
 //             else if(targets.length > 0) {
 //                 creep.memory.building = true;
-//                 creep.memory.target = targets[0].id;
+//                 creep.memory.target = targets[1].id;
 //             }
         }
 
