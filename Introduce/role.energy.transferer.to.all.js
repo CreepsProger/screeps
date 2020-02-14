@@ -30,7 +30,8 @@ var roleEnergyTransfererToAll = {
                 target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_CONTAINER) &&
-                            structure.store.getUsedCapacity(RESOURCE_ENERGY) < structure.store.getCapacity(RESOURCE_ENERGY)/2;
+                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+//                            structure.store.getUsedCapacity(RESOURCE_ENERGY) < structure.store.getCapacity(RESOURCE_ENERGY)/2;
                     }
                 });
             }
