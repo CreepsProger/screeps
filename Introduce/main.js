@@ -1,6 +1,6 @@
 var roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
 
-var commit = 26;
+var commit = 27;
 var ticksToCheckCreepsNumber = 20;
 //var mainSettings = require('main.settings');
 
