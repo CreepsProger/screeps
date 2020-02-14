@@ -232,8 +232,8 @@ module.exports.loop = function () {
 
          if(CL == 3) err = tryCreateCreep(err, 426, 2); // E 800
          if(CL == 3) err = tryCreateCreep(err, 631, 2); // E 800
-         if(CL == 3) err = tryCreateCreep(err, 266, 2); // E 800
-         if(CL == 3) err = tryCreateCreep(err, 711, 2); // E 800
+         if(CL == 3) err = tryCreateCreep(err, 266, 4); // E 800
+         if(CL == 3) err = tryCreateCreep(err, 711, 0); // E 800
 
          if(CL == 2) err = tryCreateCreep(err, 213, 2); // E 550
          if(CL == 2) err = tryCreateCreep(err, 421, 4); // E 550
