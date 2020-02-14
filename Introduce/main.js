@@ -188,17 +188,17 @@ module.exports.loop = function () {
 
       if(((Memory.totals.CreepsNumber < 8) || (Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Game.spawns['Spawn1'].spawning) {
          var err = ERR_NOT_ENOUGH_ENERGY;
-         err = tryCreateCreep(err, 'WWWWWWCCCM',2); // E 550+250=800
-         err = tryCreateCreep(err, 'WWCCCCCCMMMMMM',2); // E 550+250=800
-         err = tryCreateCreep(err, 'WWWWCCMMMMMM',4); // E 550+250=800
-         err = tryCreateCreep(err, 'WWWWCCM',4); // E 550
-         err = tryCreateCreep(err, 'WWWCCMMM',8); // E 550
-         err = tryCreateCreep(err, 'WWCMMM',4); // E 400
-         err = tryCreateCreep(err, 'WWWCM',4); // E 400
-         err = tryCreateCreep(err, 'WCCCMMM',4); // E 400
-         err = tryCreateCreep(err, 'WWCM',4); // E 300
-         err = tryCreateCreep(err, 'WCCMM',4); // E 300
-         err = tryCreateCreep(err, 'WCMMM',4); // E 300
+         if(Game.gcl == 3) err = tryCreateCreep(err, 'WWWWWWCCCM',2); // E 550+250=800
+         if(Game.gcl == 3) err = tryCreateCreep(err, 'WWCCCCCCMMMMMM',2); // E 550+250=800
+         if(Game.gcl == 3) err = tryCreateCreep(err, 'WWWWCCMMMMMM',4); // E 550+250=800
+         if(Game.gcl == 2) err = tryCreateCreep(err, 'WWWWCCM',4); // E 550
+         if(Game.gcl == 2) err = tryCreateCreep(err, 'WWWCCMMM',8); // E 550
+         if(Game.gcl == 2) err = tryCreateCreep(err, 'WWCMMM',4); // E 400
+         if(Game.gcl == 2) err = tryCreateCreep(err, 'WWWCM',4); // E 400
+         if(Game.gcl == 2) err = tryCreateCreep(err, 'WCCCMMM',4); // E 400
+         if(Game.gcl == 1) err = tryCreateCreep(err, 'WWCM',4); // E 300
+         if(Game.gcl == 1) err = tryCreateCreep(err, 'WCCMM',4); // E 300
+         if(Game.gcl == 1) err = tryCreateCreep(err, 'WCMMM',4); // E 300
       }
    }
 
