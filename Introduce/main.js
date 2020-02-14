@@ -126,8 +126,18 @@ module.exports.loop = function () {
                        , RACS
                        , JSON.stringify(Game.flags[RACS])
                        , JSON.stringify(Game.constructionSites));
+      for(var name in Game.constructionSites) {
+         var constructionSite = Game.constructionSites[name];
+         if(constructionSite) {
+            console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+                             , 'removing constructionSite:'
+                             , constructionSite);
+            constructionSite.remove();
+         }
+      }
+      flag.remove();
    }
-   for(var name in Memory.flags) {
+   for(var name in Game.flags) {
       var flag = Game.flags[name];
       if(flag) {
          console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
