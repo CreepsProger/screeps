@@ -8,7 +8,7 @@ var roleEnergyTransfererToAll = {
             creep.memory.transfering.energy.to.all = false;
         }
 
-        if(!creep.memory.transfering.energy.to.all && creep.store[RESOURCE_ENERGY] > creep.store.getCapacity()/2) {
+        if(!creep.memory.transfering.energy.to.all && creep.store[RESOURCE_ENERGY] > creep.store.getCapacity(RESOURCE_ENERGY)/2) {
             var target;
             if(!target) {
                 creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
@@ -30,7 +30,7 @@ var roleEnergyTransfererToAll = {
                 creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_CONTAINER) &&
-                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > structure.store.getCapacity(RESOURCE_ENERGY)/2;
+                            structure.store.getUsedCapacity(RESOURCE_ENERGY) < structure.store.getCapacity(RESOURCE_ENERGY)/2;
                     }
                 });
             }
