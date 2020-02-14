@@ -9,32 +9,25 @@ var roleEnergyTransfererToAll = {
         }
 
         if(!creep.memory.transfering.energy.to.all && creep.store[RESOURCE_ENERGY] > creep.store.getCapacity()/2) {
-            var targets = creep.room.find(FIND_STRUCTURES, {
-                filter: (structure) => {
-                    return (structure.structureType == STRUCTURE_SPAWN ||
-                        structure.structureType == STRUCTURE_EXTENSION) &&
-                        structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-                }
-            });
-            if(targets.length == 0) {
-                targets = creep.room.find(FIND_STRUCTURES, {
-                    filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_TOWER) &&
-                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-                    }
+            var target;
+            if(!target) {
+                creep.pos.findClosestByPath(STRUCTURE_EXTENSION, {
+                    filter: (structure) => structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
                 });
             }
-            if(targets.length == 0) {
-                targets = creep.room.find(FIND_STRUCTURES, {
-                    filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_CONTAINER) &&
-                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > structure.store.getCapacity()/2;
-                    }
+            if(!target) {
+                creep.pos.findClosestByPath(STRUCTURE_TOWER, {
+                    filter: (structure) => structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
                 });
             }
-            if(targets.length > 0) {
+            if(!target) {
+                creep.pos.findClosestByPath(STRUCTURE_CONTAINER, {
+                    filter: (structure) => structure.store.getFreeCapacity(RESOURCE_ENERGY) > structure.store.getCapacity(RESOURCE_ENERGY)/2
+                });
+            }
+            if(target) {
                 creep.memory.transfering.energy.to.all = true;
-                creep.memory.target = targets[0].id;
+                creep.memory.target = target.id;
             }
         }
 
