@@ -186,8 +186,10 @@ module.exports.loop = function () {
                   , Memory.harvestersMovements.Avg.movingAverage.delta
                   , JSON.stringify(Memory.CreepsNumberByType));
 
-      if(((Memory.totals.CreepsNumber < 12) || (2 * Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Game.spawns['Spawn1'].spawning) {
+      if(((Memory.totals.CreepsNumber < 8) || (2 * Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Game.spawns['Spawn1'].spawning) {
          var err = ERR_NOT_ENOUGH_ENERGY;
+         err = tryCreateCreep(err, 'WWWWWWCCCM',3); // E 550+250=800
+         err = tryCreateCreep(err, 'WWWWCCCMMMMM',5); // E 550+250=800
          err = tryCreateCreep(err, 'WWWWCCM',4); // E 550
          err = tryCreateCreep(err, 'WWWCCMMM',8); // E 550
          err = tryCreateCreep(err, 'WWCMMM',4); // E 400
