@@ -1,6 +1,6 @@
 var roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
 
-var commit = 27;
+var commit = 28;
 var ticksToCheckCreepsNumber = 20;
 //var mainSettings = require('main.settings');
 
@@ -118,7 +118,7 @@ module.exports.loop = function () {
 
    var tower = Game.getObjectById('5e45eb20d4e9fbbbbb4bee7d');
    if(tower) {
-      var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
+      var closestDamagedStructure = tower.pos.findClosestByRange(FIND_MY_STRUCTURES, {
          filter: (structure) => structure.hits < structure.hitsMax
       });
       if(closestDamagedStructure) {
@@ -186,7 +186,7 @@ module.exports.loop = function () {
                   , Memory.harvestersMovements.Avg.movingAverage.delta
                   , JSON.stringify(Memory.CreepsNumberByType));
 
-      if(((Memory.totals.CreepsNumber < 6) || (2 * Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Game.spawns['Spawn1'].spawning) {
+      if(((Memory.totals.CreepsNumber < 8) || (Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Game.spawns['Spawn1'].spawning) {
          var err = ERR_NOT_ENOUGH_ENERGY;
          err = tryCreateCreep(err, 'WWWWWWCCCM',2); // E 550+250=800
          err = tryCreateCreep(err, 'WWCCCCCCMMMMMM',2); // E 550+250=800
