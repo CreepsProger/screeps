@@ -14,19 +14,15 @@ function updateMovingAverage(x) {
    x.movingAverage.i = (x.movingAverage.i + 1) % x.movingAverage.vs.length;
 } 
 
-function tryCreateCreep(err, type, min = 0) {
+function tryCreateCreep(err, type_n, min = 0) {
    var body = [];
    var weight = 0;
-   var Ws = 0;
-   var Cs = 0;
-   var Ms = 0;
-   for (var i = 0; i < type.length; i++) {
-      switch (type.charAt(i)) {
-         case 'W':  body.push(WORK); Ws += 1; break;
-         case 'C':  body.push(CARRY); Cs += 1; break;
-         case 'M':  body.push(MOVE); Ms += 1; break;
-      }
-   }
+   var Ws = Math.trunc(type_n/100);
+   var Cs = Math.trunc(type_n%100/10);
+   var Ms = Math.trunc(type_n%100%10);
+   for (var i = 0; i < Ws; i++) {body.push(WORK);}
+   for (var i = 0; i < Cs; i++) {body.push(CARRY);}
+   for (var i = 0; i < Ms; i++) {body.push(MOVE);}
    var weight = Math.floor(100 * (Ws + 2*Cs + Ms) / Ms);
    var existsNumber = 0;
    if(Memory.CreepsNumberByType[type])
@@ -35,7 +31,7 @@ function tryCreateCreep(err, type, min = 0) {
    if(creepsNumber < 8)
       creepsNumber = 8;
    var needsNumber = Math.max(min,Math.floor(creepsNumber * 100 / weight)) - existsNumber;
-   var newName = 'Creep-' + type + '-' + Game.time % 10000;
+   var newName = 'creep-' + Ws,toString(16) + Cs,toString(16) + Ms,toString(16) + '-' + Game.time % 10000;
    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                     , 'trying create a creep:'
                     , newName
@@ -51,14 +47,14 @@ function tryCreateCreep(err, type, min = 0) {
    if(err && needsNumber > 0) {
       err = Game.spawns['Spawn1'].spawnCreep(body
                                            , newName
-                                           , {memory: {n: Memory.CreepsCounter, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
+                                           , {memory: {n: Memory.CreepsCounter, weight: weight, type_n: type_n, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
       if(!err) {
          console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                           , 'Spawning new creep:'
                           , newName);
-         if(!Memory.CreepsNumberByType[type])
-            Memory.CreepsNumberByType[type] = 0;
-         Memory.CreepsNumberByType[type]++;
+         if(!Memory.CreepsNumberByType[type_n])
+            Memory.CreepsNumberByType[type_n] = 0;
+         Memory.CreepsNumberByType[type_n]++;
          Memory.CreepsCounter++;
       }
    }
@@ -225,18 +221,18 @@ module.exports.loop = function () {
       if(((Memory.totals.CreepsNumber < 8) || (2 * Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Spawn.spawning) {
          var err = ERR_NOT_ENOUGH_ENERGY;
 
-         if(CL == 3) err = tryCreateCreep(err, 'WWWWCCMMMMMM',2); // E 800
-         if(CL == 3) err = tryCreateCreep(err, 'WWWWWWCCCM',2); // E 800
-         if(CL == 3) err = tryCreateCreep(err, 'WWCCCCCCMMMMMM',2); // E 800
-         if(CL == 3) err = tryCreateCreep(err, 'WWWWCCMMMMMM',4); // E 800
-         if(CL == 2) err = tryCreateCreep(err, 'WWWWCCM',4); // E 550
-         if(CL == 2) err = tryCreateCreep(err, 'WWWCCMMM',8); // E 550
-         if(CL == 2) err = tryCreateCreep(err, 'WWCMMM',4); // E 400
-         if(CL == 2) err = tryCreateCreep(err, 'WWWCM',4); // E 400
-         if(CL == 2) err = tryCreateCreep(err, 'WCCCMMM',4); // E 400
-         if(CL == 1) err = tryCreateCreep(err, 'WWCM',4); // E 300
-         if(CL == 1) err = tryCreateCreep(err, 'WCCMM',4); // E 300
-         if(CL == 1) err = tryCreateCreep(err, 'WCMMM',4); // E 300
+         if(CL == 3) err = tryCreateCreep(err, 426, 2); // E 800
+         if(CL == 3) err = tryCreateCreep(err, 631, 2); // E 800
+         if(CL == 3) err = tryCreateCreep(err, 266, 2); // E 800
+         if(CL == 3) err = tryCreateCreep(err, 426, 4); // E 800
+         if(CL == 2) err = tryCreateCreep(err, 421, 4); // E 550
+         if(CL == 2) err = tryCreateCreep(err, 323, 8); // E 550
+         if(CL == 2) err = tryCreateCreep(err, 213, 4); // E 400
+         if(CL == 2) err = tryCreateCreep(err, 311, 4); // E 400
+         if(CL == 2) err = tryCreateCreep(err, 133, 4); // E 400
+         if(CL == 1) err = tryCreateCreep(err, 211',4); // E 300
+         if(CL == 1) err = tryCreateCreep(err, 122',4); // E 300
+         if(CL == 1) err = tryCreateCreep(err, 113',4); // E 300
       }
    }
 
