@@ -10,7 +10,7 @@ var roleBuilder = {
             creep.say('stop building');
         }
             
-        if(!creep.memory.building && creep.store.getFreeCapacity() == 0) {
+        if(!creep.memory.building && creep.store[RESOURCE_ENERGY] > creep.store.getCapacity()/2) {
             var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
             if(targets.length > 0) {
                 creep.memory.building = true;
