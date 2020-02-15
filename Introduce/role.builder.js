@@ -29,10 +29,10 @@ var roleBuilder = {
             var err = creep.build(target);
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-                creep.say('➡️🚧');
+                creep.say('🔜🏗');
             }
             else if(!err) {
-                creep.say('🚧');
+                creep.say('🏗');
             }
             else {
                 creep.memory.building = false;
