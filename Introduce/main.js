@@ -131,8 +131,10 @@ module.exports.loop = function () {
                   , T
                   , 'String.fromCharCode(65):'
                   , String.fromCharCode(65)
-                  , 'N.toString(16):'
-                  , N.toString(16)
+                  , 'N:'
+                  , N
+                  , 'N.toString(16).toUpperCase():'
+                  , N.toString(16).toUpperCase()
                  );
       T.remove();
    }
