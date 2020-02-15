@@ -78,6 +78,7 @@ var roleEnergyHarvester = {
                     creep.memory.target = new_target.id;
                     creep.say('🤫⚡');
                 }
+                creep.memory.harvesting = false;
             }
             else if(!err) {
                 creep.say('⚡');
