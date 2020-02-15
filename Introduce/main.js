@@ -269,21 +269,21 @@ module.exports.loop = function () {
          var N = Memory.totals.CreepsNumber;
 
 
-         if(CL >= 4) err = tryCreateCreep(err, 0x855, 1, 55); // E 1300  Worker
+         if(CL >= 4) err = tryCreateCreep(err, 0x855, 1, 50); // E 1300  Worker
          if(CL >= 4) err = tryCreateCreep(err, 0x6D1, 1, 59); // E 1300   Miner
-         if(CL >= 4) err = tryCreateCreep(err, 0x0CE, 1, 50); // E 1300 Carrier
+         if(CL >= 4) err = tryCreateCreep(err, 0x0CE, 1, 55); // E 1300 Carrier
 
-         if(CL >= 3) err = tryCreateCreep(err, 0x444, N?0:1, 65); // E 800 Worker
+         if(CL >= 3) err = tryCreateCreep(err, 0x444, N?0:1, 60); // E 800 Worker
 //          if(CL >= 3) err = tryCreateCreep(err, 0x471, 2, 69); // E 800   Miner
-//          if(CL >= 3) err = tryCreateCreep(err, 0x079, 1, 60); // E 800 Carrier
+//          if(CL >= 3) err = tryCreateCreep(err, 0x079, 1, 65); // E 800 Carrier
 
-         if(CL >= 2) err = tryCreateCreep(err, 0x332, N?0:1, 75); // E 550 Worker
+         if(CL >= 2) err = tryCreateCreep(err, 0x332, N?0:1, 70); // E 550 Worker
 //          if(CL >= 2) err = tryCreateCreep(err, 0x421, 2, 79); // E 550   Miner
-//          if(CL >= 2) err = tryCreateCreep(err, 0x065, 2, 70); // E 550 Carrier
+//          if(CL >= 2) err = tryCreateCreep(err, 0x065, 2, 75); // E 550 Carrier
 
-         if(CL >= 1) err = tryCreateCreep(err, 0x122, N?0:1, 85); // E 300 Worker
+         if(CL >= 1) err = tryCreateCreep(err, 0x122, N?0:1, 80); // E 300 Worker
 //          if(CL >= 1) err = tryCreateCreep(err, 0x211, 4, 89); // E 300   Miner
-//          if(CL >= 1) err = tryCreateCreep(err, 0x033, 2, 80); // E 300 Carrier
+//          if(CL >= 1) err = tryCreateCreep(err, 0x033, 2, 85); // E 300 Carrier
       }
    }
 
