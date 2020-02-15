@@ -26,6 +26,7 @@ function tryCreateCreep(err, type, min = 0) {
    for (var i = 0; i < Cs; i++) {body.push(CARRY);}
    for (var i = 0; i < Ms; i++) {body.push(MOVE);}
    var weight = Math.floor(100 * (Ws + 2*Cs + Ms) / (Ms + As));
+   var energy = 50 * (2*Ws + Cs + Ms);
    var existsNumber = 0;
    if(Memory.CreepsNumberByType[type])
       existsNumber = Memory.CreepsNumberByType[type];
@@ -45,6 +46,8 @@ function tryCreateCreep(err, type, min = 0) {
                     , existsNumber
                     , 'needs:'
                     , needsNumber
+                    , 'energy:'
+                    , energy
                     , 'weight:'
                     , weight
                   );
@@ -268,15 +271,18 @@ module.exports.loop = function () {
          if(CL >= 3) err = tryCreateCreep(err, 239, 0); // E 800 w=188
          if(CL >= 3) err = tryCreateCreep(err, 328, 0); // E 800 w=187
          if(CL >= 3) err = tryCreateCreep(err, 417, 0); // E 800 w=185
-         if(CL >= 3) err = tryCreateCreep(err, 436, 1); // E 800 w=?
+         if(CL >= 3) err = tryCreateCreep(err, 435, 1); // E 800 w=?
          if(CL >= 3) err = tryCreateCreep(err, 159, 0); // E 800 w=222
-         if(CL >= 3) err = tryCreateCreep(err, 249, 1); // E 800 w=?
+         if(CL >= 3) err = tryCreateCreep(err, 248, 1); // E 800 w=?
+         if(CL >= 3) err = tryCreateCreep(err, 257, 1); // E 800 w=?
          if(CL >= 3) err = tryCreateCreep(err, 551, 0); // E 800 w=1600
-         if(CL >= 3) err = tryCreateCreep(err, 471, 2); // E 800 w=?
+         if(CL >= 3) err = tryCreateCreep(err, 471, 2); // E 800 w=1900
 
-         if(CL >= 4) err = tryCreateCreep(err, 949, 1); // E 1300 w=? Worker
-         if(CL >= 4) err = tryCreateCreep(err, 499, 1); // E 1300 w=? Carrier
-         if(CL >= 4) err = tryCreateCreep(err, 971, 1); // E 1300 w=? Miner
+         if(CL >= 4) err = tryCreateCreep(err, 577, 1); // E 1300 w=? Worker
+         if(CL >= 4) err = tryCreateCreep(err, 568, 1); // E 1300 w=? Worker
+         if(CL >= 4) err = tryCreateCreep(err, 748, 1); // E 1300 w=? Worker
+         if(CL >= 4) err = tryCreateCreep(err, 499, 1); // E 1300 w=344 Carrier
+         if(CL >= 4) err = tryCreateCreep(err, 971, 1); // E 1300 w=2400 Miner
       }
    }
 
