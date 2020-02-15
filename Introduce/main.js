@@ -275,14 +275,14 @@ module.exports.loop = function () {
          if(CL >= 3) err = tryCreateCreep(err, 551, 0); // E 800 w=1600
          if(CL >= 3) err = tryCreateCreep(err, 471, 2); // E 800 w=1900 Miner
 
-         if(CL == 2) err = tryCreateCreep(err, 323, 8); // E 550 Worker
-         if(CL == 2) err = tryCreateCreep(err, 145, 4); // E 550 Carrier
-         if(CL == 2) err = tryCreateCreep(err, 421, 4); // E 550 Miner
+         if(CL >= 2) err = tryCreateCreep(err, 323, 0); // E 550 Worker
+         if(CL >= 2) err = tryCreateCreep(err, 145, 0); // E 550 Carrier
+         if(CL >= 2) err = tryCreateCreep(err, 421, 0); // E 550 Miner
 
-         if(CL == 1) err = tryCreateCreep(err, 113, 4); // E 300 Worker
-         if(CL == 1) err = tryCreateCreep(err, 122, 0); // E 300
-         if(CL == 1) err = tryCreateCreep(err, 033, 2); // E 300 Carrier
-         if(CL == 1) err = tryCreateCreep(err, 211, 4); // E 300 Miner
+         if(CL >= 1) err = tryCreateCreep(err, 113, 0); // E 300
+         if(CL >= 1) err = tryCreateCreep(err, 122, 0); // E 300 Worker
+         if(CL >= 1) err = tryCreateCreep(err, 033, 0); // E 300 Carrier
+         if(CL >= 1) err = tryCreateCreep(err, 211, 0); // E 300 Miner
       }
    }
 
