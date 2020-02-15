@@ -48,8 +48,7 @@ var roleUpgrader = {
                     creep.moveTo(new_target, {visualizePaathStyle: {stroke: '#ffffff'}});
                     creep.memory.target = new_target.id;
                 }
-                else
-                    creep.memory.upgrading = false;
+                creep.memory.upgrading = false;
 
             }
             else if(!err) {
@@ -61,7 +60,6 @@ var roleUpgrader = {
             }
         }
         else {
-            creep.memory.upgrading = false;
             roleEnergyHarvester.run(creep);
         }
     }
