@@ -63,7 +63,7 @@ var roleEnergyTransfererToNearestLighter = {
         }
 
         if(!creep.memory.transfering.energy.to.nearest.lighter &&
-           (creep.store[RESOURCE_ENERGY] > creep.store.getCapacity()/2 ||
+           (creep.store[RESOURCE_ENERGY] > creep.store.getFreeCapacity() ||
             (creep.memory.rerun && creep.store[RESOURCE_ENERGY] > 0))) {
             var targets = lookNearestLighterForCreep(creep);
 //              var targets = creep.room.find(FIND_MY_CREEPS, {
@@ -89,7 +89,8 @@ var roleEnergyTransfererToNearestLighter = {
                 console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                            , creep.name, 'transfer energy to'
                            , target.name);
-                creep.say('⚡🎁');
+                creep.say('🎁');
+                creep.memory.transfering.energy.to.nearest.lighter = false;
             }
             else {
                 creep.memory.transfering.energy.to.nearest.lighter = false;
