@@ -24,7 +24,7 @@ var roleUpgrader = {
             else if(err == ERR_NO_BODYPART) {
                 var new_target;
                 if(!new_target && creep.store.getUsedCapacity(RESOURCE_ENERGY) < creep.store.getFreeCapacity(RESOURCE_ENERGY)) {
-                    new_target = creep.room.pos.findClosestByPath(FIND_MY_CREEPS, {
+                    new_target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
                     filter: (creep2) => {
                         return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > creep2.store.getFreeCapacity(RESOURCE_ENERGY) &&
                             creep.memory.weight < creep2.memory.weight;
