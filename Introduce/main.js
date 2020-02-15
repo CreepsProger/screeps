@@ -16,7 +16,6 @@ function updateMovingAverage(x) {
 
 function tryCreateCreep(err, type, needed = 0, weight) {
    var body = [];
-   var weight = 0;
    var As = Math.trunc(type/0x1000);
    var Ws = Math.trunc(type%0x1000/0x100);
    var Cs = Math.trunc(type%0x1000%0x100/0x10);
