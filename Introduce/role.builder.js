@@ -34,8 +34,8 @@ var roleBuilder = {
             else if(err == ERR_NO_BODYPART) {
                 var new_target = target.pos.findClosestByPath(FIND_MY_CREEPS, {
                     filter: (creep2) => {
-                        return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > creep2.store.getFreeCapacity(RESOURCE_ENERGY) &&
-                            creep.memory.weight < creep2.memory.weight;
+                        return creep2.store.getUsedCapacity(RESOURCE_ENERGY) < creep2.store.getFreeCapacity(RESOURCE_ENERGY) &&
+                            creep.memory.weight > creep2.memory.weight;
                         }
                 });
                 if(new_target) {
