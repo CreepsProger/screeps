@@ -269,7 +269,7 @@ module.exports.loop = function () {
          var err = ERR_NOT_ENOUGH_ENERGY;
 
 
-         if(CL >= 4) err = tryCreateCreep(err, 0x748, 0); // E 1300 w=325 Worker 1
+         if(CL >= 4) err = tryCreateCreep(err, 0x748, 0); // E 1300 w=287
          if(CL >= 4) err = tryCreateCreep(err, 0x499, 1); // E 1300 w=344 Carrier 1
          if(CL >= 4) err = tryCreateCreep(err, 0x686, 0); // E 1300 w=466
          if(CL >= 4) err = tryCreateCreep(err, 0x2B9, 0); // E 1300 w=366
