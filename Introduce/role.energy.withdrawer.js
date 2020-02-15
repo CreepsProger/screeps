@@ -11,7 +11,7 @@ var roleEnergyWithdrawer = {
         if(!creep.memory.withdrawing &&
            (creep.store.getFreeCapacity() > creep.store.getUsedCapacity() ||
             (creep.memory.rerun && creep.store.getFreeCapacity() > 0) ||
-            (Game.flags['RW'])))) {
+            (Game.flags['RW']))) {
             var target;
               if(!target) {
                 target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
