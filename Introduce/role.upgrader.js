@@ -30,7 +30,8 @@ var roleUpgrader = {
                             creep.memory.weight < creep2.memory.weight;
                         }
                     });
-                    creep.say('🤫⚡🛠');
+                    if(new_target)
+                        creep.say('🤫⚡🛠');
                 }
                 if(!new_target) {
                     new_target = creep.room.controller.pos.findClosestByPath(FIND_MY_CREEPS, {
@@ -39,14 +40,16 @@ var roleUpgrader = {
                             creep.memory.weight > creep2.memory.weight;
                         }
                     });
-                    creep.say('🤫🛠');
+                    if(new_target)
+                        creep.say('🤫🛠');
                 }
                 if(new_target) {
                     creep.moveTo(new_target, {visualizePaathStyle: {stroke: '#ffffff'}});
                     creep.memory.target = new_target.id;
                 }
                 else
-                    creep.say();
+                    creep.memory.upgrading = false;
+
             }
             else if(!err) {
                 creep.say('🛠');
@@ -57,6 +60,7 @@ var roleUpgrader = {
             }
         }
         else {
+            creep.memory.upgrading = false;
             roleEnergyHarvester.run(creep);
         }
     }
