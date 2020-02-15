@@ -97,7 +97,7 @@ module.exports.loop = function () {
                      , commit
                      , creep
                      , 'creep.memory.type'
-                     , creep.memory.type
+                     , creep.memory.type.toString(16)
                      , Memory.CreepsNumberByType[creep.memory.type]
                      , Memory.CreepsCounter);
       }
@@ -183,7 +183,7 @@ module.exports.loop = function () {
    for(var name in Game.flags) {
       var flag = Game.flags[name];
       if(flag) {
-         console.log( '🇧', Math.trunc(Game.time/10000), Game.time%10000
+         console.log( '🏳️‍🌈', Math.trunc(Game.time/10000), Game.time%10000
                           , 'flag:'
                           , flag);
       }
