@@ -40,7 +40,8 @@ var roleBuilder = {
                             creep.memory.weight < creep2.memory.weight;
                         }
                     });
-                    creep.say('🤫⚡🏗');
+                    if(new_target)
+                        creep.say('🤫⚡🏗');
                 }
                 if(!new_target) {
                     new_target = creep.room.controller.pos.findClosestByPath(FIND_MY_CREEPS, {
@@ -49,14 +50,15 @@ var roleBuilder = {
                             creep.memory.weight > creep2.memory.weight;
                         }
                     });
-                    creep.say('🤫🏗');
+                    if(new_target)
+                        creep.say('🤫🏗');
                 }
                 if(new_target) {
                     creep.moveTo(new_target, {visualizePaathStyle: {stroke: '#ffffff'}});
                     creep.memory.target = new_target.id;
                 }
                 else
-                    creep.say();
+                    creep.memory.building = false;
             }
             else if(!err) {
                 creep.say('🏗');
