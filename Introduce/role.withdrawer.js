@@ -1,5 +1,3 @@
-
- 
 var roleEnergyTransferer = require('role.energy.transferer');
 
 var roleEnergyWithdrawer = {
@@ -51,3 +49,31 @@ var roleEnergyWithdrawer = {
 };
 
 module.exports = roleEnergyWithdrawer;
+
+
+
+
+
+         
+//             if(!target) {
+//                 target = room.find(FIND_TOMBSTONES).forEach(tombstone => {
+//                     if(tombstone.creep.my) {
+//                         console.log(`My creep died with ID=${tombstone.creep.id} ` +
+//                         `and role=${Memory.creeps[tombstone.creep.name].role}`);
+//                         var creep = tombstone.pos.findClosestByPath(FIND_MY_CREEPS, {
+//                           filter: (creep) => {
+//                           return (creep.structureType == STRUCTURE_TOWER) &&
+//                             structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+//                           }
+//                         }
+//                     }
+//                 });
+//             }
+//             if(!target) {
+//                 target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+//                     filter: (structure) => {
+//                         return (structure.structureType == STRUCTURE_TOWER) &&
+//                             structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+//                     }
+//                 });
+//             }
