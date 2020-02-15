@@ -32,17 +32,31 @@ var roleBuilder = {
                 creep.say('🔜🏗');
             }
             else if(err == ERR_NO_BODYPART) {
-                var new_target = target.pos.findClosestByPath(FIND_MY_CREEPS, {
+                var new_target;
+                if(!new_target && creep.store.getUsedCapacity(RESOURCE_ENERGY) < creep.store.getFreeCapacity(RESOURCE_ENERGY)) {
+                    new_target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
+                    filter: (creep2) => {
+                        return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > creep2.store.getFreeCapacity(RESOURCE_ENERGY) &&
+                            creep.memory.weight < creep2.memory.weight;
+                        }
+                    });
+                    creep.say('🤫⚡🏗');
+                }
+                if(!new_target) {
+                    new_target = creep.room.controller.pos.findClosestByPath(FIND_MY_CREEPS, {
                     filter: (creep2) => {
                         return creep2.store.getUsedCapacity(RESOURCE_ENERGY) < creep2.store.getFreeCapacity(RESOURCE_ENERGY) &&
                             creep.memory.weight > creep2.memory.weight;
                         }
-                });
+                    });
+                    creep.say('🤫🏗');
+                }
                 if(new_target) {
                     creep.moveTo(new_target, {visualizePaathStyle: {stroke: '#ffffff'}});
                     creep.memory.target = new_target.id;
-                    creep.say('🤫🏗');
                 }
+                else
+                    creep.say();
             }
             else if(!err) {
                 creep.say('🏗');
