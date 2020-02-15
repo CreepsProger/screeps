@@ -232,7 +232,7 @@ module.exports.loop = function () {
 
          if(CL == 3) err = tryCreateCreep(err, 239, 0); // E 800 w=188
          if(CL == 3) err = tryCreateCreep(err, 328, 0); // E 800 w=187
-         if(CL == 3) err = tryCreateCreep(err, 426, 0); // E 800 w=?
+         if(CL == 3) err = tryCreateCreep(err, 417, 0); // E 800 w=?
          if(CL == 3) err = tryCreateCreep(err, 159, 2); // E 800 w=222
          if(CL == 3) err = tryCreateCreep(err, 551, 2); // E 800 w=1600
 
