@@ -20,6 +20,7 @@ var roleUpgrader = {
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
                 creep.say('🔜🛠');
+                creep.memory.upgrading = false;
             }
             else if(err == ERR_NO_BODYPART) {
                 var new_target;
