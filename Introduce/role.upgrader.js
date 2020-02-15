@@ -30,7 +30,7 @@ var roleUpgrader = {
                             creep.memory.weight < creep2.memory.weight;
                         }
                     });
-                    creep.say('🤫🛠');
+                    creep.say('🤫⚡');
                 }
                 if(!new_target) {
                     new_target = creep.room.controller.pos.findClosestByPath(FIND_MY_CREEPS, {
