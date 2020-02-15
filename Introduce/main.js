@@ -269,15 +269,16 @@ module.exports.loop = function () {
          var err = ERR_NOT_ENOUGH_ENERGY;
 
 
-         if(CL >= 4) err = tryCreateCreep(err, 0x686, 0); // E 1300 w=? Worker
-         if(CL >= 4) err = tryCreateCreep(err, 0x2B9, 0); // E 1300 w=? Carrier
-         if(CL >= 4) err = tryCreateCreep(err, 0x7B1, 0); // E 1300 w=? Miner
+         if(CL >= 4) err = tryCreateCreep(err, 0x748, 0); // E 1300 w=325 Worker 1
+         if(CL >= 4) err = tryCreateCreep(err, 0x499, 1); // E 1300 w=344 Carrier 1
+         if(CL >= 4) err = tryCreateCreep(err, 0x686, 0); // E 1300 w=466
+         if(CL >= 4) err = tryCreateCreep(err, 0x2B9, 0); // E 1300 w=366
          if(CL >= 4) err = tryCreateCreep(err, 0x677, 0); // E 1300 w=385
-         if(CL >= 4) err = tryCreateCreep(err, 0x668, 1); // E 1300 w=325 Worker
+         if(CL >= 4) err = tryCreateCreep(err, 0x668, 1); // E 1300 w=325 Worker 1
          if(CL >= 4) err = tryCreateCreep(err, 0x748, 0); // E 1300 w=287 
-         if(CL >= 4) err = tryCreateCreep(err, 0x499, 1); // E 1300 w=344 Carrier
          if(CL >= 4) err = tryCreateCreep(err, 0x971, 0); // E 1300 w=2400
-         if(CL >= 4) err = tryCreateCreep(err, 0x891, 1); // E 1300 w=2700 Miner
+         if(CL >= 4) err = tryCreateCreep(err, 0x891, 0); // E 1300 w=2700
+         if(CL >= 4) err = tryCreateCreep(err, 0x7B1, 0); // E 1300 w=3000 Miner 1
 
          if(CL >= 3) err = tryCreateCreep(err, 0x257, 0); // E 800 w=271 Carrier 1
          if(CL >= 3) err = tryCreateCreep(err, 0x426, 0); // E 800 w=233 Worker 1
