@@ -124,22 +124,29 @@ module.exports.loop = function () {
 //                , 'Flags:'
 //                , JSON.stringify(Game.flags));
 
-   //Remeve Extention';
+   //Destroy Extention;
    var DE = Game.flags['DE'];
    if(DE) {
       var extention = DE.pos.findClosestByPath(FIND_MY_STRUCTURES, {
          filter: (structure) => {
             return structure.structureType == STRUCTURE_EXTENSION;
          }
+      });
+      if(extention) {
          var err = extention.destroy();
          console.log( '❌🌕', Math.trunc(Game.time/10000), Game.time%10000
-                       , JSON.stringify(DE)
-                       , 'destroying extention:'
-                       , extention
-                       , 'err:'
-                       , err);
-         if(!err)
+                     , JSON.stringify(DE)
+                     , 'destroying extention:'
+                     , extention
+                     , 'err:'
+                     , err);
+         if(!err) {
             DE.remove();
+         }
+      }
+      else {
+         DE.remove();
+      }
    }
    //Remeve all constructions sites';
    var RACS = Game.flags['RACS'];
