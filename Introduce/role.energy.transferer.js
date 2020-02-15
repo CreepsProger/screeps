@@ -50,11 +50,11 @@ var roleEnergyTransferer = {
             var err = creep.transfer(target, RESOURCE_ENERGY);
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-                creep.say('⚡⛅️');
+                creep.say('🔜💡');
          //       require('role.energy.transferer.to.nearest.lighter').run(creep);
             }
             else if(!err) {
-                creep.say('⚡⛅️');
+                creep.say('💡');
                 creep.memory.transfering.energy.to.all = false;
             }
             else {
