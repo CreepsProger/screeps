@@ -76,7 +76,7 @@ var roleEnergyHarvester = {
                 if(new_target) {
                     creep.moveTo(new_target, {visualizePaathStyle: {stroke: '#ffffff'}});
                     creep.memory.target = new_target.id;
-                    creep.say('➡️⚡🤫');
+                    creep.say('🤫⚡');
                 }
             }
             else if(!err) {
