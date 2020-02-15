@@ -124,12 +124,28 @@ module.exports.loop = function () {
 //                , 'Flags:'
 //                , JSON.stringify(Game.flags));
 
-   const RACS = 'RACS'; //Remeve all constructions sites';
-   if(Game.flags[RACS]) {
-      var flag = Game.flags[RACS];
-      console.log( '🇧🇶', Math.trunc(Game.time/10000), Game.time%10000
-                       , RACS
-                       , JSON.stringify(Game.flags[RACS])
+   //Remeve Extention';
+   var DE = Game.flags['DE'];
+   if(DE) {
+      var extention = DE.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+         filter: (structure) => {
+            return structure.structureType == STRUCTURE_EXTENSION;
+         }
+         var err = extention.destroy();
+         console.log( '❌🌕', Math.trunc(Game.time/10000), Game.time%10000
+                       , JSON.stringify(DE)
+                       , 'destroying extention:'
+                       , extention
+                       , 'err:'
+                       , err);
+         if(!err)
+            DE.remove();
+   }
+   //Remeve all constructions sites';
+   var RACS = Game.flags['RACS'];
+   if(RACS) {
+      console.log( '❌⚪️⚪️⚪️', Math.trunc(Game.time/10000), Game.time%10000
+                       , JSON.stringify(RACS)
                        , JSON.stringify(Game.constructionSites));
       for(var name in Game.constructionSites) {
          var constructionSite = Game.constructionSites[name];
@@ -140,7 +156,7 @@ module.exports.loop = function () {
             constructionSite.remove();
          }
       }
-      flag.remove();
+      RACS.remove();
    }
    for(var name in Game.flags) {
       var flag = Game.flags[name];
