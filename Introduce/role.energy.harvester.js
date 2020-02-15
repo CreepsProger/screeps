@@ -49,7 +49,7 @@ var roleEnergyHarvester = {
         if(creep.memory.harvesting) {
             var target = Game.getObjectById(creep.memory.target);
             var err = creep.harvest(target);
-            if(err == ERR_NOT_IN_RANGE || err == -12) {
+            if(err == ERR_NOT_IN_RANGE || err == ERR_NO_BODYPART) {
                 creep.moveTo(target, {visualizePaathStyle: {stroke: '#ffffff'}});
                 if(creep.memory.starttimemoving &&
                    Game.time - creep.memory.starttimemoving > maxHarvesterMovementsToSource) {
