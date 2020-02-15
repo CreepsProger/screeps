@@ -126,10 +126,13 @@ module.exports.loop = function () {
    //Test;
    var T = Game.flags['T'];
    if(T) {
-      console.log( '❌🌕', Math.trunc(Game.time/10000), Game.time%10000
+      var N = 1234;
+      console.log( 'Ｔ', Math.trunc(Game.time/10000), Game.time%10000
                   , T
                   , 'String.fromCharCode(65):'
                   , String.fromCharCode(65)
+                  , 'N.toString(16):'
+                  , N.toString(16);
                  );
       T.remove();
    }
