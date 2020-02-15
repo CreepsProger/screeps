@@ -25,7 +25,7 @@ function tryCreateCreep(err, type, min = 0) {
    for (var i = 0; i < Ws; i++) {body.push(WORK);}
    for (var i = 0; i < Cs; i++) {body.push(CARRY);}
    for (var i = 0; i < Ms; i++) {body.push(MOVE);}
-   var weight = Math.floor(100 * (As + Ws + 2*Cs + Ms) / (Ms + As));
+   var weight = Math.floor(100 * (As + Ws + 3*Cs + Ms) / (Ms + As));
    var energy = 50 * (2*As + 2*Ws + Cs + Ms);
    var existsNumber = 0;
    if(Memory.CreepsNumberByType[type])
@@ -269,8 +269,8 @@ module.exports.loop = function () {
          var err = ERR_NOT_ENOUGH_ENERGY;
 
 
-         if(CL >= 4) err = tryCreateCreep(err, 0x2BB, 1); // E 1300 w=? Carrier 1
-         if(CL >= 4) err = tryCreateCreep(err, 0x748, 1); // E 1300 w=287 Worker 1
+         if(CL >= 4) err = tryCreateCreep(err, 0x0BF, 1); // E 1300 w=? Carrier 1
+         if(CL >= 4) err = tryCreateCreep(err, 0x784, 1); // E 1300 w=287 Worker 1
 //       if(CL >= 4) err = tryCreateCreep(err, 0x499, 0); // E 1300 w=344
 //       if(CL >= 4) err = tryCreateCreep(err, 0x686, 0); // E 1300 w=466
 //       if(CL >= 4) err = tryCreateCreep(err, 0x2B9, 0); // E 1300 w=366
