@@ -9,7 +9,7 @@ var roleEnergyTransferer = {
         }
 
         if(!creep.memory.transfering.energy.to.all &&
-           (creep.store[RESOURCE_ENERGY] > creep.store.getCapacity()/2 ||
+           (creep.store[RESOURCE_ENERGY] > creep.store.getFreeCapacity() ||
             (creep.memory.rerun && creep.store[RESOURCE_ENERGY] > 0))) {
             var target;
 
@@ -55,6 +55,7 @@ var roleEnergyTransferer = {
             }
             else if(!err) {
                 creep.say('⚡⛅️');
+                creep.memory.transfering.energy.to.all = false;
             }
             else {
                 creep.memory.transfering.energy.to.all = false;
