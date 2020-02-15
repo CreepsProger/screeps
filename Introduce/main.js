@@ -132,7 +132,7 @@ module.exports.loop = function () {
                   , 'String.fromCharCode(65):'
                   , String.fromCharCode(65)
                   , 'N.toString(16):'
-                  , N.toString(16);
+                  , N.toString(16)
                  );
       T.remove();
    }
