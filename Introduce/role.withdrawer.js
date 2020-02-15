@@ -1,0 +1,53 @@
+
+ 
+var roleEnergyTransferer = require('role.energy.transferer');
+
+var roleEnergyWithdrawer = {
+
+    /** @param {Creep} creep **/
+    run: function(creep) {
+        if(creep.memory.withdrawing && creep.store[RESOURCE_ENERGY] == 0) {
+            creep.memory.withdrawing = false;
+        }
+
+        if(!creep.memory.withdrawing &&
+           (creep.store.getFreeCapacity() > creep.store.getUsedCapacity() ||
+            (creep.memory.rerun && creep.store.getFreeCapacity() > 0) ||
+            (Game.flags['RW'])))) {
+            var target;
+              if(!target) {
+                target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                    filter: (structure) => {
+                        return (structure.structureType == STRUCTURE_CONTAINER) &&
+                            structure.store.getUsedCapacity(RESOURCE_ENERGY) > getFreeCapacity(RESOURCE_ENERGY);
+                    }
+                });
+            }
+            if(target) {
+                creep.memory.withdrawing = true;
+                creep.memory.target = target.id;
+            }
+        }
+
+        if(creep.memory.withdrawing) {
+            var target = Game.getObjectById(creep.memory.target);
+            var err = creep.withdraw(target, RESOURCE_ENERGY);
+            if(err == ERR_NOT_IN_RANGE) {
+                creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
+                creep.say('⚡🚐');
+            }
+            else if(!err) {
+                creep.say('🚐');
+            }
+            else {
+                creep.memory.withdrawing = false;
+                roleEnergyTransferer.run(creep);
+            }
+        }
+        else {
+            roleEnergyTransferer.run(creep);
+        }
+    }
+};
+
+module.exports = roleEnergyWithdrawer;
