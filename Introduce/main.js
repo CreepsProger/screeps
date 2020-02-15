@@ -14,7 +14,7 @@ function updateMovingAverage(x) {
    x.movingAverage.i = (x.movingAverage.i + 1) % x.movingAverage.vs.length;
 } 
 
-function tryCreateCreep(err, type, min = 0) {
+function tryCreateCreep(err, type, needed = 0, weight) {
    var body = [];
    var weight = 0;
    var As = Math.trunc(type/0x1000);
@@ -25,7 +25,7 @@ function tryCreateCreep(err, type, min = 0) {
    for (var i = 0; i < Ws; i++) {body.push(WORK);}
    for (var i = 0; i < Cs; i++) {body.push(CARRY);}
    for (var i = 0; i < Ms; i++) {body.push(MOVE);}
-   var weight = Math.floor(100 * (As + Ws + 3*Cs + Ms) / (Ms + As));
+//    var weight = Math.floor(100 * (As + Ws + 3*Cs + Ms) / (Ms + As));
    var energy = 50 * (2*As + 2*Ws + Cs + Ms);
    var existsNumber = 0;
    if(Memory.CreepsNumberByType[type])
@@ -34,7 +34,7 @@ function tryCreateCreep(err, type, min = 0) {
    if(creepsNumber < 8)
       creepsNumber = 8;
 //   var needsNumber = Math.max(min,Math.floor(creepsNumber * 100 / weight)) - existsNumber;
-   var needsNumber = min - existsNumber;
+   var needsNumber = needed - existsNumber;
    var newName = 'creep-' + As.toString(16) + Ws.toString(16) + Cs.toString(16) + Ms.toString(16) + '-' + Game.time % 10000;
 //   var newName = 'creep-' + As + Ws + Cs + Ms + '-' + Game.time % 10000;
    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
@@ -267,38 +267,24 @@ module.exports.loop = function () {
 //      if(((Memory.totals.CreepsNumber < 8) || (2 * Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Spawn.spawning) {
       if(!Spawn.spawning) {
          var err = ERR_NOT_ENOUGH_ENERGY;
+         var N = Memory.totals.CreepsNumber;
 
 
-         if(CL >= 4) err = tryCreateCreep(err, 0x0BF, 1); // E 1300 w=? Carrier 1
-         if(CL >= 4) err = tryCreateCreep(err, 0x784, 1); // E 1300 w=287 Worker 1
-//       if(CL >= 4) err = tryCreateCreep(err, 0x499, 0); // E 1300 w=344
-//       if(CL >= 4) err = tryCreateCreep(err, 0x686, 0); // E 1300 w=466
-//       if(CL >= 4) err = tryCreateCreep(err, 0x2B9, 0); // E 1300 w=366
-//       if(CL >= 4) err = tryCreateCreep(err, 0x677, 0); // E 1300 w=385
-//       if(CL >= 4) err = tryCreateCreep(err, 0x668, 0); // E 1300 w=325 
-//       if(CL >= 4) err = tryCreateCreep(err, 0x971, 0); // E 1300 w=2400
-//       if(CL >= 4) err = tryCreateCreep(err, 0x891, 0); // E 1300 w=2700
-//       if(CL >= 4) err = tryCreateCreep(err, 0x7B1, 0); // E 1300 w=3000
-         if(CL >= 4) err = tryCreateCreep(err, 0x6D1, 1); // E 1300 w=3300 Miner 1
+         if(CL >= 4) err = tryCreateCreep(err, 0x784, 1, 55); // E 1300  Worker
+         if(CL >= 4) err = tryCreateCreep(err, 0x6D1, 1, 59); // E 1300   Miner
+         if(CL >= 4) err = tryCreateCreep(err, 0x0BF, 1, 50); // E 1300 Carrier
 
-         if(CL >= 3) err = tryCreateCreep(err, 0x257, 0); // E 800 w=271 Carrier 1
-         if(CL >= 3) err = tryCreateCreep(err, 0x426, 0); // E 800 w=233 Worker 1
-         if(CL >= 3) err = tryCreateCreep(err, 0x471, 0); // E 800 w=1900 Miner 2
-//       if(CL >= 3) err = tryCreateCreep(err, 0x239, 0); // E 800 w=188
-//       if(CL >= 3) err = tryCreateCreep(err, 0x328, 0); // E 800 w=187
-//       if(CL >= 3) err = tryCreateCreep(err, 0x417, 0); // E 800 w=185
-//       if(CL >= 3) err = tryCreateCreep(err, 0x435, 0); // E 800 w=300
-//       if(CL >= 3) err = tryCreateCreep(err, 0x159, 0); // E 800 w=222
-//       if(CL >= 3) err = tryCreateCreep(err, 0x248, 0); // E 800 w=225
-//       if(CL >= 3) err = tryCreateCreep(err, 0x551, 0); // E 800 w=1600
+         if(CL >= 3) err = tryCreateCreep(err, 0x444, N?0:1, 65); // E 800 Worker
+//          if(CL >= 3) err = tryCreateCreep(err, 0x471, 2, 69); // E 800   Miner
+//          if(CL >= 3) err = tryCreateCreep(err, 0x079, 1, 60); // E 800 Carrier
 
-         if(CL >= 2) err = tryCreateCreep(err, 0x145, 0); // E 550 Carrier
-         if(CL >= 2) err = tryCreateCreep(err, 0x323, 0); // E 550 Worker
-         if(CL >= 2) err = tryCreateCreep(err, 0x421, 0); // E 550 Miner
+         if(CL >= 2) err = tryCreateCreep(err, 0x332, N?0:1, 75); // E 550 Worker
+//          if(CL >= 2) err = tryCreateCreep(err, 0x421, 2, 79); // E 550   Miner
+//          if(CL >= 2) err = tryCreateCreep(err, 0x065, 2, 70); // E 550 Carrier
 
-         if(CL >= 1) err = tryCreateCreep(err, 0x113, 0); // E 300 Worker
-         if(CL >= 1) err = tryCreateCreep(err, 0x033, 0); // E 300 Carrier
-         if(CL >= 1) err = tryCreateCreep(err, 0x211, 0); // E 300 Miner
+         if(CL >= 1) err = tryCreateCreep(err, 0x122, N?0:1, 85); // E 300 Worker
+//          if(CL >= 1) err = tryCreateCreep(err, 0x211, 4, 89); // E 300   Miner
+//          if(CL >= 1) err = tryCreateCreep(err, 0x033, 2, 80); // E 300 Carrier
       }
    }
 
