@@ -256,17 +256,13 @@ module.exports.loop = function () {
       if(!Spawn.spawning) {
          var err = ERR_NOT_ENOUGH_ENERGY;
 
-         if(CL == 2) err = tryCreateCreep(err, 213, 2); // E 550
-         if(CL == 2) err = tryCreateCreep(err, 421, 4); // E 550
-         if(CL == 2) err = tryCreateCreep(err, 323, 8); // E 550
-         if(CL == 2) err = tryCreateCreep(err, 213, 2); // E 400
-         if(CL == 2) err = tryCreateCreep(err, 311, 4); // E 400
-         if(CL == 2) err = tryCreateCreep(err, 133, 4); // E 400
 
-         if(CL == 1) err = tryCreateCreep(err, 113, 2); // E 300
-         if(CL == 1) err = tryCreateCreep(err, 211, 4); // E 300
-         if(CL == 1) err = tryCreateCreep(err, 122, 4); // E 300
-         if(CL == 1) err = tryCreateCreep(err, 113, 4); // E 300
+         if(CL >= 4) err = tryCreateCreep(err, 677, 0); // E 1300 w=385
+         if(CL >= 4) err = tryCreateCreep(err, 668, 1); // E 1300 w=325 Worker
+         if(CL >= 4) err = tryCreateCreep(err, 748, 0); // E 1300 w=287 
+         if(CL >= 4) err = tryCreateCreep(err, 499, 1); // E 1300 w=344 Carrier
+         if(CL >= 4) err = tryCreateCreep(err, 971, 0); // E 1300 w=2400
+         if(CL >= 4) err = tryCreateCreep(err, 891, 1); // E 1300 w=2700 Miner
 
          if(CL >= 3) err = tryCreateCreep(err, 239, 0); // E 800 w=188
          if(CL >= 3) err = tryCreateCreep(err, 328, 0); // E 800 w=187
@@ -279,12 +275,14 @@ module.exports.loop = function () {
          if(CL >= 3) err = tryCreateCreep(err, 551, 0); // E 800 w=1600
          if(CL >= 3) err = tryCreateCreep(err, 471, 2); // E 800 w=1900 Miner
 
-         if(CL >= 4) err = tryCreateCreep(err, 677, 0); // E 1300 w=385
-         if(CL >= 4) err = tryCreateCreep(err, 668, 1); // E 1300 w=325 Worker
-         if(CL >= 4) err = tryCreateCreep(err, 748, 0); // E 1300 w=287 
-         if(CL >= 4) err = tryCreateCreep(err, 499, 1); // E 1300 w=344 Carrier
-         if(CL >= 4) err = tryCreateCreep(err, 971, 0); // E 1300 w=2400
-         if(CL >= 4) err = tryCreateCreep(err, 891, 1); // E 1300 w=2700 Miner
+         if(CL == 2) err = tryCreateCreep(err, 323, 8); // E 550 Worker
+         if(CL == 2) err = tryCreateCreep(err, 145, 4); // E 550 Carrier
+         if(CL == 2) err = tryCreateCreep(err, 421, 4); // E 550 Miner
+
+         if(CL == 1) err = tryCreateCreep(err, 113, 4); // E 300 Worker
+         if(CL == 1) err = tryCreateCreep(err, 122, 0); // E 300
+         if(CL == 1) err = tryCreateCreep(err, 033, 2); // E 300 Carrier
+         if(CL == 1) err = tryCreateCreep(err, 211, 4); // E 300 Miner
       }
    }
 
