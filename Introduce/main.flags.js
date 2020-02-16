@@ -49,7 +49,7 @@ var mainFlags = {
                    , Count: { v: 0, movingAverage: { vs: [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0, delta: 0, ma:0 }}
                    ,   Avg: { v: 0, movingAverage: { vs: [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0, delta: 0, ma:0 }}};
         }
-    }
+    },
     
     checkFlags: function() {
     //Test;
