@@ -1,3 +1,6 @@
+
+var lastFlagRemoved;
+
 var mainFlags = {
     /** @param commit **/
     checkMainCommit: function(commit) {
@@ -51,8 +54,9 @@ var mainFlags = {
         }
     },
     
-    checkFlags: function() {
-        //Test;
+//     last: '',
+    
+    T: function() {
         var T = Game.flags['T'];
         if(T) {
             var N = 1234;
@@ -68,7 +72,9 @@ var mainFlags = {
             T.remove();
         }
 
-    
+
+    checkFlags: function() {
+        mainFlags.T();
         //Destroy Rampart;
         var DR = Game.flags['DR'];
         if(DR) {
@@ -140,22 +146,19 @@ var mainFlags = {
             RACS.remove();
         }
         
-        
         //Flag1: Rerun last flag
         var Flag1 = Game.flags['Flag1'];
         if(Flag1) {
             console.log( '🏳️‍✒️', Math.trunc(Game.time/10000), Game.time%10000
                         , JSON.stringify(Flag1));
             Flag1.remove();
+            if(lastFlagRemoved)
+                lastFlagRemoved();
         }
         
         for(var name in Game.flags) {
-            var flag = Game.flags[name];
-            if(flag) {
-                console.log( '🏳️‍🌈', Math.trunc(Game.time/10000), Game.time%10000
-                            , 'flag:'
-                            , flag);
-            }
+            console.log( '🏳️‍🌈', Math.trunc(Game.time/10000), Game.time%10000
+                            , Game.flags[name]);
         }
     }
 };
