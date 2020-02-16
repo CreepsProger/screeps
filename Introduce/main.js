@@ -31,20 +31,20 @@ function tryCreateCreep(err, type, needed = 0, weight) {
    var needsNumber = needed - existsNumber;
 //   var newName = 'creep-' + weight + '-' + As.toString(16) + Ws.toString(16) + Cs.toString(16) + Ms.toString(16) + '-' + Game.time % 10000;
    var newName = 'creep-' + weight + '-' + As + Ws + Cs + Ms + '-' + Game.time % 10000;
-   console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-                    , 'trying create a creep:'
-                    , newName
-                    , type
-                    , body
-                    , 'exists:'
-                    , existsNumber
-                    , 'needs:'
-                    , needsNumber
-                    , 'energy:'
-                    , energy
-                    , 'weight:'
-                    , weight
-                  );
+//    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+//                     , 'trying create a creep:'
+//                     , newName
+//                     , type
+//                     , body
+//                     , 'exists:'
+//                     , existsNumber
+//                     , 'needs:'
+//                     , needsNumber
+//                     , 'energy:'
+//                     , energy
+//                     , 'weight:'
+//                     , weight
+//                   );
    if(err && needsNumber > 0) {
       err = Game.spawns['Spawn1'].spawnCreep(body
                                              , newName
@@ -304,9 +304,10 @@ module.exports.loop = function () {
          var err = ERR_NOT_ENOUGH_ENERGY;
          var N = Memory.totals.CreepsNumber;
 
+         if(CL >= 4) err = tryCreateCreep(err, 41701, 1, 59); // E 1300   Miner
+         if(CL >= 4) err = tryCreateCreep(err,   917, 1, 55); // E 1300 Carrier
          if(CL >= 4) err = tryCreateCreep(err, 71002, 1, 50); // E 1300  Worker
          if(CL >= 4) err = tryCreateCreep(err, 41701, 2, 59); // E 1300   Miner
-         if(CL >= 4) err = tryCreateCreep(err,   917, 1, 55); // E 1300 Carrier
 
          if(CL >= 3) err = tryCreateCreep(err, 40404, N?0:1, 60); // E 800 Worker
 //          if(CL >= 3) err = tryCreateCreep(err, 40701, 2, 69); // E 800   Miner
