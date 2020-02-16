@@ -24,18 +24,13 @@ function tryCreateCreep(err, type, needed = 0, weight) {
    for (var i = 0; i < Ws; i++) {body.push(WORK);}
    for (var i = 0; i < Cs; i++) {body.push(CARRY);}
    for (var i = 0; i < Ms; i++) {body.push(MOVE);}
-//    var weight = Math.floor(100 * (As + Ws + 3*Cs + Ms) / (Ms + As));
    var energy = 50 * (2*As + 2*Ws + Cs + Ms);
    var existsNumber = 0;
    if(Memory.CreepsNumberByType[type])
       existsNumber = Memory.CreepsNumberByType[type];
-   var creepsNumber = Memory.totals.CreepsNumber;
-   if(creepsNumber < 8)
-      creepsNumber = 8;
-//   var needsNumber = Math.max(min,Math.floor(creepsNumber * 100 / weight)) - existsNumber;
    var needsNumber = needed - existsNumber;
 //   var newName = 'creep-' + weight + '-' + As.toString(16) + Ws.toString(16) + Cs.toString(16) + Ms.toString(16) + '-' + Game.time % 10000;
-   var newName = 'creep-' + weight + As + Ws + Cs + Ms + '-' + Game.time % 10000;
+   var newName = 'creep-' + weight + '-' + As + Ws + Cs + Ms + '-' + Game.time % 10000;
    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                     , 'trying create a creep:'
                     , newName
@@ -58,7 +53,6 @@ function tryCreateCreep(err, type, needed = 0, weight) {
          console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                           , 'Spawning new creep:'
                           , newName);
-
          if(!Memory.CreepsNumberByType[type])
             Memory.CreepsNumberByType[type] = 0;
          Memory.CreepsNumberByType[type]++;
@@ -304,7 +298,6 @@ module.exports.loop = function () {
          const CL = Controller.level;
          var err = ERR_NOT_ENOUGH_ENERGY;
          var N = Memory.totals.CreepsNumber;
-
 
          if(CL >= 4) err = tryCreateCreep(err, 71002, 1, 50); // E 1300  Worker
          if(CL >= 4) err = tryCreateCreep(err, 41701, 2, 59); // E 1300   Miner
