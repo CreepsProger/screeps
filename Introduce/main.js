@@ -79,7 +79,7 @@ module.exports.loop = function () {
       var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
          filter: (structure) => { 
             if(structure.structureType == STRUCTURE_RAMPART) {
-               return structure.hits < 8000;// E = 10 * 8000 / 800 = 100
+               return structure.hits < 0;// 8000 E = 10 * 8000 / 800 = 100
             }
             return structure.hitsMax - structure.hits > 800;
          }
