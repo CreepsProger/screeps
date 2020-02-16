@@ -158,6 +158,6 @@ var mainFlags = {
                         , flag);
         }
     }
-};
+}
 
 module.exports = mainFlags;
