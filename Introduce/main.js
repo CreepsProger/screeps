@@ -227,9 +227,9 @@ module.exports.loop = function () {
          tower.repair(closestDamagedStructure);
       }
       var closestDamagedCreep = tower.pos.findClosestByRange(FIND_MY_CREEPS), {
-         filter: (creep) => creep.hitsMax - creep.hits > 400 
+         filter: (creep) => { return creep.hitsMax - creep.hits > 400;} 
       });
-      if(closestHostile) {
+      if(closestDamagedCreep) {
          tower.heal(closestDamagedCreep);
       }
    }
