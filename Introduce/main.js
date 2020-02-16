@@ -1,6 +1,6 @@
 //import {checkFlags} from 'main.flags.js';
 //import {checkMainCommit} from 'main.flags.js';
-var mainFlags = require('main.flags');
+//var mainFlags = require('main.flags');
 var roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
 
 var commit = 29;
@@ -67,8 +67,8 @@ function tryCreateCreep(err, type, needed = 0, weight) {
 
 module.exports.loop = function () {
 
-   mainFlags.checkCommits(commit);
-   mainFlags.checkFlags();
+//    mainFlags.checkCommits(commit);
+//    mainFlags.checkFlags();
 
    var tower = Game.getObjectById('5e45eb20d4e9fbbbbb4bee7d');
    if(tower) {
