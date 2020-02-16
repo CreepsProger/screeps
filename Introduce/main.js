@@ -234,9 +234,6 @@ module.exports.loop = function () {
             }
          });
       }
-      //       closestDamagedCreep = tower.pos.findClosestByRange(FIND_MY_CREEPS), {
-//          filter: (my_creep) => { return my_creep.hitsMax - my_creep.hits > 400;} 
-//       });
       if(closestDamagedCreep) {
          tower.heal(closestDamagedCreep);
       }
