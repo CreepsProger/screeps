@@ -1,6 +1,6 @@
-
+var mainFlags = {
     /** @param commit **/
-export function checkMainCommit(commit) {
+    checkMainCommit: function(commit) {
         if(!Memory.commits.main ||
            Memory.commits.main != commit ||
            Game.flags['commit']) {
@@ -49,10 +49,9 @@ export function checkMainCommit(commit) {
                    , Count: { v: 0, movingAverage: { vs: [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0, delta: 0, ma:0 }}
                    ,   Avg: { v: 0, movingAverage: { vs: [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0, delta: 0, ma:0 }}};
         }
-    };
-
-
-export function checkFlags() {
+    }
+    
+    checkFlags: function() {
     //Test;
     var T = Game.flags['T'];
     if(T) {
@@ -160,3 +159,5 @@ export function checkFlags() {
         }
     }
 };
+
+module.exports = mainFlags;
