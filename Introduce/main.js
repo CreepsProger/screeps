@@ -36,20 +36,20 @@ function tryCreateCreep(err, type, needed = 0, weight) {
    var needsNumber = needed - existsNumber;
 //   var newName = 'creep-' + weight + '-' + As.toString(16) + Ws.toString(16) + Cs.toString(16) + Ms.toString(16) + '-' + Game.time % 10000;
    var newName = 'creep-' + weight + As + Ws + Cs + Ms + '-' + Game.time % 10000;
-//    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-//                     , 'trying create a creep:'
-//                     , newName
-//                     , type
-//                     , body
-//                     , 'exists:'
-//                     , existsNumber
-//                     , 'needs:'
-//                     , needsNumber
-//                     , 'energy:'
-//                     , energy
-//                     , 'weight:'
-//                     , weight
-//                   );
+   console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+                    , 'trying create a creep:'
+                    , newName
+                    , type
+                    , body
+                    , 'exists:'
+                    , existsNumber
+                    , 'needs:'
+                    , needsNumber
+                    , 'energy:'
+                    , energy
+                    , 'weight:'
+                    , weight
+                  );
    if(err && needsNumber > 0) {
       err = Game.spawns['Spawn1'].spawnCreep(body
                                              , newName
@@ -299,10 +299,7 @@ module.exports.loop = function () {
                   , JSON.stringify(Memory.CreepsNumberByType));
 
 //      if(((Memory.totals.CreepsNumber < 8) || (2 * Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Spawn.spawning) {
-      if(Spawn.spawning) {
-         Spawn.spawning.setDirections([BOTTOM]);
-      }
-      else {
+      if(!Spawn.spawning) {
          var Controller = Spawn.room.controller;
          const CL = Controller.level;
          var err = ERR_NOT_ENOUGH_ENERGY;
@@ -328,9 +325,11 @@ module.exports.loop = function () {
    }
 
    if(Spawn.spawning) {
+      Spawn.spawning.setDirections([BOTTOM]);
+
       var spawningCreep = Game.creeps[Spawn.spawning.name];
       Spawn.room.visual.text(
-         '🛠️' + spawningCreep.memory.role,
+         '🛠️' + Spawn.spawning.name,
          Spawn.pos.x + 1,
          Spawn.pos.y,
          {align: 'left', opacity: 0.8});
