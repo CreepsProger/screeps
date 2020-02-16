@@ -200,12 +200,12 @@ module.exports.loop = function () {
       }
       RACS.remove();
    }
-   //Flag 1 Rerun last flag
-   var Flag_1 = Game.flags['Flag 1'];
-   if(Flag_1) {
+   //Flag1: Rerun last flag
+   var Flag1 = Game.flags['Flag1'];
+   if(Flag1) {
       console.log( '🏳️‍✒️', Math.trunc(Game.time/10000), Game.time%10000
-                  , JSON.stringify(Flag_1));
-      Flag_1.remove();
+                  , JSON.stringify(Flag1));
+      Flag1.remove();
    }
    for(var name in Game.flags) {
       var flag = Game.flags[name];
