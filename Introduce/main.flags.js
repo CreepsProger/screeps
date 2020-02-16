@@ -137,11 +137,6 @@ var mainFlags = {
 //     FF: function() {
 //     },
     checkFlags: function() {
-//         mainFlags.T();
-//         mainFlags.DR();
-//         mainFlags.DE();
-//         mainFlags.RACS();
-
         for(var name in Game.flags) {
             console.log( '🏳️‍🌈', Math.trunc(Game.time/10000), Game.time%10000
                             , name
