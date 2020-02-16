@@ -70,8 +70,7 @@ var mainFlags = {
                         , N.toString(16).toUpperCase()
                        );
             T.remove();
-        }
-
+        },
 
     checkFlags: function() {
         mainFlags.T();
