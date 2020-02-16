@@ -52,12 +52,15 @@ function tryCreateCreep(err, type, needed = 0, weight) {
 //                   );
    if(err && needsNumber > 0) {
       err = Game.spawns['Spawn1'].spawnCreep(body
-                                           , newName
-                                           , {memory: {n: Memory.CreepsCounter, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
+                                             , newName
+                                             , {memory: {n: Memory.CreepsCounter, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
       if(!err) {
          console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                           , 'Spawning new creep:'
                           , newName);
+         var Spawn = Game.spawns['Spawn1'];
+         Spawn.spawning.setDirections([BOTTOM]);
+
          if(!Memory.CreepsNumberByType[type])
             Memory.CreepsNumberByType[type] = 0;
          Memory.CreepsNumberByType[type]++;
@@ -262,8 +265,6 @@ module.exports.loop = function () {
       }
    }
    
-   var Spawn = Game.spawns['Spawn1'];
-   
    if(Game.time % ticksToCheckCreepsNumber == 0) {
 //          var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
          Memory.totals.CreepsNumber = 0;
@@ -297,11 +298,12 @@ module.exports.loop = function () {
                   , Memory.harvestersMovements.Avg.movingAverage.delta
                   , JSON.stringify(Memory.CreepsNumberByType));
 
-      var Controller = Spawn.room.controller;
-      const CL = Controller.level;
+      var Spawn = Game.spawns['Spawn1'];
 
 //      if(((Memory.totals.CreepsNumber < 8) || (2 * Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Spawn.spawning) {
       if(!Spawn.spawning) {
+         var Controller = Spawn.room.controller;
+         const CL = Controller.level;
          var err = ERR_NOT_ENOUGH_ENERGY;
          var N = Memory.totals.CreepsNumber;
 
