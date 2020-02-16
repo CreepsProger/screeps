@@ -54,8 +54,17 @@ var mainFlags = {
         }
     },
     
-//     last: '',
-    
+    //Flag1: Rerun last flag with a new position
+    Flag1: function(Flag1) {
+        console.log( '🏳️‍✒️', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify(Flag1));
+        if(mainFlags[lastFlagRemoved.name]) {
+            lastFlagRemoved.pos = Flag1.pos;
+            mainFlags[lastFlagRemoved.name](lastFlagRemoved);
+        }
+        Flag1.remove();
+    },
+    // T: Test
     T: function(T) {
         var N = 1234;
         console.log( 'Ｔ', Math.trunc(Game.time/10000), Game.time%10000
@@ -126,16 +135,6 @@ var mainFlags = {
         lastFlagRemoved = RACS;
         lastFlagRemoved.remove();
     },
-    //Flag1: Rerun last flag
-    Flag1: function(Flag1) {
-        console.log( '🏳️‍✒️', Math.trunc(Game.time/10000), Game.time%10000
-                    , JSON.stringify(Flag1));
-        Flag1.remove();
-        if(mainFlags[lastFlagRemoved.name])
-                mainFlags[lastFlagRemoved.name](lastFlagRemoved);
-    },
-//     FF: function() {
-//     },
     checkFlags: function() {
         for(var name in Game.flags) {
             console.log( '🏳️‍🌈', Math.trunc(Game.time/10000), Game.time%10000
