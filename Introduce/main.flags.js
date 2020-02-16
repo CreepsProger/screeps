@@ -1,4 +1,4 @@
-// $Id$
+// $Id:$
 var lastFlagRemoved;
 
 var mainFlags = {
@@ -67,7 +67,7 @@ var mainFlags = {
     // T: Test
     T: function(T) {
         var N = 1234;
-        var id = '$Id$'; 
+        var id = '$Id:$'; 
         console.log( 'Ｔ', Math.trunc(Game.time/10000), Game.time%10000
                     , T
                     , 'String.fromCharCode(65):'
