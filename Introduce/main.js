@@ -227,7 +227,14 @@ module.exports.loop = function () {
          tower.repair(closestDamagedStructure);
       }
       var closestDamagedCreep;
-//       closestDamagedCreep = tower.pos.findClosestByRange(FIND_MY_CREEPS), {
+      if(!closestDamagedCreep) {
+         closestDamagedCreep = target.pos.findClosestByPath(FIND_MY_CREEPS, {
+            filter: (mycreep) => {
+               return mycreep.hitsMax - mycreep.hits > 400;
+            }
+         });
+      }
+      //       closestDamagedCreep = tower.pos.findClosestByRange(FIND_MY_CREEPS), {
 //          filter: (my_creep) => { return my_creep.hitsMax - my_creep.hits > 400;} 
 //       });
       if(closestDamagedCreep) {
