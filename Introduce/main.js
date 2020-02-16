@@ -67,7 +67,7 @@ function tryCreateCreep(err, type, needed = 0, weight) {
 
 module.exports.loop = function () {
 
-   mainFlags.checkCommits(commit);
+   mainFlags.checkMainCommit(commit);
    mainFlags.checkFlags();
 
    var tower = Game.getObjectById('5e45eb20d4e9fbbbbb4bee7d');
