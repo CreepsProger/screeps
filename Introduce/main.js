@@ -228,7 +228,7 @@ module.exports.loop = function () {
       }
       var closestDamagedCreep;
       if(!closestDamagedCreep) {
-         closestDamagedCreep = target.pos.findClosestByPath(FIND_MY_CREEPS, {
+         closestDamagedCreep = tower.pos.findClosestByPath(FIND_MY_CREEPS, {
             filter: (mycreep) => {
                return mycreep.hitsMax - mycreep.hits > 400;
             }
