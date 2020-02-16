@@ -226,9 +226,10 @@ module.exports.loop = function () {
       if(closestDamagedStructure) {
          tower.repair(closestDamagedStructure);
       }
-      var closestDamagedCreep = tower.pos.findClosestByRange(FIND_MY_CREEPS), {
-         filter: (creep) => { return creep.hitsMax - creep.hits > 400;} 
-      });
+      var closestDamagedCreep;
+//       closestDamagedCreep = tower.pos.findClosestByRange(FIND_MY_CREEPS), {
+//          filter: (my_creep) => { return my_creep.hitsMax - my_creep.hits > 400;} 
+//       });
       if(closestDamagedCreep) {
          tower.heal(closestDamagedCreep);
       }
