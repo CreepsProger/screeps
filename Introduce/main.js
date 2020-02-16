@@ -216,15 +216,21 @@ module.exports.loop = function () {
 
    var tower = Game.getObjectById('5e45eb20d4e9fbbbbb4bee7d');
    if(tower) {
+      var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+      if(closestHostile) {
+         tower.attack(closestHostile);
+      }
       var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-         filter: (structure) => structure.hits < structure.hitsMax
+         filter: (structure) => structure.hitsMax - structure.hits > 800 
       });
       if(closestDamagedStructure) {
          tower.repair(closestDamagedStructure);
       }
-      var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+      var closestDamagedCreep = tower.pos.findClosestByRange(FIND_MY_CREEPS), {
+         filter: (creep) => creep.hitsMax - creep.hits > 400 
+      });
       if(closestHostile) {
-         tower.attack(closestHostile);
+         tower.heal(closestDamagedCreep);
       }
    }
 
