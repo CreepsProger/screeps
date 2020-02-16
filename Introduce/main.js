@@ -34,8 +34,8 @@ function tryCreateCreep(err, type, needed = 0, weight) {
       creepsNumber = 8;
 //   var needsNumber = Math.max(min,Math.floor(creepsNumber * 100 / weight)) - existsNumber;
    var needsNumber = needed - existsNumber;
-   var newName = 'creep-' + weight + '-' + As.toString(16) + Ws.toString(16) + Cs.toString(16) + Ms.toString(16) + '-' + Game.time % 10000;
-//   var newName = 'creep-' + As + Ws + Cs + Ms + '-' + Game.time % 10000;
+//   var newName = 'creep-' + weight + '-' + As.toString(16) + Ws.toString(16) + Cs.toString(16) + Ms.toString(16) + '-' + Game.time % 10000;
+   var newName = 'creep-' + As + Ws + Cs + Ms + '-' + Game.time % 10000;
 //    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 //                     , 'trying create a creep:'
 //                     , newName
@@ -58,8 +58,6 @@ function tryCreateCreep(err, type, needed = 0, weight) {
          console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                           , 'Spawning new creep:'
                           , newName);
-         var Spawn = Game.spawns['Spawn1'];
-         Spawn.spawning.setDirections([BOTTOM]);
 
          if(!Memory.CreepsNumberByType[type])
             Memory.CreepsNumberByType[type] = 0;
@@ -301,7 +299,10 @@ module.exports.loop = function () {
                   , JSON.stringify(Memory.CreepsNumberByType));
 
 //      if(((Memory.totals.CreepsNumber < 8) || (2 * Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Spawn.spawning) {
-      if(!Spawn.spawning) {
+      if(Spawn.spawning) {
+         Spawn.spawning.setDirections([BOTTOM]);
+      }
+      else {
          var Controller = Spawn.room.controller;
          const CL = Controller.level;
          var err = ERR_NOT_ENOUGH_ENERGY;
