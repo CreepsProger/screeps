@@ -29,7 +29,7 @@ var mainFlags = {
                             , commit
                             , creep
                             , 'creep.memory.type'
-                            , creep.memory.type.toString(16)
+                            , creep.memory.type
                             , Memory.CreepsNumberByType[creep.memory.type]
                             , Memory.CreepsCounter);
             }
