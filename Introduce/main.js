@@ -138,6 +138,31 @@ module.exports.loop = function () {
       T.remove();
    }
 
+
+   //Destroy Rampart;
+   var DR = Game.flags['DR'];
+   if(DR) {
+      var rampart = DR.pos.findClosestByPath(FIND_STRUCTURES, {
+         filter: (structure) => {
+            return structure.structureType == STRUCTURE_RAMPART;
+         }
+      });
+      if(rampart) {
+         var err = decay.destroy();
+         console.log( '❌🌕', Math.trunc(Game.time/10000), Game.time%10000
+                     , JSON.stringify(DR)
+                     , 'destroying rampart:'
+                     , rampart
+                     , 'err:'
+                     , err);
+         if(!err) {
+            DR.remove();
+         }
+      }
+      else {
+         DR.remove();
+      }
+   }
    //Destroy Extention;
    var DE = Game.flags['DE'];
    if(DE) {
