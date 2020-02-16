@@ -216,7 +216,9 @@ module.exports.loop = function () {
          tower.attack(closestHostile);
       }
       var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-         filter: (structure) => structure.hitsMax - structure.hits > 800 
+         filter: (structure) => { 
+            return structure.hitsMax - structure.hits > 800;
+            }
       });
       if(closestDamagedStructure) {
          tower.repair(closestDamagedStructure);
