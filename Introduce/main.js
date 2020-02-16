@@ -308,6 +308,7 @@ module.exports.loop = function () {
          if(CL >= 4) err = tryCreateCreep(err,   917, 1, 55); // E 1300 Carrier
          if(CL >= 4) err = tryCreateCreep(err, 71002, 1, 50); // E 1300  Worker
          if(CL >= 4) err = tryCreateCreep(err, 41701, 2, 59); // E 1300   Miner
+         if(CL >= 4) err = tryCreateCreep(err,   917, 2, 55); // E 1300 Carrier
 
          if(CL >= 3) err = tryCreateCreep(err, 40404, N?0:1, 60); // E 800 Worker
 //          if(CL >= 3) err = tryCreateCreep(err, 40701, 2, 69); // E 800   Miner
