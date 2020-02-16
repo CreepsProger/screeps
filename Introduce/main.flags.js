@@ -1,4 +1,4 @@
-
+// $Id$
 var lastFlagRemoved;
 
 var mainFlags = {
