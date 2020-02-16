@@ -1,5 +1,5 @@
 var roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
-var mainFlags = require('main.flags');
+//var mainFlags = require('main.flags');
 
 var commit = 29;
 var ticksToCheckCreepsNumber = 20;
