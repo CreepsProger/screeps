@@ -148,13 +148,14 @@ module.exports.loop = function () {
          }
       });
       if(rampart) {
-         var err = decay.destroy();
+         var err = rampart.destroy();
          console.log( '❌🌕', Math.trunc(Game.time/10000), Game.time%10000
-                     , JSON.stringify(DR)
-                     , 'destroying rampart:'
+                     , 'Destroy Rampart:'
                      , rampart
                      , 'err:'
-                     , err);
+                     , err
+                     , JSON.stringify(rampart)
+                     , JSON.stringify(DR));
          if(!err) {
             DR.remove();
          }
