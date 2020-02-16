@@ -264,7 +264,9 @@ module.exports.loop = function () {
                     , name);
       }
    }
-   
+
+   var Spawn = Game.spawns['Spawn1'];
+
    if(Game.time % ticksToCheckCreepsNumber == 0) {
 //          var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
          Memory.totals.CreepsNumber = 0;
@@ -297,8 +299,6 @@ module.exports.loop = function () {
                   , Math.floor(Memory.harvestersMovements.Value.movingAverage.delta / Memory.harvestersMovements.Count.movingAverage.delta)
                   , Memory.harvestersMovements.Avg.movingAverage.delta
                   , JSON.stringify(Memory.CreepsNumberByType));
-
-      var Spawn = Game.spawns['Spawn1'];
 
 //      if(((Memory.totals.CreepsNumber < 8) || (2 * Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Spawn.spawning) {
       if(!Spawn.spawning) {
