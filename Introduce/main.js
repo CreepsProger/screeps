@@ -3,7 +3,7 @@
 var mainFlags = require('main.flags');
 var roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
 
-var commit = 29;
+var commit = 30;
 var ticksToCheckCreepsNumber = 20;
 //var mainSettings = require('main.settings');
 
