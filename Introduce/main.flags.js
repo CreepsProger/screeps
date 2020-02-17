@@ -3,7 +3,7 @@ var lastFlagRemoved;
 
 var mainFlags = {
     
-    tryCreateCreep: function(err, type, needed = 0, weight) {
+    tryCreateCreep: function(preverr, type, needed = 0, weight) {
         var body = [];
         var RAs = Math.trunc(type%10000000000/100000000);
         var  As = Math.trunc(type%100000000/1000000);
@@ -32,16 +32,16 @@ var mainFlags = {
                     , 'cost:'
                     , cost
                     , 'prev err:'
-                    , err
+                    , preverr
                   );
-        if(err && needsNumber > 0) {
+        if(preverr && needsNumber > 0) {
             console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                             , 'trying create a creep:'
                             , newName
                             , 'body:'
                             , body
                           );
-            err = Game.spawns['Spawn1'].spawnCreep(body
+            preverr = Game.spawns['Spawn1'].spawnCreep(body
                                                    , newName
                                                    , {memory: {n: Memory.CreepsCounter, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
             if(err) {
@@ -58,7 +58,7 @@ var mainFlags = {
                 Memory.CreepsNumberByType[type] = 0;
             Memory.CreepsNumberByType[type]++;
             Memory.CreepsCounter++;
-            return err;
+            return preverr;
         }
     },
 
