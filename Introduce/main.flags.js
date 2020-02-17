@@ -2,6 +2,64 @@
 var lastFlagRemoved;
 
 var mainFlags = {
+    
+    tryCreateCreep: function(err, type, needed = 0, weight) {
+        var body = [];
+        var RAs = Math.trunc(type/10000000000);
+        var  As = Math.trunc(type%10000000000/100000000);
+        var  Ws = Math.trunc(type%10000000000%100000000/1000000);
+        var  Cs = Math.trunc(type%10000000000%100000000%1000000/10000);
+        var  Ms = Math.trunc(type%10000000000%100000000%1000000%10000/100);
+        for (var i = 0; i < RAs; i++) {body.push(RANGED_ATTACK);}
+        for (var i = 0; i < As; i++) {body.push(ATTACK);}
+        for (var i = 0; i < Ws; i++) {body.push(WORK);}
+        for (var i = 0; i < Cs; i++) {body.push(CARRY);}
+        for (var i = 0; i < Ms; i++) {body.push(MOVE);}
+        var energy = 50 * (2*As + 2*Ws + Cs + Ms);
+        var existsNumber = 0;
+        if(Memory.CreepsNumberByType[type])
+            existsNumber = Memory.CreepsNumberByType[type];
+        var needsNumber = needed - existsNumber;
+        //   var newName = 'creep-' + weight + '-' + As.toString(16) + Ws.toString(16) + Cs.toString(16) + Ms.toString(16) + '-' + Game.time % 10000;
+        var twoSymbols = function(Ts,s='00') {return (s=='00'?'':Ts==0?'00':Ts<10?'0':'') + Ts;};
+        var newName =
+            'creep-' + weight + '-' + 
+            twoSymbols(RAs) + 
+            twoSymbols(As) +
+            twoSymbols(Ws) +
+            twoSymbols(Cs) +
+            twoSymbols(Ms) + '-' + Game.time % 10000;
+        console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+                    , 'trying create a creep:'
+                    , newName
+                    , type
+                    , body
+                    , 'exists:'
+                    , existsNumber
+                    , 'needs:'
+                    , needsNumber
+                    , 'energy:'
+                    , energy
+                    , 'weight:'
+                    , weight
+                  );
+        if(err && needsNumber > 0) {
+            err = Game.spawns['Spawn1'].spawnCreep(body
+                                                   , newName
+                                                   , {memory: {n: Memory.CreepsCounter, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
+            if(!err) {
+                console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+                            , 'Spawning new creep:'
+                            , newName);
+                if(!Memory.CreepsNumberByType[type])
+                    Memory.CreepsNumberByType[type] = 0;
+                Memory.CreepsNumberByType[type]++;
+                Memory.CreepsCounter++;
+            }
+        }
+        return err;
+    },
+
     /** @param commit **/
     checkMainCommit: function(commit) {
         if(!Memory.commits.main ||
@@ -85,6 +143,18 @@ var mainFlags = {
                     , id2
                    );
         lastFlagRemoved = T;
+        lastFlagRemoved.remove();
+    },
+    // Spawn Creep
+    SC: function(SC) {
+        var err = ERR_NOT_ENOUGH_ENERGY;
+        
+        if(CL >= 4) err = mainFlags.tryCreateCreep(err, 60707, 100, 10); // E 1300   Avg
+        if(CL >= 3) err = mainFlags.tryCreateCreep(err, 40404, 100, 10); // E 800 Worker
+        if(CL >= 2) err = mainFlags.tryCreateCreep(err, 30302, 100, 10); // E 550 Worker
+        if(CL >= 1) err = mainFlags.tryCreateCreep(err, 10202, 100, 10); // E 300 Worker
+
+        lastFlagRemoved = CMTRC;
         lastFlagRemoved.remove();
     },
     // Creep Move To Room Controller
