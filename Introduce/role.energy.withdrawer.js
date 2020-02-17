@@ -12,7 +12,7 @@ var roleEnergyWithdrawer = {
             var target;
 
             if(!target) {
-                target = creep.pos.findClosestByPath(FIND_RESURSES);
+                target = creep.pos.findClosestByPath(FIND_DROPPED_RESOURCES);
 //                 target = creep.pos.findClosestByPath(FIND_TOMBSTONES);
             }
             if(target) {
