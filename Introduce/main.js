@@ -165,8 +165,8 @@ module.exports.loop = function () {
          var err = ERR_NOT_ENOUGH_ENERGY;
          var N = Memory.totals.CreepsNumber;
 
-         if(CL >= 4) err = tryCreateCreep(err,  61202, N<5?1:0, 59); // E 1300   Miner
-         if(CL >= 4) err = tryCreateCreep(err,    620, N<5?1:0, 54); // E 1300 Carrier
+         if(CL >= 4) err = tryCreateCreep(err,  71002, N<5?1:0, 59); // E 1300   Miner
+         if(CL >= 4) err = tryCreateCreep(err,   1610, N<5?1:0, 54); // E 1300 Carrier
          if(CL >= 4) err = tryCreateCreep(err, 100402, N<5?1:0, 50); // E 1300  Worker
          if(CL >= 4) err = tryCreateCreep(err,  22002, N<5?0:0, 58); // E 1300   Miner
          if(CL >= 4) err = tryCreateCreep(err,   2006, N<5?1:0, 55); // E 1300 Carrier
