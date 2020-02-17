@@ -69,7 +69,8 @@ var mainFlags = {
     // T: Test
     T: function(T) {
         var N = 1234;
-        var id = '\$Id:\$'; 
+        var id = '\$\I\d\: \$'; 
+        var id2 = '$Id: $'; 
         console.log( 'Ｔ', Math.trunc(Game.time/10000), Game.time%10000
                     , T
                     , 'String.fromCharCode(65):'
@@ -80,6 +81,8 @@ var mainFlags = {
                     , N.toString(16).toUpperCase()
                     , 'id:'
                     , id
+                    , 'id2:'
+                    , id2
                    );
         lastFlagRemoved = T;
         lastFlagRemoved.remove();
