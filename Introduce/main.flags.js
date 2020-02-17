@@ -181,7 +181,7 @@ var mainFlags = {
                 }
             });
             if(target)
-                creep.moveTo(found[0].room.controller);
+                creep.moveTo(target);
         }
         
         lastFlagRemoved = CMTCC;
