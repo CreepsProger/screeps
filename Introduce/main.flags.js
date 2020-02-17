@@ -22,9 +22,6 @@ var mainFlags = {
         var needsNumber = needed - existsNumber;
         //   var newName = 'creep-' + weight + '-' + As.toString(16) + Ws.toString(16) + Cs.toString(16) + Ms.toString(16) + '-' + Game.time % 10000;
         var twoSymbols = function(Ts) {return (Ts==0?'..':Ts<10?'0':'') + Ts;};
-        console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-                    , 'trying create a creep:'
-                    , 'type:', RAs, As, Ws, Cs,Ms);
         var newName =
             'creep-' + weight + '-' + 
             twoSymbols(RAs) + 
@@ -34,9 +31,11 @@ var mainFlags = {
             twoSymbols(Ms) + '-' + Game.time % 10000;
         console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                     , 'trying create a creep:'
+                    , 'type:', RAs, As, Ws, Cs, Ms, 'newName:', newName);
+        console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+                    , 'trying create a creep:'
                     , newName
                     , type
-                    , body
                     , 'exists:'
                     , existsNumber
                     , 'needs:'
@@ -45,6 +44,8 @@ var mainFlags = {
                     , energy
                     , 'weight:'
                     , weight
+                    , 'body:'
+                    , body
                   );
         if(err && needsNumber > 0) {
             err = Game.spawns['Spawn1'].spawnCreep(body
