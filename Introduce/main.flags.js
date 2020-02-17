@@ -199,7 +199,7 @@ var mainFlags = {
                 }
             });
             if(target)
-                creep.withdrow(target,RESOURCE_ENERGY));
+                creep.withdrow(target,RESOURCE_ENERGY);
         }
         
         lastFlagRemoved = CWEFC;
