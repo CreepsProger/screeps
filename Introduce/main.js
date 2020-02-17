@@ -19,10 +19,12 @@ function updateMovingAverage(x) {
 
 function tryCreateCreep(err, type, needed = 0, weight) {
    var body = [];
-   var As = Math.trunc(type/1000000);
-   var Ws = Math.trunc(type%1000000/10000);
-   var Cs = Math.trunc(type%1000000%10000/100);
-   var Ms = Math.trunc(type%1000000%10000%100);
+   var RAs = Math.trunc(type/100000000);
+   var As = Math.trunc(type/100000000);
+   var Ws = Math.trunc(type%100000000/1000000);
+   var Cs = Math.trunc(type%100000000%1000000%10000/100);
+   var Ms = Math.trunc(type%100000000%1000000%10000%100);
+   for (var i = 0; i < RAs; i++) {body.push(RANGED_ATTACK);}
    for (var i = 0; i < As; i++) {body.push(ATTACK);}
    for (var i = 0; i < Ws; i++) {body.push(WORK);}
    for (var i = 0; i < Cs; i++) {body.push(CARRY);}
@@ -33,21 +35,28 @@ function tryCreateCreep(err, type, needed = 0, weight) {
       existsNumber = Memory.CreepsNumberByType[type];
    var needsNumber = needed - existsNumber;
 //   var newName = 'creep-' + weight + '-' + As.toString(16) + Ws.toString(16) + Cs.toString(16) + Ms.toString(16) + '-' + Game.time % 10000;
-   var newName = 'creep-' + weight + '-' + As + Ws + Cs + Ms + '-' + Game.time % 10000;
-//    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-//                     , 'trying create a creep:'
-//                     , newName
-//                     , type
-//                     , body
-//                     , 'exists:'
-//                     , existsNumber
-//                     , 'needs:'
-//                     , needsNumber
-//                     , 'energy:'
-//                     , energy
-//                     , 'weight:'
-//                     , weight
-//                   );
+   var twoSymbols = function(Ts) {return (Ts==0?'00':Ts<10 ? '0':'') + Ts;};
+   var newName =
+       'creep-' + weight + '-' + 
+       twoSymbols(RAs) + 
+       twoSymbols(As) +
+       twoSymbols(Ws) +
+       twoSymbols(Cs) +
+       twoSymbols(Ms) + '-' + Game.time % 10000;
+   console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+                    , 'trying create a creep:'
+                    , newName
+                    , type
+                    , body
+                    , 'exists:'
+                    , existsNumber
+                    , 'needs:'
+                    , needsNumber
+                    , 'energy:'
+                    , energy
+                    , 'weight:'
+                    , weight
+                  );
    if(err && needsNumber > 0) {
       err = Game.spawns['Spawn1'].spawnCreep(body
                                              , newName
@@ -165,11 +174,11 @@ module.exports.loop = function () {
          var err = ERR_NOT_ENOUGH_ENERGY;
          var N = Memory.totals.CreepsNumber;
 
-         if(CL >= 4) err = tryCreateCreep(err,  601103, N<5?1:0, 59); // E 1300   Miner
-         if(CL >= 4) err = tryCreateCreep(err, 2001012, N<5?1:0, 53); // E 1300 Carrier
-         if(CL >= 4) err = tryCreateCreep(err,  110202, N<5?1:0, 50); // E 1300  Worker
-         if(CL >= 4) err = tryCreateCreep(err,   60707, N<5?0:0, 58); // E 1300     Avg
-         if(CL >= 4) err = tryCreateCreep(err, 2001408, N<5?1:0, 55); // E 1300 Carrier
+         if(CL >= 4) err = tryCreateCreep(err,    601103, N<5?1:0, 59); // E 1300   Miner
+         if(CL >= 4) err = tryCreateCreep(err, 200001012, N<5?1:0, 53); // E 1300 Carrier
+         if(CL >= 4) err = tryCreateCreep(err,    110202, N<5?1:0, 50); // E 1300  Worker
+         if(CL >= 4) err = tryCreateCreep(err,     60707, N<5?0:0, 58); // E 1300     Avg
+         if(CL >= 4) err = tryCreateCreep(err, 200001408, N<5?1:0, 55); // E 1300 Carrier
 
          if(CL >= 3) err = tryCreateCreep(err, 40404, N?0:1, 60); // E 800 Worker
 //          if(CL >= 3) err = tryCreateCreep(err, 40701, 2, 69); // E 800   Miner
