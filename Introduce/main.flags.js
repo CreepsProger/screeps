@@ -147,6 +147,7 @@ var mainFlags = {
     },
     // Spawn Creep
     SC: function(SC) {
+        const CL = Controller.level;
         var err = ERR_NOT_ENOUGH_ENERGY;
         
         if(CL >= 4) err = mainFlags.tryCreateCreep(err, 60707, 100, 10); // E 1300   Avg
