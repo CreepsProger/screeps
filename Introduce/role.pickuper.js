@@ -1,4 +1,4 @@
-var roleEnergyTransferer = require('role.energy.transferer');
+var roleNoEnergyTransferer = require('role.noenergy.transferer');
 
 var roleEnergyPickuper = {
 
@@ -9,7 +9,8 @@ var roleEnergyPickuper = {
         }
 
         if(!creep.memory.pickuping &&
-          creep.store.getFreeCapacity() > 0) {
+          creep.store.getFreeCapacity() > 0 &&
+          creep.getActiveBodyparts(WORK) == 0) {
             var target;
 
             if(!target) {
@@ -33,11 +34,11 @@ var roleEnergyPickuper = {
             }
             else {
                 creep.memory.pickuping = false;
-                roleEnergyTransferer.run(creep);
+                roleNoEnergyTransferer.run(creep);
             }
         }
         else {
-            roleEnergyTransferer.run(creep);
+            roleNoEnergyTransferer.run(creep);
         }
     }
 };
