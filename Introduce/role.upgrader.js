@@ -52,6 +52,7 @@ var roleUpgrader = {
 
             }
             else if(!err) {
+                creep.withdraw(creep.room.storage,RESOURCE_ENERGY);
                 creep.say('🛠');
             }
             else {
