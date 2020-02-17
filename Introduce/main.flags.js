@@ -49,7 +49,7 @@ var mainFlags = {
                             , 'Can\'t spawn new creep:'
                             , newName
                             , 'err:'
-                            , err);
+                            , preverr);
             }
             console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                         , 'Spawning new creep:'
