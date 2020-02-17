@@ -31,16 +31,8 @@ var mainFlags = {
                     , needsNumber
                     , 'cost:'
                     , cost
-                    , 'prev err:'
-                    , preverr
                   );
         if(preverr && needsNumber > 0) {
-            console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-                            , 'trying create a creep:'
-                            , newName
-                            , 'body:'
-                            , body
-                          );
             preverr = Game.spawns['Spawn1'].spawnCreep(body
                                                    , newName
                                                    , {memory: {n: Memory.CreepsCounter, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
