@@ -88,6 +88,8 @@ var mainFlags = {
                             , creep
                             , 'creep.memory.type'
                             , creep.memory.type
+                            , 'creep.getActiveBodyparts(WORK)'
+                            , creep.getActiveBodyparts(WORK)
                             , Memory.CreepsNumberByType[creep.memory.type]
                             , Memory.CreepsCounter);
             }
