@@ -1,5 +1,5 @@
 var roleEnergyWithdrawer = require('role.energy.withdrawer');
-var roleEnergyTransferer = require('role.energy.transferer');
+// var roleEnergyTransferer = require('role.energy.transferer');
 
 function lookNearestLighterAtPosition(room,weight,x,y) { 
     var nearestLighter;
