@@ -5,7 +5,7 @@ var roleEnergyPickuper = {
     /** @param {Creep} creep **/
     run: function(creep) {
         if(creep.memory.pickuping && creep.store.getFreeCapacity() == 0) {
-            creep.memory.withdrawing = false;
+            creep.memory.pickuping = false;
         }
 
         if(!creep.memory.pickuping &&
