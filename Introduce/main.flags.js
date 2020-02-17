@@ -31,6 +31,8 @@ var mainFlags = {
                     , needsNumber
                     , 'cost:'
                     , cost
+                    , 'prev err:'
+                    , err
                   );
         if(err && needsNumber > 0) {
             console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
