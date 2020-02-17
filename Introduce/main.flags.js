@@ -147,6 +147,8 @@ var mainFlags = {
     },
     // Spawn Creep
     SC: function(SC) {
+        var Spawn = Game.spawns['Spawn1'];
+        var Controller = Spawn.room.controller;
         const CL = Controller.level;
         var err = ERR_NOT_ENOUGH_ENERGY;
         
