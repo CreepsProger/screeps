@@ -120,7 +120,7 @@ module.exports.loop = function () {
          if(CL >= 4) err = mainFlags.tryCreateCreep(err, 200000911, N<5?1:0, 53); // E 1300 Carrier
          if(CL >= 4) err = mainFlags.tryCreateCreep(err,     60707,N==0?1:0, 58); // E 1300     Avg
          if(CL >= 4) err = mainFlags.tryCreateCreep(err,     61103, N<5?1:0, 59); // E 1300   Miner
-         if(CL >= 4) err = mainFlags.tryCreateCreep(err,    110202, N<5?1:0, 50); // E 1300  Worker
+         if(CL >= 4) err = mainFlags.tryCreateCreep(err,    110201, N<5?1:0, 50); // E 1300  Worker
          if(CL >= 4) err = mainFlags.tryCreateCreep(err, 200001208, N<5?1:0, 55); // E 1300 Carrier
 
          if(CL >= 3) err = mainFlags.tryCreateCreep(err, 40404, N?0:1, 60); // E 800 Worker
