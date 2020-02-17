@@ -14,6 +14,7 @@ var roleAttacker = {
            const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 3);
            if(targets.length > 0) {
               creep.memory.target = targets[0].id;
+               creep.memory.attacking = true;
               }
         }
 
