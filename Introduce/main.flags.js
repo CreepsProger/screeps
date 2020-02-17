@@ -87,6 +87,15 @@ var mainFlags = {
         lastFlagRemoved = T;
         lastFlagRemoved.remove();
     },
+    // Creep Move To Room Controller
+    CMTRC: function(CMTRC) {
+        const found = CMTRC.pos.lookFor(LOOK_CREEPS);
+        if(found.length) {
+            found[0].moveTo(found[0].room.controller);
+        }
+        lastFlagRemoved = CMTRC;
+        lastFlagRemoved.remove();
+    },
     // Destroy Rampart
     DR: function(DR) {
         var rampart = DR.pos.findClosestByPath(FIND_STRUCTURES, {
