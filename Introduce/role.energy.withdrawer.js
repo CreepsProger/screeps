@@ -15,12 +15,7 @@ var roleEnergyWithdrawer = {
             var target;
 
             if(!target) {
-                target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                    filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_CONTAINER) &&
-                            structure.store.getUsedCapacity(RESOURCE_ENERGY) > getFreeCapacity(RESOURCE_ENERGY);
-                    }
-                });
+                target = creep.pos.findClosestByPath(FIND_TOMBSTONES);
             }
             if(target) {
                 creep.memory.withdrawing = true;
@@ -30,7 +25,7 @@ var roleEnergyWithdrawer = {
 
         if(creep.memory.withdrawing) {
             var target = Game.getObjectById(creep.memory.target);
-            var err = creep.withdraw(target, RESOURCE_ENERGY);
+            var err = creep.withdraw(target);
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                 creep.say('⚡🚐');
