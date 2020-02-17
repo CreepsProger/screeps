@@ -169,6 +169,42 @@ var mainFlags = {
         lastFlagRemoved = CMTRC;
         lastFlagRemoved.remove();
     },
+    // Creep Move To Closest Container
+    CMTCC: function(CMTCC) {
+        const found = CMTCC.pos.lookFor(LOOK_CREEPS);
+        if(found.length) {
+            var creep = found[0];
+            var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                filter: (structure) => {
+                    return (structure.structureType == STRUCTURE_CONTAINER) &&
+                        structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+                }
+            });
+            if(target)
+                creep.moveTo(found[0].room.controller);
+        }
+        
+        lastFlagRemoved = CMTCC;
+        lastFlagRemoved.remove();
+    },
+    // Creep Withdraw Energy From Container
+    CWEFC: function(CWEFC) {
+        const found = CWEFC.pos.lookFor(LOOK_CREEPS);
+        if(found.length) {
+            var creep = found[0];
+            var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                filter: (structure) => {
+                    return (structure.structureType == STRUCTURE_CONTAINER) &&
+                        structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+                }
+            });
+            if(target)
+                creep.withdrow(target,RESOURCE_ENERGY));
+        }
+        
+        lastFlagRemoved = CWEFC;
+        lastFlagRemoved.remove();
+    },
     // Destroy Rampart
     DR: function(DR) {
         var rampart = DR.pos.findClosestByPath(FIND_STRUCTURES, {
