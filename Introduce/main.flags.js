@@ -12,8 +12,10 @@ var mainFlags = {
                         , 'Commit main'
                         , Memory.commits.main
                         , Game.flags['commit']);
-            if(Game.flags['commit'])
-                Game.flags['commit'].remove();
+            if(Game.flags['commit']) {
+                lastFlagRemoved = Game.flags['commit'];
+                lastFlagRemoved.remove();
+            } 
             
             Memory.CreepsCounter = 0;
             Memory.CreepsNumberByType = {};
