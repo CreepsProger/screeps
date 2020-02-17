@@ -150,10 +150,10 @@ var mainFlags = {
         const CL = Controller.level;
         var err = ERR_NOT_ENOUGH_ENERGY;
         
-        if(CL >= 4) err = mainFlags.tryCreateCreep(err, 60707, 100, 10); // E 1300   Avg
-        if(CL >= 3) err = mainFlags.tryCreateCreep(err, 40404, 100, 10); // E 800 Worker
-        if(CL >= 2) err = mainFlags.tryCreateCreep(err, 30302, 100, 10); // E 550 Worker
-        if(CL >= 1) err = mainFlags.tryCreateCreep(err, 10202, 100, 10); // E 300 Worker
+        if(CL >= 4) mainFlags.tryCreateCreep(err, 60707, 100, 10); // E 1300   Avg
+        if(CL >= 3) mainFlags.tryCreateCreep(err, 40404, 100, 10); // E 800 Worker
+        if(CL >= 2) mainFlags.tryCreateCreep(err, 30302, 100, 10); // E 550 Worker
+        if(CL >= 1) mainFlags.tryCreateCreep(err, 10202, 100, 10); // E 300 Worker
 
         lastFlagRemoved = SC;
         lastFlagRemoved.remove();
