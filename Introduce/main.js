@@ -1,7 +1,7 @@
 //import {checkFlags} from 'main.flags.js';
 //import {checkMainCommit} from 'main.flags.js';
 var mainFlags = require('main.flags');
-var roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
+var roleAttacker = require('role.attacker');
 
 var commit = 31;
 var ticksToCheckCreepsNumber = 20;
@@ -159,8 +159,7 @@ module.exports.loop = function () {
 
       if(creep.memory.role == 'creep') {
          creep.memory.rerun = 0;
-         //require('role.energy.harvester').run(creep);
-         roleEnergyTransfererToNearestLighter.run(creep);
+         roleAttacker.run(creep);
       }
    }
 }
