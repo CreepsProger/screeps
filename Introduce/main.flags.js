@@ -15,51 +15,45 @@ var mainFlags = {
         for (var i = 0; i < Ws; i++) {body.push(WORK);}
         for (var i = 0; i < Cs; i++) {body.push(CARRY);}
         for (var i = 0; i < Ms; i++) {body.push(MOVE);}
-        var energy = 50 * (2*As + 2*Ws + Cs + Ms);
+        var cost = 50 * (2*RAs + 2*As + 2*Ws + Cs + Ms);
         var existsNumber = 0;
         if(Memory.CreepsNumberByType[type])
             existsNumber = Memory.CreepsNumberByType[type];
         var needsNumber = needed - existsNumber;
-//         var newName = 'creep-' + weight + '-' + As.toString(16) + Ws.toString(16) + Cs.toString(16) + Ms.toString(16) + '-' + Game.time % 10000;
         var twoSymbols = function(Ts) {return (Ts==0?'..':Ts<10?'0':'') + Ts;};
-//         var newName =
-//             'creep-' + weight + '-' + 
-//             twoSymbols(RAs) + 
-//             twoSymbols(As) +
-//             twoSymbols(Ws) +
-//             twoSymbols(Cs) +
-//             twoSymbols(Ms) + '-' + Game.time % 10000;
         var newName = 'creep-<' + weight + '>-' + RAs + '.' + As + '.' + Ws + '.' + Cs + '.' + Ms + '-' + Game.time % 10000;
-        console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-                    , 'trying create a creep:'
-                    , 'type:', RAs, As, Ws, Cs, Ms, 'newName:', newName);
-        console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-                    , 'trying create a creep:'
-                    , newName
-                    , 'exists:'
-                    , existsNumber
-                    , 'needs:'
-                    , needsNumber
-                    , 'energy:'
-                    , energy
-                    , 'body:'
-                    , body
-                  );
         if(err && needsNumber > 0) {
+            console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+                            , 'trying create a creep:'
+                            , newName
+                            , 'exists:'
+                            , existsNumber
+                            , 'needs:'
+                            , needsNumber
+                            , 'cost:'
+                            , cost
+                            , 'body:'
+                            , body
+                          );
             err = Game.spawns['Spawn1'].spawnCreep(body
                                                    , newName
                                                    , {memory: {n: Memory.CreepsCounter, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
-            if(!err) {
+            if(err) {
                 console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-                            , 'Spawning new creep:'
-                            , newName);
-                if(!Memory.CreepsNumberByType[type])
-                    Memory.CreepsNumberByType[type] = 0;
-                Memory.CreepsNumberByType[type]++;
-                Memory.CreepsCounter++;
+                            , 'Can\'t spawn new creep:'
+                            , newName
+                            , 'err:'
+                            , err);
             }
+            console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+                        , 'Spawning new creep:'
+                        , newName);
+            if(!Memory.CreepsNumberByType[type])
+                Memory.CreepsNumberByType[type] = 0;
+            Memory.CreepsNumberByType[type]++;
+            Memory.CreepsCounter++;
+            return err;
         }
-        return err;
     },
 
     /** @param commit **/
