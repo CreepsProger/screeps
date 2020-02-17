@@ -15,7 +15,7 @@ var mainFlags = {
         for (var i = 0; i < Ws; i++) {body.push(WORK);}
         for (var i = 0; i < Cs; i++) {body.push(CARRY);}
         for (var i = 0; i < Ms; i++) {body.push(MOVE);}
-        var cost = 50 * (2*RAs + 2*As + 2*Ws + Cs + Ms);
+        var cost = 150*RAs + 80*As + 100*Ws + 50*Cs + 50*Ms;
         var existsNumber = 0;
         if(Memory.CreepsNumberByType[type])
             existsNumber = Memory.CreepsNumberByType[type];
