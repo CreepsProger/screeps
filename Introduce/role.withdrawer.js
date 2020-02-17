@@ -1,6 +1,6 @@
 var roleEnergyPickuper = require('role.pickuper');
 
-var roleEnergyWithdrawer = {
+var roleWithdrawer = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
@@ -34,16 +34,16 @@ var roleEnergyWithdrawer = {
             }
             else {
                 creep.memory.withdrawing = false;
-                roleEnergyPickuper.run(creep);
+                rolePickuper.run(creep);
             }
         }
         else {
-            roleEnergyPickuper.run(creep);
+            rolePickuper.run(creep);
         }
     }
 };
 
-module.exports = roleEnergyWithdrawer;
+module.exports = roleWithdrawer;
 
 
 
