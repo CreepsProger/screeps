@@ -198,8 +198,10 @@ var mainFlags = {
                         structure.store[RESOURCE_ENERGY] > 0;
                 }
             });
-            if(target)
-                creep.withdrow(target,RESOURCE_ENERGY);
+            if(target) {
+                var err = creep.withdraw(target, RESOURCE_ENERGY);
+                creep.say('CWEFC ' + err);
+            }
         }
         
         lastFlagRemoved = CWEFC;
