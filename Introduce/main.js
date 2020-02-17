@@ -117,21 +117,21 @@ module.exports.loop = function () {
          var err = ERR_NOT_ENOUGH_ENERGY;
          var N = Memory.totals.CreepsNumber;
 
-         if(CL >= 4) err = mainFlags.tryCreateCreep(err, 200000911, N<5?1:0, 53); // E 1300 Carrier
-         if(CL >= 4) err = mainFlags.tryCreateCreep(err,     60707,N==0?1:0, 58); // E 1300     Avg
-         if(CL >= 4) err = mainFlags.tryCreateCreep(err,     61103, N<5?1:0, 59); // E 1300   Miner
-         if(CL >= 4) err = mainFlags.tryCreateCreep(err,    110202, N<5?1:0, 50); // E 1300  Worker
-         if(CL >= 4) err = mainFlags.tryCreateCreep(err, 200001208, N<5?1:0, 55); // E 1300 Carrier
+         if(CL >= 4) mainFlags.tryCreateCreep(err, 200000911, N<5?1:0, 53); // E 1300 Carrier
+         if(CL >= 4) mainFlags.tryCreateCreep(err,     60707,N==0?1:0, 58); // E 1300     Avg
+         if(CL >= 4) mainFlags.tryCreateCreep(err,     61103, N<5?1:0, 59); // E 1300   Miner
+         if(CL >= 4) mainFlags.tryCreateCreep(err,    110202, N<5?1:0, 50); // E 1300  Worker
+         if(CL >= 4) mainFlags.tryCreateCreep(err, 200001208, N<5?1:0, 55); // E 1300 Carrier
 
-         if(CL >= 3) err = mainFlags.tryCreateCreep(err, 40404, N?0:1, 60); // E 800 Worker
+         if(CL >= 3) mainFlags.tryCreateCreep(err, 40404, N?0:1, 60); // E 800 Worker
 //          if(CL >= 3) err = tryCreateCreep(err, 40701, 2, 69); // E 800   Miner
 //          if(CL >= 3) err = tryCreateCreep(err, 709, 1, 65); // E 800 Carrier
 
-         if(CL >= 2) err = mainFlags.tryCreateCreep(err, 30302, N?0:0, 70); // E 550 Worker
+         if(CL >= 2) mainFlags.tryCreateCreep(err, 30302, N?0:0, 70); // E 550 Worker
 //          if(CL >= 2) err = tryCreateCreep(err, 40201, 2, 79); // E 550   Miner
 //          if(CL >= 2) err = tryCreateCreep(err, 605, 2, 75); // E 550 Carrier
 
-         if(CL >= 1) err = mainFlags.tryCreateCreep(err, 10202, N?0:0, 80); // E 300 Worker
+         if(CL >= 1) mainFlags.tryCreateCreep(err, 10202, N?0:0, 80); // E 300 Worker
 //          if(CL >= 1) err = tryCreateCreep(err, 20101, 4, 89); // E 300   Miner
 //          if(CL >= 1) err = tryCreateCreep(err, 303, 2, 85); // E 300 Carrier
       }
