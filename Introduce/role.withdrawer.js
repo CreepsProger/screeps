@@ -14,7 +14,10 @@ var roleWithdrawer = {
             var target;
 
             if(!target) {
-                target = creep.pos.findClosestByPath(FIND_TOMBSTONES);
+                var targets = creep.pos.findClosestByPath(FIND_TOMBSTONES);
+                if(targets.lenght > 0) {
+                    target = targets[0];
+                }
             }
             if(target) {
                 creep.memory.withdrawing = true;
