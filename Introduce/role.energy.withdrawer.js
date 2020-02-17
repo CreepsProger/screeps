@@ -1,19 +1,18 @@
-var roleEnergyTransferer = require('role.energy.transferer');
+var roleEnergyPickuper = require('role.pickuper.js');
 
 var roleEnergyWithdrawer = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-        if(creep.memory.withdrawing && creep.store[RESOURCE_ENERGY] == 0) {
+        if(creep.memory.withdrawing && creep.store.getFreeCapacity() == 0) {
             creep.memory.withdrawing = false;
         }
 
-        if(!creep.memory.withdrawing && creep.store.getFreeCapacity > 100) {
+        if(!creep.memory.withdrawing && creep.store.getFreeCapacity > 200) {
             var target;
 
             if(!target) {
-                target = creep.pos.findClosestByPath(FIND_DROPPED_RESOURCES);
-//                 target = creep.pos.findClosestByPath(FIND_TOMBSTONES);
+                target = creep.pos.findClosestByPath(FIND_TOMBSTONES);
             }
             if(target) {
                 creep.memory.withdrawing = true;
@@ -23,22 +22,21 @@ var roleEnergyWithdrawer = {
 
         if(creep.memory.withdrawing) {
             var target = Game.getObjectById(creep.memory.target);
-//             var err = creep.withdraw(target);
-            var err = creep.pickup(target);
+            var err = creep.withdraw(target);
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-                creep.say('⚡🚐');
+                creep.say('W🚐');
             }
             else if(!err) {
                 creep.say('🚐');
             }
             else {
                 creep.memory.withdrawing = false;
-                roleEnergyTransferer.run(creep);
+                roleEnergyPickuper.run(creep);
             }
         }
         else {
-            roleEnergyTransferer.run(creep);
+            roleEnergyPickuper.run(creep);
         }
     }
 };
