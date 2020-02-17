@@ -1,4 +1,4 @@
-var roleEnergyPickuper = require('role.pickuper.js');
+var roleEnergyPickuper = require('role.pickuper');
 
 var roleEnergyWithdrawer = {
 
