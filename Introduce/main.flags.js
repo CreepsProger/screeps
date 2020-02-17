@@ -157,7 +157,7 @@ var mainFlags = {
         if(CL >= 2) err = mainFlags.tryCreateCreep(err, 30302, 100, 10); // E 550 Worker
         if(CL >= 1) err = mainFlags.tryCreateCreep(err, 10202, 100, 10); // E 300 Worker
 
-        lastFlagRemoved = CMTRC;
+        lastFlagRemoved = SC;
         lastFlagRemoved.remove();
     },
     // Creep Move To Room Controller
