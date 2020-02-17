@@ -8,7 +8,9 @@ var roleEnergyWithdrawer = {
             creep.memory.withdrawing = false;
         }
 
-        if(!creep.memory.withdrawing && creep.store.getFreeCapacity > 200) {
+        if(!creep.memory.withdrawing &&
+           creep.store.getFreeCapacity() > 0 &&
+           creep.getActiveBodyparts(WORK) == 0) {
             var target;
 
             if(!target) {
