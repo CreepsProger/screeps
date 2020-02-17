@@ -5,11 +5,11 @@ var mainFlags = {
     
     tryCreateCreep: function(err, type, needed = 0, weight) {
         var body = [];
-        var RAs = Math.trunc(type/10000000000);
-        var  As = Math.trunc(type%10000000000/100000000);
-        var  Ws = Math.trunc(type%10000000000%100000000/1000000);
-        var  Cs = Math.trunc(type%10000000000%100000000%1000000/10000);
-        var  Ms = Math.trunc(type%10000000000%100000000%1000000%10000/100);
+        var RAs = Math.trunc(type%10000000000/100000000);
+        var  As = Math.trunc(type%100000000/1000000);
+        var  Ws = Math.trunc(type%1000000/10000);
+        var  Cs = Math.trunc(type%10000/100);
+        var  Ms = Math.trunc(type%100);
         for (var i = 0; i < RAs; i++) {body.push(RANGED_ATTACK);}
         for (var i = 0; i < As; i++) {body.push(ATTACK);}
         for (var i = 0; i < Ws; i++) {body.push(WORK);}
