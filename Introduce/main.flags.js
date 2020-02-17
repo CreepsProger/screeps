@@ -31,6 +31,8 @@ var mainFlags = {
                     , needsNumber
                     , 'cost:'
                     , cost
+                    , 'preverr:'
+                    , preverr
                   );
         if(preverr && needsNumber > 0) {
             preverr = Game.spawns['Spawn1'].spawnCreep(body
