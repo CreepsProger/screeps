@@ -105,6 +105,21 @@ var roleEnergyHarvester = {
                     creep.say('⚡❓❓❓');
                     require('role.energy.transferer.to.nearest.lighter').run(creep);
                 }
+                else {
+                    var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                        filter: (structure) => {
+                            return (structure.structureType == STRUCTURE_CONTAINER) &&
+                                structure.store[RESOURCE_ENERGY] > 0;
+                        }
+                    });
+                    if(target) {
+                        var err = creep.withdraw(target, RESOURCE_ENERGY);
+                        if(err == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(target, {visualizePaathStyle: {stroke: '#ffffff'}});
+                            creep.say('➡️⚡⚡');
+                        }
+                    }
+                }
             }
             else if(!err) {
                 creep.say('⚡');
