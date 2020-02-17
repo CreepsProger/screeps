@@ -51,13 +51,15 @@ var mainFlags = {
                             , 'err:'
                             , preverr);
             }
-            console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+            else {
+                console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                         , 'Spawning new creep:'
                         , newName);
-            if(!Memory.CreepsNumberByType[type])
-                Memory.CreepsNumberByType[type] = 0;
-            Memory.CreepsNumberByType[type]++;
-            Memory.CreepsCounter++;
+                if(!Memory.CreepsNumberByType[type])
+                    Memory.CreepsNumberByType[type] = 0;
+                Memory.CreepsNumberByType[type]++;
+                Memory.CreepsCounter++;
+            }
             return preverr;
         }
     },
