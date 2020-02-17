@@ -21,7 +21,7 @@ var mainFlags = {
             existsNumber = Memory.CreepsNumberByType[type];
         var needsNumber = needed - existsNumber;
         //   var newName = 'creep-' + weight + '-' + As.toString(16) + Ws.toString(16) + Cs.toString(16) + Ms.toString(16) + '-' + Game.time % 10000;
-        var twoSymbols = function(Ts,s='00') {return (s=='00'?'':Ts==0?'00':Ts<10?'0':'') + Ts;};
+        var twoSymbols = function(Ts) {return (Ts==0?'..':Ts<10?'0':'') + Ts;};
         var newName =
             'creep-' + weight + '-' + 
             twoSymbols(RAs) + 
