@@ -94,13 +94,13 @@ var roleEnergyTransfererToNearestLighter = {
             }
             else {
                 creep.memory.transfering.energy.to.nearest.lighter = false;
-                roleEnergyTransferer.run(creep);
-//                 roleEnergyWithdrawer.run(creep);
+//                 roleEnergyTransferer.run(creep);
+                roleEnergyWithdrawer.run(creep);
             }
         }
         else {
-            roleEnergyTransferer.run(creep);
-//             roleEnergyWithdrawer.run(creep);
+//             roleEnergyTransferer.run(creep);
+            roleEnergyWithdrawer.run(creep);
         }
     }
 };
