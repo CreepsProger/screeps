@@ -37,7 +37,7 @@ var roleUpgrader = {
                 if(!new_target) {
                     new_target = creep.room.controller.pos.findClosestByPath(FIND_MY_CREEPS, {
                     filter: (creep2) => {
-                        return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > 100 &&
+                        return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > 50 &&
                             creep.memory.weight > creep2.memory.weight;
                         }
                     });
