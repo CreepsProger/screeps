@@ -17,7 +17,7 @@ var roleEnergyHarvester = {
         if(!creep.memory.target_index) 
            creep.memory.target_index = 0;
 
-        if(creep.memory.harvesting && creep.store[RESOURCE_ENERGY] == 0) {
+        if(creep.memory.harvesting && creep.store.getFreeCapacity() == 0) {
             creep.memory.harvesting = false;
         }
 
