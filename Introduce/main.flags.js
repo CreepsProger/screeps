@@ -44,7 +44,7 @@ var mainFlags = {
             preverr = Game.spawns['Spawn1'].spawnCreep(body
                                                    , newName
                                                    , {memory: {n: Memory.CreepsCounter, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
-            if(err) {
+            if(preverr) {
                 console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                             , 'Can\'t spawn new creep:'
                             , newName
