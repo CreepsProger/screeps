@@ -1,6 +1,6 @@
 var roleNoEnergyTransferer = require('role.noenergy.transferer');
 
-var roleEnergyPickuper = {
+var rolePickuper = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
@@ -43,4 +43,4 @@ var roleEnergyPickuper = {
     }
 };
 
-module.exports = roleEnergyPickuper;
+module.exports = rolePickuper;
