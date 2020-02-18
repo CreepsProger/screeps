@@ -23,8 +23,8 @@ var roleEnergyHarvester = {
             creep.memory.harvesting = false;
         }
         if(!creep.memory.harvesting &&
-           (creep.store.getUsedCapacity[RESOURCE_ENERGY] == 0 ||
-            (creep.memory.rerun && creep.store.getFreeCapacity() > 0))) {
+           (creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0 ||
+            (creep.memory.rerun && creep.store.getUsedCapacity[RESOURCE_ENERGY] > 0))) {
             var targets = creep.room.find(FIND_SOURCES, {
                 filter: (source) => source.energy >= (creep.memory.rerun? 0:1)
             });
