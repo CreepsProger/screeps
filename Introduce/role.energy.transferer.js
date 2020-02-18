@@ -4,13 +4,13 @@ var roleEnergyTransferer = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-        if(creep.memory.transfering && creep.store[RESOURCE_ENERGY] == 0) {
+        if(creep.memory.transfering && creep.store.getUsedCapacity[RESOURCE_ENERGY] == 0) {
             creep.memory.transfering = false;
         }
 
         if(!creep.memory.transfering &&
-           (creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0 ||
-            (creep.memory.rerun && creep.store.getUsedCapacity[RESOURCE_ENERGY] > 0))) {
+           (creep.store.getUsedCapacity[RESOURCE_ENERGY] > 0 && creep.store.getFreeCapacity() == 0 ||
+            (creep.store.getUsedCapacity[RESOURCE_ENERGY] > 0 && creep.memory.rerun))) {
             var target;
 
             if(!target) {
