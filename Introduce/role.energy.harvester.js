@@ -89,7 +89,7 @@ var roleEnergyHarvester = {
 					creep.say('➡️➡️⚡');
 				}
 				else {
-					creep.memory.harvesting = flase;
+					creep.memory.harvesting = false;
 					if(creep.memory.rerun && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
 						var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 							filter: (structure) => {
