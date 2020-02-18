@@ -5,13 +5,13 @@ var roleUpgrader = {
     /** @param {Creep} creep **/
     run: function(creep) {
 
-        if(creep.memory.upgrading && creep.store.getUsedCapacity[RESOURCE_ENERGY] == 0) {
+        if(creep.memory.upgrading && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
             creep.memory.upgrading = false;
         }
 
         if(!creep.memory.upgrading &&
-           (creep.store.getUsedCapacity[RESOURCE_ENERGY] > 0 && creep.store.getFreeCapacity() == 0) ||
-            (creep.store.getUsedCapacity[RESOURCE_ENERGY] > 0 && creep.memory.rerun)) {
+           (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() == 0) ||
+            (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun)) {
             creep.memory.upgrading = true;
         }
 
