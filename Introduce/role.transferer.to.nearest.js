@@ -62,8 +62,8 @@ var roleTransfererToNearest = {
         }
 
         if(!creep.memory.transfering_to_nearest &&
-           (creep.store.getUsedCapacity[RESOURCE_ENERGY] > creep.store.getFreeCapacity() ||
-            (creep.memory.rerun && creep.store.getUsedCapacity[RESOURCE_ENERGY] > 0))) {
+           (creep.store.getUsedCapacity[RESOURCE_ENERGY] > creep.store.getFreeCapacity()) ||
+            (creep.memory.rerun && creep.store.getUsedCapacity[RESOURCE_ENERGY] > 0)) {
             var targets = lookNearestLighterForCreep(creep);
 //              var targets = creep.room.find(FIND_MY_CREEPS, {
 //                  filter: (nearestLighter) => {
