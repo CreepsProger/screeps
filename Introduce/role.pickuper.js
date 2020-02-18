@@ -1,4 +1,4 @@
-var roleNoEnergyTransferer = require('role.noenergy.transferer');
+var roleNext = require('role.builder');
 
 var rolePickuper = {
 
@@ -34,11 +34,11 @@ var rolePickuper = {
             }
             else {
                 creep.memory.pickuping = false;
-                roleNoEnergyTransferer.run(creep);
+                roleNext.run(creep);
             }
         }
         else {
-            roleNoEnergyTransferer.run(creep);
+            roleNext.run(creep);
         }
     }
 };
