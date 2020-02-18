@@ -56,7 +56,7 @@ var roleEnergyHarvester = {
                     creep.say('⚡❓');
                 }
                 else {
-                    creep.say('➡️⚡');
+                    creep.say('➡️⚡'); //!
                 }
             }
             else if(!err) {
