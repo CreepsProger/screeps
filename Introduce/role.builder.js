@@ -5,14 +5,14 @@ var roleBuilder = {
     /** @param {Creep} creep **/
     run: function(creep) {
 
-        if(creep.memory.building && creep.store[RESOURCE_ENERGY] == 0) {
+        if(creep.memory.building && creep.store.getUsedCapacity[RESOURCE_ENERGY] == 0) {
             creep.memory.building = false;
             creep.say('stop building');
         }
-            
+        
         if(!creep.memory.building &&
-           (creep.store[RESOURCE_ENERGY] > creep.store.getFreeCapacity() ||
-            (creep.memory.rerun && creep.store[RESOURCE_ENERGY] > 0))) {
+           (creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0 ||
+            (creep.memory.rerun && creep.store.getUsedCapacity[RESOURCE_ENERGY] > 0))) {
             var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
             if(targets.length > 0) {
                 creep.memory.building = true;
