@@ -5,13 +5,13 @@ var roleNoEnergyTransferer = {
     /** @param {Creep} creep **/
     run: function(creep) {
         if(creep.memory.noenergytransferer &&
-            creep.store.getUsedCapacity() == creep.store[RESOURCE_ENERGY]) {
+            creep.store.getUsedCapacity() == creep.store.getUsedCapacity(RESOURCE_ENERGY)) {
             creep.memory.noenergytransferer = false;
         }
 
-        if(!creep.memory.pickuping &&
+        if(!creep.memory.noenergytransferer &&
           creep.store.getFreeCapacity() > 0 &&
-          creep.store.getUsedCapacity() > creep.store[RESOURCE_ENERGY]) {
+          creep.store.getUsedCapacity() > creep.store.getUsedCapacity(RESOURCE_ENERGY)) {
             var target;
 
             if(!target) {
