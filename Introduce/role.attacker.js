@@ -1,4 +1,4 @@
-var roleTransfererToNearest = require('role.transferer.to.nearest');
+var roleNext = require('role.transferer.to.nearest');
 
 var roleAttacker = {
 
@@ -30,11 +30,11 @@ var roleAttacker = {
             }
             else {
                 creep.memory.attacking = false;
-                roleTransfererToNearest.run(creep);
+                roleNext.run(creep);
             }
         }
         else {
-            roleTransfererToNearest.run(creep);
+            roleNext.run(creep);
         }
     }
 };
