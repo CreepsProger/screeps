@@ -17,11 +17,14 @@ var roleEnergyHarvester = {
         if(!creep.memory.target_index) 
            creep.memory.target_index = 0;
 
-        if(creep.memory.harvesting && creep.store.getFreeCapacity() == 0) {
+        if(creep.memory.harvesting &&
+           creep.store.getFreeCapacity() == 0) {
             creep.memory.harvesting = false;
         }
 
-        if(!creep.memory.harvesting && creep.store.getFreeCapacity() > 0) {
+        if(!creep.memory.harvesting &&
+           (creep.store.store[RESOURCE_ENERGY] == 0 ||
+            creep.memory.rerun)) {
             var targets = creep.room.find(FIND_SOURCES, {
                 filter: (source) => source.energy >= (creep.memory.rerun? 0:1)
             });
@@ -71,7 +74,7 @@ var roleEnergyHarvester = {
                 if(!new_target) {
                     new_target = target.pos.findClosestByPath(FIND_MY_CREEPS, {
                     filter: (creep2) => {
-                        return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > creep2.store.getFreeCapacity(RESOURCE_ENERGY) &&
+                        return creep2.store[RESOURCE_ENERGY] > creep2.store.getFreeCapacity(RESOURCE_ENERGY) &&
                             creep.memory.weight < creep2.memory.weight;
                         }
                     });
