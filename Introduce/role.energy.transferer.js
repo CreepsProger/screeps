@@ -1,4 +1,4 @@
-var roleNext = require('role.withdrawer');
+var roleNext = require('role.noenergy.transferer');
 
 var roleEnergyTransferer = {
 
