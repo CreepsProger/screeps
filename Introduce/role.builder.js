@@ -1,4 +1,4 @@
-var roleUpgrader = require('role.upgrader');
+var roleNext = require('role.upgrader');
 
 var roleBuilder = {
 
@@ -65,11 +65,11 @@ var roleBuilder = {
             }
             else {
                 creep.memory.building = false;
-                roleUpgrader.run(creep);
+                roleNext.run(creep);
             }
         }
         else {
-            roleUpgrader.run(creep);
+            roleNext.run(creep);
         }
     }
 };
