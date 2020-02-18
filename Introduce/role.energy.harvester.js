@@ -103,7 +103,7 @@ var roleEnergyHarvester = {
 //                                 , '⚡' + creep.name + '❓❓ no source! rerun role.energy.transferer.to.nearest.lighter'
 //                                 , creep.memory.rerun);
                     creep.say('⚡❓❓❓');
-                    require('role.energy.transferer.to.nearest.lighter').run(creep);
+                    require('role.attacker').run(creep);
                 }
                 else if (creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
                     var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
