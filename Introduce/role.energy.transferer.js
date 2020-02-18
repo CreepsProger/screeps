@@ -55,6 +55,14 @@ var roleEnergyTransferer = {
                     }
                 });
             }
+            if(!target) {
+                target = target.pos.findClosestByPath(FIND_MY_CREEPS, {
+                    filter: (creep2) => {
+                        return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+                            creep2.memory.weight < creep.memory.weight;
+                    }
+                });
+            }
             if(target) {
                 creep.memory.transfering = true;
                 creep.memory.target = target.id;
