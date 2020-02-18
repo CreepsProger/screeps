@@ -1,4 +1,4 @@
-var rolePickuper = require('role.pickuper');
+var roleNext = require('role.pickuper');
 
 var roleWithdrawer = {
 
@@ -34,11 +34,11 @@ var roleWithdrawer = {
             }
             else {
                 creep.memory.withdrawing = false;
-                rolePickuper.run(creep);
+                roleNext.run(creep);
             }
         }
         else {
-            rolePickuper.run(creep);
+            roleNext.run(creep);
         }
     }
 };
