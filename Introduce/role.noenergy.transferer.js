@@ -1,4 +1,4 @@
-var roleEnergyTransferer = require('role.energy.transferer');
+var roleNext = require('role.withdrawer');
 
 var roleNoEnergyTransferer = {
 
@@ -35,11 +35,11 @@ var roleNoEnergyTransferer = {
             }
             else {
                 creep.memory.noenergytransferer = false;
-                roleEnergyTransferer.run(creep);
+                roleNext.run(creep);
             }
         }
         else {
-            roleEnergyTransferer.run(creep);
+            roleNext.run(creep);
         }
     }
 };
