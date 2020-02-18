@@ -122,7 +122,7 @@ module.exports.loop = function () {
 
          if(CL >= 4) mainFlags.tryCreateCreep(err,     61103, N<5?1:0, 59); // V 2-6 E 1300 Harvester
          if(CL >= 4) mainFlags.tryCreateCreep(err, 200000911, N<5?1:0, 55); // V 1-1 E 1300   Carrier
-         if(CL >= 4) mainFlags.tryCreateCreep(err,     60603, N<5?1:0, 50); // V 2-4 E 1050    Worker
+         if(CL >= 4) mainFlags.tryCreateCreep(err,    100501, N<5?1:0, 50); // V 1-2 E 1300    Worker
 
 //          if(CL >= 4) mainFlags.tryCreateCreep(err,     60905, N<4?0:0, 50); // V 1-3 E 1300    Worker
 //          if(CL >= 4) mainFlags.tryCreateCreep(err, 200001208, N<4?0:0, 56); // V 1-2 E 1300   Carrier
