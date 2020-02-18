@@ -39,7 +39,7 @@ function lookNearestLighterForCreep(creep) {
     return nearestLighters;
 }
 
-var roleEnergyTransfererToNearestLighter = {
+var roleTransfererToNearest = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
@@ -53,15 +53,15 @@ var roleEnergyTransfererToNearestLighter = {
 
             for(var name in Game.creeps) {
                 var creep = Game.creeps[name];
-                creep.memory.transfering.energy.to.nearest = {lighter: false};
+                creep.memory.transfering_to_nearest = {lighter: false};
             }
         }
 
-        if(creep.memory.transfering.energy.to.nearest.lighter && creep.store[RESOURCE_ENERGY] == 0) {
-            creep.memory.transfering.energy.to.nearest.lighter = false;
+        if(creep.memory.transfering_to_nearest && creep.store[RESOURCE_ENERGY] == 0) {
+            creep.memory.transfering_to_nearest = false;
         }
 
-        if(!creep.memory.transfering.energy.to.nearest.lighter &&
+        if(!creep.memory.transfering_to_nearest &&
            (creep.store[RESOURCE_ENERGY] > creep.store.getFreeCapacity() ||
             (creep.memory.rerun && creep.store[RESOURCE_ENERGY] > 0))) {
             var targets = lookNearestLighterForCreep(creep);
@@ -76,12 +76,12 @@ var roleEnergyTransfererToNearestLighter = {
 //              });
         
             if(targets.length > 0) {
-                creep.memory.transfering.energy.to.nearest.lighter = true;
+                creep.memory.transfering_to_nearest = true;
                 creep.memory.target = targets[0].id;
             }
         }
 
-        if(creep.memory.transfering.energy.to.nearest.lighter) {
+        if(creep.memory.transfering_to_nearest) {
             var target = Game.getObjectById(creep.memory.target);
             var err = creep.transfer(target, RESOURCE_ENERGY);
             if(!err) {
@@ -89,11 +89,10 @@ var roleEnergyTransfererToNearestLighter = {
                            , creep.name, 'transfer energy to'
                            , target.name);
                 creep.say('🎁');
-                creep.memory.transfering.energy.to.nearest.lighter = false;
+                creep.memory.transfering_to_nearest = false;
             }
             else {
-                creep.memory.transfering.energy.to.nearest.lighter = false;
-//                 roleEnergyTransferer.run(creep);
+                creep.memory.transfering_to_nearest = false;
                 roleWithdrawer.run(creep);
             }
         }
@@ -103,4 +102,4 @@ var roleEnergyTransfererToNearestLighter = {
     }
 };
 
-module.exports = roleEnergyTransfererToNearestLighter;
+module.exports = roleTransfererToNearest;
