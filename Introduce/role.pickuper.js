@@ -34,10 +34,10 @@ var rolePickuper = {
             }
             else {
                 creep.memory.pickuping = false;
-                roleNext.run(creep);
             }
         }
-        else {
+
+        if(!creep.memory.pickuping) {
             roleNext.run(creep);
         }
     }
