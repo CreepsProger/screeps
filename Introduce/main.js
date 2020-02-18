@@ -120,11 +120,12 @@ module.exports.loop = function () {
          var err = ERR_NOT_ENOUGH_ENERGY;
          var N = Memory.totals.CreepsNumber;
 
-         if(CL >= 4) mainFlags.tryCreateCreep(err,     60707, N<6?1:0, 50); // V 1-2 E 1300    Worker
-         if(CL >= 4) mainFlags.tryCreateCreep(err, 200000911, N<6?1:0, 53); // V 1-1 E 1300   Carrier
-         if(CL >= 4) mainFlags.tryCreateCreep(err,     61103, N<6?1:0, 59); // V 2-6 E 1300 Harvester
-         if(CL >= 4) mainFlags.tryCreateCreep(err,     60905, N<6?2:0, 50); // V 1-3 E 1300    Worker
-         if(CL >= 4) mainFlags.tryCreateCreep(err, 200001208, N<6?1:0, 55); // V 1-2 E 1300   Carrier
+         if(CL >= 4) mainFlags.tryCreateCreep(err,     61103, N<5?1:0, 59); // V 2-6 E 1300 Harvester
+         if(CL >= 4) mainFlags.tryCreateCreep(err, 200000911, N<5?1:0, 55); // V 1-1 E 1300   Carrier
+         if(CL >= 4) mainFlags.tryCreateCreep(err,     60603, N<5?1:0, 50); // V 2-4 E 1050    Worker
+
+//          if(CL >= 4) mainFlags.tryCreateCreep(err,     60905, N<4?0:0, 50); // V 1-3 E 1300    Worker
+//          if(CL >= 4) mainFlags.tryCreateCreep(err, 200001208, N<4?0:0, 56); // V 1-2 E 1300   Carrier
 
          if(CL >= 3) mainFlags.tryCreateCreep(err, 40404, N?0:1, 60); // E 800 Worker
 //          if(CL >= 3) err = tryCreateCreep(err, 40701, 2, 69); // E 800   Miner
