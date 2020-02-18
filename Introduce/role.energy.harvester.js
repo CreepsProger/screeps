@@ -1,5 +1,5 @@
 var roleEnergyHarvester = {
-
+	
     /** @param {Creep} creep **/
     run: function(creep) {
         var commit = 4;
@@ -57,61 +57,6 @@ var roleEnergyHarvester = {
                 }
                 else {
                     creep.say('➡️⚡');
-                }
-            }
-            else if(err == ERR_NO_BODYPART) {
-                var new_target;
-                if(!new_target) {
-                    new_target = target.pos.findClosestByPath(FIND_MY_CREEPS, {
-                    filter: (creep2) => {
-                        return creep2.store.getUsedCapacity[RESOURCE_ENERGY] > creep2.store.getFreeCapacity(RESOURCE_ENERGY) &&
-                            creep.memory.weight < creep2.memory.weight;
-                        }
-                    });
-                }
-                if(!new_target) {
-                    new_target = target.pos.findClosestByPath(FIND_MY_CREEPS, {
-                    filter: (creep2) => {
-                        return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-                            creep.memory.weight < creep2.memory.weight;
-                        }
-                    });
-                }
-                if(!new_target) {
-                    new_target = target.pos.findClosestByPath(FIND_MY_CREEPS, {
-                    filter: (creep2) => {
-                        return creep.memory.weight < creep2.memory.weight;
-                        }
-                    });
-                }
-                if(new_target) {
-                    creep.moveTo(new_target, {visualizePaathStyle: {stroke: '#ffffff'}});
-                    creep.memory.target = new_target.id;
-                    creep.say('🤫⚡');
-                }
-                creep.memory.harvesting = false;
-                if(!creep.memory.rerun) {
-                    creep.memory.rerun = 1;
-//                     console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-//                                 , '⚡' + creep.name + '❓❓ no source! rerun role.energy.transferer.to.nearest.lighter'
-//                                 , creep.memory.rerun);
-                    creep.say('⚡❓❓❓');
-                    require('role.attacker').run(creep);
-                }
-                else if (creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
-                    var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                        filter: (structure) => {
-                            return (structure.structureType == STRUCTURE_CONTAINER) &&
-                                structure.store.getUsedCapacity[RESOURCE_ENERGY] > 0;
-                        }
-                    });
-                    if(target) {
-                        var err = creep.withdraw(target, RESOURCE_ENERGY);
-                        if(err == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(target, {visualizePaathStyle: {stroke: '#ffffff'}});
-                            creep.say('➡️⚡⚡');
-                        }
-                    }
                 }
             }
             else if(!err) {
