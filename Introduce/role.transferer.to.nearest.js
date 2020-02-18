@@ -65,7 +65,7 @@ var roleTransfererToNearest = {
            (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0)) {
             creep.pos.findInRange(FIND_MY_CREEPS, 1).forEach(function(creep2) {
                 if(creep2.memory.weight < creep.memory.weight) {
-                    if(OK == creep.transfer(creep2, RESOURCE_ENERGY)
+                    if(OK == creep.transfer(creep2, RESOURCE_ENERGY))
                        creep.memory.transfering_to_nearest = true;
                 }
             });
