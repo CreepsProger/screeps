@@ -1,4 +1,4 @@
-var roleEnergyTransfererToNearestLighter = require('role.energy.transferer.to.nearest.lighter');
+var roleTransfererToNearest = require('role.transferer.to.nearest');
 
 var roleAttacker = {
 
@@ -30,13 +30,13 @@ var roleAttacker = {
             }
             else {
                 creep.memory.attacking = false;
-                roleEnergyTransfererToNearestLighter.run(creep);
+                roleTransfererToNearest.run(creep);
             }
         }
         else {
-            roleEnergyTransfererToNearestLighter.run(creep);
+            roleTransfererToNearest.run(creep);
         }
     }
 };
 
-module.exports = roleEnergyTransfererToNearestLighter;
+module.exports = roleAttacker;
