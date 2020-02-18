@@ -1,4 +1,4 @@
-var roleEnergyHarvester = require('role.energy.harvester');
+var roleNext = require('role.energy.harvester');
 
 var roleUpgrader = {
 
@@ -57,11 +57,11 @@ var roleUpgrader = {
             }
             else {
                 creep.memory.upgrading = false;
-                roleEnergyHarvester.run(creep);
+                roleNext.run(creep);
             }
         }
         else {
-            roleEnergyHarvester.run(creep);
+            roleNext.run(creep);
         }
     }
 };
