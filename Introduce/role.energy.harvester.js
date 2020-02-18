@@ -56,8 +56,8 @@ var roleEnergyHarvester = {
                     creep.say('⚡❓');
                 }
                 else {
-                    creep.say('➡️⚡'); //!
-                }
+					creep.say('➡️⚡'); //!
+				}
 			}
 			else if(err == ERR_NO_BODYPART) {
 				var new_target;				
@@ -83,37 +83,37 @@ var roleEnergyHarvester = {
                         return creep2.memory.weight > creep2.memory.weight;
                         }
                     });
-                }
-                if(new_target) {
+				}
+				if(new_target) {
 					creep.moveTo(new_target, {visualizePaathStyle: {stroke: '#ffffff'}});
 					creep.say('➡️➡️⚡');
 				}
 				else {
 					creep.memory.harvesting = flase;
 					if(creep.memory.rerun && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
-                    var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                        filter: (structure) => {
-                            return (structure.structureType == STRUCTURE_CONTAINER) &&
-                                structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
-                        }
-                    });
-                    if(target) {
-                        var err = creep.withdraw(target, RESOURCE_ENERGY);
-                        if(err == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(target, {visualizePaathStyle: {stroke: '#ffffff'}});
-                            creep.say('➡️⚡⚡');
-                        }
-						else if(!err) {
-							creep.say('⚡⚡');
-						}	
-                    }
-                }
-            }
+						var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+							filter: (structure) => {
+								return (structure.structureType == STRUCTURE_CONTAINER) &&
+									structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
+							}
+						});
+						if(target) {
+							var err = creep.withdraw(target, RESOURCE_ENERGY);
+							if(err == ERR_NOT_IN_RANGE) {
+								creep.moveTo(target, {visualizePaathStyle: {stroke: '#ffffff'}});
+								creep.say('➡️⚡⚡');
+							}
+							else if(!err) {
+								creep.say('⚡⚡');
+							}
+						}
+					}
+				}
+			}
             else if(!err) {
-                creep.say('⚡');
-
-                if(creep.memory.starttimemoving) {
-                    Memory.harvestersMovements.Value.v += Game.time - creep.memory.starttimemoving;
+				creep.say('⚡');
+				if(creep.memory.starttimemoving) {
+					Memory.harvestersMovements.Value.v += Game.time - creep.memory.starttimemoving;
                     Memory.harvestersMovements.Count.v += 1;
                     Memory.harvestersMovements.Avg.v = Math.floor(Memory.harvestersMovements.Value.v / Memory.harvestersMovements.Count.v) ;
                     creep.memory.starttimemoving = 0;
