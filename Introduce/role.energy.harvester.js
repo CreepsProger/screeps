@@ -39,7 +39,7 @@ var roleEnergyHarvester = {
 //                                 , '⚡' + creep.name + '❓❓ no source! rerun role.energy.transferer.to.nearest.lighter'
 //                                 , creep.memory.rerun);
                     creep.say('⚡❓❓');
-                    require('role.energy.transferer.to.nearest.lighter').run(creep);
+                    require('role.attacker').run(creep);
                 }
             }
         }
