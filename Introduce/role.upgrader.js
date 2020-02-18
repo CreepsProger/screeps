@@ -10,8 +10,8 @@ var roleUpgrader = {
         }
 
         if(!creep.memory.upgrading &&
-           (creep.store.getUsedCapacity[RESOURCE_ENERGY] > 0 && creep.store.getFreeCapacity() == 0 ||
-            (creep.store.getUsedCapacity[RESOURCE_ENERGY] > 0 && creep.memory.rerun))) {
+           (creep.store.getUsedCapacity[RESOURCE_ENERGY] > 0 && creep.store.getFreeCapacity() == 0) ||
+            (creep.store.getUsedCapacity[RESOURCE_ENERGY] > 0 && creep.memory.rerun)) {
             creep.memory.upgrading = true;
         }
 
