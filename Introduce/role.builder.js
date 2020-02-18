@@ -7,7 +7,12 @@ var roleBuilder = {
 
         if(creep.memory.building && creep.store.getUsedCapacity[RESOURCE_ENERGY] == 0) {
             creep.memory.building = false;
-            creep.say('stop building');
+        }
+
+        if(!creep.memory.building &&
+           (creep.store.getUsedCapacity[RESOURCE_ENERGY] > 0 && creep.store.getFreeCapacity() == 0 ||
+            (creep.store.getUsedCapacity[RESOURCE_ENERGY] > 0 && creep.memory.rerun))) {
+            creep.memory.building = true;
         }
         
         if(!creep.memory.building &&
