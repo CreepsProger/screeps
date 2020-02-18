@@ -30,15 +30,9 @@ var roleNoEnergyTransferer = {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                 creep.say('NE🚐');
             }
-            else if(!err) {
-                creep.say('🚐');
-            }
-            else {
-                creep.memory.noenergytransferer = false;
-                roleNext.run(creep);
-            }
         }
-        else {
+
+        if(!creep.memory.noenergytransferer) {
             roleNext.run(creep);
         }
     }
