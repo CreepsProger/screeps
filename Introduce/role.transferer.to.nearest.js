@@ -67,7 +67,7 @@ var roleTransfererToNearest = {
                 if(creep2.memory.weight < creep.memory.weight &&
                   creep2.store.getFreeCapacity(RESOURCE_ENERGY) > 0) {
                     if(OK == creep.transfer(creep2, RESOURCE_ENERGY)) {
-                       creep.memory.transfering_to_nearest = true;
+                       creep.memory.transfering_to_nearest = false;
                         console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                            , creep.name, 'transfer energy to'
                            , creep2.name);
@@ -77,9 +77,7 @@ var roleTransfererToNearest = {
             });
         }
 
-        if(!creep.memory.transfering_to_nearest) {
-            roleNext.run(creep);
-        }
+        roleNext.run(creep);
     }
 };
 
