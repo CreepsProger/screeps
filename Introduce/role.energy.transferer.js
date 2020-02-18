@@ -4,7 +4,7 @@ var roleEnergyTransferer = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-        if(creep.memory.transfering && creep.store.getUsedCapacity[RESOURCE_ENERGY] == 0) {
+        if(creep.memory.transfering && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
             creep.memory.transfering = false;
         }
 
