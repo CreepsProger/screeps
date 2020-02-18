@@ -130,9 +130,11 @@ var roleEnergyHarvester = {
         }
 
         if(!creep.memory.harvesting) {
-            if(!creep.memory.rerun) {
+            if(creep.memory.rerun) {
+                creep.say('🔃'); 
+            }
+            else {
                 creep.memory.rerun = 1;
-                creep.say('🔃');
                 require('role.attacker').run(creep);
             }
         }
