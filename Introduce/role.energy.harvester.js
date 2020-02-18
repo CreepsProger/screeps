@@ -24,7 +24,7 @@ var roleEnergyHarvester = {
 
         if(!creep.memory.harvesting &&
            (creep.store.getUsedCapacity[RESOURCE_ENERGY] == 0 ||
-            creep.memory.rerun)) {
+            (creep.memory.rerun && creep.store.getFreeCapacity() > 0))) {
             var targets = creep.room.find(FIND_SOURCES, {
                 filter: (source) => source.energy >= (creep.memory.rerun? 0:1)
             });
@@ -40,9 +40,9 @@ var roleEnergyHarvester = {
         var maxHarvesterMovementsToSource = Math.max(100,Math.floor(2 * Memory.harvestersMovements.Value.movingAverage.delta / Memory.harvestersMovements.Count.movingAverage.delta));
 
         if(creep.memory.harvesting) {
-            var target = Game.getObjectById(creep.memory.target);
-            var err = creep.harvest(target);
-            if(err == ERR_NOT_IN_RANGE) {
+		var target = Game.getObjectById(creep.memory.target);
+			var err = creep.harvest(target);
+			if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePaathStyle: {stroke: '#ffffff'}});
                 if(creep.memory.starttimemoving &&
                    Game.time - creep.memory.starttimemoving > maxHarvesterMovementsToSource) {
@@ -58,51 +58,43 @@ var roleEnergyHarvester = {
                 else {
                     creep.say('➡️⚡'); //!
                 }
-            }
-		else if(err == ERR_NO_BODYPART) {
-                var new_target;
+			}
+			else if(err == ERR_NO_BODYPART) {
+				var new_target;				
                 if(!new_target) {
-                    new_target = target.pos.findClosestByPath(FIND_MY_CREEPS, {
+                    new_target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
                     filter: (creep2) => {
-                        return creep2.store.getUsedCapacity[RESOURCE_ENERGY] > creep2.store.getFreeCapacity(RESOURCE_ENERGY) &&
-                            creep.memory.weight < creep2.memory.weight;
+                        return creep2.store.getUsedCapacity[RESOURCE_ENERGY] > creep2.store.getFreeCapacity() &&
+                            creep2.memory.weight > creep2.memory.weight;
                         }
                     });
                 }
                 if(!new_target) {
-                    new_target = target.pos.findClosestByPath(FIND_MY_CREEPS, {
+                    new_target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
                     filter: (creep2) => {
                         return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-                            creep.memory.weight < creep2.memory.weight;
+                            creep2.memory.weight > creep.memory.weight;
                         }
                     });
                 }
                 if(!new_target) {
-                    new_target = target.pos.findClosestByPath(FIND_MY_CREEPS, {
+                    new_target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
                     filter: (creep2) => {
-                        return creep.memory.weight < creep2.memory.weight;
+                        return creep2.memory.weight > creep2.memory.weight;
                         }
                     });
                 }
                 if(new_target) {
-                    creep.moveTo(new_target, {visualizePaathStyle: {stroke: '#ffffff'}});
-                    creep.memory.target = new_target.id;
-                    creep.say('🤫⚡');
-                }
-                creep.memory.harvesting = false;
-                if(!creep.memory.rerun) {
-                    creep.memory.rerun = 1;
-//                     console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-//                                 , '⚡' + creep.name + '❓❓ no source! rerun role.energy.transferer.to.nearest.lighter'
-//                                 , creep.memory.rerun);
-                    creep.say('⚡❓❓❓');
-                    require('role.attacker').run(creep);
-                }
-                else if (creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
+					creep.moveTo(new_target, {visualizePaathStyle: {stroke: '#ffffff'}});
+					creep.say('➡️➡️⚡');
+				}
+				else {
+					creep.memory.harvesting = flase;
+					if(creep.memory.rerun && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
                     var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                         filter: (structure) => {
                             return (structure.structureType == STRUCTURE_CONTAINER) &&
-                                structure.store.getUsedCapacity[RESOURCE_ENERGY] > 0;
+                                structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
                         }
                     });
                     if(target) {
@@ -111,6 +103,9 @@ var roleEnergyHarvester = {
                             creep.moveTo(target, {visualizePaathStyle: {stroke: '#ffffff'}});
                             creep.say('➡️⚡⚡');
                         }
+						else if(!err) {
+							creep.say('⚡⚡');
+						}	
                     }
                 }
             }
