@@ -4,11 +4,11 @@ var roleEnergyTransferer = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-        if(creep.memory.transfering.energy.to.all && creep.store[RESOURCE_ENERGY] == 0) {
-            creep.memory.transfering.energy.to.all = false;
+        if(creep.memory.transfering && creep.store[RESOURCE_ENERGY] == 0) {
+            creep.memory.transfering = false;
         }
 
-        if(!creep.memory.transfering.energy.to.all &&
+        if(!creep.memory.transfering &&
            (creep.store[RESOURCE_ENERGY] > creep.store.getFreeCapacity() ||
             (creep.memory.rerun && creep.store[RESOURCE_ENERGY] > 0))) {
             var target;
@@ -56,25 +56,24 @@ var roleEnergyTransferer = {
                 });
             }
             if(target) {
-                creep.memory.transfering.energy.to.all = true;
+                creep.memory.transfering = true;
                 creep.memory.target = target.id;
             }
         }
 
-        if(creep.memory.transfering.energy.to.all) {
+        if(creep.memory.transfering) {
             var target = Game.getObjectById(creep.memory.target);
             var err = creep.transfer(target, RESOURCE_ENERGY);
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                 creep.say('🔜💡');
-         //       require('role.energy.transferer.to.nearest.lighter').run(creep);
             }
             else if(!err) {
                 creep.say('💡');
-                creep.memory.transfering.energy.to.all = false;
+                creep.memory.transfering = false;
             }
             else {
-                creep.memory.transfering.energy.to.all = false;
+                creep.memory.transfering = false;
                 roleBuilder.run(creep);
             }
         }
