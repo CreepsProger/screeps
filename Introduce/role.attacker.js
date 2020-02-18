@@ -4,18 +4,18 @@ var roleAttacker = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-        if(creep.memory.attacking && creep.store[RESOURCE_ENERGY] == 0) {
+        if(creep.memory.attacking && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
             creep.memory.attacking = false;
         }
 
         if(!creep.memory.attacking &&
-           creep.store[RESOURCE_ENERGY] > 0 &&
+           creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
            creep.getActiveBodyparts(RANGED_ATTACK)) {
            const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 3);
            if(targets.length > 0) {
-              creep.memory.target = targets[0].id;
+               creep.memory.target = targets[0].id;
                creep.memory.attacking = true;
-              }
+           }
         }
 
         if(creep.memory.attacking) {
