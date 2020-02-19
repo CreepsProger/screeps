@@ -159,16 +159,10 @@ var mainFlags = {
                     , id2
                    );
 
-        [ 60707
-        , 80505
-        , 80604
-        , 80406
-        , 51006
-        , 60905
-        , 60806
-        , 60608
-        , 60702
-        , 60703].forEach(function(type) {
+        [ 80604
+        , 70804
+        , 60707
+        , 50505].forEach(function(type) {
             console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                         , type
                         , 'WE(6):'
@@ -181,16 +175,27 @@ var mainFlags = {
         });
         var maxtype = [0, 0, 0];
         var maxWe = [0, 0, 0];
-        for (var m = 1; m <= 13; m++) {
-            for (var c = 1; c <= 11; c++) {
-                var w = Math.floor((26-m-c)/2);
-                var type = w*10000 + c*100 + m;
-                var We = [ mainFlags.work_efficiency(type, 6)
-                         , mainFlags.work_efficiency(type,12)
-                         , mainFlags.work_efficiency(type,24)];
-                if(maxWe[0] < We[0]) { maxWe[0] = We[0]; maxtype[0] = type; };
-                if(maxWe[1] < We[1]) { maxWe[1] = We[1]; maxtype[1] = type; };
-                if(maxWe[2] < We[2]) { maxWe[2] = We[2]; maxtype[2] = type; };
+        var Opty1000Type = [0, 0, 0];
+        var Opty1000We = [100, 100, 100];
+        for (var p = 5; m <= 36; m++) {
+            for (var m = 1; m <= 13; m++) {
+                for (var c = 1; c <= 11; c++) {
+                    var w = Math.floor((26-m-c)/2);
+                    var type = w*10000 + c*100 + m;
+                    var We = [ mainFlags.work_efficiency(type, 6)
+                             , mainFlags.work_efficiency(type,12)
+                             , mainFlags.work_efficiency(type,24)];
+                    if(maxWe[0] < We[0]) { maxWe[0] = We[0]; maxtype[0] = type; };
+                    if(maxWe[1] < We[1]) { maxWe[1] = We[1]; maxtype[1] = type; };
+                    if(maxWe[2] < We[2]) { maxWe[2] = We[2]; maxtype[2] = type; };
+
+                    var Opty = [ mainFlags.work_efficiency(type, 6) - 1000
+                             , mainFlags.work_efficiency(type,12) - 1000
+                             , mainFlags.work_efficiency(type,24) - 1000];
+                    if(Opty1000We[0] > We[0] && We[0] >= 0) { Opty1000We[0] = We[0]; Opty1000Type[0] = type; };
+                    if(Opty1000We[1] > We[1] && We[1] >= 0) { Opty1000We[1] = We[1]; Opty1000Type[1] = type; };
+                    if(Opty1000We[2] > We[2] && We[2] >= 0) { Opty1000We[2] = We[2]; Opty1000Type[2] = type; };
+                }
             }
         }
         console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
