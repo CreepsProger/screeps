@@ -20,7 +20,7 @@ var roleEnergyTransferer = {
                 var closests = creep.pos.findInRange(FIND_MY_CREEPS, 1, {
                     filter: (creep2) => {
                         return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-                            creep2.memory.weight < creep2.memory.weight;
+                            creep2.memory.weight < creep.memory.weight;
                     }
                 });
                 
