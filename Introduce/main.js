@@ -86,7 +86,7 @@ module.exports.loop = function () {
    if(!Spawn.spawning) {
         if(Spawn.store.getUsedCapacity(RESOURCE_ENERGY) > 0) {
             Spawn.pos.findInRange(FIND_MY_CREEPS, 1).forEach(function(creep) {
-                if(creep.ticksToLive < 1000) {
+                if(creep.ticksToLive < 1000 && creep.weight != 59) {
                    if(OK == Spawn.renewCreep(creep)) {
                       console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                                   , Spawn.name, 'renew', creep.name);
