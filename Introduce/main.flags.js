@@ -192,12 +192,18 @@ var mainFlags = {
                     var Opty = [ mainFlags.work_efficiency(type, 6) - 1000
                              , mainFlags.work_efficiency(type,12) - 1000
                              , mainFlags.work_efficiency(type,24) - 1000];
-                    if(Opty1000We[0] > We[0] && We[0] >= 0) { Opty1000We[0] = We[0]; Opty1000Type[0] = type; };
-                    if(Opty1000We[1] > We[1] && We[1] >= 0) { Opty1000We[1] = We[1]; Opty1000Type[1] = type; };
-                    if(Opty1000We[2] > We[2] && We[2] >= 0) { Opty1000We[2] = We[2]; Opty1000Type[2] = type; };
+                    if(Opty1000We[0] > Opty[0] && Opty[0] >= 0) { Opty1000We[0] = Opty[0]; Opty1000Type[0] = type; };
+                    if(Opty1000We[1] > Opty[1] && Opty[1] >= 0) { Opty1000We[1] = Opty[1]; Opty1000Type[1] = type; };
+                    if(Opty1000We[2] > Opty[2] && Opty[2] >= 0) { Opty1000We[2] = Opty[2]; Opty1000Type[2] = type; };
                 }
             }
         }
+        console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+                        , 'Opty1000We'
+                        , Opty1000We
+                        , 'Opty1000Type'
+                        , Opty1000Type
+                       );
         console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                         , 'maxWe'
                         , maxWe
