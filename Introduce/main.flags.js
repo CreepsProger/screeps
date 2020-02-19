@@ -176,11 +176,11 @@ var mainFlags = {
         var maxtype = [0, 0, 0];
         var maxWe = [0, 0, 0];
         var Opty1000Type = [0, 0, 0];
-        var Opty1000We = [100, 100, 100];
+        var Opty1000We = [1000, 1000, 1000];
         for (var p = 5; p <= 36; p++) {
             for (var m = 1; m <= 13; m++) {
                 for (var c = 1; c <= 11; c++) {
-                    var w = Math.floor((26-m-c)/2);
+                    var w = Math.floor((p-m-c)/2);
                     var type = w*10000 + c*100 + m;
                     var We = [ mainFlags.work_efficiency(type, 6)
                              , mainFlags.work_efficiency(type,12)
