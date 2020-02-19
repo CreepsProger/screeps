@@ -9,39 +9,55 @@ var roleWithdrawer = {
         }
 
         if(!creep.memory.withdrawing &&
-           creep.store.getFreeCapacity() > 0 &&
+           creep.store.getUsedCapacity() == 0 &&
            creep.getActiveBodyparts(WORK) == 0) {
+            creep.memory.withdrawing = true;
+        }
+
+        if(creep.memory.withdrawing) {
             var target;
 
             if(!target) {
                 target = creep.pos.findClosestByPath(FIND_TOMBSTONES);
             }
             if(target) {
-                creep.memory.withdrawing = true;
-                creep.memory.target = target.id;
+                var err = creep.withdraw(target);
+                if(err == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
+                    creep.say('🔜💼');
+                    console.log( '🔜💼', Math.trunc(Game.time/10000), Game.time%10000
+                                , creep.name
+                                , 'moving for withdrawing tombstone:'
+                                , target.name?target.name:target.structureType);
+                }
+                else if(!err) {
+                    creep.say('💼');
+                    console.log( '💼', Math.trunc(Game.time/10000), Game.time%10000
+                                , creep.name
+                                , 'withdrawing:'
+                                , target.name?target.name:target.structureType);
+                }
+                else {
+                    creep.memory.withdrawing = false;
+                    console.log( '💼⚠️', Math.trunc(Game.time/10000), Game.time%10000
+                                , creep.name
+                                , 'withdrawing :'
+                                , target.name?target.name:target.structureType
+                                , 'with err:'
+                                , err);
+                }
+            }
+            else {
+                    creep.memory.withdrawing = false;
             }
         }
 
-        if(creep.memory.withdrawing) {
-            var target = Game.getObjectById(creep.memory.target);
-            var err = creep.withdraw(target);
-            if(err == ERR_NOT_IN_RANGE) {
-                creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-                creep.say('W🚐');
-            }
-            else if(!err) {
-                creep.say('🚐');
-            }
-            else {
-                creep.memory.withdrawing = false;
-                roleNext.run(creep);
-            }
-        }
-        else {
+        if(!creep.memory.withdrawing) {
             roleNext.run(creep);
         }
     }
 };
+
 
 module.exports = roleWithdrawer;
 
