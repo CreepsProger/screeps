@@ -97,22 +97,6 @@ module.exports.loop = function () {
             });
         }
    }
-   
-   work_efficiency = function(creep,range) {
-      var move_parts = creep.getActiveBodyparts(MOVE);
-      var fatigue_parts =
-          creep.getActiveBodyparts(CARRY) +
-          creep.getActiveBodyparts(WORK) +
-          creep.getActiveBodyparts(ATTACK) +
-          creep.getActiveBodyparts(RANGED_ATTACK) +
-          creep.getActiveBodyparts(HEAL) +
-          creep.getActiveBodyparts(TOUGH);
-      var harvest_ticks = Math.ceil(creep.getActiveBodyparts(CARRY) * 50 / 2 / creep.getActiveBodyparts(WORK));
-      var move_to_rc_ticks = range * Math.ceil(fatigue_parts / move_parts / 2);
-      var upgrade_ticks = Math.ceil(creep.getActiveBodyparts(CARRY) * 50 / creep.getActiveBodyparts(WORK));
-      var move_from_rc_ticks = range * Math.ceil((fatigue_parts - creep.getActiveBodyparts(CARRY)) / move_parts / 2);
-      return creep.getActiveBodyparts(CARRY) * 50 / (harvest_ticks + move_to_rc_ticks + upgrade_ticks + move_from_rc_ticks);
-   }
 
    if(Game.time % ticksToCheckCreepsNumber == 0) {
 //          var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
@@ -127,9 +111,9 @@ module.exports.loop = function () {
             console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                         , creep.name
                         , 'work_efficiency(12):'
-                        , work_efficiency(creep,12)
+                        , mainFlags.work_efficiency(creep.memory.type,12)
                         , 'work_efficiency(24):'
-                        , work_efficiency(creep,24)
+                        , mainFlags.work_efficiency(creep.memory.type,24)
                        );
          }
 
