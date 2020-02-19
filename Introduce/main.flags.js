@@ -159,7 +159,12 @@ var mainFlags = {
                     , id2
                    );
 
-        [ 60701
+        [ 70606
+        , 51006
+        , 60905
+        , 60806
+        , 60707
+        , 60608
         , 60702
         , 60703].forEach(function(type) {
             console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
