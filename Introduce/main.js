@@ -137,7 +137,7 @@ module.exports.loop = function () {
          var err = ERR_NOT_ENOUGH_ENERGY;
          var N = Memory.totals.CreepsNumber;
 
-         if(CL >= 4) mainFlags.tryCreateCreep(err,     60903, N<5?1:0, 58); // V 2-5 E 1300 Harvester
+         if(CL >= 4) mainFlags.tryCreateCreep(err,     60903, N<5?1:0, 58); // V 2-5 E 1200 Harvester
          if(CL >= 4) mainFlags.tryCreateCreep(err, 200000911, N<5?1:0, 55); // V 1-1 E 1300   Carrier
          if(CL >= 4) mainFlags.tryCreateCreep(err,    100501, N<5?1:0, 50); // V 1-2 E 1300    Worker
 
