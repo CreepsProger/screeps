@@ -24,34 +24,37 @@ module.exports.loop = function () {
 
    var tower = Game.getObjectById('5e45eb20d4e9fbbbbb4bee7d');
    if(tower) {
-      var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-      if(closestHostile) {
-         tower.attack(closestHostile);
+      var target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+      if(target) {
+         target.attack(closestHostile);
       }
-      var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-         filter: (structure) => { 
-            if(structure.structureType == STRUCTURE_WALL) {
-               return structure.hits < 160000;// 8000 E = 10 * 8000 / 800 = 100
+      
+      if(!target) {
+         target = tower.pos.findClosestByRange(FIND_STRUCTURES, {
+            filter: (structure) => { 
+               if(structure.structureType == STRUCTURE_WALL) {
+                  return structure.hits < 160000;// 8000 E = 10 * 8000 / 800 = 100
+               }
+               if(structure.structureType == STRUCTURE_RAMPART) {
+                  return structure.hits < 160000;// 8000 E = 10 * 8000 / 800 = 100
+               }
+               return structure.hitsMax - structure.hits > 800;
             }
-            if(structure.structureType == STRUCTURE_RAMPART) {
-               return structure.hits < 160000;// 8000 E = 10 * 8000 / 800 = 100
-            }
-            return structure.hitsMax - structure.hits > 800;
+         });
+         if(target) {
+            tower.repair(target);
          }
-      });
-      if(closestDamagedStructure) {
-         tower.repair(closestDamagedStructure);
       }
-      var closestDamagedCreep;
-      if(!closestDamagedCreep) {
-         closestDamagedCreep = tower.pos.findClosestByPath(FIND_MY_CREEPS, {
+      
+      if(!target) {
+         target = tower.pos.findClosestByPath(FIND_MY_CREEPS, {
             filter: (mycreep) => {
                return mycreep.hitsMax - mycreep.hits > 400;
             }
          });
-      }
-      if(closestDamagedCreep) {
-         tower.heal(closestDamagedCreep);
+         if(target) {
+            tower.heal(target);
+         }
       }
    }
 
