@@ -49,14 +49,6 @@ var roleEnergyHarvester = {
                 });
             }
             if(!target && !creep.getActiveBodyparts(WORK)) {
-                target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
-                    filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_SPAWN) &&
-                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-                    }
-                });
-            }
-            if(!target && !creep.getActiveBodyparts(WORK)) {
                 target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
                     filter: (creep2) => {
                         return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > creep2.store.getFreeCapacity() &&
