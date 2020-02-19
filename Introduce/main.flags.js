@@ -182,7 +182,7 @@ var mainFlags = {
         var maxtype = [0, 0, 0];
         var maxWe = [0, 0, 0];
         for (var m = 1; m <= 13; m++) {
-            for (var c = 1; m <= 11; c++) {
+            for (var c = 1; c <= 11; c++) {
                 var w = Math.floor((26-m-c)/2);
                 var type = w*10000 + c*100 + m;
                 var We = [ mainFlags.work_efficiency(type, 6)
