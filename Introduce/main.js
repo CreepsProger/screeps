@@ -26,7 +26,7 @@ module.exports.loop = function () {
    if(tower) {
       var target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
       if(target) {
-         target.attack(closestHostile);
+         tower.attack(target);
       }
       
       if(!target) {
