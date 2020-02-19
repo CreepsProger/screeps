@@ -11,26 +11,40 @@ var rolePickuper = {
         if(!creep.memory.pickuping &&
           creep.store.getFreeCapacity() > 0 &&
           creep.getActiveBodyparts(WORK) == 0) {
-            var target;
+            creep.memory.pickuping = true;
+        }
 
+        if(creep.memory.pickuping) {
+            var target;
             if(!target) {
                 target = creep.pos.findClosestByPath(FIND_DROPPED_RESOURCES);
             }
             if(target) {
-                creep.memory.pickuping = true;
-                creep.memory.target = target.id;
-            }
-        }
-
-        if(creep.memory.pickuping) {
-            var target = Game.getObjectById(creep.memory.target);
-            var err = creep.pickup(target);
-            if(err == ERR_NOT_IN_RANGE) {
-                creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-                creep.say('P🚐');
-            }
-            else if(!err) {
-                creep.say('🚐');
+                var err = creep.pickup(target);
+                if(err == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
+                    creep.say('🔜👊');
+                    console.log( '🔜👊', Math.trunc(Game.time/10000), Game.time%10000
+                                , creep.name
+                                , 'moving for pickuping:'
+                                , target.name?target.name:target.structureType);
+                }
+                else if(!err) {
+                    creep.say('👊');
+                    console.log( '👊', Math.trunc(Game.time/10000), Game.time%10000
+                                , creep.name
+                                , 'pickuping:'
+                                , target.name?target.name:target.structureType);
+                }
+                else {
+                    creep.memory.pickuping = false;
+                    console.log( '👊⚠️', Math.trunc(Game.time/10000), Game.time%10000
+                                , creep.name
+                                , 'pickuping :'
+                                , target.name?target.name:target.structureType
+                                , 'with err:'
+                                , err);
+                }
             }
             else {
                 creep.memory.pickuping = false;
