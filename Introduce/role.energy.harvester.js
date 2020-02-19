@@ -44,7 +44,7 @@ var roleEnergyHarvester = {
                 });
             }
             if(!target && creep.getActiveBodyparts(WORK)) {
-                var targets = creep.room.findClosestByPath(FIND_SOURCES, {
+                var targets = creep.pos.findClosestByPath(FIND_SOURCES, {
                     filter: (source) => source.energy >= (creep.memory.rerun? 0:1)
                 });
             }
