@@ -81,20 +81,16 @@ var roleEnergyTransferer = {
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                 creep.say('🔜💡');
-                creep.memory.transfering = true;
-                creep.memory.target = target.id;
             }
             else if(!err) {
                 creep.say('💡');
-                creep.memory.target = null;
             }
             else {
                 creep.memory.transfering = false;
-                creep.memory.target = null;
-                roleNext.run(creep);
             }
         }
-        else {
+
+        if(!creep.memory.transfering) {
             roleNext.run(creep);
         }
     }
