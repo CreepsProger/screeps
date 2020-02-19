@@ -77,26 +77,31 @@ var roleEnergyTransferer = {
                     }
                 });
             }
-            var err = creep.transfer(target, RESOURCE_ENERGY);
-            if(err == ERR_NOT_IN_RANGE) {
-                creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-                creep.say('🔜💡');
-            }
-            else if(!err) {
-                creep.say('💡');
-                console.log( '💡', Math.trunc(Game.time/10000), Game.time%10000
-                            , creep.name
-                            , 'transfering energy to:'
-                            , target.name);
+            if(target) {
+                var err = creep.transfer(target, RESOURCE_ENERGY);
+                if(err == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
+                    creep.say('🔜💡');
+                }
+                else if(!err) {
+                    creep.say('💡');
+                    console.log( '💡', Math.trunc(Game.time/10000), Game.time%10000
+                                , creep.name
+                                , 'transfering energy to:'
+                                , target.name);
+                }
+                else {
+                    creep.memory.transfering = false;
+                    console.log( '💡⚠️', Math.trunc(Game.time/10000), Game.time%10000
+                                , creep.name
+                                , 'transfering energy to:'
+                                , target.name
+                                , 'with err:'
+                                , err);
+                }
             }
             else {
-                creep.memory.transfering = false;
-                console.log( '💡⚠️', Math.trunc(Game.time/10000), Game.time%10000
-                            , creep.name
-                            , 'transfering energy to:'
-                            , target.name
-                            , 'with err:'
-                            , err);
+                    creep.memory.transfering = false;
             }
         }
 
