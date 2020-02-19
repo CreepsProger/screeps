@@ -11,8 +11,11 @@ var roleEnergyTransferer = {
         if(!creep.memory.transfering &&
            (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() == 0) ||
             (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun)) {
-            var target;
-            
+            creep.memory.transfering = true;
+        }
+
+        if(creep.memory.transfering) {
+            var target = Game.getObjectById(creep.memory.target);
             if(!target) {
                 var closests = creep.pos.findInRange(FIND_MY_CREEPS, 1, {
                     filter: (creep2) => {
@@ -24,8 +27,7 @@ var roleEnergyTransferer = {
                 if(closests.lenght > 0) {
                     target = closests[0];
                 }
-            }
-            
+            }            
             if(!target) {
                 target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
                     filter: (structure) => {
@@ -55,7 +57,6 @@ var roleEnergyTransferer = {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_CONTAINER) &&
                             structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-//                            structure.store.getUsedCapacity(RESOURCE_ENERGY) < structure.store.getCapacity(RESOURCE_ENERGY)/2;
                     }
                 });
             }
@@ -76,25 +77,20 @@ var roleEnergyTransferer = {
                     }
                 });
             }
-            if(target) {
-                creep.memory.transfering = true;
-                creep.memory.target = target.id;
-            }
-        }
-
-        if(creep.memory.transfering) {
-            var target = Game.getObjectById(creep.memory.target);
             var err = creep.transfer(target, RESOURCE_ENERGY);
             if(err == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                 creep.say('🔜💡');
+                creep.memory.transfering = true;
+                creep.memory.target = target.id;
             }
             else if(!err) {
                 creep.say('💡');
-                creep.memory.transfering = false;
+                creep.memory.target = null;
             }
             else {
                 creep.memory.transfering = false;
+                creep.memory.target = null;
                 roleNext.run(creep);
             }
         }
