@@ -86,7 +86,7 @@ module.exports.loop = function () {
    if(!Spawn.spawning) {
         if(Spawn.store.getUsedCapacity(RESOURCE_ENERGY) > 0) {
             Spawn.pos.findInRange(FIND_MY_CREEPS, 1).forEach(function(creep) {
-                if(creep.ticksToLive < 1000 && creep.weight != 59) {
+                if(creep.ticksToLive < 1000 && false) { //!!! TODO: remove false
                    if(OK == Spawn.renewCreep(creep)) {
                       console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                                   , Spawn.name, 'renew', creep.name);
@@ -137,7 +137,7 @@ module.exports.loop = function () {
          var err = ERR_NOT_ENOUGH_ENERGY;
          var N = Memory.totals.CreepsNumber;
 
-         if(CL >= 4) mainFlags.tryCreateCreep(err,     60903, N<5?1:0, 59); // V 2-5 E 1200 Harvester
+         if(CL >= 4) mainFlags.tryCreateCreep(err,     70903, N<5?1:0, 59); // V 2-5 E 1300 Harvester
          if(CL >= 4) mainFlags.tryCreateCreep(err, 200000911, N<5?1:0, 55); // V 1-1 E 1300   Carrier
          if(CL >= 4) mainFlags.tryCreateCreep(err,    100501, N<5?1:0, 50); // V 1-2 E 1300    Worker
 
