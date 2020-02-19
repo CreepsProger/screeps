@@ -175,8 +175,8 @@ var mainFlags = {
         });
         var maxtype = [0, 0, 0];
         var maxWe = [0, 0, 0];
-        var Opty1000Type = [0, 0, 0];
-        var Opty1000We = [1000, 1000, 1000];
+        var OptyType = [0, 0, 0];
+        var OptyWe = [1000, 1000, 1000];
         for (var p = 5; p <= 36; p++) {
             for (var m = 1; m <= 13; m++) {
                 for (var c = 1; c <= 11; c++) {
@@ -189,20 +189,20 @@ var mainFlags = {
                     if(maxWe[1] < We[1]) { maxWe[1] = We[1]; maxtype[1] = type; };
                     if(maxWe[2] < We[2]) { maxWe[2] = We[2]; maxtype[2] = type; };
 
-                    var Opty = [ mainFlags.work_efficiency(type, 6) - 1000
-                             , mainFlags.work_efficiency(type,12) - 1000
-                             , mainFlags.work_efficiency(type,24) - 1000];
-                    if(Opty1000We[0] > Opty[0] && Opty[0] >= 0) { Opty1000We[0] = Opty[0]; Opty1000Type[0] = type; };
-                    if(Opty1000We[1] > Opty[1] && Opty[1] >= 0) { Opty1000We[1] = Opty[1]; Opty1000Type[1] = type; };
-                    if(Opty1000We[2] > Opty[2] && Opty[2] >= 0) { Opty1000We[2] = Opty[2]; Opty1000Type[2] = type; };
+                    var Opty = [ Math.ceil(3000/mainFlags.work_efficiency(type, 6) * p * 50
+                             , Math.ceil(3000/mainFlags.work_efficiency(type, 6) * p * 50
+                             , Math.ceil(3000/mainFlags.work_efficiency(type, 6) * p * 50];
+                    if(OptyWe[0] > Opty[0] && Opty[0] >= 0) { OptyWe[0] = Opty[0]; OptyType[0] = type; };
+                    if(OptyWe[1] > Opty[1] && Opty[1] >= 0) { OptyWe[1] = Opty[1]; OptyType[1] = type; };
+                    if(OptyWe[2] > Opty[2] && Opty[2] >= 0) { OptyWe[2] = Opty[2]; OptyType[2] = type; };
                 }
             }
         }
         console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-                        , 'Opty1000We'
-                        , Opty1000We
-                        , 'Opty1000Type'
-                        , Opty1000Type
+                        , 'OptyWe'
+                        , OptyWe
+                        , 'OptyType'
+                        , OptyType
                        );
         console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                         , 'maxWe'
