@@ -159,7 +159,8 @@ var mainFlags = {
                     , id2
                    );
 
-        [ 80604
+        [ 40302
+        , 80604
         , 70804
         , 60707
         , 50505].forEach(function(type) {
