@@ -87,6 +87,9 @@ var roleEnergyTransferer = {
             }
             else {
                 creep.memory.transfering = false;
+                console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+                            , creep.name + 'transfering failed with err:⚠️'
+                            , err);
             }
         }
 
