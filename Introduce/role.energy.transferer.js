@@ -100,10 +100,10 @@ var roleEnergyTransferer = {
                 if(err == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                     creep.say('🔜💡');
-//                     console.log( '🔜💡', Math.trunc(Game.time/10000), Game.time%10000
-//                                 , creep.name
-//                                 , 'moving for transfering energy to:'
-//                                 , target.name?target.name:target.structureType);
+                    console.log( '🔜💡', Math.trunc(Game.time/10000), Game.time%10000
+                                , creep.name
+                                , 'moving for transfering energy to:'
+                                , target.name?target.name:target.structureType);
                 }
                 else if(!err) {
                     creep.say('💡');
