@@ -164,10 +164,12 @@ var mainFlags = {
         , 60703].forEach(function(type) {
             console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                         , type
-                        , 'work_efficiency(12):'
-                        , mainFlags.work_efficiency(creep.memory.type,12)
-                        , 'work_efficiency(24):'
-                        , mainFlags.work_efficiency(creep.memory.type,24)
+                        , 'WE(6):'
+                        , mainFlags.work_efficiency(type,12)
+                        , 'WE(12):'
+                        , mainFlags.work_efficiency(type,12)
+                        , 'WE(24):'
+                        , mainFlags.work_efficiency(type,24)
                        );
         });
         lastFlagRemoved = T;
