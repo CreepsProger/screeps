@@ -99,19 +99,19 @@ module.exports.loop = function () {
    }
    
    work_efficiency = function(creep,range) {
-      var move_parts = getActiveBodyparts(MOVE);
+      var move_parts = creep.getActiveBodyparts(MOVE);
       var fatigue_parts =
-          getActiveBodyparts(CARRY) +
-          getActiveBodyparts(WORK) +
-          getActiveBodyparts(ATTACK) +
-          getActiveBodyparts(RANGED_ATTACK) +
-          getActiveBodyparts(HEAL) +
-          getActiveBodyparts(TOUGH);
-      var harvest_ticks = Math.ceil(getActiveBodyparts(CARRY) * 50 / 2 / getActiveBodyparts(WORK));
+          creep.getActiveBodyparts(CARRY) +
+          creep.getActiveBodyparts(WORK) +
+          creep.getActiveBodyparts(ATTACK) +
+          creep.getActiveBodyparts(RANGED_ATTACK) +
+          creep.getActiveBodyparts(HEAL) +
+          creep.getActiveBodyparts(TOUGH);
+      var harvest_ticks = Math.ceil(creep.getActiveBodyparts(CARRY) * 50 / 2 / creep.getActiveBodyparts(WORK));
       var move_to_rc_ticks = range * Math.ceil(fatigue_parts / move_parts / 2);
-      var upgrade_ticks = Math.ceil(getActiveBodyparts(CARRY) * 50 / getActiveBodyparts(WORK));
-      var move_from_rc_ticks = range * Math.ceil((fatigue_parts - getActiveBodyparts(CARRY)) / move_parts / 2);
-      return getActiveBodyparts(CARRY) * 50 / (harvest_ticks + move_to_rc_ticks + upgrade_ticks + move_from_rc_ticks);
+      var upgrade_ticks = Math.ceil(creep.getActiveBodyparts(CARRY) * 50 / creep.getActiveBodyparts(WORK));
+      var move_from_rc_ticks = range * Math.ceil((fatigue_parts - creep.getActiveBodyparts(CARRY)) / move_parts / 2);
+      return creep.getActiveBodyparts(CARRY) * 50 / (harvest_ticks + move_to_rc_ticks + upgrade_ticks + move_from_rc_ticks);
    }
 
    if(Game.time % ticksToCheckCreepsNumber == 0) {
