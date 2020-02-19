@@ -23,6 +23,12 @@ var roleEnergyTransferer = {
                             creep2.memory.weight < creep.memory.weight;
                     }
                 });
+
+                console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+                                , creep.name
+                                , 'my closest are:'
+                                , closests);
+
                 if(closests.lenght > 0) {
                     target = closests[0];
                 }
