@@ -27,21 +27,21 @@ var roleUpgrader = {
                     creep.say('🔜🛠');
                     console.log( '🔜🛠', Math.trunc(Game.time/10000), Game.time%10000
                                 , creep.name
-                                , 'moving for upgrading to:'
+                                , 'moving for upgrading:'
                                 , target.name?target.name:target.structureType);
                 }
                 else if(!err) {
                     creep.say('🛠');
                     console.log( '🛠', Math.trunc(Game.time/10000), Game.time%10000
                                 , creep.name
-                                , 'moving for upgrading to:'
+                                , 'upgrading:'
                                 , target.name?target.name:target.structureType);
                 }
                 else {
                     creep.memory.upgrading = false;
                     console.log( '🛠⚠️', Math.trunc(Game.time/10000), Game.time%10000
                                 , creep.name
-                                , 'moving for upgrading to:'
+                                , 'upgrading:'
                                 , target.name?target.name:target.structureType
                                 , 'with err:'
                                 , err);
