@@ -45,12 +45,13 @@ var roleEnergyHarvester = {
             if(!target && !creep.getActiveBodyparts(WORK)) {
                 target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
                     filter: (creep2) => {
-                        return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > creep2.store.getFreeCapacity() &&
+                        return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
+                            creep2.store.getFreeCapacity(RESOURCE_ENERGY) = 0 &&
                             creep2.memory.weight > creep2.memory.weight;
                     }
                 });
             }
-            if(!target && !creep.getActiveBodyparts(WORK)) {
+            if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
                 target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
                     filter: (creep2) => {
                         return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
@@ -58,7 +59,7 @@ var roleEnergyHarvester = {
                     }
                 });
             }
-            if(!target && !creep.getActiveBodyparts(WORK)) {
+            if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
                 target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
                     filter: (creep2) => {
                         return creep2.memory.weight > creep2.memory.weight;
