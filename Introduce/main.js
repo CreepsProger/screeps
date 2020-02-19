@@ -33,7 +33,7 @@ module.exports.loop = function () {
          target = tower.pos.findClosestByRange(FIND_STRUCTURES, {
             filter: (structure) => { 
                if(structure.structureType == STRUCTURE_WALL) {
-                  return structure.hits < 160000;// 8000 E = 10 * 8000 / 800 = 100
+                  return structure.hits < 16000;// 8000 E = 10 * 8000 / 800 = 100
                }
                if(structure.structureType == STRUCTURE_RAMPART) {
                   return structure.hits < 160000;// 8000 E = 10 * 8000 / 800 = 100
