@@ -79,6 +79,14 @@ var roleEnergyTransferer = {
                     }
                 });
             }
+            if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
+                target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
+                    filter: (creep2) => {
+                        return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+                            creep2.memory.weight < creep.memory.weight;
+                    }
+                });
+            }
             if(!target) {
                 target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
                     filter: (creep2) => {
