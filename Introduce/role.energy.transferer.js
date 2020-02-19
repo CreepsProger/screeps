@@ -95,7 +95,7 @@ var roleEnergyTransferer = {
                     console.log( '💡⚠️', Math.trunc(Game.time/10000), Game.time%10000
                                 , creep.name
                                 , 'transfering energy to:'
-                                , target.name
+                                , target.name?target.name:target.structureType
                                 , 'with err:'
                                 , err);
                 }
