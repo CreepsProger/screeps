@@ -46,7 +46,7 @@ var roleEnergyHarvester = {
                 target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
                     filter: (creep2) => {
                         return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-                            creep2.store.getFreeCapacity(RESOURCE_ENERGY) = 0 &&
+                            creep2.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
                             creep2.memory.weight > creep2.memory.weight;
                     }
                 });
