@@ -1,4 +1,4 @@
-var roleNext = require('role.transferer.to.nearest');
+var roleNext = require('role.energy.transferer');
 
 var roleAttacker = {
 
