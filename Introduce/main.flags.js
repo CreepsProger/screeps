@@ -172,13 +172,33 @@ var mainFlags = {
             console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                         , type
                         , 'WE(6):'
-                        , mainFlags.work_efficiency(type,12)
+                        , mainFlags.work_efficiency(type,6)
                         , 'WE(12):'
                         , mainFlags.work_efficiency(type,12)
                         , 'WE(24):'
                         , mainFlags.work_efficiency(type,24)
                        );
         });
+        var maxtype = [0, 0, 0];
+        var maxWe = [0, 0, 0];
+        for (var m = 1; m <= 13; m++) {
+            for (var c = 1; m <= 11; c++) {
+                var w = Math.floor((26-m-c)/2);
+                var type = w*10000 + c*100 + m;
+                var We = [ mainFlags.work_efficiency(type, 6)
+                         , mainFlags.work_efficiency(type,12)
+                         , mainFlags.work_efficiency(type,24)];
+                if(maxWe[0] < We[0]) { maxWe[0] = We[0]; maxtype[0] = type; };
+                if(maxWe[1] < We[1]) { maxWe[1] = We[1]; maxtype[1] = type; };
+                if(maxWe[2] < We[2]) { maxWe[2] = We[2]; maxtype[2] = type; };
+            }
+        }
+        console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+                        , 'maxWe'
+                        , maxWe
+                        , 'maxtype'
+                        , maxtype
+                       );
         lastFlagRemoved = T;
         lastFlagRemoved.remove();
     },
