@@ -29,7 +29,7 @@ var roleEnergyTransferer = {
                                 , 'my closest are:'
                                 , closests);
 
-                if(closests.lenght > 0) {
+                if(closests.length > 0) {
                     target = closests[0];
                 }
             }            
