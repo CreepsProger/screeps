@@ -179,7 +179,7 @@ var mainFlags = {
         var maxWe = [0, 0, 0];
         var OptyType = [0, 0, 0];
         var OptyWe = [10000, 10000, 10000];
-        for (var p = 5; p <= 36; p++) {
+        for (var p = 20; p <= 36; p++) {
             for (var m = 1; m <= 13; m++) {
                 for (var c = 1; c <= 11; c++) {
                     var w = Math.floor((p-m-c)/2);
