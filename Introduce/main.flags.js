@@ -166,6 +166,7 @@ var mainFlags = {
         , 20202
         , 40404
         , 50505
+        , 60503
         , 110806
         , 100709
         , 90909].forEach(function(type) {
