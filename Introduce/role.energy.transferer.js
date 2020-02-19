@@ -23,12 +23,10 @@ var roleEnergyTransferer = {
                             creep2.memory.weight < creep.memory.weight;
                     }
                 });
-
-                console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-                                , creep.name
-                                , 'my closest are:'
-                                , closests);
-
+//                 console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+//                                 , creep.name
+//                                 , 'my closest are:'
+//                                 , closests);
                 if(closests.length > 0) {
                     target = closests[0];
                 }
@@ -37,7 +35,7 @@ var roleEnergyTransferer = {
                 target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_SPAWN) &&
-                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+                            structure.store.getFreeCapacity(RESOURCE_ENERGY) ==0;
                     }
                 });
             }
