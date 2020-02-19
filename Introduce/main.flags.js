@@ -116,7 +116,7 @@ var mainFlags = {
                         , Memory.CreepsCounter
                         , 'Memory.CreepsNumberByType:'
                         , Memory.CreepsNumberByType
-                        , JSON.stringify(Memory.CreepsNumberByType));
+                        , JSON.stringify(Meemory.CreepsNumberByType));
             
             Memory.totals = { CreepsNumber: 0
                              , Capacity: 0
@@ -159,11 +159,13 @@ var mainFlags = {
                     , id2
                    );
 
-        [ 70606
+        [ 60707
+        , 80505
+        , 80604
+        , 80406
         , 51006
         , 60905
         , 60806
-        , 60707
         , 60608
         , 60702
         , 60703].forEach(function(type) {
