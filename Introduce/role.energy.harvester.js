@@ -14,12 +14,6 @@ var roleEnergyHarvester = {
                         , Memory.commits.EnergyHarvester);
         }         
 
-        if(!creep.memory.target_index && creep.memory.n) 
-            creep.memory.target_index = creep.memory.n;
- 
-        if(!creep.memory.target_index) 
-            creep.memory.target_index = 0;
- 
         if(creep.memory.harvesting &&
            creep.store.getFreeCapacity() == 0) {
             creep.memory.harvesting = false;
@@ -34,7 +28,7 @@ var roleEnergyHarvester = {
         if(creep.memory.harvesting) {
             var target;
             if(!target &&
-               creep.memory.rerun &&
+               creep.getActiveBodyparts(WORK) &&
                creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
                 var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                     filter: (structure) => {
