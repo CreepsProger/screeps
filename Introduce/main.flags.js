@@ -190,9 +190,9 @@ var mainFlags = {
                     if(maxWe[1] < We[1]) { maxWe[1] = We[1]; maxtype[1] = type; };
                     if(maxWe[2] < We[2]) { maxWe[2] = We[2]; maxtype[2] = type; };
 
-                    var Opty = [ Math.ceil(3000/mainFlags.work_efficiency(type, 6)) * p * 50
-                             , Math.ceil(3000/mainFlags.work_efficiency(type, 6)) * p * 50
-                             , Math.ceil(3000/mainFlags.work_efficiency(type, 6)) * p * 50];
+                    var Opty = [ Math.ceil(3000/mainFlags.work_efficiency(type,  6)) * p * 50
+                               , Math.ceil(3000/mainFlags.work_efficiency(type, 12)) * p * 50
+                               , Math.ceil(3000/mainFlags.work_efficiency(type, 24)) * p * 50];
                     if(OptyWe[0] > Opty[0] && Opty[0] >= 0) { OptyWe[0] = Opty[0]; OptyType[0] = type; };
                     if(OptyWe[1] > Opty[1] && Opty[1] >= 0) { OptyWe[1] = Opty[1]; OptyType[1] = type; };
                     if(OptyWe[2] > Opty[2] && Opty[2] >= 0) { OptyWe[2] = Opty[2]; OptyType[2] = type; };
