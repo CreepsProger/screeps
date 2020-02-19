@@ -20,7 +20,7 @@ var roleBuilder = {
             if(!target) {
                 var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
                 if(targets.length > 0) {
-                    creep.memory.target = targets[0].id;
+                    target = targets[0];
                 }
             }
 
