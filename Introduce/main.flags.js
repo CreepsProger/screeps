@@ -3,6 +3,22 @@ var lastFlagRemoved;
 
 var mainFlags = {
     
+    
+   work_efficiency: function(type,range) {
+       var RAs = Math.trunc(type%10000000000/100000000);
+       var  As = Math.trunc(type%100000000/1000000);
+       var  Ws = Math.trunc(type%1000000/10000);
+       var  Cs = Math.trunc(type%10000/100);
+       var  Ms = Math.trunc(type%100);
+
+       var fatigue_parts = Cs + Ws + As + RAs;
+       var harvest_ticks = Math.ceil(Cs * 50 / 2 / Ws);
+      var move_to_rc_ticks = range * Math.ceil(fatigue_parts / Ms / 2);
+      var upgrade_ticks = Math.ceil(Cs * 50 / Ws);
+      var move_from_rc_ticks = range * Math.ceil((fatigue_parts - Cs) / Ms / 2);
+      return Math.floor(300 * Cs * 50 / (harvest_ticks + move_to_rc_ticks + upgrade_ticks + move_from_rc_ticks));
+   },
+    
     tryCreateCreep: function(preverr, type, needed = 0, weight) {
         var body = [];
         var RAs = Math.trunc(type%10000000000/100000000);
@@ -142,6 +158,18 @@ var mainFlags = {
                     , 'id2:'
                     , id2
                    );
+
+        [ 60701
+        , 60702
+        , 60703].forEach(function(type) {
+            console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+                        , type
+                        , 'work_efficiency(12):'
+                        , mainFlags.work_efficiency(creep.memory.type,12)
+                        , 'work_efficiency(24):'
+                        , mainFlags.work_efficiency(creep.memory.type,24)
+                       );
+        });
         lastFlagRemoved = T;
         lastFlagRemoved.remove();
     },
