@@ -15,7 +15,7 @@ var roleEnergyTransferer = {
         }
 
         if(creep.memory.transfering) {
-            var target = Game.getObjectById(creep.memory.target);
+            var target; //  = Game.getObjectById(creep.memory.target)
             if(!target) {
                 var closests = creep.pos.findInRange(FIND_MY_CREEPS, 1, {
                     filter: (creep2) => {
