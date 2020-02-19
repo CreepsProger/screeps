@@ -97,6 +97,22 @@ module.exports.loop = function () {
             });
         }
    }
+   
+   work_efficiency = function(creep,range) {
+      var move_parts = getActiveBodyparts(MOVE);
+      var fatigue_parts =
+          getActiveBodyparts(CARRY) +
+          getActiveBodyparts(WORK) +
+          getActiveBodyparts(ATTACK) +
+          getActiveBodyparts(RANGED_ATTACK) +
+          getActiveBodyparts(HEAL) +
+          getActiveBodyparts(TOUGH);
+      var harvest_ticks = Math.ceil(getActiveBodyparts(CARRY) * 50 / 2 / getActiveBodyparts(WORK));
+      var move_to_rc_ticks = range * Math.ceil(fatigue_parts / move_parts / 2);
+      var upgrade_ticks = Math.ceil(getActiveBodyparts(CARRY) * 50 / getActiveBodyparts(WORK));
+      var move_from_rc_ticks = range * Math.ceil((fatigue_parts - getActiveBodyparts(CARRY)) / move_parts / 2);
+      return getActiveBodyparts(CARRY) * 50 / (harvest_ticks + move_to_rc_ticks + upgrade_ticks + move_from_rc_ticks);
+   }
 
    if(Game.time % ticksToCheckCreepsNumber == 0) {
 //          var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
@@ -108,6 +124,13 @@ module.exports.loop = function () {
             Memory.totals.FreeCapacity += creep.store.getFreeCapacity();
             Memory.totals.UsedCapacity += creep.store.getUsedCapacity();
             Memory.totals.HitsMax += creep.hitsMax;
+            console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+                        , creep.name
+                        , 'work_efficiency(12):'
+                        , work_efficiency(creep,12)
+                        , 'work_efficiency(24):'
+                        , work_efficiency(creep,24)
+                       );
          }
 
          console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
@@ -138,8 +161,8 @@ module.exports.loop = function () {
          var err = ERR_NOT_ENOUGH_ENERGY;
          var N = Memory.totals.CreepsNumber;
 
-         if(CL >= 4) mainFlags.tryCreateCreep(err,     61004, N<(maxCreepsNumber+1)?1:0, 59); // V 1-4 E 1300 Harvester
-         if(CL >= 4) mainFlags.tryCreateCreep(err,     60707, N<(maxCreepsNumber+1)?2:0, 58); // V 1-2 E 1300    Worker
+         if(CL >= 4) mainFlags.tryCreateCreep(err,     61004, N<(maxCreepsNumber+1)?1:0, 59); // V 1-2 E 1300 Harvester
+         if(CL >= 4) mainFlags.tryCreateCreep(err,     60707, N<(maxCreepsNumber+1)?2:0, 58); // V 1-1 E 1300    Worker
 //          if(CL >= 4) mainFlags.tryCreateCreep(err, 200000911, N<(maxCreepsNumber+1)?1:0, 55); // V 1-1 E 1300   Carrier
 //          if(CL >= 4) mainFlags.tryCreateCreep(err,    100501, N<(maxCreepsNumber+1)?1:0, 50); // V 1-2 E 1300    Worker
 
