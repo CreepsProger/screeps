@@ -12,12 +12,25 @@ var roleEnergyTransferer = {
            (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() == 0) ||
             (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun)) {
             var target;
-
+            
+            if(!target) {
+                var closests = creep.pos.findInRange(FIND_MY_CREEPS, 1, {
+                    filter: (creep2) => {
+                        return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+                            creep2.memory.weight < creep2.memory.weight;
+                    }
+                });
+                
+                if(closests.lenght > 0) {
+                    target = closests[0];
+                }
+            }
+            
             if(!target) {
                 target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_SPAWN) &&
-                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 100;
+                            structure.store.getUsedCapacity(RESOURCE_ENERGY) == 0;
                     }
                 });
             }
