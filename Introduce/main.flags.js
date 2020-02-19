@@ -163,6 +163,7 @@ var mainFlags = {
         , 80604
         , 70804
         , 60707
+        , 20202
         , 50505].forEach(function(type) {
             console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                         , type
