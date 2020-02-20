@@ -95,6 +95,9 @@ var roleEnergyTransferer = {
                     }
                 });
             }
+            if(!target && creep.memory.rerun) {
+                target = creep.room.storage;
+            }
             if(target) {
                 var err = creep.transfer(target, RESOURCE_ENERGY);
                 if(err == ERR_NOT_IN_RANGE) {
