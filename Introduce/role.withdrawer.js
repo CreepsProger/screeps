@@ -20,6 +20,9 @@ var roleWithdrawer = {
             if(!target) {
                 target = creep.pos.findClosestByPath(FIND_TOMBSTONES);
             }
+            if(!target) {
+                target = creep.pos.findClosestByPath(FIND_RUINS);
+            }
             if(target) {
                 var err = creep.withdraw(target);
                 if(err == ERR_NOT_IN_RANGE) {
