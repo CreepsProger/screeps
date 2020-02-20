@@ -95,7 +95,7 @@ var roleEnergyTransferer = {
                     }
                 });
             }
-            if(!target && creep.memory.rerun) {
+            if(!target && creep.getActiveBodyparts(WORK) == 0 && creep.memory.rerun) {
                 target = creep.room.storage;
             }
             if(target) {
