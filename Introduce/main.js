@@ -23,8 +23,10 @@ module.exports.loop = function () {
    mainFlags.checkMainCommit(commit);
    mainFlags.checkFlags();
 
-   var tower = Game.getObjectById('5e45eb20d4e9fbbbbb4bee7d');
-   if(tower) {
+   var towers = [];
+   towers.add= Game.getObjectById('5e45eb20d4e9fbbbbb4bee7d');
+   towers.add= Game.getObjectById('5e4dfed162e84714acb66b58');
+   towers. forEach(function(tower) {
       var target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
       if(target) {
          tower.attack(target);
@@ -57,7 +59,7 @@ module.exports.loop = function () {
             tower.heal(target);
          }
       }
-   }
+   });
 
    if(Game.time % ticksToCheckCreepsNumber == 0) {
        Memory.totals = { CreepsNumber: 0
