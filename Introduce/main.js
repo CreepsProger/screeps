@@ -5,7 +5,7 @@ var roleAttacker = require('role.attacker');
 
 var commit = 31;
 var ticksToCheckCreepsNumber = 20;
-var maxCreepsNumber = 3;
+var maxCreepsNumber = 4;
 //var mainSettings = require('main.settings');
 
 function updateMovingAverage(x) { 
@@ -147,7 +147,7 @@ module.exports.loop = function () {
          var err = ERR_NOT_ENOUGH_ENERGY;
          var N = Memory.totals.CreepsNumber;
 
-         if(CL >= 4) mainFlags.tryCreateCreep(err,     40404, N<(maxCreepsNumber+1)?3:0, 50); // V 1-1 E 800    Worker
+         if(CL >= 4) mainFlags.tryCreateCreep(err,     40404, N<(maxCreepsNumber+1)?4:0, 50); // V 1-1 E 800    Worker
 //          if(CL >= 4) mainFlags.tryCreateCreep(err,     80804, N<(maxCreepsNumber+1)?1:0, 50); // V 1-2 E 1300    Worker
 //          if(CL >= 4) mainFlags.tryCreateCreep(err,     60603, N<(maxCreepsNumber+1)?1:0, 59); // V 1-2 E 1300 Harvester
 //          if(CL >= 4) mainFlags.tryCreateCreep(err, 400001204, N<(maxCreepsNumber+1)?1:0, 55); // V 1-2 E 1400   Carrier
