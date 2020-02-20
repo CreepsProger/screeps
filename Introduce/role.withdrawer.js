@@ -24,7 +24,7 @@ var roleWithdrawer = {
                 target = creep.pos.findClosestByPath(FIND_RUINS);
             }
             if(target) {
-                var err = creep.withdraw(target);
+                var err = creep.withdraw(target,RESOURCE_ENERGY);
                 if(err == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                     creep.say('🔜💼');
