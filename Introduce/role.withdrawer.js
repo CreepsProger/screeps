@@ -7,11 +7,11 @@ var roleWithdrawer = {
         if(creep.memory.withdrawing && creep.store.getFreeCapacity() == 0) {
             creep.memory.withdrawing = false;
         }
-        if(!creep.memory.pickuping &&
+        if(!creep.memory.withdrawing &&
            creep.getActiveBodyparts(WORK) == 0 &&
            (creep.store.getUsedCapacity() == 0 ||
            (creep.store.getFreeCapacity() > 0 && creep.memory.rerun))) {
-            creep.memory.pickuping = true;
+            creep.memory.withdrawing = true;
         }
 
         if(creep.memory.withdrawing) {
