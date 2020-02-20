@@ -24,9 +24,9 @@ module.exports.loop = function () {
    mainFlags.checkFlags();
 
    var towers = [];
-   towers.add= Game.getObjectById('5e45eb20d4e9fbbbbb4bee7d');
-   towers.add= Game.getObjectById('5e4dfed162e84714acb66b58');
-   towers. forEach(function(tower) {
+   towers.push(Game.getObjectById('5e45eb20d4e9fbbbbb4bee7d')) ;
+   towers.push(Game.getObjectById('5e4dfed162e84714acb66b58')) ;
+   towers.forEach(function(tower) {
       var target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
       if(target) {
          tower.attack(target);
