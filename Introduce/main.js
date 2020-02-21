@@ -176,15 +176,15 @@ module.exports.loop = function () {
 //          if(CL >= 4) mainFlags.tryCreateCreep(err,     60905, N<4?0:0, 50); // V 1-3 E 1300    Worker
 //          if(CL >= 4) mainFlags.tryCreateCreep(err, 200001208, N<4?0:0, 56); // V 1-2 E 1300   Carrier
 
-         if(CL >= 3) mainFlags.tryCreateCreep(err, 40404, N?0:1, 60); // E 800 Worker
+         if(CL >= 3) mainFlags.tryCreateCreep( 40404, N?0:1, 60); // E 800 Worker
 //          if(CL >= 3) err = tryCreateCreep(err, 40701, 2, 69); // E 800   Miner
 //          if(CL >= 3) err = tryCreateCreep(err, 709, 1, 65); // E 800 Carrier
 
-         if(CL >= 2) mainFlags.tryCreateCreep(err, 30302, N?0:0, 70); // E 550 Worker
+         if(CL >= 2) mainFlags.tryCreateCreep( 30203, N?0:0, 70); // E 550 Worker
 //          if(CL >= 2) err = tryCreateCreep(err, 40201, 2, 79); // E 550   Miner
 //          if(CL >= 2) err = tryCreateCreep(err, 605, 2, 75); // E 550 Carrier
 
-         if(CL >= 1) mainFlags.tryCreateCreep(err, 10202, N?0:0, 80); // E 300 Worker
+         if(CL >= 1) mainFlags.tryCreateCreep( 20102, N?0:0, 80); // E 300 Worker
 //          if(CL >= 1) err = tryCreateCreep(err, 20101, 4, 89); // E 300   Miner
 //          if(CL >= 1) err = tryCreateCreep(err, 303, 2, 85); // E 300 Carrier
       }
