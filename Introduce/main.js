@@ -60,13 +60,16 @@ module.exports.loop = function () {
          }
       }
       if(!target) {
-         const targets = tower.pos.findInRange(FIND_MY_CREEPS, 6, {
+         const targets = tower.pos.findInRange(FIND_MY_CREEPS, 5, {
             filter: (mycreep) => {
                return mycreep.hitsMax - mycreep.hits > 0;
             }
          });
          if(targets.length > 0) {
             target = targets[0];
+         }
+         if(target) {
+            tower.heal(target);
          }
       }
    });
