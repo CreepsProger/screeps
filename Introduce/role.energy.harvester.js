@@ -108,7 +108,7 @@ var roleEnergyHarvester = {
                 creep.say('🔃');
                 creep.memory.rerun = 1;
                 //             roleRerun.run(creep);
-                require('role.attacker').run(creep);
+                require('role.claimer').run(creep);
             }
         }
     }
