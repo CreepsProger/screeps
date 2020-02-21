@@ -6,7 +6,7 @@ var roleBuilder = {
     run: function(creep) {
         
         var myRoom = Game.spawns['Spawn1'].room.name;
-        var anotherRoom = Game.map.describeExits(myRoom)[BOTTOM].name; //'W25S34'
+        var anotherRoom = 'W25S34';//Game.map.describeExits(myRoom)[BOTTOM].name; //'W25S34'
 
         if(creep.memory.building && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
             creep.memory.building = false;
@@ -27,7 +27,11 @@ var roleBuilder = {
                 }
             }
             if(!target) {
-                var targets = Game.rooms[anotherRoom].find(FIND_CONSTRUCTION_SITES);
+                var room = Game.rooms[anotherRoom];
+                console.log( '🔜🏗', Math.trunc(Game.time/10000), Game.time%10000
+                            , 'looking for building in:'
+                            , room);
+                var targets = room.find(FIND_CONSTRUCTION_SITES);
                 if(targets.length > 0) {
                     target = targets[0];
                 }
