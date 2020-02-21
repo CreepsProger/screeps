@@ -115,7 +115,7 @@ var roleAttacker = {
                                     , creep.name
                                     , 'attacking on:'
                                     , target.room.name!=myRoom?target.room.name+'/':''
-                                      + target.name?target.name:target.structureType);
+                                      + target.name?target.name:target.structureType
                                     , 'with err:'
                                     , err);
                     }
