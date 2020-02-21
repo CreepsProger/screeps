@@ -27,7 +27,7 @@ var roleBuilder = {
                 }
             }
             if(!target) {
-                var targets = Game.map.rooms[anotherRoom].find(FIND_CONSTRUCTION_SITES);
+                var targets = Game.rooms[anotherRoom].find(FIND_CONSTRUCTION_SITES);
                 if(targets.length > 0) {
                     target = targets[0];
                 }
