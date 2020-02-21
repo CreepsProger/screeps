@@ -59,6 +59,16 @@ module.exports.loop = function () {
             tower.heal(target);
          }
       }
+      if(!target) {
+         const targets = tower.pos.findInRange(FIND_MY_CREEPS, 5, {
+            filter: (mycreep) => {
+               return mycreep.hitsMax - mycreep.hits > 0;
+            }
+         });
+         if(targets.length > 0) {
+            target = targets[0];
+         }
+      }
    });
 
    if(Game.time % ticksToCheckCreepsNumber == 0) {
