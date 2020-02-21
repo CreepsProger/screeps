@@ -21,24 +21,26 @@ var mainFlags = {
     
     tryCreateCreep: function(preverr, type, needed = 0, weight) {
         var body = [];
-        var  Ts = Math.trunc(type%1000000000000/10000000000);
+        var  Ts = Math.trunc(type%100000000000000/1000000000000);
+        var CLs = Math.trunc(type%1000000000000/10000000000);
         var RAs = Math.trunc(type%10000000000/100000000);
         var  As = Math.trunc(type%100000000/1000000);
         var  Ws = Math.trunc(type%1000000/10000);
         var  Cs = Math.trunc(type%10000/100);
         var  Ms = Math.trunc(type%100);
         for (var i = 0; i <  Ts; i++) {body.push(TOUGH);}
+        for (var i = 0; i < CLs; i++) {body.push(CLAIM);}
         for (var i = 0; i < RAs; i++) {body.push(RANGED_ATTACK);}
         for (var i = 0; i <  As; i++) {body.push(ATTACK);}
         for (var i = 0; i <  Ws; i++) {body.push(WORK);}
         for (var i = 0; i <  Cs; i++) {body.push(CARRY);}
         for (var i = 0; i <  Ms; i++) {body.push(MOVE);}
-        var cost = 10*Ts + 150*RAs + 80*As + 100*Ws + 50*Cs + 50*Ms;
+        var cost = 10*Ts + 600*CLs + 150*RAs + 80*As + 100*Ws + 50*Cs + 50*Ms;
         var existsNumber = 0;
         if(Memory.CreepsNumberByType[type])
             existsNumber = Memory.CreepsNumberByType[type];
         var needsNumber = needed - existsNumber;
-        var newName = 'creep-<' + weight + '>-' + Ts + '.' + RAs + '.' + As + '.' + Ws + '.' + Cs + '.' + Ms + '-' + Game.time % 10000;
+        var newName = 'creep-<' + weight + '>-' + Ts + '.' + CLs + '.' + RAs + '.' + As + '.' + Ws + '.' + Cs + '.' + Ms + '-' + Game.time % 10000;
 //         console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 //                     , 'trying create a creep:'
 //                     , newName
