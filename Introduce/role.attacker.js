@@ -35,7 +35,7 @@ var roleAttacker = {
                     }
                 }
             }
-            if(creep.room != myRoom && creep.hits < creep.hitsMax) {
+            if(creep.room != myRoom && creep.hits < creep.hitsMax - 200) {
                 if(!target) {
                     const exitDir = Game.map.findExit(creep.room, myRoom);
                     target = creep.pos.findClosestByRange(exitDir);
