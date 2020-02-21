@@ -109,7 +109,12 @@ var roleEnergyHarvester = {
         }
 
         if(!creep.memory.harvesting) {
-            if(!creep.memory.rerun) {
+            if(creep.memory.rerun) {
+                if(creep.pos.x == 26 && creep.pos.y == 34) {
+                    creep.move(RIGHT);
+                }
+            }
+            else {
                 creep.say('🔃');
                 creep.memory.rerun = 1;
                 //             roleRerun.run(creep);
