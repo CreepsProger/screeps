@@ -43,7 +43,7 @@ var roleEnergyTransferer = {
                     }
                 });
             }
-            if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable)) {
+            if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable) {
                 target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_EXTENSION) &&
@@ -51,7 +51,7 @@ var roleEnergyTransferer = {
                     }
                 });
             }
-            if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable)) {
+            if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable) {
                creep.room.storage.getUsedCapacity(RESOURCE_ENERGY) < 10000 &&
                creep.room.storage.getFreeCapacity(RESOURCE_ENERGY) > 10000) {
                 target = creep.room.storage;
