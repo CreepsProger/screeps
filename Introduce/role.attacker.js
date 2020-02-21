@@ -85,7 +85,7 @@ var roleAttacker = {
                 if(target.id &&
                    target.structureType != STRUCTURE_RAMPART &&
                    target.structureType != STRUCTURE_CONTROLLER) {
-                    creep.rangedAttack(target);
+                    err = creep.rangedAttack(target);
                 } 
                 if(err == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
