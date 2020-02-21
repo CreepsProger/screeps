@@ -92,7 +92,7 @@ var roleAttacker = {
                     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                     creep.say('🔜🎯');
                     if(Game.flags['LA '] || Game.flags['LA'] || Game.flags['L']) {
-                        var targetinfo = target.name ? target.name:target.structureType?:JSON.stringify(target);
+                        var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
                         console.log( '🔜🎯', Math.trunc(Game.time/10000), Game.time%10000
                                     , creep.name
                                     , 'moving for attacking to:'
@@ -102,7 +102,7 @@ var roleAttacker = {
                 else if(!err) {
                     creep.say('🎯');
                     if(Game.flags['LA '] || Game.flags['LA'] || Game.flags['L']) {
-                        var targetinfo = target.name ? target.name:target.structureType?:JSON.stringify(target);
+                        var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
                         console.log( '🎯', Math.trunc(Game.time/10000), Game.time%10000
                                     , creep.name
                                     , 'attacking on:'
@@ -111,7 +111,7 @@ var roleAttacker = {
                 }
                 else {
                     if(Game.flags['LA '] || Game.flags['LA'] || Game.flags['L']) {
-                        var targetinfo = target.name ? target.name:target.structureType?:JSON.stringify(target);
+                        var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
                         console.log( '🎯⚠️', Math.trunc(Game.time/10000), Game.time%10000
                                     , creep.name
                                     , 'attacking on:'
