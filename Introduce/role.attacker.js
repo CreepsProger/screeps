@@ -76,7 +76,7 @@ var roleAttacker = {
             if(target)
             {
                 var err = ERR_NOT_IN_RANGE;
-                if(target.id) creep.rangedAttack(target);
+                if(target.id && !(target.structureType == STRUCTURE_RAMPART)) creep.rangedAttack(target);
                 if(err == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                     creep.say('🔜🎯');
