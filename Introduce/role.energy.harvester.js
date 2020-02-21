@@ -28,7 +28,6 @@ var roleEnergyHarvester = {
         if(creep.memory.harvesting) {
             var target;
             if(!target &&
-               !creep.getActiveBodyparts(WORK) &&
                creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
                 var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                     filter: (structure) => {
