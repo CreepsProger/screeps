@@ -27,8 +27,7 @@ var roleEnergyHarvester = {
         
         if(creep.memory.harvesting) {
             var target;
-            if(!target &&
-               creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
+            if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
                 var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_CONTAINER) &&
@@ -36,8 +35,7 @@ var roleEnergyHarvester = {
                     }
                 });
             }
-            if(!target &&
-               creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
+            if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
                 var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_STORAGE) &&
