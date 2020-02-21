@@ -2,11 +2,11 @@ var roleNext = require('role.upgrader');
 
 var roleBuilder = {
 
-    var myRoom = Game.spawns['Spawn1'].room.name;
-    var anotherRoom = 'W25S34';Game.map.describeExits(myRoom)[BOTTOM].name; //'W25S34'
-
     /** @param {Creep} creep **/
     run: function(creep) {
+        
+        var myRoom = Game.spawns['Spawn1'].room.name;
+        var anotherRoom = 'W25S34';Game.map.describeExits(myRoom)[BOTTOM].name; //'W25S34'
 
         if(creep.memory.building && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
             creep.memory.building = false;
