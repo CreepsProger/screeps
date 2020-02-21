@@ -33,7 +33,7 @@ var roleClaimer = {
             if(target)
             {
                 var err = ERR_NOT_IN_RANGE;
-                if(target.id) creep.rangedAttack(target);
+                if(target.id) creep.attackController(target);
                 if(err == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                     creep.say('🔜🗝');
