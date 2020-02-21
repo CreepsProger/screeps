@@ -26,6 +26,16 @@ var roleAttacker = {
                 target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
             }
             if(!target) {
+                const targets = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, 3, {
+                    filter: (structure) => {
+                        return (structure.structureType != STRUCTURE_CONTROLLER);
+                    }
+                });
+                if(targets.length > 0) {
+                    target = targets[0];
+                }
+            }
+            if(!target) {
                 target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType != STRUCTURE_CONTROLLER);
