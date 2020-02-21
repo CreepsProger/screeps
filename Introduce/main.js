@@ -60,7 +60,7 @@ module.exports.loop = function () {
          }
       }
       if(!target) {
-         const targets = tower.pos.findInRange(FIND_MY_CREEPS, 20, {
+         const targets = tower.pos.findInRange(FIND_MY_CREEPS, 5, {
             filter: (mycreep) => {
                return (mycreep.hitsMax - mycreep.hits > 0 &&
                        mycreep.memory.heal_time != Game.time);
