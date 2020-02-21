@@ -163,6 +163,10 @@ module.exports.loop = function () {
                   , Memory.totals.WORK
                   , Memory.totals.CARRY
                   , Memory.totals.MOVE
+                  , 'EA/ECA'
+                  , creep.room.energyAvailable
+                  , creep.room.energyCapacityAvailable
+                     
 //                   , 'hmV/hmC/hmA:'
 //                   , Memory.harvestersMovements.Value.v
 //                   , Memory.harvestersMovements.Count.v
