@@ -26,7 +26,11 @@ var roleAttacker = {
                 target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
             }
             if(!target) {
-                target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+                target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES, {
+                    filter: (structure) => {
+                        return (structure.structureType != STRUCTURE_CONTROLLER);
+                    }
+                });
             }
             if(!target) {
                 var hostileRoom = 'W26S33';
