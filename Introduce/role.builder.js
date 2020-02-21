@@ -27,7 +27,7 @@ var roleBuilder = {
                 }
             }
             if(!target) {
-                var room = Game.map.describeExits(myRoom)[BOTTOM];
+                var room = Game.spawns['Spawn1'].room;//Game.map.describeExits(myRoom)[BOTTOM];
                 console.log( '🔜🏗', Math.trunc(Game.time/10000), Game.time%10000
                             , 'looking for building in:'
                             , room);
