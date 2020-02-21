@@ -25,26 +25,35 @@ var rolePickuper = {
                 if(err == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                     creep.say('🔜👊');
-                    console.log( '🔜👊', Math.trunc(Game.time/10000), Game.time%10000
-                                , creep.name
-                                , 'moving for pickuping:'
-                                , target.name?target.name:target.structureType);
+                    if(Game.flags['LP '] || Game.flags['LP'] || Game.flags['L']) {
+                        var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
+                        console.log( '🔜👊', Math.trunc(Game.time/10000), Game.time%10000
+                                    , creep.name
+                                    , 'moving for pickuping:'
+                                    , targetinfo);
+                    }
                 }
                 else if(!err) {
                     creep.say('👊');
-                    console.log( '👊', Math.trunc(Game.time/10000), Game.time%10000
-                                , creep.name
-                                , 'pickuping:'
-                                , target.name?target.name:target.structureType);
+                    if(Game.flags['LP '] || Game.flags['LP'] || Game.flags['L']) {
+                        var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
+                        console.log( '👊', Math.trunc(Game.time/10000), Game.time%10000
+                                    , creep.name
+                                    , 'pickuping:'
+                                    , targetinfo);
+                    }
                 }
                 else {
                     creep.memory.pickuping = false;
-                    console.log( '👊⚠️', Math.trunc(Game.time/10000), Game.time%10000
-                                , creep.name
-                                , 'pickuping :'
-                                , target.name?target.name:target.structureType
-                                , 'with err:'
-                                , err);
+                    if(Game.flags['LP '] || Game.flags['LP'] || Game.flags['L']) {
+                        var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
+                        console.log( '👊⚠️', Math.trunc(Game.time/10000), Game.time%10000
+                                    , creep.name
+                                    , 'pickuping :'
+                                    , target.name?target.name:target.structureType
+                                    , 'with err:'
+                                    , err);
+                    }
                 }
             }
             else {
