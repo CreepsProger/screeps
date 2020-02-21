@@ -123,13 +123,15 @@ module.exports.loop = function () {
             Memory.totals.FreeCapacity += creep.store.getFreeCapacity();
             Memory.totals.UsedCapacity += creep.store.getUsedCapacity();
             Memory.totals.HitsMax += creep.hitsMax;
-            console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-                        , creep.name
-                        , 'work_efficiency(12):'
-                        , mainFlags.work_efficiency(creep.memory.type,12)
-                        , 'work_efficiency(24):'
-                        , mainFlags.work_efficiency(creep.memory.type,24)
-                       );
+            if(Game.flags['LWE'] || Game.flags['LW'] || Game.flags['L']) {
+               console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+                           , creep.name
+                           , 'work_efficiency(12):'
+                           , mainFlags.work_efficiency(creep.memory.type,12)
+                           , 'work_efficiency(24):'
+                           , mainFlags.work_efficiency(creep.memory.type,24)
+                          );
+            }
          }
 
          console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
