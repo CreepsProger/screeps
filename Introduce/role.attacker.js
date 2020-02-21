@@ -92,30 +92,30 @@ var roleAttacker = {
                     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                     creep.say('🔜🎯');
                     if(Game.flags['LA '] || Game.flags['LA'] || Game.flags['L']) {
+                        var targetinfo = target.name ? target.name:target.structureType?:JSON.stringify(target);
                         console.log( '🔜🎯', Math.trunc(Game.time/10000), Game.time%10000
                                     , creep.name
                                     , 'moving for attacking to:'
-                                    , JSON.stringify(target).substr(0,40));
-//                                     , target.room.name!=myRoom?target.room.name+'('+target.room.pos+')/':'');
+                                    , targetinfo);
                     }
                 }
                 else if(!err) {
                     creep.say('🎯');
                     if(Game.flags['LA '] || Game.flags['LA'] || Game.flags['L']) {
+                        var targetinfo = target.name ? target.name:target.structureType?:JSON.stringify(target);
                         console.log( '🎯', Math.trunc(Game.time/10000), Game.time%10000
                                     , creep.name
                                     , 'attacking on:'
-                                    , target.room.name!=myRoom?target.room.name+'/':''
-                                      + target.name?target.name:target.structureType);
+                                    , targetinfo);
                     }
                 }
                 else {
                     if(Game.flags['LA '] || Game.flags['LA'] || Game.flags['L']) {
+                        var targetinfo = target.name ? target.name:target.structureType?:JSON.stringify(target);
                         console.log( '🎯⚠️', Math.trunc(Game.time/10000), Game.time%10000
                                     , creep.name
                                     , 'attacking on:'
-                                    , target.room.name!=myRoom?target.room.name+'/':''
-                                      + target.name?target.name:target.structureType
+                                    , targetinfo
                                     , 'with err:'
                                     , err);
                     }
