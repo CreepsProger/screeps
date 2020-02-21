@@ -2,6 +2,9 @@ var roleNext = require('role.upgrader');
 
 var roleBuilder = {
 
+    var myRoom = Game.spawns['Spawn1'].room.name;
+    var anotherRoom = 'W25S34';Game.map.describeExits(myRoom)[BOTTOM].name; //'W25S34'
+
     /** @param {Creep} creep **/
     run: function(creep) {
 
@@ -19,6 +22,12 @@ var roleBuilder = {
             var target;
             if(!target) {
                 var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
+                if(targets.length > 0) {
+                    target = targets[0];
+                }
+            }
+            if(!target) {
+                var targets = anotherRoom.find(FIND_CONSTRUCTION_SITES);
                 if(targets.length > 0) {
                     target = targets[0];
                 }
