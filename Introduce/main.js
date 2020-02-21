@@ -200,7 +200,7 @@ module.exports.loop = function () {
 //          if(CL >= 2) err = tryCreateCreep(err, 40201, 2, 79); // E 550   Miner
 //          if(CL >= 2) err = tryCreateCreep(err, 605, 2, 75); // E 550 Carrier
 
-         if(CL >= 1) mainFlags.tryCreateCreep( 20102, Memory.totals.AvalableWorks<2 ? 1:0, 80); // E 300 Worker
+         if(CL >= 1) mainFlags.tryCreateCreep( 10202, Memory.totals.AvalableWorks<2 ? 1:0, 80); // E 300 Worker
 //          if(CL >= 1) err = tryCreateCreep(err, 20101, 4, 89); // E 300   Miner
 //          if(CL >= 1) err = tryCreateCreep(err, 303, 2, 85); // E 300 Carrier
       }
