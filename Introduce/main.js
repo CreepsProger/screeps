@@ -1,7 +1,7 @@
 //import {checkFlags} from 'main.flags.js';
 //import {checkMainCommit} from 'main.flags.js';
 var mainFlags = require('main.flags');
-var roleAttacker = require('role.attacker');
+var roleCreep = require('role.claimer');
 
 var commit = 31;
 var ticksToCheckCreepsNumber = 20;
@@ -191,7 +191,7 @@ module.exports.loop = function () {
 
       if(creep.memory.role == 'creep') {
          creep.memory.rerun = 0;
-         roleAttacker.run(creep);
+         roleCreep.run(creep);
       }
    }
 }
