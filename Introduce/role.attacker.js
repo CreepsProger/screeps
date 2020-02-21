@@ -25,7 +25,7 @@ var roleAttacker = {
                         return structure.structureType == STRUCTURE_RAMPART;
                     }
                 });
-                if(rampart.pos == creep.pos) {
+                if(rampart.pos != creep.pos) {
                     target = rampart;
                 }
             }
