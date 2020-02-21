@@ -28,26 +28,34 @@ var roleAttacker = {
             if(!target) {
                 target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
             }
+            if(!target) {
+                var hostileRoom = 'W26S33';
+                if(creep.room != hostileRoom) {
+                    const exitDir = Game.map.findExit(creep.room, hostileRoom);
+                    target = creep.pos.findClosestByRange(exitDir);
+                }
+            }
             if(target)
             {
-                var err = creep.rangedAttack(target);
+                var err = ERR_NOT_IN_RANGE;
+                if(target.id) creep.rangedAttack(target);
                 if(err == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-                    creep.say('🔜💡');
-                    console.log( '🔜💡', Math.trunc(Game.time/10000), Game.time%10000
+                    creep.say('🔜🎯');
+                    console.log( '🔜🎯', Math.trunc(Game.time/10000), Game.time%10000
                                 , creep.name
                                 , 'moving for transfering energy to:'
                                 , target.name?target.name:target.structureType);
                 }
                 else if(!err) {
-                    creep.say('💡');
-                    console.log( '💡', Math.trunc(Game.time/10000), Game.time%10000
+                    creep.say('🎯');
+                    console.log( '🎯', Math.trunc(Game.time/10000), Game.time%10000
                                 , creep.name
                                 , 'transfering energy to:'
                                 , target.name?target.name:target.structureType);
                 }
                 else {
-                    console.log( '💡⚠️', Math.trunc(Game.time/10000), Game.time%10000
+                    console.log( '🎯⚠️', Math.trunc(Game.time/10000), Game.time%10000
                                 , creep.name
                                 , 'transfering energy to:'
                                 , target.name?target.name:target.structureType
