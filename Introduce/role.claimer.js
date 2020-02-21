@@ -10,7 +10,8 @@ var roleClaimer = {
 
         if(!creep.memory.claiming &&
            creep.getActiveBodyparts(CLAIM) > 0 &&
-           creep.getActiveBodyparts(CARRY) == 0) {
+           creep.getActiveBodyparts(CARRY) == 0 &&
+           !creep.memory.rerun) {
             creep.memory.claiming = true;
         }
 
