@@ -90,25 +90,31 @@ var roleAttacker = {
                 if(err == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                     creep.say('🔜🎯');
-                    console.log( '🔜🎯', Math.trunc(Game.time/10000), Game.time%10000
-                                , creep.name
-                                , 'moving for attacking on:'
-                                , target.name?target.name:target.structureType);
+                    if(Game.flags['LA '] || Game.flags['LA'] || Game.flags['L']) {
+                        console.log( '🔜🎯', Math.trunc(Game.time/10000), Game.time%10000
+                                    , creep.name
+                                    , 'moving for attacking on:'
+                                    , target.name?target.name:target.structureType);
+                    }
                 }
                 else if(!err) {
                     creep.say('🎯');
-                    console.log( '🎯', Math.trunc(Game.time/10000), Game.time%10000
-                                , creep.name
-                                , 'attacking on:'
-                                , target.name?target.name:target.structureType);
+                    if(Game.flags['LA '] || Game.flags['LA'] || Game.flags['L']) {
+                        console.log( '🎯', Math.trunc(Game.time/10000), Game.time%10000
+                                    , creep.name
+                                    , 'attacking on:'
+                                    , target.name?target.name:target.structureType);
+                    }
                 }
                 else {
-                    console.log( '🎯⚠️', Math.trunc(Game.time/10000), Game.time%10000
-                                , creep.name
-                                , 'attacking on:'
-                                , target.name?target.name:target.structureType
-                                , 'with err:'
-                                , err);
+                    if(Game.flags['LA '] || Game.flags['LA'] || Game.flags['L']) {
+                        console.log( '🎯⚠️', Math.trunc(Game.time/10000), Game.time%10000
+                                    , creep.name
+                                    , 'attacking on:'
+                                    , target.name?target.name:target.structureType
+                                    , 'with err:'
+                                    , err);
+                    }
                     creep.memory.attacking = false;
                 }
             }
