@@ -1,6 +1,8 @@
 // $Id:$
 var lastFlagRemoved;
 
+var creep_created = false;
+
 var mainFlags = {
     
     
@@ -19,7 +21,7 @@ var mainFlags = {
       return Math.floor(300 * Cs * 50 / (harvest_ticks + move_to_rc_ticks + upgrade_ticks + move_from_rc_ticks));
    },
     
-    tryCreateCreep: function(preverr, type, needed = 0, weight) {
+    tryCreateCreep: function(type, needed = 0, weight) {
         var body = [];
         var  Ts = Math.trunc(type%100000000000000/1000000000000);
         var CLs = Math.trunc(type%1000000000000/10000000000);
@@ -53,16 +55,16 @@ var mainFlags = {
 //                     , 'preverr:'
 //                     , preverr
 //                   );
-        if(preverr && needsNumber > 0) {
-            preverr = Game.spawns['Spawn1'].spawnCreep(body
+        if(!creep_created && needsNumber > 0) {
+            var err = Game.spawns['Spawn1'].spawnCreep(body
                                                    , newName
                                                    , {memory: {n: Memory.CreepsCounter, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
-            if(preverr) {
+            if(err) {
                 console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                             , 'Can\'t spawn new creep:'
                             , newName
                             , 'err:'
-                            , preverr);
+                            , err);
             }
             else {
                 console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
@@ -73,7 +75,6 @@ var mainFlags = {
                 Memory.CreepsNumberByType[type]++;
                 Memory.CreepsCounter++;
             }
-            return preverr;
         }
     },
 
