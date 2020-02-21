@@ -44,20 +44,20 @@ var roleAttacker = {
                     creep.say('🔜🎯');
                     console.log( '🔜🎯', Math.trunc(Game.time/10000), Game.time%10000
                                 , creep.name
-                                , 'moving for transfering energy to:'
+                                , 'moving for attacking on:'
                                 , target.name?target.name:target.structureType);
                 }
                 else if(!err) {
                     creep.say('🎯');
                     console.log( '🎯', Math.trunc(Game.time/10000), Game.time%10000
                                 , creep.name
-                                , 'transfering energy to:'
+                                , 'attacking on:'
                                 , target.name?target.name:target.structureType);
                 }
                 else {
                     console.log( '🎯⚠️', Math.trunc(Game.time/10000), Game.time%10000
                                 , creep.name
-                                , 'transfering energy to:'
+                                , 'attacking on:'
                                 , target.name?target.name:target.structureType
                                 , 'with err:'
                                 , err);
