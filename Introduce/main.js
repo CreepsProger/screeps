@@ -82,8 +82,12 @@ module.exports.loop = function () {
                        , Capacity: 0
                        , FreeCapacity: 0
                        , UsedCapacity: 0
-                       , HitsMax: 0
-                       , AvalableWorks: 0};
+                       , hits: 0
+                       , hitsMax: 0
+                       , WORK: 0
+                       , CARRY: 0
+                       , MOVE: 0};
+      Memory.CreepsNumberByType = {};
       updateMovingAverage(Memory.harvestersMovements.Value);
       updateMovingAverage(Memory.harvestersMovements.Count);
       updateMovingAverage(Memory.harvestersMovements.Avg);
@@ -122,12 +126,18 @@ module.exports.loop = function () {
          Memory.totals.CreepsNumber = 0;
          for(var name in Game.creeps) {
             var creep = Game.creeps[name];
+//             if(!Memory.CreepsNumberByType[creep.memory.type])
+//                Memory.CreepsNumberByType[creep.memory.type] = 0;
+            Memory.CreepsNumberByType[creep.memory.type]++;
             Memory.totals.CreepsNumber += 1;
             Memory.totals.Capacity += creep.store.getCapacity();
             Memory.totals.FreeCapacity += creep.store.getFreeCapacity();
             Memory.totals.UsedCapacity += creep.store.getUsedCapacity();
-            Memory.totals.HitsMax += creep.hitsMax;
-            Memory.totals.AvalableWorks += creep.getActiveBodyparts(WORK);
+            Memory.totals.hits += creep.hits;
+            Memory.totals.hitsMax += creep.hitsMax;
+            Memory.totals.WORK += creep.getActiveBodyparts(WORK);
+            Memory.totals.CARRY += creep.getActiveBodyparts(CARRY);
+            Memory.totals.MOVE += creep.getActiveBodyparts(MOVE);
             if(Game.flags['LWE'] || Game.flags['LW'] || Game.flags['L']) {
                console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                            , creep.name
@@ -142,13 +152,17 @@ module.exports.loop = function () {
          console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                   , 'Creeps Number:'
                   , Memory.totals.CreepsNumber
-                  , 'H/aH:'
-                  , Memory.totals.HitsMax
-                  , Math.floor(Memory.totals.HitsMax / Memory.totals.CreepsNumber)
+                  , 'h/hM:'
+                  , Memory.totals.hits
+                  , Memory.totals.hitsMax
                   , 'C/FC/UC:'
                   , Memory.totals.Capacity
                   , Memory.totals.FreeCapacity
                   , Memory.totals.UsedCapacity
+                  , 'W/C/M:'
+                  , Memory.totals.WORK
+                  , Memory.totals.CARRY
+                  , Memory.totals.MOVE
 //                   , 'hmV/hmC/hmA:'
 //                   , Memory.harvestersMovements.Value.v
 //                   , Memory.harvestersMovements.Count.v
