@@ -63,7 +63,7 @@ module.exports.loop = function () {
          const targets = tower.pos.findInRange(FIND_MY_CREEPS, 20, {
             filter: (mycreep) => {
                return (mycreep.hitsMax - mycreep.hits > 0 &&
-                       mycreep.memory.healer != tower.id);
+                       mycreep.memory.heal_time != Game.time);
             }
          });
          if(targets.length > 0) {
@@ -72,6 +72,7 @@ module.exports.loop = function () {
          if(target) {
             tower.heal(target);
             target.memory.healer = tower.id;
+            target.memory.heal_time = Game.time;
          }
       }
    });
@@ -146,15 +147,15 @@ module.exports.loop = function () {
                   , Memory.totals.Capacity
                   , Memory.totals.FreeCapacity
                   , Memory.totals.UsedCapacity
-                  , 'hmV/hmC/hmA:'
-                  , Memory.harvestersMovements.Value.v
-                  , Memory.harvestersMovements.Count.v
-                  , Memory.harvestersMovements.Avg.v
-                  , 'hmVd/hmCd/hmdA/hmAd:'
-                  , Memory.harvestersMovements.Value.movingAverage.delta
-                  , Memory.harvestersMovements.Count.movingAverage.delta
-                  , Math.floor(Memory.harvestersMovements.Value.movingAverage.delta / Memory.harvestersMovements.Count.movingAverage.delta)
-                  , Memory.harvestersMovements.Avg.movingAverage.delta
+//                   , 'hmV/hmC/hmA:'
+//                   , Memory.harvestersMovements.Value.v
+//                   , Memory.harvestersMovements.Count.v
+//                   , Memory.harvestersMovements.Avg.v
+//                   , 'hmVd/hmCd/hmdA/hmAd:'
+//                   , Memory.harvestersMovements.Value.movingAverage.delta
+//                   , Memory.harvestersMovements.Count.movingAverage.delta
+//                   , Math.floor(Memory.harvestersMovements.Value.movingAverage.delta / Memory.harvestersMovements.Count.movingAverage.delta)
+//                   , Memory.harvestersMovements.Avg.movingAverage.delta
                   , JSON.stringify(Memory.CreepsNumberByType));
 
 //      if(((Memory.totals.CreepsNumber < 8) || (2 * Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Spawn.spawning) {
@@ -164,8 +165,8 @@ module.exports.loop = function () {
          var err = ERR_NOT_ENOUGH_ENERGY;
          var N = Memory.totals.CreepsNumber;
 
-         if(CL >= 4) mainFlags.tryCreateCreep(err,          1212, N<(maxCreepsNumber+1)? 1:0, 55); // V 1-1 E 1800  Carrier
          if(CL >= 4) mainFlags.tryCreateCreep(err,         40404, N<(maxCreepsNumber+1)? 5:0, 50); // V 1-1 E  800   Worker
+         if(CL >= 4) mainFlags.tryCreateCreep(err,          1212, N<(maxCreepsNumber+1)? 1:0, 55); // V 1-1 E 1800  Carrier
          if(CL >= 4) mainFlags.tryCreateCreep(err, 5000300000008, N<(maxCreepsNumber+1)?10:0, 20); // V 1-1 E  900  Attaker
 //          if(CL >= 4) mainFlags.tryCreateCreep(err,   200000002, N<(maxCreepsNumber+1)?2:0, 50); // V 1-1 E 800    Attaker
 //          if(CL >= 4) mainFlags.tryCreateCreep(err,     80804, N<(maxCreepsNumber+1)?1:0, 50); // V 1-2 E 1300    Worker
