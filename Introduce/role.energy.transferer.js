@@ -52,8 +52,8 @@ var roleEnergyTransferer = {
                 });
             }
             if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable &&
-               creep.room.storage.getUsedCapacity(RESOURCE_ENERGY) < 10000 &&
-               creep.room.storage.getFreeCapacity(RESOURCE_ENERGY) > 10000) {
+               creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) < 10000 &&
+               creep.room.storage.store.getFreeCapacity(RESOURCE_ENERGY) > 10000) {
                 target = creep.room.storage;
             }
             if(target) {
