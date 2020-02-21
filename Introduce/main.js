@@ -126,8 +126,8 @@ module.exports.loop = function () {
          Memory.totals.CreepsNumber = 0;
          for(var name in Game.creeps) {
             var creep = Game.creeps[name];
-//             if(!Memory.CreepsNumberByType[creep.memory.type])
-//                Memory.CreepsNumberByType[creep.memory.type] = 0;
+            if(!Memory.CreepsNumberByType[creep.memory.type])
+               Memory.CreepsNumberByType[creep.memory.type] = 0;
             Memory.CreepsNumberByType[creep.memory.type]++;
             Memory.totals.CreepsNumber += 1;
             Memory.totals.Capacity += creep.store.getCapacity();
