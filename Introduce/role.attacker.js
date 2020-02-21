@@ -27,6 +27,7 @@ var roleAttacker = {
                 });
                 if(rampart.pos != creep.pos) {
                     target = rampart;
+                    target = creep.room.controller;
                 }
             }
             if(creep.room != myRoom && creep.hits < creep.hitsMax) {
