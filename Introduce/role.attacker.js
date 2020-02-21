@@ -1,5 +1,8 @@
 var roleNext = require('role.energy.transferer');
 
+var myRoom = 'W25S33';
+var hostileRoom = 'W26S33';
+
 var roleAttacker = {
 
     /** @param {Creep} creep **/
@@ -16,6 +19,16 @@ var roleAttacker = {
 
         if(creep.memory.attacking) {
             var target;
+            if(creep.room == myRoom) {
+                var rampart = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+                    filter: (structure) => {
+                        return structure.structureType == STRUCTURE_RAMPART;
+                    }
+                });
+                if(rampart.pos == creep.pos) {
+                    target = rampart;
+                }
+            }
             if(!target) {
                 const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 3);
                 if(targets.length > 0) {
@@ -43,9 +56,14 @@ var roleAttacker = {
                 });
             }
             if(!target) {
-                var hostileRoom = 'W26S33';
                 if(creep.room != hostileRoom) {
                     const exitDir = Game.map.findExit(creep.room, hostileRoom);
+                    target = creep.pos.findClosestByRange(exitDir);
+                }
+            }
+            if(!target) {
+                if(creep.room != myRoom) {
+                    const exitDir = Game.map.findExit(creep.room, myRoom);
                     target = creep.pos.findClosestByRange(exitDir);
                 }
             }
