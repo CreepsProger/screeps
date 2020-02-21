@@ -41,7 +41,7 @@ var roleEnergyHarvester = {
                 var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_STORAGE) &&
-                            structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
+                            structure.store.getUsedCapacity(RESOURCE_ENERGY) > 5000;
                     }
                 });
             }
