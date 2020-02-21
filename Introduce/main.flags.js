@@ -119,7 +119,7 @@ var mainFlags = {
                         , Memory.CreepsCounter
                         , 'Memory.CreepsNumberByType:'
                         , Memory.CreepsNumberByType
-                        , JSON.stringify(Meemory.CreepsNumberByType));
+                        , JSON.stringify(Memory.CreepsNumberByType));
             
             Memory.totals = { CreepsNumber: 0
                              , Capacity: 0
