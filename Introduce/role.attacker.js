@@ -1,8 +1,5 @@
 var roleNext = require('role.energy.transferer');
 
-var myRoom = 'W25S33';
-var hostileRoom = 'W25S34';
-
 var roleAttacker = {
 
     /** @param {Creep} creep **/
@@ -17,6 +14,9 @@ var roleAttacker = {
             creep.memory.attacking = true;
         }
 
+        var myRoom = Game.spawns['Spawn1'].room.name;
+        var attackedRoom = Game.map.describeExits(myRoom)[BOTTOM].name; //'W25S34'
+        
         if(creep.memory.attacking) {
             var target;
             if(creep.hits < creep.hitsMax) {
@@ -69,8 +69,8 @@ var roleAttacker = {
                 });
             }
             if(!target) {
-                if(creep.room != hostileRoom) {
-                    const exitDir = Game.map.findExit(creep.room, hostileRoom);
+                if(creep.room != attackedRoom) {
+                    const exitDir = Game.map.findExit(creep.room, attackedRoom);
                     target = creep.pos.findClosestByRange(exitDir);
                 }
             }
@@ -95,7 +95,8 @@ var roleAttacker = {
                         console.log( '🔜🎯', Math.trunc(Game.time/10000), Game.time%10000
                                     , creep.name
                                     , 'moving for attacking on:'
-                                    , target.name?target.name:target.structureType);
+                                    , target.room.name!=myRoom?target.room.name+'/':''
+                                      + target.name?target.name:target.structureType);
                     }
                 }
                 else if(!err) {
@@ -104,7 +105,8 @@ var roleAttacker = {
                         console.log( '🎯', Math.trunc(Game.time/10000), Game.time%10000
                                     , creep.name
                                     , 'attacking on:'
-                                    , target.name?target.name:target.structureType);
+                                    , target.room.name!=myRoom?target.room.name+'/':''
+                                      + target.name?target.name:target.structureType);
                     }
                 }
                 else {
@@ -112,7 +114,8 @@ var roleAttacker = {
                         console.log( '🎯⚠️', Math.trunc(Game.time/10000), Game.time%10000
                                     , creep.name
                                     , 'attacking on:'
-                                    , target.name?target.name:target.structureType
+                                    , target.room.name!=myRoom?target.room.name+'/':''
+                                      + target.name?target.name:target.structureType);
                                     , 'with err:'
                                     , err);
                     }
