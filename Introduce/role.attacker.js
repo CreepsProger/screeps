@@ -95,7 +95,7 @@ var roleAttacker = {
                         console.log( '🔜🎯', Math.trunc(Game.time/10000), Game.time%10000
                                     , creep.name
                                     , 'moving for attacking to:'
-                                    , JSON.stringify(target).substr(80));
+                                    , JSON.stringify(target).substr(0,40));
 //                                     , target.room.name!=myRoom?target.room.name+'('+target.room.pos+')/':'');
                     }
                 }
