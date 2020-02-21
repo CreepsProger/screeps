@@ -15,7 +15,7 @@ var roleEnergyTransferer = {
         }
 
         if(creep.memory.transfering) {
-            var target; //  = Game.getObjectById(creep.memory.target)
+            var target;
             if(!target) {
                 var closests = creep.pos.findInRange(FIND_MY_CREEPS, 1, {
                     filter: (creep2) => {
@@ -23,10 +23,6 @@ var roleEnergyTransferer = {
                             creep2.memory.weight < creep.memory.weight;
                     }
                 });
-//                 console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-//                                 , creep.name
-//                                 , 'my closest are:'
-//                                 , closests);
                 if(closests.length > 0) {
                     target = closests[0];
                 }
@@ -35,7 +31,7 @@ var roleEnergyTransferer = {
                 target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_SPAWN) &&
-                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 50;
+                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                     }
                 });
             }
@@ -43,11 +39,11 @@ var roleEnergyTransferer = {
                 target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_TOWER) &&
-                            structure.store.getUsedCapacity(RESOURCE_ENERGY) < structure.store.getFreeCapacity(RESOURCE_ENERGY);
+                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                     }
                 });
             }
-            if(!target) {
+            if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable)) {
                 target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_EXTENSION) &&
@@ -55,53 +51,9 @@ var roleEnergyTransferer = {
                     }
                 });
             }
-            if(!target &&
-              creep.room.energyAvailable == creep.room.energyCapacityAvailable) {
-                target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                    filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_CONTAINER) &&
-                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 100;
-                    }
-                });
-                if(!target &&
-                   creep.room.storage.getUsedCapacity(RESOURCE_ENERGY) < 10000 &&
-                   creep.room.storage.getFreeCapacity(RESOURCE_ENERGY) > 10000) {
-                    target = creep.room.storage;
-                }
-            }
-            if(!target && !creep.getActiveBodyparts(WORK)) {
-                target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
-                    filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_SPAWN) &&
-                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-                    }
-                });
-            }
-            if(!target && !creep.getActiveBodyparts(WORK)) {
-                target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
-                    filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_TOWER) &&
-                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 100;
-                    }
-                });
-            }
-            if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
-                target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
-                    filter: (creep2) => {
-                        return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-                            creep2.memory.weight < creep.memory.weight;
-                    }
-                });
-            }
-            if(!target) {
-                target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
-                    filter: (creep2) => {
-                        return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > 50 &&
-                            creep2.memory.weight < creep.memory.weight;
-                    }
-                });
-            }
-            if(!target && creep.getActiveBodyparts(WORK) == 0 && creep.memory.rerun) {
+            if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable)) {
+               creep.room.storage.getUsedCapacity(RESOURCE_ENERGY) < 10000 &&
+               creep.room.storage.getFreeCapacity(RESOURCE_ENERGY) > 10000) {
                 target = creep.room.storage;
             }
             if(target) {
