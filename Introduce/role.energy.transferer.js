@@ -63,6 +63,11 @@ var roleEnergyTransferer = {
                             structure.store.getFreeCapacity(RESOURCE_ENERGY) > 100;
                     }
                 });
+                if(!target && creep.memory.rerun &&
+                   creep.room.storage.getUsedCapacity(RESOURCE_ENERGY) < 10000 &&
+                   creep.room.storage.getFreeCapacity(RESOURCE_ENERGY) > 10000) {
+                    target = creep.room.storage;
+                }
             }
             if(!target && !creep.getActiveBodyparts(WORK)) {
                 target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
