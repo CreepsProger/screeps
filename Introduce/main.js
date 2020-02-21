@@ -60,9 +60,10 @@ module.exports.loop = function () {
          }
       }
       if(!target) {
-         const targets = tower.pos.findInRange(FIND_MY_CREEPS, 5, {
+         const targets = tower.pos.findInRange(FIND_MY_CREEPS, 10, {
             filter: (mycreep) => {
-               return mycreep.hitsMax - mycreep.hits > 0;
+               return (mycreep.hitsMax - mycreep.hits > 0 &&
+                       target.memory.healer != tower.id);
             }
          });
          if(targets.length > 0) {
@@ -70,6 +71,7 @@ module.exports.loop = function () {
          }
          if(target) {
             tower.heal(target);
+            target.memory.healer = tower.id;
          }
       }
    });
