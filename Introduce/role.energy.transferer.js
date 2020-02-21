@@ -63,7 +63,7 @@ var roleEnergyTransferer = {
                             structure.store.getFreeCapacity(RESOURCE_ENERGY) > 100;
                     }
                 });
-                if(!target && creep.memory.rerun &&
+                if(!target &&
                    creep.room.storage.getUsedCapacity(RESOURCE_ENERGY) < 10000 &&
                    creep.room.storage.getFreeCapacity(RESOURCE_ENERGY) > 10000) {
                     target = creep.room.storage;
