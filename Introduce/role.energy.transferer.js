@@ -69,7 +69,7 @@ var roleEnergyTransferer = {
                 if(err == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                     creep.say('🔜💡');
-                    if(Game.flags['LET'] || Game.flags['LE'] || Game.flags['L']) {
+                    if(!!Game.flags['LET'] || !!Game.flags['LE'] || !!Game.flags['L']) {
                         console.log( '🔜💡', Math.trunc(Game.time/10000), Game.time%10000
                                     , creep.name
                                     , 'moving for transfering energy to:'
@@ -78,7 +78,7 @@ var roleEnergyTransferer = {
                 }
                 else if(!err) {
                     creep.say('💡');
-                    if(Game.flags['LET'] || Game.flags['LE'] || Game.flags['L']) {
+                    if(!!Game.flags['LET'] || !!Game.flags['LE'] || !!Game.flags['L']) {
                         console.log( '💡', Math.trunc(Game.time/10000), Game.time%10000
                                     , creep.name
                                     , 'transfering energy to:'
@@ -87,7 +87,7 @@ var roleEnergyTransferer = {
                 }
                 else {
                     creep.memory.transfering = false;
-                    if(Game.flags['LET'] || Game.flags['LE'] || Game.flags['L']) {
+                    if(!!Game.flags['LET'] || !!Game.flags['LE'] || !!Game.flags['L']) {
                         console.log( '💡⚠️', Math.trunc(Game.time/10000), Game.time%10000
                                     , creep.name
                                     , 'transfering energy to:'
