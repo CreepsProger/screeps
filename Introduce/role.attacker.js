@@ -94,9 +94,8 @@ var roleAttacker = {
                     if(Game.flags['LA '] || Game.flags['LA'] || Game.flags['L']) {
                         console.log( '🔜🎯', Math.trunc(Game.time/10000), Game.time%10000
                                     , creep.name
-                                    , 'moving for attacking on:'
-                                    , target.room.name!=myRoom?target.room.name+'/':''
-                                      + target.name?target.name:target.structureType);
+                                    , 'moving for attacking to:'
+                                    , target.room.name!=myRoom?target.room.name+'('+target.room.pos+')/':'');
                     }
                 }
                 else if(!err) {
