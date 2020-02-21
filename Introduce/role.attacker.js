@@ -20,14 +20,19 @@ var roleAttacker = {
         if(creep.memory.attacking) {
             var target;
             if(creep.room == myRoom && creep.hits < creep.hitsMax) {
-                var rampart = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-                    filter: (structure) => {
-                        return structure.structureType == STRUCTURE_RAMPART;
+                if(!target) {
+                    var rampart = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+                        filter: (structure) => {
+                            return structure.structureType == STRUCTURE_RAMPART;
+                        }
+                    });
+                    
+                    if(rampart.pos != creep.pos) {
+                        target = rampart;
                     }
-                });
-                if(rampart.pos != creep.pos) {
-                    target = rampart;
-                    target = creep.room.controller;
+                    else {
+                        target = creep.room.controller;
+                    }
                 }
             }
             if(creep.room != myRoom && creep.hits < creep.hitsMax) {
