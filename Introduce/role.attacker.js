@@ -63,7 +63,8 @@ var roleAttacker = {
             if(!target) {
                 target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES, {
                     filter: (structure) => {
-                        return (structure.structureType != STRUCTURE_CONTROLLER);
+                        return (structure.structureType != STRUCTURE_CONTROLLER &&
+                               structure.structureType != STRUCTURE_KEEPER_LAIR);
                     }
                 });
             }
