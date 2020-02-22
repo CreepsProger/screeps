@@ -29,7 +29,7 @@ var role = {
 			creep.memory[role.name] = { on: false
 																, room: ''
 																};
-			if(!role.W25S33.workers.filter(name => name === '1') &&
+			if(!role.W25S33.workers.filter(name => name === creep.name) &&
 				 !role.W26S33.workers.filter(name => name === '1'))
 // 			if(false && !role.W25S33.workers.find(name => name === creep.name) &&
 // 				 !role.W26S33.workers.find(name => name === creep.name))
