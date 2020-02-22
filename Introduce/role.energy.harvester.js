@@ -45,6 +45,12 @@ var role = {
 					role.W26S33.workers[role.W26S33.needs] = creep.name;
 				}
 			}
+			else if(role.W25S33.workers.find(name => name === creep.name)) {
+				creep.memory[role.name].room = 'W25S33';
+			}
+			else if(role.W26S33.workers.find(name => name === creep.name)) {
+				creep.memory[role.name].room = 'W26S33';
+			}
 			role.log('I->', creep, 'init', 'role.W25S33:', JSON.stringify(role.W25S33), 'role.W26S33:', JSON.stringify(role.W26S33));
 		}
 	},
