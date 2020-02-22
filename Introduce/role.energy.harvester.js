@@ -131,7 +131,7 @@ var role = {
 		if(creep.memory[role.name].on) {
 			var target = role.getTarget(creep);
 			if(target) {
-				var err = target.name? // a creep
+				var err = (target.name || !target.id)? // a creep || exit
 						ERR_NOT_IN_RANGE:
 				target.structureType?
 						creep.withdraw(target, RESOURCE_ENERGY): // a structure
