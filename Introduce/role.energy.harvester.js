@@ -31,6 +31,7 @@ var role = {
 																			 W26S33: { needs: 3, workers: ['3','4','5'] }
 																		 }
 													};
+			console.log('init_config', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
 		}
 	},
 
