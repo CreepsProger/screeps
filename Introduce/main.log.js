@@ -4,10 +4,11 @@ var mainLog = {
 
 	canLog: function(flagNames) {
 		console.log(flagNames);
-		for(var name in flagNames) {
+		for(var i in flagNames) {
+			var name = flagNames[i];
 			var flag = Game.flags[name];
-			console.log(name,flag);
-			if(!!Game.flags[name]) {
+			console.log(i,name,flag);
+			if(!!flag) {
 				return true;
 			}
 		}
