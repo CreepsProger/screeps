@@ -9,7 +9,7 @@ var roleClaimer = {
 	
 	/** @param {Creep} creep **/
 	run: function(creep) {
-		if(!creep.memory.claiming && !creep.memory.claiming.on)
+		if(typeof creep.memory.claiming == 'undefined' && typeof creep.memory.claiming.on == 'undefined) {
 		{
 			if(log.canLog(['LC','LC ','L'])) {
 				console.log( '🗝', Math.trunc(Game.time/10000), Game.time%10000
@@ -17,10 +17,9 @@ var roleClaimer = {
 										, role
 										, '{}');
 			}
+			console.log(typeof creep.memory.claiming, typeof creep.memory.claiming.on, typeof creep.memory.claiming.off);
 			creep.memory.claiming = {on: false, room: ''};
-			console.log(typeof creep.memory.claiming);
-			console.log(typeof creep.memory.claiming.on);
-			console.log(typeof creep.memory.claiming.off);
+			console.log(typeof creep.memory.claiming, typeof creep.memory.claiming.on, typeof creep.memory.claiming.off);
 		}
 
 		if(creep.memory.claiming.on) {
