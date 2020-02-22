@@ -14,6 +14,8 @@ var roleClaimer = {
            !creep.memory.rerun) {
             creep.memory.claiming = true;
         }
+        
+        var targetRoom = 'W26S33';
 
         if(creep.memory.claiming) {
             var target;
@@ -26,9 +28,8 @@ var roleClaimer = {
                 });
             }
             if(!target) {
-                var hostileRoom = 'W26S33';
-                if(creep.room != hostileRoom) {
-                    const exitDir = Game.map.findExit(creep.room, hostileRoom);
+                if(creep.room != targetRoom) {
+                    const exitDir = Game.map.findExit(creep.room, targetRoom);
                     target = creep.pos.findClosestByRange(exitDir);
                 }
             }
@@ -46,7 +47,8 @@ var roleClaimer = {
                         console.log( '🔜🗝', Math.trunc(Game.time/10000), Game.time%10000
                                     , creep.name
                                     , 'moving for claiming to:'
-                                    , targetinfo);
+                                    , targetinfo
+                                    , targetRoom);
                     }
                 }
                 else if(!err) {
@@ -56,7 +58,8 @@ var roleClaimer = {
                         console.log( '🗝', Math.trunc(Game.time/10000), Game.time%10000
                                     , creep.name
                                     , 'claiming:'
-                                    , targetinfo);
+                                    , targetinfo
+                                    , targetRoom);
                     }
                 }
                 else {
@@ -66,6 +69,7 @@ var roleClaimer = {
                                     , creep.name
                                     , 'claiming:'
                                     , targetinfo
+                                    , targetRoom);
                                     , 'with err:'
                                     , err);
                     }
