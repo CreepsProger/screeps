@@ -69,7 +69,7 @@ var roleClaimer = {
                                     , creep.name
                                     , 'claiming:'
                                     , targetinfo
-                                    , targetRoom);
+                                    , targetRoom
                                     , 'with err:'
                                     , err);
                     }
