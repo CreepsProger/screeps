@@ -20,7 +20,7 @@ var role = {
 			}
 	},
 
-	inited: 7,
+	inited: 8,
 
 	init_config: function() {
 		if(Memory[role.name] === undefined ||
@@ -79,6 +79,7 @@ var role = {
 			if(!!room_config.workers.find(name => name === creep.name)) {
 				creep.memory[role.name].room = room_name;
 				not_found = false;
+				break;
 			}
 		}
 		
@@ -92,6 +93,7 @@ var role = {
 					creep.memory[role.name].room = room_name;
 					room_config.needs -= 1;
 					room_config.workers[room_config.needs] = creep.name;
+					break;
 				}
 			}
 		}
