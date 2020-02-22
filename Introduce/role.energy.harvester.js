@@ -55,14 +55,14 @@ var role = {
 				target = creep.pos.findClosestByRange(exitDir);
 			}
 		}
-		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
-			var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-				filter: (structure) => {
-					return (structure.structureType == STRUCTURE_CONTAINER) &&
-						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
-				}
-			});
-		}
+// 		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
+// 			var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+// 				filter: (structure) => {
+// 					return (structure.structureType == STRUCTURE_CONTAINER) &&
+// 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
+// 				}
+// 			});
+// 		}
 // 		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
 // 			var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 // 				filter: (structure) => {
