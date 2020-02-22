@@ -19,9 +19,10 @@ var role = {
 									  , args);
 			}
 	},
-	room_index: 0, : 2,
+
 	W25S33: { needs: 2, workers: [] },
 	W26S33: { needs: 2, workers: [] },
+
 	init: function(creep) {
 		if(true || creep.memory[role.name] === undefined ||
 			 creep.memory[role.name].on === undefined) {
