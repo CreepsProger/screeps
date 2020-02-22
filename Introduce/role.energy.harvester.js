@@ -63,14 +63,14 @@ var role = {
 				}
 			});
 		}
-		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
-			var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-				filter: (structure) => {
-					return (structure.structureType == STRUCTURE_STORAGE) &&
-						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 5000;
-				}
-			});
-		}
+// 		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
+// 			var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+// 				filter: (structure) => {
+// 					return (structure.structureType == STRUCTURE_STORAGE) &&
+// 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 5000;
+// 				}
+// 			});
+// 		}
 		if(!target && creep.getActiveBodyparts(WORK)) {
 			var target = creep.pos.findClosestByPath(FIND_SOURCES, {
 				filter: (source) => source.energy >= (creep.memory.rerun? 0:1)
