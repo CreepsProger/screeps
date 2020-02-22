@@ -37,7 +37,8 @@ var role = {
 																													, {name: '5', time: 0}
 																													, {name: '6', time: 0}
 																													, {name: '7', time: 0}
-																													, {name: '8', time: 0}]
+																													, {name: '8', time: 0}
+																													, {name: '9', time: 0}]
 																							 }
 																		 }
 													};
