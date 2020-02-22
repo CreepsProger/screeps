@@ -20,13 +20,13 @@ var role = {
 			}
 	},
 
-	version: 12,
+	version: 13,
 
 	init_config: function() {
 		if(Memory[role.name] === undefined ||
-			 Memory[role.name].version === undefined ||
-			 Memory[role.name].version != role.version) {
-			Memory[role.name] = { version: role.version
+			 Memory[role.name].v === undefined ||
+			 Memory[role.name].v != role.version) {
+			Memory[role.name] = { v: role.version
 													 , rooms : { W25S33: { workers: [ {name: '1', time: 0}
 																													, {name: '2', time: 0}]
 																							 },
@@ -44,9 +44,9 @@ var role = {
 	init: function(creep) {
 		role.init_config();
 		if(creep.memory[role.name] === undefined ||
-			 creep.memory[role.name].version === undefined ||
-			 creep.memory[role.name].version != role.version) {
-			creep.memory[role.name] = { version: role.version
+			 creep.memory[role.name].v === undefined ||
+			 creep.memory[role.name].v != role.version) {
+			creep.memory[role.name] = { v: role.version
 																, on: false
 																, room: creep.room
 																};
@@ -58,9 +58,9 @@ var role = {
 	},
 
 	setRoom: function(creep) {
+		var already = false;
 		for(var room_name in Memory[role.name].rooms) {
 			var room_config = Memory[role.name].rooms[room_name];
-			var already = false;
 			room_config.workers.forEach(function(w) {
 				if(already) {
 					if(w.name === creep.name) {
