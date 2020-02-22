@@ -40,6 +40,12 @@ var role = {
 
 	getTarget: function(creep) {
 		var target;
+		if(!target) {
+			if(creep.room != creep.memory[role.name].room) {
+				const exitDir = Game.map.findExit(creep.room, creep.memory[role.name].room);
+				target = creep.pos.findClosestByRange(exitDir);
+			}
+		}
 		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
 			var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
