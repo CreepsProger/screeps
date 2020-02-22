@@ -24,7 +24,7 @@ var role = {
 		if(creep.memory[role.name] === undefined ||
 			 creep.memory[role.name].on === undefined) {
 			creep.memory[role.name] = { on: false
-																, room: (room_index++%2)?'W25S33':'W26S33'
+																, room: (role.room_index++%2)?'W25S33':'W26S33'
 																};
 		}
 	},
