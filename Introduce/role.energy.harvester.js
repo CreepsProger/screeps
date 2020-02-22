@@ -20,7 +20,7 @@ var role = {
 			}
 	},
 
-	inited: 5,
+	inited: 6,
 
 	init_config: function() {
 		if(Memory[role.name] === undefined ||
@@ -35,7 +35,7 @@ var role = {
 	},
 
 	init: function(creep) {
-		init_config();
+		role.init_config();
 		if(creep.memory[role.name] === undefined ||
 			 creep.memory[role.name].on === undefined) {
 			creep.memory[role.name] = { on: false
