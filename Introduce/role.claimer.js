@@ -19,8 +19,8 @@ var roleClaimer = {
 			console.log( '🗝', Math.trunc(Game.time/10000), Game.time%10000
 									, creep.name
 									, role
-									, creep.memory.claiming
-									, creep.memory[role]);
+									, JSON.stringify(creep.memory.claiming)
+									, JSON.stringify(creep.memory[role]));
 		}
 		
 		if(creep.memory.claiming.on) {
