@@ -19,14 +19,30 @@ var role = {
 									  , args);
 			}
 	},
-	room_index: 0, 
+	room_index: 0, : 2,
+	W25S33: { needs: 2, workers: [] },
+	W26S33: { needs: 2, workers: [] },
 	init: function(creep) {
-		if(/*!creep.memory.rerun || */ creep.memory[role.name] === undefined ||
+		if(true || creep.memory[role.name] === undefined ||
 			 creep.memory[role.name].on === undefined) {
 			creep.memory[role.name] = { on: false
-																, room: (role.room_index++%2)?'W25S33':'W26S33'
+																, room: ''
 																};
-			role.log('I->', creep, 'init');
+			if(!role.W25S33.workers.find(creep.name) &&
+				 !role.W26S33.workers.find(creep.name))
+			{
+				if(role.W25S33.needs > 0) {
+					creep.memory[role.name].room = 'W25S33';
+					role.W25S33 -= 1;
+					role.W25S33.workers.push(creep.name);
+				}
+				else if(role.W26S33 > 0) {
+					creep.memory[role.name].room = 'W26S33';
+					role.W26S33 -= 1;
+					role.W25S33.workers.push(creep.name);
+				}
+			}
+			role.log('I->', creep, 'init', 'role.W25S33:', JSON.stringify(role.W25S33), 'role.W26S33:', JSON.stringify(role.W26S33));
 		}
 	},
 
