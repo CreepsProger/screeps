@@ -1,4 +1,6 @@
 var roleNext = require('role.attacker');
+var flags = require('main.flags');
+var log = require('main.log');
 
 var roleClaimer = {
 
@@ -42,7 +44,7 @@ var roleClaimer = {
                 if(err == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                     creep.say('🔜🗝');
-                    if(!!Game.flags['LC '] || !!Game.flags['LC'] || !!Game.flags['L']) {
+                    if(log.canLog(['LC','LC ','L'])) {
                         var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
                         console.log( '🔜🗝', Math.trunc(Game.time/10000), Game.time%10000
                                     , creep.name
@@ -53,7 +55,7 @@ var roleClaimer = {
                 }
                 else if(!err) {
                     creep.say('🗝');
-                    if(!!Game.flags['LC '] || !!Game.flags['LC'] || !!Game.flags['L']) {
+                    if(log.canLog(['LC','LC ','L'])) {
                         var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
                         console.log( '🗝', Math.trunc(Game.time/10000), Game.time%10000
                                     , creep.name
@@ -63,7 +65,7 @@ var roleClaimer = {
                     }
                 }
                 else {
-                    if(!!Game.flags['LC '] || !!Game.flags['LC'] || !!Game.flags['L']) {
+                    if(log.canLog(['LC','LC ','L'])) {
                         var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
                         console.log( '🗝', Math.trunc(Game.time/10000), Game.time%10000
                                     , creep.name
