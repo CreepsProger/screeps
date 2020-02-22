@@ -59,7 +59,7 @@ var roleClaimer = {
 												, creep.name
 												, 'moving for claiming to:'
 												, targetinfo
-												, targetRoom);
+												, JSON.stringify(creep.memory.claiming));
 					}
 				}
 				else if(!err) {
@@ -70,7 +70,7 @@ var roleClaimer = {
 												, creep.name
 												, 'claiming:'
 												, targetinfo
-												, targetRoom);
+												, JSON.stringify(creep.memory.claiming));
 					}
 				}
 				else {
@@ -80,9 +80,9 @@ var roleClaimer = {
 												, creep.name
 												, 'claiming:'
 												, targetinfo
-												, targetRoom
 												, 'with err:'
-												, err);
+												, err
+												, JSON.stringify(creep.memory.claiming));
 					}
 					creep.memory.claiming.on = false;
 				}
