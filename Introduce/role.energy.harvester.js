@@ -21,7 +21,7 @@ var role = {
 	},
 	room_index: 0, 
 	init: function(creep) {
-		if(true || creep.memory[role.name] === undefined ||
+		if(creep.memory[role.name] === undefined ||
 			 creep.memory[role.name].on === undefined) {
 			creep.memory[role.name] = { on: false
 																, room: (role.room_index++%2)?'W25S33':'W26S33'
