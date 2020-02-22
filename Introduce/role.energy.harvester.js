@@ -19,12 +19,12 @@ var role = {
 									  , args);
 			}
 	},
-	
+	room_index: 0, 
 	init: function(creep) {
 		if(creep.memory[role.name] === undefined ||
 			 creep.memory[role.name].on === undefined) {
 			creep.memory[role.name] = { on: false
-																, room: 'W25S33'
+																, room: (room_index++%2)?'W25S33':'W26S33'
 																};
 		}
 	},
@@ -55,22 +55,22 @@ var role = {
 				target = creep.pos.findClosestByRange(exitDir);
 			}
 		}
-// 		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
-// 			var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-// 				filter: (structure) => {
-// 					return (structure.structureType == STRUCTURE_CONTAINER) &&
-// 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
-// 				}
-// 			});
-// 		}
-// 		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
-// 			var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-// 				filter: (structure) => {
-// 					return (structure.structureType == STRUCTURE_STORAGE) &&
-// 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 5000;
-// 				}
-// 			});
-// 		}
+		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
+			var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+				filter: (structure) => {
+					return (structure.structureType == STRUCTURE_CONTAINER) &&
+						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
+				}
+			});
+		}
+		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
+			var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+				filter: (structure) => {
+					return (structure.structureType == STRUCTURE_STORAGE) &&
+						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 5000;
+				}
+			});
+		}
 		if(!target && creep.getActiveBodyparts(WORK)) {
 			var target = creep.pos.findClosestByPath(FIND_SOURCES, {
 				filter: (source) => source.energy >= (creep.memory.rerun? 0:1)
