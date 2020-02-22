@@ -20,7 +20,8 @@ var roleClaimer = {
             if(!target) {
                 target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                     filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_CONTROLLER);
+                        return (structure.structureType == STRUCTURE_CONTROLLER) &&
+                            !structure.my;
                     }
                 });
             }
