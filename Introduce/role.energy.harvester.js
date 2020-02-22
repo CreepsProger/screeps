@@ -20,7 +20,7 @@ var role = {
 			}
 	},
 
-	inited: 6,
+	inited: 7,
 
 	init_config: function() {
 		if(Memory[role.name] === undefined ||
