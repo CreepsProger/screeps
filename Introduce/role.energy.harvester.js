@@ -27,8 +27,14 @@ var role = {
 			 Memory[role.name].version === undefined ||
 			 Memory[role.name].version != role.version) {
 			Memory[role.name] = { version: role.version
-													 , rooms : { W25S33: { needs: 2, workers: ['1','2'] },
-																			 W26S33: { needs: 3, workers: ['3','4','5'] }
+													 , rooms : { W25S33: { workers: [ {name: '1', time: 0}
+																													, {name: '2', time: 0}]
+																							 },
+																			 W26S33: { workers: [ {name: '3', time: 0}
+																													, {name: '4', time: 0}
+																													, {name: '5', time: 0}
+																													, {name: '6', time: 0}]
+																							 }
 																		 }
 													};
 			console.log('init_config', role.inited, 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
@@ -52,34 +58,33 @@ var role = {
 	},
 
 	setRoom: function(creep) {
-		
-		var not_found = true;
 		for(var room_name in Memory[role.name].rooms) {
 			var room_config = Memory[role.name].rooms[room_name];
-			console.log('room_config', JSON.stringify(room_config));
-			if(!!room_config.workers.find(name => name === creep.name)) {
-				creep.memory[role.name].room = room_name;
-				not_found = false;
-				break;
-			}
+			var already = false;
+			room_config.workers.forEach(function(w) {
+				if(already) {
+					if(w.name === creep.name) {
+						w.name = '-' + creep.name;
+						w.time = Game.time;
+					}
+				}
+				else {
+					if(w.name === creep.name) {
+						creep.memory[role.name].room = room_name;
+						w.time = Game.time;
+						already = true;
+					}
+					else if(w.time < Game.time - 300) {
+						creep.memory[role.name].room = room_name;
+						w.name = creep.name;
+						w.time = Game.time;
+						already = true;
+					}
+				}
+			});
 		}
 		
-		console.log('I', creep, 'setRoom Before', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
-
-		if(not_found) {
-			for(var room_name in Memory[role.name].rooms) {
-				var room_config = Memory[role.name].rooms[room_name];
-				console.log('room_config', JSON.stringify(room_config));
-				if(room_config.needs > 0) {
-					creep.memory[role.name].room = room_name;
-					room_config.needs -= 1;
-					room_config.workers[room_config.needs] = creep.name;
-					break;
-				}
-			}
-		}
-
-		console.log('I', creep, 'setRoom After', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
+		console.log('I', creep, 'setRoom', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
 	},
 
 	checkOff: function(creep) {
