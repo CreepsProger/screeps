@@ -16,6 +16,12 @@ var roleEnergyTransferer = {
 
         if(creep.memory.transfering) {
             var target;
+					if(!target) {
+						if(creep.room != creep.memory[role.name].room) {
+							const exitDir = Game.map.findExit(creep.room, creep.memory[role.name].room);
+							target = creep.pos.findClosestByRange(exitDir);
+						}
+					}
             if(!target) {
                 var closests = creep.pos.findInRange(FIND_MY_CREEPS, 1, {
                     filter: (creep2) => {
@@ -65,7 +71,9 @@ var roleEnergyTransferer = {
                 target = creep.room.storage;
             }
             if(target) {
-                var err = creep.transfer(target, RESOURCE_ENERGY);
+							  if(target.id) {
+	                var err = creep.transfer(target, RESOURCE_ENERGY);
+								}
                 if(err == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                     creep.say('🔜💡');
