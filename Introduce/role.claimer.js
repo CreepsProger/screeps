@@ -16,6 +16,7 @@ var roleClaimer = {
 										, creep.name
 										, role
 										, '{}');
+			}
 			creep.memory.claiming = {on: false, room: ''};
 		}
 
