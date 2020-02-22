@@ -349,7 +349,7 @@ var mainFlags = {
     },
     checkFlags: function() {
         console.log( '🏳️‍🌈', Math.trunc(Game.time/10000), Game.time%10000
-                    , Game.flags);
+                    , JSON.stringify(Game.flags));
         for(var name in Game.flags) {
             console.log( '🏳️‍🌈', Math.trunc(Game.time/10000), Game.time%10000
                             , name
