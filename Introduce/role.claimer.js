@@ -38,7 +38,7 @@ var role = {
 		if(!creep.memory[role.name].on &&
 			 creep.getActiveBodyparts(CLAIM) > 0 &&
 			 creep.getActiveBodyparts(CARRY) == 0 &&
-			 !creep.memory.rerun) {
+			 creep.memory.rerun) {
 			creep.memory[role.name].on = true;
 
 			if(!creep.memory[role.name].room) {
