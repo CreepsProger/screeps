@@ -35,7 +35,7 @@ var roleClaimer = {
             {
                 var err = ERR_NOT_IN_RANGE;
                 if(target.id) {
-                    err = creep.attackController(target);
+                    err = creep.reserveController(target);
                 }
                 if(err == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
