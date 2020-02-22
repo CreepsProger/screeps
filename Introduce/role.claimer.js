@@ -22,10 +22,10 @@ var roleClaimer = {
 			 creep.getActiveBodyparts(CARRY) == 0 &&
 			 !creep.memory.rerun) {
 			creep.memory.claiming.on = true;
-		}
 
-		if(!creep.memory.claiming.room) {
-			creep.memory.claiming.room = 'W26S33';
+			if(!creep.memory.claiming.room) {
+				creep.memory.claiming.room = 'W26S33';
+			}
 		}
 		
 		if(creep.memory.claiming) {
