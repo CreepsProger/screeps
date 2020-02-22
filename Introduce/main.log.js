@@ -9,7 +9,7 @@ var mainLog = {
 			var flag = Game.flags[name];
 // 			console.log(i,name,flag);
 			if(!!flag) {
-				return true;
+				return (Game.time % flag.color == 0);
 			}
 		}
 		return false;
