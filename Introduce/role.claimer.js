@@ -8,21 +8,25 @@ var roleClaimer = {
 	
 	/** @param {Creep} creep **/
 	run: function(creep) {
-		if(creep.memory.claiming && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
-			creep.memory.claiming = false;
+		if(!creep.memory.claiming.on)
+		{
+			creep.memory.claiming = {on: false, room: ''};
+		}
+
+		if(creep.memory.claiming.on) {
+			creep.memory.claiming.on = false;
 		}
 		
-		if(!creep.memory.claiming &&
+		if(!creep.memory.claiming.on &&
 			 creep.getActiveBodyparts(CLAIM) > 0 &&
 			 creep.getActiveBodyparts(CARRY) == 0 &&
 			 !creep.memory.rerun) {
-			creep.memory.claiming = true;
+			creep.memory.claiming.on = true;
 		}
 
-		if(!creep.memory.claimingRoom) {
-			creep.memory.claimingRoom = 'W26S33';
+		if(!creep.memory.claiming.room) {
+			creep.memory.claiming.room = 'W26S33';
 		}
-		var targetRoom = creep.memory.claimingRoom;
 		
 		if(creep.memory.claiming) {
 			var target;
@@ -35,8 +39,8 @@ var roleClaimer = {
 				});
 			}
 			if(!target) {
-				if(creep.room != targetRoom) {
-					const exitDir = Game.map.findExit(creep.room, targetRoom);
+				if(creep.room != creep.memory.claiming.room) {
+					const exitDir = Game.map.findExit(creep.room, creep.memory.claiming.room);
 					target = creep.pos.findClosestByRange(exitDir);
 				}
 			}
@@ -80,15 +84,15 @@ var roleClaimer = {
 												, 'with err:'
 												, err);
 					}
-					creep.memory.claiming = false;
+					creep.memory.claiming.on = false;
 				}
 			}
 			else {
-				creep.memory.claiming = false;
+				creep.memory.claiming.on = false;
 			}
 		}
 
-		if(!creep.memory.claiming) {
+		if(!creep.memory.claiming.on) {
 			roleNext.run(creep);
 		}
 	}
