@@ -20,8 +20,8 @@ var role = {
 			}
 	},
 
-	W25S33: { needs: 2, workers: [] },
-	W26S33: { needs: 2, workers: [] },
+	W25S33: { needs: 2, workers: ['1','2'] },
+	W26S33: { needs: 2, workers: ['3','4'] },
 
 	init: function(creep) {
 		if(true || creep.memory[role.name] === undefined ||
