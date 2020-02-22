@@ -59,11 +59,11 @@ var roleEnergyTransferer = {
                     }
                 });
             }
-            if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable &&
-               creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) < 20000 &&
-               creep.room.storage.store.getFreeCapacity(RESOURCE_ENERGY) > 20000) {
-                target = creep.room.storage;
-            }
+//             if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable &&
+//                creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) < 20000 &&
+//                creep.room.storage.store.getFreeCapacity(RESOURCE_ENERGY) > 20000) {
+//                 target = creep.room.storage;
+//             }
             if(target) {
                 var err = creep.transfer(target, RESOURCE_ENERGY);
                 if(err == ERR_NOT_IN_RANGE) {
