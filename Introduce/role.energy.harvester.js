@@ -20,13 +20,13 @@ var role = {
 			}
 	},
 
-	inited: 1,
+	inited: 2,
 
 	init: function(creep) {
 		if(Memory[role.name] === undefined ||
 			 Memory[role.name].inited === undefined ||
 			 Memory[role.name].inited < role.inited) {
-			Memory[role.name] = { inted: role.inited,
+			Memory[role.name] = { inted: role.inited
 													 , rooms : { W25S33: { needs: 2, workers: ['1','2'] },
 																			 W26S33: { needs: 3, workers: ['3','4','5'] }
 																		 }
