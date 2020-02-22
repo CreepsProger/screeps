@@ -347,15 +347,16 @@ var mainFlags = {
         lastFlagRemoved = RACS;
         lastFlagRemoved.remove();
     },
-    checkFlags: function() {
-        console.log( '🏳️‍🌈', Math.trunc(Game.time/10000), Game.time%10000
-                    , JSON.stringify(Game.flags));
+    checkFlags: function(ticksToLog = 10) {
+        var flags = [];
         for(var name in Game.flags) {
-            console.log( '🏳️‍🌈', Math.trunc(Game.time/10000), Game.time%10000
-                            , name
-                            , Game.flags[name]);
+            flags.push(Game.flags[name]);
             if(mainFlags[name])
                 mainFlags[name](Game.flags[name])
+        }
+        if(Game.time % ticksToLog == 0) {
+            console.log( '🏳️‍🌈', Math.trunc(Game.time/10000), Game.time%10000
+                        , flags);
         }
     }
 };
