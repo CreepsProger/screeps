@@ -6,6 +6,7 @@ var mainLog = {
 		console.log(flagNames);
 		for(var name in flagNames) {
 			var flag = Game.flags[name];
+			console.log(name,flag);
 			if(!!Game.flags[name]) {
 				return true;
 			}
