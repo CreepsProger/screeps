@@ -79,7 +79,7 @@ var role = {
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
 					creep.say('🔜🗝');
-					role.log(creep, 'moving from', JSON.stringify(creep.room), 'to', JSON.stringify(target));
+					role.log(creep, 'moving from', JSON.stringify(creep.pos), 'to', JSON.stringify(target));
 				}
 				else if(!err) {
 					creep.say('🗝');
