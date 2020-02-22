@@ -150,7 +150,8 @@ var role = {
 			}
 			
 			if(!creep.memory[role.name].on) {
-			roleNext.run(creep);
+				roleNext.run(creep);
+			}
 		}
 	
 		if(!creep.memory[role.name].on) {
