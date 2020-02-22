@@ -29,7 +29,7 @@ var role = {
 
 	checkFreeSlot: function(creep) {
 		if(!creep.memory[role.name].room) {
-			creep.memory[role.name].room = 'W26S33';
+			creep.memory[role.name].room = 'W25S33';
 		}
 		return true;
 	},
