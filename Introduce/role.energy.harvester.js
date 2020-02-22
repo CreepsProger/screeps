@@ -20,38 +20,71 @@ var role = {
 			}
 	},
 
-	W25S33: { needs: 2, workers: ['1','2'] },
-	W26S33: { needs: 2, workers: ['3','4'] },
+	inited: 1,
 
 	init: function(creep) {
+		if(Memory[role.name] === undefined ||
+			 Memory[role.name].inited === undefined ||
+			 Memory[role.name].inited < role.inited) {
+			Memory[role.name] = { inted: role.inited,
+													 , rooms : { W25S33: { needs: 2, workers: ['1','2'] },
+																			 W26S33: { needs: 3, workers: ['3','4','5'] }
+																		 }
+													};
+		}
+
 		if(creep.memory[role.name] === undefined ||
 			 creep.memory[role.name].on === undefined) {
 			creep.memory[role.name] = { on: false
 																, room: ''
 																};
-// 			if(!role.W25S33.workers.filter(name => name === creep.name) &&
-// 				 !role.W26S33.workers.filter(name => name === creep.name))
-			if(!role.W25S33.workers.find(name => name === creep.name) &&
-				 !role.W26S33.workers.find(name => name === creep.name))
-			{
-				if(role.W25S33.needs > 0) {
-					creep.memory[role.name].room = 'W25S33';
-					role.W25S33.needs -= 1;
-					role.W25S33.workers[role.W25S33.needs] = creep.name;
-				}
-				else if(role.W26S33.needs > 0) {
-					creep.memory[role.name].room = 'W26S33';
-					role.W26S33.needs -= 1;
-					role.W26S33.workers[role.W26S33.needs] = creep.name;
-				}
+			
+			console.log('init A', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
+			
+			var not_found = true;	
+			Memory[role.name].rooms.forEach(function(memory_room) {
+				console.log(memory_room);
+// 				if(!!memory_room.workers.find(name => name === creep.name)) {
+// 					creep.memory[role.name].room = memory_room;
+// 					not_found = false;
+// 				}
+			});
+			
+			console.log('init B', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
+			
+			if(not_found) {
+				Memory[role.name].rooms.forEach(function(memory_room) {
+// 					if(!!memory_room.workers.find(name => name === creep.name)) {
+// 						if(memory_room.needs > 0) {
+// 							creep.memory[role.name].room = memory_room;
+// 							memory_room.needs -= 1;
+// 							memory_room.workers[memory_room.needs] = creep.name;
+// 						}
+// 					}
+				});
 			}
-			else if(role.W25S33.workers.find(name => name === creep.name)) {
-				creep.memory[role.name].room = 'W25S33';
-			}
-			else if(role.W26S33.workers.find(name => name === creep.name)) {
-				creep.memory[role.name].room = 'W26S33';
-			}
-			role.log('I->', creep, 'init', 'role.W25S33:', JSON.stringify(role.W25S33), 'role.W26S33:', JSON.stringify(role.W26S33));
+// 			if(!role.W25S33.workers.find(name => name === creep.name) &&
+// 				 !role.W26S33.workers.find(name => name === creep.name))
+// 			{
+// 				if(role.W25S33.needs > 0) {
+// 					creep.memory[role.name].room = 'W25S33';
+// 					role.W25S33.needs -= 1;
+// 					role.W25S33.workers[role.W25S33.needs] = creep.name;
+// 				}
+// 				else if(role.W26S33.needs > 0) {
+// 					creep.memory[role.name].room = 'W26S33';
+// 					role.W26S33.needs -= 1;
+// 					role.W26S33.workers[role.W26S33.needs] = creep.name;
+// 				}
+// 			}
+// 			else if(role.W25S33.workers.find(name => name === creep.name)) {
+// 				creep.memory[role.name].room = 'W25S33';
+// 			}
+// 			else if(role.W26S33.workers.find(name => name === creep.name)) {
+// 				creep.memory[role.name].room = 'W26S33';
+// 			}
+			
+			console.log('init C', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
 		}
 	},
 
