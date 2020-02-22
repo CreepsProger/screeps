@@ -15,7 +15,7 @@ var roleAttacker = {
         }
 
         var myRoom = Game.spawns['Spawn1'].room.name;
-        var attackedRoom = 'W25S34';Game.map.describeExits(myRoom)[BOTTOM].name; //'W25S34'
+        var attackedRoom = 'W22S31';Game.map.describeExits(myRoom)[BOTTOM].name; //'W25S34'
         
         if(creep.memory.attacking) {
             var target;
@@ -35,7 +35,7 @@ var roleAttacker = {
                     }
                 }
             }
-            if(creep.room != myRoom && creep.hits < creep.hitsMax - 200) {
+            if(creep.room != myRoom && creep.hits < creep.hitsMax - 300) {
                 if(!target) {
                     const exitDir = Game.map.findExit(creep.room, myRoom);
                     target = creep.pos.findClosestByRange(exitDir);
