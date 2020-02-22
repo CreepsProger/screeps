@@ -9,7 +9,7 @@ var roleClaimer = {
 	
 	/** @param {Creep} creep **/
 	run: function(creep) {
-		if(isNaN(creep.memory.claiming) || creep.memory.claiming == false || creep.memory.claiming == true)
+		if(isNaN(creep.memory.claiming) || isNaN(creep.memory.claiming.on))
 		{
 			if(log.canLog(['LC','LC ','L'])) {
 				console.log( '🗝', Math.trunc(Game.time/10000), Game.time%10000
