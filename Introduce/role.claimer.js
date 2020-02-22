@@ -45,7 +45,7 @@ var role = {
 				creep.memory[role.name].room = 'W26S33';
 			}
 			
-			role.log(creep,"On");
+// 			role.log(creep,"On");
 		}
 	},
 	
