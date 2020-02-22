@@ -20,7 +20,7 @@ var role = {
 			}
 	},
 
-	version: 13,
+	version: 14,
 
 	init_config: function() {
 		if(Memory[role.name] === undefined ||
@@ -30,10 +30,14 @@ var role = {
 													 , rooms : { W25S33: { workers: [ {name: '1', time: 0}
 																													, {name: '2', time: 0}]
 																							 },
-																			 W26S33: { workers: [ {name: '3', time: 0}
+																			 W26S33: { workers: [ {name: '1', time: 0}
+																													, {name: '2', time: 0}
+																													, {name: '3', time: 0}
 																													, {name: '4', time: 0}
 																													, {name: '5', time: 0}
-																													, {name: '6', time: 0}]
+																													, {name: '6', time: 0}
+																													, {name: '7', time: 0}
+																													, {name: '8', time: 0}]
 																							 }
 																		 }
 													};
