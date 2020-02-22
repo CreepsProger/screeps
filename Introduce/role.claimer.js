@@ -14,7 +14,7 @@ var role = {
 				console.log( '🗝', Math.trunc(Game.time/10000), Game.time%10000
 										, creep.name
 										, role.name
-										, JSON.stringify(creep.memory[role])
+										, JSON.stringify(creep.memory[role.name])
 									  , args);
 			}
 	},
