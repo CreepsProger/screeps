@@ -19,10 +19,19 @@ var role = {
 									  , args);
 			}
 	},
+	
+	init: function(creep) {
+		if(creep.memory[role.name] === undefined ||
+			 creep.memory[role.name].on === undefined) {
+			creep.memory[role.name] = { on: false
+																, room: ''
+																};
+		}
+	},
 
 	intConfig: function(creep) {
 		if(!creep.memory[role.name].room) {
-			creep.memory[role.name].room = 'W26S33';
+			creep.memory[role.name].room = 'W25S33';
 		}
 		return true;
 	},
@@ -92,15 +101,6 @@ var role = {
 			});
 		}
 		return target;
-	},
-	
-	init: function(creep) {
-		if(creep.memory[role.name] === undefined ||
-			 creep.memory[role.name].on === undefined) {
-			creep.memory[role.name] = { on: false
-																, room: ''
-																};
-		}
 	},
 
 	checkOff: function(creep) {
