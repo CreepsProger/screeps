@@ -20,7 +20,7 @@ var role = {
 			}
 	},
 
-	inited: 8,
+	inited: 9,
 
 	init_config: function() {
 		if(Memory[role.name] === undefined ||
@@ -41,27 +41,6 @@ var role = {
 			creep.memory[role.name] = { on: false
 																, room: creep.room
 																};
-// 			if(!role.W25S33.workers.find(name => name === creep.name) &&
-// 				 !role.W26S33.workers.find(name => name === creep.name))
-// 			{
-// 				if(role.W25S33.needs > 0) {
-// 					creep.memory[role.name].room = 'W25S33';
-// 					role.W25S33.needs -= 1;
-// 					role.W25S33.workers[role.W25S33.needs] = creep.name;
-// 				}
-// 				else if(role.W26S33.needs > 0) {
-// 					creep.memory[role.name].room = 'W26S33';
-// 					role.W26S33.needs -= 1;
-// 					role.W26S33.workers[role.W26S33.needs] = creep.name;
-// 				}
-// 			}
-// 			else if(role.W25S33.workers.find(name => name === creep.name)) {
-// 				creep.memory[role.name].room = 'W25S33';
-// 			}
-// 			else if(role.W26S33.workers.find(name => name === creep.name)) {
-// 				creep.memory[role.name].room = 'W26S33';
-// 			}
-			
 		}
 	},
 
