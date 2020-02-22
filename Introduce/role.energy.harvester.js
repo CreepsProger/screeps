@@ -20,7 +20,7 @@ var role = {
 			}
 	},
 
-	inited: 2,
+	inited: 3,
 
 	init: function(creep) {
 		if(Memory[role.name] === undefined ||
