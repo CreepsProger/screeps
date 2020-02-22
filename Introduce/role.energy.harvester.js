@@ -39,7 +39,7 @@ var role = {
 					role.W25S33.needs -= 1;
 					role.W25S33.workers[role.W25S33.needs] = creep.name;
 				}
-				else if(role.W26S33 > 0) {
+				else if(role.W26S33.needs > 0) {
 					creep.memory[role.name].room = 'W26S33';
 					role.W26S33.needs -= 1;
 					role.W26S33.workers[role.W26S33.needs] = creep.name;
