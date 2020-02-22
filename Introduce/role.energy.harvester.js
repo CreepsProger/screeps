@@ -30,7 +30,7 @@ var role = {
 																, room: ''
 																};
 			if(!role.W25S33.workers.filter(creep)(name => name === creep.name) &&
-				 !role.W26S33.workers.filter(creep)(name => name === creep.name)
+				 !role.W26S33.workers.filter(creep)(name => name === creep.name))
 // 			if(false && !role.W25S33.workers.find(name => name === creep.name) &&
 // 				 !role.W26S33.workers.find(name => name === creep.name))
 			{
