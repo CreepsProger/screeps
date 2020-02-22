@@ -38,7 +38,7 @@ var role = {
 	init: function(creep) {
 		role.init_config();
 		if(creep.memory[role.name] === undefined ||
-			 creep.memory[role.name].version === undefined) {
+			 creep.memory[role.name].version === undefined) ||
 			 creep.memory[role.name].version != role.version) {
 			creep.memory[role.name] = { version: role.version
 																, on: false
