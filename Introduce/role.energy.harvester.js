@@ -20,13 +20,13 @@ var role = {
 			}
 	},
 
-	inited: 9,
+	version: 10,
 
 	init_config: function() {
 		if(Memory[role.name] === undefined ||
-			 Memory[role.name].inited === undefined ||
-			 Memory[role.name].inited < role.inited) {
-			Memory[role.name] = { inited: role.inited
+			 Memory[role.name].version === undefined ||
+			 Memory[role.name].version != role.version) {
+			Memory[role.name] = { version: role.version
 													 , rooms : { W25S33: { needs: 2, workers: ['1','2'] },
 																			 W26S33: { needs: 3, workers: ['3','4','5'] }
 																		 }
@@ -38,8 +38,10 @@ var role = {
 	init: function(creep) {
 		role.init_config();
 		if(creep.memory[role.name] === undefined ||
-			 creep.memory[role.name].on === undefined) {
-			creep.memory[role.name] = { on: false
+			 creep.memory[role.name].version === undefined) {
+			 creep.memory[role.name].version != role.version) {
+			creep.memory[role.name] = { version: role.version
+																, on: false
 																, room: creep.room
 																};
 		}
@@ -50,7 +52,6 @@ var role = {
 	},
 
 	setRoom: function(creep) {
-		console.log('setRoom A', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
 		
 		var not_found = true;
 		for(var room_name in Memory[role.name].rooms) {
@@ -63,7 +64,7 @@ var role = {
 			}
 		}
 		
-		console.log('setRoom B', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
+		console.log('I', creep, 'setRoom Before', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
 
 		if(not_found) {
 			for(var room_name in Memory[role.name].rooms) {
@@ -77,7 +78,8 @@ var role = {
 				}
 			}
 		}
-		console.log('init C', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
+
+		console.log('I', creep, 'setRoom After', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
 	},
 
 	checkOff: function(creep) {
