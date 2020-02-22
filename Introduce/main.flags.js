@@ -350,7 +350,7 @@ var mainFlags = {
     checkFlags: function(ticksToLog = 10) {
         var flags = [];
         for(var name in Game.flags) {
-            flags.push(Game.flags[name]);
+            flags.push(Game.flags[name].name);
             if(mainFlags[name])
                 mainFlags[name](Game.flags[name])
         }
