@@ -9,18 +9,11 @@ var roleClaimer = {
 	
 	/** @param {Creep} creep **/
 	run: function(creep) {
-		if(creep.memory.claiming === undefined ||
-			 creep.memory.claiming.on === undefined) {
-			creep.memory.claiming = { on: false
-															, room: ''
-															};
-		}
-		if(log.canLog(['LC','LC ','L'])) {
-			console.log( '🗝', Math.trunc(Game.time/10000), Game.time%10000
-									, creep.name
-									, role
-									, JSON.stringify(creep.memory.claiming)
-									, JSON.stringify(creep.memory[role]));
+		if(creep.memory[role] === undefined ||
+			 creep.memory[role].on === undefined) {
+			creep.memory[role] = { on: false
+													 , room: ''
+													 };
 		}
 		
 		if(creep.memory.claiming.on) {
@@ -35,6 +28,13 @@ var roleClaimer = {
 
 			if(!creep.memory.claiming.room) {
 				creep.memory.claiming.room = 'W26S33';
+			}
+			
+			if(log.canLog(['LC','LC ','L'])) {
+				console.log( '🗝', Math.trunc(Game.time/10000), Game.time%10000
+										, creep.name
+										, role
+										, JSON.stringify(creep.memory[role]));
 			}
 		}
 		
