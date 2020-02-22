@@ -3,13 +3,19 @@ var flags = require('main.flags');
 var log = require('main.log');
 
 var git = '$Format:%H$';
+var role = 'claiming';
 
 var roleClaimer = {
 	
 	/** @param {Creep} creep **/
 	run: function(creep) {
-		if(true && !creep.memory.claiming.on)
+		if(isNaN(creep.memory.claiming) || creep.memory.claiming == false || creep.memory.claiming == true)
 		{
+			if(log.canLog(['LC','LC ','L'])) {
+				console.log( '🗝', Math.trunc(Game.time/10000), Game.time%10000
+										, creep.name
+										, role
+										, '{}');
 			creep.memory.claiming = {on: false, room: ''};
 		}
 
