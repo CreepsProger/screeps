@@ -9,6 +9,7 @@ var mainLog = {
 				return true;
 			}
 		}
+		return false;
 	}
 };
 
