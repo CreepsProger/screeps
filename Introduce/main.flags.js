@@ -348,11 +348,12 @@ var mainFlags = {
         lastFlagRemoved.remove();
     },
     checkFlags: function() {
+        console.log( '🏳️‍🌈', Math.trunc(Game.time/10000), Game.time%10000
+                    , Game.flags);
         for(var name in Game.flags) {
             console.log( '🏳️‍🌈', Math.trunc(Game.time/10000), Game.time%10000
                             , name
-                            , Game.flags[name]
-                            , !!Game.flags['LET']);
+                            , Game.flags[name]);
             if(mainFlags[name])
                 mainFlags[name](Game.flags[name])
         }
