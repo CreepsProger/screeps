@@ -50,6 +50,10 @@ var role = {
 	},
 	
 	run: function(creep) {
+		role.init(creep);
+		role.checkOn(creep);
+		role.checkOff(creep);
+		
 		if(creep.memory[role.name].on) {
 			var target;
 			if(!target) {
