@@ -17,7 +17,7 @@ var roleEnergyTransferer = {
         if(creep.memory.transfering) {
             var target;
 					if(!target) {
-						if(creep.room != creep.memory[role.name].room) {
+						if(creep.room != 'W25S33' /*creep.memory[role.name].room*/) {
 							const exitDir = Game.map.findExit(creep.room, creep.memory[role.name].room);
 							target = creep.pos.findClosestByRange(exitDir);
 						}
