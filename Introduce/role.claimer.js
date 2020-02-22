@@ -19,8 +19,8 @@ var roleClaimer = {
 			creep.memory.claiming = true;
 		}
 
-		if(!creep.memory.claiming.room) {
-			creep.memory.claiming.room = 'W26S33';
+		if(!creep.memory.claiming_room) {
+			creep.memory.claiming_room = 'W26S33';
 		}
 		var targetRoom = creep.memory.claiming.room;
 		
