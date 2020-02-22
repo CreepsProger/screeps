@@ -8,7 +8,7 @@ var roleClaimer = {
 	
 	/** @param {Creep} creep **/
 	run: function(creep) {
-		if(true || !creep.memory.claiming.on)
+		if(!creep.memory.claiming.on)
 		{
 			creep.memory.claiming = {on: false, room: ''};
 		}
