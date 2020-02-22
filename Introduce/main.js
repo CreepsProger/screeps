@@ -4,7 +4,7 @@ var mainFlags = require('main.flags');
 var roleCreep = require('role.claimer');
 
 var commit = 31;
-var ticksToCheckCreepsNumber = 20;
+var ticksToCheckCreepsNumber = 10;
 var maxCreepsNumber = 7;
 //var mainSettings = require('main.settings');
 
