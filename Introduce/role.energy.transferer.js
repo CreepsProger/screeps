@@ -71,7 +71,7 @@ var roleEnergyTransferer = {
                 target = creep.room.storage;
             }
             if(target) {
-							var err == ERR_NOT_IN_RANGE
+							var err == ERR_NOT_IN_RANGE;
 							  if(target.id) {
 	                err = creep.transfer(target, RESOURCE_ENERGY);
 								}
