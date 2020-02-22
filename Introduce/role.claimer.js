@@ -18,7 +18,7 @@ var roleClaimer = {
         if(creep.memory.claiming) {
             var target;
             if(!target) {
-                target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES, {
+                target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_CONTROLLER);
                     }
