@@ -184,7 +184,8 @@ module.exports.loop = function () {
          const CL = Controller.level;
          var N = Memory.totals.CreepsNumber;
 
-         if(CL >= 4) mainFlags.tryCreateCreep(        40404, N<(maxCreepsNumber+1)? 4:0, 50); // V 1-1 E  800   Worker
+         if(CL >= 4) mainFlags.tryCreateCreep(        40404, N<(maxCreepsNumber+1)? 4:0,   50); // V 1-1 E  800   Worker
+         if(CL >= 4) mainFlags.tryCreateCreep(5020000000007, N<(maxCreepsNumber+1)? 1:0, 1000); // V 1-1 E  1600   Claimer
 //          if(CL >= 4) mainFlags.tryCreateCreep(         1212, N<(maxCreepsNumber+1)? 1:0, 55); // V 1-1 E 1800  Carrier
 //          if(CL >= 4) mainFlags.tryCreateCreep(5000300000008, N<(maxCreepsNumber+1)?10:0, 20); // V 1-1 E  900  Attaker
 //          if(CL >= 4) mainFlags.tryCreateCreep(err,   200000002, N<(maxCreepsNumber+1)?2:0, 50); // V 1-1 E 800    Attaker
