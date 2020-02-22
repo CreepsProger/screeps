@@ -41,25 +41,34 @@ var roleClaimer = {
                 if(err == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                     creep.say('🔜🗝');
-                    console.log( '🔜🗝', Math.trunc(Game.time/10000), Game.time%10000
-                                , creep.name
-                                , 'moving for claiming on:'
-                                , target.name?target.name:target.structureType);
+                    if(!!Game.flags['LC '] || !!Game.flags['LC'] || !!Game.flags['L']) {
+                        var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
+                        console.log( '🔜🗝', Math.trunc(Game.time/10000), Game.time%10000
+                                    , creep.name
+                                    , 'moving for claiming to:'
+                                    , targetinfo);
+                    }
                 }
                 else if(!err) {
                     creep.say('🗝');
-                    console.log( '🗝', Math.trunc(Game.time/10000), Game.time%10000
-                                , creep.name
-                                , 'claiming on:'
-                                , target.name?target.name:target.structureType);
+                    if(!!Game.flags['LC '] || !!Game.flags['LC'] || !!Game.flags['L']) {
+                        var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
+                        console.log( '🗝', Math.trunc(Game.time/10000), Game.time%10000
+                                    , creep.name
+                                    , 'claiming:'
+                                    , targetinfo);
+                    }
                 }
                 else {
-                    console.log( '🗝⚠️', Math.trunc(Game.time/10000), Game.time%10000
-                                , creep.name
-                                , 'claiming on:'
-                                , target.name?target.name:target.structureType
-                                , 'with err:'
-                                , err);
+                    if(!!Game.flags['LC '] || !!Game.flags['LC'] || !!Game.flags['L']) {
+                        var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
+                        console.log( '🗝', Math.trunc(Game.time/10000), Game.time%10000
+                                    , creep.name
+                                    , 'claiming:'
+                                    , targetinfo
+                                    , 'with err:'
+                                    , err);
+                    }
                     creep.memory.claiming = false;
                 }
             }
