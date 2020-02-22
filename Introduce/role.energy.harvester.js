@@ -42,7 +42,7 @@ var role = {
 				else if(role.W26S33 > 0) {
 					creep.memory[role.name].room = 'W26S33';
 					role.W26S33.needs -= 1;
-					role.W25S33.workers[role.W25S33.needs] = creep.name;
+					role.W26S33.workers[role.W26S33.needs] = creep.name;
 				}
 			}
 			role.log('I->', creep, 'init', 'role.W25S33:', JSON.stringify(role.W25S33), 'role.W26S33:', JSON.stringify(role.W26S33));
