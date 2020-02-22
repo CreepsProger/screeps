@@ -18,6 +18,7 @@ var roleClaimer = {
 										, '{}');
 			}
 			creep.memory.claiming = {on: false, room: ''};
+			console.log(typeof creep.memory.claiming);
 		}
 
 		if(creep.memory.claiming.on) {
