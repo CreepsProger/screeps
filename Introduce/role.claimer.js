@@ -57,9 +57,12 @@ var roleClaimer = {
 						var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
 						console.log( '🔜🗝', Math.trunc(Game.time/10000), Game.time%10000
 												, creep.name
-												, 'moving for claiming to:'
-												, targetinfo
-												, JSON.stringify(creep.memory.claiming));
+												, 'moving for claiming'
+												, JSON.stringify(creep.memory.claiming)
+												, 'from'
+												, creep.room, creep.room.pos
+												, 'to'
+												, targetinfo);
 					}
 				}
 				else if(!err) {
