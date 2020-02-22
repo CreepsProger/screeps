@@ -21,7 +21,7 @@ function updateMovingAverage(x) {
 module.exports.loop = function () {
 
    mainFlags.checkMainCommit(commit);
-   mainFlags.checkFlags();
+   mainFlags.checkFlags(ticksToCheckCreepsNumber);
 
    var towers = [];
    towers.push(Game.getObjectById('5e45eb20d4e9fbbbbb4bee7d')) ;
