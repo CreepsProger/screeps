@@ -9,7 +9,8 @@ var roleClaimer = {
 	
 	/** @param {Creep} creep **/
 	run: function(creep) {
-		if(typeof creep.memory.claiming == 'undefined' && typeof creep.memory.claiming.on == 'undefined) {
+		if(typeof creep.memory.claiming == 'undefined' &&
+			 typeof creep.memory.claiming.on == 'undefined') {
 		{
 			if(log.canLog(['LC','LC ','L'])) {
 				console.log( '🗝', Math.trunc(Game.time/10000), Game.time%10000
