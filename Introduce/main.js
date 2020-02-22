@@ -5,7 +5,7 @@ var roleCreep = require('role.claimer');
 
 var commit = 31;
 var ticksToCheckCreepsNumber = 10;
-var maxCreepsNumber = 15;
+var maxCreepsNumber = 13;
 //var mainSettings = require('main.settings');
 
 function updateMovingAverage(x) { 
@@ -188,7 +188,7 @@ module.exports.loop = function () {
 //          if(CL >= 5) mainFlags.tryCreateCreep(        80808, N<(maxCreepsNumber+1)? 1:0,   50); // V 1-1 E  1600   Worker
          if(CL >= 4) mainFlags.tryCreateCreep(  20000000002, N<(maxCreepsNumber+1)? 1:0, 1000); // V 1-1 E   650  Claimer
 //          if(CL >= 4) mainFlags.tryCreateCreep(         1212, N<(maxCreepsNumber+1)? 1:0, 55); // V 1-1 E 1800  Carrier
-         if(CL >= 4) mainFlags.tryCreateCreep(5000300000008, N<(maxCreepsNumber+1)?4:0, 20); // V 1-1 E  900  Attaker
+         if(CL >= 4) mainFlags.tryCreateCreep(5000300000008, N<(maxCreepsNumber+1)?2:0, 20); // V 1-1 E  900  Attaker
 //          if(CL >= 4) mainFlags.tryCreateCreep(err,   200000002, N<(maxCreepsNumber+1)?2:0, 50); // V 1-1 E 800    Attaker
 //          if(CL >= 4) mainFlags.tryCreateCreep(err,     80804, N<(maxCreepsNumber+1)?1:0, 50); // V 1-2 E 1300    Worker
 //          if(CL >= 4) mainFlags.tryCreateCreep(err,     60603, N<(maxCreepsNumber+1)?1:0, 59); // V 1-2 E 1300 Harvester
