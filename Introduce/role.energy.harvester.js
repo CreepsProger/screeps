@@ -24,7 +24,7 @@ var role = {
 	W26S33: { needs: 2, workers: ['3','4'] },
 
 	init: function(creep) {
-		if(creep.memory[role.name] === undefined ||
+		if(true || creep.memory[role.name] === undefined ||
 			 creep.memory[role.name].on === undefined) {
 			creep.memory[role.name] = { on: false
 																, room: ''
