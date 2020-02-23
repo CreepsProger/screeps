@@ -17,7 +17,7 @@ var roleEnergyTransferer = {
 		
 		if(creep.memory.transfering) {
 			
-			var room_config = Memory[role.name].rooms[creep.memory[role.name].room];
+			var room_config = Memory[constants.ROLE_ENERGY_HARVESTING].rooms[creep.memory[constants.ROLE_ENERGY_HARVESTING].room];
 			var is_my_harvest_room = creep.room != creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
 
 			var target;
