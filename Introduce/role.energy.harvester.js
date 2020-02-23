@@ -74,6 +74,7 @@ var role = {
 					if(w.name === creep.name) {
 						w.name = '-' + creep.name;
 						w.time = Game.time;
+						console.log('I', creep, 'setRoom: slot\s removed', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
 					}
 				}
 				else {
@@ -81,18 +82,19 @@ var role = {
 						creep.memory[role.name].room = room_name;
 						w.time = Game.time;
 						already = true;
+						console.log('I', creep, 'setRoom: time\'s  updated', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
 					}
 					else if(w.time < Game.time - 300) {
+						var reset = (creep.memory[role.name].room != room_name); 
 						creep.memory[role.name].room = room_name;
-						w.name = creep.name;
+						w.name = creep.name;e
 						w.time = Game.time;
 						already = true;
+						console.log('I', creep, 'setRoom: reset('+reset+')', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
 					}
 				}
 			});
 		}
-		
-		console.log('I', creep, 'setRoom', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
 	},
 
 	checkOff: function(creep) {
