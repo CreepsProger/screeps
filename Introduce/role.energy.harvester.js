@@ -117,6 +117,7 @@ var role = {
 	},
 
 	getTarget: function(creep) {
+		var room_config = Memory[role.name].rooms[creep.memory[role.name].room];
 		var target;
 		if(!target) {
 			if(creep.room != creep.memory[role.name].room) {
@@ -124,11 +125,11 @@ var role = {
 				target = creep.pos.findClosestByRange(exitDir);
 			}
 		}
-		if(!target && creep.memory.rerun) {
+		if(!target && creep.memory.rerun && creep.room == creep.memory[role.name].room) {
 			var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_CONTAINER) &&
-						creep.memory.weight < Memory[role.name].rooms[creep.memory[role.name].room].containers.weight &&
+						creep.memory.weight < room_config.containers.weight &&
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > structure.store.getFreeCapacity(RESOURCE_ENERGY);
 				}
 			});
