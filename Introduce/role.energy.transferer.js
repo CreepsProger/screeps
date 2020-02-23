@@ -74,7 +74,7 @@ var roleEnergyTransferer = {
             }
             if(!target) {
                 var closests = creep.pos.findInRange(FIND_MY_STRUCTURES, 1, {
-                    filter: (creep2) => {
+                    filter: (structure) => {
                         return (structure.structureType == STRUCTURE_SPAWN) &&
                             structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                     }
