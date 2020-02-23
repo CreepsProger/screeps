@@ -16,7 +16,7 @@ var roleEnergyTransferer = {
 
         if(creep.memory.transfering) {
             var target;
-					if(!target) {
+					if(!target && creep.memory.rerun) {
 						if(creep.room != 'W25S33' /*creep.memory[role.name].room*/) {
 							const exitDir = Game.map.findExit(creep.room, 'W25S33' /*creep.memory[role.name].room*/);
 							target = creep.pos.findClosestByRange(exitDir);
@@ -65,7 +65,7 @@ var roleEnergyTransferer = {
                     }
                 });
             }
-            if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable &&
+            if(!target && creep.room == 'W25S33' && creep.room.energyAvailable == creep.room.energyCapacityAvailable &&
                creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) < 25000 &&
                creep.room.storage.store.getFreeCapacity(RESOURCE_ENERGY) > 25000) {
                 target = creep.room.storage;
