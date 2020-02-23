@@ -16,6 +16,14 @@ var roleEnergyTransferer = {
 
         if(creep.memory.transfering) {
             var target;
+            if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable && creep.memory.rerun) {
+                target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                    filter: (structure) => {
+                        return (structure.structureType == STRUCTURE_CONTAINER) &&
+                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 50;
+                    }
+                });
+            }
 					if(!target && creep.memory.rerun) {
 						if(creep.room != 'W25S33' /*creep.memory[role.name].room*/) {
 							const exitDir = Game.map.findExit(creep.room, 'W25S33' /*creep.memory[role.name].room*/);
@@ -54,14 +62,6 @@ var roleEnergyTransferer = {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_TOWER) &&
                             structure.store.getFreeCapacity(RESOURCE_ENERGY) > 100;
-                    }
-                });
-            }
-            if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable && creep.memory.rerun) {
-                target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                    filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_CONTAINER) &&
-                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 50;
                     }
                 });
             }
