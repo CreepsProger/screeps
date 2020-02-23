@@ -1,5 +1,6 @@
 //import {checkFlags} from 'main.flags.js';
 //import {checkMainCommit} from 'main.flags.js';
+const constants = require('main.constants');
 var mainFlags = require('main.flags');
 var roleCreep = require('role.claimer');
 
@@ -110,7 +111,7 @@ module.exports.loop = function () {
    if(!Spawn.spawning) {
         if(Spawn.store.getUsedCapacity(RESOURCE_ENERGY) > 0) {
             Spawn.pos.findInRange(FIND_MY_CREEPS, 1).forEach(function(creep) {
-                if(Memory.totals.CreepsNumber == maxCreepsNumber && creep.ticksToLive < 1000) {
+                if(Memory.totals.CreepsNumber == maxCreepsNumber && creep.ticksToLive < constants.TICKS_TO_LIVE_TO_RENEW) {
                    if(OK == Spawn.renewCreep(creep)) {
                       console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                                   , Spawn.name, 'renew', creep.name);
