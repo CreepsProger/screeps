@@ -20,26 +20,28 @@ var role = {
 			}
 	},
 
-	version: 15,
+	version: 16,
 
 	init_config: function() {
 		if(Memory[role.name] === undefined ||
 			 Memory[role.name].v === undefined ||
 			 Memory[role.name].v != role.version) {
 			Memory[role.name] = { v: role.version
-													 , rooms : { W25S33: { workers: [ {name: '1', time: 0}
-																													, {name: '2', time: 0}]
+													 , rooms : { W25S33: { containers: {weight: 100}
+																							 ,    workers: [ {name: '1', time: 0}
+																														 , {name: '2', time: 0}]
 																							 },
-																			 W26S33: { workers: [ {name: '1', time: 0}
-																													, {name: '2', time: 0}
-																													, {name: '3', time: 0}
-																													, {name: '4', time: 0}
-																													, {name: '5', time: 0}
-																													, {name: '6', time: 0}
-																													, {name: '7', time: 0}
-																													, {name: '8', time: 0}
-																													, {name: '9', time: 0}
-																													, {name: 'A', time: 0}]
+																			 W26S33: { containers: {weight: 45}
+																							 ,    workers: [ {name: '1', time: 0, needs_weight: 50}
+																														 , {name: '2', time: 0, needs_weight: 50}
+																														 , {name: '3', time: 0, needs_weight: 50}
+																														 , {name: '4', time: 0, needs_weight: 40}
+																														 , {name: '5', time: 0, needs_weight: 40}
+																														 , {name: '6', time: 0, needs_weight: 40}
+																														 , {name: '7', time: 0, needs_weight: 40}
+																														 , {name: '8', time: 0, needs_weight: 40}
+																														 , {name: '9', time: 0, needs_weight: 40}
+																														 , {name: 'A', time: 0, needs_weight: 40}]
 																							 }
 																		 }
 													};
@@ -121,6 +123,15 @@ var role = {
 				const exitDir = Game.map.findExit(creep.room, creep.memory[role.name].room);
 				target = creep.pos.findClosestByRange(exitDir);
 			}
+		}
+		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
+			var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+				filter: (structure) => {
+					return (structure.structureType == STRUCTURE_CONTAINER) &&
+						creep.memory.weight < creep.memory[role.name].room.containers.weight &&
+						structure.store.getUsedCapacity(RESOURCE_ENERGY) > structure.store.getFreeCapacity(RESOURCE_ENERGY);
+				}
+			});
 		}
 		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
 			var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
