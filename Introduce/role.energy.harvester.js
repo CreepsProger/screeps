@@ -20,7 +20,7 @@ var role = {
 			}
 	},
 
-	version: 14,
+	version: 15,
 
 	init_config: function() {
 		if(Memory[role.name] === undefined ||
@@ -38,7 +38,8 @@ var role = {
 																													, {name: '6', time: 0}
 																													, {name: '7', time: 0}
 																													, {name: '8', time: 0}
-																													, {name: '9', time: 0}]
+																													, {name: '9', time: 0}
+																													, {name: 'A', time: 0}]
 																							 }
 																		 }
 													};
