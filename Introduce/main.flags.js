@@ -74,6 +74,7 @@ var mainFlags = {
                     Memory.CreepsNumberByType[type] = 0;
                 Memory.CreepsNumberByType[type]++;
                 Memory.CreepsCounter++;
+							creep_created = true;
             }
         }
     },
