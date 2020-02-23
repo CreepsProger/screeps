@@ -193,30 +193,13 @@ module.exports.loop = function () {
 
          if(CL >= 5) mainFlags.tryCreateCreep(        90909, 50, N<(maxCreepsNumber+1)? 5:0); // V 1-1 E  1800   Worker
          if(CL >= 5) mainFlags.tryCreateCreep(        90909, 40, N<(maxCreepsNumber+1)? 7:0); // V 1-1 E  1800   Worker
-//          if(CL >= 5) mainFlags.tryCreateCreep(        80808, N<(maxCreepsNumber+1)? 1:0,   50); // V 1-1 E  1600   Worker
-         if(CL >= 4) mainFlags.tryCreateCreep(  20000000002, N<(maxCreepsNumber+1)? 1:0, 1000); // V 1-1 E   650  Claimer
-//          if(CL >= 4) mainFlags.tryCreateCreep(         1212, N<(maxCreepsNumber+1)? 1:0, 55); // V 1-1 E 1800  Carrier
-//          if(CL >= 4) mainFlags.tryCreateCreep(5000300000008, N<(maxCreepsNumber+1)?2:0, 20); // V 1-1 E  900  Attaker
-//          if(CL >= 4) mainFlags.tryCreateCreep(err,   200000002, N<(maxCreepsNumber+1)?2:0, 50); // V 1-1 E 800    Attaker
-//          if(CL >= 4) mainFlags.tryCreateCreep(err,     80804, N<(maxCreepsNumber+1)?1:0, 50); // V 1-2 E 1300    Worker
-//          if(CL >= 4) mainFlags.tryCreateCreep(err,     60603, N<(maxCreepsNumber+1)?1:0, 59); // V 1-2 E 1300 Harvester
-//          if(CL >= 4) mainFlags.tryCreateCreep(err, 400001204, N<(maxCreepsNumber+1)?1:0, 55); // V 1-2 E 1400   Carrier
-//          if(CL >= 4) mainFlags.tryCreateCreep(err,    100501, N<(maxCreepsNumber+1)?1:0, 50); // V 1-2 E 1300    Worker
+         if(CL >= 4) mainFlags.tryCreateCreep(  20000000002,100, N<(maxCreepsNumber+1)? 1:0); // V 1-1 E   650  Claimer
 
-//          if(CL >= 4) mainFlags.tryCreateCreep(err,     60905, N<4?0:0, 50); // V 1-3 E 1300    Worker
-//          if(CL >= 4) mainFlags.tryCreateCreep(err, 200001208, N<4?0:0, 56); // V 1-2 E 1300   Carrier
+         if(CL >= 3) mainFlags.tryCreateCreep( 40404, 30, Memory.totals.AvalableWorks<4 ? 1:0); // E 800 Worker
 
-         if(CL >= 3) mainFlags.tryCreateCreep( 40404, Memory.totals.AvalableWorks<4 ? 1:0, 60); // E 800 Worker
-//          if(CL >= 3) err = tryCreateCreep(err, 40701, 2, 69); // E 800   Miner
-//          if(CL >= 3) err = tryCreateCreep(err, 709, 1, 65); // E 800 Carrier
+         if(CL >= 2) mainFlags.tryCreateCreep( 30203, 20, Memory.totals.AvalableWorks<3 ? 1:0); // E 550 Worker
 
-         if(CL >= 2) mainFlags.tryCreateCreep( 30203, Memory.totals.AvalableWorks<3 ? 1:0, 70); // E 550 Worker
-//          if(CL >= 2) err = tryCreateCreep(err, 40201, 2, 79); // E 550   Miner
-//          if(CL >= 2) err = tryCreateCreep(err, 605, 2, 75); // E 550 Carrier
-
-         if(CL >= 1) mainFlags.tryCreateCreep( 10202, Memory.totals.AvalableWorks<2 ? 1:0, 80); // E 300 Worker
-//          if(CL >= 1) err = tryCreateCreep(err, 20101, 4, 89); // E 300   Miner
-//          if(CL >= 1) err = tryCreateCreep(err, 303, 2, 85); // E 300 Carrier
+         if(CL >= 1) mainFlags.tryCreateCreep( 20101, 10, Memory.totals.AvalableWorks<2 ? 1:0); // E 300 Worker
       }
    }
 
