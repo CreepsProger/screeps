@@ -87,7 +87,7 @@ var role = {
 					else if(w.time < Game.time - 300) {
 						var reset = (creep.memory[role.name].room != room_name); 
 						creep.memory[role.name].room = room_name;
-						w.name = creep.name;e
+						w.name = creep.name;
 						w.time = Game.time;
 						already = true;
 						console.log('I', creep, 'setRoom: reset('+reset+')', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
