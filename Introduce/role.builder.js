@@ -4,75 +4,94 @@ var roleBuilder = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-        
-        var myRoom = Game.spawns['Spawn1'].room.name;
-        var anotherRoom = 'W25S34';//Game.map.describeExits(myRoom)[BOTTOM].name; //'W25S34'
+			
+			var myRoom = Game.spawns['Spawn1'].room.name;
+			var anotherRoom = 'W25S34';//Game.map.describeExits(myRoom)[BOTTOM].name; //'W25S34'
 
-        if(creep.memory.building && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
-            creep.memory.building = false;
-        }
+			if(creep.memory.building && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
+				creep.memory.building = false;
+			}
 
-        if(!creep.memory.building &&
-           (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() == 0) ||
-            (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun)) {
-            creep.memory.building = true;
-        }
+			if(!creep.memory.building &&
+				 (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() == 0) ||
+				 (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun)) {
+				creep.memory.building = true;
+			}
 
-        if(creep.memory.building) {
-            var target;
-            if(!target) {
-                var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-                if(targets.length > 0) {
-                    target = targets[0];
-                }
-            }
-            if(!target) {
-                var room = Game.spawns['Spawn1'].room;//Game.map.describeExits(myRoom)[BOTTOM];
+			if(creep.memory.building) {
+				var target;
+				if(!target) {
+					var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
+					if(targets.length > 0) {
+						target = targets[0];
+					}
+				}
+				if(!target) {
+					var room = Game.spawns['Spawn1'].room;//Game.map.describeExits(myRoom)[BOTTOM];
 //                 console.log( '🔜🏗', Math.trunc(Game.time/10000), Game.time%10000
 //                             , 'looking for building in:'
 //                             , room);
-                var targets = room.find(FIND_CONSTRUCTION_SITES);
-                if(targets.length > 0) {
-                    target = targets[0];
-                }
-            }
-
-            if(target) {
-                var err = creep.build(target);
-                if(err == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-                    creep.say('🔜🏗');
-                    console.log( '🔜🏗', Math.trunc(Game.time/10000), Game.time%10000
-                                , creep.name
-                                , 'moving for building:'
-                                , target.name?target.name:target.structureType);
-                }
-                else if(!err) {
-                    creep.say('🏗');
-                    console.log( '🏗', Math.trunc(Game.time/10000), Game.time%10000
+					var targets = room.find(FIND_CONSTRUCTION_SITES);
+					if(targets.length > 0) {
+						target = targets[0];
+					}
+				}
+				if(!target) {
+					target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+						filter: (structure) => { 
+							if(structure.structureType == STRUCTURE_WALL) {
+								return false;
+							}
+							if(structure.structureType == STRUCTURE_RAMPART) {
+								return false;
+							}
+							return structure.hitsMax - structure.hits > 1000;
+						}
+					});
+					
+					if(target) {
+						tower.repair(target);
+					}
+				}
+				
+				if(target) {
+					var err = (target.hitsMax !== undefind && target.hits < target.hitsMax)?
+							creep.repair(target) :
+							creep.build(target);
+					if(err == ERR_NOT_IN_RANGE) {
+						creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
+						creep.say('🔜🏗');
+						console.log( '🔜🏗', Math.trunc(Game.time/10000), Game.time%10000
+												, creep.name
+												, 'moving for building:'
+												, target.name?target.name:target.structureType);
+					}
+					else if(!err) {
+						creep.say('🏗');
+						console.log( '🏗', Math.trunc(Game.time/10000), Game.time%10000
                                 , creep.name
                                 , 'building:'
                                 , target.name?target.name:target.structureType);
-                }
-                else {
-                    creep.memory.building = false;
-                    console.log( '🏗⚠️', Math.trunc(Game.time/10000), Game.time%10000
+					}
+					else {
+						creep.memory.building = false;
+						console.log( '🏗⚠️', Math.trunc(Game.time/10000), Game.time%10000
                                 , creep.name
                                 , 'building:'
                                 , target.name?target.name:target.structureType
                                 , 'with err:'
                                 , err);
-                }
-            }
-            else {
-                    creep.memory.building = false;
-            }
-        }
+					}
+				}
+				else {
+					creep.memory.building = false;
+				}
+			}
 
-        if(!creep.memory.building) {
-            roleNext.run(creep);
-        }
-    }
+			if(!creep.memory.building) {
+				roleNext.run(creep);
+			}
+		}
 };
 
 
