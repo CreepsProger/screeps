@@ -1,11 +1,11 @@
-var constants = require('main.constants');
+const constants = require('main.constants');
 var flags = require('main.flags');
 var log = require('main.log');
 
 var git = '$Format:%H$';
 
 var role = {
-	name: ROLE_ENERGY_HARVESTING,
+	name: constants.ROLE_ENERGY_HARVESTING,
 
 	logFlags: ['LEH','LE ','L'], 
 	
