@@ -1,30 +1,37 @@
 var roleNext = require('role.noenergy.transferer');
+var constants = require('main.constants');
 
 var roleEnergyTransferer = {
-
+	
     /** @param {Creep} creep **/
-    run: function(creep) {
-        if(creep.memory.transfering && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
-            creep.memory.transfering = false;
-        }
+	run: function(creep) {
+		if(creep.memory.transfering && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
+			creep.memory.transfering = false;
+		}
 
-        if(!creep.memory.transfering &&
-           ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() == 0) ||
-            (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun))) {
-            creep.memory.transfering = true;
-        }
+		if(!creep.memory.transfering &&
+			 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() == 0) ||
+				(creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun))) {
+			creep.memory.transfering = true;
+		}
+		
+		if(creep.memory.transfering) {
+			
+			var room_config = Memory[role.name].rooms[creep.memory[role.name].room];
+			var is_my_harvest_room = creep.room != creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
 
-        if(creep.memory.transfering) {
-            var target;
-            if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable && creep.memory.rerun) {
-                target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                    filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_CONTAINER) &&
-                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 150;
-                    }
-                });
-            }
-					if(!target && creep.memory.rerun) {
+			var target;
+
+			if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable && creep.memory.rerun) {
+				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+					filter: (structure) => {
+						return (structure.structureType == STRUCTURE_CONTAINER) &&
+							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 150;
+					}
+				});
+			}
+			
+			if(!target && creep.memory.rerun) {
 						if(creep.room != 'W25S33' /*creep.memory[role.name].room*/) {
 							const exitDir = Game.map.findExit(creep.room, 'W25S33' /*creep.memory[role.name].room*/);
 							target = creep.pos.findClosestByRange(exitDir);
