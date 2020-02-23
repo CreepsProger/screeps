@@ -17,8 +17,10 @@ var roleEnergyTransferer = {
 		
 		if(creep.memory.transfering) {
 			
-			var room_config = Memory[constants.ROLE_ENERGY_HARVESTING].rooms[creep.memory[constants.ROLE_ENERGY_HARVESTING].room];
-			var is_my_harvest_room = creep.room != creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
+			const this_room = creep.room.name;
+			const this_room_config = Memory[constants.ROLE_ENERGY_HARVESTING].rooms[this_room];
+			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
+			const my_room_config = Memory[constants.ROLE_ENERGY_HARVESTING].rooms[my_room];
 
 			var target;
 
@@ -33,8 +35,8 @@ var roleEnergyTransferer = {
 			}
 			
 			if(!target && creep.memory.rerun) {
-				if(creep.room != 'W25S33' /*creep.memory[role.name].room*/) {
-					const exitDir = Game.map.findExit(creep.room, 'W25S33' /*creep.memory[role.name].room*/);
+				if(this_room != 'W25S33') {
+					const exitDir = Game.map.findExit(creep.room, 'W25S33');
 					target = creep.pos.findClosestByRange(exitDir);
 				}
 			}
