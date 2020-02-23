@@ -216,15 +216,13 @@ var role = {
 				creep.memory[role.name].on = false;
 			}
 		}
-	
-		if(!creep.memory[role.name].on) {
-			if(creep.memory.rerun) {
-				creep.say('🔃'); 
-			}
-			else {
-				creep.memory.rerun = 1;
-				require('role.claimer').run(creep);
-			}
+
+		if(creep.memory.rerun) {
+			creep.say('🔃'); 
+		}
+		else {
+			creep.memory.rerun = 1;
+			require('role.claimer').run(creep);
 		}
 	}
 };
