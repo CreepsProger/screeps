@@ -60,7 +60,7 @@ var roleEnergyTransferer = {
 				});
 			}
 			
-			if(!target && creep.ticksToLive < constants.TICKS_TO_LIVE_TO_RENEW) {
+			if(!target && creep.ticksToLive < constants.TICKS_TO_LIVE_TO_TRANSFER_ENERGY_TO_SPAWN) {
 				target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_SPAWN) &&
