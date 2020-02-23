@@ -48,10 +48,6 @@ var roleBuilder = {
 							return structure.hitsMax - structure.hits > 1000;
 						}
 					});
-					
-					if(target) {
-						tower.repair(target);
-					}
 				}
 				
 				if(target) {
