@@ -136,6 +136,12 @@ var role = {
 			target = creep.pos.findClosestByRange(exitDir);
 		}
 
+		if(!target)
+		{
+			console.log(creep.name, 'check target', STRUCTURE_CONTAINER, ':', creep.memory.rerun, this_room, my_room, creep.room.energyAvailable,
+								creep.room.energyCapacityAvailable);	
+		}
+
 		if(!target &&
 			 creep.memory.rerun &&
 			 this_room == my_room &&
