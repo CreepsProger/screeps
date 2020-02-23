@@ -55,7 +55,7 @@ var roleBuilder = {
 				}
 				
 				if(target) {
-					var err = (target.hitsMax !== undefind && target.hits < target.hitsMax)?
+					var err = (target.hitsMax !== undefined && target.hits < target.hitsMax)?
 							creep.repair(target) :
 							creep.build(target);
 					if(err == ERR_NOT_IN_RANGE) {
