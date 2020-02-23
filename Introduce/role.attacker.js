@@ -15,7 +15,7 @@ var roleAttacker = {
         }
 
         var myRoom = Game.spawns['Spawn1'].room.name;
-        var attackedRoom = 'W22S31';Game.map.describeExits(myRoom)[BOTTOM].name; //'W25S34'
+        var attackedRoom = 'W26S33';Game.map.describeExits(myRoom)[BOTTOM].name; //'W25S34'
         
         if(creep.memory.attacking) {
             var target;
