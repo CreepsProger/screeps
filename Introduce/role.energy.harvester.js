@@ -119,15 +119,22 @@ var role = {
 	},
 
 	getTarget: function(creep) {
+
 		var room_config = Memory[role.name].rooms[creep.memory[role.name].room];
+
 		var target;
+
 		if(!target) {
 			if(creep.room != creep.memory[role.name].room) {
 				const exitDir = Game.map.findExit(creep.room, creep.memory[role.name].room);
 				target = creep.pos.findClosestByRange(exitDir);
 			}
 		}
-		if(!target && creep.memory.rerun && creep.room == creep.memory[role.name].room) {
+
+		if(!target &&
+			 creep.memory.rerun &&
+			 creep.room == creep.memory[role.name].room &&
+			 creep.room.energyAvailable == creep.room.energyCapacityAvailable) {
 			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_CONTAINER) &&
@@ -136,6 +143,7 @@ var role = {
 				}
 			});
 		}
+
 		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
 			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
@@ -144,6 +152,7 @@ var role = {
 				}
 			});
 		}
+
 		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
 			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
@@ -152,11 +161,13 @@ var role = {
 				}
 			});
 		}
+
 		if(!target && creep.getActiveBodyparts(WORK)) {
 			target = creep.pos.findClosestByPath(FIND_SOURCES, {
 				filter: (source) => source.energy >= (creep.memory.rerun? 0:1)
 			});
 		}
+
 		if(!target && !creep.getActiveBodyparts(WORK)) {
 			target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 				filter: (creep2) => {
@@ -166,6 +177,7 @@ var role = {
 				}
 			});
 		}
+
 		if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
 			target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 				filter: (creep2) => {
@@ -174,6 +186,7 @@ var role = {
 				}
 			});
 		}
+
 		if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
 			target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 				filter: (creep2) => {
