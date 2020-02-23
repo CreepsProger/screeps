@@ -80,7 +80,11 @@ var roleAttacker = {
                     target = creep.pos.findClosestByRange(exitDir);
                 }
             }
-            if(target)
+            if(!target && Game.flags['DP'] !== undefined) {
+							target = Game.flags['DP'].pos;
+            }
+
+					if(target)
             {
                 var err = ERR_NOT_IN_RANGE;
                 if(target.id &&
