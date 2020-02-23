@@ -191,16 +191,19 @@ module.exports.loop = function () {
          const CL = Controller.level;
          var N = Memory.totals.CreepsNumber;
 
-         if(CL >= 5) mainFlags.tryCreateCreep(        90909, 50, N<(maxCreepsNumber+1)? 5:0); // V 1-1 E  1800   Worker
+         if(CL >= 5) mainFlags.tryCreateCreep(       100610, 50, N<(maxCreepsNumber+1)? 4:0); // V 1-2 E  1800   Worker
          if(CL >= 5) mainFlags.tryCreateCreep(        90909, 40, N<(maxCreepsNumber+1)? 5:0); // V 1-1 E  1800   Worker
-         if(CL >= 4) mainFlags.tryCreateCreep(  20000000002,100, N<(maxCreepsNumber+1)? 1:0); // V 1-1 E   650  Claimer
+         if(CL >= 5) mainFlags.tryCreateCreep(  20000000002,100, N<(maxCreepsNumber+1)? 1:0); // V 1-1 E   650  Claimer
 
-         if(CL >= 5) mainFlags.tryCreateCreep( 80808, 40, Memory.totals.AvalableWorks<4 ? 1:0); // E 1600 Worker
-         if(CL >= 3) mainFlags.tryCreateCreep( 40404, 30, Memory.totals.AvalableWorks<4 ? 1:0); // E 800 Worker
+         if(CL >= 4) mainFlags.tryCreateCreep(        80808, 40, Memory.totals.WORK<10? 1:0); // E 1600 Worker
+         if(CL >= 4) mainFlags.tryCreateCreep(        70707, 40, Memory.totals.WORK<10? 1:0); // E 1400 Worker
+         if(CL >= 3) mainFlags.tryCreateCreep(        60606, 40, Memory.totals.WORK<10? 1:0); // E 1200 Worker
+         if(CL >= 3) mainFlags.tryCreateCreep(        50505, 40, Memory.totals.WORK<10? 1:0); // E 1000 Worker
+         if(CL >= 3) mainFlags.tryCreateCreep(        40404, 30, Memory.totals.WORK<10? 1:0); // E  800 Worker
 
-         if(CL >= 2) mainFlags.tryCreateCreep( 30203, 20, Memory.totals.AvalableWorks<3 ? 1:0); // E 550 Worker
+         if(CL >= 2) mainFlags.tryCreateCreep( 30203, 20, Memory.totals.WORK<3 ? 1:0); // E 550 Worker
 
-         if(CL >= 1) mainFlags.tryCreateCreep( 20101, 10, Memory.totals.AvalableWorks<2 ? 1:0); // E 300 Worker
+         if(CL >= 1) mainFlags.tryCreateCreep( 20101, 10, Memory.totals.WORK<2 ? 1:0); // E 300 Worker
       }
    }
 
