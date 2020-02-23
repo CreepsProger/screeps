@@ -19,7 +19,7 @@ var roleAttacker = {
         
         if(creep.memory.attacking) {
             var target;
-            if(creep.hits < creep.hitsMax) {
+            if(creep.hits < creep.hitsMax - 300) {
                 if(!target) {
                     var rampart = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                         filter: (structure) => {
