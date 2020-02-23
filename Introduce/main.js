@@ -98,7 +98,8 @@ module.exports.loop = function () {
       var creep = Game.creeps[name];
       if(!creep) {
          if(Memory.creeps[name].type)
-            Memory.CreepsNumberByType[Memory.creeps[name].type]--;
+					 const full_type = '' + Memory.creeps[name].type+'/'+Memory.creeps[name].weight;
+            Memory.CreepsNumberByType[full_type]--;
          delete Memory.creeps[name];
          console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                     , 'Clearing non-existing creep memory:'
@@ -130,9 +131,10 @@ module.exports.loop = function () {
          Memory.totals.CreepsNumber = 0;
          for(var name in Game.creeps) {
             var creep = Game.creeps[name];
-            if(!Memory.CreepsNumberByType[creep.memory.type])
-               Memory.CreepsNumberByType[creep.memory.type] = 0;
-            Memory.CreepsNumberByType[creep.memory.type]++;
+					 const full_type = '' + creep.memory.type+'/'+creep.memory.weight;
+            if(!Memory.CreepsNumberByType[full_type])
+               Memory.CreepsNumberByType[full_type] = 0;
+            Memory.CreepsNumberByType[full_type]++;
             Memory.totals.CreepsNumber += 1;
             Memory.totals.Capacity += creep.store.getCapacity();
             Memory.totals.FreeCapacity += creep.store.getFreeCapacity();
@@ -188,8 +190,8 @@ module.exports.loop = function () {
          const CL = Controller.level;
          var N = Memory.totals.CreepsNumber;
 
-         if(CL >= 5) mainFlags.tryCreateCreep(        90909, N<(maxCreepsNumber+1)? 5:0,   50); // V 1-1 E  1800   Worker
-         if(CL >= 5) mainFlags.tryCreateCreep(        90909, N<(maxCreepsNumber+1)?12:0,   40); // V 1-1 E  1800   Worker
+         if(CL >= 5) mainFlags.tryCreateCreep(        90909, 50, N<(maxCreepsNumber+1)? 5:0); // V 1-1 E  1800   Worker
+         if(CL >= 5) mainFlags.tryCreateCreep(        90909, 40, N<(maxCreepsNumber+1)? 7:0); // V 1-1 E  1800   Worker
 //          if(CL >= 5) mainFlags.tryCreateCreep(        80808, N<(maxCreepsNumber+1)? 1:0,   50); // V 1-1 E  1600   Worker
          if(CL >= 4) mainFlags.tryCreateCreep(  20000000002, N<(maxCreepsNumber+1)? 1:0, 1000); // V 1-1 E   650  Claimer
 //          if(CL >= 4) mainFlags.tryCreateCreep(         1212, N<(maxCreepsNumber+1)? 1:0, 55); // V 1-1 E 1800  Carrier
