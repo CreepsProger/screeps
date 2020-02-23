@@ -212,7 +212,7 @@ var role = {
 					creep.memory[role.name].on = false;
 				}
 			}
-			else {
+			else if(creep.memory.rerun) {
 				creep.memory[role.name].on = false;
 			}
 		}
