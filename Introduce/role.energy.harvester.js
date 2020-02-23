@@ -120,7 +120,7 @@ var role = {
 
 	getTarget: function(creep) {
 
-		const this_room = creep.room;
+		const this_room = creep.room.name;
 		const this_room_config = Memory[role.name].rooms[this_room];
 		const my_room = creep.memory[role.name].room;
 		const my_room_config = Memory[role.name].rooms[my_room];
