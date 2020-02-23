@@ -128,7 +128,7 @@ var role = {
 			var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_CONTAINER) &&
-						creep.memory.weight < creep.memory[role.name].room.containers.weight &&
+						creep.memory.weight < Memory[role.name].rooms[creep.memory[role.name].room].containers.weight &&
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > structure.store.getFreeCapacity(RESOURCE_ENERGY);
 				}
 			});
