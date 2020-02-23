@@ -111,7 +111,7 @@ module.exports.loop = function () {
    var Spawn = Game.spawns['Spawn1'];
    
    if(!Spawn.spawning) {
-        if(Spawn.store.getUsedCapacity(RESOURCE_ENERGY) > 0) {
+        if(false && Spawn.store.getUsedCapacity(RESOURCE_ENERGY) > 0) {
             Spawn.pos.findInRange(FIND_MY_CREEPS, 1).forEach(function(creep) {
 							const creep_target_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
                 if(creep_target_room == Spawn.room.name && 
