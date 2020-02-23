@@ -1,7 +1,7 @@
 // $Id:$
 var lastFlagRemoved;
 
-var creep_created = false;
+var last_game_time_created_creep = 0;
 
 var mainFlags = {
     
@@ -55,7 +55,7 @@ var mainFlags = {
 //                     , 'preverr:'
 //                     , preverr
 //                   );
-        if(!creep_created && needsNumber > 0) {
+        if(last_game_time_created_creep != Game.time && needsNumber > 0) {
             var err = Game.spawns['Spawn1'].spawnCreep(body
                                                    , newName
                                                    , {memory: {n: Memory.CreepsCounter, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
@@ -74,7 +74,7 @@ var mainFlags = {
                     Memory.CreepsNumberByType[type] = 0;
                 Memory.CreepsNumberByType[type]++;
                 Memory.CreepsCounter++;
-							creep_created = true;
+							last_game_time_created_creep != Game.time;
             }
         }
     },
