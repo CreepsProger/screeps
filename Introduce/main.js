@@ -111,7 +111,8 @@ module.exports.loop = function () {
    if(!Spawn.spawning) {
         if(Spawn.store.getUsedCapacity(RESOURCE_ENERGY) > 0) {
             Spawn.pos.findInRange(FIND_MY_CREEPS, 1).forEach(function(creep) {
-                if(false && 
+							const creep_target_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
+                if(creep_target_room == Spawn.room.name && 
 									 Memory.totals.CreepsNumber == maxCreepsNumber &&
 									 creep.ticksToLive < constants.TICKS_TO_LIVE_TO_RENEW) {
                    if(OK == Spawn.renewCreep(creep)) {
