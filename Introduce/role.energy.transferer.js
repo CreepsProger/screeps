@@ -57,7 +57,7 @@ var roleEnergyTransferer = {
                     }
                 });
             }
-            if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable) {
+            if(!target && (creep.room.energyAvailable == creep.room.energyCapacityAvailable && creep.memory.rerun) {
                 target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_CONTAINER) &&
