@@ -39,7 +39,7 @@ var mainFlags = {
         for (var i = 0; i <  Ms; i++) {body.push(MOVE);}
         var cost = 10*Ts + 600*CLs + 150*RAs + 80*As + 100*Ws + 50*Cs + 50*Ms;
         var existsNumber = 0;
-			  const full_type = '' + creep.memory.type+'/'+creep.memory.weight;
+			  const full_type = '' + type + '/' + weight;
         if(Memory.CreepsNumberByType[full_type])
             existsNumber = Memory.CreepsNumberByType[full_type];
         var needsNumber = needed - existsNumber;
