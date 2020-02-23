@@ -53,7 +53,7 @@ var roleEnergyTransferer = {
                 target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_SPAWN) &&
-                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 100;
+                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 200;
                     }
                 });
             }
@@ -61,7 +61,7 @@ var roleEnergyTransferer = {
                 target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_TOWER) &&
-                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 100;
+                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 300;
                     }
                 });
             }
@@ -72,6 +72,17 @@ var roleEnergyTransferer = {
                creep.room.storage.store.getFreeCapacity(RESOURCE_ENERGY) > 25000) {
                 target = creep.room.storage;
             }
+            if(!target) {
+                var closests = creep.pos.findInRange(FIND_MY_STRUCTURES, 1, {
+                    filter: (creep2) => {
+                        return (structure.structureType == STRUCTURE_SPAWN) &&
+                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+                    }
+                });
+                if(closests.length > 0) {
+                    target = closests[0];
+                }
+            }            
             if(target) {
 							var err = ERR_NOT_IN_RANGE;
 							  if(target.id) {
