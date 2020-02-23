@@ -128,7 +128,7 @@ var role = {
 		var target;
 
 		if(!target &&
-			 creep.room.energyAvailable < creep.room.energyCapacityAvailable - 400 &&
+			 creep.room.energyAvailable > creep.room.energyCapacityAvailable - 400 &&
 			 this_room != my_room &&
 			 creep.ticksToLive > TICKS_TO_LIVE_TO_TRANSFER_ENERGY_TO_SPAWN) {
 			const exitDir = Game.map.findExit(this_room, my_room);
