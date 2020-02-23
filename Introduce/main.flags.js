@@ -21,7 +21,7 @@ var mainFlags = {
       return Math.floor(300 * Cs * 50 / (harvest_ticks + move_to_rc_ticks + upgrade_ticks + move_from_rc_ticks));
    },
     
-    tryCreateCreep: function(type, needed = 0, weight) {
+    tryCreateCreep: function(type, weight, needed = 0) {
         var body = [];
         var  Ts = Math.trunc(type%100000000000000/1000000000000);
         var CLs = Math.trunc(type%1000000000000/10000000000);
@@ -39,8 +39,9 @@ var mainFlags = {
         for (var i = 0; i <  Ms; i++) {body.push(MOVE);}
         var cost = 10*Ts + 600*CLs + 150*RAs + 80*As + 100*Ws + 50*Cs + 50*Ms;
         var existsNumber = 0;
-        if(Memory.CreepsNumberByType[type])
-            existsNumber = Memory.CreepsNumberByType[type];
+			  const full_type = '' + creep.memory.type+'/'+creep.memory.weight;
+        if(Memory.CreepsNumberByType[full_type])
+            existsNumber = Memory.CreepsNumberByType[full_type];
         var needsNumber = needed - existsNumber;
         var newName = 'creep-<' + weight + '>-' + Ts + '.' + CLs + '.' + RAs + '.' + As + '.' + Ws + '.' + Cs + '.' + Ms + '-' + Game.time % 10000;
 //         console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
@@ -70,9 +71,9 @@ var mainFlags = {
                 console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                         , 'Spawning new creep:'
                         , newName);
-                if(!Memory.CreepsNumberByType[type])
-                    Memory.CreepsNumberByType[type] = 0;
-                Memory.CreepsNumberByType[type]++;
+                if(!Memory.CreepsNumberByType[full_type])
+                    Memory.CreepsNumberByType[full_type] = 0;
+                Memory.CreepsNumberByType[full_type]++;
                 Memory.CreepsCounter++;
 							last_game_time_created_creep = Game.time;
             }
@@ -100,8 +101,9 @@ var mainFlags = {
             for(var name in Game.creeps) {
                 var creep = Game.creeps[name];
                 Memory.CreepsCounter++;
-                if(!Memory.CreepsNumberByType[creep.memory.type])
-                    Memory.CreepsNumberByType[creep.memory.type] = 0;
+  					    const full_type = '' + creep.memory.type+'/'+creep.memory.weight;
+                if(!Memory.CreepsNumberByType[full_type])
+                    Memory.CreepsNumberByType[full_type] = 0;
                 Memory.CreepsNumberByType[creep.memory.type]++;
                 console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                             , 'Commit main'
@@ -111,7 +113,7 @@ var mainFlags = {
                             , creep.memory.type
                             , 'creep.getActiveBodyparts(WORK)'
                             , creep.getActiveBodyparts(WORK)
-                            , Memory.CreepsNumberByType[creep.memory.type]
+                            , Memory.CreepsNumberByType[full_type]
                             , Memory.CreepsCounter);
             }
             console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
