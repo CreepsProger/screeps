@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var role = {
 
-	version: 24,
+	version: 25,
 
 	name: constants.ROLE_ENERGY_HARVESTING,
 
@@ -84,7 +84,7 @@ var role = {
 						already = true;
 						role.log('I', creep, 'setRoom: time\'s  updated', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
 					}
-					else if(w.time < Game.time - 300) {
+					else if(w.time < Game.time - 100) {
 						var reset = (creep.memory[role.name].room != room_name); 
 						creep.memory[role.name].room = room_name;
 						w.name = creep.name;
