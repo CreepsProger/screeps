@@ -30,7 +30,7 @@ var roleAttacker = {
                     if(rampart && rampart.my && rampart.pos != creep.pos) {
                         target = rampart;
                     }
-                    else {
+                    else if(creep.room.controller.my) {
                         target = creep.room.controller;
                     }
                 }
