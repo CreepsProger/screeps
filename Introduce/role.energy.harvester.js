@@ -1,12 +1,11 @@
-// var roleRerun= require('role.attacker');
-
+var constants = require('main.constants');
 var flags = require('main.flags');
 var log = require('main.log');
 
 var git = '$Format:%H$';
 
 var role = {
-	name: 'energy_harvesting',
+	name: ROLE_ENERGY_HARVESTING,
 
 	logFlags: ['LEH','LE ','L'], 
 	
