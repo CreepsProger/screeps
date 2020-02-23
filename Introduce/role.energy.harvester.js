@@ -110,7 +110,7 @@ var role = {
 			 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0 &&
 				 creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0) ||
 				(creep.memory.rerun &&
-				 creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
+				 creep.store.getUsedCapacity(RESOURCE_ENERGY) >= 0 &&
 				 creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0))) {
 			creep.memory[role.name].on = true;
 // 			role.log(creep,"On");
