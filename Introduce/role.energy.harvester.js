@@ -128,7 +128,7 @@ var role = {
 			}
 		}
 		if(!target && creep.memory.rerun && creep.room == creep.memory[role.name].room) {
-			var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_CONTAINER) &&
 						creep.memory.weight < room_config.containers.weight &&
@@ -137,7 +137,7 @@ var role = {
 			});
 		}
 		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
-			var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_CONTAINER) &&
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
@@ -145,7 +145,7 @@ var role = {
 			});
 		}
 		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
-			var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_STORAGE) &&
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 5000;
@@ -153,7 +153,7 @@ var role = {
 			});
 		}
 		if(!target && creep.getActiveBodyparts(WORK)) {
-			var target = creep.pos.findClosestByPath(FIND_SOURCES, {
+			target = creep.pos.findClosestByPath(FIND_SOURCES, {
 				filter: (source) => source.energy >= (creep.memory.rerun? 0:1)
 			});
 		}
