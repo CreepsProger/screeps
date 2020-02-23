@@ -65,7 +65,9 @@ var roleEnergyTransferer = {
                     }
                 });
             }
-            if(!target && creep.room == 'W25S33' && creep.room.energyAvailable == creep.room.energyCapacityAvailable &&
+            if(!target &&
+							 creep.room.storage !== undefined &&
+							 creep.room.energyAvailable == creep.room.energyCapacityAvailable &&
                creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) < 25000 &&
                creep.room.storage.store.getFreeCapacity(RESOURCE_ENERGY) > 25000) {
                 target = creep.room.storage;
