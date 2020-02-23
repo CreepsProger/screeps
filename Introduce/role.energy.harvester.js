@@ -5,6 +5,9 @@ var log = require('main.log');
 var git = '$Format:%H$';
 
 var role = {
+
+	version: 24,
+
 	name: constants.ROLE_ENERGY_HARVESTING,
 
 	logFlags: ['LEH','LE ','L'], 
@@ -18,8 +21,6 @@ var role = {
 									  , args);
 			}
 	},
-
-	version: 23,
 
 	init_config: function() {
 		if(Memory[role.name] === undefined ||
