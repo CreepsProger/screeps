@@ -74,7 +74,7 @@ var role = {
 					if(w.name === creep.name) {
 						w.name = '-' + creep.name;
 						w.time = Game.time;
-						console.log('I', creep, 'setRoom: slot\s removed', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
+						console.log('I', creep, 'setRoom: slot\'s removed', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
 					}
 				}
 				else {
