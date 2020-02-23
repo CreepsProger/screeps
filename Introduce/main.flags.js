@@ -74,7 +74,7 @@ var mainFlags = {
                     Memory.CreepsNumberByType[type] = 0;
                 Memory.CreepsNumberByType[type]++;
                 Memory.CreepsCounter++;
-							last_game_time_created_creep != Game.time;
+							last_game_time_created_creep = Game.time;
             }
         }
     },
