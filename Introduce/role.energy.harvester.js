@@ -214,15 +214,11 @@ var role = {
 			}
 			else if(creep.memory.rerun) {
 				creep.memory[role.name].on = false;
-			}
-		}
-
-		if(creep.memory.rerun) {
-			if(!creep.memory[role.name].on) {
 				creep.say('🔃🔃'); 
 			}
 		}
-		else {
+
+		if(!creep.memory.rerun) {
 			creep.memory.rerun = 1;
 			if(!creep.memory[role.name].on) {
 				creep.say('🔃'); 
