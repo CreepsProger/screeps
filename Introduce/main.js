@@ -97,8 +97,8 @@ module.exports.loop = function () {
    for(var name in Memory.creeps) {
       var creep = Game.creeps[name];
       if(!creep) {
-         if(Memory.creeps[name].type)
-					  const full_type = '' + Memory.creeps[name].type + '\/' + Memory.creeps[name].weight;
+         if(Memory.creeps[name].type) {
+					  const full_type = '' + Memory.creeps[name].type + '/' + Memory.creeps[name].weight;
             Memory.CreepsNumberByType[full_type]--;
          delete Memory.creeps[name];
          console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
