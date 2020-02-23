@@ -120,31 +120,35 @@ var role = {
 
 	getTarget: function(creep) {
 
-		var room_config = Memory[role.name].rooms[creep.memory[role.name].room];
+		const this_room = creep.room;
+		const this_room_config = Memory[role.name].rooms[this_room];
+		const my_room = creep.memory[role.name].room;
+		const my_room_config = Memory[role.name].rooms[my_room];
 
 		var target;
 
-		if(!target) {
-			if(creep.room != creep.memory[role.name].room) {
-				const exitDir = Game.map.findExit(creep.room, creep.memory[role.name].room);
-				target = creep.pos.findClosestByRange(exitDir);
-			}
+		if(!target &&
+			 creep.room.energyAvailable == creep.room.energyCapacityAvailable &&
+			 this_room != my_room) {
+			const exitDir = Game.map.findExit(this_room, my_room);
+			target = creep.pos.findClosestByRange(exitDir);
 		}
 
 		if(!target &&
 			 creep.memory.rerun &&
-			 creep.room == creep.memory[role.name].room &&
+			 this_room == my_room &&
 			 creep.room.energyAvailable == creep.room.energyCapacityAvailable) {
 			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_CONTAINER) &&
-						creep.memory.weight < room_config.containers.weight &&
-						structure.store.getUsedCapacity(RESOURCE_ENERGY) > structure.store.getFreeCapacity(RESOURCE_ENERGY);
+						structure.store.getUsedCapacity(RESOURCE_ENERGY) > structure.store.getFreeCapacity(RESOURCE_ENERGY) &&
+						creep.memory.weight < my_room_config.containers.weight;
 				}
 			});
 		}
 
-		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
+		if(!target &&
+			 creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
 			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_CONTAINER) &&
