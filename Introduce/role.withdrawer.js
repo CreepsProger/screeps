@@ -19,7 +19,10 @@ var roleWithdrawer = {
             var target;
 
             if(!target) {
-                target = creep.pos.findClosestByPath(FIND_TOMBSTONES);
+                target = creep.pos.findClosestByPath(FIND_TOMBSTONES,  {
+									filter: (structure) => {
+										return structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
+									});
             }
             if(!target) {
                 target = creep.pos.findClosestByPath(FIND_RUINS);
