@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var role = {
 
-	version: 25,
+	version: 26,
 
 	name: constants.ROLE_ENERGY_HARVESTING,
 
