@@ -192,7 +192,7 @@ module.exports.loop = function () {
          var N = Memory.totals.CreepsNumber;
 
          if(CL >= 5) mainFlags.tryCreateCreep(5000200000007,100, N<(maxCreepsNumber+1)? 2:0); // V 1-1 E   650 Attacker
-         if(CL >= 5) mainFlags.tryCreateCreep(       100610, 50, N<(maxCreepsNumber+1)? 3:0); // V 1-2 E  1800   Worker
+         if(CL >= 5) mainFlags.tryCreateCreep(        90909, 50, N<(maxCreepsNumber+1)? 3:0); // V 1-1 E  1800   Worker
          if(CL >= 5) mainFlags.tryCreateCreep(        90909, 40, N<(maxCreepsNumber+1)? 6:0); // V 1-1 E  1800   Worker
          if(CL >= 5) mainFlags.tryCreateCreep(  20000000002,100, N<(maxCreepsNumber+1)? 1:0); // V 1-1 E  1300  Claimer
 
