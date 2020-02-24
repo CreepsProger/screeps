@@ -37,7 +37,7 @@ var roleBuilder = {
 					}
 				}
 				if(!target) {
-					target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+					target = creep.pos./*findClosestByRange*/findInRange(FIND_STRUCTURES, 1, {
 						filter: (structure) => { 
 							if(structure.structureType == STRUCTURE_WALL) {
 								return false;
