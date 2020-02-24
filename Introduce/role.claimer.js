@@ -73,8 +73,12 @@ var role = {
 			if(target)
 			{
 				var err = ERR_NOT_IN_RANGE;
+				var action;
 				if(target.id) {
-					err = creep.reserveController(target);
+					if(!target.my && (!target.owner || target.owner = 'CreepsProger')) {
+						err = creep.reserveController(target);
+						action = creep.reserveController;
+					}
 				}
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
@@ -83,7 +87,7 @@ var role = {
 				}
 				else if(!err) {
 					creep.say('🗝');
-					role.log(creep, 'reserveController', JSON.stringify(target));
+					role.log(creep, 'reserveController', JSON.stringify(action), JSON.stringify(target), JSON.stringify(Game.rooms));
 				}
 				else {
 					role.log(creep, 'err:', err, JSON.stringify(creep.reserveController));
