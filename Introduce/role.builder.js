@@ -51,9 +51,16 @@ var roleBuilder = {
 				}
 				
 				if(target) {
-					var err = (target.hitsMax !== undefined && target.hits < target.hitsMax)?
-							creep.repair(target) :
-							creep.build(target);
+					var action;
+					var err = ERR_NOT_IN_RANGE
+					if(target.hitsMax !== undefined && target.hits < target.hitsMax) {
+						action = 'repairing:';
+						err = creep.repair(target);
+					}
+					else {
+						action = 'building:';
+						err = creep.build(target);
+					}
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
 						creep.say('🔜🏗');
@@ -73,7 +80,7 @@ var roleBuilder = {
 						creep.memory.building = false;
 						console.log( '🏗⚠️', Math.trunc(Game.time/10000), Game.time%10000
                                 , creep.name
-                                , 'building:'
+                                , action
                                 , target.name?target.name:target.structureType
                                 , 'with err:'
                                 , err);
