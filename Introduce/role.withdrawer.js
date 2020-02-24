@@ -26,7 +26,11 @@ var roleWithdrawer = {
 								});
             }
             if(!target) {
-                target = creep.pos.findClosestByPath(FIND_RUINS);
+                target = creep.pos.findClosestByPath(FIND_RUINS,  {
+									filter: (structure) => {
+										return structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
+									}
+								});
             }
             if(target) {
                 var err = creep.withdraw(target,RESOURCE_ENERGY);
