@@ -19,13 +19,16 @@ var roleBuilder = {
 			}
 
 			if(creep.memory.building) {
+
 				var target;
+
 				if(!target) {
 					var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
 					if(targets.length > 0) {
 						target = targets[0];
 					}
 				}
+
 				if(!target) {
 					var room = Game.spawns['Spawn1'].room;//Game.map.describeExits(myRoom)[BOTTOM];
 //                 console.log( '🔜🏗', Math.trunc(Game.time/10000), Game.time%10000
@@ -36,18 +39,24 @@ var roleBuilder = {
 						target = targets[0];
 					}
 				}
+
 				if(!target) {
-					target = creep.pos./*findClosestByRange*/findInRange(FIND_STRUCTURES, 1, {
+					var targets = creep.pos.findInRange(FIND_STRUCTURES, 1, {
 						filter: (structure) => { 
-							if(structure.structureType == STRUCTURE_WALL) {
-								return false;
+							if(structure.structureType == STRUCTURE_ROAD &&
+								structure.hitsMax - structure.hits > 1000) {
+								return true;
 							}
-							if(structure.structureType == STRUCTURE_RAMPART) {
-								return false;
+							if(structure.structureType == STRUCTURE_CONTAINER &&
+								structure.hitsMax - structure.hits > 1000) {
+								return true;
 							}
-							return structure.hitsMax - structure.hits > 1700;
+							return false;
 						}
 					});
+					if(targets.length > 0) {
+						target = targets[0];
+					}
 				}
 				
 				if(target) {
