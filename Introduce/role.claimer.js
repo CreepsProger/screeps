@@ -75,11 +75,14 @@ var role = {
 				var err = ERR_NOT_IN_RANGE;
 				var action;
 				if(target.id) {
-					if(!target.my && (!target.owner || target.owner == 'CreepsProger')) {
-						action = 'reserving controller:';
+					if(!target.my) {
+						action = 'claiming controller:';
 						err = creep.reserveController(target);
-					}
-					
+						if(!OK == err) {
+							action = 'reserving controller:';
+							err = creep.reserveController(target);
+						}
+					}					
 				}
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
