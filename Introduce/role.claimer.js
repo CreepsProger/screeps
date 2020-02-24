@@ -90,7 +90,7 @@ var role = {
 					creep.say('🗝');
 					role.log(creep, action, JSON.stringify(target), JSON.stringify(Game.rooms));
 					console.log('Game.rooms:', JSON.stringify(Game.rooms));
-					console.log('Game.rooms my:', JSON.stringify(Game.rooms.filter(room => room.my)));
+// 					console.log('Game.rooms my:', JSON.stringify(Game.rooms.filter(room => room.my)));
 				}
 				else {
 					role.log(creep, 'err:', err, JSON.stringify(creep.reserveController));
