@@ -45,7 +45,7 @@ var roleBuilder = {
 							if(structure.structureType == STRUCTURE_RAMPART) {
 								return false;
 							}
-							return structure.hitsMax - structure.hits > 1000;
+							return structure.hitsMax - structure.hits > 1700;
 						}
 					});
 				}
