@@ -6,6 +6,7 @@ var git = '$Format:%H$';
 
 var role = {
 	name: 'claiming',
+	target_room: 'W27S33',
 
 	logFlags: ['LC','LC ','L'], 
 	
@@ -42,7 +43,7 @@ var role = {
 			creep.memory[role.name].on = true;
 
 			if(!creep.memory[role.name].room) {
-				creep.memory[role.name].room = 'W26S33';
+				creep.memory[role.name].room = role.target_room;
 			}
 			
 // 			role.log(creep,"On");
