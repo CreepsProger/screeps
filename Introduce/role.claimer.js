@@ -76,10 +76,10 @@ var role = {
 				var action;
 				if(target.id) {
 					if(!target.my) {
-						action = 'claiming controller:';
-						err = creep.reserveController(target);
-						if(!OK == err) {
-							action = 'reserving controller:';
+						action = 'claiming controller';
+						err = creep.claimController(target);
+						if(OK != err) {
+							action = 'reserving controller';
 							err = creep.reserveController(target);
 						}
 					}					
@@ -92,12 +92,12 @@ var role = {
 				else if(!err) {
 					creep.say('🗝');
 					role.log(creep, action, JSON.stringify(target), JSON.stringify(Game.rooms));
-					console.log('Game.rooms:', JSON.stringify(Game.rooms));
- 					console.log('Game.gcl:', JSON.stringify(Game.gcl));
- 					console.log('Game.rooms my:', JSON.stringify(_.filter(Game.rooms, function(room) { return room.energyCapacityAvailable > 0; })));
+// 					console.log('Game.rooms:', JSON.stringify(Game.rooms));
+//  					console.log('Game.gcl:', JSON.stringify(Game.gcl));
+//  					console.log('Game.rooms my:', JSON.stringify(_.filter(Game.rooms, function(room) { return room.energyCapacityAvailable > 0; })));
 				}
 				else {
-					role.log(creep, 'err:', err, JSON.stringify(creep.reserveController));
+					role.log(creep, action, 'err:', err, JSON.stringify(creep.reserveController));
 					creep.memory.claiming.on = false;
 				}
 			}
