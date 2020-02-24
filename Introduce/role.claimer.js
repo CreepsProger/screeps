@@ -40,11 +40,9 @@ var role = {
 			 creep.getActiveBodyparts(CLAIM) > 0 &&
 			 creep.getActiveBodyparts(CARRY) == 0 &&
 			 creep.memory.rerun) {
-			creep.memory[role.name].on = true;
 
-			if(!creep.memory[role.name].room) {
-				creep.memory[role.name].room = role.target_room;
-			}
+			creep.memory[role.name].on = true;
+			creep.memory[role.name].room = role.target_room;
 			
 // 			role.log(creep,"On");
 		}
