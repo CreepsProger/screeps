@@ -9,7 +9,7 @@ var rolePickuper = {
         }
 
         if(!creep.memory.pickuping &&
-           creep.getActiveBodyparts(WORK) == 0 &&
+  //         creep.getActiveBodyparts(WORK) == 0 &&
            (creep.store.getUsedCapacity() == 0 ||
            (creep.store.getFreeCapacity() > 0 && creep.memory.rerun))) {
             creep.memory.pickuping = true;
