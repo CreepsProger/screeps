@@ -76,8 +76,8 @@ var role = {
 				var action;
 				if(target.id) {
 					if(!target.my && (!target.owner || target.owner == 'CreepsProger')) {
+						err = creep.reserveController(target);
 						action = creep.reserveController;
-						err = action(target);
 					}
 				}
 				if(err == ERR_NOT_IN_RANGE) {
