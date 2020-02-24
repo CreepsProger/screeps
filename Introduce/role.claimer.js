@@ -90,6 +90,7 @@ var role = {
 					creep.say('🗝');
 					role.log(creep, action, JSON.stringify(target), JSON.stringify(Game.rooms));
 					console.log('Game.rooms:', JSON.stringify(Game.rooms));
+ 					console.log('Game.gcl:', JSON.stringify(Game.gcl));
  					console.log('Game.rooms my:', JSON.stringify(_.filter(Game.rooms, function(room) { return !!room.conroller && room.conroller.my; })));
 				}
 				else {
