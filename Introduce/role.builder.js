@@ -30,8 +30,9 @@ var roleBuilder = {
 				}
 
 				if(!target) {
-					var targets = creep.room.find(FIND_STRUCTURE_WALL, {
-            filter: (structure) => { return structure.hits < 1000; }
+					var targets = creep.room.find(FIND_STRUCTURES, {
+            filter: (structure) => { return structure.structureType == STRUCTURE_WALL &&
+							structure.hits < 1000; }
 					});
 					if(targets.length > 0) {
 						target = targets[0];
