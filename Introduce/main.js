@@ -6,7 +6,7 @@ var roleCreep = require('role.claimer');
 
 var commit = 31;
 var ticksToCheckCreepsNumber = 10;
-var maxCreepsNumber = 12;
+var maxCreepsNumber = 9;
 //var mainSettings = require('main.settings');
 
 function updateMovingAverage(x) { 
