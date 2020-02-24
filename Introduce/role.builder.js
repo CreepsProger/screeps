@@ -30,15 +30,24 @@ var roleBuilder = {
 				}
 
 				if(!target) {
-					var room = Game.spawns['Spawn1'].room;//Game.map.describeExits(myRoom)[BOTTOM];
-//                 console.log( '🔜🏗', Math.trunc(Game.time/10000), Game.time%10000
-//                             , 'looking for building in:'
-//                             , room);
-					var targets = room.find(FIND_CONSTRUCTION_SITES);
+					var targets = creep.room.find(FIND_STRUCTURE_WALL, {
+            filter: (structure) => { return structure.hits < 1000; }
+					});
 					if(targets.length > 0) {
 						target = targets[0];
 					}
 				}
+
+// 				if(!target) {
+// 					var room = Game.spawns['Spawn1'].room;//Game.map.describeExits(myRoom)[BOTTOM];
+// //                 console.log( '🔜🏗', Math.trunc(Game.time/10000), Game.time%10000
+// //                             , 'looking for building in:'
+// //                             , room);
+// 					var targets = room.find(FIND_CONSTRUCTION_SITES);
+// 					if(targets.length > 0) {
+// 						target = targets[0];
+// 					}
+// 				}
 
 				if(!target) {
 					var targets = creep.pos.findInRange(FIND_STRUCTURES, 0, {
