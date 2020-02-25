@@ -16,7 +16,7 @@ var roleUpgrader = {
 		checkStartUpgrading: function(creep) {
 			var storages = _.filter(Game.structures, function(structure) {
 				return (structure.structureType == STRUCTURE_STORAGE) &&
-					structure.store.getUsedCapacity(RESOURCE_ENERGY) < 40000;
+					structure.store.getUsedCapacity(RESOURCE_ENERGY) < 35000;
 			});
 			if(storages.length == 0) {
 				return true;
