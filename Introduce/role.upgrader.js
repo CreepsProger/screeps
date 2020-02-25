@@ -5,63 +5,67 @@ var roleUpgrader = {
     /** @param {Creep} creep **/
     run: function(creep) {
 
-        if(creep.memory.upgrading && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
-            creep.memory.upgrading = false;
-        }
+			var stop_upgrading = true;
+			
+			if(stop_upgrading ||
+				 (creep.memory.upgrading && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0)) {
+				creep.memory.upgrading = false;
+			}
 
-        if(!creep.memory.upgrading && false &&
-           (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() == 0) ||
-            (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun)) {
-            creep.memory.upgrading = true;
-        }
+			if(!creep.memory.upgrading &&
+				 !stop_upgrading &&
+				 (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() == 0) ||
+				 (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun)) {
+				creep.memory.upgrading = true;
+			}
 
-        if(creep.memory.upgrading) {
-            var target;
-            if(!target && creep.room.controller.my) {
-                target = creep.room.controller;
-            }
-            if(target) {
-                var err = creep.upgradeController(target);
-                if(err == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-                    creep.say('🔜🛠');
-                    if(Game.flags['LU '] || Game.flags['LU'] || Game.flags['L']) {
-                        console.log( '🔜🛠', Math.trunc(Game.time/10000), Game.time%10000
-                                    , creep.name
-                                    , 'moving for upgrading:'
-                                    , target.name?target.name:target.structureType);
-                    }
-                }
-                else if(!err) {
-                    creep.say('🛠');
-                    if(Game.flags['LU '] || Game.flags['LU'] || Game.flags['L']) {
-                        console.log( '🛠', Math.trunc(Game.time/10000), Game.time%10000
-                                    , creep.name
-                                    , 'upgrading:'
-                                    , target.name?target.name:target.structureType);
-                    }
-                }
-                else {
-                    creep.memory.upgrading = false;
-                    if(Game.flags['LU '] || Game.flags['LU'] || Game.flags['L']) {
-                        console.log( '🛠⚠️', Math.trunc(Game.time/10000), Game.time%10000
-                                    , creep.name
-                                    , 'upgrading:'
-                                    , target.name?target.name:target.structureType
-                                    , 'with err:'
-                                    , err);
-                    }
-                }
-            }
-            else {
-                    creep.memory.upgrading = false;
-            }
-        }
+			if(creep.memory.upgrading) {
+				var target;
+				if(!target && creep.room.controller.my) {
+					target = creep.room.controller;
+				}
+				if(target) {
+					var err = creep.upgradeController(target);
+					if(err == ERR_NOT_IN_RANGE) {
+						creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
+						creep.say('🔜🛠');
+						if(Game.flags['LU '] || Game.flags['LU'] || Game.flags['L']) {
+							console.log( '🔜🛠', Math.trunc(Game.time/10000), Game.time%10000
+													, creep.name
+													, 'moving for upgrading:'
+													, target.name?target.name:target.structureType);
+						}
+					}
+					else if(!err) {
+						creep.say('🛠');
+						if(Game.flags['LU '] || Game.flags['LU'] || Game.flags['L']) {
+							console.log( '🛠', Math.trunc(Game.time/10000), Game.time%10000
+													, creep.name
+													, 'upgrading:'
+													, target.name?target.name:target.structureType);
+						}
+					}
+					else {
+						creep.memory.upgrading = false;
+						if(Game.flags['LU '] || Game.flags['LU'] || Game.flags['L']) {
+							console.log( '🛠⚠️', Math.trunc(Game.time/10000), Game.time%10000
+													, creep.name
+													, 'upgrading:'
+													, target.name?target.name:target.structureType
+													, 'with err:'
+													, err);
+						}
+					}
+				}
+				else {
+					creep.memory.upgrading = false;
+				}
+			}
 
-        if(!creep.memory.upgrading) {
-            roleNext.run(creep);
-        }
-    }
+			if(!creep.memory.upgrading) {
+				roleNext.run(creep);
+			}
+		}
 };
 
 module.exports = roleUpgrader;
