@@ -144,6 +144,7 @@ var roleEnergyTransferer = {
 								}
 							});
 							if(!!linkTo) {
+								err = creep.transfer(target, RESOURCE_ENERGY);
 								err = linkFrom.transferEnergy(linkTo);
 							}
 						}
