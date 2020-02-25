@@ -25,6 +25,9 @@ var roleUpgrader = {
 		},
 	
 	updateStopUpgradingCondition: function(creep) {
+		if (Memory.stop_upgrading === undefined) {
+			Memory.stop_upgrading = true;
+		}
 		if(roleUpgrader.checkStopUpgrading(creep)) {
 			 Memory.stop_upgrading = true;
 		}
