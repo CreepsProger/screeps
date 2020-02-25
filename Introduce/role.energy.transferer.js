@@ -111,16 +111,12 @@ var roleEnergyTransferer = {
 			}
 			
 			if(!target) {
-				var closests = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+				var target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_STORAGE) &&
 							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
 					}
 				});
-				
-				if(closests.length > 0) {
-					target = closests[0];
-				}
 			}            
 			
 			if(target) {
