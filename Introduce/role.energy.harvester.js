@@ -37,7 +37,7 @@ var role = {
 																														 , {name: '2', time: 0, needs_weight: 50}
 																														 , {name: '3', time: 0, needs_weight: 50}
 																														 , {name: '4', time: 0, needs_weight: 40}
-// 																														 , {name: '5', time: 0, needs_weight: 40}
+ 																														 , {name: '5', time: 0, needs_weight: 40}
 																														 ]
 																							 },
 																			 W27S33: { containers: {weight: 45}
