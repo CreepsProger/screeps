@@ -3,27 +3,21 @@ var roleNext = require('role.energy.harvester');
 var roleUpgrader = {
 	
 		checkStopUpgrading: function(creep) {
-			var storages = creep.pos.find(FIND_MY_STRUCTURES, {
-				filter: (structure) => {
-					return (structure.structureType == STRUCTURE_STORAGE) &&
-						structure.store.getUsedCapacity(RESOURCE_ENERGY) < 25000;
-				}
+			var storages = _.filter(Game.structures, function(structure) {
+				return (structure.structureType == STRUCTURE_STORAGE) &&
+					structure.store.getUsedCapacity(RESOURCE_ENERGY) < 25000;
 			});
-				
-			if(storages.length == 0) {
+			if(storages.length > 0) {
 				return true;
 			}
 			return false;
 		},
 	
 		checkStartUpgrading: function(creep) {
-			var storages = creep.pos.find(FIND_MY_STRUCTURES, {
-				filter: (structure) => {
-					return (structure.structureType == STRUCTURE_STORAGE) &&
-						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 50000;
-				}
+			var storages = _.filter(Game.structures, function(structure) {
+				return (structure.structureType == STRUCTURE_STORAGE) &&
+					structure.store.getUsedCapacity(RESOURCE_ENERGY) < 50000;
 			});
-				
 			if(storages.length == 0) {
 				return true;
 			}
@@ -43,7 +37,8 @@ var roleUpgrader = {
 		/** @param {Creep} creep **/
     run: function(creep) {
 	
-			roleUpgrader.updateStopUpgradingCondition(creep);			
+			if(Game.time%20)
+				roleUpgrader.updateStopUpgradingCondition(creep);			
 			
 			if(Memory.stop_upgrading ||
 				 (creep.memory.upgrading && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0)) {
