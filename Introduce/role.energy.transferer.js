@@ -110,6 +110,19 @@ var roleEnergyTransferer = {
 				target = creep.room.storage;
 			}
 			
+			if(!target) {
+				var closests = creep.pos.findInRange(FIND_MY_STRUCTURES, 1, {
+					filter: (structure) => {
+						return (structure.structureType == STRUCTURE_STORE) &&
+							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+					}
+				});
+				
+				if(closests.length > 0) {
+					target = closests[0];
+				}
+			}            
+			
 			if(target) {
 				
 				var err = ERR_NOT_IN_RANGE;
