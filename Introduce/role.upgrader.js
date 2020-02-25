@@ -1,19 +1,57 @@
 var roleNext = require('role.energy.harvester');
 
 var roleUpgrader = {
+	
+		checkStopUpgrading: function(creep) {
+			var storages = creep.pos.find(FIND_MY_STRUCTURES, {
+				filter: (structure) => {
+					return (structure.structureType == STRUCTURE_STORAGE) &&
+						structure.store.getUsedCapacity(RESOURCE_ENERGY) < 25000;
+				}
+			});
+				
+			if(storages.length == 0) {
+				return true;
+			}
+			return false;
+		},
+	
+		checkStartUpgrading: function(creep) {
+			var storages = creep.pos.find(FIND_MY_STRUCTURES, {
+				filter: (structure) => {
+					return (structure.structureType == STRUCTURE_STORAGE) &&
+						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 50000;
+				}
+			});
+				
+			if(storages.length == 0) {
+				return true;
+			}
+			return false;
+		},
+	
+	updateStopUpgradingCondition: function(creep) {
+		if(roleUpgrader.checkStopUpgrading(creep)) {
+			 Memory.stop_upgrading = true;
+		}
+		if(roleUpgrader.checkStartUpgrading(creep)) {
+			Memory.stop_upgrading = false;
+		}
+	},
 
-    /** @param {Creep} creep **/
-    run: function(creep) {
-
-			var stop_upgrading = true;
 			
-			if(stop_upgrading ||
+		/** @param {Creep} creep **/
+    run: function(creep) {
+	
+			roleUpgrader.updateStopUpgradingCondition(creep);			
+			
+			if(Memory.stop_upgrading ||
 				 (creep.memory.upgrading && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0)) {
 				creep.memory.upgrading = false;
 			}
 
-			if(!creep.memory.upgrading &&
-				 !stop_upgrading &&
+			if(!Memory.stop_upgrading &&
+				 !creep.memory.upgrading &&
 				 (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() == 0) ||
 				 (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun)) {
 				creep.memory.upgrading = true;
