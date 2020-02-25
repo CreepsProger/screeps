@@ -29,7 +29,7 @@ var role = {
 			Memory[role.name] = { v: role.version
 													 , rooms : { W25S33: { containers: {weight: 30}
 																							 ,    workers: [ {name: '1', time: 0, needs_weight: 50}
-// 																														 , {name: '2', time: 0, needs_weight: 40}
+ 																														 , {name: '2', time: 0, needs_weight: 40}
 																														 ]
 																							 },
 																			 W26S33: { containers: {weight: 45}
@@ -42,7 +42,10 @@ var role = {
 																							 },
 																			 W27S33: { containers: {weight: 45}
 																							 ,    workers: [ {name: '1', time: 0, needs_weight: 50}
-// 																														 , {name: '2', time: 0, needs_weight: 40}
+ 																														 , {name: '2', time: 0, needs_weight: 40}
+																															, {name: '3', time: 0, needs_weight: 40}
+																															, {name: '4', time: 0, needs_weight: 40}
+																															, {name: '5', time: 0, needs_weight: 40}
 																														 ]
 																							 }
 																		 }
