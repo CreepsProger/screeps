@@ -24,6 +24,16 @@ var roleEnergyTransferer = {
 
 			var target;
 
+			if(!target && this_room != my_room) {
+				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+					filter: (structure) => {
+						return (structure.structureType == STRUCTURE_LINK) &&
+							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+					}
+				});
+			}
+			
+
 			if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable && creep.memory.rerun) {
 				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 					filter: (structure) => {
@@ -124,7 +134,23 @@ var roleEnergyTransferer = {
 				var err = ERR_NOT_IN_RANGE;
 				
 				if(target.id) {
-					err = creep.transfer(target, RESOURCE_ENERGY);
+					if(target.structureType == STRUCTURE_LINK) {
+						const linkFrom = target;
+						if(creep.room.controller !== undefined && creep.room.controller.my) {
+							const linkTo = creep.room.controller.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+								filter: (structure) => {
+									return (structure.structureType == STRUCTURE_LINK) &&
+										structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+								}
+							});
+							if(!!linkTo) {
+								err = linkFrom.transferEnergy(linkTo);
+							}
+						}
+					}
+					else {
+						err = creep.transfer(target, RESOURCE_ENERGY);
+					}
 				}
 				
 				if(err == ERR_NOT_IN_RANGE) {
