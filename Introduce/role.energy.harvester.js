@@ -215,11 +215,11 @@ var role = {
 			});
 		}
 
-		if(!target && !creep.getActiveBodyparts(WORK)) {
-			target = creep.memory.my_worker;
-		}
-
 		if(!creep.getActiveBodyparts(WORK)) {
+
+			if(!target && creep.memory.my_worker !== undefined) {
+				target = creep.memory.my_worker;
+			}
 
 			if(!target) {
 				target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
