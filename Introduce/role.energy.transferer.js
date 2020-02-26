@@ -124,6 +124,15 @@ var roleEnergyTransferer = {
 				target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_STORAGE) &&
+							structure.store.getFreeCapacity(RESOURCE_ENERGY) < 30000;
+					}
+				});
+			}            
+			
+			if(!target) {
+				target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+					filter: (structure) => {
+						return (structure.structureType == STRUCTURE_STORAGE) &&
 							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
 					}
 				});
