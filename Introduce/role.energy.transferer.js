@@ -11,7 +11,7 @@ var roleEnergyTransferer = {
 
 		if(!creep.memory.transfering &&
 			 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() == 0) ||
-				(creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun))) {
+				(creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun && creep.getActiveBodyparts(WORK)))) {
 			creep.memory.transfering = true;
 		}
 		
