@@ -28,6 +28,9 @@ var role = {
 			 Memory[role.name].v != role.version) {
 			Memory[role.name] = { v: role.version
 													 , rooms : { W25S33: { containers: {weight: 30}
+																							 ,      links: [ {from: '1', to: '0'}
+																														 , {from: '1', to: '0'}
+																														 ]
 																							 ,    workers: [ {name: '1', time: 0, needs_weight: 50}
  																														 , {name: '2', time: 0, needs_weight: 40}
 																														 ]
@@ -132,6 +135,15 @@ var role = {
 
 		var target;
 
+		if(!target && this_room == my_room) {
+			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+				filter: (structure) => {
+					return (structure.structureType == STRUCTURE_LINK) &&
+						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
+				}
+			});
+		}
+		
 		if(!target &&
 // 			 creep.room.energyAvailable > creep.room.energyCapacityAvailable - 400 &&
 			 this_room != my_room &&
