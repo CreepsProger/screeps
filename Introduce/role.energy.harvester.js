@@ -255,7 +255,7 @@ var role = {
 			}
 
 			if(target) {
- 				target.memory.my_carier_id = creep.id;
+//  				target.memory.my_carier_id = creep.id;
 				creep.memory.my_worker_id = target.id; 
 			}
 		}
