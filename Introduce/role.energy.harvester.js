@@ -215,7 +215,7 @@ var role = {
 			});
 		}
 
-		if(!creep.getActiveBodyparts(WORK)) {
+		if(!target && !creep.getActiveBodyparts(WORK)) {
 
 			if(!target && creep.memory.my_worker_id !== undefined) {
 				target = Game.getObjectById(creep.memory.my_worker_id);
@@ -255,7 +255,7 @@ var role = {
 			}
 
 			if(target) {
-//  				target.memory.my_carier_id = creep.id;
+				target.memory.my_carier_id = creep.id;
 				creep.memory.my_worker_id = target.id; 
 			}
 		}
