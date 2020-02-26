@@ -115,6 +115,10 @@ var role = {
 		if(creep.memory[role.name].on &&
 			creep.store.getFreeCapacity() == 0) {
 			creep.memory[role.name].on = false;
+			if(!!creep.memory.my_worker) {
+					creep.memory.my_worker.memory.my_carier = undefined;
+					creep.memory.my_worker = undefined;
+			}
 		}
 	},
 
@@ -212,30 +216,47 @@ var role = {
 		}
 
 		if(!target && !creep.getActiveBodyparts(WORK)) {
-			target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
-				filter: (creep2) => {
-					return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-						creep2.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
-						creep2.memory.weight > creep2.memory.weight;
-				}
-			});
+			target = creep.memory.my_worker;
 		}
 
-		if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
-			target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
-				filter: (creep2) => {
-					return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-						creep2.memory.weight > creep.memory.weight;
-				}
-			});
-		}
+		if(!creep.getActiveBodyparts(WORK)) {
 
-		if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
-			target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
-				filter: (creep2) => {
-					return creep2.memory.weight > creep2.memory.weight;
-				}
-			});
+			if(!target) {
+				target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
+					filter: (creep2) => {
+						return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
+							creep2.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
+							creep2.memory.weight > creep2.memory.weight &&
+							creep2.getActiveBodyparts(WORK) &&
+							creep2.memory.my_carier === undefined;
+					}
+				});
+			}
+
+			if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
+				target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
+					filter: (creep2) => {
+						return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
+							creep2.memory.weight > creep.memory.weight &&
+							creep2.getActiveBodyparts(WORK) &&
+							creep2.memory.my_carier === undefined;
+					}
+				});
+			}
+
+			if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
+				target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
+					filter: (creep2) => {
+						return creep2.memory.weight > creep2.memory.weight &&
+							creep2.getActiveBodyparts(WORK) &&
+							creep2.memory.my_carier === undefined;
+					}
+				});
+			}
+			if(!!target) {
+				target.memory.my_carier = creep;
+				creep.memory.my_worker = target; 
+			}
 		}
 		return target;
 	},
