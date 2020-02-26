@@ -112,41 +112,16 @@ var roleEnergyTransferer = {
 				}
 			}            
 			
-			if(!target &&
-				 creep.room.storage !== undefined &&
-				 creep.room.energyAvailable == creep.room.energyCapacityAvailable &&
-				 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) < 25000 &&
-				 creep.room.storage.store.getFreeCapacity(RESOURCE_ENERGY) > 25000) {
-				target = creep.room.storage;
-			}
-			
-			if(!target) {
-				target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
-					filter: (structure) => {
-						return (structure.structureType == STRUCTURE_STORAGE) &&
-							structure.store.getFreeCapacity(RESOURCE_ENERGY) < 30000;
-					}
-				});
-			}
-			
 			if(!target) {
 				var storages = _.filter(Game.structures, function(structure) {
-					return (structure.structureType == STRUCTURE_STORAGE) &&
+					return structure.my &&
+						structure.structureType == STRUCTURE_STORAGE &&
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) < 30000;
 				});
 				if(storages.length > 0) {
 					target = storages[0];
 				}
-			} 
-		
-			if(!target) {
-				target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
-					filter: (structure) => {
-						return (structure.structureType == STRUCTURE_STORAGE) &&
-							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-					}
-				});
-			}            
+			}
 			
 			if(target) {
 				
