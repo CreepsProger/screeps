@@ -33,10 +33,15 @@ var roleWithdrawer = {
 								});
             }
             if(target) {
-                var err = creep.withdraw(target,RESOURCE_ENERGY);
+                var err = creep.withdraw(target, RESOURCE_ENERGY);
 							if(err == ERR_NOT_ENOUGH_RESOURCES) {
-								//LOOK_RESOURCES
-                err = creep.withdraw(target,RESOURCE_GHODIUM_OXIDE);
+								//
+								const found = target.pos.lookFor(LOOK_RESOURCES)
+								if(found.lenght > 0)
+								{
+									console.log('look resources:', JSON.stringify(found));
+								}
+                err = creep.withdraw(target, RESOURCE_GHODIUM_OXIDE);
 							}
                 if(err == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
