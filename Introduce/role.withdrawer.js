@@ -34,6 +34,10 @@ var roleWithdrawer = {
             }
             if(target) {
                 var err = creep.withdraw(target,RESOURCE_ENERGY);
+							if(err == ERR_NOT_ENOUGH_RESOURCES) {
+								//LOOK_RESOURCES
+                err = creep.withdraw(target,RESOURCE_GHODIUM_OXIDE);
+							}
                 if(err == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                     creep.say('🔜💼');
