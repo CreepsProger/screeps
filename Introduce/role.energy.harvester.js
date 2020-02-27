@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var role = {
 
-	version: 42,
+	version: 43,
 
 	name: constants.ROLE_ENERGY_HARVESTING,
 
@@ -31,27 +31,27 @@ var role = {
 																							 ,      links: [ {from: '1', to: '0'}
 																														 , {from: '1', to: '0'}
 																														 ]
-																							 ,    workers: [ {name: '1', time: 0, needs_weight: 50}
- 																														 , {name: '2', time: 0, needs_weight: 40}
+																							 ,    workers: [ {name: '1', time: 0, min_weight: 41, max_weight: 50}
+ 																														 , {name: '2', time: 0, min_weight: 31, max_weight: 40}
  //																														 , {name: '3', time: 0, needs_weight: 40}
 																														 ]
 																							 },
 																			 W26S33: { containers: {weight: 45}
-																							 ,    workers: [ {name: '1', time: 0, needs_weight: 50}
-																														 , {name: '2', time: 0, needs_weight: 50}
-																														 , {name: '3', time: 0, needs_weight: 50}
-																														 , {name: '4', time: 0, needs_weight: 40}
- 																														 , {name: '5', time: 0, needs_weight: 40}
- 																														 , {name: '6', time: 0, needs_weight: 40}
-// 																														 , {name: '7', time: 0, needs_weight: 40}
+																							 ,    workers: [ {name: '1', time: 0, min_weight: 41, max_weight: 50}
+																														 , {name: '2', time: 0, min_weight: 41, max_weight: 50}
+																														 , {name: '3', time: 0, min_weight: 41, max_weight: 50}
+																														 , {name: '4', time: 0, min_weight: 41, max_weight: 50}
+ 																														 , {name: '5', time: 0, min_weight: 31, max_weight: 40}
+ 																														 , {name: '6', time: 0, min_weight: 31, max_weight: 40}
+// 																														 , {name: '7', time: 0, min_weight: 31, max_weight: 40}
 																														 ]
 																							 },
 																			 W27S33: { containers: {weight: 45}
-																							 ,    workers: [ {name: '1', time: 0, needs_weight: 50}
- 																														 , {name: '2', time: 0, needs_weight: 40}
-																														 , {name: '3', time: 0, needs_weight: 40}
-																														 , {name: '4', time: 0, needs_weight: 40}
-																														 , {name: '5', time: 0, needs_weight: 40}
+																							 ,    workers: [ {name: '1', time: 0, min_weight: 41, max_weight: 50}
+ 																														 , {name: '2', time: 0, min_weight: 41, max_weight: 50}
+																														 , {name: '3', time: 0, min_weight: 31, max_weight: 40}
+																														 , {name: '4', time: 0, min_weight: 31, max_weight: 40}
+																														 , {name: '5', time: 0, min_weight: 31, max_weight: 40}
 																														 //, {name: '6', time: 0, needs_weight: 40}
 																														 //, {name: '7', time: 0, needs_weight: 40}
 																														 //, {name: '8', time: 0, needs_weight: 40}
@@ -98,7 +98,9 @@ var role = {
 						already = true;
 						role.log('I', creep, 'setRoom: time\'s  updated', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
 					}
-					else if(w.time < Game.time - 100) {
+					else if(w.time < Game.time - 100 &&
+									creep.memory.weight >= w.min_weight &&
+									creep.memory.weight <= w.max_weight) {
 						var reset = (creep.memory[role.name].room != room_name); 
 						creep.memory[role.name].room = room_name;
 						w.name = creep.name;
