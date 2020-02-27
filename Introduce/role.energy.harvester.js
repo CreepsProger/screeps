@@ -149,8 +149,9 @@ var role = {
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
 				}
 			});
-			if(link !== undefined &&
-				 link.id !== undefined &&
+			
+			if(!!link &&
+				 !!link.id &&
 				 Memory.targets[link.id] !== undefined) {
 				var creep2 = Game.getObjectById(Memory.targets[link.id]);
 				if(creep2 !== undefined) {
