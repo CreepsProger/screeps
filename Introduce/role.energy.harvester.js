@@ -149,7 +149,7 @@ var role = {
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
 				}
 			});
-			
+
 			if(!!link &&
 				 !!link.id &&
 				 Memory.targets[link.id] !== undefined) {
@@ -161,6 +161,9 @@ var role = {
 						target = link;
 						require('role.energy.harvester').run(creep2);
 					}
+				}
+				else {
+					target = link;
 				}
 			}
 		}
