@@ -144,7 +144,7 @@ var role = {
 			var link = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_LINK) &&
-						structure.id == '5e57296459c10348279bb750' &&
+						structure.id == '5e583a7b7a54e3585a982b96' &&
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
 				}
 			});
