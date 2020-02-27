@@ -21,7 +21,8 @@ var roleWithdrawer = {
             if(!target) {
                 target = creep.pos.findClosestByPath(FIND_TOMBSTONES,  {
 									filter: (structure) => {
-										return structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
+										return structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
+													 Memory.targets[structure.creep.id] === undefined;
 									}
 								});
             }
@@ -34,6 +35,9 @@ var roleWithdrawer = {
             }
             if(target) {
                 var err = creep.withdraw(target, RESOURCE_ENERGY);
+							if(!!target.creep) {
+								Memory.targets[target.creep.id] = creep.id;
+							}
 							if(err == ERR_NOT_ENOUGH_RESOURCES) {
 								//
 								const found = target.pos.lookFor(LOOK_RESOURCES)
