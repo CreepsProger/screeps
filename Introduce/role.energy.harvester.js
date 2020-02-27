@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var role = {
 
-	version: 39,
+	version: 40,
 
 	name: constants.ROLE_ENERGY_HARVESTING,
 
@@ -33,7 +33,7 @@ var role = {
 																														 ]
 																							 ,    workers: [ {name: '1', time: 0, needs_weight: 50}
  																														 , {name: '2', time: 0, needs_weight: 40}
- 																														 , {name: '3', time: 0, needs_weight: 40}
+ //																														 , {name: '3', time: 0, needs_weight: 40}
 																														 ]
 																							 },
 																			 W26S33: { containers: {weight: 35}
@@ -43,7 +43,7 @@ var role = {
 																														 , {name: '4', time: 0, needs_weight: 40}
  																														 , {name: '5', time: 0, needs_weight: 40}
  																														 , {name: '6', time: 0, needs_weight: 40}
- 																														 , {name: '7', time: 0, needs_weight: 40}
+// 																														 , {name: '7', time: 0, needs_weight: 40}
 																														 ]
 																							 },
 																			 W27S33: { containers: {weight: 35}
@@ -52,9 +52,9 @@ var role = {
 																														 , {name: '3', time: 0, needs_weight: 40}
 																														 , {name: '4', time: 0, needs_weight: 40}
 																														 , {name: '5', time: 0, needs_weight: 40}
-																														 , {name: '6', time: 0, needs_weight: 40}
-																														 , {name: '7', time: 0, needs_weight: 40}
-																														 , {name: '8', time: 0, needs_weight: 40}
+																														 //, {name: '6', time: 0, needs_weight: 40}
+																														 //, {name: '7', time: 0, needs_weight: 40}
+																														 //, {name: '8', time: 0, needs_weight: 40}
 																														 ]
 																							 }
 																		 }
