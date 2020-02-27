@@ -162,9 +162,9 @@ var role = {
 						require('role.energy.harvester').run(creep2);
 					}
 				}
-				else {
-					target = link;
-				}
+			}
+			else {
+				target = link;
 			}
 		}
 		
