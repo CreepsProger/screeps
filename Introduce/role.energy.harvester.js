@@ -311,8 +311,8 @@ var role = {
 		// Attantion: Spawn1.spawning.setDirections([BOTTOM]);
 		//var Spawn1 = Game.spawns['Spawn1'];
 		if(creep.room.name == 'W25S33' && //Spawn1.room.name && 
-			 creep.pos.x == Spawn1.pos.x &&
-			 creep.pos.y == Spawn1.pos.y+1) {
+			 creep.pos.x == 20 &&
+			 creep.pos.y == 33+1) {
 			creep.move(BOTTOM_RIGHT);
 			creep.move(Game.time%8+1); // TOP:1 ,..., TOP_LEFT:8
 		}
