@@ -115,9 +115,12 @@ var role = {
 		if(creep.memory[role.name].on &&
 			creep.store.getFreeCapacity() == 0) {
 			creep.memory[role.name].on = false;
-			if(!!creep.memory.my_worker_id) {
-					Game.getObjectById(creep.memory.my_worker_id).memory.my_carier = undefined;
-					creep.memory.my_worker_id = undefined;
+			if(creep.memory.my_worker_id !== undefined) {
+				var worker = Game.getObjectById(creep.memory.my_worker_id);
+				if(worker) {
+					worker.memory.my_carier = undefined;
+				} 
+				creep.memory.my_worker_id = undefined;
 			}
 		}
 	},
