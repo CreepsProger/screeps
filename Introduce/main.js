@@ -6,7 +6,7 @@ var roleCreep = require('role.claimer');
 
 var commit = 31;
 var ticksToCheckCreepsNumber = 10;
-var maxCreepsNumber = 16;
+var maxCreepsNumber = 20;
 //var mainSettings = require('main.settings');
 
 function updateMovingAverage(x) { 
@@ -193,11 +193,11 @@ module.exports.loop = function () {
          const CL = Controller.level;
          var N = Memory.totals.CreepsNumber;
 
-         if(CL >= 4) mainFlags.tryCreateCreep(        60606, 50, N<(maxCreepsNumber+1)?13:0); // V 1-1 E  1200   Worker
+         if(CL >= 4) mainFlags.tryCreateCreep(        60606, 50, N<(maxCreepsNumber+1)?17:0); // V 1-1 E  1200   Worker
          if(CL >= 5) mainFlags.tryCreateCreep(        90909, 50, N<(maxCreepsNumber+1)?10:0); // V 1-1 E  1800   Worker
          if(CL >= 5) mainFlags.tryCreateCreep(         2412, 36, N<(maxCreepsNumber+1)? 3:0); // V 1-1 E  1800   Worker
-         if(CL >= 5) mainFlags.tryCreateCreep(  20000000002,100, N<(maxCreepsNumber+1)? 1:0); // V 1-1 E  1300  Claimer
-         if(CL >= 5) mainFlags.tryCreateCreep(5000200000007,100, N<(maxCreepsNumber+1)? 2:0); // V 1-1 E   650 Attacker
+         if(CL >= 4) mainFlags.tryCreateCreep(  20000000002,100, N<(maxCreepsNumber+1)? 1:0); // V 1-1 E  1300  Claimer
+         if(CL >= 4) mainFlags.tryCreateCreep(5000200000007,100, N<(maxCreepsNumber+1)? 2:0); // V 1-1 E   650 Attacker
 
          if(CL >= 4) mainFlags.tryCreateCreep(        80808, 30, Memory.totals.WORK< 8? 1:0); // E 1600 Worker
          if(CL >= 4) mainFlags.tryCreateCreep(        70707, 30, Memory.totals.WORK< 7? 1:0); // E 1400 Worker
