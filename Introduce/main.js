@@ -235,7 +235,11 @@ module.exports.loop = function () {
          Spawn.pos.y,
          {align: 'left', opacity: 0.8});
    }
-   
+	
+	const linkFrom = Game.getObjectById('5e56dc7a28e44c6f77878b87');
+	const linkTo = Game.getObjectById('5e57296459c10348279bb750');
+	linkFrom.transferEnergy(linkTo);
+
 	Memory.targets = {};
 	for(var name in Game.creeps) {
       var creep = Game.creeps[name];
