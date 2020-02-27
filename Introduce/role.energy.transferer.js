@@ -42,14 +42,14 @@ var roleEnergyTransferer = {
 					}
 				});
 			}
-			
+/*
 			if(!target && creep.memory.rerun) {
 				if(this_room != 'W25S33') {
 					const exitDir = Game.map.findExit(creep.room, 'W25S33');
 					target = creep.pos.findClosestByRange(exitDir);
 				}
 			}
-			
+*/
 			if(!target) {
 				var closests = creep.pos.findInRange(FIND_MY_CREEPS, 1, {
 					filter: (creep2) => {
