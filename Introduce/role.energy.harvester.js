@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var role = {
 
-	version: 44,
+	version: 45,
 
 	name: constants.ROLE_ENERGY_HARVESTING,
 
@@ -33,14 +33,15 @@ var role = {
 																														 ]
 																							 ,    workers: [ {name: '1', time: 0, min_weight: 41, max_weight: 50}
 																														 , {name: '2', time: 0, min_weight: 41, max_weight: 50}
+																														 , {name: '3', time: 0, min_weight: 31, max_weight: 40}
 																														 ]
 																							 },
 																			 W26S33: { containers: {weight: 45}
 																							 ,    workers: [ {name: '1', time: 0, min_weight: 41, max_weight: 50}
 																														 , {name: '2', time: 0, min_weight: 41, max_weight: 50}
 																														 , {name: '3', time: 0, min_weight: 41, max_weight: 50}
-																														 , {name: '4', time: 0, min_weight: 31, max_weight: 40}
- 																														 , {name: '5', time: 0, min_weight: 31, max_weight: 40}
+																														 , {name: '4', time: 0, min_weight: 41, max_weight: 50}
+																														 , {name: '5', time: 0, min_weight: 41, max_weight: 50}
  																														 , {name: '6', time: 0, min_weight: 31, max_weight: 40}
 // 																														 , {name: '7', time: 0, min_weight: 31, max_weight: 40}
 																														 ]
@@ -48,12 +49,9 @@ var role = {
 																			 W27S33: { containers: {weight: 45}
 																							 ,    workers: [ {name: '1', time: 0, min_weight: 41, max_weight: 50}
  																														 , {name: '2', time: 0, min_weight: 41, max_weight: 50}
-																														 , {name: '3', time: 0, min_weight: 31, max_weight: 40}
+																														 , {name: '3', time: 0, min_weight: 41, max_weight: 50}
 																														 , {name: '4', time: 0, min_weight: 31, max_weight: 40}
-																														 , {name: '5', time: 0, min_weight: 31, max_weight: 40}
-																														 //, {name: '6', time: 0, needs_weight: 40}
-																														 //, {name: '7', time: 0, needs_weight: 40}
-																														 //, {name: '8', time: 0, needs_weight: 40}
+// 																														 , {name: '5', time: 0, min_weight: 31, max_weight: 40}
 																														 ]
 																							 }
 																		 }
