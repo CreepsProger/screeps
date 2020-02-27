@@ -248,4 +248,5 @@ module.exports.loop = function () {
          roleCreep.run(creep);
       }
    }
+	console.log('targets:',	JSON.stringify(Memory.targets));
 }
