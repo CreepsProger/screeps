@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var role = {
 
-	version: 37,
+	version: 38,
 
 	name: constants.ROLE_ENERGY_HARVESTING,
 
@@ -33,7 +33,7 @@ var role = {
 																														 ]
 																							 ,    workers: [ {name: '1', time: 0, needs_weight: 50}
  																														 , {name: '2', time: 0, needs_weight: 40}
-//  																														 , {name: '3', time: 0, needs_weight: 40}
+ 																														 , {name: '3', time: 0, needs_weight: 40}
 																														 ]
 																							 },
 																			 W26S33: { containers: {weight: 45}
