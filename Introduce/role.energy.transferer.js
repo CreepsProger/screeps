@@ -127,25 +127,9 @@ var roleEnergyTransferer = {
 				
 				var err = ERR_NOT_IN_RANGE;
 				
-				if(target.id) {
-					if(target.structureType == STRUCTURE_LINK) {
-						const linkFrom = target;
-						if(creep.room.controller !== undefined && creep.room.controller.my) {
-							const linkTo = creep.room.controller.pos.findClosestByPath(FIND_MY_STRUCTURES, {
-								filter: (structure) => {
-									return (structure.structureType == STRUCTURE_LINK) &&
-										structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-								}
-							});
-							if(!!linkTo &&  linkTo.id != linkFrom.id) {
-								err = creep.transfer(target, RESOURCE_ENERGY);
-								err = linkFrom.transferEnergy(linkTo);
-							}
-						}
-					}
-					else {
-						err = creep.transfer(target, RESOURCE_ENERGY);
-					}
+				if(target.id !== undefined) {
+					err = creep.transfer(target, RESOURCE_ENERGY);
+					Memory.targets[target.id] = creep.id;
 				}
 				
 				if(err == ERR_NOT_IN_RANGE) {
