@@ -142,13 +142,24 @@ var role = {
 		var target;
 
 		if(!target && this_room == my_room) {//5e57296459c10348279bb750
-			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+			var link = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_LINK) &&
 						structure.id == '5e57296459c10348279bb750' &&
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
 				}
 			});
+			if(link !== undefined && Memory.targets[link.id] !== undefined) {
+				var creep2 = Game.getObjectById(Memory.targets[link.id]));
+				if(creep2 !== undefined) {
+					var path2 = creep2.pos.findPathTo(link);
+					var path = creep.pos.findPathTo(link);
+					if(path2.length > path.length) {
+						target = link;
+						require('role.energy.harvester').run(creep2);
+					}
+				}
+			}
 		}
 		
 		if(!target &&
