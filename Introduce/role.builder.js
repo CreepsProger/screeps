@@ -35,7 +35,7 @@ var roleBuilder = {
 							structure.hits < 1000; }
 					});
 					if(targets.length > 0) {
-						target = targets[1];
+						target = targets[0];
 					}
 				}
 
