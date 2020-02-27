@@ -129,7 +129,7 @@ module.exports.loop = function () {
         }
    }
 
-   if(Game.time % ticksToCheckCreepsNumber == 0) {
+   if(!!Spawn && Game.time % ticksToCheckCreepsNumber == 0) {
 //          var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
          Memory.totals.CreepsNumber = 0;
          for(var name in Game.creeps) {
