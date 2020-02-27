@@ -23,7 +23,7 @@ var roleEnergyTransferer = {
 			const my_room_config = Memory[constants.ROLE_ENERGY_HARVESTING].rooms[my_room];
 
 			var target;
-
+/*
 			if(!target && this_room != my_room) {
 				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 					filter: (structure) => {
@@ -31,9 +31,8 @@ var roleEnergyTransferer = {
 							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
 					}
 				});
-			}
-			
-
+			}			
+*/
 			if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable && creep.memory.rerun) {
 				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 					filter: (structure) => {
