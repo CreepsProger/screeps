@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var role = {
 
-	version: 40,
+	version: 41,
 
 	name: constants.ROLE_ENERGY_HARVESTING,
 
@@ -27,7 +27,7 @@ var role = {
 			 Memory[role.name].v === undefined ||
 			 Memory[role.name].v != role.version) {
 			Memory[role.name] = { v: role.version
-													 , rooms : { W25S33: { containers: {weight: 30}
+													 , rooms : { W25S33: { containers: {weight: 45}
 																							 ,      links: [ {from: '1', to: '0'}
 																														 , {from: '1', to: '0'}
 																														 ]
@@ -36,7 +36,7 @@ var role = {
  //																														 , {name: '3', time: 0, needs_weight: 40}
 																														 ]
 																							 },
-																			 W26S33: { containers: {weight: 35}
+																			 W26S33: { containers: {weight: 45}
 																							 ,    workers: [ {name: '1', time: 0, needs_weight: 50}
 																														 , {name: '2', time: 0, needs_weight: 50}
 																														 , {name: '3', time: 0, needs_weight: 50}
@@ -46,7 +46,7 @@ var role = {
 // 																														 , {name: '7', time: 0, needs_weight: 40}
 																														 ]
 																							 },
-																			 W27S33: { containers: {weight: 35}
+																			 W27S33: { containers: {weight: 45}
 																							 ,    workers: [ {name: '1', time: 0, needs_weight: 50}
  																														 , {name: '2', time: 0, needs_weight: 40}
 																														 , {name: '3', time: 0, needs_weight: 40}
