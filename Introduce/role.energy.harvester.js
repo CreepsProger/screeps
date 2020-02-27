@@ -115,13 +115,6 @@ var role = {
 		if(creep.memory[role.name].on &&
 			creep.store.getFreeCapacity() == 0) {
 			creep.memory[role.name].on = false;
-			if(creep.memory.my_worker_id !== undefined) {
-				var worker = Game.getObjectById(creep.memory.my_worker_id);
-				if(worker) {
-					worker.memory.my_carier_id = undefined;
-				} 
-				creep.memory.my_worker_id = undefined;
-			}
 		}
 	},
 
@@ -219,11 +212,11 @@ var role = {
 		}
 
 		if(!target && !creep.getActiveBodyparts(WORK)) {
-
+/*
 			if(!target && creep.memory.my_worker_id !== undefined) {
 				target = Game.getObjectById(creep.memory.my_worker_id);
 			}
-
+*/
 			if(!target) {
 				target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 					filter: (creep2) => {
@@ -258,6 +251,13 @@ var role = {
 			}
 */
 			if(target) {
+				if(creep.memory.my_worker_id !== undefined) {
+					var worker = Game.getObjectById(creep.memory.my_worker_id);
+					if(worker) {
+						worker.memory.my_carier_id = undefined;
+					} 
+					creep.memory.my_worker_id = undefined;
+				}
 				target.memory.my_carier_id = creep.id;
 				creep.memory.my_worker_id = target.id; 
 			}
