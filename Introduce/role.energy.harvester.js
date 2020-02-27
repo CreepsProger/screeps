@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var role = {
 
-	version: 38,
+	version: 39,
 
 	name: constants.ROLE_ENERGY_HARVESTING,
 
@@ -36,7 +36,7 @@ var role = {
  																														 , {name: '3', time: 0, needs_weight: 40}
 																														 ]
 																							 },
-																			 W26S33: { containers: {weight: 45}
+																			 W26S33: { containers: {weight: 35}
 																							 ,    workers: [ {name: '1', time: 0, needs_weight: 50}
 																														 , {name: '2', time: 0, needs_weight: 50}
 																														 , {name: '3', time: 0, needs_weight: 50}
@@ -46,7 +46,7 @@ var role = {
  																														 , {name: '7', time: 0, needs_weight: 40}
 																														 ]
 																							 },
-																			 W27S33: { containers: {weight: 45}
+																			 W27S33: { containers: {weight: 35}
 																							 ,    workers: [ {name: '1', time: 0, needs_weight: 50}
  																														 , {name: '2', time: 0, needs_weight: 40}
 																														 , {name: '3', time: 0, needs_weight: 40}
@@ -118,7 +118,7 @@ var role = {
 			if(creep.memory.my_worker_id !== undefined) {
 				var worker = Game.getObjectById(creep.memory.my_worker_id);
 				if(worker) {
-					worker.memory.my_carier = undefined;
+					worker.memory.my_carier_id = undefined;
 				} 
 				creep.memory.my_worker_id = undefined;
 			}
