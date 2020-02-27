@@ -161,6 +161,7 @@ var role = {
 					var path = creep.pos.findPathTo(link);
 					if(path2.length > path.length) {
 						target = link;
+						creep2.cancelOrder('moveTo');
 						require('role.energy.harvester').run(creep2);
 					}
 				}
