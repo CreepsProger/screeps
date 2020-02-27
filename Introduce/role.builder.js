@@ -5,7 +5,7 @@ var roleBuilder = {
     /** @param {Creep} creep **/
     run: function(creep) {
 			
-			var myRoom = Game.spawns['Spawn1'].room.name;
+			var myRoom = 'W25S33';//Game.spawns['Spawn1'].room.name;
 			var anotherRoom = 'W25S34';//Game.map.describeExits(myRoom)[BOTTOM].name; //'W25S34'
 
 			if(creep.memory.building && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
