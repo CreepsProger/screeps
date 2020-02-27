@@ -141,7 +141,7 @@ var role = {
 
 		var target;
 
-		if(!target && this_room == my_room) {
+		if(!target && this_room == my_room) {//5e57296459c10348279bb750
 			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_LINK) &&
