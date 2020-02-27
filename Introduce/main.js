@@ -112,7 +112,7 @@ module.exports.loop = function () {
 
    var Spawn = Game.spawns['Spawn1'];
    
-   if(!Spawn.spawning) {
+   if(!!Spawn && !Spawn.spawning) {
         if(false && Spawn.store.getUsedCapacity(RESOURCE_ENERGY) > 0) {
             Spawn.pos.findInRange(FIND_MY_CREEPS, 1).forEach(function(creep) {
 							const creep_target_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
@@ -188,7 +188,7 @@ module.exports.loop = function () {
                   , JSON.stringify(Memory.CreepsNumberByType));
 
 //      if(((Memory.totals.CreepsNumber < 8) || (2 * Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Spawn.spawning) {
-      if(!Spawn.spawning) {
+      if(!!Spawn && !Spawn.spawning) {
          var Controller = Spawn.room.controller;
          const CL = Controller.level;
          var N = Memory.totals.CreepsNumber;
@@ -210,7 +210,7 @@ module.exports.loop = function () {
       }
    }
 
-   if(Spawn.spawning) {
+   if(!!Spawn && Spawn.spawning) {
       Spawn.spawning.setDirections([BOTTOM]);
 
       var spawningCreep = Game.creeps[Spawn.spawning.name];
