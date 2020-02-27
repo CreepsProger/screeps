@@ -137,7 +137,7 @@ var roleEnergyTransferer = {
 										structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
 								}
 							});
-							if(!!linkTo) {
+							if(!!linkTo &&  linkTo.id != linkFrom.id) {
 								err = creep.transfer(target, RESOURCE_ENERGY);
 								err = linkFrom.transferEnergy(linkTo);
 							}
