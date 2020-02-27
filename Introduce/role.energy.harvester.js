@@ -240,21 +240,6 @@ var role = {
 					}
 				});
 			}
-/*
-			if(!target && creep.memory.rerun) {
-				target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
-					filter: (creep2) => {
-						return creep2.memory.weight > creep.memory.weight &&
-							creep2.getActiveBodyparts(WORK) &&
-							creep2.memory.my_carier_id === undefined;
-					}
-				});
-			}
-*/
-			if(target) {
-// 				Memory.tasks[target.id] = {role: role.name, target: target.id, performer:creep.id};
-				Memory.targets[target.id] = creep.id;
-			}
 		}
 		return target;
 	},
@@ -272,6 +257,10 @@ var role = {
 				target.structureType?
 						creep.withdraw(target, RESOURCE_ENERGY): // a structure
 				creep.harvest(target); // a source
+
+				if(target.id !== undefined) {
+					Memory.targets[target.id] = creep.id;
+				}
 				
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
