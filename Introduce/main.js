@@ -223,7 +223,7 @@ module.exports.loop = function () {
    }
 	
 	const linkFrom = Game.getObjectById('5e56dc7a28e44c6f77878b87');
-	const linkTo = Game.getObjectById('5e57296459c10348279bb750');
+	const linkTo = Game.getObjectById('5e583a7b7a54e3585a982b96');
 	linkFrom.transferEnergy(linkTo);
 
 	Memory.targets = {};
