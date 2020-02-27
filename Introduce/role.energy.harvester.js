@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var role = {
 
-	version: 36,
+	version: 37,
 
 	name: constants.ROLE_ENERGY_HARVESTING,
 
@@ -243,7 +243,7 @@ var role = {
 					}
 				});
 			}
-
+/*
 			if(!target && creep.memory.rerun) {
 				target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 					filter: (creep2) => {
@@ -253,7 +253,7 @@ var role = {
 					}
 				});
 			}
-
+*/
 			if(target) {
 				target.memory.my_carier_id = creep.id;
 				creep.memory.my_worker_id = target.id; 
