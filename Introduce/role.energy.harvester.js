@@ -244,6 +244,7 @@ var role = {
 							creep2.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
 							creep2.memory.weight > creep.memory.weight &&
 							creep2.getActiveBodyparts(WORK) &&
+							!creep2.memory.upgrading &&
 							Memory.targets[creep2.id] === undefined;
 					}
 				});
@@ -255,6 +256,7 @@ var role = {
 						return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 							creep2.memory.weight > creep.memory.weight &&
 							creep2.getActiveBodyparts(WORK) &&
+							!creep2.memory.upgrading &&
 							Memory.targets[creep2.id] === undefined;
 					}
 				});
