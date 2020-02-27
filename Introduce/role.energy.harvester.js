@@ -150,7 +150,7 @@ var role = {
 				}
 			});
 			if(link !== undefined && Memory.targets[link.id] !== undefined) {
-				var creep2 = Game.getObjectById(Memory.targets[link.id]));
+				var creep2 = Game.getObjectById(Memory.targets[link.id]);
 				if(creep2 !== undefined) {
 					var path2 = creep2.pos.findPathTo(link);
 					var path = creep.pos.findPathTo(link);
