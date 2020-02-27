@@ -225,7 +225,7 @@ var role = {
 							creep2.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
 							creep2.memory.weight > creep.memory.weight &&
 							creep2.getActiveBodyparts(WORK) &&
-							creep2.memory.my_carier_id === undefined;
+							Memory.targets[creep2.id] === undefined;
 					}
 				});
 			}
@@ -236,7 +236,7 @@ var role = {
 						return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 							creep2.memory.weight > creep.memory.weight &&
 							creep2.getActiveBodyparts(WORK) &&
-							creep2.memory.my_carier_id === undefined;
+							Memory.targets[creep2.id] === undefined;
 					}
 				});
 			}
@@ -252,15 +252,8 @@ var role = {
 			}
 */
 			if(target) {
-				if(creep.memory.my_worker_id !== undefined) {
-					var worker = Game.getObjectById(creep.memory.my_worker_id);
-					if(worker) {
-						worker.memory.my_carier_id = undefined;
-					} 
-					creep.memory.my_worker_id = undefined;
-				}
-				target.memory.my_carier_id = creep.id;
-				creep.memory.my_worker_id = target.id; 
+// 				Memory.tasks[target.id] = {role: role.name, target: target.id, performer:creep.id};
+				Memory.targets[target.id] = creep.id;
 			}
 		}
 		return target;
