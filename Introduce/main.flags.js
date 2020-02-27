@@ -57,7 +57,7 @@ var mainFlags = {
 //                     , preverr
 //                   );
         if(last_game_time_created_creep != Game.time && needsNumber > 0) {
-            var err = Game.spawns['Spawn1'].spawnCreep(body
+            var err = Game.spawns['Spawn2'].spawnCreep(body
                                                    , newName
                                                    , {memory: {n: Memory.CreepsCounter, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
             if(err) {
