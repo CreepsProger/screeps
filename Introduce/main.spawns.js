@@ -107,10 +107,11 @@ var spawns = {
 		
 		for(var name in Game.spawns) {
 			var spawn = Game.spawns[name];
-
+/*
 			console.log('✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'spawn:'
 									, JSON.stringify(spawn));
+									*/
 			
 			if(!spawn.spawning) {
 				var controller = spawn.room.controller;
