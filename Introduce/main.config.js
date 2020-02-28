@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 51,
+	version: 52,
 	ticksToCheckCreepsNumber: 10,
 	maxCreepsNumber:15,
 
@@ -29,27 +29,27 @@ var config = {
 																							 ,      links: [ {from: '1', to: '0'}
 																														 , {from: '1', to: '0'}
 																														 ]
-																							 ,    workers: [ {name: '1', time: 0, min_weight: 41, max_weight: 50}
-																														 , {name: '2', time: 0, min_weight: 41, max_weight: 50}
+																							 ,    workers: [ {name: '1', time: 0, min_weight: 40, max_weight: 44}
+																														 , {name: '2', time: 0, min_weight: 40, max_weight: 44}
 																														 //, {name: '3', time: 0, min_weight: 31, max_weight: 40}
 																														 ]
 																							 },
 																			 W26S33: { containers: {weight: 45}
-																							 ,    workers: [ {name: '1', time: 0, min_weight: 41, max_weight: 50}
-																														 , {name: '2', time: 0, min_weight: 41, max_weight: 50}
-																														 , {name: '3', time: 0, min_weight: 41, max_weight: 50}
-																														 , {name: '4', time: 0, min_weight: 41, max_weight: 50}
- 																														 , {name: '5', time: 0, min_weight: 41, max_weight: 50}
+																							 ,    workers: [ {name: '1', time: 0, min_weight: 40, max_weight: 44}
+																														 , {name: '2', time: 0, min_weight: 40, max_weight: 44}
+																														 , {name: '3', time: 0, min_weight: 40, max_weight: 44}
+																														 , {name: '4', time: 0, min_weight: 40, max_weight: 44}
+ 																														 , {name: '5', time: 0, min_weight: 40, max_weight: 44}
  																														 //, {name: '6', time: 0, min_weight: 31, max_weight: 40}
  																														 //, {name: '7', time: 0, min_weight: 31, max_weight: 40}
 																														 ]
 																							 },
 																			 W27S33: { containers: {weight: 55}
-																							 ,    workers: [ {name: '1', time: 0, min_weight: 51, max_weight: 60}
- 																														 , {name: '2', time: 0, min_weight: 51, max_weight: 60}
- 																														 , {name: '3', time: 0, min_weight: 51, max_weight: 60}
- 																														 , {name: '4', time: 0, min_weight: 51, max_weight: 50}
- 																														 , {name: '5', time: 0, min_weight: 51, max_weight: 50}
+																							 ,    workers: [ {name: '1', time: 0, min_weight: 56, max_weight: 60}
+ 																														 , {name: '2', time: 0, min_weight: 56, max_weight: 60}
+ 																														 , {name: '3', time: 0, min_weight: 56, max_weight: 60}
+ 																														 , {name: '4', time: 0, min_weight: 50, max_weight: 54}
+ 																														 , {name: '5', time: 0, min_weight: 50, max_weight: 54}
 																														 ]
 																							 }
 																		 }
