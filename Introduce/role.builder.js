@@ -19,7 +19,7 @@ var roleBuilder = {
 				creep.memory.building = true;
 			}
 
-			if(creep.memory.building) {
+			if(creep.memory.building && creep.getActiveBodyparts(WORK)) {
 
 				var target;
 
