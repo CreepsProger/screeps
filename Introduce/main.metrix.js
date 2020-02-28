@@ -1,4 +1,5 @@
 const constants = require('main.constants');
+const config = require('main.config');
 const log = require('main.log');
 
 var metrix = {
@@ -15,7 +16,7 @@ var metrix = {
 	
 	run: function() {
 		
-		if(Game.time % ticksToCheckCreepsNumber == 0) {
+		if(Game.time % config.ticksToCheckCreepsNumber == 0) {
 			Memory.totals = { CreepsNumber: 0
 											 , Capacity: 0
 											 , FreeCapacity: 0
@@ -32,7 +33,7 @@ var metrix = {
 			metrix.updateMovingAverage(Memory.harvestersMovements.Avg);
 		}
 		
-		if(Game.time % ticksToCheckCreepsNumber == 0) {
+		if(Game.time % config.ticksToCheckCreepsNumber == 0) {
 //          var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
 			Memory.totals.CreepsNumber = 0;
 			
