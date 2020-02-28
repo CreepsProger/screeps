@@ -45,11 +45,11 @@ var config = {
 																														 ]
 																							 },
 																			 W27S33: { containers: {weight: 55}
-																							 ,    workers: [ {name: '1', time: 0, min_weight: 41, max_weight: 60}
- 																														 , {name: '2', time: 0, min_weight: 41, max_weight: 60}
- 																														 , {name: '3', time: 0, min_weight: 41, max_weight: 60}
- 																														 , {name: '4', time: 0, min_weight: 31, max_weight: 50}
- 																														 , {name: '5', time: 0, min_weight: 31, max_weight: 50}
+																							 ,    workers: [ {name: '1', time: 0, min_weight: 51, max_weight: 60}
+ 																														 , {name: '2', time: 0, min_weight: 51, max_weight: 60}
+ 																														 , {name: '3', time: 0, min_weight: 51, max_weight: 60}
+ 																														 , {name: '4', time: 0, min_weight: 51, max_weight: 50}
+ 																														 , {name: '5', time: 0, min_weight: 51, max_weight: 50}
 																														 ]
 																							 }
 																		 }
