@@ -9,11 +9,6 @@ const flags = require('main.flags');
 const log = require('main.log');
 var role = require('role.claimer');
 
-var commit = 31;
-var maxCreepsNumber = 16;
-//var mainSettings = require('main.settings');
-
-
 module.exports.loop = function () {
 
 	for(var name in Memory.creeps) {
