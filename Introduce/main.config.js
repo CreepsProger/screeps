@@ -58,7 +58,7 @@ var config = {
 		}
 	},
 
-	setRoom: function(creep) {
+	setRoom: function(creep, role) {
 		var already = false;
 		for(var room_name in Memory.config.rooms) {
 			var room_config = Memory.config.rooms[room_name];
@@ -82,7 +82,7 @@ var config = {
 									creep.memory.weight >= w.min_weight &&
 									creep.memory.weight <= w.max_weight) {
             var v = w;
-						var reset = (creep.memory[role.name].room != room_name); 
+						var reset = (creep.memory[role].room != room_name); 
 						creep.memory[role.name].room = room_name;
 						w.name = creep.name;
 						w.time = Game.time;
