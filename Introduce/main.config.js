@@ -13,7 +13,7 @@ var config = {
 	log_flags: ['MC','MCF ','M'], 
 	
 	log: function(sign, ...args) {
-			if(log.canLog(role.logFlags)) {
+			if(log.canLog(config.log_flags)) {
 				console.log( sign, Math.trunc(Game.time/10000), Game.time%10000
 										, JSON.stringify(config.version)
 									  , args);
