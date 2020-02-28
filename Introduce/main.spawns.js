@@ -111,8 +111,8 @@ var spawns = {
 			console.log('spawn:', JSON.stringify(spawn));
 			
 			if(!spawn.spawning) {
-				var Controller = Spawn.room.controller;
-				const CL = Controller.level;
+				var controller = spawn.room.controller;
+				const CL = controller.level;
 				var N = Memory.totals.CreepsNumber;
 				
 				if(CL >= 4) spawns.tryCreateCreep(spawn,        60606, 50, N<(config.maxCreepsNumber+1)?13:0); // V 1-1 E  1200   Worker
