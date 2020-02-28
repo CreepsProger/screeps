@@ -8,7 +8,9 @@ var roleBuilder = {
 			var myRoom = 'W25S33';//Game.spawns['Spawn1'].room.name;
 			var anotherRoom = 'W25S34';//Game.map.describeExits(myRoom)[BOTTOM].name; //'W25S34'
 
-			if(creep.memory.building && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
+			if(creep.memory.building &&
+				 !creep.getActiveBodyparts(WORK) &&
+				 creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
 				creep.memory.building = false;
 			}
 
@@ -19,7 +21,7 @@ var roleBuilder = {
 				creep.memory.building = true;
 			}
 
-			if(creep.memory.building && creep.getActiveBodyparts(WORK)) {
+			if(creep.memory.building) {
 
 				var target;
 
