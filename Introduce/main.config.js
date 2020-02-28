@@ -94,7 +94,12 @@ var config = {
 				}
 			});
 		}
+	},
+
+	run: function() {
+		config.init();
 	}
+
 }
 
 module.exports = config;
