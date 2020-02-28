@@ -78,7 +78,26 @@ var spawns = {
         }
     },
 
-    run: function() {
+	renew: function(Spawn) {
+		if(!!Spawn && !Spawn.spawning) {
+			if(false && Spawn.store.getUsedCapacity(RESOURCE_ENERGY) > 0) {
+				Spawn.pos.findInRange(FIND_MY_CREEPS, 1).forEach(function(creep) {
+					const creep_target_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
+					if(creep_target_room == Spawn.room.name && 
+						 Memory.totals.CreepsNumber == maxCreepsNumber &&
+						 creep.ticksToLive < constants.TICKS_TO_LIVE_TO_RENEW) {
+						if(OK == Spawn.renewCreep(creep)) {
+							console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+													, Spawn.name, 'renew', creep.name);
+							creep.say('👨');
+						}
+					}
+				});
+			}
+		}
+	},
+	
+	run: function() {
 			
 			//      if(((Memory.totals.CreepsNumber < 8) || (2 * Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Spawn.spawning) {
 			if(!!Spawn && !Spawn.spawning) {
