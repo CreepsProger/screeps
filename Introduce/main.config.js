@@ -73,7 +73,7 @@ var config = {
 				}
 				else {
 					if(w.name === creep.name) {
-						creep.memory[role.name].room = room_name;
+						creep.memory[role].room = room_name;
 						w.time = Game.time;
 						already = true;
 						config.log('🏢', creep, 'setRoom: time\'s  updated', JSON.stringify(w));
@@ -83,7 +83,7 @@ var config = {
 									creep.memory.weight <= w.max_weight) {
             var v = w;
 						var reset = (creep.memory[role].room != room_name); 
-						creep.memory[role.name].room = room_name;
+						creep.memory[role].room = room_name;
 						w.name = creep.name;
 						w.time = Game.time;
 						already = true;
