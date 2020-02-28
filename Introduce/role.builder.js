@@ -23,10 +23,7 @@ var roleBuilder = {
 				var target;
 
 				if(!target) {
-					var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-					if(targets.length > 0) {
-						target = targets[0];
-					}
+					target = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES) 					
 				}
 
 				if(!target) {
