@@ -117,8 +117,8 @@ var spawns = {
 				const CL = controller.level;
 				var N = Memory.totals.CreepsNumber;
 				
-				if(CL >= 4) spawns.tryCreateCreep(spawn,        60606, 50, N<(config.maxCreepsNumber+1)?10:0); // V 1-1 E  1200   Worker
-				if(CL >= 4) spawns.tryCreateCreep(spawn,         1206, 40, N<(config.maxCreepsNumber+1)? 3:0); // V 1-1 E   900   Worker
+				if(CL >= 4) spawns.tryCreateCreep(spawn,        80808, 50, N<(config.maxCreepsNumber+1)? 9:0); // V 1-1 E  1600   Worker
+				if(CL >= 4) spawns.tryCreateCreep(spawn,         1608, 40, N<(config.maxCreepsNumber+1)? 3:0); // V 1-1 E   1200   Worker
 // 				if(CL >= 5) spawns.tryCreateCreep(spawn,        90909, 50, N<(config.maxCreepsNumber+1)?10:0); // V 1-1 E  1800   Worker
 // 				if(CL >= 5) spawns.tryCreateCreep(spawn,         2412, 36, N<(config.maxCreepsNumber+1)? 3:0); // V 1-1 E  1800   Worker
 				if(CL >= 4) spawns.tryCreateCreep(spawn,  20000000002,100, N<(config.maxCreepsNumber+1)? 1:0); // V 1-1 E  1300  Claimer
