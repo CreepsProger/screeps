@@ -7,8 +7,6 @@ var git = '$Format:%H$';
 
 var role = {
 
-	version: 46,
-
 	name: constants.ROLE_ENERGY_HARVESTING,
 
 	logFlags: ['LEH','LE ','L'], 
@@ -26,8 +24,8 @@ var role = {
 	init: function(creep) {
 		if(creep.memory[role.name] === undefined ||
 			 creep.memory[role.name].v === undefined ||
-			 creep.memory[role.name].v != role.version) {
-			creep.memory[role.name] = { v: role.version
+			 creep.memory[role.name].v != config.version) {
+			creep.memory[role.name] = { v: config.version
 																, on: false
 																, room: creep.room
 																};
