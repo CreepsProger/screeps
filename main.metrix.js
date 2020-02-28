@@ -4,8 +4,17 @@ const log = require('main.log');
 var last_game_time_created_creep = 0;
 
 var metrix = {
-    
-   run: function() {
+	updateMovingAverage: function(x) {
+		//    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+		//                    , 'updateMovingAverage');
+		x.movingAverage.delta = x.v - x.movingAverage.vs[x.movingAverage.i];
+		x.movingAverage.summ += x.movingAverage.delta;
+		x.movingAverage.ma = x.movingAverage.summ / x.movingAverage.vs.length;
+		x.movingAverage.vs[x.movingAverage.i] = x.v;
+		x.movingAverage.i = (x.movingAverage.i + 1) % x.movingAverage.vs.length;
+	},
+	
+	run: function() {
      if(Game.time % ticksToCheckCreepsNumber == 0) {
          Memory.totals = { CreepsNumber: 0
                          , Capacity: 0
