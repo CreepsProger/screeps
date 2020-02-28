@@ -1,4 +1,5 @@
 const constants = require('main.constants');
+const config = require('main.config');
 const flags = require('main.flags');
 
 var last_game_time_created_creep = 0;
