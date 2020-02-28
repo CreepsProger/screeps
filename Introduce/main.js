@@ -1,6 +1,7 @@
 //import {checkFlags} from 'main.flags.js';
 //import {checkMainCommit} from 'main.flags.js';
 const constants = require('main.constants');
+const config = require('main.config');
 const links = require('main.links');
 const towers = require('main.towers');
 const metrix = require('main.metrix');
@@ -25,6 +26,7 @@ module.exports.loop = function () {
 		}
 	}
 
+	config.run();
 	links.run();
 	towers.run();
 	metrix.run();
