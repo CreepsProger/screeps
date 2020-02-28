@@ -39,8 +39,8 @@ var config = {
 																														 , {name: '2', time: 0, min_weight: 41, max_weight: 50}
 																														 , {name: '3', time: 0, min_weight: 41, max_weight: 50}
 																														 , {name: '4', time: 0, min_weight: 41, max_weight: 50}
- 																														 , {name: '5', time: 0, min_weight: 41, max_weight: 50}
- 																														 , {name: '6', time: 0, min_weight: 41, max_weight: 50}
+ 																														 , {name: '5', time: 0, min_weight: 31, max_weight: 40}
+ 																														 , {name: '6', time: 0, min_weight: 31, max_weight: 40}
  																														 , {name: '7', time: 0, min_weight: 31, max_weight: 40}
 																														 ]
 																							 },
