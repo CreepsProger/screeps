@@ -101,6 +101,9 @@ var spawns = {
 	
 	run: function() {
 		
+		if(Game.time % config.ticksToCheckCreepsNumber != 0)
+			return;
+		
 		var Spawn = Game.spawns['Spawn2'];
 			
 // 		if(((Memory.totals.CreepsNumber < 8) || (2 * Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Spawn.spawning) {
