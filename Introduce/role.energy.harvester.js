@@ -53,7 +53,7 @@ var role = {
 				 creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0))) {
 			creep.memory[role.name].on = true;
 // 			role.log(creep,"On");
-			config.setRoom(creep);
+			config.setRoom(creep, role.name);
 		}
 	},
 
