@@ -136,9 +136,9 @@ var spawns = {
 				spawn.spawning.setDirections([RIGHT]);
 				
 				var spawningCreep = Game.creeps[spawn.spawning.name];
-				Spawn.room.visual.text('🛠️' + spawn.spawning.name
-															 , Spawn.pos.x + 1
-															 , Spawn.pos.y
+				spawn.room.visual.text('🛠️' + spawn.spawning.name
+															 , spawn.pos.x + 1
+															 , spawn.pos.y
 															 , {align: 'left', opacity: 0.8});
 			}
 		}
