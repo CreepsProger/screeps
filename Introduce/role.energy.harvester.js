@@ -1,4 +1,5 @@
 const constants = require('main.constants');
+const config = require('main.config');
 var flags = require('main.flags');
 var log = require('main.log');
 
@@ -22,48 +23,7 @@ var role = {
 			}
 	},
 
-	init_config: function() {
-		if(Memory[role.name] === undefined ||
-			 Memory[role.name].v === undefined ||
-			 Memory[role.name].v != role.version) {
-			Memory[role.name] = { v: role.version
-													 , rooms : { W25S33: { containers: {weight: 45}
-																							 ,      links: [ {from: '1', to: '0'}
-																														 , {from: '1', to: '0'}
-																														 ]
-																							 ,    workers: [ {name: '1', time: 0, min_weight: 41, max_weight: 50}
-																														 , {name: '2', time: 0, min_weight: 41, max_weight: 50}
-																														 , {name: '3', time: 0, min_weight: 41, max_weight: 50}
-																														 ]
-																							 },
-																			 W26S33: { containers: {weight: 45}
-																							 ,    workers: [ {name: '1', time: 0, min_weight: 41, max_weight: 50}
-																														 , {name: '2', time: 0, min_weight: 41, max_weight: 50}
-																														 , {name: '3', time: 0, min_weight: 41, max_weight: 50}
-																														 , {name: '4', time: 0, min_weight: 41, max_weight: 50}
-																														 , {name: '5', time: 0, min_weight: 41, max_weight: 50}
- 																														 , {name: '6', time: 0, min_weight: 41, max_weight: 50}
- 																														 , {name: '7', time: 0, min_weight: 41, max_weight: 50}
-																														 ]
-																							 },
-																			 W27S33: { containers: {weight: 45}
-																							 ,    workers: [ {name: '1', time: 0, min_weight: 41, max_weight: 50}
- 																														 , {name: '2', time: 0, min_weight: 41, max_weight: 50}
-																														 , {name: '3', time: 0, min_weight: 41, max_weight: 50}
-																														 , {name: '4', time: 0, min_weight: 41, max_weight: 50}
- 																														 , {name: '5', time: 0, min_weight: 41, max_weight: 50}
- 																														 , {name: '6', time: 0, min_weight: 41, max_weight: 50}
- 																														 , {name: '7', time: 0, min_weight: 41, max_weight: 50}
-																														 ]
-																							 }
-																		 }
-													};
-			console.log('init_config', role.inited, 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
-		}
-	},
-
 	init: function(creep) {
-		role.init_config();
 		if(creep.memory[role.name] === undefined ||
 			 creep.memory[role.name].v === undefined ||
 			 creep.memory[role.name].v != role.version) {
@@ -76,40 +36,6 @@ var role = {
 
 	checkFreeSlot: function(creep) {
 		return true;
-	},
-
-	setRoom: function(creep) {
-		var already = false;
-		for(var room_name in Memory[role.name].rooms) {
-			var room_config = Memory[role.name].rooms[room_name];
-			room_config.workers.forEach(function(w) {
-				if(already) {
-					if(w.name === creep.name) {
-						w.name = '-' + creep.name;
-						w.time = Game.time;
-						console.log('I', creep, 'setRoom: slot\'s removed', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
-					}
-				}
-				else {
-					if(w.name === creep.name) {
-						creep.memory[role.name].room = room_name;
-						w.time = Game.time;
-						already = true;
-						role.log('I', creep, 'setRoom: time\'s  updated', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
-					}
-					else if(w.time < Game.time - 100 &&
-									creep.memory.weight >= w.min_weight &&
-									creep.memory.weight <= w.max_weight) {
-						var reset = (creep.memory[role.name].room != room_name); 
-						creep.memory[role.name].room = room_name;
-						w.name = creep.name;
-						w.time = Game.time;
-						already = true;
-						console.log('I', creep, 'setRoom: reset('+reset+')', 'Memory[role.name]:', JSON.stringify(Memory[role.name]));
-					}
-				}
-			});
-		}
 	},
 
 	checkOff: function(creep) {
@@ -129,16 +55,16 @@ var role = {
 				 creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0))) {
 			creep.memory[role.name].on = true;
 // 			role.log(creep,"On");
-			role.setRoom(creep);
+			config.setRoom(creep);
 		}
 	},
 
 	getTarget: function(creep) {
 
 		const this_room = creep.room.name;
-		const this_room_config = Memory[role.name].rooms[this_room];
+		const this_room_config = Memory.config.rooms[this_room];
 		const my_room = creep.memory[role.name].room;
-		const my_room_config = Memory[role.name].rooms[my_room];
+		const my_room_config = Memory.config.rooms[my_room];
 
 		var target;
 
@@ -310,108 +236,15 @@ var role = {
 			}
 		}
 
-		// Attantion: Spawn1.spawning.setDirections([BOTTOM]);
-		//var Spawn1 = Game.spawns['Spawn1'];
-		if(creep.room.name == 'W25S33' && //Spawn1.room.name && 
-			 creep.pos.x == 21 &&
-			 creep.pos.y == 31) {
-			creep.move(BOTTOM_RIGHT);
-			creep.move(Game.time%8+1); // TOP:1 ,..., TOP_LEFT:8
+		for(var name in Game.spawns) {
+			var spawn = Game.spawns[name];
+			if(creep.room.name == spawn.room.name && 
+				 creep.pos.x == spawn.pos.x+1 &&
+				 creep.pos.y == spawn.pos.y) {
+				creep.move(Game.time%8+1); // TOP:1 ,..., TOP_LEFT:8
+			}
 		}
-
 	}
 };
 
 module.exports = role;
-
-
-// var roleEnergyHarvester = {
-    
-    
-//     /** @param {Creep} creep **/
-//     run: function(creep) {
-//         var commit = 4;
-//         if(!Memory.commits.EnergyHarvester ||
-//            Memory.commits.EnergyHarvester != commit) {
-//             Memory.commits.EnergyHarvester = commit;
-//             console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-//                         , 'Commit EnergyHarvester'
-//                         , Memory.commits.EnergyHarvester);
-//         }         
-
-//         if(creep.memory.harvesting &&
-//            creep.store.getFreeCapacity() == 0) {
-//             creep.memory.harvesting = false;
-//         }
-
-//         if(!creep.memory.harvesting &&
-//            ((creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0 && creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0) ||
-//             (creep.memory.rerun && creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0))) {
-//             creep.memory.harvesting = true;
-//         }
-        
-//         if(creep.memory.harvesting) {
-//         if(!creep.memory.harvesting) {
-//             if(creep.memory.rerun) {
-//                 if(creep.pos.x == 26 && creep.pos.y == 34) {
-//                     creep.move(BOTTOM_RIGHT);
-//                     creep.move(Game.time%8+1); // TOP:1 ,..., TOP_LEFT:8
-//                 }
-//             }
-//             else {
-//                 creep.say('🔃');
-//                 creep.memory.rerun = 1;
-//                 //             roleRerun.run(creep);
-//                 require('role.claimer').run(creep);
-//             }
-//         }
-//     }
-// };
-
-// module.exports = roleEnergyHarvester;
-
-//                                 if(target) {
-//                             var err = creep.withdraw(target, RESOURCE_ENERGY);
-//                             if(err == ERR_NOT_IN_RANGE) {
-//                                 creep.moveTo(target, {visualizePaathStyle: {stroke: '#ffffff'}});
-// 								creep.say('➡️⚡⚡');
-//                             }
-//                             else if(!err) {
-// 								creep.say('⚡⚡');
-// 							}
-// 						}
-// 					}
-// 				}
-// 			}
-//             else if(!err) {
-// 				creep.say('⚡');
-// 				if(creep.memory.starttimemoving) {
-// 					Memory.harvestersMovements.Value.v += Game.time - creep.memory.starttimemoving;
-//                     Memory.harvestersMovements.Count.v += 1;
-//                     Memory.harvestersMovements.Avg.v = Math.floor(Memory.harvestersMovements.Value.v / Memory.harvestersMovements.Count.v) ;
-//                     creep.memory.starttimemoving = 0;
-//                 }
-//             }
-//             else {
-//                 if(err != ERR_BUSY && err != ERR_NOT_ENOUGH_RESOURCES) {
-//                     console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-//                                 , '⚡' + creep.name +' harvesting failed with err:'
-//                                 , err);
-//                 }
-//                 creep.memory.harvesting = false;
-//             }
-//         }
-
-//         if(!creep.memory.harvesting) {
-//             if(creep.memory.rerun) {
-//                 creep.say('🔃'); 
-//             }
-//             else {
-//                 creep.memory.rerun = 1;
-//                 require('role.attacker').run(creep);
-//             }
-//         }
-//     }
-// };
-
-// module.exports = roleEnergyHarvester;
