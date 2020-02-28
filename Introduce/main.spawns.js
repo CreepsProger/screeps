@@ -107,6 +107,8 @@ var spawns = {
 		
 		for(var name in Game.spawns) {
 			var spawn = Game.spawns[name];
+
+			console.log('spawn:', JSON.stringify(spawn));
 			
 			if(!spawn.spawning) {
 				var Controller = Spawn.room.controller;
