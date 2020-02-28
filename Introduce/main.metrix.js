@@ -1,9 +1,8 @@
 const constants = require('main.constants');
 const log = require('main.log');
 
-var last_game_time_created_creep = 0;
-
 var metrix = {
+
 	updateMovingAverage: function(x) {
 		//    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 		//                    , 'updateMovingAverage');
@@ -94,6 +93,7 @@ var metrix = {
 //                   , Memory.harvestersMovements.Avg.movingAverage.delta
                   , JSON.stringify(Memory.CreepsNumberByType));
 		}
+	}
 };
 
 module.exports = metrix;
