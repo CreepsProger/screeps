@@ -1,7 +1,5 @@
 const constants = require('main.constants');
 
-var lastFlagRemoved;
-
 var last_game_time_created_creep = 0;
 
 var spawns = {
@@ -78,7 +76,43 @@ var spawns = {
 							last_game_time_created_creep = Game.time;
             }
         }
-    }
+    },
+
+    run: function() {
+			
+			//      if(((Memory.totals.CreepsNumber < 8) || (2 * Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Spawn.spawning) {
+			if(!!Spawn && !Spawn.spawning) {
+				var Controller = Spawn.room.controller;
+				const CL = Controller.level;
+				var N = Memory.totals.CreepsNumber;
+				
+				if(CL >= 4) mainFlags.tryCreateCreep(        60606, 50, N<(maxCreepsNumber+1)?13:0); // V 1-1 E  1200   Worker
+				if(CL >= 5) mainFlags.tryCreateCreep(        90909, 50, N<(maxCreepsNumber+1)?10:0); // V 1-1 E  1800   Worker
+				if(CL >= 5) mainFlags.tryCreateCreep(         2412, 36, N<(maxCreepsNumber+1)? 3:0); // V 1-1 E  1800   Worker
+				if(CL >= 4) mainFlags.tryCreateCreep(  20000000002,100, N<(maxCreepsNumber+1)? 1:0); // V 1-1 E  1300  Claimer
+				if(CL >= 4) mainFlags.tryCreateCreep(5000200000007,100, N<(maxCreepsNumber+1)? 2:0); // V 1-1 E   650 Attacker
+				
+				if(CL >= 4) mainFlags.tryCreateCreep(        80808, 30, Memory.totals.WORK< 8? 1:0); // E 1600 Worker
+				if(CL >= 4) mainFlags.tryCreateCreep(        70707, 30, Memory.totals.WORK< 7? 1:0); // E 1400 Worker
+				if(CL >= 3) mainFlags.tryCreateCreep(        60606, 30, Memory.totals.WORK< 6? 1:0); // E 1200 Worker
+				if(CL >= 3) mainFlags.tryCreateCreep(        50505, 30, Memory.totals.WORK< 5? 1:0); // E 1000 Worker
+				if(CL >= 3) mainFlags.tryCreateCreep(        40404, 30, Memory.totals.WORK< 4? 1:0); // E  800 Worker
+				
+				if(CL >= 2) mainFlags.tryCreateCreep(          506, 45, Memory.totals.CARRY< 6? 1:0); // E 550 Carier
+				
+				if(CL >= 1) mainFlags.tryCreateCreep(          303, 45, Memory.totals.CARRY< 3? 1:0); // E 300 Carier
+			}
+			
+			if(!!Spawn && Spawn.spawning) {
+				Spawn.spawning.setDirections([RIGHT]);
+				
+				var spawningCreep = Game.creeps[Spawn.spawning.name];
+				Spawn.room.visual.text('🛠️' + Spawn.spawning.name
+															 , Spawn.pos.x + 1
+															 , Spawn.pos.y
+															 , {align: 'left', opacity: 0.8});
+			}
+		}
 };
 
 module.exports = spawns;
