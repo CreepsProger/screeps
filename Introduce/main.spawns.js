@@ -98,9 +98,11 @@ var spawns = {
 	},
 	
 	run: function() {
+		
+		var Spawn = Game.spawns['Spawn2'];
 			
-			//      if(((Memory.totals.CreepsNumber < 8) || (2 * Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Spawn.spawning) {
-			if(!!Spawn && !Spawn.spawning) {
+// 		if(((Memory.totals.CreepsNumber < 8) || (2 * Memory.totals.FreeCapacity <=  Memory.totals.UsedCapacity)) && !Spawn.spawning) {
+		if(!!Spawn && !Spawn.spawning) {
 				var Controller = Spawn.room.controller;
 				const CL = Controller.level;
 				var N = Memory.totals.CreepsNumber;
