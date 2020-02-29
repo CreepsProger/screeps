@@ -45,6 +45,10 @@ var roleEnergyTransferer = {
 				});
 				console.log( '🏗⚠️', Math.trunc(Game.time/10000), Game.time%10000
 										, creep.name
+										, 'this_room'
+										, this_room
+										, 'my_room'
+										, my_room
 										, creep.getActiveBodyparts(WORK)
 										, creep.store.getUsedCapacity(RESOURCE_ENERGY)
 										, creep.store.getFreeCapacity(RESOURCE_ENERGY)
