@@ -40,9 +40,11 @@ var roleUpgrader = {
 			
 		/** @param {Creep} creep **/
     run: function(creep) {
-			if(!creep.memory[constants.ROLE_ENERGY_HARVESTING])
+			if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
+				roleNext.run(creep);
 				return;
-	
+			}
+
 			if(Game.time%20)
 				roleUpgrader.updateStopUpgradingCondition(creep);
 			
