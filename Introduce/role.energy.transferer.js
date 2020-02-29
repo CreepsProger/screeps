@@ -41,10 +41,10 @@ var roleEnergyTransferer = {
 							Memory.targets[structure.id] === undefined;
 					}
 				});
-			}			
-
-			if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable) {
-				var closests = creep.pos.findInRange(FIND_STRUCTURES, 15, {
+			}
+			
+		if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable) {
+				var closests = creep.pos.findInRange(FIND_STRUCTURES, 5, {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_CONTAINER) &&
 							this_room_config.containers.weight < creep.memory.weight && 
@@ -54,6 +54,8 @@ var roleEnergyTransferer = {
 				if(closests.length > 0) {
 					target = closests[0];
 				}
+				
+				
 // 				console.log( '🏗⚠️', Math.trunc(Game.time/10000), Game.time%10000
 // 										, creep.name
 // 										, 'this_room:'
@@ -103,6 +105,8 @@ var roleEnergyTransferer = {
 					}
 				});
 			}
+		
+		/*
 			
 			if(!target && creep.ticksToLive < constants.TICKS_TO_LIVE_TO_TRANSFER_ENERGY_TO_SPAWN) {
 				target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
@@ -113,11 +117,13 @@ var roleEnergyTransferer = {
 				});
 			}
 			
+			*/
+			
 			if(!target) {
 				target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_SPAWN) &&
-							structure.store.getUsedCapacity(RESOURCE_ENERGY) == 0;
+							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
 					}
 				});
 			}
@@ -126,10 +132,12 @@ var roleEnergyTransferer = {
 				target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_TOWER) &&
-							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 300;
+							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 400;
 					}
 				});
 			}
+		
+		/*
 			
 			if(!target) {
 				var closests = creep.pos.findInRange(FIND_MY_STRUCTURES, 1, {
@@ -142,7 +150,9 @@ var roleEnergyTransferer = {
 				if(closests.length > 0) {
 					target = closests[0];
 				}
-			}            
+			}
+			
+			*/
 			
 			if(!target) {
 				var storages = _.filter(Game.structures, function(structure) {
