@@ -2,6 +2,7 @@ const constants = require('main.constants');
 const config = require('main.config');
 var flags = require('main.flags');
 var log = require('main.log');
+const tools = require('tools');
 
 var git = '$Format:%H$';
 
@@ -73,28 +74,13 @@ var role = {
 			var link = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_LINK) &&
-						structure.id == '5e583a7b7a54e3585a982b96' &&
-						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
+						(structure.id == '5e583a7b7a54e3585a982b96' ||
+						 structure.id == '5e5ab4f1142d6b46f3c86280') &&
+						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
+							tools.checkTarget(executer,structure.id);
 				}
-			});
-
-			if(!!link &&
-				 !!link.id &&
-				 Memory.targets[link.id] !== undefined) {
-				var creep2 = Game.getObjectById(Memory.targets[link.id]);
-				if(creep2 !== undefined) {
-					var path2 = creep2.pos.findPathTo(link);
-					var path = creep.pos.findPathTo(link);
-					if(path2.length > path.length) {
-						target = link;
-						creep2.cancelOrder('moveTo');
-						require('role.energy.harvester').run(creep2);
-					}
-				}
-			}
-			else {
-				target = link;
-			}
+			});// require('role.energy.harvester').run;
+			target = (!!link && !!link.id)? tools.setTarget(creep,link,link.id,role.run):undefined;
 		}
 		
 		if(!target &&
@@ -205,7 +191,7 @@ var role = {
 		return target;
 	},
 	
-	run: function(creep) {
+	run: function(creep,executer = undefined) {
 		role.init(creep);
 		role.checkOff(creep);
 		role.checkOn(creep);
