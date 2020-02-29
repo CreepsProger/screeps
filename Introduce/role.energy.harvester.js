@@ -131,6 +131,16 @@ var role = {
 		}
 
 		if(!target && creep.getActiveBodyparts(WORK)) {
+			var sources = creep.room.find(FIND_SOURCES, {
+				filter: (source) => source.energy >= 0
+			});
+			if(sources.length > 0) {
+				target = sources[0];
+			}
+		}
+
+
+		if(!target && creep.getActiveBodyparts(WORK)) {
 			target = creep.pos.findClosestByPath(FIND_SOURCES, {
 				filter: (source) => source.energy >= (creep.memory.rerun? 0:1)
 			});
