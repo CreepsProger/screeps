@@ -1,4 +1,5 @@
-var roleNext = require('role.energy.harvester');
+const constants = require('main.constants');
+const roleNext = require('role.energy.harvester');
 
 var roleUpgrader = {
 	
