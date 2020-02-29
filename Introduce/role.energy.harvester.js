@@ -164,28 +164,30 @@ var role = {
 			}
 */
 			if(!target) {
-				target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
+				var weightcreep = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 					filter: (creep2) => {
 						return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 							creep2.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
 							creep2.memory.weight > creep.memory.weight &&
 							creep2.getActiveBodyparts(WORK) &&
 							!creep2.memory.upgrading &&
-							Memory.targets[creep2.id] === undefined;
+							tools.checkTarget(executer,structure.id);
 					}
 				});
+				target = (!!weightcreep && !!weightcreep.id)? tools.setTarget(creep,weightcreep,weightcreep.id,role.run):undefined;
 			}
 
 			if(!target && creep.memory.rerun) {
-				target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
+				var weightcreep = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 					filter: (creep2) => {
 						return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 							creep2.memory.weight > creep.memory.weight &&
 							creep2.getActiveBodyparts(WORK) &&
 							!creep2.memory.upgrading &&
-							Memory.targets[creep2.id] === undefined;
+							tools.checkTarget(executer,structure.id);
 					}
 				});
+				target = (!!weightcreep && !!weightcreep.id)? tools.setTarget(creep,weightcreep,weightcreep.id,role.run):undefined;
 			}
 		}
 		return target;
@@ -204,10 +206,6 @@ var role = {
 				target.structureType?
 						creep.withdraw(target, RESOURCE_ENERGY): // a structure
 				creep.harvest(target); // a source
-
-				if(target.id !== undefined) {
-					Memory.targets[target.id] = creep.id;
-				}
 				
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
