@@ -89,7 +89,7 @@ var role = {
 // 			 creep.ticksToLive > constants.TICKS_TO_LIVE_TO_TRANSFER_ENERGY_TO_SPAWN &&
 			 true) {
 			const exitDir = Game.map.findExit(Game.rooms[this_room] , my_room);
-			target = creep.pos.findClosestByRange(exitDir);
+			target = creep.pos.findClosestByPath(exitDir);
 			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
 		}
 
