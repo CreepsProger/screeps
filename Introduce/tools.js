@@ -2,7 +2,12 @@ const constants = require('main.constants');
 const config = require('main.config');
 const flags = require('main.flags');
 
-var last_game_time_created_creep = 0;
+// C1         C2         C3     T1  T2  T3
+// C1(T1)
+//            C2(T1,C1(T2))
+//                       C3(T1,C2(T3))
+//=========================
+// C1->T2     C2->T3     C3->T1
 
 var tools = {
     
@@ -20,7 +25,7 @@ var tools = {
 					 mytarget = target;
 					 Memory.targets[id] = creep.id;
 					 creep2.cancelOrder(creep2.moveTo);
-					 run(creep2);
+					 run(creep2,creep);
 				 }
 			 }
 		 }
