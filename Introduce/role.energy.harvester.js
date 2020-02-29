@@ -115,16 +115,15 @@ var role = {
 			 creep.room.energyAvailable == creep.room.energyCapacityAvailable) {
 			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
-// 					if(structure.structureType == STRUCTURE_CONTAINER) {
-// 						console.log(creep.name, 'check 2 target', STRUCTURE_CONTAINER, ':'
-// 											, structure.structureType
-// 											, structure.store.getUsedCapacity(RESOURCE_ENERGY)
-// 											, structure.store.getFreeCapacity(RESOURCE_ENERGY)
-// 											, creep.memory.weight
-// 											, my_room_config.containers.weight);
-// 					}
+					if(structure.structureType == STRUCTURE_CONTAINER) {
+						console.log(creep.name, 'check 2 target', STRUCTURE_CONTAINER, ':'
+											, structure.structureType
+											, structure.store.getUsedCapacity(RESOURCE_ENERGY)
+											, creep.memory.weight
+											, my_room_config.containers.weight);
+					}
 					return (structure.structureType == STRUCTURE_CONTAINER) &&
-						structure.store.getUsedCapacity(RESOURCE_ENERGY) > structure.store.getFreeCapacity(RESOURCE_ENERGY) &&
+						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 						creep.memory.weight < my_room_config.containers.weight;
 				}
 			});
