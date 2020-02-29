@@ -4,9 +4,6 @@ var roleBuilder = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-			
-			var myRoom = 'W25S33';//Game.spawns['Spawn1'].room.name;
-			var anotherRoom = 'W25S34';//Game.map.describeExits(myRoom)[BOTTOM].name; //'W25S34'
 
 			if(creep.memory.building &&
 				 (creep.getActiveBodyparts(WORK) == 0 ||
@@ -86,11 +83,13 @@ var roleBuilder = {
 					else {
 						creep.memory.building = false;
 						console.log( '🏗⚠️', Math.trunc(Game.time/10000), Game.time%10000
-                                , creep.name
-                                , action
-                                , target.name?target.name:target.structureType
-                                , 'with err:'
-                                , err);
+												, creep.name
+												, creep.getActiveBodyparts(WORK)
+												, creep.store.getUsedCapacity(RESOURCE_ENERGY)
+												, action
+												, target.name?target.name:target.structureType
+												, 'with err:'
+												, err);
 					}
 				}
 				else {
