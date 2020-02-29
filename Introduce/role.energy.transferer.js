@@ -5,6 +5,11 @@ var roleEnergyTransferer = {
 	
     /** @param {Creep} creep **/
 	run: function(creep) {
+		if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
+				roleNext.run(creep);
+				return;
+		}
+
 		if(creep.memory.transfering && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
 			creep.memory.transfering = false;
 		}
@@ -21,6 +26,11 @@ var roleEnergyTransferer = {
 			const this_room_config = Memory.config.rooms[this_room];
 			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
 			const my_room_config = Memory.config.rooms[my_room];
+			const this_room_sources_is_empty = !creep.pos.findClosestByPath(FIND_SOURCES, {
+				filter: (source) => source.energy > 0 && source.room.name == this_room
+			});
+			
+			if(Memory.stop_upgrading ||
 
 			var target;
 
@@ -74,7 +84,8 @@ var roleEnergyTransferer = {
 				}
 			}
 */
-			if(!target) {
+			if(!target &&
+				 !this_room_sources_is_empty ) {
 				var closests = creep.pos.findInRange(FIND_MY_CREEPS, 1, {
 					filter: (creep2) => {
 						return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
