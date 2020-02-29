@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 57,
+	version: 58,
 	ticksToCheckCreepsNumber: 10,
 	maxCreepsNumber:21,
 
@@ -53,6 +53,7 @@ var config = {
  																														 , {name: '4', time: 0, min_weight: 50, max_weight: 59}
  																														 , {name: '5', time: 0, min_weight: 50, max_weight: 59}
  																														 , {name: '6', time: 0, min_weight: 50, max_weight: 59}
+ 																														 , {name: '7', time: 0, min_weight: 50, max_weight: 59}
 																														 ]
 																							 }
 																		 }
