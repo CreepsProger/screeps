@@ -115,7 +115,7 @@ var role = {
 		if(!target &&
 			 creep.memory.rerun &&
 			 this_room == my_room &&
-			 this_room_sources_is_empty &&
+			 !this_room_sources_is_empty &&
 			 creep.room.energyAvailable == creep.room.energyCapacityAvailable) {
 			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
