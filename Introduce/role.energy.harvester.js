@@ -90,7 +90,7 @@ var role = {
 			 true) {
 			const exitDir = Game.map.findExit(Game.rooms[this_room] , my_room);
 			target = creep.pos.findClosestByRange(exitDir);
-			role.log('🔜⚡', creep, 'exit:', JSON.stringify(Game.rooms[my_room]), 'to', JSON.stringify(Game.rooms[this_room]));
+			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room));
 		}
 
 // 		if(!target)
