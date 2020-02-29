@@ -35,7 +35,7 @@ var roleAttacker = {
                     }
                 }
             }
-            if(creep.room != myRoom && creep.hits < creep.hitsMax - 300) {
+            if(creep.room.name != myRoom && creep.hits < creep.hitsMax - 300) {
                 if(!target) {
                     const exitDir = Game.map.findExit(creep.room, myRoom);
                     target = creep.pos.findClosestByRange(exitDir);
@@ -69,13 +69,13 @@ var roleAttacker = {
                 });
             }
             if(!target) {
-                if(creep.room != attackedRoom) {
+                if(creep.room.name != attackedRoom) {
                     const exitDir = Game.map.findExit(creep.room, attackedRoom);
                     target = creep.pos.findClosestByRange(exitDir);
                 }
             }
             if(!target && creep.hits < creep.hitsMax - 300) {
-                if(creep.room != myRoom) {
+                if(creep.room.name != myRoom) {
                     const exitDir = Game.map.findExit(creep.room, myRoom);
                     target = creep.pos.findClosestByRange(exitDir);
                 }
