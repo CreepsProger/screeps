@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 54,
+	version: 55,
 	ticksToCheckCreepsNumber: 10,
 	maxCreepsNumber:19,
 
@@ -29,8 +29,8 @@ var config = {
 																							 ,      links: [ {from: '1', to: '0'}
 																														 , {from: '1', to: '0'}
 																														 ]
-																							 ,    workers: [ {name: '1', time: 0, min_weight: 30, max_weight: 40}
-																														 , {name: '2', time: 0, min_weight: 30, max_weight: 40}
+																							 ,    workers: [ {name: '1', time: 0, min_weight: 30, max_weight: 39}
+																														 , {name: '2', time: 0, min_weight: 30, max_weight: 39}
 																														 , {name: '3', time: 0, min_weight: 30, max_weight: 39}
 																														 ]
 																							 },
