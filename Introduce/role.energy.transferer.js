@@ -163,7 +163,10 @@ var roleEnergyTransferer = {
 				});
 				if(storages.length > 0) {
 					target = storages.reduce(function (p, v) {
-						return (p.store.getUsedCapacity(RESOURCE_ENERGY) < v.store.getUsedCapacity(RESOURCE_ENERGY)? p : v );
+						const pu = Math.floor(p.store.getUsedCapacity(RESOURCE_ENERGY)/10000);
+						const vu = Math.floor(v.store.getUsedCapacity(RESOURCE_ENERGY)/10000);
+						
+						return (pu < vu ? p : v );
 					});
 				}
 			}
