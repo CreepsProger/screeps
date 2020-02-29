@@ -1,10 +1,11 @@
 var roleNext = require('role.noenergy.transferer');
 var constants = require('main.constants');
+const tools = require('tools');
 
 var roleEnergyTransferer = {
 	
     /** @param {Creep} creep **/
-	run: function(creep) {
+	run: function(creep, executer = undefined) {
 		if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
 				roleNext.run(creep);
 				return;
@@ -99,12 +100,14 @@ var roleEnergyTransferer = {
 			}            
 			
 			if(!target) {
-				target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+				var extension = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_EXTENSION) &&
-							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+							tools.checkTarget(executer,structure.id);
 					}
 				});
+				target = (!!extension && !!extension.id)? tools.setTarget(creep,extension,extension.id,roleEnergyTransferer.run):undefined;
 			}
 		
 		/*
