@@ -26,7 +26,10 @@ var roleWithdrawer = {
 							tools.checkTarget(executer,structure.creep.id);
 					}
 				});
-				target = tools.setTarget(creep,tombstone,tombstone.creep.id,roleWithdrawer.run);
+				if(!!tombstone &&
+					 !!tombstone.creep.id) {
+					target = tools.setTarget(creep,tombstone,tombstone.creep.id,roleWithdrawer.run);
+				}
 
 // 				if(!!tombstone &&
 // 					 !!tombstone.creep.id &&
