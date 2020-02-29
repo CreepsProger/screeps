@@ -143,7 +143,7 @@ var roleEnergyTransferer = {
 				});
 				if(storages.length > 0) {
 					target = storages.reduce(function (p, v) {
-						return (p.getUsedCapacity(RESOURCE_ENERGY) < v.getUsedCapacity(RESOURCE_ENERGY)? p : v );
+						return (p.store.getUsedCapacity(RESOURCE_ENERGY) < v.store.getUsedCapacity(RESOURCE_ENERGY)? p : v );
 					});
 				}
 			}
