@@ -8,7 +8,7 @@ var config = {
 
 	version: 53,
 	ticksToCheckCreepsNumber: 10,
-	maxCreepsNumber:15,
+	maxCreepsNumber:19,
 
 	log_flags: ['MC','MCF ','M'], 
 	
@@ -25,31 +25,32 @@ var config = {
 			 Memory.config.v === undefined ||
 			 Memory.config.v != config.version) {
 			Memory.config = { v: config.version
-													 , rooms : { W25S33: { containers: {weight: 45}
+													 , rooms : { W25S33: { containers: {weight: 35}
 																							 ,      links: [ {from: '1', to: '0'}
 																														 , {from: '1', to: '0'}
 																														 ]
-																							 ,    workers: [ {name: '1', time: 0, min_weight: 40, max_weight: 44}
-																														 , {name: '2', time: 0, min_weight: 40, max_weight: 44}
-																														 //, {name: '3', time: 0, min_weight: 31, max_weight: 40}
+																							 ,    workers: [ {name: '1', time: 0, min_weight: 30, max_weight: 40}
+																														 , {name: '2', time: 0, min_weight: 30, max_weight: 40}
+																														 , {name: '3', time: 0, min_weight: 30, max_weight: 39}
 																														 ]
 																							 },
 																			 W26S33: { containers: {weight: 45}
-																							 ,    workers: [ {name: '1', time: 0, min_weight: 40, max_weight: 44}
-																														 , {name: '2', time: 0, min_weight: 40, max_weight: 44}
-																														 , {name: '3', time: 0, min_weight: 40, max_weight: 44}
-																														 , {name: '4', time: 0, min_weight: 40, max_weight: 44}
- 																														 , {name: '5', time: 0, min_weight: 40, max_weight: 44}
- 																														 //, {name: '6', time: 0, min_weight: 31, max_weight: 40}
- 																														 //, {name: '7', time: 0, min_weight: 31, max_weight: 40}
+																							 ,    workers: [ {name: '1', time: 0, min_weight: 40, max_weight: 49}
+																														 , {name: '2', time: 0, min_weight: 40, max_weight: 49}
+																														 , {name: '3', time: 0, min_weight: 40, max_weight: 49}
+																														 , {name: '4', time: 0, min_weight: 40, max_weight: 49}
+ 																														 , {name: '5', time: 0, min_weight: 40, max_weight: 49}
+ 																														 , {name: '6', time: 0, min_weight: 40, max_weight: 49}
+ 																														 , {name: '7', time: 0, min_weight: 40, max_weight: 49}
 																														 ]
 																							 },
 																			 W27S33: { containers: {weight: 55}
-																							 ,    workers: [ {name: '1', time: 0, min_weight: 56, max_weight: 60}
- 																														 , {name: '2', time: 0, min_weight: 56, max_weight: 60}
- 																														 , {name: '3', time: 0, min_weight: 56, max_weight: 60}
- 																														 , {name: '4', time: 0, min_weight: 50, max_weight: 54}
- 																														 , {name: '5', time: 0, min_weight: 50, max_weight: 54}
+																							 ,    workers: [ {name: '1', time: 0, min_weight: 50, max_weight: 60}
+ 																														 , {name: '2', time: 0, min_weight: 50, max_weight: 60}
+ 																														 , {name: '3', time: 0, min_weight: 50, max_weight: 60}
+ 																														 , {name: '4', time: 0, min_weight: 50, max_weight: 60}
+ 																														 , {name: '5', time: 0, min_weight: 50, max_weight: 60}
+ 																														 , {name: '6', time: 0, min_weight: 50, max_weight: 60}
 																														 ]
 																							 }
 																		 }
