@@ -58,7 +58,7 @@ var role = {
 		}
 	},
 
-	getTarget: function(creep) {
+	getTarget: function(creep,executer) {
 
 		const this_room = creep.room.name;
 		const this_room_config = Memory.config.rooms[this_room];
@@ -197,7 +197,7 @@ var role = {
 		role.checkOn(creep);
 		
 		if(creep.memory[role.name].on) {
-			var target = role.getTarget(creep);
+			var target = role.getTarget(creep,executer);
 			if(target) {
 				var err = (target.name || !target.id)? // a creep || exit
 						ERR_NOT_IN_RANGE:
