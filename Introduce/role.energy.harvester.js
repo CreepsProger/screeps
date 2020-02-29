@@ -133,13 +133,13 @@ var role = {
 		}
 
 		if(!target && creep.getActiveBodyparts(WORK)) {
-			var sources = creep.room.find(FIND_SOURCES, {
+			var sources = Game.rooms[my_room].find(FIND_SOURCES, {
 				filter: (source) => source.energy >= 0
 			});
 			if(sources.length > 0) {
 				target = sources[0];
 			}
-		role.log('🔜⚡', creep, 'room.find(FIND_SOURCES');
+		role.log('🔜⚡', creep, 'Game.rooms[my_room].find(FIND_SOURCES', my_room);
 		}
 
 
