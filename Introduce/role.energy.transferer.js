@@ -33,15 +33,17 @@ var roleEnergyTransferer = {
 		if(creep.memory.transfering) {
 			var target;
 
-			if(!target && this_room != my_room) {//5e56dc7a28e44c6f77878b87
-				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+			if(!target && this_room != my_room) {
+				var link = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_LINK) &&
-							structure.id == '5e56dc7a28e44c6f77878b87' &&
+							(structure.id == '5e56dc7a28e44c6f77878b87' ||
+							 structure.id == '5e5ab771eadd04714b92ed7d') &&
 							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-							Memory.targets[structure.id] === undefined;
+							tools.checkTarget(executer,structure.id);
 					}
 				});
+				target = (!!link && !!link.id)? tools.setTarget(creep,link,link.id,roleEnergyTransferer.run):undefined;
 			}
 			
 		if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable) {
