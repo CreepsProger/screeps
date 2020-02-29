@@ -1,8 +1,9 @@
 var roleNext = require('role.pickuper');
+const tools = require('tools');
 
 var roleWithdrawer = {
 	/** @param {Creep} creep **/
-	run: function(creep) {
+	run: function(creep,executer = undefined) {
 
 		if(creep.memory.withdrawing && creep.store.getFreeCapacity() == 0) {
 			creep.memory.withdrawing = false;
@@ -21,43 +22,44 @@ var roleWithdrawer = {
 			if(!target) {
 				var tombstone = creep.pos.findClosestByPath(FIND_TOMBSTONES,  {
 					filter: (structure) => {
-						return structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0// &&
-// 							Memory.targets[structure.creep.id] === undefined;
+						return structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
+							tools.checkTarget(executer,structure.creep.id);
 					}
 				});
+				target = tools.setTarget(creep,tombstone,tombstone.creep.id,roleWithdrawer.run);
 
-				if(!!tombstone &&
-					 !!tombstone.creep.id &&
-					 Memory.targets[tombstone.creep.id] !== undefined) {
-					var creep2 = Game.getObjectById(Memory.targets[tombstone.creep.id]);
-					if(creep2 !== undefined) {
-						var path2 = creep2.pos.findPathTo(tombstone);
-						var path = creep.pos.findPathTo(tombstone);
-						if(path2.length > path.length) {
-							target = tombstone;
-							creep2.cancelOrder(creep2.moveTo);
-							require('role.withdrawer').run(creep2);
-						}
-					}
-				}
-				else {
-					target = tombstone;
-				}
+// 				if(!!tombstone &&
+// 					 !!tombstone.creep.id &&
+// 					 Memory.targets[tombstone.creep.id] !== undefined) {
+// 					var creep2 = Game.getObjectById(Memory.targets[tombstone.creep.id]);
+// 					if(creep2 !== undefined) {
+// 						var path2 = creep2.pos.findPathTo(tombstone);
+// 						var path = creep.pos.findPathTo(tombstone);
+// 						if(path2.length > path.length) {
+// 							target = tombstone;
+// 							creep2.cancelOrder(creep2.moveTo);
+// 							require('role.withdrawer').run(creep2);
+// 						}
+// 					}
+// 				}
+// 				else {
+// 					target = tombstone;
+// 				}
 			}
 			
 			if(!target) {
-				target = creep.pos.findClosestByPath(FIND_RUINS,  {
+				var ruin = creep.pos.findClosestByPath(FIND_RUINS,  {
 					filter: (structure) => {
-						return structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
+						return structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
+							tools.checkTarget(executer,structure.id);
 					}
 				});
+				target = tools.setTarget(creep,ruin,ruin.id,roleWithdrawer.run);
+
 			}
 			
 			if(target) {
 				var err = creep.withdraw(target, RESOURCE_ENERGY);
-				if(!!target.creep) {
-					Memory.targets[target.creep.id] = creep.id;
-				}
 				
 				if(err == ERR_NOT_ENOUGH_RESOURCES) {
 					//
