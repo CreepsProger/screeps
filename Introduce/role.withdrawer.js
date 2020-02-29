@@ -3,6 +3,7 @@ var roleNext = require('role.pickuper');
 var roleWithdrawer = {
 	/** @param {Creep} creep **/
 	run: function(creep) {
+
 		if(creep.memory.withdrawing && creep.store.getFreeCapacity() == 0) {
 			creep.memory.withdrawing = false;
 		}
@@ -18,12 +19,30 @@ var roleWithdrawer = {
 			var target;
 
 			if(!target) {
-				target = creep.pos.findClosestByPath(FIND_TOMBSTONES,  {
+				var tombstone = creep.pos.findClosestByPath(FIND_TOMBSTONES,  {
 					filter: (structure) => {
-						return structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-							Memory.targets[structure.creep.id] === undefined;
+						return structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0// &&
+// 							Memory.targets[structure.creep.id] === undefined;
 					}
 				});
+
+				if(!!tombstone &&
+					 !!tombstone.creep.id &&
+					 Memory.targets[tombstone.creep.id] !== undefined) {
+					var creep2 = Game.getObjectById(Memory.targets[tombstone.creep.id]);
+					if(creep2 !== undefined) {
+						var path2 = creep2.pos.findPathTo(tombstone);
+						var path = creep.pos.findPathTo(tombstone);
+						if(path2.length > path.length) {
+							target = tombstone;
+							creep2.cancelOrder(creep2.moveTo);
+							require('role.withdrawer').run(creep2);
+						}
+					}
+				}
+				else {
+					target = tombstone;
+				}
 			}
 			
 			if(!target) {
