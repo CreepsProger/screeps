@@ -41,15 +41,27 @@ var roleUpgrader = {
     run: function(creep) {
 	
 			if(Game.time%20)
-				roleUpgrader.updateStopUpgradingCondition(creep);			
+				roleUpgrader.updateStopUpgradingCondition(creep);
+			
+			const this_room = creep.room.name;
+			const this_room_config = Memory.config.rooms[this_room];
+			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
+			const my_room_config = Memory.config.rooms[my_room];
+			const sources_is_empty = !creep.pos.findClosestByPath(FIND_SOURCES, {
+				filter: (source) => source.energy > 0 && source.room.name == this_room)
+			});
 			
 			if(Memory.stop_upgrading ||
+				 this_room != my_room ||
+				 !sources_is_empty ||
 				 (creep.memory.upgrading && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0)) {
 				creep.memory.upgrading = false;
 			}
 
 			if(!Memory.stop_upgrading &&
 				 !creep.memory.upgrading &&
+				 this_room == my_room &&
+				 sources_is_empty &&
 				 (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() == 0) ||
 				 (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun)) {
 				creep.memory.upgrading = true;
