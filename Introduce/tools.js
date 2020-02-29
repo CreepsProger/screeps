@@ -18,6 +18,7 @@ var tools = {
 				 var path = creep.pos.findPathTo(target);
 				 if(path2.length > path.length) {
 					 mytarget = target;
+					 Memory.targets[id] = creep.id;
 					 creep2.cancelOrder(creep2.moveTo);
 					 run(creep2);
 				 }
@@ -25,6 +26,7 @@ var tools = {
 		 }
 		 else {
 			 mytarget = target;
+			 Memory.targets[id] = creep.id;
 		 }
 
 		 return mytarget;
