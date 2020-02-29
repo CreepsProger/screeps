@@ -9,6 +9,12 @@ var roleBuilder = {
 				 (creep.getActiveBodyparts(WORK) == 0 ||
 					creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0)) {
 				creep.memory.building = false;
+				console.log( '🏗⚠️', Math.trunc(Game.time/10000), Game.time%10000
+										, creep.name
+										, creep.getActiveBodyparts(WORK)
+										, creep.store.getUsedCapacity(RESOURCE_ENERGY)
+										, 'building:'
+										, creep.memory.building);
 			}
 
 			if(!creep.memory.building &&
@@ -16,6 +22,14 @@ var roleBuilder = {
 				 (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() == 0) ||
 				 (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun)) {
 				creep.memory.building = true;
+				console.log( '🏗⚠️', Math.trunc(Game.time/10000), Game.time%10000
+										, creep.name
+										, creep.getActiveBodyparts(WORK)
+										, creep.store.getUsedCapacity(RESOURCE_ENERGY)
+										, creep.store.getFreeCapacity(RESOURCE_ENERGY)
+										, creep.memory.rerun
+										, 'building:'
+										, creep.memory.building);
 			}
 
 			if(creep.memory.building) {
