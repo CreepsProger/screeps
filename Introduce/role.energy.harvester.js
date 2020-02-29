@@ -63,6 +63,9 @@ var role = {
 		const this_room_config = Memory.config.rooms[this_room];
 		const my_room = creep.memory[role.name].room;
 		const my_room_config = Memory.config.rooms[my_room];
+		const this_room_sources_is_empty = !creep.pos.findClosestByPath(FIND_SOURCES, {
+				filter: (source) => source.energy > 0 && source.room.name == this_room
+			});
 
 		var target;
 
@@ -112,6 +115,7 @@ var role = {
 		if(!target &&
 			 creep.memory.rerun &&
 			 this_room == my_room &&
+			 this_room_sources_is_empty &&
 			 creep.room.energyAvailable == creep.room.energyCapacityAvailable) {
 			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
