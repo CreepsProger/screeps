@@ -40,6 +40,8 @@ var roleUpgrader = {
 			
 		/** @param {Creep} creep **/
     run: function(creep) {
+			if(!creep.memory[constants.ROLE_ENERGY_HARVESTING])
+				return;
 	
 			if(Game.time%20)
 				roleUpgrader.updateStopUpgradingCondition(creep);
@@ -48,7 +50,6 @@ var roleUpgrader = {
 			const this_room_config = Memory.config.rooms[this_room];
 
 			console.log('upgrading?', JSON.stringify(constants.ROLE_ENERGY_HARVESTING), JSON.stringify(creep));
-
 			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
 			const my_room_config = Memory.config.rooms[my_room];
 			const sources_is_empty = !creep.pos.findClosestByPath(FIND_SOURCES, {
