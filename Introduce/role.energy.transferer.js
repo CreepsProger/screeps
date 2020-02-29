@@ -36,13 +36,16 @@ var roleEnergyTransferer = {
 			}			
 
 			if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable) {
-				target = creep.pos.findInRange(FIND_STRUCTURES, 5, {
+				var closests = creep.pos.findInRange(FIND_STRUCTURES, 5, {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_CONTAINER) &&
 							this_room_config.containers.weight < creep.memory.weight && 
 							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
 					}
 				});
+				if(closests.length > 0) {
+					target = closests[0];
+				}
 // 				console.log( '🏗⚠️', Math.trunc(Game.time/10000), Game.time%10000
 // 										, creep.name
 // 										, 'this_room:'
