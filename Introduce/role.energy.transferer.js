@@ -10,26 +10,26 @@ var roleEnergyTransferer = {
 				return;
 		}
 
+		const this_room = creep.room.name;
+		const this_room_config = Memory.config.rooms[this_room];
+		const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
+		const my_room_config = Memory.config.rooms[my_room];
+		const this_room_sources_is_empty = !creep.pos.findClosestByPath(FIND_SOURCES, {
+			filter: (source) => source.energy > 0 && source.room.name == this_room
+		});
+
 		if(creep.memory.transfering && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
 			creep.memory.transfering = false;
 		}
 
 		if(!creep.memory.transfering &&
 			 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() == 0) ||
-				(creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun && creep.getActiveBodyparts(WORK)))) {
+				(creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun && creep.getActiveBodyparts(WORK)) ||
+				(creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun && this_room != my_room))) {
 			creep.memory.transfering = true;
 		}
 		
 		if(creep.memory.transfering) {
-			
-			const this_room = creep.room.name;
-			const this_room_config = Memory.config.rooms[this_room];
-			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
-			const my_room_config = Memory.config.rooms[my_room];
-			const this_room_sources_is_empty = !creep.pos.findClosestByPath(FIND_SOURCES, {
-				filter: (source) => source.energy > 0 && source.room.name == this_room
-			});
-
 			var target;
 
 			if(!target && this_room != my_room) {//5e56dc7a28e44c6f77878b87
