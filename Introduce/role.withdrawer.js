@@ -57,8 +57,7 @@ var roleWithdrawer = {
 							tools.checkTarget(executer,structure.id);
 					}
 				});
-				target = tools.setTarget(creep,ruin,ruin.id,roleWithdrawer.run);
-
+				target = (!!ruin && !!ruin.id)? tools.setTarget(creep,ruin,ruin.id,roleWithdrawer.run):undefined;
 			}
 			
 			if(target) {
