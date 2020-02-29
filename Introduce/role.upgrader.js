@@ -46,6 +46,9 @@ var roleUpgrader = {
 			
 			const this_room = creep.room.name;
 			const this_room_config = Memory.config.rooms[this_room];
+
+			console.log('upgrading?', JSON.stringify(constants.ROLE_ENERGY_HARVESTING), JSON.stringify(creep));
+
 			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
 			const my_room_config = Memory.config.rooms[my_room];
 			const sources_is_empty = !creep.pos.findClosestByPath(FIND_SOURCES, {
