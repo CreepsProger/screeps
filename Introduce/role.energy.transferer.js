@@ -44,7 +44,7 @@ var roleEnergyTransferer = {
 			}
 			
 		if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable) {
-				var closests = creep.pos.findInRange(FIND_STRUCTURES, 5, {
+				var closests = creep.pos.findInRange(FIND_STRUCTURES, 1, {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_CONTAINER) &&
 							this_room_config.containers.weight < creep.memory.weight && 
