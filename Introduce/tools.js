@@ -6,26 +6,30 @@ var last_game_time_created_creep = 0;
 
 var tools = {
     
-   setTarget: function(type,range) {
+   setTarget: function(creep,target,id,run) {
+		 var mytarget;
 
-				if(!!tombstone &&
-					 !!tombstone.creep.id &&
-					 Memory.targets[tombstone.creep.id] !== undefined) {
-					var creep2 = Game.getObjectById(Memory.targets[tombstone.creep.id]);
-					if(creep2 !== undefined) {
-						var path2 = creep2.pos.findPathTo(tombstone);
-						var path = creep.pos.findPathTo(tombstone);
-						if(path2.length > path.length) {
-							target = tombstone;
-							creep2.cancelOrder(creep2.moveTo);
-							require('role.withdrawer').run(creep2);
-						}
-					}
-				}
-				else {
-					target = tombstone;
-				}
-        }
+		 if(!!target &&
+				!!id &&
+				Memory.targets[id] !== undefined) {
+			 var creep2 = Game.getObjectById(Memory.targets[id]);
+			 if(creep2 !== undefined) {
+				 var path2 = creep2.pos.findPathTo(target);
+				 var path = creep.pos.findPathTo(target);
+				 if(path2.length > path.length) {
+					 mytarget = target;
+					 creep2.cancelOrder(creep2.moveTo);
+					 run(creep2);
+				 }
+			 }
+		 }
+		 else {
+			 mytarget = target;
+		 }
+
+		 return mytarget;
+	 }
+
 };
 
 module.exports = tools;
