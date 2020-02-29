@@ -28,7 +28,7 @@ var role = {
 			 creep.memory[role.name].v != config.version) {
 			creep.memory[role.name] = { v: config.version
 																, on: false
-																, room: creep.room
+																, room: creep.room.name
 																};
 		}
 	},
