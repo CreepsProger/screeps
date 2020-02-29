@@ -153,6 +153,19 @@ var role = {
 				}
 			});
 		}
+		
+		if(!target &&
+			 creep.room.energyAvailable == creep.room.energyCapacityAvailable &&
+			 Memory.stop_upgrading == false &&
+			 creep.getActiveBodyparts(WORK)) {
+			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+				filter: (structure) => {
+					return (structure.structureType == STRUCTURE_STORAGE) &&
+						structure.room.name == creep.room.name &&
+						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 30000;
+				}
+			});
+		}
 
 		if(!target && !creep.getActiveBodyparts(WORK)) {
 /*
