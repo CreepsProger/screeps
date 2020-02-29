@@ -10,8 +10,12 @@ const flags = require('main.flags');
 // C1->T2     C2->T3     C3->T1
 
 var tools = {
-    
-   setTarget: function(creep,target,id,run) {
+	
+	checkTarget: function(executer,id) {
+		return (!!executer)? Memory.targets[id] === undefined:true;
+	},
+	
+	setTarget: function(creep,target,id,run) {
 		 var mytarget;
 
 		 if(!!target &&
