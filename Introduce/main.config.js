@@ -6,9 +6,9 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 56,
+	version: 57,
 	ticksToCheckCreepsNumber: 10,
-	maxCreepsNumber:20,
+	maxCreepsNumber:21,
 
 	log_flags: ['MC','MCF ','M'], 
 	
@@ -43,6 +43,7 @@ var config = {
  																														 , {name: '5', time: 0, min_weight: 40, max_weight: 49}
  																														 , {name: '6', time: 0, min_weight: 40, max_weight: 49}
  																														 , {name: '7', time: 0, min_weight: 40, max_weight: 49}
+ 																														 , {name: '8', time: 0, min_weight: 40, max_weight: 49}
 																														 ]
 																							 },
 																			 W27S33: { containers: {weight: 55}
