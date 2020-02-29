@@ -13,7 +13,7 @@ var role = {
 	logFlags: ['LEH','LE ','L'], 
 	
 	log: function(sign, creep, ...args) {
-			if(log.canLog(role.logFlags) || creep.name = 'creep-<59>-0.0.0.0.9.9.9-8510') {
+			if(log.canLog(role.logFlags) || creep.name == 'creep-<59>-0.0.0.0.9.9.9-8510') {
 				console.log( sign, Math.trunc(Game.time/10000), Game.time%10000
 										, creep.name
 										, role.name
