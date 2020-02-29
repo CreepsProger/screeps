@@ -8,7 +8,7 @@ var config = {
 
 	version: 55,
 	ticksToCheckCreepsNumber: 10,
-	maxCreepsNumber:19,
+	maxCreepsNumber:20,
 
 	log_flags: ['MC','MCF ','M'], 
 	
@@ -32,6 +32,7 @@ var config = {
 																							 ,    workers: [ {name: '1', time: 0, min_weight: 30, max_weight: 39}
 																														 , {name: '2', time: 0, min_weight: 30, max_weight: 39}
 																														 , {name: '3', time: 0, min_weight: 30, max_weight: 39}
+																														 , {name: '4', time: 0, min_weight: 30, max_weight: 39}
 																														 ]
 																							 },
 																			 W26S33: { containers: {weight: 45}
