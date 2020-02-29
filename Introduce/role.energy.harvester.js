@@ -90,7 +90,7 @@ var role = {
 			 true) {
 			const exitDir = Game.map.findExit(Game.rooms[this_room] , my_room);
 			target = creep.pos.findClosestByPath(exitDir);
-			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
+// 			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
 		}
 
 // 		if(!target)
@@ -128,6 +128,8 @@ var role = {
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
 				}
 			});
+
+		role.log('🔜⚡', creep, 'STRUCTURE_CONTAINER');
 		}
 
 		if(!target && creep.getActiveBodyparts(WORK)) {
@@ -137,6 +139,7 @@ var role = {
 			if(sources.length > 0) {
 				target = sources[0];
 			}
+		role.log('🔜⚡', creep, 'room.find(FIND_SOURCES');
 		}
 
 
@@ -144,6 +147,7 @@ var role = {
 			target = creep.pos.findClosestByPath(FIND_SOURCES, {
 				filter: (source) => source.energy >= (creep.memory.rerun? 0:1)
 			});
+		role.log('🔜⚡', creep, 'creep.pos.findClosestByPath(FIND_SOURCES');
 		}
 
 		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
@@ -166,6 +170,7 @@ var role = {
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 30000;
 				}
 			});
+		role.log('🔜⚡', creep, 'STRUCTURE_STORAGE');
 		}
 
 		if(!target && !creep.getActiveBodyparts(WORK)) {
