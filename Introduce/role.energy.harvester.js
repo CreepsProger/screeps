@@ -172,7 +172,7 @@ var role = {
 							creep2.memory.weight > creep.memory.weight &&
 							creep2.getActiveBodyparts(WORK) &&
 							!creep2.memory.upgrading &&
-							tools.checkTarget(executer,structure.id);
+							tools.checkTarget(executer,creep2.id);
 					}
 				});
 				target = (!!weightcreep && !!weightcreep.id)? tools.setTarget(creep,weightcreep,weightcreep.id,role.run):undefined;
@@ -185,7 +185,7 @@ var role = {
 							creep2.memory.weight > creep.memory.weight &&
 							creep2.getActiveBodyparts(WORK) &&
 							!creep2.memory.upgrading &&
-							tools.checkTarget(executer,structure.id);
+							tools.checkTarget(executer,creep2.id);
 					}
 				});
 				target = (!!weightcreep && !!weightcreep.id)? tools.setTarget(creep,weightcreep,weightcreep.id,role.run):undefined;
