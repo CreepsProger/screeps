@@ -15,7 +15,7 @@ var roleBuilder = {
 			}
 
 			if(!creep.memory.building &&
-				 creep.getActiveBodyparts(WORK) &&
+				 creep.getActiveBodyparts(WORK) > 0 &&
 				 (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() == 0) ||
 				 (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun)) {
 				creep.memory.building = true;
