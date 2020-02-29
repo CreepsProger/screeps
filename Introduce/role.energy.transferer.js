@@ -29,8 +29,6 @@ var roleEnergyTransferer = {
 			const this_room_sources_is_empty = !creep.pos.findClosestByPath(FIND_SOURCES, {
 				filter: (source) => source.energy > 0 && source.room.name == this_room
 			});
-			
-			if(Memory.stop_upgrading ||
 
 			var target;
 
