@@ -158,7 +158,6 @@ var role = {
 			 if(!!source) {
 				 target = tools.setTarget(creep,source,source.id,role.run);
 			 }
-			});
 		}
 
 		if(!target && creep.getActiveBodyparts(WORK)) {
