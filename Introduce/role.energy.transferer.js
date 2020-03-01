@@ -40,6 +40,7 @@ var roleEnergyTransferer = {
 							(structure.id == '5e56dc7a28e44c6f77878b87' ||
 							 structure.id == '5e5ab771eadd04714b92ed7d') &&
 							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+							this_room_config.containers.weight < creep.memory.weight &&
 							tools.checkTarget(executer,structure.id);
 					}
 				});
