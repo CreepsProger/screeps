@@ -58,7 +58,6 @@ var roleUpgrader = {
 			});
 			const canDo =
 						(!Memory.stop_upgrading &&
-						 !creep.memory.upgrading &&
 						 this_room == my_room &&
 						 sources_is_empty &&
 						 (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() == 0) ||
