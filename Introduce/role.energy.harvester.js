@@ -131,7 +131,7 @@ var role = {
 
 // 		role.log('🔜⚡', creep, 'STRUCTURE_CONTAINER');
 		}
-
+/*
 		if(!target && creep.getActiveBodyparts(WORK)) {
 			var sources = Game.rooms[my_room].find(FIND_SOURCES, {
 				filter: (source) => source.energy > 0
@@ -141,13 +141,18 @@ var role = {
 			}
 // 		role.log('🔜⚡', creep, 'Game.rooms[my_room].find(FIND_SOURCES', my_room);
 		}
-
+*/
 
 		if(!target && creep.getActiveBodyparts(WORK)) {
-			target = creep.pos.findClosestByPath(FIND_SOURCES, {
-				filter: (source) => source.energy >= (creep.memory.rerun? 0:1)
+			var sources = Game.rooms[my_room].find(FIND_SOURCES, {
+				filter: (source) => source.energy > 0
 			});
+			if(sources.length > 0) {
+				target = sources[0].pos.findClosestByPath(FIND_SOURCES, {
+				filter: (source) => source.energy >= (creep.memory.rerun? 0:1)
+				});
 // 		role.log('🔜⚡', creep, 'creep.pos.findClosestByPath(FIND_SOURCES');
+			}				
 		}
 
 		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
