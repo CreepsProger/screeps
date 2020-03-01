@@ -18,7 +18,7 @@ var tools = {
 	setTarget: function(creep,target,id,run) {
 		 var mytarget;
 
-		 if(!!target && !!id) {
+		 if(!target && !id) {
 			 return mytarget;
 		 }
 
