@@ -43,7 +43,9 @@ var roleEnergyTransferer = {
 							tools.checkTarget(executer,structure.id);
 					}
 				});
-				// target = (!!link && !!link.id)? tools.setTarget(creep,link,link.id,roleEnergyTransferer.run):undefined;
+				if(!!link) {
+					target = tools.setTarget(creep,link,link.id,roleEnergyTransferer.run);
+				}
 			}
 
 		if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable) {
@@ -109,7 +111,9 @@ var roleEnergyTransferer = {
 							tools.checkTarget(executer,structure.id);
 					}
 				});
-				target = (!!extension && !!extension.id)? tools.setTarget(creep,extension,extension.id,roleEnergyTransferer.run):undefined;
+				if(!!extension) {
+					target = tools.setTarget(creep,extension,extension.id,roleEnergyTransferer.run);
+				}
 			}
 
 		/*

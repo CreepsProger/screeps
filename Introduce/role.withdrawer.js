@@ -8,7 +8,7 @@ var roleWithdrawer = {
 		if(creep.memory.withdrawing && creep.store.getFreeCapacity() == 0) {
 			creep.memory.withdrawing = false;
 		}
-		
+
 		if(!creep.memory.withdrawing &&
 			 creep.getActiveBodyparts(CARRY) > 0 &&
 			 (creep.store.getUsedCapacity() == 0 ||
@@ -26,8 +26,7 @@ var roleWithdrawer = {
 							tools.checkTarget(executer,structure.creep.id);
 					}
 				});
-				if(!!tombstone &&
-					 !!tombstone.creep.id) {
+				if(!!tombstone) {
 					target = tools.setTarget(creep,tombstone,tombstone.creep.id,roleWithdrawer.run);
 				}
 
@@ -49,7 +48,7 @@ var roleWithdrawer = {
 // 					target = tombstone;
 // 				}
 			}
-			
+
 			if(!target) {
 				var ruin = creep.pos.findClosestByPath(FIND_RUINS,  {
 					filter: (structure) => {
@@ -57,12 +56,14 @@ var roleWithdrawer = {
 							tools.checkTarget(executer,structure.id);
 					}
 				});
-				target = (!!ruin && !!ruin.id)? tools.setTarget(creep,ruin,ruin.id,roleWithdrawer.run):undefined;
+				if(!!ruin) {
+					target = tools.setTarget(creep,ruin,ruin.id,roleWithdrawer.run);
+				}
 			}
-			
+
 			if(target) {
 				var err = creep.withdraw(target, RESOURCE_ENERGY);
-				
+
 				if(err == ERR_NOT_ENOUGH_RESOURCES) {
 					//
 					const found = target.pos.lookFor(LOOK_RESOURCES);
@@ -72,7 +73,7 @@ var roleWithdrawer = {
 					}
 					err = creep.withdraw(target, RESOURCE_GHODIUM_OXIDE);
 				}
-				
+
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
 					creep.say('🔜💼');
@@ -102,7 +103,7 @@ var roleWithdrawer = {
 				creep.memory.withdrawing = false;
 			}
 		}
-		
+
 		if(!creep.memory.withdrawing) {
 			roleNext.run(creep);
 		}
@@ -115,7 +116,7 @@ module.exports = roleWithdrawer;
 
 
 
-         
+
 //             if(!target) {
 //                 target = room.find(FIND_TOMBSTONES).forEach(tombstone => {
 //                     if(tombstone.creep.my) {

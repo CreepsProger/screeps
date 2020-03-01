@@ -81,7 +81,7 @@ var role = {
 				}
 			});
 			if(!!link) {
-				// target = tools.setTarget(creep,link,link.id,role.run);//d
+				target = tools.setTarget(creep,link,link.id,role.run);
 			}
 		}
 
@@ -191,7 +191,9 @@ var role = {
 							tools.checkTarget(executer,creep2.id);
 					}
 				});
-				target = (!!weightcreep && !!weightcreep.id)? tools.setTarget(creep,weightcreep,weightcreep.id,role.run):undefined;
+				if(!!weightcreep) {
+					target = tools.setTarget(creep,weightcreep,weightcreep.id,role.run);
+				}
 			}
 
 			if(!target && creep.memory.rerun) {
@@ -204,7 +206,9 @@ var role = {
 							tools.checkTarget(executer,creep2.id);
 					}
 				});
-				target = (!!weightcreep && !!weightcreep.id)? tools.setTarget(creep,weightcreep,weightcreep.id,role.run):undefined;
+				if(!!weightcreep) {
+					target = tools.setTarget(creep,weightcreep,weightcreep.id,role.run);
+				}
 			}
 		}
 		return target;
