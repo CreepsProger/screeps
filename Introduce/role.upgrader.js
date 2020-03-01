@@ -57,10 +57,11 @@ var roleUpgrader = {
 				filter: (source) => source.energy > 0 && source.room.name == this_room
 			});
 			
-			if(Memory.stop_upgrading ||
-				 this_room != my_room ||
-				 !sources_is_empty ||
-				 (creep.memory.upgrading && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0)) {
+			if(creep.memory.upgrading &&
+				 (Memory.stop_upgrading ||
+					this_room != my_room ||
+					!sources_is_empty ||
+					creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0)) {
 				creep.memory.upgrading = false;
 			}
 
