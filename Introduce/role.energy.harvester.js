@@ -145,6 +145,22 @@ var role = {
 		}
 */
 
+		// ticksToRegeneration
+		if(!target && creep.getActiveBodyparts(WORK)) {
+			var source = creep.pos.findClosestByPath(FIND_SOURCES, {
+				filter: (source) => {
+					return source.energy == source.energyCapacity &&
+					 source.room.name == this_room &&
+					 // !!source.ticksToRegeneration &&
+						 tools.checkTarget(executer,source.id);
+				 }
+			 });
+			 if(!!source) {
+				 target = tools.setTarget(creep,source,source.id,role.run);
+			 }
+			});
+		}
+
 		if(!target && creep.getActiveBodyparts(WORK)) {
 			target = creep.pos.findClosestByPath(FIND_SOURCES, {
 				filter: (source) => source.energy > 0 && source.room.name == this_room
