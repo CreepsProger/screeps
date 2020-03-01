@@ -12,7 +12,7 @@ const flags = require('main.flags');
 var tools = {
 	
 	checkTarget: function(executer,id) {
-		return (!!executer)? Memory.targets[id] === undefined:true;
+		return (executer === undefined)? true:Memory.targets[id] === undefined;
 	},
 	
 	setTarget: function(creep,target,id,run) {
