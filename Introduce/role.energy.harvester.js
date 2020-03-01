@@ -10,8 +10,8 @@ var role = {
 
 	name: constants.ROLE_ENERGY_HARVESTING,
 
-	logFlags: ['LEH','LE ','L'], 
-	
+	logFlags: ['LEH','LE ','L'],
+
 	log: function(sign, creep, ...args) {
 			if(log.canLog(role.logFlags) || creep.name == 'creep-<59>-0.0.0.0.9.9.9-8600-') {
 				console.log( sign, Math.trunc(Game.time/10000), Game.time%10000
@@ -70,7 +70,7 @@ var role = {
 
 		var target;
 
-		if(!target && this_room == my_room) {//5e57296459c10348279bb750
+		if(!target && this_room == my_room) {
 			var link = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_LINK) &&
@@ -79,10 +79,12 @@ var role = {
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 							tools.checkTarget(executer,structure.id);
 				}
-			});// require('role.energy.harvester').run;
-			target = (!!link && !!link.id)? tools.setTarget(creep,link,link.id,role.run):undefined;
+			});
+			if(!!link) {
+				target = tools.setTarget(creep,link,link.id,role.run);
+			}
 		}
-		
+
 		if(!target &&
 // 			 creep.room.energyAvailable > creep.room.energyCapacityAvailable - 400 &&
 			 this_room != my_room &&
@@ -96,7 +98,7 @@ var role = {
 // 		if(!target)
 // 		{
 // 			console.log(creep.name, 'check target', STRUCTURE_CONTAINER, ':', creep.memory.rerun, this_room, my_room, creep.room.energyAvailable,
-// 								creep.room.energyCapacityAvailable);	
+// 								creep.room.energyCapacityAvailable);
 // 		}
 
 		if(!target &&
@@ -147,8 +149,8 @@ var role = {
 			target = creep.pos.findClosestByPath(FIND_SOURCES, {
 				filter: (source) => source.energy > 0 && source.room.name == this_room
 			});
-		}				
-		
+		}
+
 		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
 			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
@@ -157,7 +159,7 @@ var role = {
 				}
 			});
 		}
-		
+
 		if(!target &&
 			 creep.room.energyAvailable == creep.room.energyCapacityAvailable &&
 			 Memory.stop_upgrading == false &&
@@ -207,12 +209,12 @@ var role = {
 		}
 		return target;
 	},
-	
+
 	run: function(creep,executer = undefined) {
 		role.init(creep);
 		role.checkOff(creep);
 		role.checkOn(creep);
-		
+
 		if(creep.memory[role.name].on) {
 			var target = role.getTarget(creep,executer);
 			if(target) {
@@ -221,7 +223,7 @@ var role = {
 				target.structureType?
 						creep.withdraw(target, RESOURCE_ENERGY): // a structure
 				creep.harvest(target); // a source
-				
+
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
 					creep.say('🔜⚡');
@@ -244,14 +246,14 @@ var role = {
 		if(!creep.memory.rerun) {
 			creep.memory.rerun = 1;
 			if(!creep.memory[role.name].on) {
-				creep.say('🔃'); 
+				creep.say('🔃');
 				require('role.claimer').run(creep);
 			}
 		}
 
 		for(var name in Game.spawns) {
 			var spawn = Game.spawns[name];
-			if(creep.room.name == spawn.room.name && 
+			if(creep.room.name == spawn.room.name &&
 				 creep.pos.x == spawn.pos.x+1 &&
 				 creep.pos.y == spawn.pos.y) {
 				creep.move(Game.time%8+1); // TOP:1 ,..., TOP_LEFT:8
