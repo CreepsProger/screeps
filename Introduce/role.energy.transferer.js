@@ -3,7 +3,7 @@ var constants = require('main.constants');
 const tools = require('tools');
 
 var roleEnergyTransferer = {
-	
+
     /** @param {Creep} creep **/
 	run: function(creep, executer = undefined) {
 		if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
@@ -29,7 +29,7 @@ var roleEnergyTransferer = {
 				(creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun && this_room != my_room))) {
 			creep.memory.transfering = true;
 		}
-		
+
 		if(creep.memory.transfering) {
 			var target;
 
@@ -43,22 +43,22 @@ var roleEnergyTransferer = {
 							tools.checkTarget(executer,structure.id);
 					}
 				});
-				target = (!!link && !!link.id)? tools.setTarget(creep,link,link.id,roleEnergyTransferer.run):undefined;
+				// target = (!!link && !!link.id)? tools.setTarget(creep,link,link.id,roleEnergyTransferer.run):undefined;
 			}
-			
+
 		if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable) {
 				var closests = creep.pos.findInRange(FIND_STRUCTURES, 1, {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_CONTAINER) &&
-							this_room_config.containers.weight < creep.memory.weight && 
+							this_room_config.containers.weight < creep.memory.weight &&
 							structure.store.getFreeCapacity() > 0;
 					}
 				});
 				if(closests.length > 0) {
 					target = closests[0];
 				}
-				
-				
+
+
 // 				console.log( '🏗⚠️', Math.trunc(Game.time/10000), Game.time%10000
 // 										, creep.name
 // 										, 'this_room:'
@@ -99,8 +99,8 @@ var roleEnergyTransferer = {
 				if(closests.length > 0) {
 					target = closests[0];
 				}
-			}            
-			
+			}
+
 			if(!target) {
 				var extension = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
 					filter: (structure) => {
@@ -111,9 +111,9 @@ var roleEnergyTransferer = {
 				});
 				target = (!!extension && !!extension.id)? tools.setTarget(creep,extension,extension.id,roleEnergyTransferer.run):undefined;
 			}
-		
+
 		/*
-			
+
 			if(!target && creep.ticksToLive < constants.TICKS_TO_LIVE_TO_TRANSFER_ENERGY_TO_SPAWN) {
 				target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
 					filter: (structure) => {
@@ -122,9 +122,9 @@ var roleEnergyTransferer = {
 					}
 				});
 			}
-			
+
 			*/
-			
+
 			if(!target) {
 				target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
 					filter: (structure) => {
@@ -142,9 +142,9 @@ var roleEnergyTransferer = {
 					}
 				});
 			}
-		
+
 		/*
-			
+
 			if(!target) {
 				var closests = creep.pos.findInRange(FIND_MY_STRUCTURES, 1, {
 					filter: (structure) => {
@@ -152,14 +152,14 @@ var roleEnergyTransferer = {
 							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
 					}
 				});
-				
+
 				if(closests.length > 0) {
 					target = closests[0];
 				}
 			}
-			
+
 			*/
-			
+
 			if(!target) {
 				var storages = _.filter(Game.structures, function(structure) {
 					return structure.my &&
@@ -176,16 +176,16 @@ var roleEnergyTransferer = {
 					});
 				}
 			}
-			
+
 			if(target) {
-				
+
 				var err = ERR_NOT_IN_RANGE;
-				
+
 				if(target.id !== undefined) {
 					err = creep.transfer(target, RESOURCE_ENERGY);
 					Memory.targets[target.id] = creep.id;
 				}
-				
+
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
 					creep.say('🔜💡');

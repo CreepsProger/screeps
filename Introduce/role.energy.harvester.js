@@ -81,7 +81,7 @@ var role = {
 				}
 			});
 			if(!!link) {
-				target = tools.setTarget(creep,link,link.id,role.run);//d
+				// target = tools.setTarget(creep,link,link.id,role.run);//d
 			}
 		}
 
