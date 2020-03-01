@@ -1,11 +1,11 @@
-// $Id:$
+// $Id$
 var lastFlagRemoved;
 
 var last_game_time_created_creep = 0;
 
 var mainFlags = {
-    
-    
+
+
    work_efficiency: function(type,range) {
        var RAs = Math.trunc(type%10000000000/100000000);
        var  As = Math.trunc(type%100000000/1000000);
@@ -20,7 +20,7 @@ var mainFlags = {
       var move_from_rc_ticks = range * Math.ceil((fatigue_parts - Cs) / Ms / 2);
       return Math.floor(300 * Cs * 50 / (harvest_ticks + move_to_rc_ticks + upgrade_ticks + move_from_rc_ticks));
    },
-    
+
     tryCreateCreep: function(type, weight, needed = 0) {
         var body = [];
         var  Ts = Math.trunc(type%100000000000000/1000000000000);
@@ -93,11 +93,11 @@ var mainFlags = {
             if(Game.flags['commit']) {
                 lastFlagRemoved = Game.flags['commit'];
                 lastFlagRemoved.remove();
-            } 
-            
+            }
+
             Memory.CreepsCounter = 0;
             Memory.CreepsNumberByType = {};
-            
+
             for(var name in Game.creeps) {
                 var creep = Game.creeps[name];
                 Memory.CreepsCounter++;
@@ -124,7 +124,7 @@ var mainFlags = {
                         , 'Memory.CreepsNumberByType:'
                         , Memory.CreepsNumberByType
                         , JSON.stringify(Memory.CreepsNumberByType));
-            
+
             Memory.totals = { CreepsNumber: 0
                              , Capacity: 0
                              , FreeCapacity: 0
@@ -136,7 +136,7 @@ var mainFlags = {
                    ,   Avg: { v: 0, movingAverage: { vs: [0,1,2,3,4,5,6,7,8,9], i: 0, summ: 0, delta: 0, ma:0 }}};
         }
     },
-    
+
     //Flag1: Rerun last flag with a new position
     Flag1: function(Flag1) {
         console.log( '🏳️‍✒️', Math.trunc(Game.time/10000), Game.time%10000
@@ -150,8 +150,7 @@ var mainFlags = {
     // T: Test
     T: function(T) {
         var N = 1234;
-        var id = '\$\I\d\: \$'; 
-        var id2 = '$Id: $'; 
+        var id = '$Id$';
         console.log( 'Ｔ', Math.trunc(Game.time/10000), Game.time%10000
                     , T
                     , 'String.fromCharCode(65):'
@@ -162,8 +161,6 @@ var mainFlags = {
                     , N.toString(16).toUpperCase()
                     , 'id:'
                     , id
-                    , 'id2:'
-                    , id2
                    );
 
         [ 40302
@@ -270,7 +267,7 @@ var mainFlags = {
             if(target)
                 creep.moveTo(target);
         }
-        
+
         lastFlagRemoved = CMTCC;
         lastFlagRemoved.remove();
     },
@@ -290,7 +287,7 @@ var mainFlags = {
                 creep.say('CWEFC ' + err);
             }
         }
-        
+
         lastFlagRemoved = CWEFC;
         lastFlagRemoved.remove();
     },

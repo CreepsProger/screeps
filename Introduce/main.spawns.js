@@ -5,7 +5,7 @@ const flags = require('main.flags');
 var last_game_time_created_creep = 0;
 
 var spawns = {
-    
+
    work_efficiency: function(type,range) {
        var RAs = Math.trunc(type%10000000000/100000000);
        var  As = Math.trunc(type%100000000/1000000);
@@ -20,7 +20,7 @@ var spawns = {
       var move_from_rc_ticks = range * Math.ceil((fatigue_parts - Cs) / Ms / 2);
       return Math.floor(300 * Cs * 50 / (harvest_ticks + move_to_rc_ticks + upgrade_ticks + move_from_rc_ticks));
    },
-    
+
     tryCreateCreep: function(spawn, type, weight, needed = 0) {
 			var body = [];
 			const  Ts = Math.trunc(type%100000000000000/1000000000000);
@@ -73,7 +73,7 @@ var spawns = {
 											, newName);
 					if(!Memory.CreepsNumberByType[full_type])
 						Memory.CreepsNumberByType[full_type] = 0;
-					
+
 					Memory.CreepsNumberByType[full_type]++;
 					Memory.CreepsCounter++;
 					last_game_time_created_creep = Game.time;
@@ -86,7 +86,7 @@ var spawns = {
 			if(false && Spawn.store.getUsedCapacity(RESOURCE_ENERGY) > 0) {
 				Spawn.pos.findInRange(FIND_MY_CREEPS, 1).forEach(function(creep) {
 					const creep_target_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
-					if(creep_target_room == Spawn.room.name && 
+					if(creep_target_room == Spawn.room.name &&
 						 Memory.totals.CreepsNumber == maxCreepsNumber &&
 						 creep.ticksToLive < constants.TICKS_TO_LIVE_TO_RENEW) {
 						if(OK == Spawn.renewCreep(creep)) {
@@ -99,12 +99,12 @@ var spawns = {
 			}
 		}
 	},
-	
+
 	run: function() {
-		
+
 		if(Game.time % config.ticksToCheckCreepsNumber != 0)
 			return;
-		
+
 		for(var name in Game.spawns) {
 			var spawn = Game.spawns[name];
 /*
@@ -112,35 +112,35 @@ var spawns = {
 									, 'spawn:'
 									, JSON.stringify(spawn));
 									*/
-			
+
 			if(!spawn.spawning) {
 				var controller = spawn.room.controller;
 				const CL = controller.level;
 				var N = Memory.totals.CreepsNumber;
-				
+
 				if(CL >= 4) spawns.tryCreateCreep(spawn,         1709, 30, N<(config.maxCreepsNumber+1)? 1:0); // V 1-1 E  1300   Carier
 				if(CL >= 5) spawns.tryCreateCreep(spawn,        90909, 39, N<(config.maxCreepsNumber+1)? 2:0); // V 1-1 E  1800   Worker
 				if(CL >= 4) spawns.tryCreateCreep(spawn,         1709, 40, N<(config.maxCreepsNumber+1)? 1:0); // V 1-1 E  1300   Carier
-				if(CL >= 5) spawns.tryCreateCreep(spawn,        90909, 49, N<(config.maxCreepsNumber+1)? 6:0); // V 1-1 E  1800   Worker
+				if(CL >= 5) spawns.tryCreateCreep(spawn,        90909, 49, N<(config.maxCreepsNumber+1)? 5:0); // V 1-1 E  1800   Worker
  				if(CL >= 4) spawns.tryCreateCreep(spawn,         1709, 50, N<(config.maxCreepsNumber+1)? 2:0); // V 1-1 E  1300   Carier
-				if(CL >= 5) spawns.tryCreateCreep(spawn,        90909, 59, N<(config.maxCreepsNumber+1)? 2:0); // V 1-1 E  1800   Worker
+				if(CL >= 5) spawns.tryCreateCreep(spawn,        90909, 59, N<(config.maxCreepsNumber+1)? 3:0); // V 1-1 E  1800   Worker
 				if(CL >= 4) spawns.tryCreateCreep(spawn,5000200000007,100, N<(config.maxCreepsNumber+1)? 5:0); // V 1-1 E   650 Attacker
 				if(CL >= 4) spawns.tryCreateCreep(spawn,  20000000002,100, N<(config.maxCreepsNumber+1)? 1:0); // V 1-1 E  1300  Claimer
-				
+
 				if(CL >= 4) spawns.tryCreateCreep(spawn,        80808, 30, Memory.totals.WORK< 8? 1:0); // E 1600 Worker
 				if(CL >= 4) spawns.tryCreateCreep(spawn,        70707, 30, Memory.totals.WORK< 7? 1:0); // E 1400 Worker
 				if(CL >= 3) spawns.tryCreateCreep(spawn,        60606, 30, Memory.totals.WORK< 6? 1:0); // E 1200 Worker
 				if(CL >= 3) spawns.tryCreateCreep(spawn,        50505, 30, Memory.totals.WORK< 5? 1:0); // E 1000 Worker
 				if(CL >= 3) spawns.tryCreateCreep(spawn,        40404, 30, Memory.totals.WORK< 4? 1:0); // E  800 Worker
-				
+
 				if(CL >= 2) spawns.tryCreateCreep(spawn,          506, 45, Memory.totals.CARRY< 6? 1:0); // E 550 Carier
-				
+
 				if(CL >= 1) spawns.tryCreateCreep(spawn,          303, 45, Memory.totals.CARRY< 3? 1:0); // E 300 Carier
 			}
-			
+
 			if(spawn.spawning) {
 				spawn.spawning.setDirections([RIGHT]);
-				
+
 				var spawningCreep = Game.creeps[spawn.spawning.name];
 				spawn.room.visual.text('🛠️' + spawn.spawning.name
 															 , spawn.pos.x + 1
