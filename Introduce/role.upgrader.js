@@ -73,7 +73,7 @@ var roleUpgrader = {
 
 			if(creep.memory.upgrading) {
 				var target;
-				if(!target && !!creep.room.controller.my) {
+				if(!target && creep.room.controller.my !== undefined) {
 					target = creep.room.controller;
 				}
 				if(target) {
