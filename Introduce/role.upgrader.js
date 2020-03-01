@@ -56,21 +56,19 @@ var roleUpgrader = {
 			const sources_is_empty = !creep.pos.findClosestByPath(FIND_SOURCES, {
 				filter: (source) => source.energy > 0 && source.room.name == this_room
 			});
-			
-			if(creep.memory.upgrading &&
-				 (Memory.stop_upgrading ||
-					this_room != my_room ||
-					!sources_is_empty ||
-					creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0)) {
+			const canDo =
+						(!Memory.stop_upgrading &&
+						 !creep.memory.upgrading &&
+						 this_room == my_room &&
+						 sources_is_empty &&
+						 (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() == 0) ||
+						 (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun));
+
+			if(creep.memory.upgrading && !canDo) {
 				creep.memory.upgrading = false;
 			}
 
-			if(!Memory.stop_upgrading &&
-				 !creep.memory.upgrading &&
-				 this_room == my_room &&
-				 sources_is_empty &&
-				 (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() == 0) ||
-				 (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun)) {
+			if(!creep.memory.upgrading && canDo) {
 				creep.memory.upgrading = true;
 			}
 
