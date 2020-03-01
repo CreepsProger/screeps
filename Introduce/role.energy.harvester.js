@@ -145,12 +145,12 @@ var role = {
 
 		if(!target && creep.getActiveBodyparts(WORK)) {
 			var sources = Game.rooms[my_room].find(FIND_SOURCES, {
-				filter: (source) => source.energy > 0
+				filter: (source) => source.energy > 0 && source.pos.findPathTo(creep.pos).length > 0
 			});
 			if(sources.length > 0) {
-				target = sources[0].pos.findClosestByPath(FIND_SOURCES, {
-				filter: (source) => source.energy >= (creep.memory.rerun? 0:1)
-				});
+				target = sources[0];//.pos.findClosestByPath(FIND_SOURCES, {
+				//				filter: (source) => source.energy >= (creep.memory.rerun? 0:1)
+				//				});
 // 		role.log('🔜⚡', creep, 'creep.pos.findClosestByPath(FIND_SOURCES');
 			}				
 		}
