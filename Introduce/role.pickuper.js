@@ -1,9 +1,11 @@
 var roleNext = require('role.builder');
+const tools = require('tools');
+
 
 var rolePickuper = {
 
     /** @param {Creep} creep **/
-    run: function(creep) {
+    run: function(creep,executer = undefined) {
         if(creep.memory.pickuping && creep.store.getFreeCapacity() == 0) {
             creep.memory.pickuping = false;
         }
@@ -18,7 +20,14 @@ var rolePickuper = {
         if(creep.memory.pickuping) {
             var target;
             if(!target) {
-                target = creep.pos.findClosestByPath(FIND_DROPPED_RESOURCES);
+                var dropped = creep.pos.findClosestByPath(FIND_DROPPED_RESOURCES,  {
+									filter: (structure) => {
+										return tools.checkTarget(executer,structure.creep.id);
+									}
+								});
+								if(!!dropped) {
+									target = tools.setTarget(creep,dropped,dropped.id,rolePickuper.run);
+								}
             }
             if(target) {
                 var err = creep.pickup(target);
