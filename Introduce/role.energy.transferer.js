@@ -187,7 +187,6 @@ var roleEnergyTransferer = {
 
 				if(target.id !== undefined) {
 					err = creep.transfer(target, RESOURCE_ENERGY);
-					Memory.targets[target.id] = creep.id;
 				}
 
 				if(err == ERR_NOT_IN_RANGE) {
