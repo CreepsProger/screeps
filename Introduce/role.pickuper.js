@@ -21,8 +21,8 @@ var rolePickuper = {
             var target;
             if(!target) {
                 var dropped = creep.pos.findClosestByPath(FIND_DROPPED_RESOURCES,  {
-									filter: (structure) => {
-										return tools.checkTarget(executer,structure.creep.id);
+									filter: (dropped) => {
+										return tools.checkTarget(executer,dropped.id);
 									}
 								});
 								if(!!dropped) {
