@@ -10,17 +10,24 @@ const flags = require('main.flags');
 // C1->T2     C2->T3     C3->T1
 
 var tools = {
-	
+
 	checkTarget: function(executer,id) {
 		return (executer === undefined)? true:Memory.targets[id] === undefined;
 	},
-	
+
 	setTarget: function(creep,target,id,run) {
 		 var mytarget;
 
-		 if(!!target &&
-				!!id &&
-				Memory.targets[id] !== undefined) {
+		 if(!!target && !!id) {
+			 return mytarget;
+		 }
+
+		 if(Memory.targets[id] === undefined) {
+			 Memory.targets[id] = creep.id;
+			 mytarget = target;
+			 return mytarget;
+		 }
+		 else {
 			 var creep2 = Game.getObjectById(Memory.targets[id]);
 			 if(creep2 !== undefined) {
 				 var path2 = creep2.pos.findPathTo(target);
@@ -30,12 +37,9 @@ var tools = {
 					 Memory.targets[id] = creep.id;
 					 creep2.cancelOrder(creep2.moveTo);
 					 run(creep2,creep);
+					 return mytarget;
 				 }
 			 }
-		 }
-		 else {
-			 mytarget = target;
-			 Memory.targets[id] = creep.id;
 		 }
 
 		 return mytarget;
