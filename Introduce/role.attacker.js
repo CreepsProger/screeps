@@ -19,7 +19,7 @@ var roleAttacker = {
         
         if(creep.memory.attacking && !!myRoom) {
             var target;
-            if(creep.room.name == myRoom && creep.hits < creep.hitsMax - 300) {
+            if(creep.room.name == myRoom && creep.hits < creep.hitsMax - 400) {
                 if(!target) {
                     var rampart = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                         filter: (structure) => {
@@ -35,7 +35,7 @@ var roleAttacker = {
                     }
                 }
             }
-            if(creep.room.name != myRoom && creep.hits < creep.hitsMax - 300) {
+            if(creep.room.name != myRoom && creep.hits < creep.hitsMax - 400) {
                 if(!target) {
                     const exitDir = Game.map.findExit(creep.room, myRoom);
                     target = creep.pos.findClosestByRange(exitDir);
@@ -74,7 +74,7 @@ var roleAttacker = {
                     target = creep.pos.findClosestByRange(exitDir);
                 }
             }
-            if(!target && creep.hits < creep.hitsMax - 300) {
+            if(!target && creep.hits < creep.hitsMax - 400) {
                 if(creep.room.name != myRoom) {
                     const exitDir = Game.map.findExit(creep.room, myRoom);
                     target = creep.pos.findClosestByRange(exitDir);
