@@ -63,7 +63,7 @@ var roleUpgrader = {
 						 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() == 0) ||
 						  (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun))) ;
 
-			if(creep.memory.upgrading && !canDo) {
+			if(creep.memory.upgrading && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
 				creep.memory.upgrading = false;
 			}
 
