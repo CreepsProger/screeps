@@ -6,8 +6,8 @@ const log = require('main.log');
 var git = '$Format:%H$';
 
 var role = {
+
 	name: 'claiming',
-	target_room: 'W27S33',
 
 	logFlags: ['LC','LC ','L'], 
 	
@@ -61,18 +61,18 @@ var role = {
 		if(creep.memory[role.name].on) {
 			var target;
 			if(!target) {
+				if(creep.room.name != creep.memory[role.name].room) {
+					const exitDir = Game.map.findExit(creep.room, creep.memory[role.name].room);
+					target = creep.pos.findClosestByRange(exitDir);
+				}
+			}
+			if(!target) {
 				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_CONTROLLER) &&
 							!structure.my;
 					}
 				});
-			}
-			if(!target) {
-				if(creep.room != creep.memory[role.name].room) {
-					const exitDir = Game.map.findExit(creep.room, creep.memory[role.name].room);
-					target = creep.pos.findClosestByRange(exitDir);
-				}
 			}
 			if(target)
 			{
