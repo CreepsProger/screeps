@@ -10,8 +10,8 @@ var config = {
 	ticksToCheckCreepsNumber: 10,
 	maxCreepsNumber:25,
 
-	log_flags: ['MC','MCF ','M'], 
-	
+	log_flags: ['MC','MCF ','M'],
+
 	log: function(sign, ...args) {
 			if(log.canLog(config.log_flags)) {
 				console.log( sign, Math.trunc(Game.time/10000), Game.time%10000
@@ -48,16 +48,21 @@ var config = {
  																														 , {name: '9', time: 0, min_weight: 40, max_weight: 49}
 																														 ]
 																							 },
-																			 W27S33: { containers: {weight: 55}
-																							 ,    workers: [ {name: '1', time: 0, min_weight: 50, max_weight: 59}
- 																														 , {name: '2', time: 0, min_weight: 50, max_weight: 59}
- 																														 , {name: '3', time: 0, min_weight: 50, max_weight: 59}
- 																														 , {name: '4', time: 0, min_weight: 50, max_weight: 59}
- 																														 , {name: '5', time: 0, min_weight: 50, max_weight: 59}
- 																														 , {name: '6', time: 0, min_weight: 50, max_weight: 59}
- 																														 , {name: '7', time: 0, min_weight: 50, max_weight: 59}
-																														 ]
-																							 }
+																							 W27S33: { containers: {weight: 55}
+																											 ,    workers: [ {name: '1', time: 0, min_weight: 50, max_weight: 59}
+				 																														 , {name: '2', time: 0, min_weight: 50, max_weight: 59}
+				 																														 , {name: '3', time: 0, min_weight: 50, max_weight: 59}
+				 																														 , {name: '4', time: 0, min_weight: 50, max_weight: 59}
+				 																														 , {name: '5', time: 0, min_weight: 50, max_weight: 59}
+				 																														 , {name: '6', time: 0, min_weight: 50, max_weight: 59}
+				 																														 , {name: '7', time: 0, min_weight: 50, max_weight: 59}
+																																		 ]
+																											 }
+																							 W28S33: { containers: {weight: 65}
+																											 ,    workers: [ {name: '1', time: 0, min_weight: 60, max_weight: 69}
+				 																														 , {name: '2', time: 0, min_weight: 60, max_weight: 69}
+																																		 ]
+																											 }
 																		 }
 													};
 			config.log('init config', config.inited, 'Memory.config:', JSON.stringify(Memory.config));
@@ -88,7 +93,7 @@ var config = {
 									creep.memory.weight >= w.min_weight &&
 									creep.memory.weight <= w.max_weight) {
             var v = w;
-						var reset = (creep.memory[role].room != room_name); 
+						var reset = (creep.memory[role].room != room_name);
 						creep.memory[role].room = room_name;
 						w.name = creep.name;
 						w.time = Game.time;
