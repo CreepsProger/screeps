@@ -85,7 +85,8 @@ var config = {
 		var already = false;
 		for(var room_name in Memory.config.rooms) {
 			var room_config = Memory.config.rooms[room_name];
-			room_config[role].forEach(function(slot) {
+			const role_config = room_config[role];
+			role_config.forEach(function(slot) {
 				if(already) {
 					if(slot.name === creep.name) {
 						slot.name = '-' + creep.name;
