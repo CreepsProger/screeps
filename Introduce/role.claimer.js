@@ -45,6 +45,8 @@ var role = {
 			creep.memory[role.name].on = true;
 // 			creep.memory[role.name].room = role.target_room;
 			config.setRoom(creep, role.name);
+			console.log(creep, role.name, 'room:', JSON.stringify(creep.memory[role.name].room));
+
 		}
 	},
 	
