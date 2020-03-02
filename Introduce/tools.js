@@ -36,8 +36,9 @@ var tools = {
 					 mytarget = target;
 					 Memory.targets[id] = creep.id;
 					 console.log('new target owner:', creep, 'insted of:', creep2, 'for', id, JSON.stringify(target));
-					 const err = creep2.cancelOrder(creep2.moveTo.name);
-					 console.log(creep2, 'cancelOrder:', creep2.moveTo.name, 'err:', err);
+					 const order = 'moveTo'; // creep2.moveTo.name
+					 const err = creep2.cancelOrder(order);
+					 console.log(creep2, 'cancelOrder:', order, 'err:', err);
 					 run(creep2,creep);
 					 return mytarget;
 				 }
