@@ -1,6 +1,7 @@
-var roleNext = require('role.attacker');
-var flags = require('main.flags');
-var log = require('main.log');
+const roleNext = require('role.attacker');
+const config = require('main.config');
+const flags = require('main.flags');
+const log = require('main.log');
 
 var git = '$Format:%H$';
 
