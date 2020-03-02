@@ -84,11 +84,14 @@ var config = {
 	setRoom: function(creep, role) {
 		var already = false;
 		for(var room_name in Memory.config.rooms) {
-			const room_config = Memory.config.rooms[room_name];
+			var room_config = Memory.config.rooms[room_name];
 
 			console.log(room_name, 'room_config:', JSON.stringify(room_config));
 
-			const role_config = room_config[role];
+			var role_config = room_config[role];
+
+			console.log(role, 'role_config:', JSON.stringify(role_config));
+
 			role_config.forEach(function(slot) {
 				if(already) {
 					if(slot.name === creep.name) {
