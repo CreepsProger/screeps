@@ -44,9 +44,13 @@ var role = {
 
 			creep.memory[role.name].on = true;
 // 			creep.memory[role.name].room = role.target_room;
+			const old_room = creep.memory[role.name].room;
 			config.setRoom(creep, role.name);
-			console.log(creep, role.name, 'room:', JSON.stringify(creep.memory[role.name].room));
-
+			const new_room = creep.memory[role.name].room;
+			if(new_room != old_room)
+			{
+				console.log(creep, role.name, old_room, '->' new_room);
+			}
 		}
 	},
 	
