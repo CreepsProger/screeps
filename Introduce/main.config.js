@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 61,
+	version: 62,
 	ticksToCheckCreepsNumber: 10,
 	maxCreepsNumber:25,
 
@@ -29,7 +29,7 @@ var config = {
 																							 ,      links: [ {from: '1', to: '0'}
 																														 , {from: '1', to: '0'}
 																														 ]
-																							 ,    energy_harvesting:
+																							 , energy_harvesting:
 																								             [ {name: '1', time: 0, min_weight: 30, max_weight: 39}
 																														 , {name: '2', time: 0, min_weight: 30, max_weight: 39}
 																														 , {name: '3', time: 0, min_weight: 30, max_weight: 39}
@@ -61,18 +61,18 @@ var config = {
  																														 , {name: '7', time: 0, min_weight: 50, max_weight: 59}
 																														 ]
 																							 ,    claiming:
-																								             [ {name: '1', time: 0, min_weight: 50, max_weight: 59}
- 																														 , {name: '2', time: 0, min_weight: 50, max_weight: 59}
+																								             [ {name: '1', time: 0, min_weight: 50, max_weight: 100}
+ 																														 , {name: '2', time: 0, min_weight: 50, max_weight: 100}
 																														 ]
 																							 },
 																			 W28S33: { containers: {weight: 65}
-																							 ,    energy_harvesting:
+																							 , energy_harvesting:
 																								             [ {name: '1', time: 0, min_weight: 60, max_weight: 69}
  																														 , {name: '2', time: 0, min_weight: 60, max_weight: 69}
 																														 ]
-																							 ,    claiming:
-																								             [ {name: '1', time: 0, min_weight: 60, max_weight: 69}
- 																														 , {name: '2', time: 0, min_weight: 60, max_weight: 69}
+																							 , claiming:
+																								             [ {name: '1', time: 0, min_weight: 60, max_weight: 100}
+ 																														 , {name: '2', time: 0, min_weight: 60, max_weight: 100}
 																														 ]
 																							 }
 																		 }
