@@ -42,9 +42,8 @@ var role = {
 			 creep.memory.rerun) {
 
 			creep.memory[role.name].on = true;
-			creep.memory[role.name].room = role.target_room;
-			
-// 			role.log(creep,"On");
+// 			creep.memory[role.name].room = role.target_room;
+			config.setRoom(creep, role.name);
 		}
 	},
 	
