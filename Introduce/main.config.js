@@ -91,6 +91,11 @@ var config = {
 			var role_config = room_config[role];
 
 			console.log(role, 'role_config:', JSON.stringify(role_config));
+			
+			if(role_config === undefined) {
+				console.log(room_name, role, 'role_config:', JSON.stringify(role_config));
+				return;
+			}
 
 			role_config.forEach(function(slot) {
 				if(already) {
