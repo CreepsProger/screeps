@@ -86,7 +86,7 @@ var config = {
 		for(var room_name in Memory.config.rooms) {
 			const room_config = Memory.config.rooms[room_name];
 
-			config.log('room_config', JSON.stringify(room_config));
+			console.log('room_config', JSON.stringify(room_config));
 
 			const role_config = room_config[role];
 			role_config.forEach(function(slot) {
