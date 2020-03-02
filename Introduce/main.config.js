@@ -85,18 +85,13 @@ var config = {
 		var already = false;
 		for(var room_name in Memory.config.rooms) {
 			var room_config = Memory.config.rooms[room_name];
-
-			console.log(room_name, 'room_config:', JSON.stringify(room_config));
-
+// 			console.log(room_name, 'room_config:', JSON.stringify(room_config));
 			var role_config = room_config[role];
-
-			console.log(role, 'role_config:', JSON.stringify(role_config));
-			
+// 			console.log(role, 'role_config:', JSON.stringify(role_config));
 			if(role_config === undefined) {
-				console.log(room_name, role, 'role_config:', JSON.stringify(role_config));
+// 				console.log(room_name, role, 'role_config:', JSON.stringify(role_config));
 				return;
 			}
-
 			role_config.forEach(function(slot) {
 				if(already) {
 					if(slot.name === creep.name) {
