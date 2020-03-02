@@ -35,7 +35,9 @@ var tools = {
 				 if(path2.length > path.length) {
 					 mytarget = target;
 					 Memory.targets[id] = creep.id;
-					 creep2.cancelOrder(creep2.moveTo);
+					 console.log('new target owner:', creep, 'insted of:', creep2, 'for', id, JSON.stringify(target));
+					 creep2.cancelOrder(creep2.moveTo.name);
+					 console.log(creep2, 'cancelOrder:', creep2.moveTo.name);
 					 run(creep2,creep);
 					 return mytarget;
 				 }
