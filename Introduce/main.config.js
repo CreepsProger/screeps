@@ -48,21 +48,21 @@ var config = {
  																														 , {name: '9', time: 0, min_weight: 40, max_weight: 49}
 																														 ]
 																							 },
-																							 W27S33: { containers: {weight: 55}
-																											 ,    workers: [ {name: '1', time: 0, min_weight: 50, max_weight: 59}
-				 																														 , {name: '2', time: 0, min_weight: 50, max_weight: 59}
-				 																														 , {name: '3', time: 0, min_weight: 50, max_weight: 59}
-				 																														 , {name: '4', time: 0, min_weight: 50, max_weight: 59}
-				 																														 , {name: '5', time: 0, min_weight: 50, max_weight: 59}
-				 																														 , {name: '6', time: 0, min_weight: 50, max_weight: 59}
-				 																														 , {name: '7', time: 0, min_weight: 50, max_weight: 59}
-																																		 ]
-																											 }
-																							 W28S33: { containers: {weight: 65}
-																											 ,    workers: [ {name: '1', time: 0, min_weight: 60, max_weight: 69}
-				 																														 , {name: '2', time: 0, min_weight: 60, max_weight: 69}
-																																		 ]
-																											 }
+																			 W27S33: { containers: {weight: 55}
+																							 ,    workers: [ {name: '1', time: 0, min_weight: 50, max_weight: 59}
+ 																														 , {name: '2', time: 0, min_weight: 50, max_weight: 59}
+ 																														 , {name: '3', time: 0, min_weight: 50, max_weight: 59}
+ 																														 , {name: '4', time: 0, min_weight: 50, max_weight: 59}
+ 																														 , {name: '5', time: 0, min_weight: 50, max_weight: 59}
+ 																														 , {name: '6', time: 0, min_weight: 50, max_weight: 59}
+ 																														 , {name: '7', time: 0, min_weight: 50, max_weight: 59}
+																														 ]
+																							 },
+																			 W28S33: { containers: {weight: 65}
+																							 ,    workers: [ {name: '1', time: 0, min_weight: 60, max_weight: 69}
+ 																														 , {name: '2', time: 0, min_weight: 60, max_weight: 69}
+																														 ]
+																							 }
 																		 }
 													};
 			config.log('init config', config.inited, 'Memory.config:', JSON.stringify(Memory.config));
