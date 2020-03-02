@@ -33,6 +33,7 @@ var tools = {
 				 var path2 = creep2.pos.findPathTo(target);
 				 var path = creep.pos.findPathTo(target);
 				 if(path2.length > path.length) {
+					 console.log(creep, 'path:', path.length, creep2, 'path2:', path2.length);
 					 mytarget = target;
 					 Memory.targets[id] = creep.id;
 					 console.log('new target owner:', creep, 'insted of:', creep2, 'for', id, JSON.stringify(target));
