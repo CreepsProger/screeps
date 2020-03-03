@@ -176,7 +176,7 @@ var roleEnergyTransferer = {
 					target = storages.reduce(function (p, v) {
 						const pu = Math.floor(p.store.getUsedCapacity(RESOURCE_ENERGY)/30000);
 						const vu = Math.floor(v.store.getUsedCapacity(RESOURCE_ENERGY)/30000);
- 						console.log(p.room.name, pu, v.room.name, vu, pu<vu, pu<vu? p.room.name:v.room.name);
+//  						console.log(p.room.name, pu, v.room.name, vu, pu<vu, pu<vu? p.room.name:v.room.name);
 						return (pu < vu ? p : v );
 					});
 // 					if(target.room.name != my_room)
