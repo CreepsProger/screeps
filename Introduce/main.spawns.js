@@ -117,10 +117,10 @@ var spawns = {
 				var controller = spawn.room.controller;
 				const CL = controller.level;
 				var N = Memory.totals.CreepsNumber;
-
-				spawns.tryCreateCreep(spawn,         0804, 30, N<(config.maxCreepsNumber+1)? 1:0); // V 1-1 E   600   Carier
+				// 22*1800+2*1300+4*650 = 44800 -> 30 per game tick
+				spawns.tryCreateCreep(spawn,         2412, 30, N<(config.maxCreepsNumber+1)? 1:0); // V 1-1 E  1800   Carier
 				spawns.tryCreateCreep(spawn,       120408, 39, N<(config.maxCreepsNumber+1)? 2:0); // V 1-1 E  1800   Worker
-				spawns.tryCreateCreep(spawn,         0804, 40, N<(config.maxCreepsNumber+1)? 2:0); // V 1-1 E   600   Carier
+				spawns.tryCreateCreep(spawn,         2412, 40, N<(config.maxCreepsNumber+1)? 2:0); // V 1-1 E  1800   Carier
 				spawns.tryCreateCreep(spawn,       120408, 49, N<(config.maxCreepsNumber+1)? 6:0); // V 1-1 E  1800   Worker
 				spawns.tryCreateCreep(spawn,  20000000002, 50, N<(config.maxCreepsNumber+1)? 1:0); // V 1-1 E  1300  Claimer
  				spawns.tryCreateCreep(spawn,         2412, 51, N<(config.maxCreepsNumber+1)? 3:0); // V 1-1 E  1800   Carier
