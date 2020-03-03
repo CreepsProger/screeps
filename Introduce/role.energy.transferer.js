@@ -108,7 +108,7 @@ var roleEnergyTransferer = {
 				var extension = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_EXTENSION) &&
-							structure.store.getFreeCapacity() > 0 &&
+							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 							tools.checkTarget(executer,structure.id);
 					}
 				});
