@@ -130,15 +130,15 @@ var spawns = {
 				spawns.tryCreateCreep(spawn,       120408, 69, N<(config.maxCreepsNumber+1)? 3:0); // V 1-1 E  1800   Worker
 				spawns.tryCreateCreep(spawn,5000200000007,100, N<(config.maxCreepsNumber+1)? 4:0); // V 1-1 E   650 Attacker
 
-				if(CL >= 4) spawns.tryCreateCreep(spawn,        80808, 30, Memory.totals.WORK< 8? 1:0); // E 1600 Worker
-				if(CL >= 4) spawns.tryCreateCreep(spawn,        70707, 30, Memory.totals.WORK< 7? 1:0); // E 1400 Worker
-				if(CL >= 3) spawns.tryCreateCreep(spawn,        60606, 30, Memory.totals.WORK< 6? 1:0); // E 1200 Worker
-				if(CL >= 3) spawns.tryCreateCreep(spawn,        50505, 30, Memory.totals.WORK< 5? 1:0); // E 1000 Worker
-				if(CL >= 3) spawns.tryCreateCreep(spawn,        40404, 30, Memory.totals.WORK< 4? 1:0); // E  800 Worker
+				if(CL >= 4) spawns.tryCreateCreep(spawn,        80808, 20, Memory.totals.WORK< 8? 1:0); // E 1600 Worker
+				if(CL >= 4) spawns.tryCreateCreep(spawn,        70707, 20, Memory.totals.WORK< 7? 1:0); // E 1400 Worker
+				if(CL >= 3) spawns.tryCreateCreep(spawn,        60606, 20, Memory.totals.WORK< 6? 1:0); // E 1200 Worker
+				if(CL >= 3) spawns.tryCreateCreep(spawn,        50505, 20, Memory.totals.WORK< 5? 1:0); // E 1000 Worker
+				if(CL >= 3) spawns.tryCreateCreep(spawn,        40404, 20, Memory.totals.WORK< 4? 1:0); // E  800 Worker
 
-				if(CL >= 2) spawns.tryCreateCreep(spawn,          506, 45, Memory.totals.CARRY< 6? 1:0); // E 550 Carier
+				if(CL >= 2) spawns.tryCreateCreep(spawn,          506, 15, Memory.totals.CARRY< 6? 1:0); // E 550 Carier
 
-				if(CL >= 1) spawns.tryCreateCreep(spawn,          303, 45, Memory.totals.CARRY< 3? 1:0); // E 300 Carier
+				if(CL >= 1) spawns.tryCreateCreep(spawn,          303, 10, Memory.totals.CARRY< 3? 1:0); // E 300 Carier
 			}
 
 			if(spawn.spawning) {
