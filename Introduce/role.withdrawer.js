@@ -67,17 +67,17 @@ var roleWithdrawer = {
 					if(!!target.creep.id) {
 						id = target.creep.id;
 					}
-					console.log( '🔜💼', Math.trunc(Game.time/10000), Game.time%10000
-											, creep.name
-											, 'moving for withdrawing tombstone:'
-											, target.name?target.name:target.structureType, 'target id:', id, 'Memory.targets[id]:', Memory.targets[id]);
+// 					console.log( '🔜💼', Math.trunc(Game.time/10000), Game.time%10000
+// 											, creep.name
+// 											, 'moving for withdrawing tombstone:'
+// 											, target.name?target.name:target.structureType, 'target id:', id, 'Memory.targets[id]:', Memory.targets[id]);
 				}
 				else if(!err) {
 					creep.say('💼');
-					console.log( '💼', Math.trunc(Game.time/10000), Game.time%10000
-											, creep.name
-											, 'withdrawing:'
-											, target.name?target.name:target.structureType);
+// 					console.log( '💼', Math.trunc(Game.time/10000), Game.time%10000
+// 											, creep.name
+// 											, 'withdrawing:'
+// 											, target.name?target.name:target.structureType);
 				}
 				else {
 					creep.memory.withdrawing = false;
