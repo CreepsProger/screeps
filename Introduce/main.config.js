@@ -25,7 +25,7 @@ var config = {
 			 Memory.config.v === undefined ||
 			 Memory.config.v != config.version) {
 			Memory.config = { v: config.version
-											 , rooms : { W25S33: { containers: {weight: 35}
+											 , rooms : { W25S33: { containers: {weight: 40}
 																					 , links:
 																							 [ {from: '1', to: '0'}
 																							 , {from: '1', to: '0'}
