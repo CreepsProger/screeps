@@ -169,8 +169,7 @@ var roleEnergyTransferer = {
 				var storages = _.filter(Game.structures, function(structure) {
 					return structure.my &&
 						structure.structureType == STRUCTURE_STORAGE &&
-						(structure.store.getUsedCapacity(RESOURCE_ENERGY) < 30000 ||
-						 (creep.memory.rerun && !creep.getActiveBodyparts(WORK)));
+						(structure.store.getUsedCapacity(RESOURCE_ENERGY) < 30000 || creep.memory.rerun/* && !creep.getActiveBodyparts(WORK)*/));
 				});
 				if(storages.length > 0) {
 					target = storages.reduce(function (p, v) {
