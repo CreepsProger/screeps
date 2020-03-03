@@ -83,14 +83,14 @@ var roleEnergyTransferer = {
 
 			if(!target &&
 				(creep.room.energyAvailable == creep.room.energyCapacityAvailable  && !this_room_sources_is_empty)) {
-					var containers = creep.pos.findInRange(FIND_STRUCTURES, 2 {
+					var containers = creep.pos.findInRange(FIND_STRUCTURES, 2, {
 						filter: (structure) => {
 							return structure.structureType == STRUCTURE_CONTAINER &&
 										 this_room_config.containers.weight < creep.memory.weight &&
 										 structure.store.getFreeCapacity() > 0;
 									 }
 								 });
-			    if(containers.length > 0) {
+								 if(containers.length > 0) {
 						target = containers[0];
 					}
 			}
