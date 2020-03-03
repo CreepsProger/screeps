@@ -80,14 +80,21 @@ var roleEnergyTransferer = {
 				// 						, 'target:'
 				// 					  , JSON.stringify(target));
 			}
-/*
-			if(!target && creep.memory.rerun) {
-				if(this_room != 'W25S33') {
-					const exitDir = Game.map.findExit(creep.room, 'W25S33');
-					target = creep.pos.findClosestByRange(exitDir);
-				}
+
+			if(!target &&
+				(creep.room.energyAvailable == creep.room.energyCapacityAvailable  && !this_room_sources_is_empty)) {
+					var containers = creep.pos.findInRange(FIND_STRUCTURES, 2 {
+						filter: (structure) => {
+							return structure.structureType == STRUCTURE_CONTAINER &&
+										 this_room_config.containers.weight < creep.memory.weight &&
+										 structure.store.getFreeCapacity() > 0;
+									 }
+								 });
+			    if(containers.length > 0) {
+						target = containers[0];
+					}
 			}
-*/
+
 			if(!target &&
 				 (this_room != my_room ||
 				  !this_room_sources_is_empty)) {
