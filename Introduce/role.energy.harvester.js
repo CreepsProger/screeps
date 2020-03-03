@@ -244,8 +244,8 @@ var role = {
 				creep.harvest(target); // a source
 
 				if(err == ERR_NOT_IN_RANGE) {
-					creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
 					creep.say('🔜⚡');
+					creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
 					role.log('🔜⚡', creep, 'moving from', JSON.stringify(creep.pos), 'to', JSON.stringify(target));
 				}
 				else if(!err) {
