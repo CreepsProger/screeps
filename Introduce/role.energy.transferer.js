@@ -46,39 +46,37 @@ var roleEnergyTransferer = {
 			}
 
 		if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable) {
-				var closests = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_CONTAINER) &&
 									 (this_room_config.containers.weight < creep.memory.weight) &&
 									(structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0);
 					}
 				});
-				if(closests.length > 0) {
-					target = closests[0];
-				}
-
-
-				console.log( '🏗⚠️', Math.trunc(Game.time/10000), Game.time%10000
-										, creep.name
-										, 'this_room:'
-										, this_room
-										, 'my_room:'
-										, my_room
-										, 'this_room_config:'
-										, JSON.stringify(this_room_config)
-										, creep.getActiveBodyparts(WORK)
-										, creep.store.getUsedCapacity(RESOURCE_ENERGY)
-										, creep.store.getFreeCapacity(RESOURCE_ENERGY)
-										, 'rerun:'
-										, creep.memory.rerun
-										, 'containers weight:'
-										, this_room_config.containers.weight
-										, 'creep weight:'
-										, creep.memory.weight
-										, 'transfering energy:'
-										, creep.memory.transfering
-										, 'target:'
-									  , JSON.stringify(target));
+				//
+				//
+				//
+				// console.log( '🏗⚠️', Math.trunc(Game.time/10000), Game.time%10000
+				// 						, creep.name
+				// 						, 'this_room:'
+				// 						, this_room
+				// 						, 'my_room:'
+				// 						, my_room
+				// 						, 'this_room_config:'
+				// 						, JSON.stringify(this_room_config)
+				// 						, creep.getActiveBodyparts(WORK)
+				// 						, creep.store.getUsedCapacity(RESOURCE_ENERGY)
+				// 						, creep.store.getFreeCapacity(RESOURCE_ENERGY)
+				// 						, 'rerun:'
+				// 						, creep.memory.rerun
+				// 						, 'containers weight:'
+				// 						, this_room_config.containers.weight
+				// 						, 'creep weight:'
+				// 						, creep.memory.weight
+				// 						, 'transfering energy:'
+				// 						, creep.memory.transfering
+				// 						, 'target:'
+				// 					  , JSON.stringify(target));
 			}
 /*
 			if(!target && creep.memory.rerun) {
