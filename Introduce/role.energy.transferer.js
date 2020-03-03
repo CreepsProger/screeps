@@ -108,7 +108,7 @@ var roleEnergyTransferer = {
 				var extension = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_EXTENSION) &&
-							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+							structure.store.getFreeCapacity() > 0 &&
 							tools.checkTarget(executer,structure.id);
 					}
 				});
@@ -134,7 +134,7 @@ var roleEnergyTransferer = {
 				target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_SPAWN) &&
-							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+							structure.store.getFreeCapacity() > 0;
 					}
 				});
 			}
@@ -143,7 +143,7 @@ var roleEnergyTransferer = {
 				target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_TOWER) &&
-							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 400;
+							structure.store.getFreeCapacity() > 400;
 					}
 				});
 			}
@@ -174,10 +174,11 @@ var roleEnergyTransferer = {
 				});
 				if(storages.length > 0) {
 					target = storages.reduce(function (p, v) {
-						const pu = Math.floor(p.store.getUsedCapacity(RESOURCE_ENERGY)/10000);
-						const vu = Math.floor(v.store.getUsedCapacity(RESOURCE_ENERGY)/10000);
-// 						console.log(p.room.name, pu, v.room.name, vu, pu<vu, pu<vu? p.room.name:v.room.name);
+						const pu = Math.floor(p.store.getUsedCapacity(RESOURCE_ENERGY)/30000);
+						const vu = Math.floor(v.store.getUsedCapacity(RESOURCE_ENERGY)/30000);
+ 						console.log(p.room.name, pu, v.room.name, vu, pu<vu, pu<vu? p.room.name:v.room.name);
 						return (pu < vu ? p : v );
+ 						console.log(creep, 'target storage room name:', target.room.name);
 					});
 				}
 			}
