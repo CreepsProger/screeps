@@ -52,7 +52,7 @@ var roleEnergyTransferer = {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_CONTAINER) &&
 									 (this_room_config.containers.weight < creep.memory.weight) &&
-									(structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0);
+									(structure.store.getFreeCapacity() > 0 || );
 					}
 				});
 				//
