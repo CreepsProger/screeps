@@ -179,8 +179,8 @@ var roleEnergyTransferer = {
  						console.log(p.room.name, pu, v.room.name, vu, pu<vu, pu<vu? p.room.name:v.room.name);
 						return (pu < vu ? p : v );
 					});
-					if(target.room.name != my_room)
-						console.log(creep, 'target storage room name:', target.room.name);
+// 					if(target.room.name != my_room)
+// 						console.log(creep, 'target storage room name:', target.room.name);
 				}
 			}
 
