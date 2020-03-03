@@ -55,6 +55,7 @@ var roleEnergyTransferer = {
 									 structure.store.getFreeCapacity() > 0;
 					}
 				});
+			}
 				//
 				//
 				//
@@ -79,11 +80,10 @@ var roleEnergyTransferer = {
 				// 						, creep.memory.transfering
 				// 						, 'target:'
 				// 					  , JSON.stringify(target));
-			}
 
 			if(!target &&
 				(creep.room.energyAvailable == creep.room.energyCapacityAvailable  && !this_room_sources_is_empty)) {
-					var containers = creep.pos.findInRange(FIND_STRUCTURES, 2, {
+					var containers = creep.pos.findInRange(FIND_STRUCTURES, 13, {
 						filter: (structure) => {
 							return structure.structureType == STRUCTURE_CONTAINER &&
 										 this_room_config.containers.weight < creep.memory.weight &&
