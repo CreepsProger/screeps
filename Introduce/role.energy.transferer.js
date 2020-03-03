@@ -58,25 +58,25 @@ var roleEnergyTransferer = {
 				}
 
 
-// 				console.log( '🏗⚠️', Math.trunc(Game.time/10000), Game.time%10000
-// 										, creep.name
-// 										, 'this_room:'
-// 										, this_room
-// 										, 'my_room:'
-// 										, my_room
-// 										, 'this_room_config:'
-// 										, JSON.stringify(this_room_config)
-// 										, creep.getActiveBodyparts(WORK)
-// 										, creep.store.getUsedCapacity(RESOURCE_ENERGY)
-// 										, creep.store.getFreeCapacity(RESOURCE_ENERGY)
-// 										, 'rerun:'
-// 										, creep.memory.rerun
-// 										, 'containers weight:'
-// 										, this_room_config.containers.weight
-// 										, 'transfering energy:'
-// 										, creep.memory.building
-// 										, 'target:'
-// 									  , JSON.stringify(target));
+				console.log( '🏗⚠️', Math.trunc(Game.time/10000), Game.time%10000
+										, creep.name
+										, 'this_room:'
+										, this_room
+										, 'my_room:'
+										, my_room
+										, 'this_room_config:'
+										, JSON.stringify(this_room_config)
+										, creep.getActiveBodyparts(WORK)
+										, creep.store.getUsedCapacity(RESOURCE_ENERGY)
+										, creep.store.getFreeCapacity(RESOURCE_ENERGY)
+										, 'rerun:'
+										, creep.memory.rerun
+										, 'containers weight:'
+										, this_room_config.containers.weight
+										, 'transfering energy:'
+										, creep.memory.building
+										, 'target:'
+									  , JSON.stringify(target));
 			}
 /*
 			if(!target && creep.memory.rerun) {
@@ -109,7 +109,7 @@ var roleEnergyTransferer = {
 							((structure.structureType == STRUCTURE_EXTENSION) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
 							||
 							((structure.structureType == STRUCTURE_TOWER) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 400)
-						) 
+						)
 						&&
 							tools.checkTarget(executer,structure.id);
 					}
