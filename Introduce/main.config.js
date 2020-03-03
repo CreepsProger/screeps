@@ -8,7 +8,7 @@ var config = {
 
 	version: 66,
 	ticksToCheckCreepsNumber: 10,
-	maxCreepsNumber:40,
+	// maxCreepsNumber:40,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -60,6 +60,8 @@ var config = {
 																							 , {name: '5', time: 0, min_weight: 50, max_weight: 59}
 																							 , {name: '6', time: 0, min_weight: 50, max_weight: 59}
 																							 , {name: '7', time: 0, min_weight: 50, max_weight: 59}
+																							 , {name: '8', time: 0, min_weight: 50, max_weight: 59}
+																							 , {name: '9', time: 0, min_weight: 50, max_weight: 59}
 																							 ]
 																					 , claiming:
 																							 [ {name: '1', time: 0, min_weight: 50, max_weight: 59}
@@ -70,6 +72,13 @@ var config = {
 																					 , energy_harvesting:
 																							 [ {name: '1', time: 0, min_weight: 60, max_weight: 69}
 																							 , {name: '2', time: 0, min_weight: 60, max_weight: 69}
+																							 , {name: '3', time: 0, min_weight: 60, max_weight: 69}
+																							 , {name: '4', time: 0, min_weight: 60, max_weight: 69}
+																							 , {name: '5', time: 0, min_weight: 60, max_weight: 69}
+																							 , {name: '6', time: 0, min_weight: 60, max_weight: 69}
+																							 , {name: '7', time: 0, min_weight: 60, max_weight: 69}
+																							 , {name: '8', time: 0, min_weight: 60, max_weight: 69}
+																							 , {name: '9', time: 0, min_weight: 60, max_weight: 69}
 																							 ]
 																					 , claiming:
 																							 [ {name: '1', time: 0, min_weight: 60, max_weight: 69}
