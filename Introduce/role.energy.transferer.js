@@ -49,8 +49,8 @@ var roleEnergyTransferer = {
 				var closests = creep.pos.findInRange(FIND_STRUCTURES, 2, {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_CONTAINER) &&
-							this_room_config.containers.weight < creep.memory.weight &&
-							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+									 (this_room_config.containers.weight < creep.memory.weight) &&
+									(structure.store.getFreeCapacity() > 0);
 					}
 				});
 				if(closests.length > 0) {
@@ -73,8 +73,10 @@ var roleEnergyTransferer = {
 										, creep.memory.rerun
 										, 'containers weight:'
 										, this_room_config.containers.weight
+										, 'creep weight:'
+										, creep.memory.weight
 										, 'transfering energy:'
-										, creep.memory.building
+										, creep.memory.transfering
 										, 'target:'
 									  , JSON.stringify(target));
 			}
