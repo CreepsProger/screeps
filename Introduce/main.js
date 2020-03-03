@@ -31,13 +31,13 @@ module.exports.loop = function () {
 	towers.run();
 	metrix.run();
 	spawns.run();
-	
+
 	Memory.targets = {};
 
 	for(var name in Game.creeps) {
 		var creep = Game.creeps[name];
 // 		console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000, 'go', creep);
-		if(creep.memory.role == 'creep') {
+		if(!creep.memory.spawning) {
 			creep.memory.rerun = 0;
 			role.run(creep);
 		}
