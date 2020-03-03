@@ -34,23 +34,19 @@ var roleEnergyTransferer = {
 			var target;
 
 			if(!target && this_room != my_room) {
-				var link = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_LINK) &&
 							(structure.id == '5e56dc7a28e44c6f77878b87' ||
 							 structure.id == '5e5ab771eadd04714b92ed7d') &&
 							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-							this_room_config.containers.weight < creep.memory.weight &&
-							tools.checkTarget(executer,structure.id);
+							this_room_config.containers.weight < creep.memory.weight
 					}
 				});
-				if(!!link) {
-					target = tools.setTarget(creep,link,link.id,roleEnergyTransferer.run);
-				}
 			}
 
 		if(!target && creep.room.energyAvailable == creep.room.energyCapacityAvailable) {
-				var closests = creep.pos.findInRange(FIND_STRUCTURES, 1, {
+				var closests = creep.pos.findInRange(FIND_STRUCTURES, 2, {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_CONTAINER) &&
 							this_room_config.containers.weight < creep.memory.weight &&
@@ -107,8 +103,15 @@ var roleEnergyTransferer = {
 			if(!target) {
 				var extension = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
 					filter: (structure) => {
-						return (structure.structureType == STRUCTURE_EXTENSION) &&
-							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+						return
+						(
+							(structure.structureType == STRUCTURE_SPAWN && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
+							||
+							(structure.structureType == STRUCTURE_EXTENSION && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
+							||
+							(structure.structureType == STRUCTURE_TOWER && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 400)
+						) 
+						&&
 							tools.checkTarget(executer,structure.id);
 					}
 				});
@@ -117,67 +120,19 @@ var roleEnergyTransferer = {
 				}
 			}
 
-		/*
-
-			if(!target && creep.ticksToLive < constants.TICKS_TO_LIVE_TO_TRANSFER_ENERGY_TO_SPAWN) {
-				target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
-					filter: (structure) => {
-						return (structure.structureType == STRUCTURE_SPAWN) &&
-							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-					}
-				});
-			}
-
-			*/
-
-			if(!target) {
-				target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
-					filter: (structure) => {
-						return (structure.structureType == STRUCTURE_SPAWN) &&
-							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-					}
-				});
-			}
-
-			if(!target) {
-				target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
-					filter: (structure) => {
-						return (structure.structureType == STRUCTURE_TOWER) &&
-							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 400;
-					}
-				});
-			}
-
-		/*
-
-			if(!target) {
-				var closests = creep.pos.findInRange(FIND_MY_STRUCTURES, 1, {
-					filter: (structure) => {
-						return (structure.structureType == STRUCTURE_SPAWN) &&
-							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-					}
-				});
-
-				if(closests.length > 0) {
-					target = closests[0];
-				}
-			}
-
-			*/
-
 			if(!target) {
 				var storages = _.filter(Game.structures, function(structure) {
 					return structure.my &&
 						structure.structureType == STRUCTURE_STORAGE &&
 						(structure.store.getUsedCapacity(RESOURCE_ENERGY) < 30000 ||
-						 creep.memory.rerun /* && !creep.getActiveBodyparts(WORK)*/);
+						 (creep.memory.rerun && !creep.getActiveBodyparts(WORK));
 				});
 				if(storages.length > 0) {
 					target = storages.reduce(function (p, v) {
-						const pu = Math.floor(p.store.getUsedCapacity(RESOURCE_ENERGY)/30000);
-						const vu = Math.floor(v.store.getUsedCapacity(RESOURCE_ENERGY)/30000);
+						const pu = Math.floor(p.store.getUsedCapacity(RESOURCE_ENERGY)/10000);
+						const vu = Math.floor(v.store.getUsedCapacity(RESOURCE_ENERGY)/10000);
 //  						console.log(p.room.name, pu, v.room.name, vu, pu<vu, pu<vu? p.room.name:v.room.name);
-						return (pu < vu ? p : v );
+						return (pu <= vu ? p : v );
 					});
 // 					if(target.room.name != my_room)
 // 						console.log(creep, 'target storage room name:', target.room.name);
