@@ -8,7 +8,7 @@ var config = {
 
 	version: 66,
 	ticksToCheckCreepsNumber: 10,
-	maxCreepsNumber:25,
+	maxCreepsNumber:30,
 
 	log_flags: ['MC','MCF ','M'],
 
