@@ -13,7 +13,7 @@ var role = {
 	logFlags: ['LEH','LE ','L'],
 
 	log: function(sign, creep, ...args) {
-			if(log.canLog(role.logFlags) || creep.name == 'creep-<59>-0.0.0.0.9.9.9-8600-') {
+			if(log.canLog(role.logFlags)) {
 				console.log( sign, Math.trunc(Game.time/10000), Game.time%10000
 										, creep.name
 										, role.name
@@ -186,7 +186,7 @@ var role = {
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 30000;
 				}
 			});
-		role.log('🔜⚡', creep, 'STRUCTURE_STORAGE');
+			role.log('🔜⚡', creep, 'STRUCTURE_STORAGE');
 		}
 
 		if(!target && !creep.getActiveBodyparts(WORK)) {
