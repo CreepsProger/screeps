@@ -101,7 +101,7 @@ var roleEnergyTransferer = {
 			}
 
 			if(!target) {
-				var extension = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+				var extension = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 					filter: (structure) => {
 						return
 						(
