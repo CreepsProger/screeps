@@ -118,16 +118,16 @@ var spawns = {
 				const CL = controller.level;
 				var N = Memory.totals.CreepsNumber;
 
-				spawns.tryCreateCreep(spawn,         2412, 30, N<(config.maxCreepsNumber+1)? 1:0); // V 1-1 E  1800   Carier
-				spawns.tryCreateCreep(spawn,        90909, 39, N<(config.maxCreepsNumber+1)? 2:0); // V 1-1 E  1800   Worker
-				spawns.tryCreateCreep(spawn,         2412, 40, N<(config.maxCreepsNumber+1)? 2:0); // V 1-1 E  1800   Carier
-				spawns.tryCreateCreep(spawn,        90909, 49, N<(config.maxCreepsNumber+1)? 6:0); // V 1-1 E  1800   Worker
- 				spawns.tryCreateCreep(spawn,         2412, 50, N<(config.maxCreepsNumber+1)? 3:0); // V 1-1 E  1800   Carier
-				spawns.tryCreateCreep(spawn,  20000000002, 51, N<(config.maxCreepsNumber+1)? 1:0); // V 1-1 E  1300  Claimer
-				spawns.tryCreateCreep(spawn,        90909, 59, N<(config.maxCreepsNumber+1)? 2:0); // V 1-1 E  1800   Worker
-        spawns.tryCreateCreep(spawn,         2412, 60, N<(config.maxCreepsNumber+1)? 3:0); // V 1-1 E  1800   Carier
-				spawns.tryCreateCreep(spawn,        90909, 69, N<(config.maxCreepsNumber+1)? 3:0); // V 1-1 E  1800   Worker
-				spawns.tryCreateCreep(spawn,  20000000002, 61, N<(config.maxCreepsNumber+1)? 1:0); // V 1-1 E  1300  Claimer
+				spawns.tryCreateCreep(spawn,         0804, 30, N<(config.maxCreepsNumber+1)? 1:0); // V 1-1 E   600   Carier
+				spawns.tryCreateCreep(spawn,       120408, 39, N<(config.maxCreepsNumber+1)? 2:0); // V 1-1 E  1800   Worker
+				spawns.tryCreateCreep(spawn,         0804, 40, N<(config.maxCreepsNumber+1)? 2:0); // V 1-1 E   600   Carier
+				spawns.tryCreateCreep(spawn,       120408, 49, N<(config.maxCreepsNumber+1)? 6:0); // V 1-1 E  1800   Worker
+				spawns.tryCreateCreep(spawn,  20000000002, 50, N<(config.maxCreepsNumber+1)? 1:0); // V 1-1 E  1300  Claimer
+ 				spawns.tryCreateCreep(spawn,         2412, 51, N<(config.maxCreepsNumber+1)? 3:0); // V 1-1 E  1800   Carier
+				spawns.tryCreateCreep(spawn,       120408, 59, N<(config.maxCreepsNumber+1)? 2:0); // V 1-1 E  1800   Worker
+				spawns.tryCreateCreep(spawn,  20000000002, 60, N<(config.maxCreepsNumber+1)? 1:0); // V 1-1 E  1300  Claimer
+        spawns.tryCreateCreep(spawn,         2412, 61, N<(config.maxCreepsNumber+1)? 3:0); // V 1-1 E  1800   Carier
+				spawns.tryCreateCreep(spawn,       120408, 69, N<(config.maxCreepsNumber+1)? 3:0); // V 1-1 E  1800   Worker
 				spawns.tryCreateCreep(spawn,5000200000007,100, N<(config.maxCreepsNumber+1)? 4:0); // V 1-1 E   650 Attacker
 
 				if(CL >= 4) spawns.tryCreateCreep(spawn,        80808, 30, Memory.totals.WORK< 8? 1:0); // E 1600 Worker
