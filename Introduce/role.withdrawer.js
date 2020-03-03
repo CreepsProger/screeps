@@ -59,10 +59,18 @@ var roleWithdrawer = {
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.say('🔜💼');
 					creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
+					
+					var id;
+					if(!!target.id) {
+						id = target.id;
+					}
+					if(!!target.creep.id) {
+						id = target.creep.id;
+					}
 					console.log( '🔜💼', Math.trunc(Game.time/10000), Game.time%10000
 											, creep.name
 											, 'moving for withdrawing tombstone:'
-											, target.name?target.name:target.structureType);
+											, target.name?target.name:target.structureType, 'target id:', id, 'Memory.targets[id]:', Memory.targets[id]);
 				}
 				else if(!err) {
 					creep.say('💼');
