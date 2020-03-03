@@ -120,7 +120,7 @@ var spawns = {
 
 				if(CL >= 4) spawns.tryCreateCreep(spawn,         0905, 30, N<(config.maxCreepsNumber+1)? 0:0); // V 1-1 E   700   Carier
 				if(CL >= 5) spawns.tryCreateCreep(spawn,        90909, 39, N<(config.maxCreepsNumber+1)? 2:0); // V 1-1 E  1800   Worker
-				if(CL >= 4) spawns.tryCreateCreep(spawn,         0905, 40, N<(config.maxCreepsNumber+1)? 1:0); // V 1-1 E   700   Carier
+				if(CL >= 4) spawns.tryCreateCreep(spawn,         0905, 40, N<(config.maxCreepsNumber+1)? 2:0); // V 1-1 E   700   Carier
 				if(CL >= 5) spawns.tryCreateCreep(spawn,        90909, 49, N<(config.maxCreepsNumber+1)? 6:0); // V 1-1 E  1800   Worker
  				if(CL >= 5) spawns.tryCreateCreep(spawn,         2412, 50, N<(config.maxCreepsNumber+1)? 3:0); // V 1-1 E  1800   Carier
 				if(CL >= 4) spawns.tryCreateCreep(spawn,  20000000002, 51, N<(config.maxCreepsNumber+1)? 1:0); // V 1-1 E  1300  Claimer
