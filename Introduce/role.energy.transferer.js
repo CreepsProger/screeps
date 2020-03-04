@@ -141,7 +141,23 @@ var roleEnergyTransferer = {
 					}
 				});
 			}
-			
+
+			if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
+				var storages = _.filter(Game.structures, function(structure) {
+					return structure.my &&
+						structure.structureType == STRUCTURE_STORAGE;
+				});
+				if(storages.length > 0) {
+					target = storages.reduce(function (p, v) {
+						const pu = Math.floor(p.store.getUsedCapacity(RESOURCE_ENERGY)/5000);
+						const vu = Math.floor(v.store.getUsedCapacity(RESOURCE_ENERGY)/5000);
+//  						console.log(p.room.name, pu, v.room.name, vu, pu<vu, pu<vu? p.room.name:v.room.name);
+						return (pu <= vu ? p : v );
+					});
+// 					if(target.room.name != my_room)
+// 						console.log(creep, 'target storage room name:', target.room.name);
+				}
+			}
 			if(target) {
 
 				var err = ERR_NOT_IN_RANGE;
