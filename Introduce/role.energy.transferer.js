@@ -80,19 +80,7 @@ var roleEnergyTransferer = {
 				// 						, 'target:'
 				// 					  , JSON.stringify(target));
 
-			if(!target &&
-				(creep.room.energyAvailable == creep.room.energyCapacityAvailable  && !this_room_sources_is_empty)) {
-					var containers = creep.pos.findInRange(FIND_STRUCTURES, 5, {
-						filter: (structure) => {
-							return structure.structureType == STRUCTURE_CONTAINER &&
-										 this_room_config.containers.weight < creep.memory.weight &&
-										 structure.store.getFreeCapacity() > 0;
-									 }
-								 });
-								 if(containers.length > 0) {
-						target = containers[0];
-					}
-			}
+			
 
 			if(!target &&
 				 (this_room != my_room ||
@@ -108,7 +96,7 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			if(!target && this_room == my_room  && !creep.getActiveBodyparts(WORK)) {
+			if(!target && this_room == my_room && !creep.getActiveBodyparts(WORK)) {
 				var extension = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 					filter: (structure) => {
 						return (
@@ -127,7 +115,7 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			if(!target) {
+			if(!target && !creep.getActiveBodyparts(WORK)) {
 				var storages = _.filter(Game.structures, function(structure) {
 					return structure.my &&
 						structure.structureType == STRUCTURE_STORAGE &&
