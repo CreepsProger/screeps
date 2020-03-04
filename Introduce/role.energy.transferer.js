@@ -109,13 +109,13 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			if(!target && this_room == my_room) {
+			if(!target && this_room == my_room  && !creep.getActiveBodyparts(WORK)) {
 				var extension = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 					filter: (structure) => {
 						return (
-							(structure.structureType == STRUCTURE_SPAWN && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 && !creep.getActiveBodyparts(WORK))
+							(structure.structureType == STRUCTURE_SPAWN && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
 							||
-							(structure.structureType == STRUCTURE_EXTENSION && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 && !creep.getActiveBodyparts(WORK)) 
+							(structure.structureType == STRUCTURE_EXTENSION && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
 							||
 							(structure.structureType == STRUCTURE_TOWER && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 400)
 						)
