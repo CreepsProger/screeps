@@ -70,7 +70,7 @@ var role = {
 
 		var target;
 
-		if(!target && this_room == my_room) {
+		if(!target && this_room == my_room && !creep.getActiveBodyparts(WORK)) {
 			var link = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_LINK) &&
@@ -105,7 +105,8 @@ var role = {
 			 creep.memory.rerun &&
 			 this_room == my_room &&
 			 //(!this_room_sources_is_empty || creep.room.energyCapacityAvailable == 0) &&
-			 creep.room.energyAvailable == creep.room.energyCapacityAvailable) {
+			 //creep.room.energyAvailable == creep.room.energyCapacityAvailable
+			 && !creep.getActiveBodyparts(WORK)) {
 			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
 // 					if(structure.structureType == STRUCTURE_CONTAINER) {
@@ -122,15 +123,7 @@ var role = {
 			});
 		}
 
-		if(!target &&
-			 creep.room.energyAvailable != creep.room.energyCapacityAvailable &&
-			 !creep.getActiveBodyparts(WORK)) {
-			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-				filter: (structure) => {
-					return (structure.structureType == STRUCTURE_CONTAINER) &&
-						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
-				}
-			});
+		
 
 // 		role.log('🔜⚡', creep, 'STRUCTURE_CONTAINER');
 		}
@@ -177,7 +170,7 @@ var role = {
 		}
 
 		if(!target &&
-			 creep.room.energyAvailable == creep.room.energyCapacityAvailable &&
+			 //creep.room.energyAvailable == creep.room.energyCapacityAvailable &&
 			 Memory.stop_upgrading == false &&
 			 creep.getActiveBodyparts(WORK)) {
 			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
