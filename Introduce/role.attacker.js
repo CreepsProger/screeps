@@ -7,7 +7,7 @@ var roleAttacker = {
 			if(creep.memory.attacking && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
 				creep.memory.attacking = false;
 			}
-			
+
 			if(!creep.memory.attacking &&
 				 creep.getActiveBodyparts(RANGED_ATTACK) > 0 &&
 				 creep.getActiveBodyparts(CARRY) == 0) {
@@ -16,8 +16,8 @@ var roleAttacker = {
 
 			//
 			var myRoom = 'W26S33';//Game.spawns['Spawn1'].room.name;
-			var attackedRoom = 'W28S33';//Game.map.describeExits(myRoom)[BOTTOM].name; //'W25S34'
-			
+			var attackedRoom = 'W25S34';//Game.map.describeExits(myRoom)[BOTTOM].name; //'W25S34'
+
 			if(creep.memory.attacking && !!myRoom) {
 				var target;
 				if(creep.room.name == myRoom && creep.hits < creep.hitsMax - 400) {
@@ -27,7 +27,7 @@ var roleAttacker = {
 								return structure.structureType == STRUCTURE_RAMPART;
 							}
 						});
-                    
+
 						if(rampart && rampart.my && rampart.pos != creep.pos) {
 							target = rampart;
 						}
@@ -36,37 +36,37 @@ var roleAttacker = {
 						}
 					}
 				}
-				
+
 				if(creep.room.name != myRoom && creep.hits < creep.hitsMax - 400) {
 					if(!target) {
 						const exitDir = Game.map.findExit(creep.room, myRoom);
 						target = creep.pos.findClosestByRange(exitDir);
 					}
 				}
-				
+
 				if(!target) {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 3);
 					if(targets.length > 0) {
 						target = targets[0];
 					}
 				}
-				
+
 				if(!target) {
 					target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
 				}
-				
+
 				if(!target) {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, 3, {
 						filter: (structure) => {
 							return (structure.structureType != STRUCTURE_CONTROLLER);
 						}
 					});
-					
+
 					if(targets.length > 0) {
 						target = targets[0];
 					}
 				}
-				
+
 				if(!target) {
 					target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES, {
 						filter: (structure) => {
@@ -75,25 +75,25 @@ var roleAttacker = {
 						}
 					});
 				}
-				
+
 				if(!target) {
 					if(creep.room.name != attackedRoom) {
 						const exitDir = Game.map.findExit(creep.room, attackedRoom);
 						target = creep.pos.findClosestByRange(exitDir);
 					}
 				}
-				
+
 				if(!target && creep.hits < creep.hitsMax - 400) {
 					if(creep.room.name != myRoom) {
 						const exitDir = Game.map.findExit(creep.room, myRoom);
 						target = creep.pos.findClosestByRange(exitDir);
 					}
 				}
-				
+
 				if(!target && Game.flags['DP'] !== undefined) {
 					target = Game.flags['DP'].pos;
 				}
-				
+
 				if(target)
 				{
 					var err = ERR_NOT_IN_RANGE;
@@ -101,8 +101,8 @@ var roleAttacker = {
 						 target.structureType != STRUCTURE_RAMPART &&
 						 target.structureType != STRUCTURE_CONTROLLER) {
 						err = creep.rangedAttack(target);
-					} 
-					
+					}
+
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
 						creep.say('🔜🎯');
