@@ -123,8 +123,8 @@ var roleEnergyTransferer = {
 				});
 				if(storages.length > 0) {
 					target = storages.reduce(function (p, v) {
-						const pu = Math.floor(p.store.getUsedCapacity(RESOURCE_ENERGY)/10000);
-						const vu = Math.floor(v.store.getUsedCapacity(RESOURCE_ENERGY)/10000);
+						const pu = Math.floor(p.store.getUsedCapacity(RESOURCE_ENERGY)/5000);
+						const vu = Math.floor(v.store.getUsedCapacity(RESOURCE_ENERGY)/5000);
 //  						console.log(p.room.name, pu, v.room.name, vu, pu<vu, pu<vu? p.room.name:v.room.name);
 						return (pu <= vu ? p : v );
 					});
