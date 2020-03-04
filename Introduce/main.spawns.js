@@ -118,7 +118,7 @@ var spawns = {
 				const CL = controller.level;
 				var N = Memory.totals.CreepsNumber;
 				// 22*1800+2*1300+4*650 = 44800 -> 30 per game tick
-				spawns.tryCreateCreep(spawn,         2010, 30, 1); // V 1-1 E  1500   Carier
+				spawns.tryCreateCreep(spawn,         3015, 30, 1); // V 1-1 E  1500   Carier
 				spawns.tryCreateCreep(spawn,       120408, 39, 2); // V 1-1 E  1800   Worker
 				spawns.tryCreateCreep(spawn,         2010, 40, 2); // V 1-1 E  1500   Carier
 				spawns.tryCreateCreep(spawn,       120408, 49, 4); // V 1-1 E  1800   Worker
