@@ -126,7 +126,7 @@ var role = {
 		
 
 // 		role.log('🔜⚡', creep, 'STRUCTURE_CONTAINER');
-		}
+		
 /*
 		if(!target && creep.getActiveBodyparts(WORK)) {
 			var sources = Game.rooms[my_room].find(FIND_SOURCES, {
