@@ -123,7 +123,8 @@ var role = {
 		}
 
 		if(!target &&
-			 creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
+			 creep.room.energyAvailable != creep.room.energyCapacityAvailable &&
+			 !creep.getActiveBodyparts(WORK)) {
 			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_CONTAINER) &&
@@ -166,7 +167,7 @@ var role = {
 			});
 		}
 
-		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
+		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable && !creep.getActiveBodyparts(WORK)) {
 			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_STORAGE) &&
