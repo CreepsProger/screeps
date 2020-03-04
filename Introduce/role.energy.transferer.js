@@ -18,6 +18,9 @@ var roleEnergyTransferer = {
 		const this_room_sources_is_empty = !creep.pos.findClosestByPath(FIND_SOURCES, {
 			filter: (source) => source.energy > 0 && source.room.name == this_room
 		});
+		const a_source_is_not_near = !creep.pos.findInRange(FIND_SOURCES, 2, {
+			filter: (source) => source.energy > 0 && source.room.name == this_room
+		});
 
 		if(creep.memory.transfering && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
 			creep.memory.transfering = false;
@@ -26,7 +29,7 @@ var roleEnergyTransferer = {
 		if(!creep.memory.transfering &&
 			 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0) ||
 			  (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun && creep.room.energyAvailable != creep.room.energyCapacityAvailable && !creep.getActiveBodyparts(WORK)) ||
-			  //(creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun && creep.getActiveBodyparts(WORK)) ||
+			  (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun && a_source_is_not_near && creep.getActiveBodyparts(WORK)) ||
 				(creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun && this_room != my_room))) {
 			creep.memory.transfering = true;
 		}
