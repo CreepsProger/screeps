@@ -120,13 +120,13 @@ var spawns = {
 				// 22*1800+2*1300+4*650 = 44800 -> 30 per game tick
 				spawns.tryCreateCreep(spawn,         2412, 30, 1); // V 1-1 E  1500   Carier
 				spawns.tryCreateCreep(spawn,       120408, 39, 2); // V 1-1 E  1800   Worker
-				spawns.tryCreateCreep(spawn,         2010, 40, 2); // V 1-1 E  1500   Carier
+				spawns.tryCreateCreep(spawn,         2412, 40, 2); // V 1-1 E  1500   Carier
 				spawns.tryCreateCreep(spawn,       120408, 49, 4); // V 1-1 E  1800   Worker
 				spawns.tryCreateCreep(spawn,  20000000002, 50, 1); // V 1-1 E  1300  Claimer
- 				spawns.tryCreateCreep(spawn,         2010, 51, 2); // V 1-1 E  1500   Carier
+ 				spawns.tryCreateCreep(spawn,         1608, 51, 3); // V 1-1 E  1200   Carier
 				spawns.tryCreateCreep(spawn,       120408, 59, 3); // V 1-1 E  1800   Worker
 				spawns.tryCreateCreep(spawn,  20000000002, 60, 1); // V 1-1 E  1300  Claimer
-        spawns.tryCreateCreep(spawn,         2010, 61, 2); // V 1-1 E  1500   Carier
+        spawns.tryCreateCreep(spawn,         1608, 61, 3); // V 1-1 E  1200   Carier
 				spawns.tryCreateCreep(spawn,       120408, 69, 3); // V 1-1 E  1800   Worker
 				spawns.tryCreateCreep(spawn,5000200000007,100, 3); // V 1-1 E   650 Attacker
 
