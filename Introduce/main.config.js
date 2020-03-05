@@ -84,6 +84,13 @@ var config = {
 												 [ {name: '1', time: 0, min_weight: 60, max_weight: 69}
 												 , {name: '2', time: 0, min_weight: 60, max_weight: 69}
 												 ]
+										 , attacker:
+												 [ {name: '1', time: 0, min_weight: 100, max_weight: 100}
+												 , {name: '2', time: 0, min_weight: 100, max_weight: 100}
+												 , {name: '3', time: 0, min_weight: 100, max_weight: 100}
+												 , {name: '4', time: 0, min_weight: 100, max_weight: 100}
+												 ]
+									   , heal_room: 'W26S33'
 										 },
 						 W29S33: { containers: {weight: 75}
 										 , energy_harvesting:
@@ -114,6 +121,18 @@ var config = {
 												 [ {name: '1', time: 0, min_weight: 90, max_weight: 99}
 												 , {name: '2', time: 0, min_weight: 90, max_weight: 99}
 												 ]
+										 , attacker:
+												 [ {name: '1', time: 0, min_weight: 90, max_weight: 99}
+												 , {name: '2', time: 0, min_weight: 90, max_weight: 99}
+												 , {name: '3', time: 0, min_weight: 90, max_weight: 99}
+												 , {name: '4', time: 0, min_weight: 90, max_weight: 99}
+												 , {name: '5', time: 0, min_weight: 90, max_weight: 99}
+												 , {name: '6', time: 0, min_weight: 90, max_weight: 99}
+												 , {name: '7', time: 0, min_weight: 90, max_weight: 99}
+												 , {name: '8', time: 0, min_weight: 90, max_weight: 99}
+												 , {name: '9', time: 0, min_weight: 90, max_weight: 99}
+												 ]
+									   , heal_room: 'W25S33'
 										 }
 									 }
 						};

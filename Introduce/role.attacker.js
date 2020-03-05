@@ -15,12 +15,28 @@ var roleAttacker = {
 			}
 
 			//
-			var myRoom = 'W26S33';//Game.spawns['Spawn1'].room.name;
-			var attackedRoom = 'W28S33';//Game.map.describeExits(myRoom)[BOTTOM].name; //'W25S34'
+			// var myRoom = 'W26S33';//Game.spawns['Spawn1'].room.name;
+			// var attackedRoom = 'W28S33';//Game.map.describeExits(myRoom)[BOTTOM].name; //'W25S34'
 
 			if(creep.memory.attacking && !!myRoom) {
+
+        const this_room = creep.room.name;
+    		const this_room_config = Memory.config.rooms[this_room];
+				const my_room = creep.memory['attacker'].room;
+    		const my_room_config = Memory.config.rooms[my_room];
+				const my_heal_room = my_room_config.heal_room;
+
+    		var target;
+
+    		if(!target && this_room != my_room && creep.hits == creep.hitsMax) {
+    			const exitDir = Game.map.findExit(Game.rooms[this_room] , my_room);
+    			target = creep.pos.findClosestByPath(exitDir);
+    // 			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
+    		}
+
+
 				var target;
-				if(creep.room.name == myRoom && creep.hits < creep.hitsMax - 400) {
+				if(creep.room.name == my_heal_room && creep.hits < creep.hitsMax - 400) {
 					if(!target) {
 						var rampart = creep.pos.findClosestByRange(FIND_STRUCTURES, {
 							filter: (structure) => {
@@ -37,9 +53,9 @@ var roleAttacker = {
 					}
 				}
 
-				if(creep.room.name != myRoom && creep.hits < creep.hitsMax - 400) {
+				if(creep.room.name != my_heal_room && creep.hits < creep.hitsMax - 400) {
 					if(!target) {
-						const exitDir = Game.map.findExit(creep.room, myRoom);
+						const exitDir = Game.map.findExit(creep.room, my_heal_room);
 						target = creep.pos.findClosestByRange(exitDir);
 					}
 				}
