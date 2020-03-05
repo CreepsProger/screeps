@@ -96,7 +96,7 @@ var metrix = {
                   , JSON.stringify(Memory.CreepsNumberByType));
 		}
 
-		if((Game.time % config.ticksToCheckCreepsNumber) % 2 == 0) {
+		if(Game.time % (config.ticksToCheckCreepsNumber * 2) == 0) {
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, JSON.stringify(BODYPARTS_ALL));
 		}
