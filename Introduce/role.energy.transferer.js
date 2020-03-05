@@ -42,7 +42,8 @@ var roleEnergyTransferer = {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_LINK) &&
 							(structure.id == '5e56dc7a28e44c6f77878b87' ||
-							 structure.id == '5e5ab771eadd04714b92ed7d') &&
+							 structure.id == '5e5ab771eadd04714b92ed7d' ||
+							 structure.id == '5e5f8ed0124b9b1087db5d47') &&
 							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 							this_room_config.containers.weight < creep.memory.weight
 					}
