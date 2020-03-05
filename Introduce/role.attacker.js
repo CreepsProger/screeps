@@ -1,7 +1,8 @@
 var roleNext = require('role.energy.transferer');
 
-var roleAttacker = {
+var role = {
 
+    name: 'attacker',
     /** @param {Creep} creep **/
     run: function(creep) {
 			if(creep.memory.attacking && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
@@ -12,11 +13,12 @@ var roleAttacker = {
 				 creep.getActiveBodyparts(RANGED_ATTACK) > 0 &&
 				 creep.getActiveBodyparts(CARRY) == 0) {
 				creep.memory.attacking = true;
+				config.setRoom(creep, role.name);
 			}
 
       const this_room = creep.room.name;
   		const this_room_config = Memory.config.rooms[this_room];
-			const my_room = creep.memory['attacker'].room;
+			const my_room = creep.memory[role.name].room;
   		const my_room_config = Memory.config.rooms[my_room];
 			const my_heal_room = my_room_config.heal_room;
 
@@ -160,4 +162,4 @@ var roleAttacker = {
 		}
 };
 
-module.exports = roleAttacker;
+module.exports = role;
