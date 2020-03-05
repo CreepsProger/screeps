@@ -101,6 +101,11 @@ var metrix = {
 									, JSON.stringify(BODYPARTS_ALL));
 		}
 
+		if(Game.time % (config.ticksToCheckCreepsNumber * 10) == 0) {
+			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+									, JSON.stringify(RESOURCES_ALL));
+		}
+
 	}
 };
 
