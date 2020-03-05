@@ -95,7 +95,7 @@ var config = {
 												 , {name: '2', time: 0, min_weight: 70, max_weight: 79}
 												 ]
 										 },
-						 W28S34: { containers: {weight: 85}
+						 W31S33: { containers: {weight: 85}
 										 , energy_harvesting:
 												 [ {name: '1', time: 0, min_weight: 80, max_weight: 89}
 												 , {name: '2', time: 0, min_weight: 80, max_weight: 89}
