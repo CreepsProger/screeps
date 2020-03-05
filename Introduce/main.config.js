@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 69,
+	version: 70,
 	ticksToCheckCreepsNumber: 10,
 	// maxCreepsNumber:40,
 
@@ -24,69 +24,89 @@ var config = {
 		if(Memory.config === undefined ||
 			 Memory.config.v === undefined ||
 			 Memory.config.v != config.version) {
-			Memory.config = { v: config.version
-											 , rooms : { W25S33: { containers: {weight: 35}
-																					 , links:
-																							 [ {from: '1', to: '0'}
-																							 , {from: '1', to: '0'}
-																							 ]
-																					 , energy_harvesting:
-																							 [ {name: '1', time: 0, min_weight: 30, max_weight: 39}
-																							 , {name: '2', time: 0, min_weight: 30, max_weight: 39}
-																							 , {name: '3', time: 0, min_weight: 30, max_weight: 39}
-																							 , {name: '4', time: 0, min_weight: 30, max_weight: 39}
-																							 , {name: '5', time: 0, min_weight: 30, max_weight: 39}
-																							 ]
-																					 },
-																	 W26S33: { containers: {weight: 45}
-																					 , energy_harvesting:
-																							 [ {name: '1', time: 0, min_weight: 40, max_weight: 49}
-																							 , {name: '2', time: 0, min_weight: 40, max_weight: 49}
-																							 , {name: '3', time: 0, min_weight: 40, max_weight: 49}
-																							 , {name: '4', time: 0, min_weight: 40, max_weight: 49}
-																							 , {name: '5', time: 0, min_weight: 40, max_weight: 49}
-																							 , {name: '6', time: 0, min_weight: 40, max_weight: 49}
-																							 , {name: '7', time: 0, min_weight: 40, max_weight: 49}
-																							 , {name: '8', time: 0, min_weight: 40, max_weight: 49}
-																							 , {name: '9', time: 0, min_weight: 40, max_weight: 49}
-																							 ]
-																					 },
-																	 W27S33: { containers: {weight: 55}
-																					 , energy_harvesting:
-																							 [ {name: '1', time: 0, min_weight: 50, max_weight: 59}
-																							 , {name: '2', time: 0, min_weight: 50, max_weight: 59}
-																							 , {name: '3', time: 0, min_weight: 50, max_weight: 59}
-																							 , {name: '4', time: 0, min_weight: 50, max_weight: 59}
-																							 , {name: '5', time: 0, min_weight: 50, max_weight: 59}
-																							 , {name: '6', time: 0, min_weight: 50, max_weight: 59}
-																							 , {name: '7', time: 0, min_weight: 50, max_weight: 59}
-																							 , {name: '8', time: 0, min_weight: 50, max_weight: 59}
-																							 , {name: '9', time: 0, min_weight: 50, max_weight: 59}
-																							 ]
-																					 , claiming:
-																							 [ {name: '1', time: 0, min_weight: 50, max_weight: 59}
-																							 , {name: '2', time: 0, min_weight: 50, max_weight: 59}
-																							 ]
-																					 },
-																	 W28S33: { containers: {weight: 65}
-																					 , energy_harvesting:
-																							 [ {name: '1', time: 0, min_weight: 60, max_weight: 69}
-																							 , {name: '2', time: 0, min_weight: 60, max_weight: 69}
-																							 , {name: '3', time: 0, min_weight: 60, max_weight: 69}
-																							 , {name: '4', time: 0, min_weight: 60, max_weight: 69}
-																							 , {name: '5', time: 0, min_weight: 60, max_weight: 69}
-																							 , {name: '6', time: 0, min_weight: 60, max_weight: 69}
-																							 , {name: '7', time: 0, min_weight: 60, max_weight: 69}
-																							 , {name: '8', time: 0, min_weight: 60, max_weight: 69}
-																							 , {name: '9', time: 0, min_weight: 60, max_weight: 69}
-																							 ]
-																					 , claiming:
-																							 [ {name: '1', time: 0, min_weight: 60, max_weight: 69}
-																							 , {name: '2', time: 0, min_weight: 60, max_weight: 69}
-																							 ]
-																					 }
-																 }
-													};
+			Memory.config = { v: config.version , rooms : {
+						 W25S33: { containers: {weight: 35}
+										 , links:
+												 [ {from: '1', to: '0'}
+												 , {from: '1', to: '0'}
+												 ]
+										 , energy_harvesting:
+												 [ {name: '1', time: 0, min_weight: 30, max_weight: 39}
+												 , {name: '2', time: 0, min_weight: 30, max_weight: 39}
+												 , {name: '3', time: 0, min_weight: 30, max_weight: 39}
+												 , {name: '4', time: 0, min_weight: 30, max_weight: 39}
+												 , {name: '5', time: 0, min_weight: 30, max_weight: 39}
+												 ]
+										 },
+						 W26S33: { containers: {weight: 45}
+										 , energy_harvesting:
+												 [ {name: '1', time: 0, min_weight: 40, max_weight: 49}
+												 , {name: '2', time: 0, min_weight: 40, max_weight: 49}
+												 , {name: '3', time: 0, min_weight: 40, max_weight: 49}
+												 , {name: '4', time: 0, min_weight: 40, max_weight: 49}
+												 , {name: '5', time: 0, min_weight: 40, max_weight: 49}
+												 , {name: '6', time: 0, min_weight: 40, max_weight: 49}
+												 , {name: '7', time: 0, min_weight: 40, max_weight: 49}
+												 , {name: '8', time: 0, min_weight: 40, max_weight: 49}
+												 , {name: '9', time: 0, min_weight: 40, max_weight: 49}
+												 ]
+										 },
+						 W27S33: { containers: {weight: 55}
+										 , energy_harvesting:
+												 [ {name: '1', time: 0, min_weight: 50, max_weight: 59}
+												 , {name: '2', time: 0, min_weight: 50, max_weight: 59}
+												 , {name: '3', time: 0, min_weight: 50, max_weight: 59}
+												 , {name: '4', time: 0, min_weight: 50, max_weight: 59}
+												 , {name: '5', time: 0, min_weight: 50, max_weight: 59}
+												 , {name: '6', time: 0, min_weight: 50, max_weight: 59}
+												 , {name: '7', time: 0, min_weight: 50, max_weight: 59}
+												 , {name: '8', time: 0, min_weight: 50, max_weight: 59}
+												 , {name: '9', time: 0, min_weight: 50, max_weight: 59}
+												 ]
+										 , claiming:
+												 [ {name: '1', time: 0, min_weight: 50, max_weight: 59}
+												 , {name: '2', time: 0, min_weight: 50, max_weight: 59}
+												 ]
+										 },
+						 W28S33: { containers: {weight: 65}
+										 , energy_harvesting:
+												 [ {name: '1', time: 0, min_weight: 60, max_weight: 69}
+												 , {name: '2', time: 0, min_weight: 60, max_weight: 69}
+												 , {name: '3', time: 0, min_weight: 60, max_weight: 69}
+												 , {name: '4', time: 0, min_weight: 60, max_weight: 69}
+												 , {name: '5', time: 0, min_weight: 60, max_weight: 69}
+												 , {name: '6', time: 0, min_weight: 60, max_weight: 69}
+												 , {name: '7', time: 0, min_weight: 60, max_weight: 69}
+												 , {name: '8', time: 0, min_weight: 60, max_weight: 69}
+												 , {name: '9', time: 0, min_weight: 60, max_weight: 69}
+												 ]
+										 , claiming:
+												 [ {name: '1', time: 0, min_weight: 60, max_weight: 69}
+												 , {name: '2', time: 0, min_weight: 60, max_weight: 69}
+												 ]
+										 },
+						 W29S33: { containers: {weight: 75}
+										 , energy_harvesting:
+												 [ {name: '1', time: 0, min_weight: 70, max_weight: 79}
+												 , {name: '2', time: 0, min_weight: 70, max_weight: 79}
+												 ]
+										 , claiming:
+												 [ {name: '1', time: 0, min_weight: 70, max_weight: 79}
+												 , {name: '2', time: 0, min_weight: 70, max_weight: 79}
+												 ]
+										 },
+						 W28S34: { containers: {weight: 85}
+										 , energy_harvesting:
+												 [ {name: '1', time: 0, min_weight: 80, max_weight: 89}
+												 , {name: '2', time: 0, min_weight: 80, max_weight: 89}
+												 ]
+										 , claiming:
+												 [ {name: '1', time: 0, min_weight: 80, max_weight: 89}
+												 , {name: '2', time: 0, min_weight: 80, max_weight: 89}
+												 ]
+										 }
+									 }
+						};
 			config.log('init config', config.inited, 'Memory.config:', JSON.stringify(Memory.config));
 		}
 	},
