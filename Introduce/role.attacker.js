@@ -37,19 +37,18 @@ var role = {
 	  		const this_room_config = Memory.config.rooms[this_room];
 				const my_room = creep.memory[role.name].room;
 	  		const my_room_config = Memory.config.rooms[my_room];
-				const my_heal_room = 'W25S33';
+				const my_heal_room = my_room_config.heal_room;//'W25S33';
+				const my_path_room = my_room_config.path_rooms[this_room];
 
     		var target;
 
     		if(!target && this_room != my_room && creep.hits == creep.hitsMax) {
-    			const exitDir = Game.map.findExit(Game.rooms[this_room] , my_room);
+    			const exitDir = Game.map.findExit(Game.rooms[this_room] , my_path_room);
     			target = creep.pos.findClosestByPath(exitDir);
     // 			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
     		}
 
-
-				var target;
-				if(creep.room.name == my_heal_room && creep.hits < creep.hitsMax - 400) {
+				if(this_room == my_heal_room && creep.hits < creep.hitsMax - 400) {
 					if(!target) {
 						var rampart = creep.pos.findClosestByRange(FIND_STRUCTURES, {
 							filter: (structure) => {
