@@ -38,7 +38,7 @@ var roleBuilder = {
 				var target;
 
 				if(!target) {
-					var structures = creep.pos.findInRange(FIND_STRUCTURES, 8, {
+					var structures = creep.pos.findInRange(FIND_STRUCTURES, 15, {
 						filter: (structure) => { 
 							if(structure.structureType == STRUCTURE_ROAD &&
 								 structure.hitsMax - structure.hits > 1600) {
