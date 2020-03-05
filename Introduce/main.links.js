@@ -17,7 +17,6 @@ var links = {
 			 const linkFrom = Game.getObjectById('5e5f8ed0124b9b1087db5d47');
 		   const linkTo = Game.getObjectById('5e583a7b7a54e3585a982b96');
 	  	 linkFrom.transferEnergy(linkTo);
-
 		 }
 };
 
