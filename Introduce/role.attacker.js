@@ -30,13 +30,13 @@ var role = {
 				config.setRoom(creep, role.name);
 			}
 
-      const this_room = creep.room.name;
-  		const this_room_config = Memory.config.rooms[this_room];
-			const my_room = creep.memory[role.name].room;
-  		const my_room_config = Memory.config.rooms[my_room];
-			const my_heal_room = (!!my_room_config.heal_room)?my_room_config.heal_room:'W25S33';
-
 			if(creep.memory.attacking) {
+
+	      const this_room = creep.room.name;
+	  		const this_room_config = Memory.config.rooms[this_room];
+				const my_room = creep.memory[role.name].room;
+	  		const my_room_config = Memory.config.rooms[my_room];
+				const my_heal_room = (!!my_room_config.heal_room)?my_room_config.heal_room:'W25S33';
 
     		var target;
 
