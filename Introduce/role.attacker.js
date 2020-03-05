@@ -105,8 +105,8 @@ var role = {
 				}
 
 				if(!target) {
-					if(creep.room.name != attackedRoom) {
-						const exitDir = Game.map.findExit(creep.room, attackedRoom);
+					if(this_room != my_room) {
+						const exitDir = Game.map.findExit(creep.room, my_room);
 						target = creep.pos.findClosestByRange(exitDir);
 					}
 				}
