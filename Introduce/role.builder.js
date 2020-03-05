@@ -38,21 +38,25 @@ var roleBuilder = {
 				var target;
 
 				if(!target) {
-					var targets = creep.pos.findInRange(FIND_STRUCTURES, 10, {
+					var structures = creep.pos.findInRange(FIND_STRUCTURES, 8, {
 						filter: (structure) => { 
 							if(structure.structureType == STRUCTURE_ROAD &&
-								 structure.hitsMax - structure.hits > 1000) {
+								 structure.hitsMax - structure.hits > 1600) {
 								return true;
 							}
 							if(structure.structureType == STRUCTURE_CONTAINER &&
-								 structure.hitsMax - structure.hits > 1000) {
+								 structure.hitsMax - structure.hits > 5000) {
 								return true;
 							}
 							return false;
 						}
 					});
-					if(targets.length > 0) {
-						target = targets[0];
+					if(structures.length > 0) {
+						target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+							filter: (structure) => {
+								return structures.find(s => s.id == structure.id);
+							}
+						});
 					}
 				}
 
