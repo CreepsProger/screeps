@@ -48,19 +48,34 @@ var roleEnergyTransferer = {
 				});
 			}
 
-		if(!target && !this_room_sources_is_empty) {
-				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+// 		if(!target && !this_room_sources_is_empty) {
+// 				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+// 					filter: (structure) => {
+// 						return structure.structureType == STRUCTURE_CONTAINER &&
+// 									 this_room_config.containers.weight < creep.memory.weight &&
+// 									 structure.store.getFreeCapacity() > 0;
+// 					}
+// 				});
+// 			}
+
+			if(!target && !this_room_sources_is_empty) {
+				var containers = creep.pos.findInRange(FIND_STRUCTURES, 15, {
 					filter: (structure) => {
 						return structure.structureType == STRUCTURE_CONTAINER &&
-									 this_room_config.containers.weight < creep.memory.weight &&
-									 structure.store.getFreeCapacity() > 0;
+							this_room_config.containers.weight < creep.memory.weight &&
+							structure.store.getFreeCapacity() > 0;
 					}
 				});
+				if(containers.length > 0) {
+					target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+						filter: (structure) => {
+							return containers.find(c => c.id == structure.id);
+						}
+					});
+				}
 			}
-				//
-				//
-				//
-				// console.log( '🏗⚠️', Math.trunc(Game.time/10000), Game.time%10000
+
+			// console.log( '🏗⚠️', Math.trunc(Game.time/10000), Game.time%10000
 				// 						, creep.name
 				// 						, 'this_room:'
 				// 						, this_room
