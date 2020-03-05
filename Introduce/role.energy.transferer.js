@@ -28,9 +28,7 @@ var roleEnergyTransferer = {
 
 		if(!creep.memory.transfering &&
 			 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0) ||
-			  (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun && creep.room.energyAvailable != creep.room.energyCapacityAvailable && !creep.getActiveBodyparts(WORK)) ||
-			  (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun && a_source_is_not_near && creep.getActiveBodyparts(WORK)) ||
-				(creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun && this_room != my_room))) {
+			  (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun))) {
 			creep.memory.transfering = true;
 		}
 
@@ -171,6 +169,7 @@ var roleEnergyTransferer = {
 // 						console.log(creep, 'target storage room name:', target.room.name);
 				}
 			}
+
 			if(target) {
 
 				var err = ERR_NOT_IN_RANGE;
