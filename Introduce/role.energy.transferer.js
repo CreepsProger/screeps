@@ -59,7 +59,7 @@ var roleEnergyTransferer = {
 // 			}
 
 			if(!target && !this_room_sources_is_empty) {
-				var containers = creep.pos.findInRange(FIND_STRUCTURES, 12, {
+				var containers = creep.pos.findInRange(FIND_STRUCTURES, 10, {
 					filter: (structure) => {
 						return structure.structureType == STRUCTURE_CONTAINER &&
 							this_room_config.containers.weight < creep.memory.weight &&
