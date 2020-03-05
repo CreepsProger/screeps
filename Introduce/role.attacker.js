@@ -27,10 +27,11 @@ var role = {
 				 (creep.getActiveBodyparts(RANGED_ATTACK) > 0 ||
 				  creep.getActiveBodyparts(WORK) == 0 && creep.getActiveBodyparts(CARRY) == 0)) {
 				creep.memory.attacking = true;
-				config.setRoom(creep, role.name);
 			}
 
 			if(creep.memory.attacking) {
+
+				config.setRoom(creep, role.name);
 
 	      const this_room = creep.room.name;
 	  		const this_room_config = Memory.config.rooms[this_room];
