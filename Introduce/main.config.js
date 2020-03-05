@@ -104,6 +104,16 @@ var config = {
 												 [ {name: '1', time: 0, min_weight: 80, max_weight: 89}
 												 , {name: '2', time: 0, min_weight: 80, max_weight: 89}
 												 ]
+										 },
+						 W25S34: { containers: {weight: 95}
+										 , energy_harvesting:
+												 [ {name: '1', time: 0, min_weight: 90, max_weight: 99}
+												 , {name: '2', time: 0, min_weight: 90, max_weight: 99}
+												 ]
+										 , claiming:
+												 [ {name: '1', time: 0, min_weight: 90, max_weight: 99}
+												 , {name: '2', time: 0, min_weight: 90, max_weight: 99}
+												 ]
 										 }
 									 }
 						};
