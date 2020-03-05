@@ -4,6 +4,16 @@ const config = require('main.config');
 var role = {
 
     name: 'attacker',
+
+			init: function(creep) {
+				if(creep.memory[role.name] === undefined ||
+					 creep.memory[role.name].on === undefined) {
+					creep.memory[role.name] = { on: false
+																		, room: ''
+																		};
+				}
+			},
+
     /** @param {Creep} creep **/
     run: function(creep) {
 			if(creep.memory.attacking && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
@@ -14,9 +24,11 @@ var role = {
 				 creep.getActiveBodyparts(RANGED_ATTACK) > 0 &&
 				 creep.getActiveBodyparts(CARRY) == 0) {
 				creep.memory.attacking = true;
+				role.init(creep);
 				config.setRoom(creep, role.name);
 			}
 			if(creep.memory.attacking) {
+				role.init(creep);
 				config.setRoom(creep, role.name);
 			}
 
