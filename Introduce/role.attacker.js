@@ -16,19 +16,17 @@ var role = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
+
+			role.init(creep);
+
 			if(creep.memory.attacking && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
 				creep.memory.attacking = false;
 			}
 
 			if(!creep.memory.attacking &&
-				 creep.getActiveBodyparts(RANGED_ATTACK) > 0 &&
-				 creep.getActiveBodyparts(CARRY) == 0) {
+				 (creep.getActiveBodyparts(RANGED_ATTACK) > 0 ||
+				  creep.getActiveBodyparts(WORK) == 0 && creep.getActiveBodyparts(CARRY) == 0)) {
 				creep.memory.attacking = true;
-				role.init(creep);
-				config.setRoom(creep, role.name);
-			}
-			if(creep.memory.attacking) {
-				role.init(creep);
 				config.setRoom(creep, role.name);
 			}
 
