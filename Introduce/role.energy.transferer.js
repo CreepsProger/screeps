@@ -136,6 +136,15 @@ var roleEnergyTransferer = {
 // 						console.log(creep, 'target storage room name:', target.room.name);
 				}
 			}
+
+			if(!target && creep.memory.rerun) {
+				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+					filter: (structure) => {
+						return structure.structureType == STRUCTURE_LAB &&
+							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+					}
+				});
+			}
 			
 			if(!target && creep.memory.rerun) {
 				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
