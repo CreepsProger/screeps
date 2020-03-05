@@ -14,17 +14,13 @@ var roleAttacker = {
 				creep.memory.attacking = true;
 			}
 
-			//
-			// var myRoom = 'W26S33';//Game.spawns['Spawn1'].room.name;
-			// var attackedRoom = 'W28S33';//Game.map.describeExits(myRoom)[BOTTOM].name; //'W25S34'
+      const this_room = creep.room.name;
+  		const this_room_config = Memory.config.rooms[this_room];
+			const my_room = creep.memory['attacker'].room;
+  		const my_room_config = Memory.config.rooms[my_room];
+			const my_heal_room = my_room_config.heal_room;
 
-			if(creep.memory.attacking && !!myRoom) {
-
-        const this_room = creep.room.name;
-    		const this_room_config = Memory.config.rooms[this_room];
-				const my_room = creep.memory['attacker'].room;
-    		const my_room_config = Memory.config.rooms[my_room];
-				const my_heal_room = my_room_config.heal_room;
+			if(creep.memory.attacking) {
 
     		var target;
 
