@@ -19,7 +19,7 @@ var role = {
 
 			role.init(creep);
 
-			if(creep.memory.attacking && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
+			if(creep.memory.attacking) {
 				creep.memory.attacking = false;
 			}
 
