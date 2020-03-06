@@ -97,7 +97,7 @@ var roleEnergyTransferer = {
 				// 						, 'target:'
 				// 					  , JSON.stringify(target));
 
-			
+
 
 			if(!target &&
 				 (this_room != my_room ||
@@ -158,7 +158,7 @@ var roleEnergyTransferer = {
 					}
 				});
 			}
-			
+
 			if(!target && creep.memory.rerun) {
 				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 					filter: (structure) => {
@@ -194,8 +194,8 @@ var roleEnergyTransferer = {
 				}
 
 				if(err == ERR_NOT_IN_RANGE) {
-					creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
 					creep.say('🔜💡');
+					creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
 					if(!!Game.flags['LET'] || !!Game.flags['LE'] || !!Game.flags['L']) {
 						console.log( '🔜💡', Math.trunc(Game.time/10000), Game.time%10000
 												, creep.name

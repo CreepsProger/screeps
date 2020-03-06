@@ -9,8 +9,8 @@ var role = {
 
 	name: 'claiming',
 
-	logFlags: ['LC','LC ','L'], 
-	
+	logFlags: ['LC','LC ','L'],
+
 	log: function(creep,...args) {
 			if(log.canLog(role.logFlags)) {
 				console.log( '🗝', Math.trunc(Game.time/10000), Game.time%10000
@@ -52,12 +52,12 @@ var role = {
 			}
 		}
 	},
-	
+
 	run: function(creep) {
 		role.init(creep);
 		role.checkOff(creep);
 		role.checkOn(creep);
-		
+
 		if(creep.memory[role.name].on) {
 			var target;
 			if(!target) {
@@ -86,11 +86,11 @@ var role = {
 							action = 'reserving controller';
 							err = creep.reserveController(target);
 						}
-					}					
+					}
 				}
 				if(err == ERR_NOT_IN_RANGE) {
-					creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
 					creep.say('🔜🗝');
+					creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
 					role.log(creep, 'moving from', JSON.stringify(creep.pos), 'to', JSON.stringify(target));
 				}
 				else if(!err) {
@@ -129,20 +129,20 @@ module.exports = role;
 //                        , MOVE: 0};
 
 // var roleClaimer = {
-	
+
 // 	/** @param {Creep} creep **/
 // 	run: function(creep) {
 // 		role.init(creep);
 // 		role.checkOn(creep);
 // 		role.checkOff(creep);
 // 		role.do(creep,next);
-		
-		
+
+
 // 		if(creep.memory.claiming.on) {
 // 			creep.memory.claiming.on = false;
 // 		}
-		
-		
+
+
 // 		if(creep.memory.claiming.on) {
 // 			var target;
 // 			if(!target) {

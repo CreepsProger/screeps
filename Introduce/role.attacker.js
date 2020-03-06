@@ -133,8 +133,8 @@ var role = {
 					}
 
 					if(err == ERR_NOT_IN_RANGE) {
-						creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
 						creep.say('🔜🎯');
+						creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
 						if(!!Game.flags['LA '] || !!Game.flags['LA'] || !!Game.flags['L']) {
 							var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
 							console.log( '🔜🎯', Math.trunc(Game.time/10000), Game.time%10000

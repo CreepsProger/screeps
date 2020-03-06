@@ -32,8 +32,8 @@ var rolePickuper = {
             if(target) {
                 var err = creep.pickup(target);
                 if(err == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                     creep.say('🔜👊');
+										creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                     if(Game.flags['LP '] || Game.flags['LP'] || Game.flags['L']) {
                         var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
                         console.log( '🔜👊', Math.trunc(Game.time/10000), Game.time%10000

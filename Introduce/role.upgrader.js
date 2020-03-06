@@ -79,8 +79,8 @@ var roleUpgrader = {
 				if(target) {
 					var err = creep.upgradeController(target);
 					if(err == ERR_NOT_IN_RANGE) {
-						creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
 						creep.say('🔜🛠');
+						creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
 						if(Game.flags['LU '] || Game.flags['LU'] || Game.flags['L']) {
 							console.log( '🔜🛠', Math.trunc(Game.time/10000), Game.time%10000
 													, creep.name
@@ -121,57 +121,3 @@ var roleUpgrader = {
 };
 
 module.exports = roleUpgrader;
-
-
-
-
-
-
-//             var err = creep.upgradeController(creep.room.controller);
-//             if(err == ERR_NOT_IN_RANGE) {
-//                 creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
-//                 creep.say('🔜🛠');
-//             }
-//             else if(err == ERR_NO_BODYPART) {
-//                 var new_target;
-//                 if(!new_target && creep.store.getUsedCapacity(RESOURCE_ENERGY) < creep.store.getFreeCapacity(RESOURCE_ENERGY)) {
-//                     new_target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
-//                     filter: (creep2) => {
-//                         return creep2.memory.upgrading &&
-//                             creep.memory.weight < creep2.memory.weight;
-//                         }
-//                     });
-//                     if(new_target)
-//                         creep.say('🤫⚡🛠');
-//                 }
-//                 if(!new_target) {
-//                     new_target = creep.room.controller.pos.findClosestByPath(FIND_MY_CREEPS, {
-//                     filter: (creep2) => {
-//                         return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > 50 &&
-//                             creep.memory.weight > creep2.memory.weight;
-//                         }
-//                     });
-//                     if(new_target)
-//                         creep.say('🤫🛠');
-//                 }
-//                 if(new_target) {
-//                     creep.moveTo(new_target, {visualizePaathStyle: {stroke: '#ffffff'}});
-//                     creep.memory.target = new_target.id;
-//                 }
-//                 creep.memory.upgrading = false;
-
-//             }
-//             else if(!err) {
-//                 creep.withdraw(creep.room.storage,RESOURCE_ENERGY);
-//                 creep.say('🛠');
-//             }
-//             else {
-//                 creep.memory.upgrading = false;
-//                 roleNext.run(creep);
-//             }
-//         }
-//         else {
-//             roleNext.run(creep);
-//         }
-//     }
-// };
