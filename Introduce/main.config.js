@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 76,
+	version: 77,
 	ticksToCheckCreepsNumber: 10,
 	// maxCreepsNumber:40,
 
@@ -145,6 +145,8 @@ var config = {
 										 , energy_harvesting:
 												 [ {name: '1', time: 0, min_weight:100, max_weight:109}
 												 , {name: '2', time: 0, min_weight:100, max_weight:109}
+												 , {name: '3', time: 0, min_weight:100, max_weight:109}
+												 , {name: '4', time: 0, min_weight:100, max_weight:109}
 												 ]
 										 , claiming:
 												 [ {name: '1', time: 0, min_weight:100, max_weight:109}
