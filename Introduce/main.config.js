@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 93,
+	version: 94,
 	ticksToCheckCreepsNumber: 10,
 	// maxCreepsNumber:40,
 
@@ -155,8 +155,8 @@ var config = {
 																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
 																	 , W28S33: 'W27S33', W27S33: 'W26S33'}
 									   },
-						 W29S36: { containers: {weight: 105}
-// 						 W30S36: { containers: {weight: 105}
+						 // W29S36: { containers: {weight: 105}
+						 W30S36: { containers: {weight: 105}
 										 , energy_harvesting:
 												 [ {name: '1', time: 0, min_weight:100, max_weight:109}
 												 , {name: '2', time: 0, min_weight:100, max_weight:109}
