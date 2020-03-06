@@ -135,7 +135,7 @@ var config = {
 												 ]
 									   , heal_room: 'W25S33'
 										 , path_rooms: {W26S33: 'W25S33', W25S33: 'W25S34'}
-										 }
+									   },
 						 W29S36: { containers: {weight: 105}
 										 , energy_harvesting:
 												 [ {name: '1', time: 0, min_weight:100, max_weight:109}
