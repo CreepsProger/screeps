@@ -106,15 +106,15 @@ var role = {
 					});
 				}
 
+				if(!target && Game.flags['DP'] !== undefined) {
+					target = Game.flags['DP'].pos;
+				}
+
 				if(!target) {
 					if(this_room != my_room) {
 						const exitDir = Game.map.findExit(creep.room, my_room);
 						target = creep.pos.findClosestByRange(exitDir);
 					}
-				}
-
-				if(!target && Game.flags['DP'] !== undefined) {
-					target = Game.flags['DP'].pos;
 				}
 
 				if(target)
