@@ -44,7 +44,8 @@ var role = {
 				// const my_path_room = 'W27S33';//(!!my_room_config.path_rooms[this_room];
 				const my_heal_room = my_room_config.heal_room;//'W25S33';
 				const my_path_room = my_room_config.path_rooms[this_room];
-				const my_next_escape_room = 'W26S33';//my_room_config.escape_path[this_room];
+				// const my_next_escape_room = 'W26S33';//my_room_config.escape_path[this_room];
+				const my_next_escape_room = my_room_config.escape_path[this_room];
 
     		var target;
 
