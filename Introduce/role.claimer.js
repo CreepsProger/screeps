@@ -61,8 +61,8 @@ var role = {
 		const this_room = creep.room.name;
 		const this_room_config = Memory.config.rooms[this_room];
 		const my_room = creep.memory[role.name].room;
-		console.log(creep, my_room, JSON.stringify(my_room_config));
 		const my_room_config = Memory.config.rooms[my_room];
+		console.log(creep, my_room, JSON.stringify(my_room_config));
 		const my_path_room = my_room_config.path_rooms[this_room];
 
 		if(creep.memory[role.name].on) {
