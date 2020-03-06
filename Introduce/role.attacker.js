@@ -40,6 +40,7 @@ var role = {
 				//console.log(creep, my_room, JSON.stringify(my_room_config));
 				const my_heal_room = my_room_config.heal_room;//'W25S33';
 				const my_path_room = my_room_config.path_rooms[this_room];
+				const my_next_escape_room = my_room_config.escape_path[this_room];
 
     		var target;
 
@@ -68,7 +69,7 @@ var role = {
 
 				if(creep.room.name != my_heal_room && creep.hits < creep.hitsMax - 400) {
 					if(!target) {
-						const exitDir = Game.map.findExit(creep.room, my_heal_room);
+						const exitDir = Game.map.findExit(creep.room, my_next_escape_room);
 						target = creep.pos.findClosestByRange(exitDir);
 					}
 				}
@@ -108,13 +109,6 @@ var role = {
 				if(!target) {
 					if(this_room != my_room) {
 						const exitDir = Game.map.findExit(creep.room, my_room);
-						target = creep.pos.findClosestByRange(exitDir);
-					}
-				}
-
-				if(!target && creep.hits < creep.hitsMax - 400) {
-					if(creep.room.name != myRoom) {
-						const exitDir = Game.map.findExit(creep.room, myRoom);
 						target = creep.pos.findClosestByRange(exitDir);
 					}
 				}
