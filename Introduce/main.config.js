@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 83,
+	version: 84,
 	ticksToCheckCreepsNumber: 10,
 	// maxCreepsNumber:40,
 
@@ -67,8 +67,11 @@ var config = {
 												 [ {name: '1', time: 0, min_weight: 50, max_weight: 59}
 												 , {name: '2', time: 0, min_weight: 50, max_weight: 59}
 												 ]
-												 , heal_room: 'W26S33'
-												 , path_rooms: {W25S33: 'W26S33', W26S33: 'W27S33'}
+										 , heal_room: 'W26S33'
+										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W27S33'}
+										 , escape_path:{ W28S38: 'W28S37', W28S37: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
+																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
+																	 , W28S33: 'W27S33', W27S33: 'W26S33'}
 										 },
 						 W28S33: { containers: {weight: 65}
 										 , energy_harvesting:
@@ -88,6 +91,9 @@ var config = {
 												 ]
 									   , heal_room: 'W26S33'
 										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'}
+										 , escape_path:{ W28S38: 'W28S37', W28S37: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
+																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
+																	 , W28S33: 'W27S33', W27S33: 'W26S33'}
 										 },
 						 W29S33: { containers: {weight: 75}
 										 , energy_harvesting:
@@ -99,6 +105,9 @@ var config = {
 												 , {name: '2', time: 0, min_weight: 70, max_weight: 79}
 												 ]
 										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33', W28S33: 'W29S33'}
+										 , escape_path:{ W28S38: 'W28S37', W28S37: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
+																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
+																	 , W28S33: 'W27S33', W27S33: 'W26S33'}
 										 },
 						 W31S33: { containers: {weight: 85}
 										 , energy_harvesting:
@@ -111,6 +120,9 @@ var config = {
 												 ]
 										 , path_rooms: { W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33', W28S33: 'W29S33', W29S33: 'W30S33'
 												           , W30S33: 'W31S33'}
+										 , escape_path:{ W28S38: 'W28S37', W28S37: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
+																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
+																	 , W28S33: 'W27S33', W27S33: 'W26S33'}
 										 },
 						 W25S34: { containers: {weight: 95}
 										 , energy_harvesting:
@@ -134,6 +146,9 @@ var config = {
 												 ]
 									   , heal_room: 'W25S33'
 										 , path_rooms: {W26S33: 'W25S33', W25S33: 'W25S34'}
+										 , escape_path:{ W28S38: 'W28S37', W28S37: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
+																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
+																	 , W28S33: 'W27S33', W27S33: 'W26S33'}
 									   },
 						 W29S36: { containers: {weight: 105}
 										 , energy_harvesting:
@@ -162,6 +177,9 @@ var config = {
 									   , heal_room: 'W26S33'
 										 , path_rooms: { W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33', W28S33: 'W29S33', W29S33: 'W30S33'
 									                 , W30S33: 'W30S34', W30S34: 'W30S35', W30S35: 'W30S36', W30S36: 'W29S36'}
+										 , escape_path:{ W28S38: 'W28S37', W28S37: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
+																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
+																	 , W28S33: 'W27S33', W27S33: 'W26S33'}
 										 },
 						 W29S38: { containers: {weight: 115}
 										 , energy_harvesting:
@@ -181,6 +199,9 @@ var config = {
 										 , path_rooms: { W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33', W28S33: 'W29S33', W29S33: 'W30S33'
 									                 , W30S33: 'W30S34', W30S34: 'W30S35', W30S35: 'W30S36', W30S36: 'W30S37', W30S37: 'W30S38'
 																	 , W30S38: 'W29S38'}
+										 , escape_path:{ W28S38: 'W28S37', W28S37: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
+																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
+																	 , W28S33: 'W27S33', W27S33: 'W26S33'}
 										 },
  			 	     W28S37: { containers: {weight: 125}
 										 , energy_harvesting:
@@ -200,6 +221,9 @@ var config = {
 										 , path_rooms: { W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33', W28S33: 'W29S33', W29S33: 'W30S33'
 									                 , W30S33: 'W30S34', W30S34: 'W30S35', W30S35: 'W30S36', W30S36: 'W30S37', W30S37: 'W30S38'
 																	 , W30S38: 'W29S38', W29S38: 'W28S38', W28S38: 'W28S37'}
+										 , escape_path:{ W28S38: 'W28S37', W28S37: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
+																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
+																	 , W28S33: 'W27S33', W27S33: 'W26S33'}
 										 }
 									 }
 						};
