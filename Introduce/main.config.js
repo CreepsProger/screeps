@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 75,
+	version: 76,
 	ticksToCheckCreepsNumber: 10,
 	// maxCreepsNumber:40,
 
