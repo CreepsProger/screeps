@@ -127,10 +127,10 @@ var spawns = {
 				spawns.tryCreateCreep(spawn,         90909, 59, 3); // V 1-1 E  1800   Worker
         spawns.tryCreateCreep(spawn,          2412, 60, 2); // V 1-1 E  1800   Carier
 				spawns.tryCreateCreep(spawn,   20000000002, 61, 1); // V 1-1 E  1300  Claimer
-				spawns.tryCreateCreep(spawn, 5000200000007, 64, 1); // V 1-1 E   700 Attacker
 				spawns.tryCreateCreep(spawn,         90909, 69, 3); // V 1-1 E  1800   Worker
 				// spawns.tryCreateCreep(spawn,   20000000002, 71, 1); // V 1-1 E  1300  Claimer
 				// spawns.tryCreateCreep(spawn,   20000000002, 81, 1); // V 1-1 E  1300  Claimer
+				spawns.tryCreateCreep(spawn, 5000200000007,100, 4); // V 1-1 E   700 Attacker
 				spawns.tryCreateCreep(spawn,   20000000002,101, 4); // V 1-1 E  2600  Claimer
 				// spawns.tryCreateCreep(spawn,             1, 92, 4); // V 1-1 E    50 Attacker
 				// spawns.tryCreateCreep(spawn,10000800000018, 93, 4); // V 1-1 E  2200 Attacker
