@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 95,
+	version: 96,
 	ticksToCheckCreepsNumber: 10,
 	// maxCreepsNumber:40,
 
@@ -72,14 +72,14 @@ var config = {
 												 ]
 										 , attacker:
 												 [ {name: '1', time: 0, min_weight: 50, max_weight: 59}
-												 , {name: '2', time: 0, min_weight: 50, max_weight: 59}
-												 , {name: '3', time: 0, min_weight: 50, max_weight: 59}
-												 , {name: '4', time: 0, min_weight: 50, max_weight: 59}
-												 , {name: '5', time: 0, min_weight: 50, max_weight: 59}
-												 , {name: '6', time: 0, min_weight: 50, max_weight: 59}
-												 , {name: '7', time: 0, min_weight: 50, max_weight: 59}
-												 , {name: '8', time: 0, min_weight: 50, max_weight: 59}
-												 , {name: '9', time: 0, min_weight: 50, max_weight: 59}
+												 // , {name: '2', time: 0, min_weight: 50, max_weight: 59}
+												 // , {name: '3', time: 0, min_weight: 50, max_weight: 59}
+												 // , {name: '4', time: 0, min_weight: 50, max_weight: 59}
+												 // , {name: '5', time: 0, min_weight: 50, max_weight: 59}
+												 // , {name: '6', time: 0, min_weight: 50, max_weight: 59}
+												 // , {name: '7', time: 0, min_weight: 50, max_weight: 59}
+												 // , {name: '8', time: 0, min_weight: 50, max_weight: 59}
+												 // , {name: '9', time: 0, min_weight: 50, max_weight: 59}
 												 ]
 										 , heal_room: 'W26S33'
 										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W27S33'}
@@ -102,6 +102,17 @@ var config = {
 										 , claiming:
 												 [ {name: '1', time: 0, min_weight: 60, max_weight: 69}
 												 , {name: '2', time: 0, min_weight: 60, max_weight: 69}
+												 ]
+										 , attacker:
+												 [ {name: '1', time: 0, min_weight: 50, max_weight: 59}
+												 , {name: '2', time: 0, min_weight: 50, max_weight: 59}
+												 , {name: '3', time: 0, min_weight: 50, max_weight: 59}
+												 , {name: '4', time: 0, min_weight: 50, max_weight: 59}
+												 , {name: '5', time: 0, min_weight: 50, max_weight: 59}
+												 , {name: '6', time: 0, min_weight: 50, max_weight: 59}
+												 , {name: '7', time: 0, min_weight: 50, max_weight: 59}
+												 , {name: '8', time: 0, min_weight: 50, max_weight: 59}
+												 , {name: '9', time: 0, min_weight: 50, max_weight: 59}
 												 ]
 									   , heal_room: 'W26S33'
 										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'}
