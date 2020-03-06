@@ -224,9 +224,9 @@ var config = {
 												 , {name: '2', time: 0, min_weight:120, max_weight:129}
 												 ]
 										 , attacker:
-												 [ {name: '1', time: 0, min_weight:120, max_weight:129}
-												 , {name: '2', time: 0, min_weight:120, max_weight:129}
-												 , {name: '3', time: 0, min_weight:120, max_weight:129}
+												 [ {name: '1', time: 0, min_weight:100, max_weight:129}
+												 , {name: '2', time: 0, min_weight:100, max_weight:129}
+												 , {name: '3', time: 0, min_weight:100, max_weight:129}
 												 ]
 									   , heal_room: 'W26S33'
 										 , path_rooms: { W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33', W28S33: 'W29S33', W29S33: 'W30S33'
