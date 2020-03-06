@@ -104,6 +104,7 @@ var config = {
 												 [ {name: '1', time: 0, min_weight: 70, max_weight: 79}
 												 , {name: '2', time: 0, min_weight: 70, max_weight: 79}
 												 ]
+									   , heal_room: 'W26S33'
 										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33', W28S33: 'W29S33'}
 										 , escape_path:{ W28S38: 'W28S37', W28S37: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
 																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
@@ -118,6 +119,7 @@ var config = {
 												 [ {name: '1', time: 0, min_weight: 80, max_weight: 89}
 												 , {name: '2', time: 0, min_weight: 80, max_weight: 89}
 												 ]
+									   , heal_room: 'W26S33'
 										 , path_rooms: { W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33', W28S33: 'W29S33', W29S33: 'W30S33'
 												           , W30S33: 'W31S33'}
 										 , escape_path:{ W28S38: 'W28S37', W28S37: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
