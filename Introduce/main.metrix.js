@@ -14,9 +14,9 @@ var metrix = {
 		x.movingAverage.vs[x.movingAverage.i] = x.v;
 		x.movingAverage.i = (x.movingAverage.i + 1) % x.movingAverage.vs.length;
 	},
-	
+
 	run: function() {
-		
+
 		if(Game.time % config.ticksToCheckCreepsNumber == 0) {
 			Memory.totals = { CreepsNumber: 0
 											 , Capacity: 0
@@ -27,17 +27,17 @@ var metrix = {
 											 , WORK: 0
 											 , CARRY: 0
 											 , MOVE: 0};
-			
+
 			Memory.CreepsNumberByType = {};
 			metrix.updateMovingAverage(Memory.harvestersMovements.Value);
 			metrix.updateMovingAverage(Memory.harvestersMovements.Count);
 			metrix.updateMovingAverage(Memory.harvestersMovements.Avg);
 		}
-		
+
 		if(Game.time % config.ticksToCheckCreepsNumber == 0) {
 //          var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
 			Memory.totals.CreepsNumber = 0;
-			
+
 			for(var name in Game.creeps) {
 				var creep = Game.creeps[name];
 				const full_type = '' + creep.memory.type+'/'+creep.memory.weight;
@@ -55,7 +55,7 @@ var metrix = {
 				Memory.totals.WORK += creep.getActiveBodyparts(WORK);
 				Memory.totals.CARRY += creep.getActiveBodyparts(CARRY);
 				Memory.totals.MOVE += creep.getActiveBodyparts(MOVE);
-				
+
 				if(Game.flags['LWE'] || Game.flags['LW'] || Game.flags['L']) {
 					console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 											, creep.name
@@ -96,12 +96,12 @@ var metrix = {
                   , JSON.stringify(Memory.CreepsNumberByType));
 		}
 
-		if(Game.time % (config.ticksToCheckCreepsNumber * 2) == 0) {
+		if(Game.time % (config.ticksToCheckCreepsNumber * 20) == 0) {
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, JSON.stringify(BODYPARTS_ALL));
 		}
 
-		if(Game.time % (config.ticksToCheckCreepsNumber * 10) == 0) {
+		if(Game.time % (config.ticksToCheckCreepsNumber * 1000) == 0) {
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, JSON.stringify(RESOURCES_ALL));
 		}
