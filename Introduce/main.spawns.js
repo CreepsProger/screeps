@@ -118,25 +118,32 @@ var spawns = {
 				const CL = controller.level;
 				var N = Memory.totals.CreepsNumber;
 				// 22*1800+2*1300+4*650 = 44800 -> 30 per game tick
-				spawns.tryCreateCreep(spawn,          1608, 30, 1); // V 1-1 E  1800   Carier
-				spawns.tryCreateCreep(spawn,        120408, 39, 1); // V 1-1 E  1800   Worker
-				spawns.tryCreateCreep(spawn,          3015, 40, 1); // V 1-1 E  1800   Carier
-				spawns.tryCreateCreep(spawn,        111111, 49, 1); // V 1-1 E  1800   Worker
- 				// spawns.tryCreateCreep(spawn,          3015, 50, 1); // V 1-1 E  1800   Carier
-				// spawns.tryCreateCreep(spawn,   20000000002, 51, 1); // V 1-1 E  1300  Claimer
-				// spawns.tryCreateCreep(spawn,        111111, 59, 1); // V 1-1 E  1800   Worker
-        // spawns.tryCreateCreep(spawn,          3015, 60, 1); // V 1-1 E  1800   Carier
-				// spawns.tryCreateCreep(spawn,   20000000002, 61, 1); // V 1-1 E  1300  Claimer
-				// spawns.tryCreateCreep(spawn,        111111, 69, 1); // V 1-1 E  1800   Worker
-		 // spawns.tryCreateCreep(spawn,   20000000002, 71, 1); // V 1-1 E  1300  Claimer
- 		 // spawns.tryCreateCreep(spawn,   20000000002, 81, 1); // V 1-1 E  1300  Claimer
-		    spawns.tryCreateCreep(spawn,25000800000017,53, 8); // V 1-2 E  2300 Attacker
+				if(false) {
+					spawns.tryCreateCreep(spawn,          1608, 30, 1); // V 1-1 E  1800   Carier
+					spawns.tryCreateCreep(spawn,        120408, 39, 1); // V 1-1 E  1800   Worker
+					spawns.tryCreateCreep(spawn,          3015, 40, 1); // V 1-1 E  1800   Carier
+					spawns.tryCreateCreep(spawn,        111111, 49, 1); // V 1-1 E  1800   Worker
+					spawns.tryCreateCreep(spawn,25000800000017,53, 8); // V 1-2 E  2300 Attacker
+				}
+				else {
+					spawns.tryCreateCreep(spawn,          1608, 30, 1); // V 1-1 E  1800   Carier
+					spawns.tryCreateCreep(spawn,        120408, 39, 1); // V 1-1 E  1800   Worker
+					spawns.tryCreateCreep(spawn,          3015, 40, 1); // V 1-1 E  1800   Carier
+					spawns.tryCreateCreep(spawn,        111111, 49, 1); // V 1-1 E  1800   Worker
+	 				spawns.tryCreateCreep(spawn,          3015, 50, 1); // V 1-1 E  1800   Carier
+					spawns.tryCreateCreep(spawn,   20000000002, 51, 1); // V 1-1 E  1300  Claimer
+					spawns.tryCreateCreep(spawn,        111111, 59, 1); // V 1-1 E  1800   Worker
+	        spawns.tryCreateCreep(spawn,          3015, 60, 1); // V 1-1 E  1800   Carier
+					spawns.tryCreateCreep(spawn,   20000000002, 61, 1); // V 1-1 E  1300  Claimer
+					spawns.tryCreateCreep(spawn,        111111, 69, 1); // V 1-1 E  1800   Worker
+		    	// spawns.tryCreateCreep(spawn,25000800000017, 53, 8); // V 1-2 E  2300 Attacker
 				// spawns.tryCreateCreep(spawn, 5000400000014,100, 7); // V 1-1 E   700 Attacker
-				spawns.tryCreateCreep(spawn,   20000000002,101, 0); // V 1-1 E  1300  Claimer
+				// spawns.tryCreateCreep(spawn,   20000000002,101, 0); // V 1-1 E  1300  Claimer
 // 				spawns.tryCreateCreep(spawn, 5000200000007,110, 2); // V 1-1 E   700 Attacker
 // 				spawns.tryCreateCreep(spawn, 5000200000007,120, 0); // V 1-1 E   700 Attacker
 				// spawns.tryCreateCreep(spawn,             1, 92, 4); // V 1-1 E    50 Attacker
 				// spawns.tryCreateCreep(spawn,10000800000018, 93, 4); // V 1-1 E  2200 Attacker
+				}
 
 				if(CL >= 4) spawns.tryCreateCreep(spawn,        80808, 20, Memory.totals.WORK< 8? 1:0); // E 1600 Worker
 				if(CL >= 4) spawns.tryCreateCreep(spawn,        70707, 20, Memory.totals.WORK< 7? 1:0); // E 1400 Worker
