@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 74,
+	version: 75,
 	ticksToCheckCreepsNumber: 10,
 	// maxCreepsNumber:40,
 
@@ -67,6 +67,8 @@ var config = {
 												 [ {name: '1', time: 0, min_weight: 50, max_weight: 59}
 												 , {name: '2', time: 0, min_weight: 50, max_weight: 59}
 												 ]
+												 , heal_room: 'W26S33'
+												 , path_rooms: {W25S33: 'W26S33', W26S33: 'W27S33'}
 										 },
 						 W28S33: { containers: {weight: 65}
 										 , energy_harvesting:
@@ -91,7 +93,7 @@ var config = {
 												 , {name: '4', time: 0, min_weight: 60, max_weight: 69}
 												 ]
 									   , heal_room: 'W26S33'
-										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S34', W28S33: 'W28S34'}
+										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'}
 										 },
 						 W29S33: { containers: {weight: 75}
 										 , energy_harvesting:
@@ -102,6 +104,7 @@ var config = {
 												 [ {name: '1', time: 0, min_weight: 70, max_weight: 79}
 												 , {name: '2', time: 0, min_weight: 70, max_weight: 79}
 												 ]
+										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33', W28S33: 'W29S33'}
 										 },
 						 W31S33: { containers: {weight: 85}
 										 , energy_harvesting:
@@ -112,6 +115,8 @@ var config = {
 												 [ {name: '1', time: 0, min_weight: 80, max_weight: 89}
 												 , {name: '2', time: 0, min_weight: 80, max_weight: 89}
 												 ]
+												 , path_rooms: { W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33', W28S33: 'W29S33', W29S33: 'W30S33'
+												               , W30S33: 'W31S33'}
 										 },
 						 W25S34: { containers: {weight: 95}
 										 , energy_harvesting:
@@ -150,7 +155,7 @@ var config = {
 												 , {name: '2', time: 0, min_weight:100, max_weight:109}
 												 ]
 									   , heal_room: 'W25S33'
-										 , path_rooms: { W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S34', W28S33: 'W29S33', W29S33: 'W30S33'
+										 , path_rooms: { W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33', W28S33: 'W29S33', W29S33: 'W30S33'
 									                 , W30S33: 'W30S34', W30S34: 'W30S35', W30S35: 'W30S36', W30S36: 'W29S36'}
 										 }
 									 }
