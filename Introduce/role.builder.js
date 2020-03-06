@@ -60,7 +60,7 @@ var roleBuilder = {
 							}
 						});
 					}
-					if(!!extension) {
+					if(!!structure) {
 						target = tools.setTarget(creep,structure,structure.id,roleBuilder.run);
 					}
 				}
