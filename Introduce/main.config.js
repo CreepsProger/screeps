@@ -168,7 +168,7 @@ var config = {
 						already = true;
 						config.log('🏢', creep, role, 'setRoom: time\'s  updated', JSON.stringify(slot));
 					}
-					else if(slot.time < Game.time - 40 &&
+					else if(slot.time < Game.time - 20 &&
 									creep.memory.weight >= slot.min_weight &&
 									creep.memory.weight <= slot.max_weight) {
             const old_name = slot.name;
