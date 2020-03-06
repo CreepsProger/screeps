@@ -58,14 +58,19 @@ var role = {
 		role.checkOff(creep);
 		role.checkOn(creep);
 
+		const this_room = creep.room.name;
+		const this_room_config = Memory.config.rooms[this_room];
+		const my_room = creep.memory[role.name].room;
+		const my_room_config = Memory.config.rooms[my_room];
+		const my_path_room = my_room_config.path_rooms[this_room];
+
 		if(creep.memory[role.name].on) {
 			var target;
-			if(!target) {
-				if(creep.room.name != creep.memory[role.name].room) {
-					const exitDir = Game.map.findExit(creep.room, creep.memory[role.name].room);
-					target = creep.pos.findClosestByRange(exitDir);
-				}
-			}
+
+  		if(!target && this_room != my_room) {
+  			const exitDir = Game.map.findExit(this_room , my_path_room);
+  			target = creep.pos.findClosestByPath(exitDir);
+  		}
 			if(!target) {
 				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 					filter: (structure) => {
@@ -117,103 +122,3 @@ var role = {
 };
 
 module.exports = role;
-
-//       Memory.config = { claimingRooms: { W26S33     }
-//                        , Capacity: 0
-//                        , FreeCapacity: 0
-//                        , UsedCapacity: 0
-//                        , hits: 0
-//                        , hitsMax: 0
-//                        , WORK: 0
-//                        , CARRY: 0
-//                        , MOVE: 0};
-
-// var roleClaimer = {
-
-// 	/** @param {Creep} creep **/
-// 	run: function(creep) {
-// 		role.init(creep);
-// 		role.checkOn(creep);
-// 		role.checkOff(creep);
-// 		role.do(creep,next);
-
-
-// 		if(creep.memory.claiming.on) {
-// 			creep.memory.claiming.on = false;
-// 		}
-
-
-// 		if(creep.memory.claiming.on) {
-// 			var target;
-// 			if(!target) {
-// 				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-// 					filter: (structure) => {
-// 						return (structure.structureType == STRUCTURE_CONTROLLER) &&
-// 							!structure.my;
-// 					}
-// 				});
-// 			}
-// 			if(!target) {
-// 				if(creep.room != creep.memory.claiming.room) {
-// 					const exitDir = Game.map.findExit(creep.room, creep.memory.claiming.room);
-// 					target = creep.pos.findClosestByRange(exitDir);
-// 				}
-// 			}
-// 			if(target)
-// 			{
-// 				var err = ERR_NOT_IN_RANGE;
-// 				if(target.id) {
-// 					err = creep.reserveController(target);
-// 				}
-// 				if(err == ERR_NOT_IN_RANGE) {
-// 					creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-// 					creep.say('🔜🗝');
-// 					if(log.canLog(['LC','LC ','L'])) {
-// 						var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
-// 						console.log( '🔜🗝', Math.trunc(Game.time/10000), Game.time%10000
-// 												, creep.name
-// 												, 'moving for claiming'
-// 												, JSON.stringify(creep.memory.claiming)
-// 												, 'from'
-// 												, creep.room, creep.room.pos
-// 												, 'to'
-// 												, targetinfo);
-// 					}
-// 				}
-// 				else if(!err) {
-// 					creep.say('🗝');
-// 					if(log.canLog(['LC','LC ','L'])) {
-// 						var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
-// 						console.log( '🗝', Math.trunc(Game.time/10000), Game.time%10000
-// 												, creep.name
-// 												, 'claiming:'
-// 												, targetinfo
-// 												, JSON.stringify(creep.memory.claiming));
-// 					}
-// 				}
-// 				else {
-// 					if(log.canLog(['LC','LC ','L'])) {
-// 						var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
-// 						console.log( '🗝', Math.trunc(Game.time/10000), Game.time%10000
-// 												, creep.name
-// 												, 'claiming:'
-// 												, targetinfo
-// 												, 'with err:'
-// 												, err
-// 												, JSON.stringify(creep.memory.claiming));
-// 					}
-// 					creep.memory.claiming.on = false;
-// 				}
-// 			}
-// 			else {
-// 				creep.memory.claiming.on = false;
-// 			}
-// 		}
-
-// 		if(!creep.memory.claiming.on) {
-// 			roleNext.run(creep);
-// 		}
-// 	}
-// };
-
-// module.exports = roleClaimer;
