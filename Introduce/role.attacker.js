@@ -37,9 +37,11 @@ var role = {
 	  		const this_room_config = Memory.config.rooms[this_room];
 				const my_room = creep.memory[role.name].room;
 	  		const my_room_config = Memory.config.rooms[my_room];
-  				// console.log(creep, my_room, JSON.stringify(my_room_config));
-				const my_heal_room = 'W26S33';//my_room_config.heal_room;//'W25S33';
-				const my_path_room = 'W27S33';//(!!my_room_config.path_rooms[this_room];
+  				console.log(creep, my_room, JSON.stringify(my_room_config));
+				// const my_heal_room = 'W26S33';//my_room_config.heal_room;//'W25S33';
+				// const my_path_room = 'W27S33';//(!!my_room_config.path_rooms[this_room];
+				const my_heal_room = my_room_config.heal_room;//'W25S33';
+				const my_path_room = my_room_config.path_rooms[this_room];
 				const my_next_escape_room = 'W26S33';//my_room_config.escape_path[this_room];
 
     		var target;
