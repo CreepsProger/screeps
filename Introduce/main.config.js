@@ -115,8 +115,8 @@ var config = {
 												 [ {name: '1', time: 0, min_weight: 80, max_weight: 89}
 												 , {name: '2', time: 0, min_weight: 80, max_weight: 89}
 												 ]
-												 , path_rooms: { W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33', W28S33: 'W29S33', W29S33: 'W30S33'
-												               , W30S33: 'W31S33'}
+										 , path_rooms: { W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33', W28S33: 'W29S33', W29S33: 'W30S33'
+												           , W30S33: 'W31S33'}
 										 },
 						 W25S34: { containers: {weight: 95}
 										 , energy_harvesting:
