@@ -174,9 +174,9 @@ var config = {
 												 , {name: '2', time: 0, min_weight:100, max_weight:109}
 												 , {name: '3', time: 0, min_weight:100, max_weight:109}
 												 , {name: '4', time: 0, min_weight:100, max_weight:109}
-// 												 , {name: '5', time: 0, min_weight:100, max_weight:109}
-// 												 , {name: '6', time: 0, min_weight:100, max_weight:109}
-// 												 , {name: '7', time: 0, min_weight:100, max_weight:109}
+												 , {name: '5', time: 0, min_weight:100, max_weight:109}
+												 , {name: '6', time: 0, min_weight:100, max_weight:109}
+												 , {name: '7', time: 0, min_weight:100, max_weight:109}
 // 												 , {name: '8', time: 0, min_weight:100, max_weight:109}
 // 												 , {name: '9', time: 0, min_weight:100, max_weight:109}
 												 ]
