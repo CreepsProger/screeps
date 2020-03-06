@@ -1,9 +1,10 @@
 var roleNext = require('role.upgrader');
+const tools = require('tools');
 
 var roleBuilder = {
 
     /** @param {Creep} creep **/
-    run: function(creep) {
+    run: function(creep,executer) {
 
 			if(creep.memory.building &&
 				 (creep.getActiveBodyparts(WORK) == 0 ||
@@ -39,7 +40,7 @@ var roleBuilder = {
 
 				if(!target) {
 					var structures = creep.pos.findInRange(FIND_STRUCTURES, 15, {
-						filter: (structure) => { 
+						filter: (structure) => {
 							if(structure.structureType == STRUCTURE_ROAD &&
 								 structure.hitsMax - structure.hits > 1600) {
 								return true;
@@ -52,16 +53,20 @@ var roleBuilder = {
 						}
 					});
 					if(structures.length > 0) {
-						target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+						var structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 							filter: (structure) => {
-								return structures.find(s => s.id == structure.id);
+								return structures.find(s => s.id == structure.id) &&
+									tools.checkTarget(executer,structure.id);;
 							}
 						});
+					}
+					if(!!extension) {
+						target = tools.setTarget(creep,structure,structure.id,roleBuilder.run);
 					}
 				}
 
 				if(!target) {
-					target = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES) 					
+					target = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES)
 				}
 
 				if(!target) {
@@ -73,7 +78,7 @@ var roleBuilder = {
 						target = targets[0];
 					}
 				}
-				
+
 				if(target) {
 					var action;
 					var err = ERR_NOT_IN_RANGE
