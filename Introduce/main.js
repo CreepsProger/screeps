@@ -37,7 +37,7 @@ module.exports.loop = function () {
 	for(var name in Game.creeps) {
 		var creep = Game.creeps[name];
 // 		console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000, 'go', creep);
-		if(!creep.memory.spawning) {
+		if(!creep.spawning) {
 			creep.memory.rerun = 0;
 			role.run(creep);
 		}
