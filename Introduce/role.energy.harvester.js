@@ -72,7 +72,7 @@ var role = {
 		}
 
 		if(!target && !creep.getActiveBodyparts(WORK)) {
-			var target = links.getTargetLinkToHarvest(creep,executer);
+			var target = links.getTargetLinkToHarvest(creep,executer,role.run);
 		}
 
 		if(!target && !creep.getActiveBodyparts(WORK)) {

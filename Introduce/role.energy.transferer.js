@@ -1,5 +1,6 @@
-var roleNext = require('role.noenergy.transferer');
-var constants = require('main.constants');
+const links = require('main.links');
+const roleNext = require('role.noenergy.transferer');
+const constants = require('main.constants');
 const tools = require('tools');
 
 var roleEnergyTransferer = {
@@ -36,16 +37,7 @@ var roleEnergyTransferer = {
 			var target;
 
 			if(!target && this_room != my_room) {
-				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-					filter: (structure) => {
-						return (structure.structureType == STRUCTURE_LINK) &&
-							(structure.id == '5e56dc7a28e44c6f77878b87' ||
-							 structure.id == '5e5ab771eadd04714b92ed7d' ||
-							 structure.id == '5e5f8ed0124b9b1087db5d47') &&
-							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-							this_room_config.containers.weight < creep.memory.weight
-					}
-				});
+				target = links.getTargetLinkToTransferEnergy(creep, executer, role.run);
 			}
 
 // 		if(!target && !this_room_sources_is_empty) {
