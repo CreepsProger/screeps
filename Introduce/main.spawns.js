@@ -24,13 +24,13 @@ var spawns = {
     tryCreateCreep: function(spawn, type, weight, needed = 0) {
 			var body = [];
 			const  Ts = Math.trunc(type%10000000000000000/100000000000000);
-			const CLs = Math.trunc(type%100000000000000/1000000000000);
-			const RAs = Math.trunc(type%1000000000000/10000000000);
-			const  As = Math.trunc(type%10000000000/100000000);
-			const  Hs = Math.trunc(type%100000000/1000000);
-			const  Ws = Math.trunc(type%1000000/10000);
-			const  Cs = Math.trunc(type%10000/100);
-			const  Ms = Math.trunc(type%100);
+			const CLs = Math.trunc(type%100000000000000  /1000000000000);
+			const RAs = Math.trunc(type%1000000000000    /10000000000);
+			const  As = Math.trunc(type%10000000000      /100000000);
+			const  Hs = Math.trunc(type%100000000        /1000000);
+			const  Ws = Math.trunc(type%1000000          /10000);
+			const  Cs = Math.trunc(type%10000            /100);
+			const  Ms = Math.trunc(type%100              /1);
 			for (var i = 0; i <  Ts; i++) {body.push(TOUGH);}
 			for (var i = 0; i < CLs; i++) {body.push(CLAIM);}
 			for (var i = 0; i < RAs; i++) {body.push(RANGED_ATTACK);}
@@ -45,7 +45,7 @@ var spawns = {
 			if(Memory.CreepsNumberByType[full_type])
 				existsNumber = Memory.CreepsNumberByType[full_type];
 			const needsNumber = needed - existsNumber;
-			const newName = 'creep-<' + weight + '>-'
+			const newName = 'creep-<' + weight + '/' + Memory.CreepsCounter % 100 + '>-'
 			 								+ (Ts>0  ? Ts +'t' :'')
 											+ (CLs>0 ? CLs+'l' :'')
 											+ (RAs>0 ? RAs+'r' :'')
@@ -53,8 +53,7 @@ var spawns = {
 											+ (Hs>0  ? Hs +'h' :'')
 											+ (Ws>0  ? Ws +'w' :'')
 											+ (Cs>0  ? Cs +'c' :'')
-											+ (Ms>0  ? Ms +'m' :'#')
-											+ '-' + Memory.CreepsCounter % 100;
+											+ (Ms>0  ? Ms +'m' :'#');
 //         console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 //                     , 'trying create a creep:'
 //                     , newName
@@ -68,20 +67,24 @@ var spawns = {
 //                     , preverr
 //                   );
 			if(last_game_time_created_creep != Game.time && needsNumber > 0) {
-				var err = spawn.spawnCreep(body
-																	 , newName
-																	 , {memory: {n: Memory.CreepsCounter, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
+				var err = spawn.spawnCreep( body
+																	, newName
+																	, {memory: {n: Memory.CreepsCounter, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
 				if(err) {
 					console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 											, 'Can\'t spawn new creep:'
 											, newName
+											, 'cost:'
+										  , cost
 											, 'err:'
 											, err);
 				}
 				else {
 					console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 											, 'Spawning new creep:'
-											, newName);
+											, newName
+										  , 'cost:'
+										  , cost);
 					if(!Memory.CreepsNumberByType[full_type])
 						Memory.CreepsNumberByType[full_type] = 0;
 
@@ -149,11 +152,11 @@ var spawns = {
 					// spawns.tryCreateCreep(spawn,           111111, 69, 2); // V 1-1 E    Worker
           //                                             17
 					//                           TTClRrAaHhWwCcMm, 66, 2); // V 1-2 E   Attacker
-					spawns.tryCreateCreep(spawn, 2500001100000018, 66, 1); // V 1-2 E   Attacker
+					spawns.tryCreateCreep(spawn, 2600001300000020, 66, 1); // V 1-2 E   Attacker
 					spawns.tryCreateCreep(spawn, 2500080000000017, 66, 1); // V 1-2 E   Attacker
 					spawns.tryCreateCreep(spawn, 1000000007000009, 66, 1); // V 1-2 E    Healler
 					spawns.tryCreateCreep(spawn, 1000000007000009, 76, 1); // V 1-2 E    Healler
-					spawns.tryCreateCreep(spawn, 2500001100000018,100, 1); // V 1-2 E   Attacker
+					spawns.tryCreateCreep(spawn, 2600001300000020,100, 1); // V 1-2 E   Attacker
 					spawns.tryCreateCreep(spawn, 2500080000000017,100, 1); // V 1-2 E   Attacker
 				}
 
