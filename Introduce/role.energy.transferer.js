@@ -37,7 +37,7 @@ var roleEnergyTransferer = {
 			var target;
 
 			if(!target && this_room != my_room) {
-				target = links.getTargetLinkToTransferEnergy(creep, executer, role.run);
+				target = links.getTargetLinkToTransferEnergy(creep, executer, roleEnergyTransferer.run);
 			}
 
 // 		if(!target && !this_room_sources_is_empty) {
