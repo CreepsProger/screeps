@@ -84,13 +84,13 @@ var role = {
 					target = creep.pos.findClosestByRange(exitDir);
 				}
 
-				if(!target && creep.getActiveBodyparts(HEAL)) {
-					target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
-						filter: (mycreep) => {
-							return mycreep.hitsMax - mycreep.hits > 12 * creep.getActiveBodyparts(HEAL);
-						}
-					});
-				}
+				// if(!target && creep.getActiveBodyparts(HEAL)) {
+				// 	target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
+				// 		filter: (mycreep) => {
+				// 			return mycreep.hitsMax - mycreep.hits > 12 * creep.getActiveBodyparts(HEAL);
+				// 		}
+				// 	});
+				// }
 
 				if(!target && creep.getActiveBodyparts(HEAL)) {
 					target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
