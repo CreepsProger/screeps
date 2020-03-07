@@ -76,7 +76,7 @@ var role = {
 					});
 				}
 
-				if(this_room != my_heal_room && !creep.getActiveBodyparts(TOUGH)) {
+				if(this_room != my_heal_room && creep.hitsMax - creep.hits > creep.getActiveBodyparts(TOUGH)*100 ) {
 					if(!target) {
 						const exitDir = Game.map.findExit(creep.room, my_next_escape_room);
 						target = creep.pos.findClosestByRange(exitDir);
