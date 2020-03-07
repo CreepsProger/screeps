@@ -10,7 +10,7 @@ var links = {
 		 , { from: '5e5f8ed0124b9b1087db5d47', to: '5e583a7b7a54e3585a982b96'}
 	 ],
 
-	 getTargetLinkToTransferEnergy: function(creep, executer, role_run) {
+	 getTargetLinkToTransferEnergy: function(creep, executer, role_run, link_weight) {
 		 var target;
 		 var link = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 			 filter: (structure) => {
@@ -20,7 +20,7 @@ var links = {
 					  structure.id == '5e56dc7a28e44c6f77878b87' ||
 						structure.id == '5e5f8ed0124b9b1087db5d47') &&
 					 structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-					 this_room_config.containers.weight < creep.memory.weight &&
+					 link_weight < creep.memory.weight &&
 					 tools.checkTarget(executer,structure.id);
 			 }
 		 });
