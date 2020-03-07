@@ -194,7 +194,7 @@ var config = {
 					if(slot.name === creep.name) {
 						slot.name = '-' + creep.name;
 						slot.time = Game.time;
-						config.log('🏢', creep, role, 'setRoom: slot\'s removed', JSON.stringify(slot));
+						config.log('🏢', creep.memory[role].room, role, creep, 'setRoom remove slot:', JSON.stringify(slot));
 					}
 				}
 				else {
@@ -202,7 +202,7 @@ var config = {
 						creep.memory[role].room = room_name;
 						slot.time = Game.time;
 						already = true;
-						config.log('🏢', creep, role, 'setRoom: time\'s  updated', JSON.stringify(slot));
+						config.log('🏢', creep.memory[role].room, role, creep, 'setRoom update slot:', JSON.stringify(slot));
 					}
 					else if(slot.time < Game.time - 10 &&
 									creep.memory.weight >= slot.min_weight &&
@@ -214,7 +214,7 @@ var config = {
 						slot.name = creep.name;
 						slot.time = Game.time;
 						already = true;
-						config.log('🏢', creep, role, 'setRoom: reset('+reset+')', JSON.stringify(slot), 'prev slot:', old_name, old_time);
+						config.log('🏢', creep.memory[role].room, role, creep, 'setRoom reset('+reset+') slot:', JSON.stringify(slot), 'prev slot:', old_name, old_time);
 					}
 				}
 			});
