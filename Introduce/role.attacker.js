@@ -91,12 +91,6 @@ var role = {
 					});
 				}
 
-    		if(!target && this_room != my_room && creep.hits == creep.hitsMax) {
-    			const exitDir = Game.map.findExit(this_room , my_path_room);
-    			target = creep.pos.findClosestByPath(exitDir);
-    // 			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
-    		}
-
 				if(!target) {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 3);
 					if(targets.length > 0) {
@@ -107,6 +101,12 @@ var role = {
 				if(!target) {
 					target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
 				}
+
+    		if(!target && this_room != my_room && creep.hits == creep.hitsMax) {
+    			const exitDir = Game.map.findExit(this_room , my_path_room);
+    			target = creep.pos.findClosestByPath(exitDir);
+    // 			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
+    		}
 
 				if(!target) {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, 3, {
