@@ -63,11 +63,15 @@ var role = {
 				}
 
 				if(!target && creep.hits < creep.hitsMax) { //creep.hitsMax - creep.hits > creep.getActiveBodyparts(TOUGH)*100 && !creep.getActiveBodyparts(HEAL)) {
-					target = creep.pos.findClosestByRange(FIND_MY_CREEPS, {
+					creep2 = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (mycreep) => {
 							return mycreep.getActiveBodyparts(HEAL) > 0;
 						}
 					});
+					var path = creep.pos.findPathTo(target);
+					if(path.length > 0) {
+						target = creep2;
+					}
 				}
 
 				if(!target && this_room != my_heal_room && creep.hitsMax - creep.hits > creep.getActiveBodyparts(TOUGH)*100 ) {
