@@ -49,19 +49,6 @@ var role = {
 
     		var target;
 
-				if(!target && this_room == my_heal_room && creep.hits < creep.hitsMax) {
-					var rampart = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-						filter: (structure) => {
-							return structure.structureType == STRUCTURE_RAMPART &&
-							 !!structure.my;
-						}
-					});
-
-					if(rampart && rampart.pos != creep.pos) {
-						target = rampart;
-					}
-				}
-
 				// if(!target && creep.hits < creep.hitsMax) { //creep.hitsMax - creep.hits > creep.getActiveBodyparts(TOUGH)*100 && !creep.getActiveBodyparts(HEAL)) {
 			  if(!target && creep.hitsMax - creep.hits > creep.getActiveBodyparts(TOUGH)*100 && !creep.getActiveBodyparts(HEAL)) {
 					creep2 = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
@@ -72,6 +59,19 @@ var role = {
 					var path = creep.pos.findPathTo(target);
 					if(path.length > 0) {
 						target = creep2;
+					}
+				}
+
+				if(!target && this_room == my_heal_room && creep.hits < creep.hitsMax) {
+					var rampart = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+						filter: (structure) => {
+							return structure.structureType == STRUCTURE_RAMPART &&
+							 !!structure.my;
+						}
+					});
+
+					if(rampart && rampart.pos != creep.pos) {
+						target = rampart;
 					}
 				}
 
