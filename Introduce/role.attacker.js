@@ -69,7 +69,7 @@ var role = {
 				}
 
 				if(!target && !creep.getActiveBodyparts(TOUGH) && !creep.getActiveBodyparts(HEAL)) {
-					var target = creep.pos.findClosestByRange(FIND_MY_CREEPS, {
+					target = creep.pos.findClosestByRange(FIND_MY_CREEPS, {
 						filter: (mycreep) => {
 							return mycreep.getActiveBodyparts(HEAL);
 						}
