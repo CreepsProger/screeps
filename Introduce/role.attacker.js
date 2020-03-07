@@ -84,7 +84,7 @@ var role = {
 				}
 
 				if(!target && creep.getActiveBodyparts(HEAL)) {
-					target = tower.pos.findClosestByPath(FIND_MY_CREEPS, {
+					target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (mycreep) => {
 							return mycreep.hitsMax - mycreep.hits > 12 * creep.getActiveBodyparts(HEAL);
 						}
@@ -92,7 +92,7 @@ var role = {
 				}
 
 				if(!target && creep.getActiveBodyparts(HEAL)) {
-					target = tower.pos.findClosestByPath(FIND_MY_CREEPS, {
+					target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (mycreep) => {
 							return mycreep.hitsMax - mycreep.hits > 0;
 						}
