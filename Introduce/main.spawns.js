@@ -23,10 +23,11 @@ var spawns = {
 
     tryCreateCreep: function(spawn, type, weight, needed = 0) {
 			var body = [];
-			const  Ts = Math.trunc(type%100000000000000/1000000000000);
-			const CLs = Math.trunc(type%1000000000000/10000000000);
-			const RAs = Math.trunc(type%10000000000/100000000);
-			const  As = Math.trunc(type%100000000/1000000);
+			const  Ts = Math.trunc(type%10000000000000000/100000000000000);
+			const CLs = Math.trunc(type%100000000000000/1000000000000);
+			const RAs = Math.trunc(type%1000000000000/10000000000);
+			const  As = Math.trunc(type%10000000000/100000000);
+			const  Hs = Math.trunc(type%100000000/1000000);
 			const  Ws = Math.trunc(type%1000000/10000);
 			const  Cs = Math.trunc(type%10000/100);
 			const  Ms = Math.trunc(type%100);
@@ -34,16 +35,26 @@ var spawns = {
 			for (var i = 0; i < CLs; i++) {body.push(CLAIM);}
 			for (var i = 0; i < RAs; i++) {body.push(RANGED_ATTACK);}
 			for (var i = 0; i <  As; i++) {body.push(ATTACK);}
+			for (var i = 0; i <  Hs; i++) {body.push(HEAL);}
 			for (var i = 0; i <  Ws; i++) {body.push(WORK);}
 			for (var i = 0; i <  Cs; i++) {body.push(CARRY);}
 			for (var i = 0; i <  Ms; i++) {body.push(MOVE);}
-			const cost = 10*Ts + 600*CLs + 150*RAs + 80*As + 100*Ws + 50*Cs + 50*Ms;
+			const cost = 10*Ts + 600*CLs + 150*RAs + 80*As + 250*Hs + 100*Ws + 50*Cs + 50*Ms;
 			var existsNumber = 0;
 			const full_type = '' + type + '/' + weight;
 			if(Memory.CreepsNumberByType[full_type])
 				existsNumber = Memory.CreepsNumberByType[full_type];
 			const needsNumber = needed - existsNumber;
-			const newName = 'creep-<' + weight + '>-' + Ts + '.' + CLs + '.' + RAs + '.' + As + '.' + Ws + '.' + Cs + '.' + Ms + '-' + Game.time % 10000;
+			const newName = 'creep-<' + weight + '>-'
+			 								+ Ts>0  ? Ts +'t' :''
+											+ CLs>0 ? CLs+'c' :''
+											+ RAs>0 ? RAs+'r' :''
+											+ As>0  ? As +'a' :''
+											+ Hs>0  ? Hs +'h' :''
+											+ Ws>0  ? Ws      :'~'
+											+ Cs>0  ? Cs      :'-'
+											+ Ms>0  ? Ms      :'#'
+											+ Memory.CreepsCounter % 100;
 //         console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 //                     , 'trying create a creep:'
 //                     , newName
@@ -119,32 +130,27 @@ var spawns = {
 				var N = Memory.totals.CreepsNumber;
 				// 22*1800+2*1300+4*650 = 44800 -> 30 per game tick
 				if(false) {
-					spawns.tryCreateCreep(spawn,          1608, 30, 1); // V 1-1 E  1800   Carier
-					spawns.tryCreateCreep(spawn,        120408, 39, 1); // V 1-1 E  1800   Worker
-					spawns.tryCreateCreep(spawn,          3015, 40, 1); // V 1-1 E  1800   Carier
-					spawns.tryCreateCreep(spawn,        111111, 49, 2); // V 1-1 E  1800   Worker
-					spawns.tryCreateCreep(spawn, 25000800000017,53, 8); // V 1-2 E  2300 Attacker
+					spawns.tryCreateCreep(spawn,             1608, 30, 1); // V 1-1 E  1800   Carier
+					spawns.tryCreateCreep(spawn,           120408, 39, 1); // V 1-1 E  1800   Worker
+					spawns.tryCreateCreep(spawn,             3015, 40, 1); // V 1-1 E  1800   Carier
+					spawns.tryCreateCreep(spawn,           111111, 49, 2); // V 1-1 E  1800   Worker
+					spawns.tryCreateCreep(spawn, 2500000800000017,53, 8); // V 1-2 E  2300 Attacker
 				}
 				else {
-					spawns.tryCreateCreep(spawn,          1005, 31, 1); // V 1-1 E    Carier
-					spawns.tryCreateCreep(spawn,        120408, 39, 1); // V 1-1 E    Worker
-					spawns.tryCreateCreep(spawn,          1005, 41, 2); // V 1-1 E    Carier
-					spawns.tryCreateCreep(spawn,        111111, 49, 3); // V 1-1 E    Worker
-					spawns.tryCreateCreep(spawn,   20000000002, 50, 1); // V 1-1 E   Claimer
-	 				spawns.tryCreateCreep(spawn,          3015, 51, 2); // V 1-1 E    Carier
-					spawns.tryCreateCreep(spawn,        111111, 59, 2); // V 1-1 E    Worker
-					spawns.tryCreateCreep(spawn,   20000000002, 60, 1); // V 1-1 E   Claimer
-	        spawns.tryCreateCreep(spawn,          3015, 61, 2); // V 1-1 E    Carier
-					spawns.tryCreateCreep(spawn,        111111, 69, 2); // V 1-1 E    Worker
+					spawns.tryCreateCreep(spawn,             1005, 31, 1); // V 1-1 E    Carier
+					spawns.tryCreateCreep(spawn,           120408, 39, 1); // V 1-1 E    Worker
+					spawns.tryCreateCreep(spawn,             1005, 41, 2); // V 1-1 E    Carier
+					spawns.tryCreateCreep(spawn,           111111, 49, 3); // V 1-1 E    Worker
+					spawns.tryCreateCreep(spawn,    2000000000002, 50, 1); // V 1-1 E   Claimer
+	 				spawns.tryCreateCreep(spawn,             3015, 51, 2); // V 1-1 E    Carier
+					spawns.tryCreateCreep(spawn,           111111, 59, 2); // V 1-1 E    Worker
+					spawns.tryCreateCreep(spawn,    2000000000002, 60, 1); // V 1-1 E   Claimer
+	        spawns.tryCreateCreep(spawn,             3015, 61, 2); // V 1-1 E    Carier
+					spawns.tryCreateCreep(spawn,           111111, 69, 2); // V 1-1 E    Worker
           //                                             17
-          spawns.tryCreateCreep(spawn, 25000800000017,66, 2); // V 1-2 E  Attacker
-		    	// spawns.tryCreateCreep(spawn,25000800000017, 53, 8); // V 1-2 E  2300 Attacker
-				// spawns.tryCreateCreep(spawn, 5000400000014,100, 7); // V 1-1 E   700 Attacker
-				// spawns.tryCreateCreep(spawn,   20000000002,101, 0); // V 1-1 E  1300  Claimer
-// 				spawns.tryCreateCreep(spawn, 5000200000007,110, 2); // V 1-1 E   700 Attacker
-// 				spawns.tryCreateCreep(spawn, 5000200000007,120, 0); // V 1-1 E   700 Attacker
-				// spawns.tryCreateCreep(spawn,             1, 92, 4); // V 1-1 E    50 Attacker
-				// spawns.tryCreateCreep(spawn,10000800000018, 93, 4); // V 1-1 E  2200 Attacker
+					//                           TTClRrAaHhWwCcMm,66, 2); // V 1-2 E   Attacker
+					spawns.tryCreateCreep(spawn, 2500080000000017,66, 1); // V 1-2 E   Attacker
+					spawns.tryCreateCreep(spawn, 1000000007000009,66, 1); // V 1-2 E    Healler
 				}
 
 				if(CL >= 4) spawns.tryCreateCreep(spawn,        80808, 20, Memory.totals.WORK< 8? 1:0); // E 1600 Worker
