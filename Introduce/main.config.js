@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 113,
+	version: 114,
 	ticksToCheckCreepsNumber: 10,
 	// maxCreepsNumber:40,
 
@@ -123,13 +123,13 @@ var config = {
 												 [ {name: '1', time: 0, min_weight: 60, max_weight: 69}
 												 ]
 										 , attacker:
-												 [ {name: '1', time: 0, min_weight: 60, max_weight:100}
-												 , {name: '2', time: 0, min_weight: 60, max_weight:100}
-												 , {name: '3', time: 0, min_weight: 60, max_weight:100}
-												 , {name: '4', time: 0, min_weight: 60, max_weight:100}
-												 , {name: '5', time: 0, min_weight: 60, max_weight:100}
-												 , {name: '6', time: 0, min_weight: 60, max_weight:100}
-												 , {name: '7', time: 0, min_weight: 60, max_weight:100}
+												 [ //{name: '1', time: 0, min_weight: 60, max_weight:100}
+												 // , {name: '2', time: 0, min_weight: 60, max_weight:100}
+												 // , {name: '3', time: 0, min_weight: 60, max_weight:100}
+												 // , {name: '4', time: 0, min_weight: 60, max_weight:100}
+												 // , {name: '5', time: 0, min_weight: 60, max_weight:100}
+												 // , {name: '6', time: 0, min_weight: 60, max_weight:100}
+												 // , {name: '7', time: 0, min_weight: 60, max_weight:100}
 												 ]
 									   , heal_room: 'W27S33'
 										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W27S34', W28S33: 'W27S33'}
@@ -176,15 +176,15 @@ var config = {
 												 , {name: '2', time: 0, min_weight: 90, max_weight: 99}
 												 ]
 										 , attacker:
-												 [ {name: '1', time: 0, min_weight: 90, max_weight: 99}
-												 , {name: '2', time: 0, min_weight: 90, max_weight: 99}
-												 , {name: '3', time: 0, min_weight: 90, max_weight: 99}
-												 , {name: '4', time: 0, min_weight: 90, max_weight: 99}
-												 , {name: '5', time: 0, min_weight: 90, max_weight: 99}
-												 , {name: '6', time: 0, min_weight: 90, max_weight: 99}
-												 , {name: '7', time: 0, min_weight: 90, max_weight: 99}
-												 , {name: '8', time: 0, min_weight: 90, max_weight: 99}
-												 , {name: '9', time: 0, min_weight: 90, max_weight: 99}
+												 [// {name: '1', time: 0, min_weight: 90, max_weight: 99}
+												 // , {name: '2', time: 0, min_weight: 90, max_weight: 99}
+												 // , {name: '3', time: 0, min_weight: 90, max_weight: 99}
+												 // , {name: '4', time: 0, min_weight: 90, max_weight: 99}
+												 // , {name: '5', time: 0, min_weight: 90, max_weight: 99}
+												 // , {name: '6', time: 0, min_weight: 90, max_weight: 99}
+												 // , {name: '7', time: 0, min_weight: 90, max_weight: 99}
+												 // , {name: '8', time: 0, min_weight: 90, max_weight: 99}
+												 // , {name: '9', time: 0, min_weight: 90, max_weight: 99}
 												 ]
 									   , heal_room: 'W25S33'
 										 , path_rooms: {W26S33: 'W25S33', W25S33: 'W25S34'}
