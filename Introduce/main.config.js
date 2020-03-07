@@ -89,16 +89,16 @@ var config = {
 										 },
 						 W28S33: { containers: {weight: 65}
 										 , energy_harvesting:
-												 [ {name: '1', time: 0, min_weight: 60, max_weight: 69}
-												 , {name: '2', time: 0, min_weight: 60, max_weight: 69}
-												 , {name: '3', time: 0, min_weight: 60, max_weight: 69}
-												 , {name: '4', time: 0, min_weight: 60, max_weight: 69}
-												 , {name: '5', time: 0, min_weight: 60, max_weight: 69}
-												 , {name: '6', time: 0, min_weight: 60, max_weight: 69}
+												 [ //{name: '1', time: 0, min_weight: 60, max_weight: 69}
+												 // , {name: '2', time: 0, min_weight: 60, max_weight: 69}
+												 // , {name: '3', time: 0, min_weight: 60, max_weight: 69}
+												 // , {name: '4', time: 0, min_weight: 60, max_weight: 69}
+												 // , {name: '5', time: 0, min_weight: 60, max_weight: 69}
+												 // , {name: '6', time: 0, min_weight: 60, max_weight: 69}
 												 ]
 										 , claiming:
-												 [ {name: '1', time: 0, min_weight: 60, max_weight: 69}
-												 , {name: '2', time: 0, min_weight: 60, max_weight: 69}
+												 [ //{name: '1', time: 0, min_weight: 60, max_weight: 69}
+												 // , {name: '2', time: 0, min_weight: 60, max_weight: 69}
 												 ]
 										 , attacker:
 												 [ {name: '1', time: 0, min_weight: 60, max_weight:100}
