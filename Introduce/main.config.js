@@ -234,8 +234,10 @@ var config = {
 						slot.name = creep.name;
 						slot.time = Game.time;
 						already = true;
-						// config.log('🏢', creep.memory[role].room, role, creep, 'setRoom reset('+reset+') slot:', JSON.stringify(slot), 'prev slot:', old_name, old_time);
-						console.log('🏢', creep.memory[role].room, role, creep, 'setRoom reset('+reset+') slot:', JSON.stringify(slot), 'prev slot:', old_name, old_time);
+						config.log('🏢', creep.memory[role].room, role, creep, 'setRoom reset('+reset+') slot:', JSON.stringify(slot), 'prev slot:', old_name, old_time);
+						if (reset) {
+								console.log('🏢', creep.memory[role].room, role, creep, 'setRoom reset('+reset+') slot:', JSON.stringify(slot), 'prev slot:', old_name, old_time);
+						}
 					}
 				}
 			});
