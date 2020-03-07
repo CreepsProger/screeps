@@ -129,7 +129,8 @@ var role = {
 					});
 				}
 
-				if(!target && Game.flags['DP'] !== undefined && Game.flags['DP'].room.name == my_room) {
+				if(!target && Game.flags['DP'] !== undefined/* && Game.flags['DP'].room.name == my_room*/) {
+					console.log('DP', 'my_room:', my_room, 'DP:' JSON.stringify(Game.flags['DP']));
 					target = Game.flags['DP'].pos;
 				}
 
