@@ -1,7 +1,8 @@
+const links = require('main.links');
 const constants = require('main.constants');
 const config = require('main.config');
-var flags = require('main.flags');
-var log = require('main.log');
+const flags = require('main.flags');
+const log = require('main.log');
 const tools = require('tools');
 
 var git = '$Format:%H$';
@@ -71,18 +72,7 @@ var role = {
 		}
 
 		if(!target && !creep.getActiveBodyparts(WORK)) {
-			var link = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-				filter: (structure) => {
-					return (structure.structureType == STRUCTURE_LINK) &&
-						(structure.id == '5e583a7b7a54e3585a982b96' ||
-						 structure.id == '5e5ab4f1142d6b46f3c86280') &&
-						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-							tools.checkTarget(executer,structure.id);
-				}
-			});
-			if(!!link) {
-				target = tools.setTarget(creep,link,link.id,role.run);
-			}
+			var target = links.getTargetLinkToHarvest(creep,executer);
 		}
 
 		if(!target && !creep.getActiveBodyparts(WORK)) {
