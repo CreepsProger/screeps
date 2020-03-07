@@ -101,8 +101,8 @@ var config = {
 												 , {name: '2', time: 0, min_weight: 60, max_weight: 69}
 												 ]
 										 , attacker:
-												 [ {name: '1', time: 0, min_weight: 60, max_weight:0}
-												 // , {name: '2', time: 0, min_weight: 60, max_weight:100}
+												 [ {name: '1', time: 0, min_weight: 60, max_weight:69}
+												 , {name: '2', time: 0, min_weight: 60, max_weight:69}
 												 // , {name: '3', time: 0, min_weight: 60, max_weight:100}
 												 // , {name: '4', time: 0, min_weight: 60, max_weight:100}
 												 // , {name: '5', time: 0, min_weight: 60, max_weight:100}
