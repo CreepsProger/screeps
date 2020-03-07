@@ -12,17 +12,6 @@ var roleEnergyTransferer = {
 				return;
 		}
 
-		const this_room = creep.room.name;
-		const this_room_config = Memory.config.rooms[this_room];
-		const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
-		const my_room_config = Memory.config.rooms[my_room];
-		const this_room_sources_is_empty = !creep.pos.findClosestByPath(FIND_SOURCES, {
-			filter: (source) => source.energy > 0 && source.room.name == this_room
-		});
-		const a_source_is_not_near = !creep.pos.findInRange(FIND_SOURCES, 2, {
-			filter: (source) => source.energy > 0 && source.room.name == this_room
-		});
-
 		if(creep.memory.transfering && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
 			creep.memory.transfering = false;
 		}
@@ -34,6 +23,18 @@ var roleEnergyTransferer = {
 		}
 
 		if(creep.memory.transfering) {
+
+			const this_room = creep.room.name;
+			const this_room_config = Memory.config.rooms[this_room];
+			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
+			const my_room_config = Memory.config.rooms[my_room];
+			const this_room_sources_is_empty = !creep.pos.findClosestByPath(FIND_SOURCES, {
+				filter: (source) => source.energy > 0 && source.room.name == this_room
+			});
+			const a_source_is_not_near = !creep.pos.findInRange(FIND_SOURCES, 2, {
+				filter: (source) => source.energy > 0 && source.room.name == this_room
+			});
+
 			var target;
 
 			if(!target && this_room != my_room) {
