@@ -26,7 +26,7 @@ var role = {
 			}
 
 			if(!creep.memory.attacking &&
-				 (creep.getActiveBodyparts(RANGED_ATTACK) > 0 ||
+				 (creep.getActiveBodyparts(RANGED_ATTACK) > 0 || creep.getActiveBodyparts(ATTACK) > 0 || creep.getActiveBodyparts(HEAL) > 0 ||
 				  (creep.getActiveBodyparts(WORK) == 0 && creep.getActiveBodyparts(CARRY) == 0 && creep.getActiveBodyparts(CLAIM) == 0))) {
 
 				creep.memory.attacking = true;
