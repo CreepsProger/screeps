@@ -51,10 +51,10 @@ var spawns = {
 											+ (RAs>0 ? RAs+'r' :'')
 											+ (As>0  ? As +'a' :'')
 											+ (Hs>0  ? Hs +'h' :'')
-											+ (Ws>0  ? Ws      :'~')
-											+ (Cs>0  ? Cs      :'-')
-											+ (Ms>0  ? Ms      :'#')
-											+ Memory.CreepsCounter % 100;
+											+ (Ws>0  ? (Ws < 10? '0'+ Ws : Ws) :'~')
+											+ (Cs>0  ? (Cs < 10? '0'+ Cs : Cs) :'-')
+											+ (Ms>0  ? (Ms < 10? '0'+ Ms : Ms) : '#')
+											+ '-' + Memory.CreepsCounter % 100;
 //         console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 //                     , 'trying create a creep:'
 //                     , newName
