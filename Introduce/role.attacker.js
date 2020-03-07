@@ -49,12 +49,6 @@ var role = {
 
     		var target;
 
-    		if(!target && this_room != my_room && creep.hits == creep.hitsMax) {
-    			const exitDir = Game.map.findExit(this_room , my_path_room);
-    			target = creep.pos.findClosestByPath(exitDir);
-    // 			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
-    		}
-
 				if(!target && this_room == my_heal_room && creep.hits < creep.hitsMax) {
 					var rampart = creep.pos.findClosestByRange(FIND_STRUCTURES, {
 						filter: (structure) => {
@@ -71,16 +65,14 @@ var role = {
 				if(!target && !creep.getActiveBodyparts(TOUGH) && !creep.getActiveBodyparts(HEAL)) {
 					target = creep.pos.findClosestByRange(FIND_MY_CREEPS, {
 						filter: (mycreep) => {
-							return mycreep.getActiveBodyparts(HEAL);
+							return mycreep.getActiveBodyparts(HEAL) > 0;
 						}
 					});
 				}
 
-				if(this_room != my_heal_room && creep.hitsMax - creep.hits > creep.getActiveBodyparts(TOUGH)*100 ) {
-					if(!target) {
-						const exitDir = Game.map.findExit(creep.room, my_next_escape_room);
-						target = creep.pos.findClosestByRange(exitDir);
-					}
+				if(!target && this_room != my_heal_room && creep.hitsMax - creep.hits > creep.getActiveBodyparts(TOUGH)*100 ) {
+					const exitDir = Game.map.findExit(creep.room, my_next_escape_room);
+					target = creep.pos.findClosestByRange(exitDir);
 				}
 
 				if(!target && creep.getActiveBodyparts(HEAL)) {
@@ -98,6 +90,12 @@ var role = {
 						}
 					});
 				}
+
+    		if(!target && this_room != my_room && creep.hits == creep.hitsMax) {
+    			const exitDir = Game.map.findExit(this_room , my_path_room);
+    			target = creep.pos.findClosestByPath(exitDir);
+    // 			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
+    		}
 
 				if(!target) {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 3);
