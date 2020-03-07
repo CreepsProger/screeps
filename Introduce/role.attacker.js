@@ -53,7 +53,7 @@ var role = {
 					var rampart = creep.pos.findClosestByRange(FIND_STRUCTURES, {
 						filter: (structure) => {
 							return structure.structureType == STRUCTURE_RAMPART &&
-							 !!rampart.my;
+							 !!structure.my;
 						}
 					});
 
