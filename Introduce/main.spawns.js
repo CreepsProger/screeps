@@ -47,13 +47,13 @@ var spawns = {
 			const needsNumber = needed - existsNumber;
 			const newName = 'creep-<' + weight + '>-'
 			 								+ (Ts>0  ? Ts +'t' :'')
-											+ (CLs>0 ? CLs+'c' :'')
+											+ (CLs>0 ? CLs+'l' :'')
 											+ (RAs>0 ? RAs+'r' :'')
 											+ (As>0  ? As +'a' :'')
 											+ (Hs>0  ? Hs +'h' :'')
-											+ (Ws>0  ? (Ws < 10? '0'+ Ws : Ws) :'~')
-											+ (Cs>0  ? (Cs < 10? '0'+ Cs : Cs) :'-')
-											+ (Ms>0  ? (Ms < 10? '0'+ Ms : Ms) : '#')
+											+ (Ws>0  ? Ws +'w' :'')
+											+ (Cs>0  ? Cs +'c' :'')
+											+ (Ms>0  ? Ms +'m' :'#')
 											+ '-' + Memory.CreepsCounter % 100;
 //         console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 //                     , 'trying create a creep:'
