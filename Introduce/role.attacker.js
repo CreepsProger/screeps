@@ -62,7 +62,7 @@ var role = {
 					}
 				}
 
-				if(!target && !creep.getActiveBodyparts(TOUGH) && !creep.getActiveBodyparts(HEAL)) {
+				if(!target && creep.hits < creep.hitsMax) { //creep.hitsMax - creep.hits > creep.getActiveBodyparts(TOUGH)*100 && !creep.getActiveBodyparts(HEAL)) {
 					target = creep.pos.findClosestByRange(FIND_MY_CREEPS, {
 						filter: (mycreep) => {
 							return mycreep.getActiveBodyparts(HEAL) > 0;
@@ -146,8 +146,12 @@ var role = {
 					if(target.id &&
 						 target.structureType != STRUCTURE_RAMPART &&
 						 target.structureType != STRUCTURE_CONTROLLER) {
-						err = (!target.my)? creep.rangedAttack(target):
-																creep.heal(target);
+							 if (!target.my) {
+								 err = creep.rangedAttack(target):
+							 }
+							 else if (target.hits < target.hitsMax && creep.getActiveBodyparts(HEAL)) {
+								 err = creep.heal(target);
+							 }
 					}
 
 					if(err == ERR_NOT_IN_RANGE) {
