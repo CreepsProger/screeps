@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 112,
+	version: 113,
 	ticksToCheckCreepsNumber: 10,
 	// maxCreepsNumber:40,
 
@@ -72,11 +72,11 @@ var config = {
 												 ]
 										 , attacker:
 												 [ {name: '1', time: 0, min_weight: 70, max_weight: 79}
-												 , {name: '2', time: 0, min_weight: 50, max_weight: 100}
-												 , {name: '3', time: 0, min_weight: 50, max_weight: 100}
-												 , {name: '4', time: 0, min_weight: 50, max_weight: 100}
-												 , {name: '5', time: 0, min_weight: 50, max_weight: 100}
-												 , {name: '6', time: 0, min_weight: 50, max_weight: 100}
+												 , {name: '2', time: 0, min_weight: 90, max_weight: 100}
+												 , {name: '3', time: 0, min_weight: 90, max_weight: 100}
+												 , {name: '4', time: 0, min_weight: 90, max_weight: 100}
+												 , {name: '5', time: 0, min_weight: 90, max_weight: 100}
+												 , {name: '6', time: 0, min_weight: 90, max_weight: 100}
 												 // , {name: '7', time: 0, min_weight: 50, max_weight: 59}
 												 // , {name: '8', time: 0, min_weight: 50, max_weight: 59}
 												 // , {name: '9', time: 0, min_weight: 50, max_weight: 59}
@@ -89,7 +89,7 @@ var config = {
 										 },
 						 W28S33: { containers: {weight: 65}
 										 , energy_harvesting:
-												 [ {name: '1', time: 0, min_weight: 69, max_weight: 69}
+												 [ {name: '1', time: 0, min_weight: 60, max_weight: 69}
 												 , {name: '2', time: 0, min_weight: 60, max_weight: 69}
 												 , {name: '3', time: 0, min_weight: 60, max_weight: 69}
 												 , {name: '4', time: 0, min_weight: 60, max_weight: 69}
@@ -101,10 +101,10 @@ var config = {
 												 , {name: '2', time: 0, min_weight: 60, max_weight: 69}
 												 ]
 										 , attacker:
-												 [ {name: '1', time: 0, min_weight: 60, max_weight:100}
-												 , {name: '2', time: 0, min_weight: 60, max_weight:100}
-												 , {name: '3', time: 0, min_weight: 60, max_weight:100}
-												 , {name: '4', time: 0, min_weight: 60, max_weight:100}
+												 [ {name: '1', time: 0, min_weight: 60, max_weight:69}
+												 , {name: '2', time: 0, min_weight: 60, max_weight:69}
+												 , {name: '3', time: 0, min_weight: 60, max_weight:69}
+												 , {name: '4', time: 0, min_weight: 60, max_weight:69}
 												 // , {name: '5', time: 0, min_weight: 60, max_weight:100}
 												 // , {name: '6', time: 0, min_weight: 60, max_weight:100}
 												 // , {name: '7', time: 0, min_weight: 60, max_weight:100}
