@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 116,
+	version: 117,
 	ticksToCheckCreepsNumber: 10,
 	// maxCreepsNumber:40,
 
@@ -95,6 +95,8 @@ var config = {
 												 , {name: '4', time: 0, min_weight: 60, max_weight: 69}
 												 , {name: '5', time: 0, min_weight: 60, max_weight: 69}
 												 , {name: '6', time: 0, min_weight: 60, max_weight: 69}
+												 , {name: '7', time: 0, min_weight: 60, max_weight: 69}
+												 , {name: '8', time: 0, min_weight: 60, max_weight: 69}
 												 ]
 										 , claiming:
 												 [ {name: '1', time: 0, min_weight: 60, max_weight: 69}
@@ -117,10 +119,10 @@ var config = {
 										 },
 						 W27S34: { containers: {weight: 65}
 										 , energy_harvesting:
-												 [ {name: '1', time: 0, min_weight: 60, max_weight: 69}
+												 [ {name: '1', time: 0, min_weight: 90, max_weight: 100}
 												 ]
 										 , claiming:
-												 [ {name: '1', time: 0, min_weight: 60, max_weight: 69}
+												 [ {name: '1', time: 0, min_weight: 90, max_weight: 100}
 												 ]
 										 , attacker:
 												 [ {name: '1', time: 0, min_weight: 90, max_weight:100}
