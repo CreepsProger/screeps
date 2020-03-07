@@ -55,7 +55,7 @@ var role = {
     // 			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
     		}
 
-				if(this_room == my_heal_room && creep.hits < creep.hitsMax - 400) {
+				if(this_room == my_heal_room && !creep.getActiveBodyparts(TOUGH)) {
 					if(!target) {
 						var rampart = creep.pos.findClosestByRange(FIND_STRUCTURES, {
 							filter: (structure) => {
@@ -72,7 +72,7 @@ var role = {
 					}
 				}
 
-				if(creep.room.name != my_heal_room && creep.hits < creep.hitsMax - 400) {
+				if(this_room != my_heal_room && !creep.getActiveBodyparts(TOUGH)) {
 					if(!target) {
 						const exitDir = Game.map.findExit(creep.room, my_next_escape_room);
 						target = creep.pos.findClosestByRange(exitDir);
@@ -128,7 +128,8 @@ var role = {
 					if(target.id &&
 						 target.structureType != STRUCTURE_RAMPART &&
 						 target.structureType != STRUCTURE_CONTROLLER) {
-						err = creep.rangedAttack(target);
+						err = (!target.my)? creep.rangedAttack(target):
+																creep.heal(target);
 					}
 
 					if(err == ERR_NOT_IN_RANGE) {
