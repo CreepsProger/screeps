@@ -129,9 +129,14 @@ var role = {
 					});
 				}
 
-				if(!target && Game.flags['DP'] !== undefined && Game.flags['DP'].room.name == my_room) {
-					console.log('DP', 'my_room:', my_room, 'DP:', JSON.stringify(Game.flags['DP']));
-					target = Game.flags['DP'].pos;
+				if(!target && Game.flags['DP1'] !== undefined && Game.flags['DP1'].room.name == my_room) {
+					console.log('DP1', 'my_room:', my_room, 'DP1:', JSON.stringify(Game.flags['DP1']));
+					target = Game.flags['DP1'].pos;
+				}
+
+				if(!target && Game.flags['DP2'] !== undefined && Game.flags['DP2'].room.name == my_room) {
+					console.log('DP2', 'my_room:', my_room, 'DP2:', JSON.stringify(Game.flags['DP2']));
+					target = Game.flags['DP2'].pos;
 				}
 
 				if(!target) {
