@@ -93,7 +93,8 @@ var metrix = {
 //                   , Memory.harvestersMovements.Count.movingAverage.delta
 //                   , Math.floor(Memory.harvestersMovements.Value.movingAverage.delta / Memory.harvestersMovements.Count.movingAverage.delta)
 //                   , Memory.harvestersMovements.Avg.movingAverage.delta
-                  , JSON.stringify(Memory.CreepsNumberByType));
+                  , JSON.stringify(Memory.CreepsNumberByWeight)
+									, JSON.stringify(Memory.CreepsNumberByType));
 		}
 
 		if(Game.time % (config.ticksToCheckCreepsNumber * 20) == 0) {
