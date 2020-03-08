@@ -44,7 +44,7 @@ var roleBuilder = {
 						filter: (structure) => {
 							if(structure.structureType == STRUCTURE_ROAD &&
 								 structure.hitsMax - structure.hits > 2000) {
-								if(!!NR1 && NR1.pos.roomName == this_room) {
+								if(!!NR1 && NR1.pos.roomName == creep.room.name) {
 									const range = 1*NR1.color;
 									return NR1.pos.getRangeTo(structure) >= range;
 								} 
