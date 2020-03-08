@@ -77,6 +77,8 @@ var metrix = {
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'Creeps Number:'
                   , Memory.totals.CreepsNumber
+									,'Cost:'
+									, Memory.totals.Cost
                   , 'h/hM:'
                   , Memory.totals.hits
                   , Memory.totals.hitsMax
