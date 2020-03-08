@@ -112,7 +112,7 @@ var role = {
 				const A2 = Game.flags['A2'];
 				if(!target && !!A2) {
 					console.log('A2', creep, 'this_room:', this_room, 'range', range, 'A2:', JSON.stringify(A2));
-					if(A2.roomName == this_room) {
+					if(A2.pos.roomName == this_room) {
 						range = 5*A2.color;
 						if(Game.time % config.ticksToCheckCreepsNumber == 0) {
 						//console.log('A2', creep, 'this_room:', this_room, 'range', range, 'A2:', JSON.stringify(A2));
