@@ -71,7 +71,7 @@ var spawns = {
 			if(last_game_time_created_creep != Game.time && needsNumber > 0) {
 				var err = spawn.spawnCreep( body
 																	, newName
-																	, {memory: {n: Memory.CreepsCounter, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
+																	, {memory: {n: Memory.CreepsCounter, cost: cost, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
 				if(err) {
 					console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 											, 'Can\'t spawn new creep:'
