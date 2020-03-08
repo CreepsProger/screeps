@@ -159,7 +159,7 @@ var role = {
 				}
 
 				if(!target && Game.flags['DP2'] !== undefined && Game.flags['DP2'].room.name == this_room) {
-					console.log('DP2', 'this_room:', this_room, 'DP2:', JSON.stringify(Game.flags['DP2']));
+					//console.log('DP2', 'this_room:', this_room, 'DP2:', JSON.stringify(Game.flags['DP2']));
 					target = Game.flags['DP2'].pos;
 				}
 
