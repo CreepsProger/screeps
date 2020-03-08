@@ -19,6 +19,7 @@ var metrix = {
 
 		if(Game.time % config.ticksToCheckCreepsNumber == 0) {
 			Memory.totals = { CreepsNumber: 0
+											 , Cost: 0
 											 , Capacity: 0
 											 , FreeCapacity: 0
 											 , UsedCapacity: 0
@@ -51,7 +52,8 @@ var metrix = {
 
 				Memory.CreepsNumberByType[full_type]++;
 				Memory.CreepsNumberByWeight[creep.memory.weight]++;
-				Memory.totals.CreepsNumber += 1;
+				Memory.totals.CreepsNumber += 1;				
+				Memory.totals.Cost += !!creep.memory.cost? creep.memory.cost:0;
 				Memory.totals.Capacity += creep.store.getCapacity();
 				Memory.totals.FreeCapacity += creep.store.getFreeCapacity();
 				Memory.totals.UsedCapacity += creep.store.getUsedCapacity();
