@@ -101,12 +101,17 @@ var role = {
 				}
 
 				if(!target) {
-					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 3);
+					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 5);
 					if(targets.length > 0) {
 						target = targets[0];
 					}
 				}
 
+				if(!target && Game.flags['A2'] !== undefined && Game.flags['A2'].room.name == my_room) {
+					// console.log('A2', 'my_room:', my_room, 'A2:', JSON.stringify(Game.flags['A2']));
+					target = Game.flags['A2'].pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+				}
+				
 				if(!target) {
 					target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
 				}
