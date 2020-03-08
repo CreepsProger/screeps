@@ -111,7 +111,7 @@ var role = {
 				
 				const A2 = Game.flags['A2'];
 				if(!target && !!A2) {
-					console.log('A2', creep, 'this_room:', this_room, 'range', range, 'A2:', JSON.stringify(A2));
+					//console.log('A2', creep, 'this_room:', this_room, 'range', range, 'A2:', JSON.stringify(A2));
 					if(A2.pos.roomName == this_room) {
 						range = 5*A2.color;
 						if(Game.time % config.ticksToCheckCreepsNumber == 0) {
@@ -157,15 +157,17 @@ var role = {
 						target = targets[0];
 					}
 				}
-
-				if(!target && Game.flags['DP1'] !== undefined && Game.flags['DP1'].room.name == this_room) {
-					// console.log('DP1', 'this_room:', this_room, 'DP1:', JSON.stringify(Game.flags['DP1']));
-					target = Game.flags['DP1'].pos;
+				
+				const DP1 = Game.flags['DP1'];
+				if(!target && !!DP1 && DP1.pos.roomName == this_room) {
+					// console.log('DP1', 'this_room:', this_room, 'DP1:', JSON.stringify(DP1));
+					target = DP1.pos;
 				}
-
-				if(!target && Game.flags['DP2'] !== undefined && Game.flags['DP2'].room.name == this_room) {
-					//console.log('DP2', 'this_room:', this_room, 'DP2:', JSON.stringify(Game.flags['DP2']));
-					target = Game.flags['DP2'].pos;
+				
+				const DP2 = Game.flags['DP2'];
+				if(!target && !!DP2 && DP2.pos.roomName == this_room) {
+					//console.log('DP2', 'this_room:', this_room, 'DP2:', JSON.stringify(DP2));
+					target = DP2.pos;
 				}
 
 				if(!target) {
