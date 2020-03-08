@@ -105,15 +105,15 @@ var role = {
 					if(targets.length > 0) {
 						target = targets[0];
 					}
-				}
-
+				}var range = 50;
 				if(!target && Game.flags['A2'] !== undefined && Game.flags['A2'].room.name == my_room) {
-					// console.log('A2', 'my_room:', my_room, 'A2:', JSON.stringify(Game.flags['A2']));
-					target = Game.flags['A2'].pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+					range = 5*Game.flags['A2'].color;
+					console.log('A2', 'my_room:', my_room, 'range', range, 'A2:', JSON.stringify(Game.flags['A2']));
+					//target = Game.flags['A2'].pos.findClosestByRange(FIND_HOSTILE_CREEPS, range);
 				}
 				
 				if(!target) {
-					target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+					target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS, range);
 				}
 
     		if(!target && this_room != my_room && creep.hits == creep.hitsMax) {
@@ -123,9 +123,10 @@ var role = {
     		}
 
 				if(!target) {
-					const targets = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, 3, {
+					const targets = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5, {
 						filter: (structure) => {
-							return (structure.structureType != STRUCTURE_CONTROLLER);
+							return (structure.structureType != STRUCTURE_CONTROLLER &&
+											structure.structureType != STRUCTURE_KEEPER_LAIR);
 						}
 					});
 
@@ -135,7 +136,7 @@ var role = {
 				}
 
 				if(!target) {
-					target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES, {
+					target = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, range, {
 						filter: (structure) => {
 							return (structure.structureType != STRUCTURE_CONTROLLER &&
 											structure.structureType != STRUCTURE_KEEPER_LAIR);
