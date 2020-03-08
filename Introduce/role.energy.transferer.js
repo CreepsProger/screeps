@@ -16,12 +16,19 @@ var roleEnergyTransferer = {
 			creep.memory.transfering = false;
 		}
 
-		if(!creep.memory.transfering &&
-			 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0) ||
-			  (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-				 (creep.room.energyAvailable != creep.room.energyCapacityAvailable && !creep.getActiveBodyparts(WORK)) 
+		if(!creep.memory.transfering
+			 &&
+			 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0)
+				||
+				(creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0
+				 &&
+				 ((creep.room.energyAvailable != creep.room.energyCapacityAvailable && !creep.getActiveBodyparts(WORK)) 
 					||
-				 creep.memory.rerun)))) {
+					creep.memory.rerun
+				 )
+				)
+			 )
+			) {
 			creep.memory.transfering = true;
 		}
 
