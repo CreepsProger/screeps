@@ -140,7 +140,7 @@ var roleEnergyTransferer = {
 				var storages = _.filter(Game.structures, function(structure) {
 					return structure.my &&
 						structure.structureType == STRUCTURE_STORAGE &&
-						(structure.store.getUsedCapacity(RESOURCE_ENERGY) < 30000);
+						(structure.store.getUsedCapacity(RESOURCE_ENERGY) < 25000);
 				});
 				if(storages.length > 0) {
 					target = storages.reduce(function (p, v) {
