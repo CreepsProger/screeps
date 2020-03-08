@@ -23,6 +23,7 @@ module.exports.loop = function () {
 	}
 
 	config.run();
+	flags.run()
 	links.run();
 	towers.run();
 	metrix.run();
