@@ -59,7 +59,7 @@ var role = {
 		const this_room_config = Memory.config.rooms[this_room];
 		const my_room = creep.memory[role.name].room;
 		const my_room_config = Memory.config.rooms[my_room];
-		const this_room_sources_is_empty = !creep.pos.findClosestByPath(FIND_SOURCES, {
+		const this_room_sources_is_empty = !creep.pos.findClosestByRange(FIND_SOURCES, {
 				filter: (source) => source.energy > 0 && source.room.name == this_room
 			});
 
@@ -71,7 +71,7 @@ var role = {
 // 			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
 		}
 
-		if(!target && !creep.getActiveBodyparts(WORK)) {
+		if(!target && (!creep.getActiveBodyparts(WORK) || (this_room_sources_is_empty && creep.memory.rerun))) {
 			var target = links.getTargetLinkToHarvest(creep,executer,role.run);
 		}
 
