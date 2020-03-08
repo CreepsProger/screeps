@@ -110,12 +110,9 @@ var role = {
 				var range = 50;
 				if(!target && Game.flags['A2'] !== undefined && Game.flags['A2'].room.name == my_room) {
 					range = 5*Game.flags['A2'].color;
-					console.log('A2', 'my_room:', my_room, 'range', range, 'A2:', JSON.stringify(Game.flags['A2']));
-					//target = Game.flags['A2'].pos.findClosestByRange(FIND_HOSTILE_CREEPS, range);
-					const targets = Game.flags['A2'].pos.findInRange(FIND_HOSTILE_CREEPS, range);
-					if(targets.length > 0) {
-						target = Game.flags['A2'].pos.findClosestByPath(FIND_HOSTILE_CREEPS);
-					}
+					if(Game.time % config.ticksToCheckCreepsNumber == 0) {
+						console.log('A2', creep, 'my_room:', my_room, 'range', range, 'A2:', JSON.stringify(Game.flags['A2']));
+					}					
 				}
 				
 				if(!target) {					
