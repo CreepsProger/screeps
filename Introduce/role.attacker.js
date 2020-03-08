@@ -184,7 +184,11 @@ var role = {
 						 target.structureType != STRUCTURE_RAMPART &&
 						 target.structureType != STRUCTURE_CONTROLLER) {
 							 if (!target.my) {
-								 err = creep.getActiveBodyparts(RANGED_ATTACK)?creep.rangedAttack(target):creep.attack(target);
+								 const range = creep.pos.getRangeTo(target);							;
+								 if(creep.getActiveBodyparts(RANGED_ATTACK)) 
+									 err = range>1?creep.rangedAttack(target):creep.rangedMassAttack();
+								 else
+									 err = creep.attack(target);
 							 }
 							 else if (target.hits < target.hitsMax && creep.getActiveBodyparts(HEAL)) {
 								 err = creep.heal(target);
