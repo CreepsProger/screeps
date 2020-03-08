@@ -87,6 +87,7 @@ var spawns = {
 											, newName
 										  , 'cost:'
 										  , cost);
+					Memory.CreepsCounter++;
 					last_game_time_created_creep = Game.time;
 				}
 			}
