@@ -105,7 +105,9 @@ var role = {
 					if(targets.length > 0) {
 						target = targets[0];
 					}
-				}var range = 50;
+				}
+				
+				var range = 50;
 				if(!target && Game.flags['A2'] !== undefined && Game.flags['A2'].room.name == my_room) {
 					range = 5*Game.flags['A2'].color;
 					console.log('A2', 'my_room:', my_room, 'range', range, 'A2:', JSON.stringify(Game.flags['A2']));
