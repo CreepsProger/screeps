@@ -38,13 +38,17 @@ var metrix = {
 		if(Game.time % config.ticksToCheckCreepsNumber == 0) {
 //          var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
 			Memory.totals.CreepsNumber = 0;
-			if(!Memory.CreepsNumberByType[full_type])
-					Memory.CreepsNumberByType[full_type] = 0;
-			if(!Memory.CreepsNumberByWeight[creep.memory.weight])
-					Memory.CreepsNumberByWeight[creep.memory.weight] = 0;
+			
 			for(var name in Game.creeps) {
 				var creep = Game.creeps[name];
 				const full_type = '' + creep.memory.type+'/'+creep.memory.weight;
+
+				if(!Memory.CreepsNumberByType[full_type])
+					Memory.CreepsNumberByType[full_type] = 0;
+
+				if(!Memory.CreepsNumberByWeight[creep.memory.weight])
+					Memory.CreepsNumberByWeight[creep.memory.weight] = 0;
+
 				Memory.CreepsNumberByType[full_type]++;
 				Memory.CreepsNumberByWeight[creep.memory.weight]++;
 				Memory.totals.CreepsNumber += 1;
