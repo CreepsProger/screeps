@@ -156,7 +156,7 @@ var mainFlags = {
                         , err
 								 );
 			lastFlagRemoved = BR;
-			lastFlagRemoved.remove();
+			BR.remove();
     },
     // T: Test
     T: function(T) {
