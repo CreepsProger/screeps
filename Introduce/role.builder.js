@@ -38,11 +38,16 @@ var roleBuilder = {
 			if(creep.memory.building) {
 				var target;
 
+				const NR1 = Game.flags['NR1'];// don't repair 
 				if(!target) {
 					var structures = creep.pos.findInRange(FIND_STRUCTURES, 15, {
 						filter: (structure) => {
 							if(structure.structureType == STRUCTURE_ROAD &&
 								 structure.hitsMax - structure.hits > 2000) {
+								if(!!NR1 && NR1.pos.roomName == this_room) {
+									const range = 1*NR1.color;
+									return NR1.pos.getRangeTo(structure) >= range;
+								} 
 								return true;
 							}
 							if(structure.structureType == STRUCTURE_CONTAINER &&
