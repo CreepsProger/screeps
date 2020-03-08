@@ -117,7 +117,7 @@ var role = {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_STORAGE) &&
 						structure.room.name == creep.room.name &&
-						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 30000;
+						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 25000;
 				}
 			});
 			role.log('🔜⚡', creep, 'STRUCTURE_STORAGE');
