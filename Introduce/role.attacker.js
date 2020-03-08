@@ -116,7 +116,7 @@ var role = {
 				
 				if(!target) {
 					console.log('Attack', 'my_room:', my_room, 'range', range);
-					target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS, range);
+					//target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS, range);
 				}
 
     		if(!target && this_room != my_room && creep.hits == creep.hitsMax) {
