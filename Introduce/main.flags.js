@@ -358,7 +358,7 @@ var mainFlags = {
         lastFlagRemoved = RACS;
         lastFlagRemoved.remove();
     },
-    checkFlags: function(ticksToLog = 10) {
+    run: function(ticksToLog = 10) {
         var flags = [];
         for(var name in Game.flags) {
             flags.push(Game.flags[name].name);
