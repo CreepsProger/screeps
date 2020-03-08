@@ -90,7 +90,7 @@ var role = {
 				filter: (source) => {
 					return source.energy == source.energyCapacity &&
 					 source.room.name == this_room &&
-						!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5) &&
+						(!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5) || !!Game.flags['DP2']) &&
 						 tools.checkTarget(executer,source.id);
 				 }
 			 });
@@ -102,7 +102,7 @@ var role = {
 		if(!target && creep.getActiveBodyparts(WORK)) {
 			target = creep.pos.findClosestByPath(FIND_SOURCES, {
 				filter: (source) => source.energy > 0 &&
-						!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5) &&
+						(!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5) || !!Game.flags['DP2']) &&
 				source.room.name == this_room
 			});
 		}
