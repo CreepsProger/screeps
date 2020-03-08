@@ -29,6 +29,7 @@ var metrix = {
 											 , MOVE: 0};
 
 			Memory.CreepsNumberByType = {};
+			Memory.CreepsNumberByWeight = {};
 			metrix.updateMovingAverage(Memory.harvestersMovements.Value);
 			metrix.updateMovingAverage(Memory.harvestersMovements.Count);
 			metrix.updateMovingAverage(Memory.harvestersMovements.Avg);
