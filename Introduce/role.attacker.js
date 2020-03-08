@@ -139,7 +139,6 @@ var role = {
 											structure.structureType != STRUCTURE_KEEPER_LAIR);
 						}
 					});
-
 					if(targets.length > 0) {
 						target = targets[0];
 					}
@@ -152,6 +151,9 @@ var role = {
 											structure.structureType != STRUCTURE_KEEPER_LAIR);
 						}
 					});
+					if(targets.length > 0) {
+						target = targets[0];
+					}
 				}
 
 				if(!target && Game.flags['DP1'] !== undefined && Game.flags['DP1'].room.name == my_room) {
