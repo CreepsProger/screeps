@@ -149,14 +149,16 @@ var mainFlags = {
     },
 	// BR: Build Rampart
     BR: function(BR) {
-			const err = BR.room.createConstructionSite(BR.pos,STRUCTURE_RAMPART);
+			const err = Game.rooms[BR.pos.roomName].createConstructionSite(BR.pos,STRUCTURE_RAMPART);
 			
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-                        , 'BR err:'
-                        , err
+									, 'err:'
+									, err
+									, 'BR:'
+									, JSON.stringify(DR)
 								 );
 			lastFlagRemoved = BR;
-			BR.remove();
+			lastFlagRemoved.remove();
     },
     // T: Test
     T: function(T) {
