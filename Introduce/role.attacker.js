@@ -111,7 +111,7 @@ var role = {
 				if(!target && Game.flags['A2'] !== undefined && Game.flags['A2'].room.name == my_room) {
 					range = 5*Game.flags['A2'].color;
 					if(Game.time % config.ticksToCheckCreepsNumber == 0) {
-						console.log('A2', creep, 'my_room:', my_room, 'range', range, 'A2:', JSON.stringify(Game.flags['A2']));
+						//console.log('A2', creep, 'my_room:', my_room, 'range', range, 'A2:', JSON.stringify(Game.flags['A2']));
 					}					
 				}
 				
