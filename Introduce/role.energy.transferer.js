@@ -106,7 +106,8 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			if(!target && this_room == my_room && !creep.getActiveBodyparts(WORK)) {
+			if(!target && this_room == my_room &&
+				 (!creep.getActiveBodyparts(WORK) || false)) {
 				var extension = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 					filter: (structure) => {
 						return (
