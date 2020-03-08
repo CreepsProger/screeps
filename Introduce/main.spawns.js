@@ -158,8 +158,8 @@ var spawns = {
 					spawns.tryCreateCreep(spawn,  500100000000015,100, 2); // V 1-2 E  RAttacker
 					spawns.tryCreateCreep(spawn,  200000008000005,100, 2); // V 1-2 E     Healer
 
-					spawns.tryCreateCreep(spawn,           111212, 79, 2); // V 1-1 E    Worker
-   				// 																						 +2 = 19
+					spawns.tryCreateCreep(spawn,           111212, 79, 1); // V 1-1 E    Worker
+   				// 																						 +1 = 19
 				}
 
 				if(CL >= 4) spawns.tryCreateCreep(spawn,        80808, 20, Memory.totals.WORK< 8? 1:0); // E 1600 Worker
