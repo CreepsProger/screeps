@@ -133,16 +133,16 @@ var spawns = {
 				var N = Memory.totals.CreepsNumber;
 				// 22*1800+2*1300+4*650 = 44800 -> 30 per game tick
 				if(false) {
-					spawns.tryCreateCreep(spawn,             1608, 31, 1); // V 1-1 E  1800   Carier
-					spawns.tryCreateCreep(spawn,           100608, 39, 1); // V 1-1 E  1800   Worker
+					spawns.tryCreateCreep(spawn,             2010, 31, 1); // V 1-1 E  1800   Carier
+					spawns.tryCreateCreep(spawn,           100808, 39, 1); // V 1-1 E  1800   Worker
 					spawns.tryCreateCreep(spawn,             3015, 40, 1); // V 1-1 E  1800   Carier
 					spawns.tryCreateCreep(spawn,           111111, 49, 2); // V 1-1 E  1800   Worker
 					spawns.tryCreateCreep(spawn, 2500000800000017,53, 8); // V 1-2 E  2300 Attacker
 				}
 				else {
-					spawns.tryCreateCreep(spawn,             1608, 31, 1); // V 1-1 E    Carier
-					spawns.tryCreateCreep(spawn,           100608, 39, 1); // V 1-1 E    Worker
-					spawns.tryCreateCreep(spawn,             2412, 41, 2); // V 1-1 E    Carier
+					spawns.tryCreateCreep(spawn,             2010, 31, 1); // V 1-1 E    Carier
+					spawns.tryCreateCreep(spawn,           100808, 39, 1); // V 1-1 E    Worker
+					spawns.tryCreateCreep(spawn,             3015, 41, 2); // V 1-1 E    Carier
 					spawns.tryCreateCreep(spawn,           111212, 49, 3); // V 1-1 E    Worker
 					spawns.tryCreateCreep(spawn,    2000000000002, 50, 1); // V 1-1 E   Claimer
 	 				spawns.tryCreateCreep(spawn,             3015, 51, 2); // V 1-1 E    Carier
@@ -158,8 +158,8 @@ var spawns = {
 					spawns.tryCreateCreep(spawn,  500100000000015,100, 2); // V 1-2 E  RAttacker
 					spawns.tryCreateCreep(spawn,  200000008000005,100, 2); // V 1-2 E     Healer
 
-					spawns.tryCreateCreep(spawn,           111212, 79, 1); // V 1-1 E    Worker
-   				// 																						 +1 = 18
+					spawns.tryCreateCreep(spawn,           111212, 79, 2); // V 1-1 E    Worker
+   				//																						 +2 = 19
 				}
 
 				if(CL >= 4) spawns.tryCreateCreep(spawn,        80808, 20, Memory.totals.WORK< 8? 1:0); // E 1600 Worker

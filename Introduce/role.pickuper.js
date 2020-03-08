@@ -15,15 +15,17 @@ var rolePickuper = {
 	        creep.getActiveBodyparts(CARRY) > 0 &&
            (creep.store.getUsedCapacity() == 0 ||
            (creep.store.getFreeCapacity() > 0 && creep.memory.rerun))) {
-            creep.memory.pickuping = true;
+            creep.memory.pickuping = false;
         }
 
         if(creep.memory.pickuping) {
             var target;
             if(!target) {
-                var dropped = creep.pos.findClosestByPath(FIND_DROPPED_RESOURCES,  {
+                var dropped = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, {
 									filter: (dropped) => {
-										return tools.checkTarget(executer,dropped.id);
+										return (!dropped.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0
+														|| (!!Game.flags['DP2'] && Game.flags['DP2'].room.name == creep.room.name && Game.flags['DP2'].pos.findPathTo(dropped).length < 5)) &&
+											tools.checkTarget(executer,dropped.id);
 									}
 								});
 								if(!!dropped) {

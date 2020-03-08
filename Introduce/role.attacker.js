@@ -101,14 +101,26 @@ var role = {
 				}
 
 				if(!target) {
-					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 3);
+					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 5);
 					if(targets.length > 0) {
 						target = targets[0];
 					}
 				}
-
-				if(!target) {
-					target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+				
+				var range = 50;
+				if(!target && Game.flags['A2'] !== undefined && Game.flags['A2'].room.name == my_room) {
+					range = 5*Game.flags['A2'].color;
+					if(Game.time % config.ticksToCheckCreepsNumber == 0) {
+						//console.log('A2', creep, 'my_room:', my_room, 'range', range, 'A2:', JSON.stringify(Game.flags['A2']));
+					}					
+				}
+				
+				if(!target) {					
+					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, range);
+					if(targets.length > 0) {
+						console.log(creep, 'Attacking in', 'my_room:', my_room, 'in range', range);
+						target = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS);
+					}
 				}
 
     		if(!target && this_room != my_room && creep.hits == creep.hitsMax) {
@@ -118,24 +130,27 @@ var role = {
     		}
 
 				if(!target) {
-					const targets = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, 3, {
+					const targets = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5, {
 						filter: (structure) => {
-							return (structure.structureType != STRUCTURE_CONTROLLER);
+							return (structure.structureType != STRUCTURE_CONTROLLER &&
+											structure.structureType != STRUCTURE_KEEPER_LAIR);
 						}
 					});
-
 					if(targets.length > 0) {
 						target = targets[0];
 					}
 				}
 
 				if(!target) {
-					target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES, {
+					const targets = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, range, {
 						filter: (structure) => {
 							return (structure.structureType != STRUCTURE_CONTROLLER &&
 											structure.structureType != STRUCTURE_KEEPER_LAIR);
 						}
 					});
+					if(targets.length > 0) {
+						target = targets[0];
+					}
 				}
 
 				if(!target && Game.flags['DP1'] !== undefined && Game.flags['DP1'].room.name == my_room) {
