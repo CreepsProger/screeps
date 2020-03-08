@@ -155,7 +155,7 @@ var mainFlags = {
 									, 'err:'
 									, err
 									, 'BR:'
-									, JSON.stringify(DR)
+									, JSON.stringify(BR)
 								 );
 			lastFlagRemoved = BR;
 			lastFlagRemoved.remove();
