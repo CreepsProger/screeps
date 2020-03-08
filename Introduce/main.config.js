@@ -121,6 +121,11 @@ var config = {
 										 , energy_harvesting:
 										     [ {name: '1', time: 0, min_weight: 70, max_weight: 79}
 										     , {name: '2', time: 0, min_weight: 70, max_weight: 79}
+										     , {name: '3', time: 0, min_weight: 70, max_weight: 79}
+										     , {name: '4', time: 0, min_weight: 70, max_weight: 79}
+										     , {name: '5', time: 0, min_weight: 70, max_weight: 79}
+										     , {name: '6', time: 0, min_weight: 70, max_weight: 79}
+										     , {name: '7', time: 0, min_weight: 70, max_weight: 79}
 												 ]
 										 , claiming:
 												 [ {name: '1', time: 0, min_weight: 70, max_weight: 79}
