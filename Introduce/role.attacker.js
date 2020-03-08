@@ -109,8 +109,8 @@ var role = {
 				
 				var range = 50;
 				if(!target && Game.flags['A2'] !== undefined && Game.flags['A2'].room.name == my_room) {
-					range = 5*Game.flags['A2'].color;					
-					target = Game.flags['A2'].pos.findClosestByRange(FIND_HOSTILE_CREEPS, range);
+					range = 5*Game.flags['A2'].color;
+					//target = Game.flags['A2'].pos.findClosestByRange(FIND_HOSTILE_CREEPS, range);
 				}
 				
 				if(!target) {
