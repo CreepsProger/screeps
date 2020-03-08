@@ -147,6 +147,17 @@ var mainFlags = {
         }
         Flag1.remove();
     },
+	// BR: Build Rampart
+    BR: function(BR) {
+			const err = BR.room.createConstructionSite(BR.pos,STRUCTURE_RAMPART);
+			
+			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+                        , 'BR err:'
+                        , err
+								 );
+			lastFlagRemoved = BR;
+			lastFlagRemoved.remove();
+    },
     // T: Test
     T: function(T) {
         var N = 1234;
