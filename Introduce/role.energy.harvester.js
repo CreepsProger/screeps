@@ -109,15 +109,6 @@ var role = {
 			});
 		}
 
-		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable && !creep.getActiveBodyparts(WORK)) {
-			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-				filter: (structure) => {
-					return (structure.structureType == STRUCTURE_STORAGE) &&
-						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 5000;
-				}
-			});
-		}
-
 		if(!target &&
 			 Memory.stop_upgrading == false &&
 			 creep.getActiveBodyparts(WORK)) {
@@ -131,6 +122,16 @@ var role = {
 			role.log('🔜⚡', creep, 'STRUCTURE_STORAGE');
 		}
 
+		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable &&
+			 (!creep.getActiveBodyparts(WORK) || false)) {
+			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+				filter: (structure) => {
+					return (structure.structureType == STRUCTURE_STORAGE) &&
+						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 5000;
+				}
+			});
+		}
+		
 		if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
 			var weightcreep = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 				filter: (creep2) => {
