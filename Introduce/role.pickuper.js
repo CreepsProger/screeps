@@ -21,9 +21,11 @@ var rolePickuper = {
         if(creep.memory.pickuping) {
             var target;
             if(!target) {
-                var dropped = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, 1, {
+                var dropped = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, {
 									filter: (dropped) => {
-										return tools.checkTarget(executer,dropped.id);
+										return (!dropped.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5)
+														|| (!!Game.flags['DP2'] && Game.flags['DP2'].pos.findPathTo(dropped).length < 5)) &&
+											tools.checkTarget(executer,dropped.id);
 									}
 								});
 								if(!!dropped) {
