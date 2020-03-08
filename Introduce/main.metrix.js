@@ -42,11 +42,8 @@ var metrix = {
 			for(var name in Game.creeps) {
 				var creep = Game.creeps[name];
 				const full_type = '' + creep.memory.type+'/'+creep.memory.weight;
-
-				if(!Memory.CreepsNumberByType[full_type])
-					Memory.CreepsNumberByType[full_type] = 0;
-
 				Memory.CreepsNumberByType[full_type]++;
+				Memory.CreepsNumberByWeight[creep.memory.weight]++;
 				Memory.totals.CreepsNumber += 1;
 				Memory.totals.Capacity += creep.store.getCapacity();
 				Memory.totals.FreeCapacity += creep.store.getFreeCapacity();
