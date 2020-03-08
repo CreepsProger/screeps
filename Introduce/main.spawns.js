@@ -42,8 +42,10 @@ var spawns = {
 			const cost = 10*Ts + 600*CLs + 150*RAs + 80*As + 250*Hs + 100*Ws + 50*Cs + 50*Ms;
 			var existsNumber = 0;
 			const full_type = '' + type + '/' + weight;
-			if(Memory.CreepsNumberByType[full_type])
-				existsNumber = Memory.CreepsNumberByType[full_type];
+			if(Memory.CreepsNumberByWeight[weight]) {
+				//existsNumber = Memory.CreepsNumberByType[full_type];
+				existsNumber = Memory.CreepsNumberByWeight[weight];
+			} 
 			const needsNumber = needed - existsNumber;
 			const newName = 'creep-<' + weight + '/' + Memory.CreepsCounter % 100 + '>-'
 			 								+ (Ts>0  ? Ts +'t' :'')
@@ -85,11 +87,6 @@ var spawns = {
 											, newName
 										  , 'cost:'
 										  , cost);
-					if(!Memory.CreepsNumberByType[full_type])
-						Memory.CreepsNumberByType[full_type] = 0;
-
-					Memory.CreepsNumberByType[full_type]++;
-					Memory.CreepsCounter++;
 					last_game_time_created_creep = Game.time;
 				}
 			}
