@@ -110,10 +110,13 @@ var role = {
 				var range = 50;
 				
 				const A2 = Game.flags['A2'];
-				if(!target && !!A2 && A2.room.name == this_room) {
-					range = 5*A2.color;
-					if(Game.time % config.ticksToCheckCreepsNumber == 0) {
+				if(!target && !!A2) {
+					console.log('A2', creep, 'this_room:', this_room, 'range', range, 'A2:', JSON.stringify(A2));
+					if(A2.room.name == this_room) {
+						range = 5*A2.color;
+						if(Game.time % config.ticksToCheckCreepsNumber == 0) {
 						//console.log('A2', creep, 'this_room:', this_room, 'range', range, 'A2:', JSON.stringify(A2));
+						}
 					}					
 				}
 				
