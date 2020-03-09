@@ -71,8 +71,9 @@ var role = {
 // 			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
 		}
 
-		if(!target && (!creep.getActiveBodyparts(WORK) || (this_room_sources_is_empty && creep.memory.rerun))) {
-			var target = links.getTargetLinkToHarvest(creep,executer,role.run);
+		//if(!target && (!creep.getActiveBodyparts(WORK) || (this_room_sources_is_empty && creep.memory.rerun))) {
+		if(!target)
+			target = links.getTargetLinkToHarvest(creep,executer,role.run);
 		}
 
 		if(!target && !creep.getActiveBodyparts(WORK)) {
