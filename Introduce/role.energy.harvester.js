@@ -110,6 +110,7 @@ var role = {
 						 		 source.pos.roomName == my_room &&
 						(!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0 ||
 						  (!!DP2 && DP2.pos.roomName == this_room && DP2.pos.findPathTo(source).length <= 5))
+						}
 			});
 		}
 
