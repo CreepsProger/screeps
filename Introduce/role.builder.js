@@ -43,9 +43,20 @@ var roleBuilder = {
 
 			if(creep.memory.building) {
 
+				const this_room = creep.room.name;
+				const this_room_config = Memory.config.rooms[this_room];
+				// const my_room = creep.memory[role.name].room;
 				const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
+				const my_room_config = Memory.config.rooms[my_room];
+
 
 				var target;
+
+				if(!target && this_room != my_room) {
+    			const exitDir = Game.map.findExit(this_room , my_room);
+    			target = creep.pos.findClosestByPath(exitDir);
+    // 			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
+    		}
 
 				const NR1 = Game.flags['NR1'];// don't repair
 				const NR2 = Game.flags['NR2'];// don't repair
