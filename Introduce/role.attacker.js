@@ -70,7 +70,9 @@ var role = {
 				}
 
 				// if(!target && creep.hits < creep.hitsMax) { //creep.hitsMax - creep.hits > creep.getActiveBodyparts(TOUGH)*100 && !creep.getActiveBodyparts(HEAL)) {
-			  if(!target && creep.hitsMax - creep.hits > creep.getActiveBodyparts(TOUGH)*100 && !creep.getActiveBodyparts(HEAL)) {
+			  if(!target && !creep.getActiveBodyparts(HEAL) &&
+					creep.hitsMax - creep.hits > creep.getActiveBodyparts(TOUGH)*100/2 &&
+				  creep.hitsMax - creep.hits < creep.getActiveBodyparts(TOUGH)*100) {
 					creep2 = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (mycreep) => {
 							return mycreep.getActiveBodyparts(HEAL) > 0;
