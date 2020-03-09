@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 126,
+	version: 127,
 	ticksToCheckCreepsNumber: 10,
 	// maxCreepsNumber:40,
 
@@ -50,6 +50,9 @@ var config = {
 												 , {name: '3', time: 0, min_weight: 40, max_weight: 49}
 												 , {name: '4', time: 0, min_weight: 40, max_weight: 49}
 												 , {name: '5', time: 0, min_weight: 40, max_weight: 49}
+												 , {name: '6', time: 0, min_weight: 40, max_weight: 49}
+												 , {name: '7', time: 0, min_weight: 40, max_weight: 49}
+												 , {name: '8', time: 0, min_weight: 40, max_weight: 49}
 												 ]
 										 , heal_room: 'W26S33'
 										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W27S33'}
