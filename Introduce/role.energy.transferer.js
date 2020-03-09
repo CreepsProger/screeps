@@ -38,6 +38,7 @@ var roleEnergyTransferer = {
 			const this_room_config = Memory.config.rooms[this_room];
 			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
 			const my_room_config = Memory.config.rooms[my_room];
+			// const this_room_sources_is_empty = !creep.pos.findClosestByRange(FIND_SOURCES, { no use because: storage->containers->storage
 			const this_room_sources_is_empty = !creep.pos.findClosestByPath(FIND_SOURCES, {
 				filter: (source) => source.energy > 0 && source.room.name == this_room
 			});
