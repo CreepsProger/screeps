@@ -85,7 +85,7 @@ var role = {
 				}
 			});
 		}
-		
+
 		const DP2 = Game.flags['DP2'];
 		if(!target && creep.getActiveBodyparts(WORK)) {
 			var source = creep.pos.findClosestByPath(FIND_SOURCES, {
@@ -143,14 +143,14 @@ var role = {
 				}
 			});
 		}
-		
+
 		if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
 			var weightcreep = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 				filter: (creep2) => {
 					return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 						creep2.memory.weight > creep.memory.weight &&
 						creep2.getActiveBodyparts(WORK) &&
-						!creep2.memory.upgrading &&
+						creep.memory.transfering &&
 						tools.checkTarget(executer,creep2.id);
 				}
 			});
