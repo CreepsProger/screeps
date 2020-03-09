@@ -7,6 +7,10 @@ var roleBuilder = {
 
     /** @param {Creep} creep **/
     run: function(creep,executer) {
+			if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
+				roleNext.run(creep);
+				return;
+			}
 
 			if(creep.memory.building &&
 				 (creep.getActiveBodyparts(WORK) == 0 ||
