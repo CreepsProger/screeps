@@ -1,4 +1,4 @@
-const roleNext = require('role.energy.transferer');
+const roleNext = require('role.repairer');
 const config = require('main.config');
 
 var role = {
