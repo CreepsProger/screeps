@@ -67,7 +67,7 @@ var roleEnergyTransferer = {
 				var containers = creep.pos.findInRange(FIND_STRUCTURES, 50, {
 					filter: (structure) => {
 						return structure.structureType == STRUCTURE_CONTAINER &&
-						  structure.pos.roomName == my_room &&
+						  structure.pos.roomName == this_room &&
 							this_room_config.containers.weight < creep.memory.weight &&
 							structure.store.getFreeCapacity() > 0;
 					}
