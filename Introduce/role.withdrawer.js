@@ -64,7 +64,7 @@ var roleWithdrawer = {
 					if(!!target.id) {
 						id = target.id;
 					}
-					if(!!target.creep.id) {
+					if(!id && !!target.creep.id) {
 						id = target.creep.id;
 					}
 // 					console.log( '🔜💼', Math.trunc(Game.time/10000), Game.time%10000
