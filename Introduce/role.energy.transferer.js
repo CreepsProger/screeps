@@ -136,7 +136,7 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			if(!target && !creep.getActiveBodyparts(WORK)) {
+			if(!target && !creep.getActiveBodyparts(WORK) && creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0) {
 				var storages = _.filter(Game.structures, function(structure) {
 					return structure.my &&
 						structure.structureType == STRUCTURE_STORAGE &&
