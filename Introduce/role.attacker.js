@@ -57,7 +57,7 @@ var role = {
 						return healer.getActiveBodyparts(HEAL) > 0 && healer.hits == healer.hitsMax;}}).length > 0;
 
 				if(!target && this_room == my_heal_room && creep.hits < creep.hitsMax) {
-					var rampart = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+					var rampart = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 						filter: (structure) => {
 							return structure.structureType == STRUCTURE_RAMPART &&
 							 !!structure.my;
