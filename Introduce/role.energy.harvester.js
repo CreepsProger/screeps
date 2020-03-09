@@ -124,7 +124,7 @@ var role = {
 		}
 
 		if(!target && (creep.room.energyAvailable != creep.room.energyCapacityAvailable || Memory.stop_upgrading) &&
-			 (!creep.getActiveBodyparts(WORK) || false)) {
+			 (!creep.getActiveBodyparts(WORK) || creep.memory.rerun)) {
 			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_STORAGE) &&
