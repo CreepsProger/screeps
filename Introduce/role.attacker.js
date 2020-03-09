@@ -105,7 +105,7 @@ var role = {
 					});
 				}
 
-				if(!target) {
+				if(!target && creep.hitsMax == creep.hits) {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 5);
 					if(targets.length > 0) {
 						target = targets[0];
@@ -125,7 +125,7 @@ var role = {
 					}
 				}
 
-				if(!target) {
+				if(!target && creep.hitsMax == creep.hits) {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, range);
 					if(targets.length > 0) {
 						console.log(creep, 'Attacking in', 'this_room:', this_room, 'in range', range);
