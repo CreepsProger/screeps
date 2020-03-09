@@ -45,7 +45,7 @@ var spawns = {
 			if(Memory.CreepsNumberByWeight[weight]) {
 				//existsNumber = Memory.CreepsNumberByType[full_type];
 				existsNumber = Memory.CreepsNumberByWeight[weight];
-			} 
+			}
 			const needsNumber = needed - existsNumber;
 			const newName = 'creep-<' + weight + '/' + Memory.CreepsCounter % 10 + '>-'
 			 								+ (Ts>0  ? Ts +'t' :'')
@@ -150,8 +150,9 @@ var spawns = {
 					spawns.tryCreateCreep(spawn,           130911, 69, 3); // V 1-1 E    Worker
           //                                             17+3
 					//                           TTClRrAaHhWwCcMm, 66, 3); // V 1-2 E   Attacker
-					spawns.tryCreateCreep(spawn, 1500001000000025, 66, 1); // V 1-2 E   Attacker
-					spawns.tryCreateCreep(spawn, 1000000007000009, 67, 1); // V 1-2 E     Healer
+          spawns.tryCreateCreep(spawn, 1500001000000025, 66, 1); // V 1-2 E   Attacker
+          spawns.tryCreateCreep(spawn, 1000000007000009, 67, 1); // V 1-2 E     Healer
+          spawns.tryCreateCreep(spawn,  500100000000015, 68, 1); // V 1-2 E  RAttacker
 					//                           TTClRrAaHhWwCcMm,100, 3); // V 1-2 E   Attacker
 					spawns.tryCreateCreep(spawn,  500100000000015,100, 2); // V 1-2 E  RAttacker
 					spawns.tryCreateCreep(spawn,  200000008000005, 99, 1); // V 1-2 E     Healer
