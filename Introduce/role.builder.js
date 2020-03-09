@@ -36,10 +36,13 @@ var roleBuilder = {
 			}
 
 			if(creep.memory.building) {
+
+				const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
+
 				var target;
 
-				const NR1 = Game.flags['NR1'];// don't repair 
-				const NR2 = Game.flags['NR2'];// don't repair 
+				const NR1 = Game.flags['NR1'];// don't repair
+				const NR2 = Game.flags['NR2'];// don't repair
 				if(!target) {
 					var structures = creep.pos.findInRange(FIND_STRUCTURES, 15, {
 						filter: (structure) => {
@@ -53,7 +56,8 @@ var roleBuilder = {
 									NR2.pos.getRangeTo(structure) < 1*NR2.color) {
 									return false;
 								}
-								return true;
+								// return true;
+								return structure.pos.roomName == my_room;
 							}
 							if(structure.structureType == STRUCTURE_CONTAINER &&
 								 structure.hitsMax - structure.hits > 25000) {
