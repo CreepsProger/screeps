@@ -1,4 +1,4 @@
-const roleNext = require('role.repairer');
+const roleNext = require('role.dismantler');
 const config = require('main.config');
 
 var role = {
