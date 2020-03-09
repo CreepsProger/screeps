@@ -131,13 +131,13 @@ var config = {
 												 [ {name: '1', time: 0, min_weight: 70, max_weight: 79}
 												 ]
 										 , attacker:
-												 [ {name: '1', time: 0, min_weight: 90, max_weight:100}
-												 , {name: '2', time: 0, min_weight: 90, max_weight:100}
-												 , {name: '3', time: 0, min_weight: 90, max_weight:100}
-												 , {name: '4', time: 0, min_weight: 90, max_weight:100}
-												 , {name: '5', time: 0, min_weight: 90, max_weight:100}
-												 , {name: '6', time: 0, min_weight: 90, max_weight:100}
-												 , {name: '7', time: 0, min_weight: 90, max_weight:100}
+												 [ {name: '1', time: 0, min_weight: 70, max_weight:100}
+												 , {name: '2', time: 0, min_weight: 70, max_weight:100}
+												 , {name: '3', time: 0, min_weight: 70, max_weight:100}
+												 , {name: '4', time: 0, min_weight: 70, max_weight:100}
+												 , {name: '5', time: 0, min_weight: 70, max_weight:100}
+												 , {name: '6', time: 0, min_weight: 70, max_weight:100}
+												 , {name: '7', time: 0, min_weight: 70, max_weight:100}
 												 ]
 									   , heal_room: 'W26S33'
 										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W26S34', W25S34: 'W26S34', W27S33: 'W26S33'}
