@@ -44,6 +44,9 @@ var roleRepairer = {
     // 			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
     		}
 
+				if(!creep.memory.prev_target_id)
+					creep.memory.prev_target_id = '0';
+
 				const NR1 = Game.flags['NR1'];// don't repair
 				const NR2 = Game.flags['NR2'];// don't repair
 				if(!target) {
@@ -51,7 +54,7 @@ var roleRepairer = {
 						filter: (structure) => {
 							if(structure.structureType == STRUCTURE_ROAD &&
 								structure.pos.roomName == my_room &&
-								 structure.hitsMax - structure.hits > structure.hitsMax/2) {
+								 structure.hitsMax - structure.hits > structure.hitsMax/(2+98*(structure.id == creep.memory.prev_target_id))) {
 								if(!!NR1 && NR1.pos.roomName == my_room &&
 									NR1.pos.getRangeTo(structure) < 1*NR1.color) {
 									return false;
@@ -65,7 +68,7 @@ var roleRepairer = {
 							}
 							if(structure.structureType == STRUCTURE_CONTAINER &&
 								 structure.pos.roomName == my_room &&
-								 structure.hitsMax - structure.hits > structure.hitsMax/2) {
+								 structure.hitsMax - structure.hits > structure.hitsMax/(2+98*(structure.id == creep.memory.prev_target_id))) {
 								return true;
 							}
 							return false;
@@ -90,6 +93,7 @@ var roleRepairer = {
 					if(!!target.hitsMax && target.hits < target.hitsMax) {
 						action = 'repairing:';
 						err = creep.repair(target);
+						creep.memory.prev_target_id = target.id;
 					}
 					// else {
 					// 	action = 'building:';
