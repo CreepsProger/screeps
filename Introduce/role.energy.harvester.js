@@ -14,7 +14,7 @@ var role = {
 	logFlags: ['LEH','LE ','L'],
 
 	log: function(sign, creep, ...args) {
-			if(log.canLog(role.logFlags)) {
+			if(log.canLog(role.logFlags) and creep.memory.n == 6998) {
 				console.log( sign, Math.trunc(Game.time/10000), Game.time%10000
 										, creep.name
 										, role.name
