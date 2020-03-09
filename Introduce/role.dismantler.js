@@ -47,8 +47,8 @@ var roleDismantler = {
 				if(!creep.memory.prev_target_id)
 					creep.memory.prev_target_id = '0';
 
-				const D1 = Game.flags['D1'];// don't repair
-				const D2 = Game.flags['D2'];// don't repair
+				const D1 = Game.flags['D1'];// dismanle
+				const D2 = Game.flags['D2'];// dismanle
 				if(!target) {
 					var structures = creep.pos.findInRange(FIND_STRUCTURES, 50, {
 						filter: (structure) => {

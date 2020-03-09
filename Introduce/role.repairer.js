@@ -49,12 +49,22 @@ var roleRepairer = {
 
 				const NR1 = Game.flags['NR1'];// don't repair
 				const NR2 = Game.flags['NR2'];// don't repair
+				const D1 = Game.flags['D1'];// dismanle
+				const D2 = Game.flags['D1'];// dismanle
 				if(!target) {
 					var structures = creep.pos.findInRange(FIND_STRUCTURES, 50, {
 						filter: (structure) => {
 							if(structure.structureType == STRUCTURE_ROAD &&
 								structure.pos.roomName == my_room &&
 								 structure.hitsMax - structure.hits > structure.hitsMax/(2+98*(structure.id == creep.memory.prev_target_id))) {
+								 if(!!D1 && D1.pos.roomName == my_room &&
+ 									D1.pos.getRangeTo(structure) < 1*D1.color) {
+ 									return false;
+ 								}
+ 								if(!!D2 && D2.pos.roomName == creep.room.name &&
+ 									D2.pos.getRangeTo(structure) < 1*D2.color) {
+ 									return false;
+ 								}
 								if(!!NR1 && NR1.pos.roomName == my_room &&
 									NR1.pos.getRangeTo(structure) < 1*NR1.color) {
 									return false;
