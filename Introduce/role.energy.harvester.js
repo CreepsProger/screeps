@@ -123,6 +123,16 @@ var role = {
 			role.log('🔜⚡', creep, 'STRUCTURE_STORAGE');
 		}
 
+		if(!target && (creep.room.energyAvailable != creep.room.energyCapacityAvailable || Memory.stop_upgrading) &&
+			 (!creep.getActiveBodyparts(WORK) || false)) {
+			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+				filter: (structure) => {
+					return (structure.structureType == STRUCTURE_STORAGE) &&
+						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 35000;
+				}
+			});
+		}
+
 		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable &&
 			 (!creep.getActiveBodyparts(WORK) || false)) {
 			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
