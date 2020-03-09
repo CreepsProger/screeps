@@ -50,7 +50,7 @@ var roleRepairer = {
 					var structures = creep.pos.findInRange(FIND_STRUCTURES, 50, {
 						filter: (structure) => {
 							if(structure.structureType == STRUCTURE_ROAD &&
-								structure.pos.roomName = my_room &&
+								structure.pos.roomName == my_room &&
 								 structure.hitsMax - structure.hits > structure.hitsMax/2) {
 								if(!!NR1 && NR1.pos.roomName == my_room &&
 									NR1.pos.getRangeTo(structure) < 1*NR1.color) {
@@ -64,7 +64,7 @@ var roleRepairer = {
 								// return structure.pos.roomName == my_room;
 							}
 							if(structure.structureType == STRUCTURE_CONTAINER &&
-								 structure.pos.roomName = my_room &&
+								 structure.pos.roomName == my_room &&
 								 structure.hitsMax - structure.hits > structure.hitsMax/2) {
 								return true;
 							}
