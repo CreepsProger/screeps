@@ -139,7 +139,7 @@ var spawns = {
 				}
 				else {
 					spawns.tryCreateCreep(spawn,             3015, 31, 1); // V 1-1 E    Carier
-					spawns.tryCreateCreep(spawn,           170511, 39, 1); // V 1-1 E    Worker
+					spawns.tryCreateCreep(spawn,           150510, 39, 1); // V 1-1 E    Worker
 					spawns.tryCreateCreep(spawn,             3015, 41, 3); // V 1-1 E    Carier
 					spawns.tryCreateCreep(spawn,           130911, 49, 3); // V 1-1 E    Worker
 					spawns.tryCreateCreep(spawn,    2000000000002, 50, 1); // V 1-1 E   Claimer
