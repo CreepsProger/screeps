@@ -26,7 +26,10 @@ var role = {
 			}
 
 			if(!creep.memory.attacking &&
-				 (creep.getActiveBodyparts(RANGED_ATTACK) > 0 || creep.getActiveBodyparts(ATTACK) > 0 || creep.getActiveBodyparts(HEAL) > 0 ||
+				 (creep.getActiveBodyparts(RANGED_ATTACK) > 0 ||
+          creep.getActiveBodyparts(ATTACK) > 0 ||
+          creep.getActiveBodyparts(HEAL) > 0 ||
+          creep.hits < creep.hitsMax ||
 				  (creep.getActiveBodyparts(WORK) == 0 && creep.getActiveBodyparts(CARRY) == 0 && creep.getActiveBodyparts(CLAIM) == 0))) {
 
 				creep.memory.attacking = true;
@@ -106,9 +109,9 @@ var role = {
 						target = targets[0];
 					}
 				}
-				
+
 				var range = 50;
-				
+
 				const A2 = Game.flags['A2'];
 				if(!target && !!A2) {
 					//console.log('A2', creep, 'this_room:', this_room, 'range', range, 'A2:', JSON.stringify(A2));
@@ -117,10 +120,10 @@ var role = {
 						if(Game.time % config.ticksToCheckCreepsNumber == 0) {
 						//console.log('A2', creep, 'this_room:', this_room, 'range', range, 'A2:', JSON.stringify(A2));
 						}
-					}					
+					}
 				}
-				
-				if(!target) {					
+
+				if(!target) {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, range);
 					if(targets.length > 0) {
 						console.log(creep, 'Attacking in', 'this_room:', this_room, 'in range', range);
@@ -157,13 +160,13 @@ var role = {
 						target = targets[0];
 					}
 				}
-				
+
 				const DP1 = Game.flags['DP1'];
 				if(!target && !!DP1 && DP1.pos.roomName == this_room) {
 					// console.log('DP1', 'this_room:', this_room, 'DP1:', JSON.stringify(DP1));
 					target = DP1.pos;
 				}
-				
+
 				const DP2 = Game.flags['DP2'];
 				if(!target && !!DP2 && DP2.pos.roomName == this_room) {
 					//console.log('DP2', 'this_room:', this_room, 'DP2:', JSON.stringify(DP2));
@@ -185,7 +188,7 @@ var role = {
 						 target.structureType != STRUCTURE_CONTROLLER) {
 							 if (!target.my) {
 								 const range = creep.pos.getRangeTo(target);							;
-								 if(creep.getActiveBodyparts(RANGED_ATTACK)) 
+								 if(creep.getActiveBodyparts(RANGED_ATTACK))
 									 err = range>1?creep.rangedAttack(target):creep.rangedMassAttack();
 								 else
 									 err = creep.attack(target);
