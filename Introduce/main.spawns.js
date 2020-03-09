@@ -141,13 +141,13 @@ var spawns = {
 					spawns.tryCreateCreep(spawn,             1608, 31, 2); // V 1-1 E    Carier
 					spawns.tryCreateCreep(spawn,            80406, 39, 2); // V 1-2 E    Worker
 					spawns.tryCreateCreep(spawn,             1608, 41, 3); // V 1-1 E    Carier
-					spawns.tryCreateCreep(spawn,           121011, 49, 3); // V 1-1 E    Worker
+					spawns.tryCreateCreep(spawn,           101010, 49, 3); // V 1-1 E    Worker
 					spawns.tryCreateCreep(spawn,    2000000000002, 50, 1); // V 1-1 E   Claimer
 	 				spawns.tryCreateCreep(spawn,             3015, 51, 2); // V 1-1 E    Carier
-					spawns.tryCreateCreep(spawn,           121011, 59, 3); // V 1-1 E    Worker
+					spawns.tryCreateCreep(spawn,           101010, 59, 3); // V 1-1 E    Worker
 					spawns.tryCreateCreep(spawn,    2000000000002, 60, 1); // V 1-1 E   Claimer
 	        spawns.tryCreateCreep(spawn,             3015, 61, 2); // V 1-1 E    Carier
-					spawns.tryCreateCreep(spawn,           121011, 69, 3); // V 1-1 E    Worker
+					spawns.tryCreateCreep(spawn,           101010, 69, 3); // V 1-1 E    Worker
           //                                                22
 					//                           TTClRrAaHhWwCcMm, 66, 3); // V 1-2 E   Attacker
           spawns.tryCreateCreep(spawn, 1500001000000025, 66, 1); // V 1-2 E   Attacker
