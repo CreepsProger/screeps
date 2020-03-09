@@ -140,7 +140,7 @@ var spawns = {
 				else {
 					spawns.tryCreateCreep(spawn,             1608, 31, 2); // V 1-1 E    Carier
 					spawns.tryCreateCreep(spawn,           150510, 39, 1); // V 1-2 E    Worker
-					spawns.tryCreateCreep(spawn,             3015, 41, 3); // V 1-1 E    Carier
+					spawns.tryCreateCreep(spawn,             1608, 41, 4); // V 1-1 E    Carier
 					spawns.tryCreateCreep(spawn,           130911, 49, 3); // V 1-1 E    Worker
 					spawns.tryCreateCreep(spawn,    2000000000002, 50, 1); // V 1-1 E   Claimer
 	 				spawns.tryCreateCreep(spawn,             3015, 51, 2); // V 1-1 E    Carier
@@ -148,7 +148,7 @@ var spawns = {
 					spawns.tryCreateCreep(spawn,    2000000000002, 60, 1); // V 1-1 E   Claimer
 	        spawns.tryCreateCreep(spawn,             3015, 61, 2); // V 1-1 E    Carier
 					spawns.tryCreateCreep(spawn,           130911, 69, 2); // V 1-1 E    Worker
-          //                                                19
+          //                                                20
 					//                           TTClRrAaHhWwCcMm, 66, 3); // V 1-2 E   Attacker
           spawns.tryCreateCreep(spawn, 1500001000000025, 66, 1); // V 1-2 E   Attacker
           spawns.tryCreateCreep(spawn, 1000000007000009, 67, 1); // V 1-2 E     Healer
@@ -158,7 +158,7 @@ var spawns = {
 					spawns.tryCreateCreep(spawn,  200000008000005, 99, 1); // V 1-2 E     Healer
           //                                                 6
 					spawns.tryCreateCreep(spawn,           130911, 79, 2); // V 1-1 E    Worker
-   				//																					 +2 = 21
+   				//																					 +2 = 22
 				}
 
 				if(CL >= 4) spawns.tryCreateCreep(spawn,        80808, 20, Memory.totals.WORK< 8? 1:0); // E 1600 Worker
