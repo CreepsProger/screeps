@@ -39,15 +39,20 @@ var roleBuilder = {
 				var target;
 
 				const NR1 = Game.flags['NR1'];// don't repair 
+				const NR2 = Game.flags['NR2'];// don't repair 
 				if(!target) {
 					var structures = creep.pos.findInRange(FIND_STRUCTURES, 15, {
 						filter: (structure) => {
 							if(structure.structureType == STRUCTURE_ROAD &&
 								 structure.hitsMax - structure.hits > 2000) {
-								if(!!NR1 && NR1.pos.roomName == creep.room.name) {
-									const range = 1*NR1.color;
-									return NR1.pos.getRangeTo(structure) >= range;
-								} 
+								if(!!NR1 && NR1.pos.roomName == creep.room.name &&
+									NR1.pos.getRangeTo(structure) < 1*NR1.color) {
+									return false;
+								}
+								if(!!NR2 && NR2.pos.roomName == creep.room.name &&
+									NR2.pos.getRangeTo(structure) < 1*NR2.color) {
+									return false;
+								}
 								return true;
 							}
 							if(structure.structureType == STRUCTURE_CONTAINER &&
