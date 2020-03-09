@@ -73,8 +73,8 @@ var roleBuilder = {
 									NR2.pos.getRangeTo(structure) < 1*NR2.color) {
 									return false;
 								}
-								// return true;
-								return structure.pos.roomName == my_room;
+								return true;
+								// return structure.pos.roomName == my_room;
 							}
 							if(structure.structureType == STRUCTURE_CONTAINER &&
 								 structure.hitsMax - structure.hits > 25000) {
