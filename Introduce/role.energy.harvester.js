@@ -195,14 +195,6 @@ var role = {
 			}
 		}
 
-		if(!creep.memory.rerun) {
-			creep.memory.rerun = 1;
-			if(!creep.memory[role.name].on) {
-				creep.say('🔃');
-				require('role.claimer').run(creep);
-			}
-		}
-
 		for(var name in Game.spawns) {
 			var spawn = Game.spawns[name];
 			if(creep.room.name == spawn.room.name &&
@@ -210,6 +202,14 @@ var role = {
 				 creep.pos.y == spawn.pos.y &&
 				 creep.memory.rerun) {
 				creep.move(Game.time%8+1); // TOP:1 ,..., TOP_LEFT:8
+			}
+		}
+
+		if(!creep.memory.rerun) {
+			creep.memory.rerun = 1;
+			if(!creep.memory[role.name].on) {
+				creep.say('🔃');
+				require('role.claimer').run(creep);
 			}
 		}
 	}
