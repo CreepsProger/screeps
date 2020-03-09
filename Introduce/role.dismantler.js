@@ -14,15 +14,15 @@ var roleDismantler = {
 
 			if(creep.memory.dismantling &&
 				 (creep.getActiveBodyparts(WORK) == 0 ||
-					creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0)) {
+					creep.store.getFreeCapacity() == 0)) {
 				creep.memory.dismantling = false;
 			}
 
 			if(!creep.memory.dismantling &&
 				 creep.getActiveBodyparts(WORK) > 0 &&
-				 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-					 creep.store.getFreeCapacity() == 0) ||
+				 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) ||
 					(creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
+ 					 creep.store.getFreeCapacity() > 0 &&
 					 creep.memory.rerun))) {
 				creep.memory.dismantling = true;
 			}
