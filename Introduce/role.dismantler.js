@@ -52,7 +52,7 @@ var roleDismantler = {
 						filter: (structure) => {
 							if((structure.structureType == STRUCTURE_ROAD ||
 									structure.structureType == STRUCTURE_CONTAINER ||
-								  structure.structureType == STRUCTURE_LINK)) &&
+								  structure.structureType == STRUCTURE_LINK) &&
 								 structure.pos.roomName == my_room) {
 								if(!!D1 && D1.pos.roomName == my_room &&
 									D1.pos.getRangeTo(structure) < 1*D1.color) {
