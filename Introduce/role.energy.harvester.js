@@ -162,6 +162,20 @@ var role = {
 			}
 		}
 
+		if(!target && creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
+			var emptysource = creep.pos.findClosestByPath(FIND_SOURCES, {
+				filter: (source) => {
+					return source.energy == 0 &&
+						 		 source.pos.roomName == my_room &&
+						(!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0 ||
+						  (!!DP2 && DP2.pos.roomName == this_room && DP2.pos.findPathTo(source).length <= 5))
+						}
+			});
+			if(!!emptysource) {
+				target = tools.setTarget(creep,emptysource,emptysource.id,role.run);
+			}
+		} 
+	
 		return target;
 	},
 
