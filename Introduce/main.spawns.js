@@ -157,9 +157,9 @@ var spawns = {
 					spawns.tryCreateCreep(spawn,  500100000000015,100, 2); // V 1-2 E  RAttacker
 					spawns.tryCreateCreep(spawn,  200000008000005, 99, 1); // V 1-2 E     Healer
           //                                                 6
-					spawns.tryCreateCreep(spawn,           130911, 79, 2); // V 1-1 E    Worker
-					spawns.tryCreateCreep(spawn,             3015, 71, 2); // V 1-1 E    Carier
-   				//																					 +3 = 24
+					spawns.tryCreateCreep(spawn,           130911, 79, 1); // V 1-1 E    Worker
+					spawns.tryCreateCreep(spawn,             3015, 71, 1); // V 1-1 E    Carier
+   				//																					 +2 = 23
 				}
 
 				if(CL >= 4) spawns.tryCreateCreep(spawn,        80808, 20, Memory.totals.WORK< 8? 1:0); // E 1600 Worker
