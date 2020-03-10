@@ -159,7 +159,7 @@ var spawns = {
           //                                                 6
 					spawns.tryCreateCreep(spawn,             3015, 71, 1); // V 1-1 E    Carier
 					spawns.tryCreateCreep(spawn,           130911, 79, 1); // V 1-1 E    Worker
-   				//																					 +4 = 26
+   				//																					 +2 = 24
 				}
 
 				if(CL >= 4) spawns.tryCreateCreep(spawn,        80808, 20, Memory.totals.WORK< 8? 1:0); // E 1600 Worker
