@@ -190,7 +190,7 @@ var role = {
 					target = DP2.pos;
 				}
 
-				if(!target) {
+				if(!target && canAttack2) {
 					if(this_room != my_room) {
 						const exitDir = Game.map.findExit(creep.room, my_room);
 						target = creep.pos.findClosestByRange(exitDir);
