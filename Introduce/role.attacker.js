@@ -121,7 +121,8 @@ var role = {
 				if(!target && canAttack2) {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 5);
 					if(targets.length > 0) {
-						target = targets[0];
+						target = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS);
+						//target = targets[0];
 					}
 				}
 
