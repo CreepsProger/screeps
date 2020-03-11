@@ -205,7 +205,7 @@ var role = {
 							 if (!target.my) {
 								 const range = creep.pos.getRangeTo(target);							;
 								 if(creep.getActiveBodyparts(RANGED_ATTACK))
-									 err = range>2?creep.rangedAttack(target):creep.rangedMassAttack();
+									 err = range>1?creep.rangedAttack(target):creep.rangedMassAttack();
 								 else
 									 err = creep.attack(target);
 							 }
