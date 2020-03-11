@@ -67,7 +67,7 @@ var role = {
 						}
 					});
 
-					if(rampart && rampart.pos != creep.pos) {
+					if(!!rampart && rampart.pos != creep.pos) {
 						target = rampart;
 					}
 				}
