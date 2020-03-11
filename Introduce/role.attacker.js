@@ -179,13 +179,13 @@ var role = {
 				}
 
 				const DP1 = Game.flags['DP1'];
-				if(!target && !!DP1 && DP1.pos.roomName == this_room) {
+				if(!target && !!DP1 && DP1.pos.roomName == my_room) {
 					// console.log('DP1', 'this_room:', this_room, 'DP1:', JSON.stringify(DP1));
 					target = DP1.pos;
 				}
 
 				const DP2 = Game.flags['DP2'];
-				if(!target && !!DP2 && DP2.pos.roomName == this_room) {
+				if(!target && !!DP2 && DP2.pos.roomName == my_room) {
 					//console.log('DP2', 'this_room:', this_room, 'DP2:', JSON.stringify(DP2));
 					target = DP2.pos;
 				}
