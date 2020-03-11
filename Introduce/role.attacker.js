@@ -62,7 +62,8 @@ var role = {
 					var rampart = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 						filter: (structure) => {
 							return structure.structureType == STRUCTURE_RAMPART &&
-							 !!structure.my;
+								structure.pos.roomName == my_heal_room &&
+								!!structure.my;
 						}
 					});
 
