@@ -58,7 +58,7 @@ var roleUpgrader = {
 			});
 			const canDo =
 						(!Memory.stop_upgrading &&
-						 this_room == my_room &&
+						 this_room == my_room && !!creep.room.controller && !!creep.room.controller.my &&
 						 this_room_sources_is_empty &&
 						 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0) ||
 						  (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun))) ;
@@ -73,7 +73,7 @@ var roleUpgrader = {
 
 			if(creep.memory.upgrading) {
 				var target;
-				if(!target && creep.room.controller !== undefined && creep.room.controller.my !== undefined) {
+				if(!target) {
 					target = creep.room.controller;
 				}
 				if(target) {
