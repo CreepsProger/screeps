@@ -204,7 +204,7 @@ var role = {
 						 target.structureType != STRUCTURE_CONTROLLER) {
 							 if (!target.my) {
 								 const range = creep.pos.getRangeTo(target);							;
-								 if(creep.getActiveBodyparts(RANGED_ATTACK) && creep.pos.findInRange(FIND_HOSTILE_CREEPS, range+1).length == 1)
+								 if(creep.getActiveBodyparts(RANGED_ATTACK) && creep.pos.findInRange(FIND_HOSTILE_CREEPS, 4).length == 1)
 									 err = range>1?creep.rangedAttack(target):creep.rangedMassAttack();
 								 else
 									 err = creep.attack(target);
