@@ -120,7 +120,7 @@ var roleDismantler = {
 				}
 			}
 
-			metrix.cpu.role('dismantling');
+			Memory.cpu.role('dismantling');
 			if(!creep.memory.dismantling) {
 				roleNext.run(creep);
 			}
