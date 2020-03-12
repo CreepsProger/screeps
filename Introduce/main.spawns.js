@@ -103,7 +103,7 @@ var spawns = {
 										  , '' + existsNumber + '/' + needed + '/' + needed_plus
 											, 'mittl-path-3*bodys:'
 											, '' + mittl + '-' + path + '-3*' + body.length + '=' + diff_mittl_path_bodys
-											, JSON.stringifyMemory.CreepsNeedsByWeight)
+											, JSON.stringify(Memory.CreepsNeedsByWeight)
 										 );
 					Memory.CreepsCounter++;
 					last_game_time_created_creep = Game.time;
