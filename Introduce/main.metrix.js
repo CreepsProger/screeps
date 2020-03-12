@@ -31,6 +31,7 @@ var metrix = {
 
 			Memory.CreepsNumberByType = {};
 			Memory.CreepsNumberByWeight = {};
+			Memory.CreepsMinTicksToLive = {};
 			metrix.updateMovingAverage(Memory.harvestersMovements.Value);
 			metrix.updateMovingAverage(Memory.harvestersMovements.Count);
 			metrix.updateMovingAverage(Memory.harvestersMovements.Avg);
@@ -49,9 +50,13 @@ var metrix = {
 
 				if(!Memory.CreepsNumberByWeight[creep.memory.weight])
 					Memory.CreepsNumberByWeight[creep.memory.weight] = 0;
-
+				
+				if(!Memory.CreepsMinTicksToLive[creep.memory.weight])
+					Memory.CreepsMinTicksToLive[creep.memory.weight] = 1500;
+				
 				Memory.CreepsNumberByType[full_type]++;
 				Memory.CreepsNumberByWeight[creep.memory.weight]++;
+				Memory.CreepsMinTicksToLive[creep.memory.weight] = Math.min(creep.ticksToLive, Memory.CreepsMinTicksToLive[creep.memory.weight]);
 				Memory.totals.CreepsNumber += 1;				
 				Memory.totals.Cost += !!creep.memory.cost? creep.memory.cost:0;
 				Memory.totals.Capacity += creep.store.getCapacity();
@@ -103,7 +108,9 @@ var metrix = {
 //                   , Math.floor(Memory.harvestersMovements.Value.movingAverage.delta / Memory.harvestersMovements.Count.movingAverage.delta)
 //                   , Memory.harvestersMovements.Avg.movingAverage.delta
                   , JSON.stringify(Memory.CreepsNumberByWeight)
-									, JSON.stringify(Memory.CreepsNumberByType));
+									, JSON.stringify(Memory.CreepsNumberByType)
+									, JSON.stringify(Memory.CreepsMinTicksToLive)
+								 );
 		}
 
 		if(Game.time % (config.ticksToCheckCreepsNumber * 20) == 0) {
