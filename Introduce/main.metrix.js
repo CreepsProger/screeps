@@ -80,59 +80,60 @@ var metrix = {
 	
 	output: function() {
 		
-		if(Game.flags['LWE'] || Game.flags['LW'] || Game.flags['L']) {
+		if(Game.time % config.ticksToCheckCreepsNumber == 0) {
+			if(Game.flags['LWE'] || Game.flags['LW'] || Game.flags['L']) {
+				console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+										, creep.name
+										, 'work_efficiency(12):'
+										, flags.work_efficiency(creep.memory.type,12)
+										, 'work_efficiency(24):'
+										, flags.work_efficiency(creep.memory.type,24)
+									 );
+			}
+
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-									, creep.name
-									, 'work_efficiency(12):'
-									, flags.work_efficiency(creep.memory.type,12)
-									, 'work_efficiency(24):'
-									, flags.work_efficiency(creep.memory.type,24)
+									, 'Creeps:'
+									, '' + Memory.totals.CreepsNumber + '/' + Memory.totals.NeedsCreeps + '/' + Memory.totals.NeedsPlusCreeps
+									,'Body:'
+									, Memory.totals.Bodys
+									,'Cost:'
+									, Memory.totals.Cost
+									, 'h/hM:'
+									, Memory.totals.hits
+									, Memory.totals.hitsMax
+									, 'C/FC/UC:'
+									, Memory.totals.Capacity
+									, Memory.totals.FreeCapacity
+									, Memory.totals.UsedCapacity
+									, 'W/C/M:'
+									, Memory.totals.WORK
+									, Memory.totals.CARRY
+									, Memory.totals.MOVE
+		// 									, 'EA/ECA'
+		// 									, Spawn.room.energyAvailable
+		// 									, Spawn.room.energyCapacityAvailable
+		//                   , 'hmV/hmC/hmA:'
+		//                   , Memory.harvestersMovements.Value.v
+		//                   , Memory.harvestersMovements.Count.v
+		//                   , Memory.harvestersMovements.Avg.v
+		//                   , 'hmVd/hmCd/hmdA/hmAd:'
+		//                   , Memory.harvestersMovements.Value.movingAverage.delta
+		//                   , Memory.harvestersMovements.Count.movingAverage.delta
+		//                   , Math.floor(Memory.harvestersMovements.Value.movingAverage.delta / Memory.harvestersMovements.Count.movingAverage.delta)
+		//                   , Memory.harvestersMovements.Avg.movingAverage.delta
+									, JSON.stringify(Memory.CreepsNumberByWeight)
+									, JSON.stringify(Memory.CreepsNumberByType)
+									, JSON.stringify(Memory.CreepsMinTicksToLive)
 								 );
-		}
-		
-		console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-								, 'Creeps:'
-                , '' + Memory.totals.CreepsNumber + '/' + Memory.totals.NeedsCreeps + '/' + Memory.totals.NeedsPlusCreeps
-								,'Body:'
-								, Memory.totals.Bodys
-								,'Cost:'
-								, Memory.totals.Cost
-								, 'h/hM:'
-								, Memory.totals.hits
-								, Memory.totals.hitsMax
-								, 'C/FC/UC:'
-								, Memory.totals.Capacity
-								, Memory.totals.FreeCapacity
-								, Memory.totals.UsedCapacity
-								, 'W/C/M:'
-								, Memory.totals.WORK
-								, Memory.totals.CARRY
-								, Memory.totals.MOVE
-	// 									, 'EA/ECA'
-	// 									, Spawn.room.energyAvailable
-	// 									, Spawn.room.energyCapacityAvailable
-	//                   , 'hmV/hmC/hmA:'
-	//                   , Memory.harvestersMovements.Value.v
-	//                   , Memory.harvestersMovements.Count.v
-	//                   , Memory.harvestersMovements.Avg.v
-	//                   , 'hmVd/hmCd/hmdA/hmAd:'
-	//                   , Memory.harvestersMovements.Value.movingAverage.delta
-	//                   , Memory.harvestersMovements.Count.movingAverage.delta
-	//                   , Math.floor(Memory.harvestersMovements.Value.movingAverage.delta / Memory.harvestersMovements.Count.movingAverage.delta)
-	//                   , Memory.harvestersMovements.Avg.movingAverage.delta
-								, JSON.stringify(Memory.CreepsNumberByWeight)
-								, JSON.stringify(Memory.CreepsNumberByType)
-								, JSON.stringify(Memory.CreepsMinTicksToLive)
-							 );
-		
-		if(Game.time % (config.ticksToCheckCreepsNumber * 20) == 0) {
-			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-									, JSON.stringify(BODYPARTS_ALL));
-		}
-		
-		if(Game.time % (config.ticksToCheckCreepsNumber * 1000) == 0) {
-			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-									, JSON.stringify(RESOURCES_ALL));
+			if(Game.time % (config.ticksToCheckCreepsNumber * 20) == 0) {
+				console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+										, JSON.stringify(BODYPARTS_ALL));
+			}
+			
+			if(Game.time % (config.ticksToCheckCreepsNumber * 1000) == 0) {
+				console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+										, JSON.stringify(RESOURCES_ALL));
+			}
 		}
 	}
 		
