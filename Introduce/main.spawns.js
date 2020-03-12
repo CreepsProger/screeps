@@ -44,17 +44,17 @@ var spawns = {
 			const full_type = '' + type + '/' + weight;
 			var path = 0;
 			var mittl = 1667;
-			var diff_mittl_path = 0;
+			var diff_mittl_path_bodys = 6667;
 			if(!!Memory.CreepsMinTicksToLive[weight] && !!Memory.CreepsMinTicksToLive[weight].pos) {
 				path = spawn.pos.findPathTo(Memory.CreepsMinTicksToLive[weight].pos).length;
 				mittl = Memory.CreepsMinTicksToLive[weight].mittl;
-				diff_mittl_path = mittl - path;
+				diff_mittl_path_bodys = mittl - path - body.length*3;
 			}
 			if(Memory.CreepsNumberByWeight[weight]) {
 				//existsNumber = Memory.CreepsNumberByType[full_type];
 				existsNumber = Memory.CreepsNumberByWeight[weight];
 			}
-			const needsNumber = needed + (mittl < path) - existsNumber;
+			const needsNumber = needed + (diff_mittl_path_bodys < 10) - existsNumber;
 			const newName = 'creep-<' + weight + '/' + Memory.CreepsCounter % 10 + '>-'
 			 								+ (Ts>0  ? Ts +'t' :'')
 											+ (CLs>0 ? CLs+'l' :'')
@@ -95,14 +95,14 @@ var spawns = {
 											, newName
 										  , 'cost:'
 										  , cost
-											, 'path:'
-											, path
 											, 'mittl:'
 											, mittl
-											, 'mittl-path:'
-											, diff_mittl_path
+											, 'path:'
+											, path
 											, 'body.length:'
 											, body.length
+											, 'mittl-path-3*bodys:'
+											, diff_mittl_path_bodys
 										 );
 					Memory.CreepsCounter++;
 					last_game_time_created_creep = Game.time;
