@@ -110,7 +110,7 @@ var spawns = {
 											, 'TEST:'
 											, JSON.stringify(Memory.CreepsNeedsByWeight)
 											, JSON.stringify(Object.keys(Memory.CreepsNeedsByWeight))
-											, JSON.stringify(Object.keys(Memory.CreepsNeedsByWeight).reduce(function(p,c) {return p + Memory.CreepsNeedsByWeight[c].needs;}, 0))
+											, JSON.stringify(Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].needs;},0))
 										 );
 					Memory.CreepsCounter++;
 					last_game_time_created_creep = Game.time;
