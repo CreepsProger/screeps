@@ -45,6 +45,9 @@ var spawns = {
 			if(Memory.CreepsNumberByWeight[weight]) {
 				//existsNumber = Memory.CreepsNumberByType[full_type];
 				existsNumber = Memory.CreepsNumberByWeight[weight];
+				if(!!Memory.CreepsMinTicksToLive[weight] && Memory.CreepsMinTicksToLive[weight] < 100) {
+					existsNumber--;
+				} 
 			}
 			const needsNumber = needed - existsNumber;
 			const newName = 'creep-<' + weight + '/' + Memory.CreepsCounter % 10 + '>-'
