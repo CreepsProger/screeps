@@ -43,10 +43,10 @@ var spawns = {
 			var existsNumber = 0;
 			const full_type = '' + type + '/' + weight;
 			var path = 0;
-			var mittl = 0;
+			var mittl = 1667;
 			var diff_mittl_path = 0;
 			if(!!Memory.CreepsMinTicksToLive[weight] && !!Memory.CreepsMinTicksToLive[weight].pos) {
-				path = spawn.findPathTo(Memory.CreepsMinTicksToLive[weight].pos).length;
+				path = spawn.pos.findPathTo(Memory.CreepsMinTicksToLive[weight].pos).length;
 				mittl = Memory.CreepsMinTicksToLive[weight].mittl;
 				diff_mittl_path = mittl - path;
 			}
