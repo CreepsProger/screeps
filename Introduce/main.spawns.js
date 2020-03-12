@@ -54,6 +54,7 @@ var spawns = {
 				//existsNumber = Memory.CreepsNumberByType[full_type];
 				existsNumber = Memory.CreepsNumberByWeight[weight];
 			}
+			Memory.totals.NeedsCreeps += needed;
 			const needed_plus = needed + (diff_mittl_path_bodys < 10);
 			const needsNumber = needed_plus - existsNumber;
 			const newName = 'creep-<' + weight + '/' + Memory.CreepsCounter % 10 + '>-'
