@@ -41,7 +41,7 @@ var metrix = {
 		if(Game.time % config.ticksToCheckCreepsNumber == 0) {
 //          var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
 			Memory.totals.CreepsNumber = 0;
-			
+
 			for(var name in Game.creeps) {
 				var creep = Game.creeps[name];
 				const full_type = '' + creep.memory.type+'/'+creep.memory.weight;
@@ -75,6 +75,7 @@ var metrix = {
 				Memory.totals.CARRY += creep.getActiveBodyparts(CARRY);
 				Memory.totals.MOVE += creep.getActiveBodyparts(MOVE);
 			}
+		}
 	},
 	
 	output: function() {
