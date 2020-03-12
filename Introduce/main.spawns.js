@@ -139,6 +139,7 @@ var spawns = {
 									, 'spawn:'
 									, JSON.stringify(spawn));
 									*/
+			Memory.CreepsNeedsByWeight = {};
 
 			if(!spawn.spawning && spawn.name != 'Spawn19') {
 				var controller = spawn.room.controller;
