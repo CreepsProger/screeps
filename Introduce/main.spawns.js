@@ -54,8 +54,9 @@ var spawns = {
 				//existsNumber = Memory.CreepsNumberByType[full_type];
 				existsNumber = Memory.CreepsNumberByWeight[weight];
 			}
-			Memory.totals.NeedsCreeps += needed;
 			const needed_plus = needed + (diff_mittl_path_bodys < 10);
+			Memory.totals.NeedsCreeps += needed;
+			Memory.totals.NeedsPlusCreeps += needed_plus;
 			const needsNumber = needed_plus - existsNumber;
 			const newName = 'creep-<' + weight + '/' + Memory.CreepsCounter % 10 + '>-'
 			 								+ (Ts>0  ? Ts +'t' :'')
@@ -99,14 +100,8 @@ var spawns = {
 										  , cost
 											, 'exists/needs/needs+:'
 										  , '' + existsNumber + '/' + needed + '/' + needed_plus
-											, 'mittl:'
-											, mittl
-											, 'path:'
-											, path
-											, 'bodys:'
-											, body.length
 											, 'mittl-path-3*bodys:'
-											, diff_mittl_path_bodys
+											, '' + mittl + '-' + path + '-3*' + body.length + '=' + diff_mittl_path_bodys
 										 );
 					Memory.CreepsCounter++;
 					last_game_time_created_creep = Game.time;
