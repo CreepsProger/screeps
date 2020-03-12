@@ -33,6 +33,8 @@ module.exports.loop = function () {
 	Memory.targets = {};
 	
 	var t = Game.cpu.getUsed();		console.log( '⏳', t + '/' + Game.cpu.tickLimit);
+	var dt_max = 0;
+	var name_max = '';
 
 	for(var name in Game.creeps) {
 		var creep = Game.creeps[name];
@@ -40,10 +42,15 @@ module.exports.loop = function () {
 		if(!creep.spawning) {
 			creep.memory.rerun = 0;
 			role.run(creep);
+
 			var dt = Game.cpu.getUsed() - t;
+			if(dt > dt_max) {
+				dt_max = dt;
+				name_max = creep.name;
+			}
 			t = Game.cpu.getUsed();
-			console.log( '⏳', t + '/' + Game.cpu.tickLimit, creep.name, dt);
 		}
+		console.log( '⏳', name_max, dt_max);
 	}
 // 	console.log('targets:',	JSON.stringify(Memory.targets));
 }
