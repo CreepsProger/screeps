@@ -101,6 +101,8 @@ var spawns = {
 											, mittl
 											, 'mittl-path:'
 											, diff_mittl_path
+											, 'body.length:'
+											, body.length
 										 );
 					Memory.CreepsCounter++;
 					last_game_time_created_creep = Game.time;
