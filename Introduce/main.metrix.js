@@ -18,9 +18,9 @@ var metrix = {
 	run: function() {
 
 		if(Game.time % config.ticksToCheckCreepsNumber == 0) {
-			Memory.totals = { CreepsNumber: 0
-											 , Cost: 0
-											 , Bodys : 0											
+			Memory.totals = { CreepsNumber: 0, NeedsCreeps: 0
+											 , Cost: 0, NeedsCost: 0
+											 , Bodys : 0, NeedsBodys: 0
 											 , Capacity: 0
 											 , FreeCapacity: 0
 											 , UsedCapacity: 0
