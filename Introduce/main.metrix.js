@@ -56,7 +56,9 @@ var metrix = {
 				
 				Memory.CreepsNumberByType[full_type]++;
 				Memory.CreepsNumberByWeight[creep.memory.weight]++;
-				Memory.CreepsMinTicksToLive[creep.memory.weight] = Math.min(creep.ticksToLive, Memory.CreepsMinTicksToLive[creep.memory.weight]);
+				Memory.CreepsMinTicksToLive[creep.memory.weight] = {
+					mittl: Math.min(creep.ticksToLive, Memory.CreepsMinTicksToLive[creep.memory.weight]),
+					pos: creep.pos};
 				Memory.totals.CreepsNumber += 1;				
 				Memory.totals.Cost += !!creep.memory.cost? creep.memory.cost:0;
 				Memory.totals.Capacity += creep.store.getCapacity();
