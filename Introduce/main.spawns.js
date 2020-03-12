@@ -45,7 +45,7 @@ var spawns = {
 			if(Memory.CreepsNumberByWeight[weight]) {
 				//existsNumber = Memory.CreepsNumberByType[full_type];
 				existsNumber = Memory.CreepsNumberByWeight[weight];
-				if(!!Memory.CreepsMinTicksToLive[weight] && Memory.CreepsMinTicksToLive[weight] < 100) {
+				if(!!Memory.CreepsMinTicksToLive[weight] && Memory.CreepsMinTicksToLive[weight].mittl < 100) {
 					existsNumber--;
 				} 
 			}
