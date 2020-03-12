@@ -1,5 +1,6 @@
 const roleNext = require('role.dismantler');
 const config = require('main.config');
+const metrix = require('main.metrix');
 
 var role = {
 
@@ -256,6 +257,7 @@ var role = {
 			}
 
 			if(!creep.memory.attacking) {
+				metrix.cpu.role(role.name);
 				roleNext.run(creep);
 			}
 		}

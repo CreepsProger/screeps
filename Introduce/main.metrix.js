@@ -15,6 +15,30 @@ var metrix = {
 		x.movingAverage.i = (x.movingAverage.i + 1) % x.movingAverage.vs.length;
 	},
 
+	cpu: { role: function(role) {
+			Memory.cpu.dt = Game.cpu.getUsed() - Memory.cpu.t;
+			if(Memory.cpu.dt > Memory.cpu.dt_max_role) {
+				Memory.cpu.dt_max_role = Memory.cpu.dt;
+				Memory.cpu.role_max = role;
+				if(Memory.cpu.dt > 1) {
+					console.log( '⏳', JSON.stringify(Memory.cpu));
+				}
+				Memory.cpu.t = Game.cpu.getUsed();
+				metrix.cpu(role.name);
+			}
+		}, creep: function(creep) {
+			Memory.cpu.dt = Game.cpu.getUsed() - Memory.cpu.t;
+			if(Memory.cpu.dt > Memory.cpu.dt_max) {
+				Memory.cpu.dt_max = Memory.cpu.dt;
+				Memory.cpu.name_max = creep.name;
+				if(Memory.cpu.dt > 2){
+					console.log( '⏳', JSON.stringify(Memory.cpu));
+				}
+				Memory.cpu.t = Game.cpu.getUsed();
+			}
+		}
+	},
+
 	run: function() {
 
 		if(Game.time % config.ticksToCheckCreepsNumber == 0) {
@@ -57,19 +81,19 @@ var metrix = {
 
 				if(!Memory.CreepsNumberByWeight[creep.memory.weight])
 					Memory.CreepsNumberByWeight[creep.memory.weight] = 0;
-				
+
 				if(!Memory.CreepsMinTicksToLive[creep.memory.weight])
 					Memory.CreepsMinTicksToLive[creep.memory.weight] = 1500;
-				
+
 				Memory.CreepsNumberByType[full_type]++;
 				Memory.CreepsNumberByWeight[creep.memory.weight]++;
 				if((!!creep.ticksToLive?creep.ticksToLive:1500) < Memory.CreepsMinTicksToLive[creep.memory.weight]) {
-					Memory.CreepsMinTicksToLive[creep.memory.weight] = 
+					Memory.CreepsMinTicksToLive[creep.memory.weight] =
 						{ mittl: creep.ticksToLive
 						, pos: creep.pos
 						};
 				}
-				Memory.totals.CreepsNumber += 1;				
+				Memory.totals.CreepsNumber += 1;
 				Memory.totals.Cost += !!creep.memory.cost? creep.memory.cost:0;
 				Memory.totals.Bodys += creep.body.length;
 				Memory.totals.Capacity += creep.store.getCapacity();
@@ -83,9 +107,9 @@ var metrix = {
 			}
 		}
 	},
-	
+
 	output: function() {
-		
+
 		if(Game.time % config.ticksToCheckCreepsNumber == 0) {
 			if(Game.flags['LWE'] || Game.flags['LW'] || Game.flags['L']) {
 				console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
@@ -135,14 +159,14 @@ var metrix = {
 				console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 										, JSON.stringify(BODYPARTS_ALL));
 			}
-			
+
 			if(Game.time % (config.ticksToCheckCreepsNumber * 1000) == 0) {
 				console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 										, JSON.stringify(RESOURCES_ALL));
 			}
 		}
 	}
-		
+
 };
 
 module.exports = metrix;
