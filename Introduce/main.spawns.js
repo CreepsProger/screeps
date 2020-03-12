@@ -95,11 +95,13 @@ var spawns = {
 											, newName
 										  , 'cost:'
 										  , cost
+											, 'exists/needs/needs+:'
+										  , '' + existsNumber + '/' + needed + '/' + needsNumber
 											, 'mittl:'
 											, mittl
 											, 'path:'
 											, path
-											, 'body.length:'
+											, 'bodys:'
 											, body.length
 											, 'mittl-path-3*bodys:'
 											, diff_mittl_path_bodys
