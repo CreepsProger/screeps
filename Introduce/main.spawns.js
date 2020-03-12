@@ -105,8 +105,12 @@ var spawns = {
 										  , '' + existsNumber + '/' + needed + '/' + needed_plus
 											, 'mittl-path-3*bodys:'
 											, '' + mittl + '-' + path + '-3*' + body.length + '=' + diff_mittl_path_bodys
+										 );
+					console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+											, 'TEST:'
 											, JSON.stringify(Memory.CreepsNeedsByWeight)
 											, JSON.stringify(Object.keys(Memory.CreepsNeedsByWeight))
+											, JSON.stringify(Object.keys(Memory.CreepsNeedsByWeight).reduce(function(p,c) {return p + Memory.CreepsNeedsByWeight[c].needs;}, 0);))
 										 );
 					Memory.CreepsCounter++;
 					last_game_time_created_creep = Game.time;
