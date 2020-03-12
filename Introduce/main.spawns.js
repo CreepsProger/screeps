@@ -42,14 +42,17 @@ var spawns = {
 			const cost = 10*Ts + 600*CLs + 150*RAs + 80*As + 250*Hs + 100*Ws + 50*Cs + 50*Ms;
 			var existsNumber = 0;
 			const full_type = '' + type + '/' + weight;
-			var diff_mittl_path = 0;			
+			var path = 0;
+			var mittl = 0;
+			var diff_mittl_path = 0;
+			if(!!Memory.CreepsMinTicksToLive[weight]) {
+				path = Memory.CreepsMinTicksToLive[weight].pos.findPathTo(spawn).length;
+				mittl = Memory.CreepsMinTicksToLive[weight].mittl;
+				diff_mittl_path = mittl - path;
+			}
 			if(Memory.CreepsNumberByWeight[weight]) {
 				//existsNumber = Memory.CreepsNumberByType[full_type];
 				existsNumber = Memory.CreepsNumberByWeight[weight];
-				if(!!Memory.CreepsMinTicksToLive[weight] && Memory.CreepsMinTicksToLive[weight].mittl < 100) {
-					diff_mittl_path = Memory.CreepsMinTicksToLive[weight].mittl - Memory.CreepsMinTicksToLive[weight].pos.findPathTo(spawn).length;
-					existsNumber--;
-				} 
 			}
 			const needsNumber = needed - existsNumber;
 			const newName = 'creep-<' + weight + '/' + Memory.CreepsCounter % 10 + '>-'
@@ -92,6 +95,10 @@ var spawns = {
 											, newName
 										  , 'cost:'
 										  , cost
+											, 'path:'
+											, path
+											, 'mittl:'
+											, mittl
 											, 'mittl-path:'
 											, diff_mittl_path
 										 );
