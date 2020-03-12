@@ -256,8 +256,8 @@ var role = {
 				}
 			}
 
+			metrix.cpu.role(role.name);
 			if(!creep.memory.attacking) {
-				metrix.cpu.role(role.name);
 				roleNext.run(creep);
 			}
 		}

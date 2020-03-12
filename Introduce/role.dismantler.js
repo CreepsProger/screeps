@@ -2,6 +2,8 @@ const roleNext = require('role.repairer');
 const constants = require('main.constants');
 const config = require('main.config');
 const tools = require('tools');
+const metrix = require('main.metrix');
+
 
 var roleDismantler = {
 
@@ -118,6 +120,7 @@ var roleDismantler = {
 				}
 			}
 
+			metrix.cpu.role('dismantling');
 			if(!creep.memory.dismantling) {
 				roleNext.run(creep);
 			}
