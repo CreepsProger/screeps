@@ -18,7 +18,7 @@ var metrix = {
 	run: function() {
 
 		if(Game.time % config.ticksToCheckCreepsNumber == 0) {
-			Memory.totals = { CreepsNumber: 0, NeedsCreeps: 0
+			Memory.totals = { CreepsNumber: 0, NeedsCreeps: 0, NeedsPlusCreeps: 0
 											 , Cost: 0, NeedsCost: 0
 											 , Bodys : 0, NeedsBodys: 0
 											 , Capacity: 0
@@ -87,8 +87,8 @@ var metrix = {
 			}
 
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-									, 'Creeps Number:'
-                  , Memory.totals.CreepsNumber
+									, 'Creeps:'
+                  , '' + Memory.totals.CreepsNumber + '/' + Memory.totals.NeedsCreeps + '/' + Memory.totals.NeedsPlusCreeps
 									,'Body:'
 									, Memory.totals.Bodys
 									,'Cost:'
