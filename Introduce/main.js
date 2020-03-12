@@ -11,7 +11,7 @@ const log = require('main.log');
 var role = require('role.claimer');
 
 module.exports.loop = function () {
-	console.log( '⏳', Game.cpu.getUsed() + '/' + Game.cpu.tickLimit);
+	// console.log( '⏳', Game.cpu.getUsed() + '/' + Game.cpu.tickLimit);
 	for(var name in Memory.creeps) {
 		var creep = Game.creeps[name];
 		if(!creep) {
@@ -33,7 +33,8 @@ module.exports.loop = function () {
 	Memory.targets = {};
 	Memory.cpu = {dt_max: 0, name_max: ''};
 
-	var t = Game.cpu.getUsed();		console.log( '⏳', t + '/' + Game.cpu.tickLimit);
+	var t = Game.cpu.getUsed();
+	// console.log( '⏳', t + '/' + Game.cpu.tickLimit);
 
 	for(var name in Game.creeps) {
 		var creep = Game.creeps[name];
