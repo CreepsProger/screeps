@@ -42,10 +42,12 @@ var spawns = {
 			const cost = 10*Ts + 600*CLs + 150*RAs + 80*As + 250*Hs + 100*Ws + 50*Cs + 50*Ms;
 			var existsNumber = 0;
 			const full_type = '' + type + '/' + weight;
+			var diff_mittl_path = 0;			
 			if(Memory.CreepsNumberByWeight[weight]) {
 				//existsNumber = Memory.CreepsNumberByType[full_type];
 				existsNumber = Memory.CreepsNumberByWeight[weight];
 				if(!!Memory.CreepsMinTicksToLive[weight] && Memory.CreepsMinTicksToLive[weight].mittl < 100) {
+					diff_mittl_path = Memory.CreepsMinTicksToLive[weight].mittl - Memory.CreepsMinTicksToLive[weight].pos.findPathTo(spawn).length;
 					existsNumber--;
 				} 
 			}
@@ -89,7 +91,10 @@ var spawns = {
 											, 'Spawning new creep:'
 											, newName
 										  , 'cost:'
-										  , cost);
+										  , cost
+											, 'mittl-path:'
+											, diff_mittl_path
+										 );
 					Memory.CreepsCounter++;
 					last_game_time_created_creep = Game.time;
 				}
