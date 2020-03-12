@@ -56,8 +56,8 @@ var spawns = {
 			}
 			const needed_plus = needed + (diff_mittl_path_bodys < 10);
 			Memory.CreepsNeedsByWeight[weight] = {needs: needed, needs_plus: needed_plus};
-			Memory.totals.NeedsCreeps = Memory.CreepsNeedsByWeight.reduce(function(s, c) {return s + c.needed;}, 0);
-			Memory.totals.NeedsPlusCreeps = Memory.CreepsNeedsByWeight.reduce(function(s, c) {return s + c.needed_plus;}, 0);
+			Memory.totals.NeedsCreeps = 0;//Memory.CreepsNeedsByWeight.reduce(function(s, c) {return s + c.needed;}, 0);
+			Memory.totals.NeedsPlusCreeps = 0;//Memory.CreepsNeedsByWeight.reduce(function(s, c) {return s + c.needed_plus;}, 0);
 			const needsNumber = needed_plus - existsNumber;
 			const newName = 'creep-<' + weight + '/' + Memory.CreepsCounter % 10 + '>-'
 			 								+ (Ts>0  ? Ts +'t' :'')
@@ -103,6 +103,7 @@ var spawns = {
 										  , '' + existsNumber + '/' + needed + '/' + needed_plus
 											, 'mittl-path-3*bodys:'
 											, '' + mittl + '-' + path + '-3*' + body.length + '=' + diff_mittl_path_bodys
+											, JSON.stringifyMemory.CreepsNeedsByWeight)
 										 );
 					Memory.CreepsCounter++;
 					last_game_time_created_creep = Game.time;
