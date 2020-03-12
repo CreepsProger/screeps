@@ -58,8 +58,8 @@ var spawns = {
 			Memory.CreepsNeedsByWeight[weight] = {needs: needed, needs_plus: needed_plus};
 			//Object.keys(Memory.CreepsNeedsByWeight).map(function(o){return o.needs}).reduce(function(s, c) {return s + c;}, 0));
 
-			Memory.totals.NeedsCreeps = 0;//Memory.CreepsNeedsByWeight.map(function(o){return o.needs}).reduce(function(s, c) {return s + c;}, 0);
-			Memory.totals.NeedsPlusCreeps = 0;//Memory.CreepsNeedsByWeight.map(function(o){return o.needs_plus}).reduce(function(s, c) {return s + c;}, 0);
+			Memory.totals.NeedsCreeps = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].needs,0);
+			Memory.totals.NeedsPlusCreeps = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].needs_plus,0);
 			const needsNumber = needed_plus - existsNumber;
 			const newName = 'creep-<' + weight + '/' + Memory.CreepsCounter % 10 + '>-'
 			 								+ (Ts>0  ? Ts +'t' :'')
@@ -105,12 +105,6 @@ var spawns = {
 										  , '' + existsNumber + '/' + needed + '/' + needed_plus
 											, 'mittl-path-3*bodys:'
 											, '' + mittl + '-' + path + '-3*' + body.length + '=' + diff_mittl_path_bodys
-										 );
-					console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-											, 'TEST:'
-											, JSON.stringify(Memory.CreepsNeedsByWeight)
-											, JSON.stringify(Object.keys(Memory.CreepsNeedsByWeight))
-											, JSON.stringify(Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p +this[c].needs,0))
 										 );
 					Memory.CreepsCounter++;
 					last_game_time_created_creep = Game.time;
