@@ -74,6 +74,9 @@ var metrix = {
 				Memory.totals.WORK += creep.getActiveBodyparts(WORK);
 				Memory.totals.CARRY += creep.getActiveBodyparts(CARRY);
 				Memory.totals.MOVE += creep.getActiveBodyparts(MOVE);
+	},
+	
+	output: function() {
 
 				if(Game.flags['LWE'] || Game.flags['LW'] || Game.flags['L']) {
 					console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
@@ -131,8 +134,8 @@ var metrix = {
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, JSON.stringify(RESOURCES_ALL));
 		}
-
 	}
+
 };
 
 module.exports = metrix;
