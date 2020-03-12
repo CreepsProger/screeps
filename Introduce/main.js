@@ -22,12 +22,13 @@ module.exports.loop = function () {
 		}
 	}
 
+	metrix.run();
 	config.run();
 	flags.run()
 	links.run();
 	towers.run();
-	metrix.run();
 	spawns.run();
+	metrix.output();
 
 	Memory.targets = {};
 
