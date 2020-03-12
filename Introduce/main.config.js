@@ -25,7 +25,7 @@ var config = {
 			 Memory.config.v === undefined ||
 			 Memory.config.v != config.version) {
 			Memory.config = { v: config.version , rooms : {
-						 W25S33: { containers: {weight: 35}
+						 W25S33: { containers: {weight: 33}
 										 , links:
 												 [ {from: '1', to: '0'}
 												 , {from: '1', to: '0'}
@@ -43,7 +43,7 @@ var config = {
 																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
 																	 , W28S33: 'W27S33', W27S33: 'W26S33'}
 										 },
-						 W26S33: { containers: {weight: 45}
+						 W26S33: { containers: {weight: 43}
 										 , energy_harvesting:
 												 [ {name: '1', time: 0, min_weight: 40, max_weight: 49}
 												 , {name: '2', time: 0, min_weight: 40, max_weight: 49}
@@ -60,7 +60,7 @@ var config = {
 																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
 																	 , W28S33: 'W27S33', W27S33: 'W26S33'}
 										 },
-						 W27S33: { containers: {weight: 55}
+						 W27S33: { containers: {weight: 53}
 										 , energy_harvesting:
 												 [ {name: '1', time: 0, min_weight: 50, max_weight: 59}
 												 , {name: '2', time: 0, min_weight: 50, max_weight: 59}
@@ -90,7 +90,7 @@ var config = {
 																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
 																	 , W28S33: 'W27S33', W27S33: 'W26S33'}
 										 },
-						 W28S33: { containers: {weight: 65}
+						 W28S33: { containers: {weight: 63}
 										 , energy_harvesting:
 												 [ {name: '1', time: 0, min_weight: 60, max_weight: 69}
 												 , {name: '2', time: 0, min_weight: 60, max_weight: 69}
@@ -120,7 +120,7 @@ var config = {
 																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
 																	 , W28S33: 'W27S33', W27S33: 'W26S33'}
 										 },
-						 W26S34: { containers: {weight: 75}
+						 W26S34: { containers: {weight: 73}
 										 , energy_harvesting:
 										     [ {name: '1', time: 0, min_weight: 70, max_weight: 79}
 										     , {name: '2', time: 0, min_weight: 70, max_weight: 79}
