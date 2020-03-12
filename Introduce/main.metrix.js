@@ -24,7 +24,6 @@ var metrix = {
 					console.log( '⏳', JSON.stringify(Memory.cpu));
 				}
 				Memory.cpu.t = Game.cpu.getUsed();
-				metrix.cpu(role.name);
 			}
 		}, creep: function(creep) {
 			Memory.cpu.dt = Game.cpu.getUsed() - Memory.cpu.t;
