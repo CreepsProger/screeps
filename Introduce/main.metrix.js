@@ -18,6 +18,7 @@ var metrix = {
 	run: function() {
 
 		if(Game.time % config.ticksToCheckCreepsNumber == 0) {
+
 			Memory.totals = { CreepsNumber: 0, NeedsCreeps: 0, NeedsPlusCreeps: 0
 											 , Cost: 0, NeedsCost: 0
 											 , Bodys : 0, NeedsBodys: 0
@@ -32,12 +33,14 @@ var metrix = {
 
 			Memory.CreepsNumberByType = {};
 			Memory.CreepsNumberByWeight = {};
-			Memory.CreepsNeedsByWeight = {};
 			Memory.CreepsMinTicksToLive = {};
 			metrix.updateMovingAverage(Memory.harvestersMovements.Value);
 			metrix.updateMovingAverage(Memory.harvestersMovements.Count);
 			metrix.updateMovingAverage(Memory.harvestersMovements.Avg);
 		}
+
+		Memory.totals.NeedsCreeps = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].needs,0);
+		Memory.totals.NeedsPlusCreeps = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].needs_plus,0);
 
 		if(Game.time % config.ticksToCheckCreepsNumber == 0) {
 //          var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
