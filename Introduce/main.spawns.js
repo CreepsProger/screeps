@@ -45,8 +45,8 @@ var spawns = {
 			var path = 0;
 			var mittl = 0;
 			var diff_mittl_path = 0;
-			if(!!Memory.CreepsMinTicksToLive[weight]) {
-				path = Memory.CreepsMinTicksToLive[weight].pos.findPathTo(spawn).length;
+			if(!!Memory.CreepsMinTicksToLive[weight] && !!Memory.CreepsMinTicksToLive[weight].pos) {
+				path = spawn.findPathTo(Memory.CreepsMinTicksToLive[weight].pos).length;
 				mittl = Memory.CreepsMinTicksToLive[weight].mittl;
 				diff_mittl_path = mittl - path;
 			}
@@ -54,7 +54,7 @@ var spawns = {
 				//existsNumber = Memory.CreepsNumberByType[full_type];
 				existsNumber = Memory.CreepsNumberByWeight[weight];
 			}
-			const needsNumber = needed - existsNumber;
+			const needsNumber = needed + (mittl < path) - existsNumber;
 			const newName = 'creep-<' + weight + '/' + Memory.CreepsCounter % 10 + '>-'
 			 								+ (Ts>0  ? Ts +'t' :'')
 											+ (CLs>0 ? CLs+'l' :'')
