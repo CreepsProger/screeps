@@ -20,8 +20,8 @@ var metrix = {
 		if(Game.time % config.ticksToCheckCreepsNumber == 0) {
 
 			Memory.totals = { CreepsNumber: 0, NeedsCreeps: 0, NeedsPlusCreeps: 0
-											 , Cost: 0, NeedsCost: 0
 											 , Bodys : 0, NeedsBodys: 0
+											 , Cost: 0, NeedsCost: 0
 											 , Capacity: 0
 											 , FreeCapacity: 0
 											 , UsedCapacity: 0
@@ -41,6 +41,8 @@ var metrix = {
 
 		Memory.totals.NeedsCreeps = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].needs,0);
 		Memory.totals.NeedsPlusCreeps = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].needs_plus,0);
+		Memory.totals.NeedsBodys = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].bodys,0);
+		Memory.totals.NeedsCost = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].cost,0);
 
 		if(Game.time % config.ticksToCheckCreepsNumber == 0) {
 //          var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
@@ -99,9 +101,9 @@ var metrix = {
 									, 'Creeps:'
 									, '' + Memory.totals.CreepsNumber + '/' + Memory.totals.NeedsCreeps + '/' + Memory.totals.NeedsPlusCreeps
 									,'Body:'
-									, Memory.totals.Bodys
+									, '' + Memory.totals.Bodys + '/' + Memory.totals.NeedsBodys
 									,'Cost:'
-									, Memory.totals.Cost
+									, '' + Memory.totals.Cost + '/' + Memory.totals.NeedsCost
 									, 'h/hM:'
 									, Memory.totals.hits
 									, Memory.totals.hitsMax
