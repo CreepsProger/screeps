@@ -44,7 +44,7 @@ module.exports.loop = function () {
 			if(Memory.cpu.dt > Memory.cpu.dt_max) {
 				Memory.cpu.dt_max = Memory.cpu.dt;
 				Memory.cpu.name_max = creep.name;
-				if(dt > 2)
+				if(Memory.cpu.dt > 2)
 					console.log( '⏳', JSON.stringify(Memory.cpu));
 			}
 			Memory.cpu.t = Game.cpu.getUsed();
