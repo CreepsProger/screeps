@@ -56,8 +56,8 @@ var spawns = {
 			}
 			const needed_plus = needed + (diff_mittl_path_bodys < 10);
 			Memory.CreepsNeedsByWeight[weight] = {needs: needed, needs_plus: needed_plus};
-			Memory.totals.NeedsCreeps = Memory.CreepsNeedsByWeight.map(function(o){return o.needs}).reduce(function(s, c) {return s + c;}, 0);
-			Memory.totals.NeedsPlusCreeps = Memory.CreepsNeedsByWeight.map(function(o){return o.needs_plus}).reduce(function(s, c) {return s + c;}, 0);
+			Memory.totals.NeedsCreeps = 0;//Memory.CreepsNeedsByWeight.map(function(o){return o.needs}).reduce(function(s, c) {return s + c;}, 0);
+			Memory.totals.NeedsPlusCreeps = 0;//Memory.CreepsNeedsByWeight.map(function(o){return o.needs_plus}).reduce(function(s, c) {return s + c;}, 0);
 			const needsNumber = needed_plus - existsNumber;
 			const newName = 'creep-<' + weight + '/' + Memory.CreepsCounter % 10 + '>-'
 			 								+ (Ts>0  ? Ts +'t' :'')
