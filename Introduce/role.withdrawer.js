@@ -59,7 +59,7 @@ var roleWithdrawer = {
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.say('🔜💼');
 					creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-					
+
 					var id;
 					if(!!target.id) {
 						id = target.id;
@@ -94,6 +94,7 @@ var roleWithdrawer = {
 			}
 		}
 
+		Memory.cpu.role('withdrawing');
 		if(!creep.memory.withdrawing) {
 			roleNext.run(creep);
 		}

@@ -236,6 +236,7 @@ var roleEnergyTransferer = {
 			}
 		}
 
+		Memory.cpu.role('transfering');
 		if(!creep.memory.transfering) {
 			roleNext.run(creep);
 		}

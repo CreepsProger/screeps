@@ -174,8 +174,8 @@ var role = {
 			if(!!emptysource) {
 				target = tools.setTarget(creep,emptysource,emptysource.id,role.run);
 			}
-		} 
-	
+		}
+
 		return target;
 	},
 
@@ -222,6 +222,7 @@ var role = {
 			}
 		}
 
+		Memory.cpu.role(role.name);
 		if(!creep.memory.rerun) {
 			creep.memory.rerun = 1;
 			if(!creep.memory[role.name].on) {

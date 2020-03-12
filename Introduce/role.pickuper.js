@@ -73,6 +73,7 @@ var rolePickuper = {
             }
         }
 
+				Memory.cpu.role('pickuping');
         if(!creep.memory.pickuping) {
             roleNext.run(creep);
         }
