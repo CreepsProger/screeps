@@ -13,7 +13,7 @@ var links = {
 
 	 getTargetLinkToTransferEnergy: function(creep, executer, role_run, link_weight) {
 		 var target;
-		 var link = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+		 var link = creep.room.find(FIND_MY_STRUCTURES, {
 			 filter: (structure) => {
 				 return (structure.structureType == STRUCTURE_LINK) &&
 					 (structure.id == '5e62c05bf15a4888dff60e26' ||
@@ -35,7 +35,7 @@ var links = {
 
 	 getTargetLinkToHarvest: function(creep, executer, role_run) {
 		 var target;
-		 var link = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+		 var link = creep.room.find(FIND_MY_STRUCTURES, {
 			 filter: (structure) => {
 				 return (structure.structureType == STRUCTURE_LINK) &&
 					 (structure.id == '5e583a7b7a54e3585a982b96' ||
