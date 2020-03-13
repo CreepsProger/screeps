@@ -36,17 +36,29 @@ var links = {
 
 	 getTargetLinkToHarvest: function(creep, executer, role_run) {
 		 var target;
-		 var link = creep.room.find(FIND_MY_STRUCTURES, {
-			 filter: (structure) => {
-				 return (structure.structureType == STRUCTURE_LINK) &&
-					 (structure.id == '5e583a7b7a54e3585a982b96' ||
-						structure.id == '5e5ab4f1142d6b46f3c86280') &&
-					 structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-					 tools.checkTarget(executer,structure.id);
+		 if(true) {
+			 var link = Game.getObjectById('5e583a7b7a54e3585a982b96');
+			 if(creep.room == link.room && link.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && tools.checkTarget(executer,structure.id)) {
+				 target = tools.setTarget(creep,link,link.id,role_run);
 			 }
-		 });
-		 if(!!link) {
-			 target = tools.setTarget(creep,link,link.id,role_run);
+			 link = Game.getObjectById('5e5ab4f1142d6b46f3c86280');
+			 if(creep.room == link.room && link.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && tools.checkTarget(executer,structure.id)) {
+				 target = tools.setTarget(creep,link,link.id,role_run);
+			 }
+		 }
+		 else {
+			 var link = creep.room.find(FIND_MY_STRUCTURES, {
+				 filter: (structure) => {
+					 return (structure.structureType == STRUCTURE_LINK) &&
+						 (structure.id == '5e583a7b7a54e3585a982b96' ||
+							structure.id == '5e5ab4f1142d6b46f3c86280') &&
+						 structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
+						 tools.checkTarget(executer,structure.id);
+				 }
+			 });
+			 if(!!link) {
+				 target = tools.setTarget(creep,link,link.id,role_run);
+			 }
 		 }
 		 return target;
 	 },
