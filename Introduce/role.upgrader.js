@@ -1,13 +1,15 @@
 const constants = require('main.constants');
 const roleNext = require('role.energy.harvester');
 const tools = require('tools');
+const constants = require('main.constants');
+
 
 var roleUpgrader = {
 
 		checkStopUpgrading: function(creep) {
 			var storages = _.filter(Game.structures, function(structure) {
 				return (structure.structureType == STRUCTURE_STORAGE) &&
-					structure.store.getUsedCapacity(RESOURCE_ENERGY) < 30000;
+					structure.store.getUsedCapacity(RESOURCE_ENERGY) < constants.STOP_UPGRADING_ENERGY;
 			});
 			if(storages.length > 0) {
 				return true;
@@ -18,7 +20,7 @@ var roleUpgrader = {
 		checkStartUpgrading: function(creep) {
 			var storages = _.filter(Game.structures, function(structure) {
 				return (structure.structureType == STRUCTURE_STORAGE) &&
-					structure.store.getUsedCapacity(RESOURCE_ENERGY) < 35000;
+					structure.store.getUsedCapacity(RESOURCE_ENERGY) < constants.START_UPGRADING_ENERGY;
 			});
 			if(storages.length == 0) {
 				return true;
