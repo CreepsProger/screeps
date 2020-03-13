@@ -256,7 +256,7 @@ var role = {
 				}
 			}
 
-			Memory.cpu.role(role.name);
+			Memory.cpu.role(creep, role.name);
 			if(!creep.memory.attacking) {
 				roleNext.run(creep);
 			}
