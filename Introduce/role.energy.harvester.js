@@ -180,12 +180,12 @@ var role = {
 	},
 
 	run: function(creep,executer = undefined) {
-		role.init(creep);
-		role.checkOff(creep);
-		role.checkOn(creep);
+		role.init(creep);																Memory.cpu.step.run(creep, role.name, 'init');
+		role.checkOff(creep);														Memory.cpu.step.run(creep, role.name, 'checkOff');
+		role.checkOn(creep);														Memory.cpu.step.run(creep, role.name, 'checkOn');
 
 		if(creep.memory[role.name].on) {
-			var target = role.getTarget(creep,executer);
+			var target = role.getTarget(creep,executer);	Memory.cpu.step.run(creep, role.name, 'getTarget');
 			if(target) {
 				var err = (target.name || !target.id)? // a creep || exit
 						ERR_NOT_IN_RANGE:
