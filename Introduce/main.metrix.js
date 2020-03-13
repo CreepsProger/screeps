@@ -15,7 +15,23 @@ var metrix = {
 		x.movingAverage.i = (x.movingAverage.i + 1) % x.movingAverage.vs.length;
 	},
 
-	cpu: { role: function(creep, role) {
+	cpu:
+	{
+		step: function(creep, role, step) {
+			const dt = Game.cpu.getUsed() - Memory.cpu.step.t;
+			if(dt > Memory.cpu.step.dt) {
+				Memory.cpu.step.dt = dt;
+				Memory.cpu.step.creep = creep;
+				Memory.cpu.step.role = role;
+				Memory.cpu.step.step = step;
+				if(Memory.cpu.step.dt > 1) {
+					console.log( '⏳', Memory.cpu.step.dt, Memory.cpu.step.creep, Memory.cpu.step.role, Memory.cpu.step.step);
+				}
+			}
+			Memory.cpu.step.t = Game.cpu.getUsed();
+		},
+		
+		role: function(creep, role) {
 			const dt = Game.cpu.getUsed() - Memory.cpu.t_role;
 			if(dt > Memory.cpu.dt_max_role) {
 				Memory.cpu.dt_max_role = dt;
