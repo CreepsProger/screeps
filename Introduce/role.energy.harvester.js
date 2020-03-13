@@ -76,8 +76,6 @@ var role = {
 			target = links.getTargetLinkToHarvest(creep,executer,role.run);
 		}
 
-		Memory.cpu.step.run(creep, role.name, 'getTarget 1');
-
 		if(!target && !creep.getActiveBodyparts(WORK)) {
 			target = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => {
@@ -87,6 +85,8 @@ var role = {
 				}
 			});
 		}
+
+		Memory.cpu.step.run(creep, role.name, 'getTarget 1');
 
 		const DP2 = Game.flags['DP2'];
 
