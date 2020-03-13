@@ -222,7 +222,7 @@ var role = {
 			}
 		}
 
-		Memory.cpu.role(role.name);
+		Memory.cpu.role(creep, role.name);
 		if(!creep.memory.rerun) {
 			creep.memory.rerun = 1;
 			if(!creep.memory[role.name].on) {
