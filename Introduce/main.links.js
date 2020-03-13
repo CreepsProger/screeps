@@ -14,7 +14,7 @@ var links = {
 	 getTargetLinkToTransferEnergy: function(creep, executer, role_run, link_weight) {
 		 var target;
 		 if(link_weight < creep.memory.weight) {
-			 var link = creep.room.find(FIND_MY_STRUCTURES, {
+			 var links = creep.room.find(FIND_STRUCTURES, {
 				 filter: (structure) => {
 					 return (structure.structureType == STRUCTURE_LINK) &&
 						 structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
@@ -27,8 +27,8 @@ var links = {
 						 tools.checkTarget(executer,structure.id);
 				 }
 			 });
-			 if(!!link) {
-				 target = tools.setTarget(creep,link,link.id,role_run);
+			 if(links.length > 0) {
+				 target = tools.setTarget(creep,links[0],links[0].id,role_run);
 			 }
 		 }
 		 return target;
