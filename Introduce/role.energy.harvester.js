@@ -67,23 +67,26 @@ var role = {
 
 		if(!target && this_room != my_room) {
 			const exit = creep.room.findExitTo(my_room);
-// 			target = creep.pos.findClosestByPath(exit);
+			target = creep.pos.findClosestByPath(exit);
 // 			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
 		}
 
 		//if(!target && (!creep.getActiveBodyparts(WORK) || (this_room_sources_is_empty && creep.memory.rerun))) {
 		if(!target) {
-			//target = links.getTargetLinkToHarvest(creep,executer,role.run);
+			target = links.getTargetLinkToHarvest(creep,executer,role.run);
 		}
 
 		if(!target && !creep.getActiveBodyparts(WORK)) {
-			target = creep.room.find(FIND_STRUCTURES, {
+			var conts = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_CONTAINER) &&
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 						creep.memory.weight < my_room_config.containers.weight;
 				}
 			});
+			if(conts > 0) {
+				 target = conts[0];
+			 }
 		}
 
 		Memory.cpu.step.run(creep, role.name, 'getTarget 1');
@@ -91,7 +94,7 @@ var role = {
 		const DP2 = Game.flags['DP2'];
 
 		if(!target && creep.getActiveBodyparts(WORK)) {
-			var source = creep.room.find(FIND_SOURCES, {
+			var sources = creep.room.find(FIND_SOURCES, {
 				filter: (source) => {
 					return source.energy == source.energyCapacity &&
 						(!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0 ||
@@ -99,19 +102,22 @@ var role = {
 						 tools.checkTarget(executer,source.id);
 				 }
 			 });
-			 if(!!source) {
-				 target = tools.setTarget(creep,source,source.id,role.run);
+			 if(sources.length > 0) {
+				 target = tools.setTarget(creep,sources[0],sources[0].id,role.run);
 			 }
 		}
 
 		if(!target && creep.getActiveBodyparts(WORK)) {
-			target = creep.room.find(FIND_SOURCES, {
+			var sources = creep.room.find(FIND_SOURCES, {
 				filter: (source) => {
 					return source.energy > 0 &&
 						(!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0 ||
 						  (!!DP2 && DP2.pos.roomName == this_room && DP2.pos.findPathTo(source).length <= 5))
 						}
 			});
+			if(sources.length > 0) {
+				 target = sources[0];
+			 }
 		}
 
 		if(!target &&
