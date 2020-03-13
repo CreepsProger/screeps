@@ -66,7 +66,7 @@ var role = {
 		var target;
 
 		if(!target && this_room != my_room) {
-			const exit = creep.room.findExit(my_room);
+			const exit = creep.room.findExitTo(my_room);
 			target = creep.pos.findClosestByPath(exit);
 // 			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
 		}
