@@ -32,7 +32,7 @@ var metrix = {
 				Memory.cpu.dt_max = Memory.cpu.dt;
 				Memory.cpu.name_max = creep.name;
 				if(Memory.cpu.dt > 2){
-					console.log( '⏳', JSON.stringify(Memory.cpu));
+					console.log( '⏳', Memory.cpu.dt_max, Memory.cpu.name_max);
 				}
 				Memory.cpu.t = Game.cpu.getUsed();
 			}
