@@ -84,7 +84,7 @@ var role = {
 						creep.memory.weight < my_room_config.containers.weight;
 				}
 			});
-			if(conts > 0) {
+			if(conts.length > 0) {
 				 target = conts[0];
 			 }
 		}
