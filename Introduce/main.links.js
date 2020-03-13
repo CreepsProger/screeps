@@ -38,11 +38,11 @@ var links = {
 		 var target;
 		 if(true) {
 			 var link = Game.getObjectById('5e583a7b7a54e3585a982b96');
-			 if(creep.room == link.room && link.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && tools.checkTarget(executer,structure.id)) {
+			 if(creep.room == link.room && link.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && tools.checkTarget(executer,link.id)) {
 				 target = tools.setTarget(creep,link,link.id,role_run);
 			 }
 			 link = Game.getObjectById('5e5ab4f1142d6b46f3c86280');
-			 if(creep.room == link.room && link.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && tools.checkTarget(executer,structure.id)) {
+			 if(creep.room == link.room && link.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && tools.checkTarget(executer,link.id)) {
 				 target = tools.setTarget(creep,link,link.id,role_run);
 			 }
 		 }
