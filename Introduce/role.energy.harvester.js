@@ -139,16 +139,15 @@ var role = {
 			target = creep.room.storage;
 		}
 
-		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable &&
-			 (!creep.getActiveBodyparts(WORK) || false)) {
-			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-				filter: (structure) => {
-					return (structure.structureType == STRUCTURE_STORAGE) &&
-						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 5000;
-				}
-			});
+		if(!target &&
+			 creep.room.energyAvailable != creep.room.energyCapacityAvailable &&
+			 (!creep.getActiveBodyparts(WORK) || false) &&
+			 !!creep.room.storage &&
+			 !!creep.room.storage.my &&
+			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 5000) {
+			target = creep.room.storage;
 		}
-
+/*
 		if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
 			var weightcreep = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 				filter: (creep2) => {
@@ -163,18 +162,17 @@ var role = {
 				target = tools.setTarget(creep,weightcreep,weightcreep.id,role.run);
 			}
 		}
-
+*/
 		if(!target && creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
-			var emptysource = creep.pos.findClosestByPath(FIND_SOURCES, {
+			var emptysources = creep.room.find(FIND_SOURCES, {
 				filter: (source) => {
 					return source.energy == 0 &&
-						 		 source.pos.roomName == my_room &&
 						(!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0 ||
 						  (!!DP2 && DP2.pos.roomName == this_room && DP2.pos.findPathTo(source).length <= 5))
-						}
+				}
 			});
-			if(!!emptysource) {
-				target = tools.setTarget(creep,emptysource,emptysource.id,role.run);
+			if(emptysources.length > 0) {
+				target = tools.setTarget(creep,emptysources[0],emptysources[0].id,role.run);
 			}
 		}
 		
