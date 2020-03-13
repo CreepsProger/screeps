@@ -16,22 +16,22 @@ var metrix = {
 	},
 
 	cpu: { role: function(creep, role) {
-			Memory.cpu.dt = Game.cpu.getUsed() - Memory.cpu.t;
-			if(Memory.cpu.dt > Memory.cpu.dt_max_role) {
-				Memory.cpu.dt_max_role = Memory.cpu.dt;
+			const dt = Game.cpu.getUsed() - Memory.cpu.t_role;
+			if(dt > Memory.cpu.dt_max_role) {
+				Memory.cpu.dt_max_role = dt;
 				Memory.cpu.role_max = role;
 				Memory.cpu.role_creep_max = creep.name;
-				if(Memory.cpu.dt > 1) {
-					console.log( '⏳', JSON.stringify(Memory.cpu));
+				if(Memory.cpu.dt_max_role > 1) {
+					console.log( '⏳', Memory.cpu.dt_max_role, Memory.cpu.role_creep_max, Memory.cpu.role_max) ;
 				}
-				Memory.cpu.t = Game.cpu.getUsed();
+				Memory.cpu.t_role = Game.cpu.getUsed();
 			}
 		}, creep: function(creep) {
-			Memory.cpu.dt = Game.cpu.getUsed() - Memory.cpu.t;
-			if(Memory.cpu.dt > Memory.cpu.dt_max) {
-				Memory.cpu.dt_max = Memory.cpu.dt;
+			const dt = Game.cpu.getUsed() - Memory.cpu.t;
+			if(dt > Memory.cpu.dt_max) {
+				Memory.cpu.dt_max = dt;
 				Memory.cpu.name_max = creep.name;
-				if(Memory.cpu.dt > 2){
+				if(Memory.cpu.dt_max > 2){
 					console.log( '⏳', Memory.cpu.dt_max, Memory.cpu.name_max);
 				}
 				Memory.cpu.t = Game.cpu.getUsed();
