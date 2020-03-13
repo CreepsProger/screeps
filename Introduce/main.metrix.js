@@ -22,10 +22,10 @@ var metrix = {
 				Memory.cpu.role_max = role;
 				Memory.cpu.role_creep_max = creep.name;
 				if(Memory.cpu.dt_max_role > 1) {
-					console.log( '⏳', Memory.cpu.dt_max_role, Memory.cpu.role_creep_max, Memory.cpu.role_max) ;
+					console.log( '⏳', Memory.cpu.dt_max_role, Memory.cpu.role_creep_max, Memory.cpu.role_max);
 				}
-				Memory.cpu.t_role = Game.cpu.getUsed();
 			}
+		Memory.cpu.t_role = Game.cpu.getUsed();
 		}, creep: function(creep) {
 			const dt = Game.cpu.getUsed() - Memory.cpu.t;
 			if(dt > Memory.cpu.dt_max) {
@@ -34,8 +34,8 @@ var metrix = {
 				if(Memory.cpu.dt_max > 2){
 					console.log( '⏳', Memory.cpu.dt_max, Memory.cpu.name_max);
 				}
-				Memory.cpu.t = Game.cpu.getUsed();
 			}
+			Memory.cpu.t = Game.cpu.getUsed();
 		}
 	},
 
