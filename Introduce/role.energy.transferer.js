@@ -149,16 +149,16 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			if(!target &&
-				 !creep.getActiveBodyparts(WORK) &&
-				  creep.memory.rerun) {
-				var storages = _.filter(Game.structures, structure => structure.my &&
-						structure.structureType == STRUCTURE_STORAGE &&
-						structure.store.getUsedCapacity(RESOURCE_ENERGY) < 35000);
-				if(storages.length > 0) {
-					target = storages[0];
-				}
-			}
+			// if(!target &&
+			// 	 !creep.getActiveBodyparts(WORK) &&
+			// 	  creep.memory.rerun) {
+			// 	var storages = _.filter(Game.structures, structure => structure.my &&
+			// 			structure.structureType == STRUCTURE_STORAGE &&
+			// 			structure.store.getUsedCapacity(RESOURCE_ENERGY) < 35000);
+			// 	if(storages.length > 0) {
+			// 		target = storages[0];
+			// 	}
+			// }
 
 			if(!target &&
 				 creep.memory.rerun
