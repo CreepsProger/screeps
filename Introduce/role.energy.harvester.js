@@ -71,12 +71,12 @@ var role = {
 // 			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
 		}
 
-		Memory.cpu.step.run(creep, role.name, 'getTarget 1');
-
 		//if(!target && (!creep.getActiveBodyparts(WORK) || (this_room_sources_is_empty && creep.memory.rerun))) {
 		if(!target) {
 			target = links.getTargetLinkToHarvest(creep,executer,role.run);
 		}
+
+		Memory.cpu.step.run(creep, role.name, 'getTarget 1');
 
 		if(!target && !creep.getActiveBodyparts(WORK)) {
 			target = creep.room.find(FIND_STRUCTURES, {
