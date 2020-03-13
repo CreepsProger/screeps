@@ -117,7 +117,7 @@ var roleUpgrader = {
 				}
 			}
 
-			Memory.cpu.role('upgrading');
+			Memory.cpu.role(creep, 'upgrading');
 			if(!creep.memory.upgrading) {
 				roleNext.run(creep);
 			}
