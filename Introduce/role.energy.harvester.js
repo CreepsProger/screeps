@@ -116,13 +116,11 @@ var role = {
 
 		if(!target &&
 			 Memory.stop_upgrading == false &&
-			 creep.getActiveBodyparts(WORK)) {
-			target = creep.room.find(FIND_STRUCTURES, {
-				filter: (structure) => {
-					return (structure.structureType == STRUCTURE_STORAGE) &&
-						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 25000;
-				}
-			});
+			 creep.getActiveBodyparts(WORK) &&
+			 !!creep.room.storage &&
+			 !!creep.room.storage.my &&
+			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 25000) {
+			target = creep.room.storage;
 			role.log('🔜⚡', creep, 'STRUCTURE_STORAGE');
 		}
 
