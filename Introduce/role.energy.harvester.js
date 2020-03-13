@@ -66,8 +66,8 @@ var role = {
 		var target;
 
 		if(!target && this_room != my_room) {
-			const exitDir = Game.map.findExit(Game.rooms[this_room] , my_room);
-			target = creep.pos.findClosestByPath(exitDir);
+			const exit = creep.room.findExit(my_room);
+			target = creep.pos.findClosestByPath(exit);
 // 			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
 		}
 
@@ -77,7 +77,7 @@ var role = {
 		}
 
 		if(!target && !creep.getActiveBodyparts(WORK)) {
-			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+			target = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_CONTAINER) &&
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
@@ -103,10 +103,9 @@ var role = {
 		}
 
 		if(!target && creep.getActiveBodyparts(WORK)) {
-			target = creep.pos.findClosestByPath(FIND_SOURCES, {
+			target = creep.room.find(FIND_SOURCES, {
 				filter: (source) => {
 					return source.energy > 0 &&
-						 		 source.pos.roomName == my_room &&
 						(!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0 ||
 						  (!!DP2 && DP2.pos.roomName == this_room && DP2.pos.findPathTo(source).length <= 5))
 						}
@@ -116,10 +115,9 @@ var role = {
 		if(!target &&
 			 Memory.stop_upgrading == false &&
 			 creep.getActiveBodyparts(WORK)) {
-			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+			target = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_STORAGE) &&
-						structure.room.name == creep.room.name &&
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 25000;
 				}
 			});
