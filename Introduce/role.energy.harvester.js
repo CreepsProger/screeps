@@ -127,6 +127,8 @@ var role = {
 			role.log('🔜⚡', creep, 'STRUCTURE_STORAGE');
 		}
 
+		Memory.cpu.step.run(creep, role.name, 'getTarget 1');
+
 		if(!target && (creep.room.energyAvailable != creep.room.energyCapacityAvailable || Memory.stop_upgrading) &&
 			 (!creep.getActiveBodyparts(WORK) || creep.memory.rerun)) {
 			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
@@ -175,6 +177,8 @@ var role = {
 				target = tools.setTarget(creep,emptysource,emptysource.id,role.run);
 			}
 		}
+		
+		Memory.cpu.step.run(creep, role.name, 'getTarget 2');
 
 		return target;
 	},
@@ -185,7 +189,7 @@ var role = {
 		role.checkOn(creep);														Memory.cpu.step.run(creep, role.name, 'checkOn');
 
 		if(creep.memory[role.name].on) {
-			var target = role.getTarget(creep,executer);	Memory.cpu.step.run(creep, role.name, 'getTarget');
+			var target = role.getTarget(creep,executer);
 			if(target) {
 				var err = (target.name || !target.id)? // a creep || exit
 						ERR_NOT_IN_RANGE:
