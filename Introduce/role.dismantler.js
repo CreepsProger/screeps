@@ -120,7 +120,7 @@ var roleDismantler = {
 				}
 			}
 
-			Memory.cpu.role('dismantling');
+			Memory.cpu.role(creep, 'dismantling');
 			if(!creep.memory.dismantling) {
 				roleNext.run(creep);
 			}
