@@ -15,11 +15,12 @@ var metrix = {
 		x.movingAverage.i = (x.movingAverage.i + 1) % x.movingAverage.vs.length;
 	},
 
-	cpu: { role: function(role) {
+	cpu: { role: function(creep, role) {
 			Memory.cpu.dt = Game.cpu.getUsed() - Memory.cpu.t;
 			if(Memory.cpu.dt > Memory.cpu.dt_max_role) {
 				Memory.cpu.dt_max_role = Memory.cpu.dt;
 				Memory.cpu.role_max = role;
+				Memory.cpu.role_creep_max = creep.name;
 				if(Memory.cpu.dt > 1) {
 					console.log( '⏳', JSON.stringify(Memory.cpu));
 				}
