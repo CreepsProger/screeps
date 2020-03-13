@@ -130,14 +130,13 @@ var role = {
 			role.log('🔜⚡', creep, 'STRUCTURE_STORAGE');
 		}
 
-		if(!target && (creep.room.energyAvailable != creep.room.energyCapacityAvailable || Memory.stop_upgrading) &&
-			 (!creep.getActiveBodyparts(WORK) || creep.memory.rerun)) {
-			target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-				filter: (structure) => {
-					return (structure.structureType == STRUCTURE_STORAGE) &&
-						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 35000;
-				}
-			});
+		if(!target &&
+			 (creep.room.energyAvailable != creep.room.energyCapacityAvailable || Memory.stop_upgrading) &&
+			 (!creep.getActiveBodyparts(WORK) || creep.memory.rerun) &&
+			 !!creep.room.storage &&
+			 !!creep.room.storage.my &&
+			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 35000) {
+			target = creep.room.storage;
 		}
 
 		if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable &&
