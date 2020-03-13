@@ -102,6 +102,8 @@ var role = {
 			 }
 		}
 
+		Memory.cpu.step.run(creep, role.name, 'getTarget 1');
+
 		if(!target && creep.getActiveBodyparts(WORK)) {
 			target = creep.room.find(FIND_SOURCES, {
 				filter: (source) => {
@@ -123,8 +125,6 @@ var role = {
 			});
 			role.log('🔜⚡', creep, 'STRUCTURE_STORAGE');
 		}
-
-		Memory.cpu.step.run(creep, role.name, 'getTarget 1');
 
 		if(!target && (creep.room.energyAvailable != creep.room.energyCapacityAvailable || Memory.stop_upgrading) &&
 			 (!creep.getActiveBodyparts(WORK) || creep.memory.rerun)) {
