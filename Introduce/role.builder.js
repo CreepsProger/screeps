@@ -115,7 +115,7 @@ var roleBuilder = {
 				}
 			}
 
-			Memory.cpu.role('building');
+			Memory.cpu.role(creep, 'building');
 			if(!creep.memory.building) {
 				roleNext.run(creep);
 			}
