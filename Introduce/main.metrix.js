@@ -32,6 +32,8 @@ var metrix = {
 		},
 		
 		role: function(creep, role) {
+			metrix.cpu.step(creep, role, 'end');
+
 			const dt = Game.cpu.getUsed() - Memory.cpu.t_role;
 			if(dt > Memory.cpu.dt_max_role) {
 				Memory.cpu.dt_max_role = dt;
