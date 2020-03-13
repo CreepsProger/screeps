@@ -16,14 +16,14 @@ var links = {
 		 var link = creep.room.find(FIND_MY_STRUCTURES, {
 			 filter: (structure) => {
 				 return (structure.structureType == STRUCTURE_LINK) &&
+					 structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+					 link_weight < creep.memory.weight &&
+					 creep.pos.inRangeTo(structure, 10) &&
 					 (structure.id == '5e62c05bf15a4888dff60e26' ||
 	 				  structure.id == '5e61d337f15a48007bf5b603' ||
 						structure.id == '5e6778dfcfa64f5485786f84' ||
 					  structure.id == '5e56dc7a28e44c6f77878b87' ||
 						structure.id == '5e5f8ed0124b9b1087db5d47') &&
-					 structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-					 link_weight < creep.memory.weight &&
-					 creep.pos.inRangeTo(structure, 10) &&
 					 tools.checkTarget(executer,structure.id);
 			 }
 		 });
