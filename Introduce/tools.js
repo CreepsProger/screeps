@@ -11,6 +11,16 @@ const flags = require('main.flags');
 
 var tools = {
 
+	areFullContainers: function(creep) {
+		return creep.room.find(FIND_STRUCTURES, {filter: (structure) =>
+			structure.structureType == STRUCTURE_CONTAINER &&
+			structure.store.getFreeCapacity() > 0}).length == 0;
+	},
+
+	areEmptySources: function(creep) {
+		return creep.room.find(FIND_SOURCES, {filter: (source) => source.energy > 0}).length == 0;
+	},
+
 	checkTarget: function(executer,id) {
 		return (executer === undefined)? true:Memory.targets[id] === undefined;
 	},

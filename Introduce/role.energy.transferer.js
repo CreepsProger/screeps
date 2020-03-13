@@ -59,8 +59,7 @@ var roleEnergyTransferer = {
 // 				});
 // 			}
 
-			const this_room_sources_is_empty =
-				creep.room.find(FIND_SOURCES, {filter: (source) => source.energy > 0}).length == 0;
+			const this_room_sources_is_empty = tools.areEmptySources(creep);
 
 			if(!target && (!this_room_sources_is_empty || !creep.getActiveBodyparts(WORK))) {
 			//if(!target) {
