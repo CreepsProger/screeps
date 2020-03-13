@@ -55,8 +55,7 @@ var roleUpgrader = {
 			const my_room_config = Memory.config.rooms[my_room];
 			const this_room_sources_is_empty = tools.areEmptySources(creep);
 			const this_room_containers_are_full = tools.areFullContainers(creep);
-				filter: (source) => (source.energy > 0 && source.room.name == this_room)
-			});
+
 			const canDo =
 						(!Memory.stop_upgrading &&
 						 this_room == my_room &&
