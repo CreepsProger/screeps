@@ -94,7 +94,7 @@ var roleWithdrawer = {
 			}
 		}
 
-		Memory.cpu.role('withdrawing');
+		Memory.cpu.role(creep, 'withdrawing');
 		if(!creep.memory.withdrawing) {
 			roleNext.run(creep);
 		}
