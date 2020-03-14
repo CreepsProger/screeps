@@ -13,7 +13,7 @@ var role = {
 	logFlags: ['LC','LC ','L'],
 
 	log: function(creep,...args) {
-			if(log.canLog(role.logFlags)) {
+			if(log.canLog(role.logFlags, creep)) {
 				console.log( '🗝', Math.trunc(Game.time/10000), Game.time%10000
 										, creep.name
 										, role.name
@@ -101,8 +101,8 @@ var role = {
 				}
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.say('🔜🗝');
-					creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-					role.log(creep, 'moving from', JSON.stringify(creep.pos), 'to', JSON.stringify(target));
+					err = creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
+					role.log(creep, 'err:', err, 'moving from', JSON.stringify(creep.pos), 'to', JSON.stringify(target));
 				}
 				else if(!err) {
 					creep.say('🗝');

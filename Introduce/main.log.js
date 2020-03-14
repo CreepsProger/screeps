@@ -8,7 +8,8 @@ var mainLog = {
 			var name = flagNames[i];
 			var flag = Game.flags[name];
 // 			console.log(i,name,flag);
-			if(!!flag && flag.pos.roomName == creep.room.name && (!false || creep.memory.n == 6898)) {
+			if(!!flag &&
+				 flag.pos.roomName == creep.pos.roomName && (!false || creep.memory.n == 6898)) {
 				return (Game.time % flag.color == 0);
 			}
 		}
