@@ -18,18 +18,18 @@ var metrix = {
 	cpu:
 	{
 		step_time: function(creep, role, step) {
-			// var step = Memory.cpu.step;
-			const dt = Math.round((Game.cpu.getUsed() - Memory.cpu.step.t) * 10)/10 + 0.01;
-			if(dt > Memory.cpu.step.dt) {
-				Memory.cpu.step.dt = dt;
-				Memory.cpu.step.creep = creep.name;
-				Memory.cpu.step.role = role;
-				Memory.cpu.step.step = step;
-				if(Memory.cpu.step.dt > constants.CPU_LIMIT_OF_CREEP_ROLE_STEP_RUN) {
-					console.log( '⏳', Memory.cpu.step.dt, Memory.cpu.step.creep, Memory.cpu.step.role, Memory.cpu.step.step);
+			var cpu_time = Memory.cpu.step;
+			const dt = Math.round((Game.cpu.getUsed() - cpu_time.t) * 10)/10 + 0.01;
+			if(dt > cpu_time.dt) {
+				cpu_time.dt = dt;
+				cpu_time.creep = creep.name;
+				cpu_time.role = role;
+				cpu_time.step = step;
+				if(cpu.dt > constants.CPU_LIMIT_OF_CREEP_ROLE_STEP_RUN) {
+					console.log( '⏳', cpu_time.dt, cpu_time.creep, cpu_time.role, cpu_time.step);
 				}
 			}
-			Memory.cpu.step.t = Game.cpu.getUsed();
+			cpu_time.t = Game.cpu.getUsed();
 		},
 
 		role_time: function(creep, role) {
