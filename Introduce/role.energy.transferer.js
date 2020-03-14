@@ -151,6 +151,18 @@ var roleEnergyTransferer = {
 					 target = creep.room.storage;
 			}
 
+			if(!target &&
+				 !creep.getActiveBodyparts(WORK) &&
+				 creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
+				 creep.memory.rerun) {
+				var storages = _.filter(Game.structures, (structure) => !!structure.my &&
+						structure.structureType == STRUCTURE_STORAGE &&
+						structure.store.getUsedCapacity(RESOURCE_ENERGY) < 10*constants.START_UPGRADING_ENERGY);
+				if(storages.length > 0) {
+					target = storages[0];
+				}
+			}
+
 			if(target) {
 
 				var err = ERR_NOT_IN_RANGE;
