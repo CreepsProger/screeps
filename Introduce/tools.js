@@ -41,10 +41,10 @@ var tools = {
           return OK;
         }
       }
-			return constants.ERR_NO_PATH_2;
     }
+		return constants.ERR_NO_PATH_2;
+	},
 
-	}
 	areEmptySources: function(creep) {
 		return creep.room.find(FIND_SOURCES, {filter: (source) => source.energy > 0}).length == 0;
 	},
