@@ -17,6 +17,34 @@ var tools = {
 			structure.store.getFreeCapacity() > 0}).length == 0;
 	},
 
+	moveTo: function(creep,target) {
+		var err = creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
+
+		if (err == ERR_NO_PATH) {
+      if (creep.pos.x <= 1) {
+        if (creep.move(RIGHT) == OK) {
+          return OK;
+        }
+      }
+      if (creep.pos.x >= 48) {
+        if (creep.move(LEFT) == OK) {
+          return OK;
+        }
+      }
+      if (creep.pos.y <= 1) {
+        if (creep.move(BOTTOM) == OK) {
+          return OK;
+        }
+      }
+      if (creep.pos.y >= 48) {
+        if (creep.move(TOP) == OK) {
+          return OK;
+        }
+      }
+			return constants.ERR_NO_PATH_2;
+    }
+
+	}
 	areEmptySources: function(creep) {
 		return creep.room.find(FIND_SOURCES, {filter: (source) => source.energy > 0}).length == 0;
 	},
