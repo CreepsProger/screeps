@@ -139,10 +139,12 @@ var role = {
 			});
 			if(sources.length > 0) {
 				 var source2 = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-					 filter: (structure) => {return sources.find(s => s.id == structure.id);} 
+					 filter: (structure) => {
+						 return sources.find(s => s.id == structure.id);
+					 } 
 				 });
 				 if(!!source2) {
-					 target = source;
+					 target = source2;
 				 }
 			 }
 		}
