@@ -1,5 +1,5 @@
-const tools = require('tools');
 const constants = require('main.constants');
+const tools = require('tools');
 
 var links = {
 
