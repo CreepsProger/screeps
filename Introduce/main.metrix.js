@@ -59,6 +59,7 @@ var metrix = {
 				}
 			}
 			Memory.cpu.creep.t = Game.cpu.getUsed();
+		}
 	},
 
 	run: function() {
