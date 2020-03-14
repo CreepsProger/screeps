@@ -59,7 +59,8 @@ var roleUpgrader = {
 			const this_room_containers_are_full = tools.areFullContainers(creep);
 
 			const canDo =
-						((!Memory.stop_upgrading || this_room_containers_are_full) &&
+						(creep.getActiveBodyparts(WORK) &&
+						 (!Memory.stop_upgrading || this_room_containers_are_full) &&
 						 this_room == my_room &&
 						 !!creep.room.controller &&
 						 !!creep.room.controller.my &&
