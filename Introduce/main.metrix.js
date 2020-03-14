@@ -1,5 +1,4 @@
 const constants = require('main.constants');
-const config = require('main.config');
 const log = require('main.log');
 
 
