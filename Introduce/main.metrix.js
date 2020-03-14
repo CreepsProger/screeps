@@ -18,7 +18,7 @@ var metrix = {
 	cpu:
 	{
 		step: function(creep, role, step) {
-			const dt = Math.round((Game.cpu.getUsed() - Memory.cpu.step.t) * 100)/100;
+			const dt = Math.round((Game.cpu.getUsed() - Memory.cpu.step.t) * 10)/10 + 0.01;
 			if(dt > Memory.cpu.step.dt) {
 				Memory.cpu.step.dt = dt;
 				Memory.cpu.step.creep = creep.name;
@@ -34,7 +34,7 @@ var metrix = {
 		role: function(creep, role) {
 			metrix.cpu.step(creep, role, 'end');
 
-			const dt = Math.round((Game.cpu.getUsed() - Memory.cpu.t_role) * 100)/100;
+			const dt = Math.round((Game.cpu.getUsed() - Memory.cpu.t_role) * 10)/10 + 0.01;
 			if(dt > Memory.cpu.dt_max_role) {
 				Memory.cpu.dt_max_role = dt;
 				Memory.cpu.role_max = role;
@@ -47,7 +47,7 @@ var metrix = {
 		},
 
 		creep: function(creep) {
-			const dt = Math.round((Game.cpu.getUsed() - Memory.cpu.t) * 100)/100;
+			const dt = Math.round((Game.cpu.getUsed() - Memory.cpu.t) * 10)/10 + 0.01;
 			if(dt > Memory.cpu.dt_max) {
 				Memory.cpu.dt_max = dt;
 				Memory.cpu.name_max = creep.name;
