@@ -9,6 +9,7 @@ var towers = {
 		 towers.push(Game.getObjectById('5e4dfed162e84714acb66b58'));
 		 towers.push(Game.getObjectById('5e548bd68e41f2b534bffe4b'));
 		 towers.push(Game.getObjectById('5e5abedb9083d52a982adcf6'));
+		 towers.push(Game.getObjectById('5e6cb0041a23303a5ce6fc0a'));
 
 		 towers.forEach(function(tower) {
 			 var target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
