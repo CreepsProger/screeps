@@ -93,7 +93,7 @@ var role = {
 				if(!!cont) {
 					target = tools.setTarget(creep,cont,cont.id,role.run);
 				}
-			}		
+			}
 		}
 
 		Memory.cpu.step.run(creep, role.name, 'getTarget 1');
@@ -150,7 +150,7 @@ var role = {
 			 creep.getActiveBodyparts(WORK) &&
 			 !!creep.room.storage &&
 			 !!creep.room.storage.my &&
-			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 25000) {
+			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.STOP_UPGRADING_ENERGY) {
 			target = creep.room.storage;
 			role.log('🔜⚡', creep, 'STRUCTURE_STORAGE');
 		}
@@ -160,7 +160,7 @@ var role = {
 			 (!creep.getActiveBodyparts(WORK) || creep.memory.rerun) &&
 			 !!creep.room.storage &&
 			 !!creep.room.storage.my &&
-			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 35000) {
+			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.START_UPGRADING_ENERGY) {
 			target = creep.room.storage;
 		}
 
@@ -169,7 +169,7 @@ var role = {
 			 (!creep.getActiveBodyparts(WORK) || false) &&
 			 !!creep.room.storage &&
 			 !!creep.room.storage.my &&
-			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 5000) {
+			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_STORAGE_ENERGY) {
 			target = creep.room.storage;
 		}
 /*
@@ -200,7 +200,7 @@ var role = {
 				target = tools.setTarget(creep,emptysources[0],emptysources[0].id,role.run);
 			}
 		}
-		
+
 		Memory.cpu.step.run(creep, role.name, 'getTarget 2');
 
 		return target;
