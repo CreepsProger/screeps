@@ -95,14 +95,12 @@ var roleEnergyTransferer = {
 					}
 				});
 				if(extensions.length > 0) {
-					 var extension = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-						filter: (structure) => {
-							return extensions.find(e => e.id == structure.id);
-						}
+					var extension = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+						filter: (structure) => extensions.find(e => e.id == structure.id)
 					});
-				}
-				if(!!extension) {
-					target = tools.setTarget(creep,extension,extension.id,roleEnergyTransferer.run);
+					if(!!extension) {
+						target = tools.setTarget(creep,extension,extension.id,roleEnergyTransferer.run);
+					}
 				}
 			}
 			
