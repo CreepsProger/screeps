@@ -33,7 +33,7 @@ var metrix = {
 		},
 
 		step_time: function(creep, role, step) {
-			cpu.time(Memory.cpu.step, constants.CPU_LIMIT_OF_CREEP_ROLE_STEP_RUN, creep, role, step);
+			metrix.cpu.time(Memory.cpu.step, constants.CPU_LIMIT_OF_CREEP_ROLE_STEP_RUN, creep, role, step);
 			// const dt = Math.round((Game.cpu.getUsed() - cpu_time.t) * 10)/10 + 0.01;
 			// if(dt > cpu_time.dt) {
 			// 	cpu_time.dt = dt;
@@ -48,8 +48,8 @@ var metrix = {
 		},
 
 		role_time: function(creep, role) {
-			metrix.cpu.step_time(creep, role, 'end');
-			cpu.time(Memory.cpu.step, constants.CPU_LIMIT_OF_CREEP_ROLE_RUN, creep, role);
+			metrix.cpu.step_time(creep, role, 'endstep');
+			metrix.cpu.time(Memory.cpu.step, constants.CPU_LIMIT_OF_CREEP_ROLE_RUN, creep, role);
 			// const dt = Math.round((Game.cpu.getUsed() - Memory.cpu.role.t) * 10)/10 + 0.01;
 			// if(dt > Memory.cpu.role.dt) {
 			// 	Memory.cpu.role.dt = dt;
@@ -64,7 +64,7 @@ var metrix = {
 
 		creep_time: function(creep) {
 			metrix.cpu.role_time(creep, 'endrole');
-			cpu.time(Memory.cpu.step, constants.CPU_LIMIT_OF_CREEP_RUN, creep);
+			metrix.cpu.time(Memory.cpu.step, constants.CPU_LIMIT_OF_CREEP_RUN, creep);
 		// 	const dt = Math.round((Game.cpu.getUsed() - Memory.cpu.creep.t) * 10)/10 + 0.01;
 		// 	if(dt > Memory.cpu.creep.dt) {
 		// 		Memory.cpu.creep.dt = dt;
