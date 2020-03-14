@@ -9,7 +9,7 @@ const constants = {
 	, CPU_LIMIT_OF_CREEP_RUN : 4
 	, CPU_LIMIT_OF_CREEP_ROLE_RUN : 3
 	, CPU_LIMIT_OF_CREEP_ROLE_STEP_RUN : 2
-	, ERR_NO_PATH_2
+	, ERR_NO_PATH_2 : -22
 };
 
 
