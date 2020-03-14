@@ -48,7 +48,7 @@ var metrix = {
 		},
 
 		creep_time: function(creep) {
-			metrix.cpu.role_time(creep, 'endrole');
+			// metrix.cpu.role_time(creep, 'endrole');
 
 			const dt = Math.round((Game.cpu.getUsed() - Memory.cpu.creep.t) * 10)/10 + 0.01;
 			if(dt > Memory.cpu.creep.dt) {
