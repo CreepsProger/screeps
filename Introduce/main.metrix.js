@@ -17,49 +17,64 @@ var metrix = {
 
 	cpu:
 	{
-		step_time: function(creep, role, step) {
-			var cpu_time = Memory.cpu.step;
-			const dt = Math.round((Game.cpu.getUsed() - cpu_time.t) * 10)/10 + 0.01;
+		time: function(cpu_time, limit, creep = undefined, role = undefined, step = undefined) {
+			const dt = Math.round((Game.cpu.getUsed() - cpu_time.t) * 10)/10;
 			if(dt > cpu_time.dt) {
 				cpu_time.dt = dt;
-				cpu_time.creep = creep.name;
-				cpu_time.role = role;
-				cpu_time.step = step;
-				if(cpu_time.dt > constants.CPU_LIMIT_OF_CREEP_ROLE_STEP_RUN) {
-					console.log( '⏳', cpu_time.dt, cpu_time.creep, cpu_time.role, cpu_time.step);
+				if(!!creep) cpu_time.creep = creep.name;
+				if(!!role)  cpu_time.role = role;
+				if(!!step)  cpu_time.step = step;
+				if(cpu_time.dt > limit) {
+					// console.log( '⏳', cpu_time.dt, cpu_time.creep, cpu_time.role, cpu_time.step);
+					console.log( '⏳', JSON.stringify(cpu_time));
 				}
 			}
 			cpu_time.t = Game.cpu.getUsed();
 		},
 
+		step_time: function(creep, role, step) {
+			cpu.time(Memory.cpu.step, constants.CPU_LIMIT_OF_CREEP_ROLE_STEP_RUN, creep, role, step);
+			// const dt = Math.round((Game.cpu.getUsed() - cpu_time.t) * 10)/10 + 0.01;
+			// if(dt > cpu_time.dt) {
+			// 	cpu_time.dt = dt;
+			// 	cpu_time.creep = creep.name;
+			// 	cpu_time.role = role;
+			// 	cpu_time.step = step;
+			// 	if(cpu_time.dt > constants.CPU_LIMIT_OF_CREEP_ROLE_STEP_RUN) {
+			// 		console.log( '⏳', cpu_time.dt, cpu_time.creep, cpu_time.role, cpu_time.step);
+			// 	}
+			// }
+			// cpu_time.t = Game.cpu.getUsed();
+		},
+
 		role_time: function(creep, role) {
 			metrix.cpu.step_time(creep, role, 'end');
-
-			const dt = Math.round((Game.cpu.getUsed() - Memory.cpu.role.t) * 10)/10 + 0.01;
-			if(dt > Memory.cpu.role.dt) {
-				Memory.cpu.role.dt = dt;
-				Memory.cpu.role.creep = creep.name;
-				Memory.cpu.role.role = role;
-				if(Memory.cpu.role.dt > constants.CPU_LIMIT_OF_CREEP_ROLE_RUN) {
-					console.log( '⏳', Memory.cpu.role.dt, Memory.cpu.role.creep, Memory.cpu.role.role);
-				}
-			}
-			Memory.cpu.role.t = Game.cpu.getUsed();
+			cpu.time(Memory.cpu.step, constants.CPU_LIMIT_OF_CREEP_ROLE_RUN, creep, role);
+			// const dt = Math.round((Game.cpu.getUsed() - Memory.cpu.role.t) * 10)/10 + 0.01;
+			// if(dt > Memory.cpu.role.dt) {
+			// 	Memory.cpu.role.dt = dt;
+			// 	Memory.cpu.role.creep = creep.name;
+			// 	Memory.cpu.role.role = role;
+			// 	if(Memory.cpu.role.dt > constants.CPU_LIMIT_OF_CREEP_ROLE_RUN) {
+			// 		console.log( '⏳', Memory.cpu.role.dt, Memory.cpu.role.creep, Memory.cpu.role.role);
+			// 	}
+			// }
+			// Memory.cpu.role.t = Game.cpu.getUsed();
 		},
 
 		creep_time: function(creep) {
-			// metrix.cpu.role_time(creep, 'endrole');
-
-			const dt = Math.round((Game.cpu.getUsed() - Memory.cpu.creep.t) * 10)/10 + 0.01;
-			if(dt > Memory.cpu.creep.dt) {
-				Memory.cpu.creep.dt = dt;
-				Memory.cpu.creep.creep = creep.name;
-				if(Memory.cpu.creep.dt > constants.CPU_LIMIT_OF_CREEP_RUN) {
-					console.log( '⏳', Memory.cpu.creep.dt, Memory.cpu.creep.creep);
-				}
-			}
-			Memory.cpu.creep.t = Game.cpu.getUsed();
-		}
+			metrix.cpu.role_time(creep, 'endrole');
+			cpu.time(Memory.cpu.step, constants.CPU_LIMIT_OF_CREEP_RUN, creep);
+		// 	const dt = Math.round((Game.cpu.getUsed() - Memory.cpu.creep.t) * 10)/10 + 0.01;
+		// 	if(dt > Memory.cpu.creep.dt) {
+		// 		Memory.cpu.creep.dt = dt;
+		// 		Memory.cpu.creep.creep = creep.name;
+		// 		if(Memory.cpu.creep.dt > constants.CPU_LIMIT_OF_CREEP_RUN) {
+		// 			console.log( '⏳', Memory.cpu.creep.dt, Memory.cpu.creep.creep);
+		// 		}
+		// 	}
+		// 	Memory.cpu.creep.t = Game.cpu.getUsed();
+		// }
 	},
 
 	run: function() {
