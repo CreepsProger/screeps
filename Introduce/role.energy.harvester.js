@@ -141,9 +141,7 @@ var role = {
 			if(sources.length > 0) {
 				//target = sources[0];
 				 var source = creep.pos.findClosestByPath(FIND_SOURCES, {
-					 filter: (structure) => {
-						 return sources.find(source => source.id == structure.id);
-					 } 
+					 filter: (closest) => sources.find(source => source.id == closest.id);
 				 });
 				 if(!!source) {
 					 target = source;
