@@ -163,7 +163,7 @@ var spawns = {
 					spawns.tryCreateCreep(spawn,    2000000000002, 50, 1); // V 1-1 E   Claimer
 	 				spawns.tryCreateCreep(spawn,             3015, 51, 2); // V 1-1 E    Carier
 					spawns.tryCreateCreep(spawn,           130911, 54, 2); // V 1-1 E    Worker
-	        spawns.tryCreateCreep(spawn,             3015, 61, 0); // V 1-1 E    Carier
+	        spawns.tryCreateCreep(spawn,             3015, 61, 1); // V 1-1 E    Carier
 					spawns.tryCreateCreep(spawn,           130911, 64, 3); // V 1-1 E    Worker
           //                                                16
 					//                           TTClRrAaHhWwCcMm, 66, 3); // V 1-2 E   Attacker
