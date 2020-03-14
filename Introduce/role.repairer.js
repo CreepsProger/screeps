@@ -1,8 +1,11 @@
 const roleNext = require('role.energy.transferer');
 const constants = require('main.constants');
 const config = require('main.config');
-const tools = require('tools');
 const metrix = require('main.metrix');
+const flags = require('main.flags');
+const links = require('main.links');
+const log = require('main.log');
+const tools = require('tools');
 
 var roleRepairer = {
 
@@ -102,9 +105,9 @@ var roleRepairer = {
 					}
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜🔧');
-						creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
+						err = tools.moveTo(creep,target);
 // 						console.log( '🔜🔧', Math.trunc(Game.time/10000), Game.time%10000
-// 												, creep.name
+// 												, creep.name, err
 // 												, 'moving for repairing:'
 // 												, target.name?target.name:target.structureType);
 					}

@@ -1,8 +1,11 @@
-const links = require('main.links');
 const roleNext = require('role.noenergy.transferer');
 const constants = require('main.constants');
-const tools = require('tools');
+const config = require('main.config');
 const metrix = require('main.metrix');
+const flags = require('main.flags');
+const links = require('main.links');
+const log = require('main.log');
+const tools = require('tools');
 
 var roleEnergyTransferer = {
 
@@ -173,10 +176,11 @@ var roleEnergyTransferer = {
 
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.say('🔜💡');
-					creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
+					err = tools.moveTo(creep,target);
 					if(!!Game.flags['LET'] || !!Game.flags['LE'] || !!Game.flags['L']) {
 						console.log( '🔜💡', Math.trunc(Game.time/10000), Game.time%10000
 												, creep.name
+												, err
 												, 'moving for transfering energy to:'
 												, target.name?target.name:target.structureType);
 					}

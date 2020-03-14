@@ -1,6 +1,10 @@
 const roleNext = require('role.dismantler');
+const constants = require('main.constants');
 const config = require('main.config');
 const metrix = require('main.metrix');
+const flags = require('main.flags');
+const log = require('main.log');
+const tools = require('tools');
 
 var role = {
 
@@ -219,7 +223,7 @@ var role = {
 
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜🎯');
-						creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
+						tools.moveTo(creep,target);
 						if(!!Game.flags['LA '] || !!Game.flags['LA'] || !!Game.flags['L']) {
 							var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
 							console.log( '🔜🎯', Math.trunc(Game.time/10000), Game.time%10000

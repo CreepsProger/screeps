@@ -1,6 +1,11 @@
 var roleNext = require('role.pickuper');
-const tools = require('tools');
+const constants = require('main.constants');
+const config = require('main.config');
 const metrix = require('main.metrix');
+const flags = require('main.flags');
+const links = require('main.links');
+const log = require('main.log');
+const tools = require('tools');
 
 var roleWithdrawer = {
 	/** @param {Creep} creep **/
@@ -59,7 +64,7 @@ var roleWithdrawer = {
 
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.say('🔜💼');
-					creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
+					err = tools.moveTo(creep,target);
 
 					var id;
 					if(!!target.id) {

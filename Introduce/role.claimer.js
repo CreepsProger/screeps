@@ -1,8 +1,9 @@
 const roleNext = require('role.attacker');
+const constants = require('main.constants');
 const config = require('main.config');
+const metrix = require('main.metrix');
 const flags = require('main.flags');
 const log = require('main.log');
-const metrix = require('main.metrix');
 const tools = require('tools');
 
 var git = '$Format:%H$';
@@ -102,7 +103,6 @@ var role = {
 				}
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.say('🔜🗝');
-					// err = creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
 					err = tools.moveTo(creep,target);
 					role.log(creep, 'err:', err, 'moving from', JSON.stringify(creep.pos), 'to', JSON.stringify(target));
 				}

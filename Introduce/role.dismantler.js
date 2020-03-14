@@ -1,8 +1,10 @@
 const roleNext = require('role.repairer');
 const constants = require('main.constants');
 const config = require('main.config');
-const tools = require('tools');
 const metrix = require('main.metrix');
+const flags = require('main.flags');
+const log = require('main.log');
+const tools = require('tools');
 
 
 var roleDismantler = {
@@ -88,7 +90,7 @@ var roleDismantler = {
 					}
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜⛏');
-						creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
+						err = tools.moveTo(creep,target);
 // 						console.log( '🔜⛏', Math.trunc(Game.time/10000), Game.time%10000
 // 												, creep.name
 // 												, 'moving for dismantling:'

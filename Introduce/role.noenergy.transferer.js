@@ -1,5 +1,11 @@
 var roleNext = require('role.withdrawer');
+const constants = require('main.constants');
+const config = require('main.config');
 const metrix = require('main.metrix');
+const flags = require('main.flags');
+const links = require('main.links');
+const log = require('main.log');
+const tools = require('tools');
 
 var roleNoEnergyTransferer = {
 
@@ -25,12 +31,13 @@ var roleNoEnergyTransferer = {
                 var noenergy_amount = creep.store.getUsedCapacity() - energy_amount;
                 var err = creep.transfer(target);
                 if(err == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-                    creep.say('🚐💦');
-                    console.log( '🚐💦', Math.trunc(Game.time/10000), Game.time%10000
-                                , creep.name
-                                , 'moving for transfering no/energy(' + noenergy_amount + '/' + energy_amount + ') to:'
-                                , target.name?target.name:target.structureType);
+									creep.say('🚐💦');
+									err = tools.moveTo(creep,target);
+									console.log( '🚐💦', Math.trunc(Game.time/10000), Game.time%10000
+																		, creep.name
+																		, err
+                                		, 'moving for transfering no/energy(' + noenergy_amount + '/' + energy_amount + ') to:'
+                                		, target.name?target.name:target.structureType);
                 }
                 else if(!err) {
                     creep.say('💦');

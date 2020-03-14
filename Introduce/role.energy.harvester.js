@@ -1,10 +1,10 @@
-const links = require('main.links');
 const constants = require('main.constants');
 const config = require('main.config');
+const metrix = require('main.metrix');
 const flags = require('main.flags');
+const links = require('main.links');
 const log = require('main.log');
 const tools = require('tools');
-const metrix = require('main.metrix');
 
 var git = '$Format:%H$';
 
@@ -223,8 +223,8 @@ var role = {
 
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.say('🔜⚡');
-					creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-					role.log('🔜⚡', creep, 'moving from', JSON.stringify(creep.pos), 'to', JSON.stringify(target));
+					err = tools.moveTo(creep,target);
+					role.log('🔜⚡', creep, err, 'moving from', JSON.stringify(creep.pos), 'to', JSON.stringify(target));
 				}
 				else if(!err) {
 					creep.say('⚡');

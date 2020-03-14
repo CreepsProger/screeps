@@ -1,4 +1,7 @@
 // $Id$
+const log = require('main.log');
+const tools = require('tools');
+
 var lastFlagRemoved;
 
 var last_game_time_created_creep = 0;
@@ -150,7 +153,7 @@ var mainFlags = {
 	// BR: Build Rampart
     BR: function(BR) {
 			const err = Game.rooms[BR.pos.roomName].createConstructionSite(BR.pos,STRUCTURE_RAMPART);
-			
+
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'err:'
 									, err
@@ -278,7 +281,7 @@ var mainFlags = {
                 }
             });
             if(target)
-                creep.moveTo(target);
+                tools.moveTo(creep,target);
         }
 
         lastFlagRemoved = CMTCC;
