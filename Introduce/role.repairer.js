@@ -21,8 +21,12 @@ var roleRepairer = {
 					creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0)) {
 				creep.memory.repairing = false;
 			}
-
+			
+			const this_room = creep.room.name;				
+			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
+			
 			if(!creep.memory.repairing &&
+				 this_room == my_room &&
 				 creep.getActiveBodyparts(WORK) > 0 &&
 				 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 					 creep.store.getFreeCapacity() == 0) ||
@@ -32,22 +36,9 @@ var roleRepairer = {
 			}
 
 			if(creep.memory.repairing) {
-
-				const this_room = creep.room.name;
-				const this_room_config = Memory.config.rooms[this_room];
-				// const my_room = creep.memory[role.name].room;
-				const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
-				const my_room_config = Memory.config.rooms[my_room];
-
-
+				
 				var target;
-
-				if(!target && this_room != my_room) {
-    			const exitDir = Game.map.findExit(this_room, my_room);
-    			target = creep.pos.findClosestByPath(exitDir);
-    // 			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
-    		}
-
+				
 				if(!creep.memory.prev_target_id)
 					creep.memory.prev_target_id = '0';
 
