@@ -114,15 +114,12 @@ var role = {
 				 }
 			 });
 			 if(sources.length > 0) {
-				 target = sources[0];/*
-				 var source2 = creep.pos.findClosestByPath(FIND_SOURCES, {
-					 filter: (structure) => {
-						 return sources.find(s => s.id == structure.id);
-					 } 
+				var source = creep.pos.findClosestByPath(FIND_SOURCES, {
+					 filter: (closest) => sources.find(source => source.id == closest.id)
 				 });
-				 if(!!source2) {
+				 if(!!source) {
 					 target = tools.setTarget(creep,source2,source2.id,role.run);
-				 }*/
+				 }
 			 }
 		}
 
@@ -139,8 +136,7 @@ var role = {
 						}
 			});
 			if(sources.length > 0) {
-				//target = sources[0];
-				 var source = creep.pos.findClosestByPath(FIND_SOURCES, {
+				var source = creep.pos.findClosestByPath(FIND_SOURCES, {
 					 filter: (closest) => sources.find(source => source.id == closest.id)
 				 });
 				 if(!!source) {
