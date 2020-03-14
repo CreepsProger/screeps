@@ -21,9 +21,12 @@ var metrix = {
 			const dt = Math.round((Game.cpu.getUsed() - cpu_time.t) * 10)/10;
 			if(dt > cpu_time.dt) {
 				cpu_time.dt = dt;
-				if(!!creep) cpu_time.creep = creep.name;
-				if(!!role)  cpu_time.role = role;
-				if(!!step)  cpu_time.step = step;
+				if(!!creep)
+				 	cpu_time.creep = creep.name;
+				if(!!role)
+				  	cpu_time.role = role;
+				if(!!step)
+				  	cpu_time.step = step;
 				if(cpu_time.dt > limit) {
 					// console.log( '⏳', cpu_time.dt, cpu_time.creep, cpu_time.role, cpu_time.step);
 					console.log( '⏳', JSON.stringify(cpu_time));
