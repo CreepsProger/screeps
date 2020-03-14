@@ -114,13 +114,13 @@ var role = {
 				 }
 			 });
 			 if(sources.length > 0) {
-				 var source = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+				 var source2 = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 					 filter: (structure) => {
 						 return sources.find(s => s.id == structure.id);
 					 } 
 				 });
-				 if(!!source) {
-					 target = tools.setTarget(creep,source,source.id,role.run);
+				 if(!!source2) {
+					 target = tools.setTarget(creep,source2,source2.id,role.run);
 				 }
 			 }
 		}
@@ -138,10 +138,10 @@ var role = {
 						}
 			});
 			if(sources.length > 0) {
-				 var source = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+				 var source2 = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 					 filter: (structure) => {return sources.find(s => s.id == structure.id);} 
 				 });
-				 if(!!source) {
+				 if(!!source2) {
 					 target = source;
 				 }
 			 }
