@@ -85,8 +85,15 @@ var role = {
 				}
 			});
 			if(conts.length > 0) {
-				 target = conts[0];
-			 }
+				var cont = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+					filter: (structure) => {
+						return conts.find(e => e.id == structure.id);
+					}
+				});
+				if(!!cont) {
+					target = tools.setTarget(creep,cont,cont.id,role.run);
+				}
+			}		
 		}
 
 		Memory.cpu.step.run(creep, role.name, 'getTarget 1');
