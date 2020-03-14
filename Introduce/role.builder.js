@@ -56,10 +56,9 @@ var roleBuilder = {
 				var target;
 
 				if(!target && this_room != my_room) {
-    			const exitDir = Game.map.findExit(this_room, my_room);
-    			target = creep.pos.findClosestByPath(exitDir);
-    // 			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
-    		}
+					const exit = creep.room.findExitTo(my_room);
+					target = creep.pos.findClosestByPath(exit);
+				}
 
 				if(!target) {
 					target = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES)
