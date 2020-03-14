@@ -172,9 +172,9 @@ var spawns = {
 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           130911, 64, 4); // V 1-1 E    Worker
           //                                                                                      18
 					//                                                                 TTClRrAaHhWwCcMm, 66, 3); // V 1-2 E   Attacker
-          if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1500001000000025, 66, 1); // V 1-2 E   Attacker
-          if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1000000007000009, 67, 1); // V 1-2 E     Healer
-          if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  500100000000015, 68, 1); // V 1-2 E  RAttacker
+          // if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1500001000000025, 66, 1); // V 1-2 E   Attacker
+          // if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1000000007000009, 67, 1); // V 1-2 E     Healer
+          // if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  500100000000015, 68, 1); // V 1-2 E  RAttacker
 					//                                                                 TTClRrAaHhWwCcMm,100, 3); // V 1-2 E   Attacker
 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  500100000000015, 76, 2); // V 1-2 E  RAttacker
 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  200000008000005, 77, 2); // V 1-2 E     Healer
