@@ -47,7 +47,7 @@ var roleRepairer = {
 				const D1 = Game.flags['D1'];// dismanle
 				const D2 = Game.flags['D1'];// dismanle
 				if(!target) {
-					var structures = creep.pos.findInRange(FIND_STRUCTURES, 50, {
+					var structures = creep.room.find(FIND_STRUCTURES, {
 						filter: (structure) => {
 							if((structure.structureType == STRUCTURE_ROAD || structure.structureType == STRUCTURE_CONTAINER) &&
 								 structure.pos.roomName == my_room &&
