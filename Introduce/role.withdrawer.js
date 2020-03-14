@@ -15,7 +15,11 @@ var roleWithdrawer = {
 			creep.memory.withdrawing = false;
 		}
 
+		const this_room = creep.room.name;
+		const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
+		
 		if(!creep.memory.withdrawing &&
+			 this_room == my_room &&
 			 creep.getActiveBodyparts(CARRY) > 0 &&
 			 (creep.store.getUsedCapacity() == 0 ||
 				(creep.store.getFreeCapacity() > 0 && creep.memory.rerun))) {
@@ -26,27 +30,43 @@ var roleWithdrawer = {
 			var target;
 
 			if(!target) {
-				var tombstone = creep.pos.findClosestByPath(FIND_TOMBSTONES,  {
+				var tombstones = creep.room.find(FIND_TOMBSTONES,  {
 					filter: (structure) => {
 						return structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 							tools.checkTarget(executer,structure.creep.id);
 					}
 				});
-				if(!!tombstone) {
-					target = tools.setTarget(creep,tombstone,tombstone.creep.id,roleWithdrawer.run);
-				}
+				if(tombstones.length > 0) {
+					var tombstone = creep.pos.findClosestByPath(FIND_TOMBSTONES, {
+							filter: (tombstone) => {
+								return structures.find(t => t.id == tombstone.id) &&
+									tools.checkTarget(executer,tombstone.id);;
+							}
+						});
+					}
+					if(!!tombstone) {
+						target = tools.setTarget(creep,tombstone,tombstone.id,roleWithdrawer.run);
+					}
 			}
 
 			if(!target) {
-				var ruin = creep.pos.findClosestByPath(FIND_RUINS,  {
-					filter: (structure) => {
-						return structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-							tools.checkTarget(executer,structure.id);
+				var ruins = creep.room.find(FIND_RUINS,  {
+					filter: (ruin) => {
+						return ruin.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
+							tools.checkTarget(executer,ruin.id);
 					}
 				});
-				if(!!ruin) {
-					target = tools.setTarget(creep,ruin,ruin.id,roleWithdrawer.run);
-				}
+				if(ruins.length > 0) {
+					var ruin = creep.pos.findClosestByPath(FIND_RUINS, {
+							filter: (ruin) => {
+								return ruins.find(r => r.id == ruin.id) &&
+									tools.checkTarget(executer,ruin.id);;
+							}
+						});
+					}
+					if(!!ruin) {
+						target = tools.setTarget(creep,ruin,ruin.id,roleWithdrawer.run);
+					}
 			}
 
 			if(target) {
