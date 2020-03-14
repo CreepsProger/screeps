@@ -79,7 +79,7 @@ var metrix = {
 		Memory.totals.NeedsBodys = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].bodys,0);
 		Memory.totals.NeedsCost = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].cost,0);
 
-		if(Game.time % config.ticksToCheckCreepsNumber == 0) {
+		if(Game.time % constants.TICKS_TO_CHECK_CREEPS_NUMBER == 0) {
 //          var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
 			Memory.totals.CreepsNumber = 0;
 
@@ -121,7 +121,7 @@ var metrix = {
 
 	output: function() {
 
-		if(Game.time % config.ticksToCheckCreepsNumber == 0) {
+		if(Game.time % constants.TICKS_TO_CHECK_CREEPS_NUMBER == 0) {
 			if(Game.flags['LWE'] || Game.flags['LW'] || Game.flags['L']) {
 				console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 										, creep.name
@@ -166,12 +166,12 @@ var metrix = {
 									, JSON.stringify(Memory.CreepsNumberByType)
 									, JSON.stringify(Memory.CreepsMinTicksToLive)
 								 );
-			if(Game.time % (config.ticksToCheckCreepsNumber * 20) == 0) {
+			if(Game.time % (constants.TICKS_TO_CHECK_CREEPS_NUMBER * 20) == 0) {
 				console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 										, JSON.stringify(BODYPARTS_ALL));
 			}
 
-			if(Game.time % (config.ticksToCheckCreepsNumber * 1000) == 0) {
+			if(Game.time % (constants.TICKS_TO_CHECK_CREEPS_NUMBER * 1000) == 0) {
 				console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 										, JSON.stringify(RESOURCES_ALL));
 			}

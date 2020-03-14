@@ -139,7 +139,7 @@ var role = {
 					//console.log('A2', creep, 'this_room:', this_room, 'range', range, 'A2:', JSON.stringify(A2));
 					if(A2.pos.roomName == this_room) {
 						range = 5*A2.color;
-						if(Game.time % config.ticksToCheckCreepsNumber == 0) {
+						if(Game.time % constants.TICKS_TO_CHECK_CREEPS_NUMBER == 0) {
 						//console.log('A2', creep, 'this_room:', this_room, 'range', range, 'A2:', JSON.stringify(A2));
 						}
 					}

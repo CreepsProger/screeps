@@ -129,7 +129,7 @@ var spawns = {
 
 	run: function() {
 
-		if(Game.time % config.ticksToCheckCreepsNumber != 0)
+		if(Game.time % constants.TICKS_TO_CHECK_CREEPS_NUMBER != 0)
 			return;
 
 		for(var name in Game.spawns) {
