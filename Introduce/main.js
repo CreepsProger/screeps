@@ -31,9 +31,10 @@ module.exports.loop = function () {
 	metrix.output();
 
 	Memory.targets = {};
-	Memory.cpu = { creep:{time: metrix.cpu.creep_time, t: Game.cpu.getUsed(), dt:0, creep: ''}
-							 , role :{time: metrix.cpu.role_time , t: Game.cpu.getUsed(), dt:0, creep: '', role: ''}
-							 , step :{time: metrix.cpu.step_time , t: Game.cpu.getUsed(), dt:0, creep: '', role: '', step: ''}};
+	Memory.cpu = {};
+	Memory.cpu = { creep: {time: metrix.cpu.creep_time, t: Game.cpu.getUsed(), dt: 0, creep: ''}
+							 , role : {time: metrix.cpu.role_time , t: Game.cpu.getUsed(), dt: 0, creep: '', role: ''}
+							 , step : {time: metrix.cpu.step_time , t: Game.cpu.getUsed(), dt: 0, creep: '', role: '', step: ''}};
 
 	for(var name in Game.creeps) {
 		var creep = Game.creeps[name];
