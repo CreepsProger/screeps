@@ -2,6 +2,7 @@ const roleNext = require('role.energy.transferer');
 const constants = require('main.constants');
 const config = require('main.config');
 const tools = require('tools');
+const metrix = require('main.metrix');
 
 var roleRepairer = {
 
@@ -131,7 +132,7 @@ var roleRepairer = {
 				}
 			}
 
-			Memory.cpu.role.time(creep, 'repairing');
+			metrix.cpu.role_time(creep, 'repairing');
 			if(!creep.memory.repairing) {
 				roleNext.run(creep);
 			}

@@ -2,6 +2,7 @@ var roleNext = require('role.upgrader');
 const constants = require('main.constants');
 const config = require('main.config');
 const tools = require('tools');
+const metrix = require('main.metrix');
 
 var roleBuilder = {
 
@@ -115,7 +116,7 @@ var roleBuilder = {
 				}
 			}
 
-			Memory.cpu.role.time(creep, 'building');
+			metrix.cpu.role_time(creep, 'building');
 			if(!creep.memory.building) {
 				roleNext.run(creep);
 			}

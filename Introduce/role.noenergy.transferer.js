@@ -1,4 +1,5 @@
 var roleNext = require('role.withdrawer');
+const metrix = require('main.metrix');
 
 var roleNoEnergyTransferer = {
 
@@ -53,7 +54,7 @@ var roleNoEnergyTransferer = {
             }
         }
 
-				Memory.cpu.role.time(creep, 'noenergytransfering');
+				metrix.cpu.role_time(creep, 'noenergytransfering');
         if(!creep.memory.noenergytransfering) {
             roleNext.run(creep);
         }

@@ -4,6 +4,7 @@ const config = require('main.config');
 const flags = require('main.flags');
 const log = require('main.log');
 const tools = require('tools');
+const metrix = require('main.metrix');
 
 var git = '$Format:%H$';
 
@@ -96,7 +97,7 @@ var role = {
 			}
 		}
 
-		Memory.cpu.step.time(creep, role.name, 'getTarget 1');
+		metrix.cpu.step_time(creep, role.name, 'getTarget 1');
 
 		const DP2 = Game.flags['DP2'];
 
@@ -201,15 +202,15 @@ var role = {
 			}
 		}
 
-		Memory.cpu.step.time(creep, role.name, 'getTarget 2');
+		metrix.cpu.step_time(creep, role.name, 'getTarget 2');
 
 		return target;
 	},
 
 	run: function(creep,executer = undefined) {
-		role.init(creep);																Memory.cpu.step.time(creep, role.name, 'init');
-		role.checkOff(creep);														Memory.cpu.step.time(creep, role.name, 'checkOff');
-		role.checkOn(creep);														Memory.cpu.step.time(creep, role.name, 'checkOn');
+		role.init(creep);																metrix.cpu.step_time(creep, role.name, 'init');
+		role.checkOff(creep);														metrix.cpu.step_time(creep, role.name, 'checkOff');
+		role.checkOn(creep);														metrix.cpu.step_time(creep, role.name, 'checkOn');
 
 		if(creep.memory[role.name].on) {
 			var target = role.getTarget(creep,executer);
@@ -249,7 +250,7 @@ var role = {
 			}
 		}
 
-		Memory.cpu.role.time(creep, role.name);
+		metrix.cpu.role_time(creep, role.name);
 		if(!creep.memory.rerun) {
 			creep.memory.rerun = 1;
 			if(!creep.memory[role.name].on) {

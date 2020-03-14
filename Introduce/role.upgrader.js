@@ -1,6 +1,7 @@
 const roleNext = require('role.energy.harvester');
 const constants = require('main.constants');
 const tools = require('tools');
+const metrix = require('main.metrix');
 
 
 var roleUpgrader = {
@@ -120,7 +121,7 @@ var roleUpgrader = {
 				}
 			}
 
-			Memory.cpu.role.time(creep, 'upgrading');
+			metrix.cpu.role_time(creep, 'upgrading');
 			if(!creep.memory.upgrading) {
 				roleNext.run(creep);
 			}

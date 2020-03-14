@@ -1,5 +1,6 @@
 var roleNext = require('role.builder');
 const tools = require('tools');
+const metrix = require('main.metrix');
 
 
 var rolePickuper = {
@@ -73,7 +74,7 @@ var rolePickuper = {
             }
         }
 
-				Memory.cpu.role.time(creep, 'pickuping');
+				metrix.cpu.role_time(creep, 'pickuping');
         if(!creep.memory.pickuping) {
             roleNext.run(creep);
         }

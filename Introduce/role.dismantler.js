@@ -118,7 +118,7 @@ var roleDismantler = {
 				}
 			}
 
-			Memory.cpu.role.time(creep, 'dismantling');
+			metrix.cpu.role_time(creep, 'dismantling');
 			if(!creep.memory.dismantling) {
 				roleNext.run(creep);
 			}

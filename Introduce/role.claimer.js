@@ -2,6 +2,7 @@ const roleNext = require('role.attacker');
 const config = require('main.config');
 const flags = require('main.flags');
 const log = require('main.log');
+const metrix = require('main.metrix');
 
 var git = '$Format:%H$';
 
@@ -120,7 +121,7 @@ var role = {
 			}
 		}
 
-		Memory.cpu.role.time(creep, role.name);
+		metrix.cpu.role_time(creep, role.name);
 		if(!creep.memory[role.name].on) {
 			roleNext.run(creep);
 		}

@@ -2,6 +2,7 @@ const links = require('main.links');
 const roleNext = require('role.noenergy.transferer');
 const constants = require('main.constants');
 const tools = require('tools');
+const metrix = require('main.metrix');
 
 var roleEnergyTransferer = {
 
@@ -194,7 +195,7 @@ var roleEnergyTransferer = {
 			}
 		}
 
-		Memory.cpu.role.time(creep, 'transfering');
+		metrix.cpu.role_time(creep, 'transfering');
 		if(!creep.memory.transfering) {
 			roleNext.run(creep);
 		}

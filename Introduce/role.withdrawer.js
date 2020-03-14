@@ -1,5 +1,6 @@
 var roleNext = require('role.pickuper');
 const tools = require('tools');
+const metrix = require('main.metrix');
 
 var roleWithdrawer = {
 	/** @param {Creep} creep **/
@@ -94,7 +95,7 @@ var roleWithdrawer = {
 			}
 		}
 
-		Memory.cpu.role.time(creep, 'withdrawing');
+		metrix.cpu.role_time(creep, 'withdrawing');
 		if(!creep.memory.withdrawing) {
 			roleNext.run(creep);
 		}
