@@ -27,8 +27,11 @@ module.exports.loop = function () {
 	flags.run()
 	links.run();
 	towers.run();
+
+	Memory.CreepsNeedsByWeight = {};
 	spawns.run();
 	spawns.run(OK);
+
 	metrix.output();
 
 	Memory.targets = {};

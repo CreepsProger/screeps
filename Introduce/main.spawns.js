@@ -144,8 +144,6 @@ var spawns = {
 
 			if(!spawn.spawning && spawn.name != 'Spawn19') {
 
-				Memory.CreepsNeedsByWeight = {};
-
 				var controller = spawn.room.controller;
 				const CL = controller.level;
 				var N = Memory.totals.CreepsNumber;
