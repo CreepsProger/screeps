@@ -115,7 +115,9 @@ var role = {
 			 });
 			 if(sources.length > 0) {
 				 var source = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-					 filter: (structure) => {return sources.find(source => source.id == structure.id);} 
+					 filter: (structure) => {
+						 return sources.find(s => s.id == structure.id);
+					 } 
 				 });
 				 if(!!source) {
 					 target = tools.setTarget(creep,source,source.id,role.run);
@@ -137,7 +139,7 @@ var role = {
 			});
 			if(sources.length > 0) {
 				 var source = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-					 filter: (structure) => {return sources.find(source => source.id == structure.id);} 
+					 filter: (structure) => {return sources.find(s => s.id == structure.id);} 
 				 });
 				 if(!!source) {
 					 target = source;
