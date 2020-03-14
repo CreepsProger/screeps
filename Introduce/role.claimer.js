@@ -74,11 +74,12 @@ var role = {
 		// 	my_room_config.path_rooms[this_room]:my_room;
 
 			var target;
-
-  		if(!target && this_room != my_room) {
-  			const exitDir = Game.map.findExit(this_room , my_path_room);
-  			target = creep.pos.findClosestByPath(exitDir);
-  		}
+			
+			if(!target && this_room != my_room) {
+				const exit = creep.room.findExitTo(my_room);
+				target = creep.pos.findClosestByPath(exit);
+			}
+			
 			if(!target) {
 				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 					filter: (structure) => {
@@ -87,6 +88,7 @@ var role = {
 					}
 				});
 			}
+			
 			if(target)
 			{
 				var err = ERR_NOT_IN_RANGE;
