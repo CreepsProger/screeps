@@ -79,44 +79,6 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			// console.log( '🏗⚠️', Math.trunc(Game.time/10000), Game.time%10000
-				// 						, creep.name
-				// 						, 'this_room:'
-				// 						, this_room
-				// 						, 'my_room:'
-				// 						, my_room
-				// 						, 'this_room_config:'
-				// 						, JSON.stringify(this_room_config)
-				// 						, creep.getActiveBodyparts(WORK)
-				// 						, creep.store.getUsedCapacity(RESOURCE_ENERGY)
-				// 						, creep.store.getFreeCapacity(RESOURCE_ENERGY)
-				// 						, 'rerun:'
-				// 						, creep.memory.rerun
-				// 						, 'containers weight:'
-				// 						, this_room_config.containers.weight
-				// 						, 'creep weight:'
-				// 						, creep.memory.weight
-				// 						, 'transfering energy:'
-				// 						, creep.memory.transfering
-				// 						, 'target:'
-				// 					  , JSON.stringify(target));
-
-
-
-			if(!target &&
-				 (this_room != my_room ||
-				  !this_room_sources_is_empty)) {
-				var closests = creep.pos.findInRange(FIND_MY_CREEPS, 2, {
-					filter: (creep2) => {
-						return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-							creep2.memory.weight < creep.memory.weight;
-					}
-				});
-				if(closests.length > 0) {
-					target = closests[0];
-				}
-			}
-
 			if(!target && this_room == my_room &&
 				 (!creep.getActiveBodyparts(WORK) || (this_room_sources_is_empty && creep.memory.rerun))) {
 				var extensions = creep.room.find(FIND_STRUCTURES, {
@@ -143,7 +105,7 @@ var roleEnergyTransferer = {
 					target = tools.setTarget(creep,extension,extension.id,roleEnergyTransferer.run);
 				}
 			}
-
+			
 			if(!target && creep.memory.rerun) {
 				var labs = creep.room.find(FIND_STRUCTURES, {
 					filter: (structure) => {
@@ -153,6 +115,19 @@ var roleEnergyTransferer = {
 				});
 				if(labs.length > 0) {
 					target = labs[0];
+				}
+			}
+
+			if(!target) {
+			//if(!target && (this_room != my_room || !this_room_sources_is_empty)) {
+				var closests = creep.pos.findInRange(FIND_MY_CREEPS, 2, {
+					filter: (creep2) => {
+						return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+							creep2.memory.weight < creep.memory.weight;
+					}
+				});
+				if(closests.length > 0) {
+					target = closests[0];
 				}
 			}
 
