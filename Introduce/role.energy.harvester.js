@@ -118,7 +118,7 @@ var role = {
 					 filter: (closest) => sources.find(source => source.id == closest.id)
 				 });
 				 if(!!source) {
-					 target = tools.setTarget(creep,source2,source2.id,role.run);
+					 target = tools.setTarget(creep,source,source.id,role.run);
 				 }
 			 }
 		}
