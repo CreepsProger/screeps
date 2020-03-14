@@ -161,7 +161,7 @@ var roleEnergyTransferer = {
 			}
 
 			if(!target &&
-				 creep.memory.rerun
+				 creep.memory.rerun &&
 				 !!creep.room.storage &&
 				 !!creep.room.storage.my &&
 				 creep.room.storage.store.getFreeCapacity(RESOURCE_ENERGY) > 0) {
