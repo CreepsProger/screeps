@@ -106,7 +106,7 @@ var roleEnergyTransferer = {
 			if(!target &&
 				 (this_room != my_room ||
 				  !this_room_sources_is_empty)) {
-				var closests = creep.pos.findInRange(FIND_MY_CREEPS, 1, {
+				var closests = creep.pos.findInRange(FIND_MY_CREEPS, 2, {
 					filter: (creep2) => {
 						return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 							creep2.memory.weight < creep.memory.weight;
@@ -133,7 +133,14 @@ var roleEnergyTransferer = {
 					}
 				});
 				if(extensions.length > 0) {
-					target = tools.setTarget(creep,extensions[0],extensions[0].id,roleEnergyTransferer.run);
+					 var extension = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+						filter: (structure) => {
+							return extensions.find(e => e.id == structure.id);
+						}
+					});
+				}
+				if(!!extension) {
+					target = tools.setTarget(creep,extension,extension.id,roleEnergyTransferer.run);
 				}
 			}
 
