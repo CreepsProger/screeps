@@ -18,7 +18,7 @@ var metrix = {
 	cpu:
 	{
 		step_time: function(creep, role, step) {
-			var step = Memory.cpu.step;
+			// var step = Memory.cpu.step;
 			const dt = Math.round((Game.cpu.getUsed() - Memory.cpu.step.t) * 10)/10 + 0.01;
 			if(dt > Memory.cpu.step.dt) {
 				Memory.cpu.step.dt = dt;
