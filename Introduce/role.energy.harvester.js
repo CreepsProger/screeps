@@ -109,7 +109,7 @@ var role = {
 				filter: (source) => {
 					return source.energy == source.energyCapacity &&
 						(!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0 ||
-						  (!!DP2 && DP2.pos.roomName == this_room && DP2.pos.findPathTo(source).length <= 5)) &&
+						  (!!DP2 && DP2.pos.roomName == this_room && DP2.pos.getRangeTo(source) <= 5)) &&
 						 tools.checkTarget(executer,source.id);
 				 }
 			 });
@@ -132,7 +132,7 @@ var role = {
 				filter: (source) => {
 					return source.energy > 0 &&
 						(!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0 ||
-						  (!!DP2 && DP2.pos.roomName == this_room && DP2.pos.findPathTo(source).length <= 5))
+						  (!!DP2 && DP2.pos.roomName == this_room && DP2.pos.getRangeTo(source) <= 5))
 						}
 			});
 			if(sources.length > 0) {
