@@ -129,7 +129,7 @@ var spawns = {
 		}
 	},
 
-	run: function(rerun = undefined) {
+	run: function(rerun = 0) {
 
 		if(Game.time % constants.TICKS_TO_CHECK_CREEPS_NUMBER != 0)
 			return;
