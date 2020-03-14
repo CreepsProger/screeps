@@ -3,6 +3,7 @@ const config = require('main.config');
 const flags = require('main.flags');
 const log = require('main.log');
 const metrix = require('main.metrix');
+const tools = require('tools');
 
 var git = '$Format:%H$';
 
