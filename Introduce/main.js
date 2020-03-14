@@ -28,6 +28,7 @@ module.exports.loop = function () {
 	links.run();
 	towers.run();
 	spawns.run();
+	spawns.run(OK);
 	metrix.output();
 
 	Memory.targets = {};
