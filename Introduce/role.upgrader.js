@@ -89,7 +89,8 @@ var roleUpgrader = {
 				}
 				if(target) {
 					var err = ERR_NOT_IN_RANGE;
-					if(creep.pos.getRangeTo(target) <= 3 && tools.moveTo(creep,target) != OK) {
+					const range = creep.pos.getRangeTo(target);
+					if(range <= 3 && range > 1 && tools.moveTo(creep,target) != OK) {
 						err = creep.upgradeController(target);
 					}
 					if(err == ERR_NOT_IN_RANGE) {
