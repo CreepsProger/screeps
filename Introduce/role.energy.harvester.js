@@ -101,7 +101,7 @@ var role = {
 		const DP2 = Game.flags['DP2'];
 
 		if(!target &&
-			 this_room_sources_are_not_empty &&
+			 //this_room_sources_are_not_empty &&
 			 creep.getActiveBodyparts(WORK) &&
 			 creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0) {
 			var sources = creep.room.find(FIND_SOURCES, {
@@ -123,7 +123,7 @@ var role = {
 		}
 
 		if(!target &&
-			 this_room_sources_are_not_empty &&
+			 //this_room_sources_are_not_empty &&
 			 creep.getActiveBodyparts(WORK) &&
 			 creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0) {
 			var sources = creep.room.find(FIND_SOURCES, {
