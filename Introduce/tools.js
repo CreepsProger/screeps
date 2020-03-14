@@ -1,5 +1,4 @@
 const constants = require('main.constants');
-const flags = require('main.flags');
 
 // C1         C2         C3     T1  T2  T3
 // C1(T1)
