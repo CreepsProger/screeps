@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 129,
+	version: 130,
 	ticksToCheckCreepsNumber: 10,
 	// maxCreepsNumber:40,
 
@@ -168,7 +168,7 @@ var config = {
 										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W26S34', W26S34: 'W27S34'}
 										 , escape_path:{ W27S34: 'W26S34'}
 										 },
-						 W28S34: { containers: {weight: 83}
+						 W28S34: { containers: {weight: 93}
 										 , energy_harvesting:
 												 [ {name: '1', time: 0, min_weight: 90, max_weight: 99}
 												 , {name: '2', time: 0, min_weight: 90, max_weight: 99}
@@ -186,9 +186,9 @@ var config = {
 												 , {name: '6', time: 0, min_weight: 90, max_weight:99}
 												 , {name: '7', time: 0, min_weight: 90, max_weight:99}
 												 ]
-									   , heal_room: 'W26S34'
-										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W26S34', W26S34: 'W27S34'}
-										 , escape_path:{ W27S34: 'W26S34'}
+									   , heal_room: 'W28S33'
+										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33', W28S33: 'W28S34'}
+										 , escape_path:{ W28S34: 'W28S33'}
 										 },
 						 W29S33: { containers: {weight: 1075}
 										 , energy_harvesting:
