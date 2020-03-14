@@ -13,7 +13,7 @@ var role = {
 	logFlags: ['LC','LC ','L'],
 
 	log: function(creep,...args) {
-			if(log.canLog(role.logFlags)) {
+			if(log.canLog(role.logFlags, creep)) {
 				console.log( '🗝', Math.trunc(Game.time/10000), Game.time%10000
 										, creep.name
 										, role.name
