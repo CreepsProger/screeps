@@ -52,7 +52,7 @@ var metrix = {
 
 	run: function() {
 
-		if(Game.time % config.ticksToCheckCreepsNumber == 0) {
+		if(Game.time % constants.TICKS_TO_CHECK_CREEPS_NUMBER == 0) {
 
 			Memory.totals = { CreepsNumber: 0, NeedsCreeps: 0, NeedsPlusCreeps: 0
 											 , Bodys : 0, NeedsBodys: 0
