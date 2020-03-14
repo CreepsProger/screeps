@@ -88,7 +88,10 @@ var roleUpgrader = {
 					target = creep.room.controller;
 				}
 				if(target) {
-					var err = creep.upgradeController(target);
+					var err = ERR_NOT_IN_RANGE;
+					if(creep.pos.getRangeTo(target) <= 2) {
+						err = creep.upgradeController(target);
+					}
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜🛠');
 						err = tools.moveTo(creep,target);
