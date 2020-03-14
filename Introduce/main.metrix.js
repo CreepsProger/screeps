@@ -29,7 +29,8 @@ var metrix = {
 				  	cpu_time.step = step;
 				if(cpu_time.dt > limit) {
 					// console.log( '⏳', cpu_time.dt, cpu_time.creep, cpu_time.role, cpu_time.step);
-					console.log( '⏳', JSON.stringify(cpu_time));
+					console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
+										 		  , JSON.stringify(cpu_time));
 				}
 			}
 			cpu_time.t = Math.round((Game.cpu.getUsed()) * 100)/100;
