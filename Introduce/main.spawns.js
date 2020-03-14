@@ -84,6 +84,7 @@ var spawns = {
 																	, {memory: {n: Memory.CreepsCounter, cost: cost, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
 				if(err) {
 					console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+											, spawn.name
 											, 'Can\'t spawn new creep:'
 											, newName
 											, 'cost:'
@@ -93,6 +94,7 @@ var spawns = {
 				}
 				else {
 					console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+											, spawn.name
 											, 'Spawning new creep:'
 											, newName
 										  , 'cost:'
