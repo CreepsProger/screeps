@@ -55,16 +55,16 @@ var roleUpgrader = {
 // 			console.log('upgrading?', JSON.stringify(constants.ROLE_ENERGY_HARVESTING), JSON.stringify(creep));
 			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
 			const my_room_config = Memory.config.rooms[my_room];
-			const this_room_sources_is_empty = tools.areEmptySources(creep);
+			const this_room_sources_are_empty = tools.areEmptySources(creep);
 			const this_room_containers_are_full = tools.areFullContainers(creep);
 
 			const canDo =
-						(!Memory.stop_upgrading &&
+						((!Memory.stop_upgrading || this_room_containers_are_full) &&
 						 this_room == my_room &&
 						 !!creep.room.controller &&
 						 !!creep.room.controller.my &&
 						 creep.room.controller.level > 0 &&
-						 (this_room_sources_is_empty || this_room_containers_are_full) &&
+						 (this_room_sources_are_empty || this_room_containers_are_full) &&
 						 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0) ||
 						  (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun))) ;
 
