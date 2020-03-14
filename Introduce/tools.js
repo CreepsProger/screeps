@@ -42,6 +42,9 @@ var tools = {
         }
       }
     }
+		else {
+			return err;
+		}
 		return constants.ERR_NO_PATH_2;
 	},
 
