@@ -21,7 +21,7 @@ var metrix = {
 			const dt = Math.round((Game.cpu.getUsed() - Memory.cpu.step.t) * 100)/100;
 			if(dt > Memory.cpu.step.dt) {
 				Memory.cpu.step.dt = dt;
-				Memory.cpu.step.creep = creep;
+				Memory.cpu.step.creep = creep.name;
 				Memory.cpu.step.role = role;
 				Memory.cpu.step.step = step;
 				if(Memory.cpu.step.dt > 1) {
