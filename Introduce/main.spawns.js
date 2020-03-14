@@ -85,7 +85,7 @@ var spawns = {
 				if(err) {
 					console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 											, spawn.name
-											, 'Can\'t spawn new creep:'
+											, 'can\'t spawn new creep:'
 											, newName
 											, 'cost:'
 										  , cost
@@ -95,7 +95,7 @@ var spawns = {
 				else {
 					console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 											, spawn.name
-											, 'Spawning new creep:'
+											, 'spawning new creep:'
 											, newName
 										  , 'cost:'
 										  , cost
