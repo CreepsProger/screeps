@@ -17,46 +17,48 @@ var metrix = {
 
 	cpu:
 	{
-		step: function(creep, role, step) {
+		step_time: function(creep, role, step) {
+			var step = Memory.cpu.step;
 			const dt = Math.round((Game.cpu.getUsed() - Memory.cpu.step.t) * 10)/10 + 0.01;
 			if(dt > Memory.cpu.step.dt) {
 				Memory.cpu.step.dt = dt;
 				Memory.cpu.step.creep = creep.name;
 				Memory.cpu.step.role = role;
 				Memory.cpu.step.step = step;
-				if(Memory.cpu.step.dt > constants.CPU_LIMIT_OF_CREEP_ROLE_PART_RUN) {
+				if(Memory.cpu.step.dt > constants.CPU_LIMIT_OF_CREEP_ROLE_STEP_RUN) {
 					console.log( '⏳', Memory.cpu.step.dt, Memory.cpu.step.creep, Memory.cpu.step.role, Memory.cpu.step.step);
 				}
 			}
 			Memory.cpu.step.t = Game.cpu.getUsed();
 		},
 
-		role: function(creep, role) {
-			metrix.cpu.step(creep, role, 'end');
+		role_time: function(creep, role) {
+			metrix.cpu.step_time(creep, role, 'end');
 
-			const dt = Math.round((Game.cpu.getUsed() - Memory.cpu.t_role) * 10)/10 + 0.01;
-			if(dt > Memory.cpu.dt_max_role) {
-				Memory.cpu.dt_max_role = dt;
-				Memory.cpu.role_max = role;
-				Memory.cpu.role_creep_max = creep.name;
-				if(Memory.cpu.dt_max_role > constants.CPU_LIMIT_OF_CREEP_ROLE_RUN) {
-					console.log( '⏳', Memory.cpu.dt_max_role, Memory.cpu.role_creep_max, Memory.cpu.role_max);
+			const dt = Math.round((Game.cpu.getUsed() - Memory.cpu.role.t) * 10)/10 + 0.01;
+			if(dt > Memory.cpu.role.dt) {
+				Memory.cpu.role.dt = dt;
+				Memory.cpu.role.creep = creep.name;
+				Memory.cpu.role.role = role;
+				if(Memory.cpu.role.dt > constants.CPU_LIMIT_OF_CREEP_ROLE_RUN) {
+					console.log( '⏳', Memory.cpu.role.dt, Memory.cpu.role.creep, Memory.cpu.role.role);
 				}
 			}
-		Memory.cpu.t_role = Game.cpu.getUsed();
+			Memory.cpu.role.t = Game.cpu.getUsed();
 		},
 
-		creep: function(creep) {
-			const dt = Math.round((Game.cpu.getUsed() - Memory.cpu.t) * 10)/10 + 0.01;
-			if(dt > Memory.cpu.dt_max) {
-				Memory.cpu.dt_max = dt;
-				Memory.cpu.name_max = creep.name;
-				if(Memory.cpu.dt_max > constants.CPU_LIMIT_OF_CREEP_RUN) {
-					console.log( '⏳', Memory.cpu.dt_max, Memory.cpu.name_max);
+		creep_time: function(creep) {
+			metrix.cpu.role_time(creep, 'endrole');
+
+			const dt = Math.round((Game.cpu.getUsed() - Memory.cpu.creep.t) * 10)/10 + 0.01;
+			if(dt > Memory.cpu.creep.dt) {
+				Memory.cpu.creep.dt = dt;
+				Memory.cpu.creep.creep = creep.name;
+				if(Memory.cpu.creep.dt > constants.CPU_LIMIT_OF_CREEP_RUN) {
+					console.log( '⏳', Memory.cpu.creep.dt, Memory.cpu.creep.creep);
 				}
 			}
-			Memory.cpu.t = Game.cpu.getUsed();
-		}
+			Memory.cpu.creep.t = Game.cpu.getUsed();
 	},
 
 	run: function() {

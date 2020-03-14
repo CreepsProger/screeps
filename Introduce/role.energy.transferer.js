@@ -104,7 +104,7 @@ var roleEnergyTransferer = {
 					}
 				}
 			}
-			
+
 			if(!target && creep.memory.rerun) {
 				var labs = creep.room.find(FIND_STRUCTURES, {
 					filter: (structure) => {
@@ -194,7 +194,7 @@ var roleEnergyTransferer = {
 			}
 		}
 
-		Memory.cpu.role(creep, 'transfering');
+		Memory.cpu.role.time(creep, 'transfering');
 		if(!creep.memory.transfering) {
 			roleNext.run(creep);
 		}

@@ -131,7 +131,7 @@ var roleRepairer = {
 				}
 			}
 
-			Memory.cpu.role(creep, 'repairing');
+			Memory.cpu.role.time(creep, 'repairing');
 			if(!creep.memory.repairing) {
 				roleNext.run(creep);
 			}

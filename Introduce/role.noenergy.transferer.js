@@ -53,7 +53,7 @@ var roleNoEnergyTransferer = {
             }
         }
 
-				Memory.cpu.role(creep, 'noenergytransfering');
+				Memory.cpu.role.time(creep, 'noenergytransfering');
         if(!creep.memory.noenergytransfering) {
             roleNext.run(creep);
         }

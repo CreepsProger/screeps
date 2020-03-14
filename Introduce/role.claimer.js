@@ -120,7 +120,7 @@ var role = {
 			}
 		}
 
-		Memory.cpu.role(creep, role.name);
+		Memory.cpu.role.time(creep, role.name);
 		if(!creep.memory[role.name].on) {
 			roleNext.run(creep);
 		}

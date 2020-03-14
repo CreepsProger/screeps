@@ -96,7 +96,7 @@ var role = {
 			}
 		}
 
-		Memory.cpu.step.run(creep, role.name, 'getTarget 1');
+		Memory.cpu.step.time(creep, role.name, 'getTarget 1');
 
 		const DP2 = Game.flags['DP2'];
 
@@ -201,15 +201,15 @@ var role = {
 			}
 		}
 
-		Memory.cpu.step.run(creep, role.name, 'getTarget 2');
+		Memory.cpu.step.time(creep, role.name, 'getTarget 2');
 
 		return target;
 	},
 
 	run: function(creep,executer = undefined) {
-		role.init(creep);																Memory.cpu.step.run(creep, role.name, 'init');
-		role.checkOff(creep);														Memory.cpu.step.run(creep, role.name, 'checkOff');
-		role.checkOn(creep);														Memory.cpu.step.run(creep, role.name, 'checkOn');
+		role.init(creep);																Memory.cpu.step.time(creep, role.name, 'init');
+		role.checkOff(creep);														Memory.cpu.step.time(creep, role.name, 'checkOff');
+		role.checkOn(creep);														Memory.cpu.step.time(creep, role.name, 'checkOn');
 
 		if(creep.memory[role.name].on) {
 			var target = role.getTarget(creep,executer);
@@ -249,7 +249,7 @@ var role = {
 			}
 		}
 
-		Memory.cpu.role(creep, role.name);
+		Memory.cpu.role.time(creep, role.name);
 		if(!creep.memory.rerun) {
 			creep.memory.rerun = 1;
 			if(!creep.memory[role.name].on) {
