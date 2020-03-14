@@ -103,7 +103,8 @@ var role = {
 		if(!target &&
 			 //this_room_sources_are_not_empty &&
 			 creep.getActiveBodyparts(WORK) &&
-			 creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0) {
+			 //creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0
+			) {
 			var sources = creep.room.find(FIND_SOURCES, {
 				filter: (source) => {
 					return source.energy == source.energyCapacity &&
@@ -125,7 +126,8 @@ var role = {
 		if(!target &&
 			 //this_room_sources_are_not_empty &&
 			 creep.getActiveBodyparts(WORK) &&
-			 creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0) {
+			 //creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0
+			) {
 			var sources = creep.room.find(FIND_SOURCES, {
 				filter: (source) => {
 					return source.energy > 0 &&
