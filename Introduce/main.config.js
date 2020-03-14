@@ -153,15 +153,38 @@ var config = {
 										 , claiming:
 												 [ {name: '1', time: 0, min_weight: 80, max_weight: 89}
 												 , {name: '2', time: 0, min_weight: 80, max_weight: 89}
+
 												 ]
 										 , attacker:
-												 [ {name: '1', time: 0, min_weight: 80, max_weight:100}
-												 , {name: '2', time: 0, min_weight: 80, max_weight:100}
-												 , {name: '3', time: 0, min_weight: 80, max_weight:100}
-												 , {name: '4', time: 0, min_weight: 80, max_weight:100}
-												 , {name: '5', time: 0, min_weight: 80, max_weight:100}
-												 , {name: '6', time: 0, min_weight: 80, max_weight:100}
-												 , {name: '7', time: 0, min_weight: 80, max_weight:100}
+												 [ {name: '1', time: 0, min_weight: 80, max_weight:89}
+												 , {name: '2', time: 0, min_weight: 80, max_weight:89}
+												 , {name: '3', time: 0, min_weight: 80, max_weight:89}
+												 , {name: '4', time: 0, min_weight: 80, max_weight:89}
+												 , {name: '5', time: 0, min_weight: 80, max_weight:89}
+												 , {name: '6', time: 0, min_weight: 80, max_weight:89}
+												 , {name: '7', time: 0, min_weight: 80, max_weight:89}
+												 ]
+									   , heal_room: 'W26S34'
+										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W26S34', W26S34: 'W27S34'}
+										 , escape_path:{ W27S34: 'W26S34'}
+										 },
+						 W28S34: { containers: {weight: 83}
+										 , energy_harvesting:
+												 [ {name: '1', time: 0, min_weight: 90, max_weight: 99}
+												 , {name: '2', time: 0, min_weight: 90, max_weight: 99}
+												 ]
+										 , claiming:
+												 [ {name: '1', time: 0, min_weight: 90, max_weight: 99}
+												 , {name: '2', time: 0, min_weight: 90, max_weight: 99}
+												 ]
+										 , attacker:
+												 [ {name: '1', time: 0, min_weight: 90, max_weight:99}
+												 , {name: '2', time: 0, min_weight: 90, max_weight:99}
+												 , {name: '3', time: 0, min_weight: 90, max_weight:99}
+												 , {name: '4', time: 0, min_weight: 90, max_weight:99}
+												 , {name: '5', time: 0, min_weight: 90, max_weight:99}
+												 , {name: '6', time: 0, min_weight: 90, max_weight:99}
+												 , {name: '7', time: 0, min_weight: 90, max_weight:99}
 												 ]
 									   , heal_room: 'W26S34'
 										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W26S34', W26S34: 'W27S34'}
