@@ -25,7 +25,7 @@ var metrix = {
 				cpu_time.creep = creep.name;
 				cpu_time.role = role;
 				cpu_time.step = step;
-				if(cpu.dt > constants.CPU_LIMIT_OF_CREEP_ROLE_STEP_RUN) {
+				if(cpu_time.dt > constants.CPU_LIMIT_OF_CREEP_ROLE_STEP_RUN) {
 					console.log( '⏳', cpu_time.dt, cpu_time.creep, cpu_time.role, cpu_time.step);
 				}
 			}
