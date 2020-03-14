@@ -118,7 +118,7 @@ var role = {
 					 filter: (structure) => sources.find(source => source.id == structure.id)
 				 });
 				 if(!!source) {
-					 target = tools.setTarget(creep,sources[0],sources[0].id,role.run);
+					 target = tools.setTarget(creep,source,source.id,role.run);
 				 }
 			 }
 		}
