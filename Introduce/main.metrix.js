@@ -24,7 +24,7 @@ var metrix = {
 				Memory.cpu.step.creep = creep.name;
 				Memory.cpu.step.role = role;
 				Memory.cpu.step.step = step;
-				if(Memory.cpu.step.dt > 1) {
+				if(Memory.cpu.step.dt > constants.CPU_LIMIT_OF_CREEP_ROLE_PART_RUN) {
 					console.log( '⏳', Memory.cpu.step.dt, Memory.cpu.step.creep, Memory.cpu.step.role, Memory.cpu.step.step);
 				}
 			}
@@ -39,7 +39,7 @@ var metrix = {
 				Memory.cpu.dt_max_role = dt;
 				Memory.cpu.role_max = role;
 				Memory.cpu.role_creep_max = creep.name;
-				if(Memory.cpu.dt_max_role > 1) {
+				if(Memory.cpu.dt_max_role > constants.CPU_LIMIT_OF_CREEP_ROLE_RUN) {
 					console.log( '⏳', Memory.cpu.dt_max_role, Memory.cpu.role_creep_max, Memory.cpu.role_max);
 				}
 			}
@@ -51,7 +51,7 @@ var metrix = {
 			if(dt > Memory.cpu.dt_max) {
 				Memory.cpu.dt_max = dt;
 				Memory.cpu.name_max = creep.name;
-				if(Memory.cpu.dt_max > 2){
+				if(Memory.cpu.dt_max > constants.CPU_LIMIT_OF_CREEP_RUN) {
 					console.log( '⏳', Memory.cpu.dt_max, Memory.cpu.name_max);
 				}
 			}
