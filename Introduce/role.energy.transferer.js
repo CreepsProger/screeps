@@ -133,12 +133,11 @@ var roleEnergyTransferer = {
 
 			if(!target &&
 				 !creep.getActiveBodyparts(WORK) &&
-				  creep.memory.rerun) {
+				 creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
+				 creep.memory.rerun) {
 				var storages = _.filter(Game.structures, (structure) => !!structure.my &&
 						structure.structureType == STRUCTURE_STORAGE &&
-						structure.store.getUsedCapacity(RESOURCE_ENERGY) < 35000) &&
-						creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0
-						;
+						structure.store.getUsedCapacity(RESOURCE_ENERGY) < 35000);
 				if(storages.length > 0) {
 					target = storages[0];
 				}
