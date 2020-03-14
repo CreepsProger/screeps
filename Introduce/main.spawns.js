@@ -134,6 +134,9 @@ var spawns = {
 		if(Game.time % constants.TICKS_TO_CHECK_CREEPS_NUMBER != 0)
 			return;
 
+		if(!!rerun)
+			Memory.CreepsNeedsByWeight = {};
+
 		for(var name in Game.spawns) {
 			var spawn = Game.spawns[name];
 /*
@@ -143,6 +146,8 @@ var spawns = {
 									*/
 
 			if(!spawn.spawning && spawn.name != 'Spawn19') {
+
+				rerun++;
 
 				var controller = spawn.room.controller;
 				const CL = controller.level;
@@ -207,6 +212,7 @@ var spawns = {
 															 , {align: 'left', opacity: 0.8});
 			}
 		}
+		return rerun;
 	}
 };
 

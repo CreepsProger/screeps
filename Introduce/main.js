@@ -27,11 +27,8 @@ module.exports.loop = function () {
 	flags.run()
 	links.run();
 	towers.run();
-
-	Memory.CreepsNeedsByWeight = {};
-	spawns.run();
-	spawns.run(OK);
-
+	const ready_count = spawns.run();
+	spawns.run(ready_count);
 	metrix.output();
 
 	Memory.targets = {};
