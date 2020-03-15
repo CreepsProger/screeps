@@ -76,6 +76,7 @@ var roleEnergyTransferer = {
 					}
 				});
 				if(containers.length > 0) {
+					console.log( this_room, 'containers.length:', containers.length);
 					target = containers.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				}
 			}
