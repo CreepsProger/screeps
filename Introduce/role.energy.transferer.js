@@ -76,7 +76,7 @@ var roleEnergyTransferer = {
 					}
 				});
 				if(containers.length > 0) {
-					target = containers.reduce((p,c) => creep.pos.findPathTo(p) < creep.pos.findPathTo(c)? p:c);
+					target = containers.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				}
 			}
 
@@ -96,7 +96,7 @@ var roleEnergyTransferer = {
 					}
 				});
 				if(extensions.length > 0) {
-					var extension = extensions.reduce((p,c) => creep.pos.findPathTo(p) < creep.pos.findPathTo(c)? p:c);
+					var extension = extensions.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 					if(!!extension) {
 						target = tools.setTarget(creep,extension,extension.id,roleEnergyTransferer.run);
 					}
