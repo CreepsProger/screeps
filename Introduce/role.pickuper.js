@@ -44,13 +44,15 @@ var rolePickuper = {
 								tools.checkTarget(executer,dropped.id);
 						}
 					});
-					var dropped = droppeds.reduce((p,c) => creep.pos.findPathTo(p) < creep.pos.findPathTo(c)? p:c);
-					if(!!dropped) {
-						target = tools.setTarget(creep,dropped,dropped.id,rolePickuper.run);
+					if(droppeds.length > 0) {
+						var dropped = droppeds.reduce((p,c) => creep.pos.findPathTo(p) < creep.pos.findPathTo(c)? p:c);
+						if(!!dropped) {
+							target = tools.setTarget(creep,dropped,dropped.id,rolePickuper.run);
+						}
 					}
 				}
 				
-				if(target) {
+				if(!!target) {
 					var err = creep.pickup(target);
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜👊');
