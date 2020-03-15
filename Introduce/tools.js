@@ -71,7 +71,7 @@ var tools = {
 			 if(creep2 !== undefined) {
 				 var path2 = creep2.pos.findPathTo(target);
 				 var path = creep.pos.findPathTo(target);
-				 if(path2.length > path.length) {
+				 if(path2.length > path.length+1) {
 					 mytarget = target;
 					 Memory.targets[id] = creep.id;
 					 const order = 'move'; // creep2.moveTo.name
