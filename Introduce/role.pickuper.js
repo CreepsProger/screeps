@@ -25,7 +25,7 @@ var rolePickuper = {
 			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
 
 			if(!creep.memory.pickuping &&
-				 this_room == my_room
+				 this_room == my_room &&
 				 creep.getActiveBodyparts(CARRY) > 0 &&
 				 (creep.store.getUsedCapacity() == 0 ||
 					(creep.store.getFreeCapacity() > 0 && creep.memory.rerun))) {
