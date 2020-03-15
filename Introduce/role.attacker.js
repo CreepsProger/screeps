@@ -80,7 +80,7 @@ var role = {
 				// if(!target && creep.hits < creep.hitsMax) { //creep.hitsMax - creep.hits > creep.getActiveBodyparts(TOUGH)*100 && !creep.getActiveBodyparts(HEAL)) {
 			  if(!target && //!creep.getActiveBodyparts(HEAL) &&
 					!canAttack && canAttack2 && !good_healer_near) {
-					creep2 = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
+					var creep2 = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (healer) => {
 							return healer.getActiveBodyparts(HEAL) > 0 &&
 										healer.hits == healer.hitsMax;
