@@ -86,12 +86,14 @@ var role = {
 						creep.memory.weight < my_room_config.containers.weight;
 				}
 			});
+
 			if(conts.length > 0) {
-				var cont = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+				var cont = conts.reduce((p,c) => creep.pos.findPathTo(p) < creep.pos.findPathTo(c)? p:c);
+				/*var cont = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 					filter: (structure) => {
 						return conts.find(e => e.id == structure.id);
 					}
-				});
+				});*/
 				if(!!cont) {
 					target = tools.setTarget(creep,cont,cont.id,role.run);
 				}
