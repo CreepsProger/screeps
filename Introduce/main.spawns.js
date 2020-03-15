@@ -183,7 +183,7 @@ var spawns = {
 // 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  500000007000012, 86, 2); // V 1-1 E     Healer
 // 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  500100000000015, 87, 3); // V 1-2 E  RAttacker
 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002, 90, 1); // V 1-1 E   Claimer
-          if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             1005, 91, 1); // V 1-1 E    Carier
+          if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             3015, 91, 1); // V 1-1 E    Carier
           if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           130911, 94, 1); // V 1-1 E    Worker
 				}
 
