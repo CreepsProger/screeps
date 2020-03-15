@@ -45,10 +45,12 @@ module.exports.loop = function () {
 			creep.memory.rerun = 0;
 			role.run(creep);
 			metrix.cpu.creep_time(creep);
-			if(Memory.cpu.creep.t > 0.9*Game.cpu.tickLimit ||
-				Memory.cpu.creep.n == Memory.totals.CreepsNumber) {
+			if((Game.time % (constants.TICKS_TO_CHECK_CREEPS_NUMBER/3) == 0 &&
+					Memory.cpu.creep.n == Memory.totals.CreepsNumber) ||
+				 Memory.cpu.creep.t > 0.9*Game.cpu.tickLimit) {
 				console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 										, Game.cpu.tickLimit
+										, Game.cpu.bucket
 										, JSON.stringify(Memory.cpu));
 			}
 		}
