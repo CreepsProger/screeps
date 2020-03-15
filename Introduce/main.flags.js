@@ -305,7 +305,7 @@ var mainFlags = {
         lastFlagRemoved = RACS;
         lastFlagRemoved.remove();
     },
-    run: function(ticksToLog = 10) {
+    run: function(ticksToLog = constants.TICKS_TO_CHECK_CREEPS_NUMBER) {
         var flags = [];
         for(var name in Game.flags) {
             flags.push(Game.flags[name].name);
