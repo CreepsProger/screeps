@@ -65,12 +65,7 @@ var roleDismantler = {
 						}
 					});
 					if(structures.length > 0) {
-						var structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-							filter: (structure) => {
-								return structures.find(s => s.id == structure.id) &&
-									tools.checkTarget(executer,structure.id);;
-							}
-						});
+						var structure = structures.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 					}
 					if(!!structure) {
 						target = tools.setTarget(creep,structure,structure.id,roleDismantler.run);
