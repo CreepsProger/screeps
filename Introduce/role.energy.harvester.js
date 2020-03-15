@@ -88,7 +88,7 @@ var role = {
 			});
 
 			if(conts.length > 0) {
-				var cont = conts.reduce((p,c) => creep.pos.findPathTo(p) < creep.pos.findPathTo(c)? p:c);
+				var cont = conts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				if(!!cont) {
 					target = tools.setTarget(creep,cont,cont.id,role.run);
 				}
@@ -114,7 +114,7 @@ var role = {
 				 }
 			 });
 			 if(sources.length > 0) {
-				 var source = sources.reduce((p,c) => creep.pos.findPathTo(p) < creep.pos.findPathTo(c)? p:c);
+				 var source = sources.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				 if(!!source) {
 					 target = tools.setTarget(creep,source,source.id,role.run);
 				 }
@@ -135,7 +135,7 @@ var role = {
 						}
 			});
 			if(sources.length > 0) {
-				var source = sources.reduce((p,c) => creep.pos.findPathTo(p) < creep.pos.findPathTo(c)? p:c);
+				var source = sources.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				if(!!source) {
 					target = source;
 				}
