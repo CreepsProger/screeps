@@ -66,12 +66,14 @@ var role = {
 
 		if(!target && this_room != my_room) {
 			const exit = creep.room.findExitTo(my_room);
-			target = creep.pos.findClosestByPath(exit);
+			target = creep.pos.findClosestByPath(exit);			
+			if(!!target) return target;
 		}
 
 		//if(!target && (!creep.getActiveBodyparts(WORK) || (this_room_sources_is_empty && creep.memory.rerun))) {
 		if(!target) {
 			target = links.getTargetLinkToHarvest(creep,executer,role.run);
+			if(!!target) return target;
 		}
 
 		if(!target &&
@@ -94,9 +96,10 @@ var role = {
 					target = tools.setTarget(creep,cont,cont.id,role.run);
 				}
 			}
+			if(!!target) return target;
 		}
 
-		metrix.cpu.step_time(creep, role.name, 'getTarget 1');
+		metrix.cpu.step_time(creep, role.name, 'getTarget 1/2');
 
 		const DP2 = Game.flags['DP2'];
 
@@ -121,6 +124,7 @@ var role = {
 					 target = tools.setTarget(creep,source,source.id,role.run);
 				 }
 			 }
+			if(!!target) return target;
 		}
 
 		if(!target &&
@@ -143,6 +147,7 @@ var role = {
 					 target = source;
 				 }
 			 }
+			if(!!target) return target;
 		}
 
 		if(!target &&
@@ -153,6 +158,7 @@ var role = {
 			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.STOP_UPGRADING_ENERGY) {
 			target = creep.room.storage;
 			role.log('🔜⚡', creep, 'STRUCTURE_STORAGE');
+			if(!!target) return target;
 		}
 
 		if(!target &&
@@ -162,6 +168,7 @@ var role = {
 			 !!creep.room.storage.my &&
 			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.START_UPGRADING_ENERGY) {
 			target = creep.room.storage;
+			if(!!target) return target;
 		}
 
 		if(!target &&
@@ -171,6 +178,7 @@ var role = {
 			 !!creep.room.storage.my &&
 			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_STORAGE_ENERGY) {
 			target = creep.room.storage;
+			if(!!target) return target;
 		}
 /*
 		if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
@@ -199,10 +207,8 @@ var role = {
 			if(emptysources.length > 0) {
 				target = tools.setTarget(creep,emptysources[0],emptysources[0].id,role.run);
 			}
+			if(!!target) return target;
 		}
-
-		metrix.cpu.step_time(creep, role.name, 'getTarget 2');
-
 		return target;
 	},
 
@@ -212,7 +218,7 @@ var role = {
 		role.checkOn(creep);														metrix.cpu.step_time(creep, role.name, 'checkOn');
 
 		if(creep.memory[role.name].on) {
-			var target = role.getTarget(creep,executer);
+			var target = role.getTarget(creep,executer);  metrix.cpu.step_time(creep, role.name, 'getTarget');
 			if(target) {
 				var err = (target.name || !target.id)? // a creep || exit
 						ERR_NOT_IN_RANGE:
