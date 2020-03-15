@@ -41,14 +41,9 @@ var roleWithdrawer = {
 					}
 				});
 				if(tombstones.length > 0) {
-					var tombstone = creep.pos.findClosestByPath(FIND_TOMBSTONES, {
-							filter: (tombstone) => {
-								return tombstones.find(t => t.id == tombstone.id) &&
-									tools.checkTarget(executer,tombstone.id);;
-							}
-						});
-					}
-					if(!!tombstone) {
+					var tombstone = tombstones.reduce((p,c) => tools.checkTarget(executer,p.id) &&
+																						creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+					if(!!tombstone && tools.checkTarget(executer,tombstone.id)) {
 						target = tools.setTarget(creep,tombstone,tombstone.id,roleWithdrawer.run);
 					}
 			}
@@ -61,14 +56,9 @@ var roleWithdrawer = {
 					}
 				});
 				if(ruins.length > 0) {
-					var ruin = creep.pos.findClosestByPath(FIND_RUINS, {
-							filter: (ruin) => {
-								return ruins.find(r => r.id == ruin.id) &&
-									tools.checkTarget(executer,ruin.id);;
-							}
-						});
-					}
-					if(!!ruin) {
+					var ruin = ruins.reduce((p,c) => tools.checkTarget(executer,p.id) &&
+																						creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+					if(!!tombstone && tools.checkTarget(executer,ruin.id)) {
 						target = tools.setTarget(creep,ruin,ruin.id,roleWithdrawer.run);
 					}
 			}
