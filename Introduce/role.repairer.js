@@ -74,15 +74,11 @@ var roleRepairer = {
 						}
 					});
 					if(structures.length > 0) {
-						var structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-							filter: (structure) => {
-								return structures.find(s => s.id == structure.id) &&
-									tools.checkTarget(executer,structure.id);;
-							}
-						});
-					}
-					if(!!structure) {
-						target = tools.setTarget(creep,structure,structure.id,roleRepairer.run);
+						var structure = structures.reduce((p,c) => tools.checkTarget(executer,p.id) &&
+																							creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+						if(!!structure && tools.checkTarget(executer,structure.id)) {
+							target = tools.setTarget(creep,structure,structure.id,roleRepairer.run);
+						}
 					}
 				}
 
