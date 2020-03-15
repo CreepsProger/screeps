@@ -39,7 +39,7 @@ var roleWithdrawer = {
 				if(tombstones.length > 0) {
 					var tombstone = creep.pos.findClosestByPath(FIND_TOMBSTONES, {
 							filter: (tombstone) => {
-								return structures.find(t => t.id == tombstone.id) &&
+								return tombstones.find(t => t.id == tombstone.id) &&
 									tools.checkTarget(executer,tombstone.id);;
 							}
 						});
