@@ -37,13 +37,14 @@ var rolePickuper = {
 				var target;
 				
 				if(!target) {
-					var dropped = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, {
+					var droppeds = creep.room.find(FIND_DROPPED_RESOURCES, {
 						filter: (dropped) => {
 							return (!dropped.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0
 											|| (!!Game.flags['DP2'] && Game.flags['DP2'].room.name == creep.room.name && Game.flags['DP2'].pos.findPathTo(dropped).length < 5)) &&
 								tools.checkTarget(executer,dropped.id);
 						}
 					});
+					var dropped = droppeds.reduce((p,c) => creep.pos.findPathTo(p) < creep.pos.findPathTo(c)? p:c);
 					if(!!dropped) {
 						target = tools.setTarget(creep,dropped,dropped.id,rolePickuper.run);
 					}
