@@ -44,7 +44,7 @@ module.exports.loop = function () {
 		if(!creep.spawning) {
 			creep.memory.rerun = 0;
 			role.run(creep);
-		}
+
 		metrix.cpu.creep_time(creep);
 		if(((Game.time % constants.TICKS_TO_CHECK_CPU == 0) &&
 				Memory.cpu.creep.n >= Memory.totals.CreepsNumber) ||
@@ -54,7 +54,7 @@ module.exports.loop = function () {
 									, Game.cpu.bucket
 									, JSON.stringify(Memory.cpu));
 		}
-
+		}
 	}
 // 	console.log('targets:',	JSON.stringify(Memory.targets));
 }
