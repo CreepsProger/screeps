@@ -33,7 +33,7 @@ module.exports.loop = function () {
 
 	Memory.targets = {};
 	Memory.cpu = {};
-	Memory.cpu = { creep: {dt: 0, creep: '', t: Game.cpu.getUsed()}
+	Memory.cpu = { creep: {dt: 0, creep: '', t: Game.cpu.getUsed(), n:0}
 							 , role : {dt: 0, creep: '', role: '', t: Game.cpu.getUsed()}
 							 , step : {dt: 0, creep: '', role: '', step: '', t: Game.cpu.getUsed()}
 						   };
