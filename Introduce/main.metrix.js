@@ -2,7 +2,6 @@ const constants = require('main.constants');
 const log = require('main.log');
 const tools = require('tools');
 
-
 var metrix = {
 
 	updateMovingAverage: function(x) {
@@ -30,7 +29,8 @@ var metrix = {
 				if(cpu_time.dt > limit) {
 					// console.log( '⏳', cpu_time.dt, cpu_time.creep, cpu_time.role, cpu_time.step);
 					console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
-										 		  , JSON.stringify(cpu_time));
+											, JSON.stringify(cpu_time)
+											, Memory.cpu.creep.n);
 				}
 			}
 			cpu_time.t = Math.round((Game.cpu.getUsed()) * 100)/100;
@@ -48,6 +48,7 @@ var metrix = {
 		creep_time: function(creep) {
 			metrix.cpu.role_time(creep, 'endrole');
 			metrix.cpu.time(Memory.cpu.creep, constants.CPU_LIMIT_OF_CREEP_RUN, creep);
+			Memory.cpu.creep.n++;
 		}
 	},
 
