@@ -45,6 +45,9 @@ module.exports.loop = function () {
 			creep.memory.rerun = 0;
 			role.run(creep);
 			metrix.cpu.creep_time(creep);
+			if(Memory.cpu.creep.t > 40) {
+				console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify(Memory.cpu));
 		}
 	}
 // 	console.log('targets:',	JSON.stringify(Memory.targets));
