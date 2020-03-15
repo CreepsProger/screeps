@@ -20,8 +20,12 @@ var rolePickuper = {
 			if(creep.memory.pickuping && creep.store.getFreeCapacity() == 0) {
 				creep.memory.pickuping = false;
 			}
+			
+			const this_room = creep.room.name;
+			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
 
 			if(!creep.memory.pickuping &&
+				 this_room == my_room
 				 creep.getActiveBodyparts(CARRY) > 0 &&
 				 (creep.store.getUsedCapacity() == 0 ||
 					(creep.store.getFreeCapacity() > 0 && creep.memory.rerun))) {
@@ -30,15 +34,7 @@ var rolePickuper = {
 
 			if(creep.memory.pickuping) {
 				
-				const this_room = creep.room.name;
-				const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
-
 				var target;
-				
-				if(!target && this_room != my_room) {
-					const exit = creep.room.findExitTo(my_room);
-					target = creep.pos.findClosestByPath(exit);
-				}
 				
 				if(!target) {
 					var dropped = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, {
