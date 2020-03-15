@@ -48,6 +48,7 @@ module.exports.loop = function () {
 			if(Memory.cpu.creep.t > 40) {
 				console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify(Memory.cpu));
+			}
 		}
 	}
 // 	console.log('targets:',	JSON.stringify(Memory.targets));
