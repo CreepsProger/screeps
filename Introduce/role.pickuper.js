@@ -45,7 +45,7 @@ var rolePickuper = {
 						}
 					});
 					if(droppeds.length > 0) {
-						var dropped = droppeds.reduce((p,c) => creep.pos.findPathTo(p) < creep.pos.findPathTo(c)? p:c);
+						var dropped = droppeds.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 						if(!!dropped) {
 							target = tools.setTarget(creep,dropped,dropped.id,rolePickuper.run);
 						}
