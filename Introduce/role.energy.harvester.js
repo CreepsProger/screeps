@@ -89,11 +89,6 @@ var role = {
 
 			if(conts.length > 0) {
 				var cont = conts.reduce((p,c) => creep.pos.findPathTo(p) < creep.pos.findPathTo(c)? p:c);
-				/*var cont = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-					filter: (structure) => {
-						return conts.find(e => e.id == structure.id);
-					}
-				});*/
 				if(!!cont) {
 					target = tools.setTarget(creep,cont,cont.id,role.run);
 				}
@@ -119,9 +114,7 @@ var role = {
 				 }
 			 });
 			 if(sources.length > 0) {
-				var source = creep.pos.findClosestByPath(FIND_SOURCES, {
-					 filter: (closest) => sources.find(source => source.id == closest.id)
-				 });
+				 var source = sources.reduce((p,c) => creep.pos.findPathTo(p) < creep.pos.findPathTo(c)? p:c);
 				 if(!!source) {
 					 target = tools.setTarget(creep,source,source.id,role.run);
 				 }
@@ -142,13 +135,11 @@ var role = {
 						}
 			});
 			if(sources.length > 0) {
-				var source = creep.pos.findClosestByPath(FIND_SOURCES, {
-					 filter: (closest) => sources.find(source => source.id == closest.id)
-				 });
-				 if(!!source) {
-					 target = source;
-				 }
-			 }
+				var source = sources.reduce((p,c) => creep.pos.findPathTo(p) < creep.pos.findPathTo(c)? p:c);
+				if(!!source) {
+					target = source;
+				}
+			}
 			if(!!target) return target;
 		}
 
