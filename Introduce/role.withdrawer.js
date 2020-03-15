@@ -10,7 +10,11 @@ const tools = require('tools');
 var roleWithdrawer = {
 	/** @param {Creep} creep **/
 	run: function(creep,executer = undefined) {
-
+		if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
+			roleNext.run(creep);
+			return;
+		}
+		
 		if(creep.memory.withdrawing && creep.store.getFreeCapacity() == 0) {
 			creep.memory.withdrawing = false;
 		}
