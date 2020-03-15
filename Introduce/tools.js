@@ -72,21 +72,22 @@ var tools = {
 				 var path2 = creep2.pos.findPathTo(target);
 				 var path = creep.pos.findPathTo(target);
 				 if(path2.length > path.length+1) {
-					 mytarget = target;
-					 Memory.targets[id] = creep.id;
 					 const order = 'move'; // creep2.moveTo.name
 					 const err = creep2.cancelOrder(order);
-					 if(err != OK) {
-						 console.log(creep, 'path:', path.length, creep2, 'path2:', path2.length);
-						 console.log('new target owner:', creep, 'insted of:', creep2, 'for', id, JSON.stringify(target));
-						 console.log(creep2, 'cancelOrder:', order, 'err:', err);
+					 if(err == OK) {
+						 mytarget = target;
+						 Memory.targets[id] = creep.id;
+						 run(creep2,creep);
 					 }
-					 run(creep2,creep);
-					 return mytarget;
+					 else {
+						 console.log( creep, 'path:', path.length
+												, creep2, 'path2:', path2.length
+												, 'cancelOrder:', order, 'err:', err
+												, 'for', id, JSON.stringify(target));
+					 }
 				 }
 			 }
 		 }
-
 		 return mytarget;
 	 }
 
