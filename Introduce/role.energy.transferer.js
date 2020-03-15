@@ -68,6 +68,7 @@ var roleEnergyTransferer = {
 
 			if(!target && (this_room_sources_are_not_empty || !creep.getActiveBodyparts(WORK))) {
 			//if(!target) {
+				vat t = Game.cpu.getUsed();
 				var containers = creep.room.find(FIND_STRUCTURES, {
 					filter: (structure) => {
 						return structure.structureType == STRUCTURE_CONTAINER &&
@@ -76,7 +77,7 @@ var roleEnergyTransferer = {
 					}
 				});
 				if(containers.length > 0) {
-					console.log( this_room, 'containers.length:', containers.length);
+					console.log( this_room, 'containers.length:', containers.length, 'dt:', Game.cpu.getUsed()-t);
 					target = containers.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				}
 			}
