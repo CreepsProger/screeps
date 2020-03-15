@@ -46,6 +46,7 @@ var roleWithdrawer = {
 					if(!!tombstone && tools.checkTarget(executer,tombstone.id)) {
 						target = tools.setTarget(creep,tombstone,tombstone.id,roleWithdrawer.run);
 					}
+				}
 			}
 
 			if(!target) {
@@ -61,6 +62,7 @@ var roleWithdrawer = {
 					if(!!tombstone && tools.checkTarget(executer,ruin.id)) {
 						target = tools.setTarget(creep,ruin,ruin.id,roleWithdrawer.run);
 					}
+				}
 			}
 
 			if(target) {
