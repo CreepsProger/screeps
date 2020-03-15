@@ -162,7 +162,7 @@ var spawns = {
 				}
 				else {
 					if(spawn.name == 'Spawn1' || !!rerun) spawns.tryCreateCreep(spawn,             1608, 31, 2); // V 1-1 E    Carier
-					if(spawn.name == 'Spawn1' || !!rerun) spawns.tryCreateCreep(spawn,           130911, 34, 1); // V 1-2 E    Worker
+					if(spawn.name == 'Spawn1' || !!rerun) spawns.tryCreateCreep(spawn,            80404, 34, 1); // V 1-1 E    Worker
 					if(spawn.name == 'Spawn1' || !!rerun) spawns.tryCreateCreep(spawn,             3015, 41, 2); // V 1-1 E    Carier
 					if(spawn.name == 'Spawn1' || !!rerun) spawns.tryCreateCreep(spawn,           130911, 44, 2); // V 1-1 E    Worker
 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002, 50, 1); // V 1-1 E   Claimer
