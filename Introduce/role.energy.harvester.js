@@ -218,7 +218,7 @@ var role = {
 						ERR_NOT_IN_RANGE:
 				target.structureType?
 						creep.withdraw(target, RESOURCE_ENERGY): // a structure
-				(target.energy == 0 && cree.pos.getRangeTo(target) > 1 )? // a source
+				(target.energy == 0 && creep.pos.getRangeTo(target) > 1 )? // a source
 						ERR_NOT_IN_RANGE:
 				creep.harvest(target);
 
