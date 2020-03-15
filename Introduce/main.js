@@ -44,8 +44,8 @@ module.exports.loop = function () {
 		if(!creep.spawning) {
 			creep.memory.rerun = 0;
 			role.run(creep);
-			metrix.cpu.creep_time(creep);
 		}
+		metrix.cpu.creep_time(creep);
 		if(((Game.time % constants.TICKS_TO_CHECK_CPU == 0) &&
 				Memory.cpu.creep.n >= Memory.totals.CreepsNumber) ||
 			 Memory.cpu.creep.t > 0.9*Game.cpu.tickLimit) {
