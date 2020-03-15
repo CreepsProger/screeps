@@ -157,7 +157,9 @@ var roleEnergyTransferer = {
 						structure.structureType == STRUCTURE_STORAGE &&
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) < 10*constants.START_UPGRADING_ENERGY);
 				if(storages.length > 0) {
-					target = storages[0];
+					target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * creep.pos.getRangeTo(p)
+																	 < c.store.getUsedCapacity(RESOURCE_ENERGY) * creep.pos.getRangeTo(c)? p:c);
+					//target = storages[0];
 				}
 			}
 
