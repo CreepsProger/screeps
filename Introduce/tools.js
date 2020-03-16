@@ -10,6 +10,24 @@ var last_tick = 0;
 
 var tools = {
 
+	
+	getRoomPos: function(roomName) {
+		const codeO = 'O'.charCodeAt(0);
+		const code0 = '0'.charCodeAt(0);
+		const sx = roomName.charCodeAt(0) - codeO > 0? 1:-1;
+		const xx = 10*(roomName.charCodeAt(1) - code0);
+		const x = roomName.charCodeAt(2) - code0;
+		const X = sx*(xx+x);
+		const sy = roomName.charCodeAt(3) - codeO > 0? 1:-1;
+		const yy = 10*(roomName.charCodeAt(4) - code0);
+		const y = roomName.charCodeAt(5) - code0;
+		const Y = sy*(yy+y);
+		var ret;
+		ret.X = X;
+		ret.Y = Y;
+		return ret;
+	},
+
 	getRangeTo: function(pos1,pos2) {
 		if(pos1.roomName == pos2.roomName) {
 			return pos1.getRangeTo(pos2);
@@ -18,8 +36,8 @@ var tools = {
 		if(last_tick != Game.time) {
 			last_tick = Game.time;
 			console.log( '✒️', 'tools.getRangeTo:'
-		                    , 'pos1.roomName:', pos1.roomName
-	  	                  , 'pos2.roomName:', pos2.roomName
+		                    , 'pos1.roomName:', pos1.roomName, tools.getRoomPos(pos1.roomName),
+	  	                  , 'pos2.roomName:', pos2.roomName, tools.getRoomPos(pos2.roomName),
 	    	                , 'range:', range);
 		}
 		return range;
