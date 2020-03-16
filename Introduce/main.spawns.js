@@ -52,8 +52,9 @@ var spawns = {
 				existsNumber = Memory.CreepsNumberByWeight[weight];
 			}
 			if(!!Memory.CreepsIdleTicksByWeight[weight]) {
-				idle = Object.keys(Memory.CreepsIdleTicksByWeight[weight]).reduce((p,c) => p + Memory.CreepsIdleTicksByWeight[weight][c],0);
-// 				idle = Math.round(Memory.CreepsIdleTicksByWeight[weight]/(existsNumber+1));
+				var creepNs = Object.keys(Memory.CreepsIdleTicksByWeight[weight]);
+				idle = creepNs.reduce((p,c) => p + Memory.CreepsIdleTicksByWeight[weight][c],0);
+ 				idle /= creepNs.length;
 			}
 			if(!!Memory.CreepsMinTicksToLive[weight] && !!Memory.CreepsMinTicksToLive[weight].pos) {
 				range = tools.getRangeTo(spawn.pos,Memory.CreepsMinTicksToLive[weight].pos);
