@@ -258,17 +258,7 @@ var role = {
 				require('role.claimer').run(creep);
 			}
 		}
-		if(!Memory.CreepsIdleTicksByWeight) {
-			Memory.CreepsIdleTicksByWeight = {};
-		}
-		if(!Memory.CreepsIdleTicksByWeight[creep.memory.weight]) {
-			Memory.CreepsIdleTicksByWeight[creep.memory.weight] = {};
-		}
-		if(!Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n]) {
-			Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n] = 0;
-		}
-		Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n]++;
-	}
+		metrix.idle(creep);
 };
 
 module.exports = role;
