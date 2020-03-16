@@ -9,6 +9,13 @@ const constants = require('main.constants');
 
 var tools = {
 
+	getRangeTo: function(pos1,pos2) {
+		if(pos1.roomName == pos2.roomName) {
+			return pos1.getRangeTo(pos2);
+		}
+		return 50;
+	},
+		
 	areFullContainers: function(creep) {
 		return creep.room.find(FIND_STRUCTURES, {filter: (structure) =>
 			structure.structureType == STRUCTURE_CONTAINER &&
