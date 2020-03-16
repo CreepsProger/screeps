@@ -131,7 +131,7 @@ var spawns = {
 
 	run: function(rerun = 0) {
 
-		if(Game.time % constants.TICKS_TO_CHECK_CREEPS_NUMBER != 0)
+		if(Game.time % constants.TICKS_TO_SPAWN != 0)
 			return;
 
 		if(!!rerun)
