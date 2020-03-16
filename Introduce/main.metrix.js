@@ -20,7 +20,7 @@ var metrix = {
 			creep.memory.idle++;
 			Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n] = creep.memory.idle;
 		}
-	}
+	},
 
 	updateMovingAverage: function(x) {
 		//    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
