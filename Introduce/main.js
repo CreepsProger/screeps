@@ -51,12 +51,11 @@ module.exports.loop = function () {
 										, JSON.stringify(Memory.cpu));
 			}
 		}
-		if(Game.time % constants.TICKS_TO_CHECK_CPU == 0) {
-			console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
-									, Game.cpu.tickLimit
-									, Game.cpu.bucket
-									, JSON.stringify(Memory.cpu));
-		}
 	}
-// 	console.log('targets:',	JSON.stringify(Memory.targets));
+	if(Game.time % constants.TICKS_TO_CHECK_CPU == 0) {
+		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
+								, Game.cpu.tickLimit
+								, Game.cpu.bucket
+								, JSON.stringify(Memory.cpu));
+	}
 }
