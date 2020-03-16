@@ -259,6 +259,7 @@ var role = {
 			}
 		}
 		metrix.idle(creep);
+	}
 };
 
 module.exports = role;
