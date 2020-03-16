@@ -46,15 +46,15 @@ module.exports.loop = function () {
 			metrix.cpu.creep_time(creep);
 			if(Memory.cpu.creep.t > 0.9*Game.cpu.tickLimit) {
 				console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
+										, 'tickLimit:'
 										, Game.cpu.tickLimit
-										, Game.cpu.bucket
 										, JSON.stringify(Memory.cpu));
 			}
 		}
 	}
 	if(Game.time % constants.TICKS_TO_CHECK_CPU == 0) {
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
-								, Game.cpu.tickLimit
+								, 'bucket'
 								, Game.cpu.bucket
 								, JSON.stringify(Memory.cpu));
 	}
