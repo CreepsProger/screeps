@@ -1,6 +1,7 @@
 const constants = require('main.constants');
 const config = require('main.config');
 const flags = require('main.flags');
+const tools = require('tools');
 
 var last_game_time_created_creep = 0;
 
@@ -46,7 +47,7 @@ var spawns = {
 			var mittl = 1667;
 			var diff_mittl_range_bodys = 6667;
 			if(!!Memory.CreepsMinTicksToLive[weight] && !!Memory.CreepsMinTicksToLive[weight].pos) {
-				range = spawn.pos.getRangeTo(Memory.CreepsMinTicksToLive[weight].pos);
+				range = tools.getRangeTo(spawn.pos,Memory.CreepsMinTicksToLive[weight].pos);
 				mittl = Memory.CreepsMinTicksToLive[weight].mittl;
 				diff_mittl_range_bodys = mittl - range - body.length*3;
 			}
@@ -57,28 +58,28 @@ var spawns = {
 			const needed_plus = needed + (diff_mittl_range_bodys < 20);
 			Memory.CreepsNeedsByWeight[weight] = {needs: needed, needs_plus: needed_plus, bodys: body.length*needed, cost: cost*needed};
 			const needsNumber = needed_plus - existsNumber;
-			const newName = 'creep-<' + weight + '/' + Memory.CreepsCounter % 10 + '>-'
-			 								+ (Ts>0  ? Ts +'t' :'')
-											+ (CLs>0 ? CLs+'l' :'')
-											+ (RAs>0 ? RAs+'r' :'')
-											+ (As>0  ? As +'a' :'')
-											+ (Hs>0  ? Hs +'h' :'')
-											+ (Ws>0  ? Ws +'w' :'')
-											+ (Cs>0  ? Cs +'c' :'')
-											+ (Ms>0  ? Ms +'m' :'#') + '-' + Memory.CreepsCounter;
-//         console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-//                     , 'trying create a creep:'
-//                     , newName
-//                     , 'exists:'
-//                     , existsNumber
-//                     , 'needs:'
-//                     , needsNumber
-//                     , 'cost:'
-//                     , cost
-//                     , 'preverr:'
-//                     , preverr
-//                   );
 			if(last_game_time_created_creep != Game.time && needsNumber > 0) {
+				const newName = 'creep-<' + weight + '/' + Memory.CreepsCounter % 10 + '>-'
+												+ (Ts>0  ? Ts +'t' :'')
+												+ (CLs>0 ? CLs+'l' :'')
+												+ (RAs>0 ? RAs+'r' :'')
+												+ (As>0  ? As +'a' :'')
+												+ (Hs>0  ? Hs +'h' :'')
+												+ (Ws>0  ? Ws +'w' :'')
+												+ (Cs>0  ? Cs +'c' :'')
+												+ (Ms>0  ? Ms +'m' :'#') + '-' + Memory.CreepsCounter;
+	//         console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+	//                     , 'trying create a creep:'
+	//                     , newName
+	//                     , 'exists:'
+	//                     , existsNumber
+	//                     , 'needs:'
+	//                     , needsNumber
+	//                     , 'cost:'
+	//                     , cost
+	//                     , 'preverr:'
+	//                     , preverr
+	//                   );
 				var err = spawn.spawnCreep( body
 																	, newName
 																	, {memory: {n: Memory.CreepsCounter, cost: cost, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
