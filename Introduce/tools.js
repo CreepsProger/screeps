@@ -22,9 +22,7 @@ var tools = {
 		const yy = 10*(roomName.charCodeAt(4) - code0);
 		const y = roomName.charCodeAt(5) - code0;
 		const Y = sy*(yy+y);
-		var ret;
-		ret.X = X;
-		ret.Y = Y;
+		var ret = {X:X,Y:Y};
 		return ret;
 	},
 
