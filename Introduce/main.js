@@ -19,6 +19,7 @@ module.exports.loop = function () {
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'Clearing non-existing creep memory:'
 									, name);
+			Memory.CreepsIdleTicksByWeight = {};
 		}
 	}
 
