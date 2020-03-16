@@ -33,6 +33,9 @@ var tools = {
 		var range = 50;
 		if(last_tick != Game.time) {
 			last_tick = Game.time;
+			const P1 = tools.getRoomPos(pos1.roomName);
+			const P2 = tools.getRoomPos(pos2.roomName);
+			range = 50*(Math.abs(P1.X-P2.X) + Math.abs(P1.Y-P2.Y));
 			console.log( '✒️', 'tools.getRangeTo:'
 		                    , 'pos1.roomName:', pos1.roomName, JSON.stringify(tools.getRoomPos(pos1.roomName))
 	  	                  , 'pos2.roomName:', pos2.roomName, JSON.stringify(tools.getRoomPos(pos2.roomName))
