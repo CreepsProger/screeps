@@ -258,6 +258,7 @@ var role = {
 				require('role.claimer').run(creep);
 			}
 		}
+		Memory.CreepsIdleTicksByWeight[creep.memory.weight]++;
 	}
 };
 
