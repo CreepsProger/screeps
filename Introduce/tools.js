@@ -6,7 +6,8 @@ const constants = require('main.constants');
 //                       C3(T1,C2(T3))
 //=========================
 // C1->T2     C2->T3     C3->T1
-var once = false;
+var last_tick = 0;
+
 var tools = {
 
 	getRangeTo: function(pos1,pos2) {
@@ -14,8 +15,8 @@ var tools = {
 			return pos1.getRangeTo(pos2);
 		}
 		var range = 50;
-		if(!once) {
-			once = true;
+		if(last_tick != Game.time) {
+			last_tick = Game.time;
 			console.log( '✒️', 'tools.getRangeTo:'
 		                    , 'pos1.roomName:', pos1.roomName
 	  	                  , 'pos2.roomName:', pos2.roomName
