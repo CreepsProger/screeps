@@ -34,8 +34,8 @@ var tools = {
 		if(last_tick != Game.time) {
 			last_tick = Game.time;
 			console.log( '✒️', 'tools.getRangeTo:'
-		                    , 'pos1.roomName:', pos1.roomName, tools.getRoomPos(pos1.roomName)
-	  	                  , 'pos2.roomName:', pos2.roomName, tools.getRoomPos(pos2.roomName)
+		                    , 'pos1.roomName:', pos1.roomName, JSON.stringify(tools.getRoomPos(pos1.roomName))
+	  	                  , 'pos2.roomName:', pos2.roomName, JSON.stringify(tools.getRoomPos(pos2.roomName))
 	    	                , 'range:', range);
 		}
 		return range;
