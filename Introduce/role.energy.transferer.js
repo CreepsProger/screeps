@@ -145,7 +145,7 @@ var roleEnergyTransferer = {
 					target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
 																	 < c.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,c.pos)? p:c);
 					const range_to_store = tools.getRangeTo(creep.pos,target.pos);
-					if(range_to_store >= 50) {
+					if(range_to_store >= constants.RANGE_TO_STORE_TO_CONSOLE_LOG) {
 						console.log( '✒️1', creep, 'range_to_store:', range_to_store, creep.pos.roomName, '->', target.pos.roomName);
 					}
 				}
@@ -170,7 +170,7 @@ var roleEnergyTransferer = {
 					target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
 																	 < c.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,c.pos)? p:c);
 					const range_to_store = tools.getRangeTo(creep.pos,target.pos);
-					if(range_to_store >= 50) {
+					if(range_to_store >= constants.RANGE_TO_STORE_TO_CONSOLE_LOG) {
 						console.log( '✒️2', creep, 'range_to_store:', range_to_store, creep.pos.roomName, '->', target.pos.roomName);
 					}
 				}
