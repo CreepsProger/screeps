@@ -52,21 +52,24 @@ var roleEnergyTransferer = {
 			if(!target && this_room != my_room) {
 				const t = Game.cpu.getUsed();
 				target = links.getTargetLinkToTransferEnergy(creep, executer, roleEnergyTransferer.run, this_room_config.containers.weight);
-				//				console.log( this_room, 'links dt:', Game.cpu.getUsed()-t);
 			}
-
-// 		if(!target && !this_room_sources_is_empty) {
-// 				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-// 					filter: (structure) => {
-// 						return structure.structureType == STRUCTURE_CONTAINER &&
-// 									 this_room_config.containers.weight < creep.memory.weight &&
-// 									 structure.store.getFreeCapacity() > 0;
-// 					}
-// 				});
-// 			}
 
 			const this_room_sources_are_empty = tools.areEmptySources(creep);
 			const this_room_sources_are_not_empty = !this_room_sources_are_empty;
+
+			//if(!target) {
+			//if(!target && (this_room != my_room || this_room_sources_are_not_empty)) {
+			if(!target && this_room_sources_are_not_empty) {
+				var closests = creep.pos.findInRange(FIND_MY_CREEPS, 2, {
+					filter: (creep2) => {
+						return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+							creep2.memory.weight < creep.memory.weight;
+					}
+				});
+				if(closests.length > 0) {
+					target = closests[0];
+				}
+			}
 
 			if(!target && (this_room_sources_are_not_empty || !creep.getActiveBodyparts(WORK))) {
 			//if(!target) {
@@ -78,7 +81,7 @@ var roleEnergyTransferer = {
 							structure.store.getFreeCapacity() > 0;
 					}
 				});
-				if(containers.length > 0) {//					console.log( this_room, 'containers.length:', containers.length, 'dt:', Game.cpu.getUsed()-t);
+				if(containers.length > 0) {
 					target = containers.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				}
 			}
@@ -104,7 +107,6 @@ var roleEnergyTransferer = {
 					if(!!extension) {
 						target = tools.setTarget(creep,extension,extension.id,roleEnergyTransferer.run);
 					}
-					//					console.log( this_room, 'extensions.length:', extensions.length, 'dt:', Game.cpu.getUsed()-t);
 				}
 			}
 
@@ -117,20 +119,6 @@ var roleEnergyTransferer = {
 				});
 				if(labs.length > 0) {
 					target = labs[0];
-				}
-			}
-
-			//if(!target) {
-			//if(!target && (this_room != my_room || this_room_sources_are_not_empty)) {
-			if(!target && this_room_sources_are_not_empty) {
-				var closests = creep.pos.findInRange(FIND_MY_CREEPS, 2, {
-					filter: (creep2) => {
-						return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-							creep2.memory.weight < creep.memory.weight;
-					}
-				});
-				if(closests.length > 0) {
-					target = closests[0];
 				}
 			}
 
