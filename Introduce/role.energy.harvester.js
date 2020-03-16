@@ -83,13 +83,12 @@ var role = {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_CONTAINER) &&
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-						creep.memory.weight < my_room_config.containers.weight &&
-						tools.checkTarget(executer,structure.id);
+						creep.memory.weight < my_room_config.containers.weight;
 				}
 			});
 
 			if(conts.length > 0) {
-				var cont = conts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+				var cont = conts.reduce((p,c) => tools.checkTarget(executer,p.id) && creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				if(!!cont) {
 					target = tools.setTarget(creep,cont,cont.id,role.run);
 				}
@@ -115,7 +114,9 @@ var role = {
 				 }
 			 });
 			 if(sources.length > 0) {
-				 var source = sources.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+				 var source = sources.
+				 
+				 ((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				 if(!!source) {
 					 target = tools.setTarget(creep,source,source.id,role.run);
 				 }
