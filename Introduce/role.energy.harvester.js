@@ -83,7 +83,8 @@ var role = {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_CONTAINER) &&
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-						creep.memory.weight < my_room_config.containers.weight;
+						creep.memory.weight < my_room_config.containers.weight &&
+						tools.checkTarget(executer,structure.id);
 				}
 			});
 
