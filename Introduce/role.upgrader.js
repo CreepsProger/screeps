@@ -51,15 +51,15 @@ var roleUpgrader = {
 				roleNext.run(creep);
 				return;
 			}
-			
+
 			const this_room = creep.room.name;
 			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
-			
+
 			if(this_room == my_room && creep.getActiveBodyparts(WORK)) {
-				
+
 				if(Game.time%20)
 				roleUpgrader.updateStopUpgradingCondition(creep);
-			
+
 			const this_room_config = Memory.config.rooms[this_room];
 			const my_room_config = Memory.config.rooms[my_room];
 			const this_room_sources_are_empty = tools.areEmptySources(creep);
@@ -92,7 +92,7 @@ var roleUpgrader = {
 				if(target) {
 					var err = ERR_NOT_IN_RANGE;
 					const range = creep.pos.getRangeTo(target);
-					if(range <= 3 && (range == 3 || tools.moveTo(creep,target) != OK)) {
+					if(range <= 3 || tools.moveTo(creep,target) != OK) {
 						err = creep.upgradeController(target);
 					}
 					if(err == ERR_NOT_IN_RANGE) {
@@ -131,8 +131,8 @@ var roleUpgrader = {
 					creep.memory.upgrading = false;
 				}
 			}
-			} 
-			
+			}
+
 			metrix.cpu.role_time(creep, 'upgrading');
 			if(!creep.memory.upgrading) {
 				roleNext.run(creep);
