@@ -98,10 +98,6 @@ var metrix = {
 		Memory.totals.NeedsBodys = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].bodys,0);
 		Memory.totals.NeedsCost = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].cost,0);
 
-		if(Game.time % constants.TICKS_TO_RESET_IDLE_TICKS == 0) {
-			Memory.CreepsIdleTicksByWeight = {};
-		}
-
 		if(Game.time % constants.TICKS_TO_CHECK_CREEPS_NUMBER == 0) {
 //          var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
 			Memory.totals.CreepsNumber = 0;
