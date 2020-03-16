@@ -3,6 +3,24 @@ const log = require('main.log');
 const tools = require('tools');
 
 var metrix = {
+	
+	idle: function(creep) {
+			if(!Memory.CreepsIdleTicksByWeight) {
+				Memory.CreepsIdleTicksByWeight = {};
+			}
+			if(!Memory.CreepsIdleTicksByWeight[creep.memory.weight]) {
+				Memory.CreepsIdleTicksByWeight[creep.memory.weight] = {};
+			}
+			if(!Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n]) {
+				Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n] = 0;
+			}
+			if(!creep.memory.idle) {
+				creep.memory.idle = 0;
+			}
+			creep.memory.idle++;
+			Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n] = creep.memory.idle;
+		}
+	}
 
 	updateMovingAverage: function(x) {
 		//    console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
