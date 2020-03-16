@@ -70,7 +70,6 @@ var metrix = {
 
 			Memory.CreepsNumberByType = {};
 			Memory.CreepsNumberByWeight = {};
-			Memory.CreepsIdleTicksByWeight = {};
 			Memory.CreepsMinTicksToLive = {};
 			metrix.updateMovingAverage(Memory.harvestersMovements.Value);
 			metrix.updateMovingAverage(Memory.harvestersMovements.Count);
@@ -81,6 +80,10 @@ var metrix = {
 		Memory.totals.NeedsPlusCreeps = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].needs_plus,0);
 		Memory.totals.NeedsBodys = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].bodys,0);
 		Memory.totals.NeedsCost = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].cost,0);
+
+		if(Game.time % constants.TICKS_TO_RESET_IDLE_TICKS == 0) {
+			Memory.CreepsIdleTicksByWeight = {};
+		}
 
 		if(Game.time % constants.TICKS_TO_CHECK_CREEPS_NUMBER == 0) {
 //          var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
