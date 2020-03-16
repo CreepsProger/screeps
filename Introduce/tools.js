@@ -11,34 +11,41 @@ var last_tick = 0;
 var tools = {
 
 	
-	getRoomPos: function(roomName) {
+	getRoomX: function(roomName) {
 		const codeO = 'O'.charCodeAt(0);
 		const code0 = '0'.charCodeAt(0);
 		const sx = roomName.charCodeAt(0) - codeO > 0? 1:-1;
 		const xx = 10*(roomName.charCodeAt(1) - code0);
 		const x = roomName.charCodeAt(2) - code0;
 		const X = sx*(xx+x);
+		return X;
+	},
+
+	getRoomY: function(roomName) {
+		const codeO = 'O'.charCodeAt(0);
+		const code0 = '0'.charCodeAt(0);
 		const sy = roomName.charCodeAt(3) - codeO > 0? 1:-1;
 		const yy = 10*(roomName.charCodeAt(4) - code0);
 		const y = roomName.charCodeAt(5) - code0;
 		const Y = sy*(yy+y);
-		var ret = {X:X,Y:Y};
-		return ret;
+		return Y;
+	},
+	
+	getRoomRange: function(room1, room2) {
+		return Math.abs(tools.getRoomX(room1)-tools.getRoomX(room2))
+				 + Math.abs(tools.getRoomY(room1)-tools.getRoomY(room2));
 	},
 
 	getRangeTo: function(pos1,pos2) {
 		if(pos1.roomName == pos2.roomName) {
 			return pos1.getRangeTo(pos2);
 		}
-		var range = 50;
+		const range = 50*tools.getRoomRange(pos1.roomName, pos2.roomName);
 		if(last_tick != Game.time) {
 			last_tick = Game.time;
-			const P1 = tools.getRoomPos(pos1.roomName);
-			const P2 = tools.getRoomPos(pos2.roomName);
-			range = 50*(Math.abs(P1.X-P2.X) + Math.abs(P1.Y-P2.Y));
 			console.log( '✒️', 'tools.getRangeTo:'
-		                    , 'pos1.roomName:', pos1.roomName, JSON.stringify(tools.getRoomPos(pos1.roomName))
-	  	                  , 'pos2.roomName:', pos2.roomName, JSON.stringify(tools.getRoomPos(pos2.roomName))
+		                    , 'pos1.roomName:', pos1.roomName
+	  	                  , 'pos2.roomName:', pos2.roomName
 	    	                , 'range:', range);
 		}
 		return range;
