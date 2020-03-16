@@ -19,7 +19,6 @@ var metrix = {
 			}
 			creep.memory.idle++;
 			Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n] = creep.memory.idle;
-		}
 	},
 
 	updateMovingAverage: function(x) {
