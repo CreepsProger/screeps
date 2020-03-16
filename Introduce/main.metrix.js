@@ -92,6 +92,9 @@ var metrix = {
 				if(!Memory.CreepsNumberByType[full_type])
 					Memory.CreepsNumberByType[full_type] = 0;
 
+				if(!Memory.CreepsIdleTicksByWeight[creep.memory.weight])
+					Memory.CreepsIdleTicksByWeight[creep.memory.weight] = 0;
+
 				if(!Memory.CreepsNumberByWeight[creep.memory.weight])
 					Memory.CreepsNumberByWeight[creep.memory.weight] = 0;
 
