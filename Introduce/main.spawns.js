@@ -45,15 +45,20 @@ var spawns = {
 			const full_type = '' + type + '/' + weight;
 			var range = 0;
 			var mittl = 1667;
-			var diff_mittl_range_bodys = 6667;
-			if(!!Memory.CreepsMinTicksToLive[weight] && !!Memory.CreepsMinTicksToLive[weight].pos) {
-				range = tools.getRangeTo(spawn.pos,Memory.CreepsMinTicksToLive[weight].pos);
-				mittl = Memory.CreepsMinTicksToLive[weight].mittl;
-				diff_mittl_range_bodys = mittl - range - body.length*3;
-			}
-			if(Memory.CreepsNumberByWeight[weight]) {
+			var diff_mittli_range_bodys = 6667;
+			var idle = 0;
+			if(!!Memory.CreepsNumberByWeight[weight]) {
 				//existsNumber = Memory.CreepsNumberByType[full_type];
 				existsNumber = Memory.CreepsNumberByWeight[weight];
+			}
+			if(!!Memory.CreepsIdleTicksByWeight[weight]) {
+				//existsNumber = Memory.CreepsNumberByType[full_type];
+				idle = Memory.CreepsIdleTicksByWeight[weight]/existsNumber;
+			}
+			if(!!Memory.CreepsMinTicksToLive[weight] && !!Memory.CreepsMinTicksToLive[weight].pos) {
+				range = tools.getRangeTo(spawn.pos,Memory.CreepsMinTicksToLive[weight].pos);
+				mittl= Memory.CreepsMinTicksToLive[weight].mittl;
+				diff_mittli_range_bodys = mittl + idle - range - body.length*3;
 			}
 			const needed_plus = needed + (diff_mittl_range_bodys < 20);
 			Memory.CreepsNeedsByWeight[weight] = {needs: needed, needs_plus: needed_plus, bodys: body.length*needed, cost: cost*needed};
@@ -102,8 +107,8 @@ var spawns = {
 										  , cost
 											, 'exists/needs/needs+:'
 										  , '' + existsNumber + '/' + needed + '/' + needed_plus
-											, 'mittl-range-3*bodys:'
-											, '' + mittl + '-' + range + '-3*' + body.length + '=' + diff_mittl_range_bodys
+											, 'mittl+idle-range-3*bodys:'
+											, '' + mittl + '+' + idle +'-' + range + '-3*' + body.length + '=' + diff_mittli_range_bodys
 										 );
 					Memory.CreepsCounter++;
 					last_game_time_created_creep = Game.time;
