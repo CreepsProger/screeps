@@ -42,19 +42,19 @@ var spawns = {
 			const cost = 10*Ts + 600*CLs + 150*RAs + 80*As + 250*Hs + 100*Ws + 50*Cs + 50*Ms;
 			var existsNumber = 0;
 			const full_type = '' + type + '/' + weight;
-			var path = 0;
+			var range = 0;
 			var mittl = 1667;
-			var diff_mittl_path_bodys = 6667;
+			var diff_mittl_range_bodys = 6667;
 			if(!!Memory.CreepsMinTicksToLive[weight] && !!Memory.CreepsMinTicksToLive[weight].pos) {
-				path = spawn.pos.findPathTo(Memory.CreepsMinTicksToLive[weight].pos).length;
+				range = spawn.pos.getRangeTo(Memory.CreepsMinTicksToLive[weight].pos);
 				mittl = Memory.CreepsMinTicksToLive[weight].mittl;
-				diff_mittl_path_bodys = mittl - path - body.length*3;
+				diff_mittl_range_bodys = mittl - range - body.length*3;
 			}
 			if(Memory.CreepsNumberByWeight[weight]) {
 				//existsNumber = Memory.CreepsNumberByType[full_type];
 				existsNumber = Memory.CreepsNumberByWeight[weight];
 			}
-			const needed_plus = needed + (diff_mittl_path_bodys < 20);
+			const needed_plus = needed + (diff_mittl_range_bodys < 20);
 			Memory.CreepsNeedsByWeight[weight] = {needs: needed, needs_plus: needed_plus, bodys: body.length*needed, cost: cost*needed};
 			const needsNumber = needed_plus - existsNumber;
 			const newName = 'creep-<' + weight + '/' + Memory.CreepsCounter % 10 + '>-'
@@ -101,8 +101,8 @@ var spawns = {
 										  , cost
 											, 'exists/needs/needs+:'
 										  , '' + existsNumber + '/' + needed + '/' + needed_plus
-											, 'mittl-path-3*bodys:'
-											, '' + mittl + '-' + path + '-3*' + body.length + '=' + diff_mittl_path_bodys
+											, 'mittl-range-3*bodys:'
+											, '' + mittl + '-' + range + '-3*' + body.length + '=' + diff_mittl_range_bodys
 										 );
 					Memory.CreepsCounter++;
 					last_game_time_created_creep = Game.time;
