@@ -114,9 +114,7 @@ var role = {
 				 }
 			 });
 			 if(sources.length > 0) {
-				 var source = sources.
-				 
-				 ((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+				 var source = sources.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				 if(!!source) {
 					 target = tools.setTarget(creep,source,source.id,role.run);
 				 }
