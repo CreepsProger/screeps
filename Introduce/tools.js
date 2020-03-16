@@ -41,7 +41,8 @@ var tools = {
 			return pos1.getRangeTo(pos2);
 		}
 		const range = 50*tools.getRoomRange(pos1.roomName, pos2.roomName);
-		if(last_tick != Game.time) {
+
+		if(false && last_tick != Game.time) {
 			last_tick = Game.time;
 			console.log( '✒️', 'tools.getRangeTo:'
 		                    , 'pos1.roomName:', pos1.roomName
