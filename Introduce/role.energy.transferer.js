@@ -162,8 +162,15 @@ var roleEnergyTransferer = {
 				var storages = _.filter(Game.structures, (structure) => !!structure.my &&
 						structure.structureType == STRUCTURE_STORAGE &&
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) < 10*constants.START_UPGRADING_ENERGY);
+// 				if(last_tick != Game.time) {
+// 					last_tick = Game.time;
+// 					console.log( '✒️', 'tools.getRangeTo:'
+// 											, 'pos1.roomName:', p.pos.roomName
+// 											, 'pos2.roomName:', c.pos.roomName
+// 											, 'range:', range);
+// 				}
 				if(storages.length > 0) {
-					target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * creep.pos.getRangeTo(p)
+					target = storages.reduce((p,c) => void(console.log( '✒️', 'void'), p.store.getUsedCapacity(RESOURCE_ENERGY) * creep.pos.getRangeTo(p)
 																	 < c.store.getUsedCapacity(RESOURCE_ENERGY) * creep.pos.getRangeTo(c)? p:c);
 				}
 			}
