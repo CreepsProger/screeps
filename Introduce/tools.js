@@ -13,6 +13,11 @@ var tools = {
 		if(pos1.roomName == pos2.roomName) {
 			return pos1.getRangeTo(pos2);
 		}
+		var range = 50;
+		console.log( '✒️', 'tools.getRangeTo:'
+	                    , 'pos1.roomName:', pos1.roomName
+	                    , 'pos2.roomName:', pos2.roomName
+	                    , 'range:', range);
 		return 50;
 	},
 		
