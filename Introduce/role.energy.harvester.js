@@ -66,7 +66,7 @@ var role = {
 
 		if(!target && this_room != my_room) {
 			const exit = creep.room.findExitTo(my_room);
-			target = creep.pos.findClosestByPath(exit);			
+			target = creep.pos.findClosestByPath(exit);
 			if(!!target) return target;
 		}
 
@@ -173,7 +173,16 @@ var role = {
 			target = creep.room.storage;
 			if(!!target) return target;
 		}
-/*
+
+		if(!target &&
+			 !creep.getActiveBodyparts(WORK) && rerun &&
+			 !!creep.room.storage &&
+			 !!creep.room.storage.my &&
+			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 2*constants.START_UPGRADING_ENERGY) {
+			target = creep.room.storage;
+			if(!!target) return target;
+		}
+				/*
 		if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
 			var weightcreep = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 				filter: (creep2) => {
