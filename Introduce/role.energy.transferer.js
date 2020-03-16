@@ -170,8 +170,8 @@ var roleEnergyTransferer = {
 // 											, 'range:', range);
 // 				}
 				if(storages.length > 0) {
-					target = storages.reduce((p,c) => void(console.log( '✒️', 'void'), p.store.getUsedCapacity(RESOURCE_ENERGY) * creep.pos.getRangeTo(p)
-																	 < c.store.getUsedCapacity(RESOURCE_ENERGY) * creep.pos.getRangeTo(c)? p:c);
+					target = storages.reduce((p,c) => (void(console.log( '✒️', 'void')), p.store.getUsedCapacity(RESOURCE_ENERGY) * creep.pos.getRangeTo(p)
+																	 < c.store.getUsedCapacity(RESOURCE_ENERGY) * creep.pos.getRangeTo(c)? p:c));
 				}
 			}
 
