@@ -176,16 +176,19 @@ var spawns = {
           // if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1000000007000009, 67, 1); // V 1-2 E     Healer
           // if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  500100000000015, 68, 1); // V 1-2 E  RAttacker
 					//                                                                 TTClRrAaHhWwCcMm,100, 3); // V 1-2 E   Attacker
-					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  500100000000015, 76, 2); // V 1-2 E  RAttacker
-					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  200000008000005, 77, 1); // V 1-2 E     Healer
-					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,             3015, 71, 1); // V 1-1 E    Worker
-          if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           130911, 74, 1); // V 1-1 E    Carier
+					
+          
 // 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  500000007000012, 86, 2); // V 1-1 E     Healer
 // 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  500100000000015, 87, 3); // V 1-2 E  RAttacker
 					if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002, 90, 1); // V 1-1 E   Claimer
           if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           130911, 94, 1); // V 1-1 E    Worker
 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,             3015, 91, 1); // V 1-1 E    Carier
-				}
+					
+					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           130911, 74, 1); // V 1-1 E    Carier
+					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,             3015, 71, 1); // V 1-1 E    Worker
+					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  500100000000015, 76, 2); // V 1-2 E  RAttacker
+					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  200000008000005, 77, 1); // V 1-2 E     Healer
+									}
 
 				if(CL >= 4) spawns.tryCreateCreep(spawn,        80808, 20, Memory.totals.WORK< 8? 1:0); // E 1600 Worker
 				if(CL >= 4) spawns.tryCreateCreep(spawn,        70707, 20, Memory.totals.WORK< 7? 1:0); // E 1400 Worker
