@@ -24,10 +24,10 @@ module.exports.loop = function () {
 			const n = name.charCodeAt(9) - code0;
 			if(n >= 0 && n < 10)
 				weight = weight*10+n;
-			Memory.CreepsIdleTicksByWeight[weight] = {};
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'Clearing non-existing creep memory:'
-									, name, weight);
+									, name, weight, JSON.stringify(Memory.CreepsIdleTicksByWeight[weight]));
+			Memory.CreepsIdleTicksByWeight[weight] = {};
 			delete Memory.creeps[name];
 		}
 	}
