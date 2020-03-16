@@ -15,10 +15,10 @@ module.exports.loop = function () {
 	for(var name in Memory.creeps) {
 		var creep = Game.creeps[name];
 		if(!creep) {
-			Memory.CreepsIdleTicksByWeight[creep.memory.weight] = {};
+// 			Memory.CreepsIdleTicksByWeight[creep.memory.weight] = {};
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'Clearing non-existing creep memory:'
-									, name, creep.memory.weight);
+									, name);
 			delete Memory.creeps[name];
 		}
 	}
