@@ -142,8 +142,12 @@ var roleEnergyTransferer = {
 						structure.structureType == STRUCTURE_STORAGE &&
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) < constants.START_UPGRADING_ENERGY);
 				if(storages.length > 0) {
-					target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * creep.pos.getRangeTo(p)
-																	 < c.store.getUsedCapacity(RESOURCE_ENERGY) * creep.pos.getRangeTo(c)? p:c);
+					target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
+																	 < c.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,c.pos)? p:c);
+					const range_to_store = tools.getRangeTo(creep.pos,target.pos);
+					if(range_to_store >= 50) {
+						console.log( '✒️1', creep, 'range_to_store:', range_to_store);
+					}
 				}
 			}
 
@@ -162,16 +166,13 @@ var roleEnergyTransferer = {
 				var storages = _.filter(Game.structures, (structure) => !!structure.my &&
 						structure.structureType == STRUCTURE_STORAGE &&
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) < 10*constants.START_UPGRADING_ENERGY);
-// 				if(last_tick != Game.time) {
-// 					last_tick = Game.time;
-// 					console.log( '✒️', 'tools.getRangeTo:'
-// 											, 'pos1.roomName:', p.pos.roomName
-// 											, 'pos2.roomName:', c.pos.roomName
-// 											, 'range:', range);
-// 				}
 				if(storages.length > 0) {
 					target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
 																	 < c.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,c.pos)? p:c);
+					const range_to_store = tools.getRangeTo(creep.pos,target.pos);
+					if(range_to_store >= 50) {
+						console.log( '✒️2', creep, 'range_to_store:', range_to_store);
+					}
 				}
 			}
 
