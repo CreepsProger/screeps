@@ -24,6 +24,9 @@ module.exports.loop = function () {
 			const n = name.charCodeAt(9) - code0;
 			if(n >= 0 && n < 10)
 				weight = weight*10+n;
+			var creepWs = Object.keys(Memory.CreepsIdleTicksByWeight);
+				idle = creepWs.reduce((p,w) => p + 
+															Object.keys(Memory.CreepsIdleTicksByWeight[w]).reduce((pp,c) => pp + Memory.CreepsIdleTicksByWeight[w][c],0),0);
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'Clearing non-existing creep memory:'
 									, name, weight, JSON.stringify(Memory.CreepsIdleTicksByWeight[weight])
