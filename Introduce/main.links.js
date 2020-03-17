@@ -9,6 +9,7 @@ var links = {
 		 , { from: '5e6778dfcfa64f5485786f84', to: '5e5ab4f1142d6b46f3c86280'}
 		 , { from: '5e56dc7a28e44c6f77878b87', to: '5e583a7b7a54e3585a982b96'}
 		 , { from: '5e5f8ed0124b9b1087db5d47', to: '5e583a7b7a54e3585a982b96'}
+		 , { from: '5e70e2cac19c1cd2f3542b55', to: '5e709d440d4f3d0d9ab5c369'}
 	 ],
 
 	 getTargetLinkToTransferEnergy: function(creep, executer, role_run, link_weight) {
@@ -23,7 +24,8 @@ var links = {
 							structure.id == '5e61d337f15a48007bf5b603' ||
 							structure.id == '5e6778dfcfa64f5485786f84' ||
 							structure.id == '5e56dc7a28e44c6f77878b87' ||
-							structure.id == '5e5f8ed0124b9b1087db5d47') &&
+							structure.id == '5e5f8ed0124b9b1087db5d47' ||
+							structure.id == '5e70e2cac19c1cd2f3542b55' ) && 
 						 tools.checkTarget(executer,structure.id);
 				 }
 			 });
@@ -44,6 +46,12 @@ var links = {
 				 target = tools.setTarget(creep,link,link.id,role_run);
 			 }
 			 link = Game.getObjectById('5e5ab4f1142d6b46f3c86280');
+			 if(creep.room.name == link.room.name &&
+					link.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
+					tools.checkTarget(executer,link.id)) {
+				 target = tools.setTarget(creep,link,link.id,role_run);
+			 }
+			 link = Game.getObjectById('5e709d440d4f3d0d9ab5c369');
 			 if(creep.room.name == link.room.name &&
 					link.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 					tools.checkTarget(executer,link.id)) {
