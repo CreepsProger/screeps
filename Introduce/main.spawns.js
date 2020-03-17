@@ -169,16 +169,16 @@ var spawns = {
 					spawns.tryCreateCreep(spawn, 2500000800000017, 53, 8); // V 1-2 E  2300 Attacker
 				}
 				else {
-					if(spawn.name == 'Spawn1' || !!rerun) spawns.tryCreateCreep(spawn,             1608, 31, 2); // V 1-1 E    Carier
+					if(spawn.name == 'Spawn1' || !!rerun) spawns.tryCreateCreep(spawn,             2010, 31, 1); // V 1-1 E    Carier
 					if(spawn.name == 'Spawn1' || !!rerun) spawns.tryCreateCreep(spawn,           160410, 34, 1); // V 1-1 E    Worker
-					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,             1608, 41, 3); // V 1-1 E    Carier
-					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           130911, 44, 3); // V 1-1 E    Worker
+					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,             2010, 41, 2); // V 1-1 E    Carier
+					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           130911, 44, 2); // V 1-1 E    Worker
 					if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002, 50, 1); // V 1-1 E   Claimer
-	 				if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             1608, 51, 4); // V 1-1 E    Carier
+	 				if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             3015, 51, 2); // V 1-1 E    Carier
 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           130911, 54, 2); // V 1-1 E    Worker
-	        if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             1608, 61, 2); // V 1-1 E    Carier
-					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           130911, 64, 3); // V 1-1 E    Worker
-          //                                                                                      21
+	        if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             2010, 61, 1); // V 1-1 E    Carier
+					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           160410, 64, 3); // V 1-1 E    Worker
+          //                                                                                      16
 					//                                                                 TTClRrAaHhWwCcMm, 66, 3); // V 1-2 E   Attacker
           // if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1500001000000025, 66, 1); // V 1-2 E   Attacker
           // if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1000000007000009, 67, 1); // V 1-2 E     Healer
@@ -189,7 +189,7 @@ var spawns = {
 // 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  500000007000012, 86, 2); // V 1-1 E     Healer
 // 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  500100000000015, 87, 3); // V 1-2 E  RAttacker
 					if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002, 90, 1); // V 1-1 E   Claimer
-          if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,            60606, 94, 2); // V 1-1 E    Worker
+          if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,            70506, 94, 2); // V 1-1 E    Worker
 					if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             1608, 91, 2); // V 1-1 E    Carier
 
 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           130911, 74, 1); // V 1-1 E    Carier
