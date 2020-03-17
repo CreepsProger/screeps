@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 133,
+	version: 134,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -170,6 +170,7 @@ var config = {
 										 , energy_harvesting:
 												 [ {name: '1', time: 0, min_weight: 90, max_weight: 99}
 												 , {name: '2', time: 0, min_weight: 90, max_weight: 99}
+												 , {name: '3', time: 0, min_weight: 90, max_weight: 99}
 												 ]
 										 , claiming:
 												 [ {name: '1', time: 0, min_weight: 90, max_weight: 99}
