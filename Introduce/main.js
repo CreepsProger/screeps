@@ -26,7 +26,8 @@ module.exports.loop = function () {
 				weight = weight*10+n;
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'Clearing non-existing creep memory:'
-									, name, weight, JSON.stringify(Memory.CreepsIdleTicksByWeight[weight]));
+									, name, weight, JSON.stringify(Memory.CreepsIdleTicksByWeight[weight])
+									, 'all:', JSON.stringify(Memory.CreepsIdleTicksByWeight));
 			Memory.CreepsIdleTicksByWeight[weight] = {};
 			delete Memory.creeps[name];
 		}
