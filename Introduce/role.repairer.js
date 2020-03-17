@@ -39,8 +39,10 @@ var roleRepairer = {
 				
 				var target;
 				
-				if(!creep.memory.prev_target_id)
+				if(!creep.memory.prev_target_id || !creep.memory.prev_target_time || creep.memory.prev_target_time < Game.time - 10) {
 					creep.memory.prev_target_id = '0';
+					creep.memory.prev_target_time = 0;
+				}
 
 				const NR1 = Game.flags['NR1'];// don't repair
 				const NR2 = Game.flags['NR2'];// don't repair
@@ -89,6 +91,7 @@ var roleRepairer = {
 						action = 'repairing:';
 						err = creep.repair(target);
 						creep.memory.prev_target_id = target.id;
+						creep.memory.prev_target_time = Game.time;
 					}
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜🔧');
