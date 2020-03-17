@@ -64,7 +64,7 @@ var towers = {
  						 if(structure.structureType == STRUCTURE_RAMPART) {
  							 return structure.hits < 160000;// 8000 E = 10 * 8000 / 800 = 100
  						 }
- 						 return structure.hitsMax - structure.hits > towers.length*800;
+ 						 return structure.hitsMax - structure.hits > 2400; //towers.length*800;
  					 }
  				 });
 
