@@ -76,7 +76,8 @@ var roleEnergyTransferer = {
 				 const t = Game.cpu.getUsed();
 				var containers = creep.room.find(FIND_STRUCTURES, {
 					filter: (structure) => {
-						return structure.structureType == STRUCTURE_CONTAINER &&
+						return (structure.structureType == STRUCTURE_CONTAINER || 
+										(structure.structureType == STRUCTURE_STORAGE && creep.getActiveBodyparts(WORK))) &&
 							this_room_config.containers.weight < creep.memory.weight &&
 							structure.store.getFreeCapacity() > 0;
 					}
