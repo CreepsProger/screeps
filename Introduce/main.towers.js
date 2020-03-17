@@ -1,4 +1,5 @@
 const constants = require('main.constants');
+const tools = require('tools');
 
 var towers = {
 
@@ -10,10 +11,16 @@ var towers = {
 		 towers.push(Game.getObjectById('5e548bd68e41f2b534bffe4b'));
 		 towers.push(Game.getObjectById('5e5abedb9083d52a982adcf6'));
 		 towers.push(Game.getObjectById('5e6cb0041a23303a5ce6fc0a'));
+		 
+		 var target;
 
-		 towers.forEach(function(tower) {
-			 var target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-			 if(target) {
+		 towers.forEach(function(tower,i) {
+			 target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+					 filter: (hostile) => {
+						 return hostile.pos.x%48 > 1 || hostile.pos.y%48 > 1;
+					 }
+				 });
+			 if(!!target) {
 				 tower.attack(target);
 			 }
 
