@@ -169,16 +169,16 @@ var spawns = {
 					spawns.tryCreateCreep(spawn, 2500000800000017, 53, 8); // V 1-2 E  2300 Attacker
 				}
 				else {
-					if(spawn.name == 'Spawn1' || !!rerun) spawns.tryCreateCreep(spawn,             2010, 31, 1); // V 1-1 E    Carier
-					if(spawn.name == 'Spawn1' || !!rerun) spawns.tryCreateCreep(spawn,           160410, 34, 1); // V 1-1 E    Worker
+					if(spawn.name == 'Spawn1' || !!rerun) spawns.tryCreateCreep(spawn,             2412, 31, 1); // V 1-1 E    Carier
+					if(spawn.name == 'Spawn1' || !!rerun) spawns.tryCreateCreep(spawn,           130910, 34, 1); // V 1-1 E    Worker
 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,             2412, 41, 3); // V 1-1 E    Carier
-					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           160410, 44, 1); // V 1-1 E    Worker
+					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           130910, 44, 2); // V 1-1 E    Worker
 					if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002, 50, 1); // V 1-1 E   Claimer
 	 				if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             2412, 51, 3); // V 1-1 E    Carier
 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           130911, 54, 2); // V 1-1 E    Worker
 	        if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             2412, 61, 2); // V 1-1 E    Carier
-					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           160410, 64, 4); // V 1-1 E    Worker
-          //                                                                                      16
+					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           130911, 64, 3); // V 1-1 E    Worker
+          //                                                                                      18
 					//                                                                 TTClRrAaHhWwCcMm, 66, 3); // V 1-2 E   Attacker
           // if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1500001000000025, 66, 1); // V 1-2 E   Attacker
           // if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1000000007000009, 67, 1); // V 1-2 E     Healer
