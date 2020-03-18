@@ -57,7 +57,7 @@ var role = {
 
     		var target;
 
-				const hostile_creeps_near = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 3).length > 0;
+				const hostile_creeps_near = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 4).length > 0;
 				const good_healer_near = creep.pos.findInRange(FIND_MY_CREEPS, 2, {filter: (healer) => {
 						return healer.getActiveBodyparts(HEAL) > 0 /*&& healer.hits == healer.hitsMax*/;}}).length > 0;
 				const tough_count = creep.body.reduce((p,c) => p += (c.type == TOUGH),0);
