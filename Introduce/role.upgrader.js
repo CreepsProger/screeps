@@ -57,8 +57,8 @@ var roleUpgrader = {
 
 			if(this_room == my_room && creep.getActiveBodyparts(WORK)) {
 
-				if(Game.time%20)
-				roleUpgrader.updateStopUpgradingCondition(creep);
+				if(Game.time%constants.TICKS_TO_CHECK_STOP_UPGRADING == 0)
+					roleUpgrader.updateStopUpgradingCondition(creep);
 
 			const this_room_config = Memory.config.rooms[this_room];
 			const my_room_config = Memory.config.rooms[my_room];
