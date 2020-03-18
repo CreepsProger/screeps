@@ -195,7 +195,13 @@ var spawns = {
 					}
 					//                                                                                      28)
 					//                                                                 TTClRrAaHhWwCcMm,100, 3); // V 1-2 E  Attacker
-					if(Game.cpu.bucket > constants.CPU_BUCKET_TO_SPAWN_TO_ATTACK) {
+					if(Game.cpu.bucket > constants.CPU_BUCKET_TO_START_SPAWN_TO_ATTACK) {
+						Memory.spawn_to_attack = true;
+					}
+					if(Game.cpu.bucket < constants.CPU_BUCKET_TO_STOP_SPAWN_TO_ATTACK) {
+						Memory.spawn_to_attack = false;
+					}
+					if(Memory.spawn_to_attack) {
 						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1000000005000015, 87, 9); // V 1-1 E    Healer
 					}
 				}
