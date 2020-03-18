@@ -88,7 +88,7 @@ var role = {
 				}
 				
 				if(creep.memory.n == 1276) {
-					console.log(JSON.stringify({my_heal_room: my_heal_room, shouldHeal: shouldHeal, canAttack: canAttack, canAttack2: canAttack2}));
+					console.log(JSON.stringify({n:creep.memory.n, my_heal_room: my_heal_room, shouldHeal: shouldHeal, canAttack: canAttack, canAttack2: canAttack2}));
 				}
 
 				// if(!target && creep.hits < creep.hitsMax) { //creep.hitsMax - creep.hits > creep.getActiveBodyparts(TOUGH)*100 && !creep.getActiveBodyparts(HEAL)) {
@@ -115,15 +115,15 @@ var role = {
 					 creep.hitsMax - creep.hits > 0 ) {
 					target = creep;
 					if(creep.memory.n == 1276) {
-						console.log('Heal myself:', JSON.stringify({my_heal_room: my_heal_room, shouldHeal: shouldHeal, canAttack: canAttack, canAttack2: canAttack2}));
+						console.log('Heal myself:', JSON.stringify({n:creep.memory.n, my_heal_room: my_heal_room, shouldHeal: shouldHeal, canAttack: canAttack, canAttack2: canAttack2}));
 					}
 				}
 
-				if(!target && this_room != my_heal_room && !canAttack) {
+				if(!target && this_room != my_heal_room && !canAttack && !canHeal) {
 					const exit = creep.room.findExitTo(my_next_escape_room);
 					target = creep.pos.findClosestByPath(exit);
 					if(creep.memory.n == 1276) {
-						console.log('Go to my heal room:', JSON.stringify({my_pos:creep.pos, my_heal_room: my_heal_room, shouldHeal: shouldHeal, canAttack: canAttack, canAttack2: canAttack2}));
+						console.log('Go to my heal room:', JSON.stringify({n:creep.memory.n, my_pos:creep.pos, my_heal_room: my_heal_room, shouldHeal: shouldHeal, canAttack: canAttack, canAttack2: canAttack2}));
 					}
 				}
 
