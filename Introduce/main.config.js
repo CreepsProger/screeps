@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 134,
+	version: 135,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -189,17 +189,24 @@ var config = {
 										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33', W28S33: 'W28S34'}
 										 , escape_path:{ W28S34: 'W28S33'}
 										 },
-						 W29S33: { containers: {weight: 1075}
+						 W29S33: { containers: {weight: 103}
 										 , energy_harvesting:
-												 [ {name: '1', time: 0, min_weight: 1070, max_weight: 1079}
-												 , {name: '2', time: 0, min_weight: 1070, max_weight: 1079}
+												 [ {name: '1', time: 0, min_weight: 100, max_weight: 109}
+												 , {name: '2', time: 0, min_weight: 100, max_weight: 109}
+												 , {name: '3', time: 0, min_weight: 100, max_weight: 109}
 												 ]
 										 , claiming:
-												 [ {name: '1', time: 0, min_weight: 1070, max_weight: 1079}
-												 , {name: '2', time: 0, min_weight: 1070, max_weight: 1079}
+												 [ {name: '1', time: 0, min_weight: 100, max_weight: 109}
+												 , {name: '2', time: 0, min_weight: 100, max_weight: 109}
 												 ]
-									   , heal_room: 'W26S33'
-										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33', W28S33: 'W29S33'}
+										 , attacker:
+												 [ {name: '1', time: 0, min_weight: 100, max_weight: 109}
+												 , {name: '2', time: 0, min_weight: 100, max_weight: 109}
+												 , {name: '3', time: 0, min_weight: 100, max_weight: 109}
+												 , {name: '4', time: 0, min_weight: 100, max_weight: 109}
+												 ]
+									   , heal_room: 'W28S33'
+										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33', W28S33: 'W29S33', W28S34: 'W28S33'}
 										 , escape_path:{ W28S37: 'W28S38', W28S38: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
 																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
 																	 , W28S33: 'W27S33', W27S33: 'W26S33'}
