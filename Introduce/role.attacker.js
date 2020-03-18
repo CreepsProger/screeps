@@ -92,9 +92,9 @@ var role = {
 					}
 				}
 
-				if(!target && this_room != my_heal_room && !canAttack2 ) {
-					const exitDir = Game.map.findExit(creep.room, my_next_escape_room);
-					target = creep.pos.findClosestByRange(exitDir);
+				if(!target && this_room != my_heal_room && !canAttack2) {
+					const exit = creep.room.findExitTo(my_next_escape_room);
+					target = creep.pos.findClosestByPath(exit);
 				}
 
 				// if(!target && creep.getActiveBodyparts(HEAL)) {
