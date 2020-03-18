@@ -116,6 +116,10 @@ var role = {
 					});
 				}
 
+				if(!target && creep.getActiveBodyparts(HEAL) && !canAttack) {
+					target = creep;
+				}
+
 				if(!target && creep.getActiveBodyparts(HEAL)) {
 					target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (mycreep) => {
