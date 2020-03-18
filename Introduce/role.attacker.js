@@ -65,8 +65,8 @@ var role = {
 				const canAttack = shouldHeal < tough_count*50;
 				const canAttack2 = shouldHeal < tough_count*100;
 				
-				if(creep.memory.n == 0) {
-					console.log('tough_count:', tough_count, 'creep.body:', JSON.stringify(creep.body));
+				if(creep.memory.n == 11987) {
+					console.log(JSON.stringify({tough_count: tough_count, shouldHeal: shouldHeal, canAttack: canAttack, canAttack2: canAttack2}));
 				}
 
 				if(!target && this_room == my_heal_room && creep.hits < creep.hitsMax) {
