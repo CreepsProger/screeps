@@ -41,8 +41,7 @@ module.exports.loop = function () {
 	flags.run()
 	links.run();
 	towers.run();
-	const ready_count = spawns.run();
-	spawns.run(ready_count);
+	spawns.run(0);	spawns.run(1);
 	metrix.output();
 
 	Memory.targets = {};
