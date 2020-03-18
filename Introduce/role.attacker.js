@@ -98,6 +98,10 @@ var role = {
 					}
 				}
 
+				if(!target && creep.getActiveBodyparts(HEAL) && !canAttack) {
+					target = creep;
+				}
+
 				if(!target && this_room != my_heal_room && !canAttack2) {
 					const exit = creep.room.findExitTo(my_next_escape_room);
 					target = creep.pos.findClosestByPath(exit);
@@ -114,10 +118,6 @@ var role = {
 			           mycreep.getActiveBodyparts(HEAL) > 0);
 						}
 					});
-				}
-
-				if(!target && creep.getActiveBodyparts(HEAL) && !canAttack) {
-					target = creep;
 				}
 
 				if(!target && creep.getActiveBodyparts(HEAL)) {
