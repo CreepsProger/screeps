@@ -3,7 +3,7 @@ const config = require('main.config');
 const flags = require('main.flags');
 const tools = require('tools');
 
-var last_game_time_created_creep = 0;
+var last_game_time_created_creep = {};
 
 var spawns = {
 
@@ -65,7 +65,7 @@ var spawns = {
 			const needed_plus = needed + (diff_mittli_range_bodys < constants.TICKS_TO_SPAWN);
 			Memory.CreepsNeedsByWeight[weight] = {needs: needed, needs_plus: needed_plus, bodys: body.length*needed, cost: cost*needed};
 			const needsNumber = needed_plus - existsNumber;
-			if(last_game_time_created_creep != Game.time && needsNumber > 0) {
+			if((!last_game_time_created_creep[spawn.name] || last_game_time_created_creep != Game.time) && needsNumber > 0) {
 				const newName = 'creep-<' + weight + '/' + Memory.CreepsCounter % 10 + '>-'
 												+ (Ts>0  ? Ts +'t' :'')
 												+ (CLs>0 ? CLs+'l' :'')
@@ -113,7 +113,7 @@ var spawns = {
 											, '' + mittl + '+' + idle +'-' + range + '-3*' + body.length + '=' + diff_mittli_range_bodys
 										 );
 					Memory.CreepsCounter++;
-					last_game_time_created_creep = Game.time;
+					last_game_time_created_creep[spawn.name] = Game.time;
 				}
 			}
 		},
@@ -154,8 +154,6 @@ var spawns = {
 									*/
 
 			if(!spawn.spawning && spawn.name != 'Spawn19') {
-
-				rerun++;
 
 				var controller = spawn.room.controller;
 				const CL = controller.level;
