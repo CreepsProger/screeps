@@ -192,6 +192,10 @@ var spawns = {
           if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,            80808, 94, 1); // V 1-1 E    Worker
 					if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,              804, 91, 1); // V 1-1 E    Carier
 
+					if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,100, 1); // V 1-1 E   Claimer
+          if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,            80808,104, 1); // V 1-1 E    Worker
+					if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             2412,101, 1); // V 1-1 E    Carier
+
 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           120408, 74, 1); // V 1-1 E    Carier
 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,             1608, 71, 1); // V 1-1 E    Worker
 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  500100000000015, 76, 2); // V 1-2 E  RAttacker
