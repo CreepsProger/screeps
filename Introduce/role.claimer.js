@@ -74,10 +74,14 @@ var role = {
 		// 	my_room_config.path_rooms[this_room]:my_room;
 
 			var target;
-			
+
 			if(!target && this_room != my_room) {
 				const exit = creep.room.findExitTo(my_room);
 				target = creep.pos.findClosestByPath(exit);
+			}
+
+			if(!target && !!Memory.cash && !!Memory.cash[my_room] && !!Memory.cash[my_room].claiming_controller_id) {
+				target = Game.getObjectById(Memory.cash[my_room].claiming_controller_id);
 			}
 			
 			if(!target) {
@@ -87,6 +91,14 @@ var role = {
 							!structure.my;
 					}
 				});
+
+				if(!Memory.cash) {
+					Memory.cash = {};
+				}
+				if(!Memory.cash[my_room]) {
+					Memory.cash[my_room] = {};
+				}
+				Memory.cash[my_room].claiming_controller_id = target.id;
 			}
 			
 			if(target)
