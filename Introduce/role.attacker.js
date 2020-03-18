@@ -60,10 +60,14 @@ var role = {
 				const hostile_creeps_near = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 4).length > 0;
 				const good_healer_near = creep.pos.findInRange(FIND_MY_CREEPS, 2, {filter: (healer) => {
 						return healer.getActiveBodyparts(HEAL) > 0 /*&& healer.hits == healer.hitsMax*/;}}).length > 0;
-				const tough_count = creep.body.reduce((p,c) => p += (c.type == TOUGH),0);
 				const shouldHeal = creep.hitsMax - creep.hits;
-				const canAttack = shouldHeal < tough_count*50;
-				const canAttack2 = shouldHeal < tough_count*100;
+				const tough_count = creep.body.reduce((p,c) => p += (c.type == TOUGH),0);
+				const tough_more_then_half = shouldHeal < tough_count*50;
+				const tough_less_then_half = !tough_more_then_half && shouldHeal < tough_count*100;
+				const canAttack = tough_more_then_half && (creep.getActiveBodyparts(RANGED_ATTACK) || creep.getActiveBodyparts(ATTACK));
+				const canAttack2 = tough_less_then_half && (creep.getActiveBodyparts(RANGED_ATTACK) || creep.getActiveBodyparts(ATTACK));
+				const canHeal = tough_more_then_half && creep.getActiveBodyparts(HEAL);
+				const canHeal2 = tough_less_then_half && creep.getActiveBodyparts(HEAL);
 				
 				if(creep.memory.n == 1276) {
 					console.log(JSON.stringify({tough_count: tough_count, shouldHeal: shouldHeal, canAttack: canAttack, canAttack2: canAttack2}));
@@ -113,7 +117,6 @@ var role = {
 					if(creep.memory.n == 1276) {
 						console.log('Heal myself:', JSON.stringify({my_heal_room: my_heal_room, shouldHeal: shouldHeal, canAttack: canAttack, canAttack2: canAttack2}));
 					}
-
 				}
 
 				if(!target && this_room != my_heal_room && !canAttack) {
@@ -130,7 +133,7 @@ var role = {
 							const mycreep_tough_count = mycreep.body.reduce((p,c) => p += (c.type == TOUGH),0);
 							const mycreep_canAttack2 = mycreep.hitsMax - mycreep.hits < tough_count*100;
 							return mycreep_canAttack2 && mycreep.hitsMax - mycreep.hits > 0 &&
-								creep.pos.getRangeTo(mycreep) <= 10 &&
+								creep.pos.getRangeTo(mycreep) <= 20 &&
 								(mycreep.getActiveBodyparts(RANGED_ATTACK) > 0 ||
 			           mycreep.getActiveBodyparts(ATTACK) > 0 ||
 			           mycreep.getActiveBodyparts(HEAL) > 0);
@@ -142,7 +145,7 @@ var role = {
 					target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (mycreep) => {
 							return mycreep.hitsMax - mycreep.hits > 0 &&
-								creep.pos.getRangeTo(mycreep) <= 10 &&
+								creep.pos.getRangeTo(mycreep) <= 20 &&
 								!(mycreep.getActiveBodyparts(RANGED_ATTACK) > 0 ||
 			            mycreep.getActiveBodyparts(ATTACK) > 0 ||
 			            mycreep.getActiveBodyparts(HEAL) > 0);
