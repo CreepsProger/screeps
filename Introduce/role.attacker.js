@@ -98,7 +98,10 @@ var role = {
 					}
 				}
 
-				if(!target && creep.getActiveBodyparts(HEAL) && this_room != my_heal_room && !canAttack) {
+				if(!target && creep.getActiveBodyparts(HEAL) &&
+					 this_room != my_room &&
+					 !hostile_creeps_near &&
+					 creep.hitsMax - creep.hits > 0 ) {
 					target = creep;
 				}
 
