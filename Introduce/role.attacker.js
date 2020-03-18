@@ -104,7 +104,7 @@ var role = {
 				}
 
 				if(!target && creep.getActiveBodyparts(HEAL) &&
-					 this_room != my_room &&
+					 this_room != my_room && (creep.pos.x%48 > 1 && creep.pos.y%48 > 1)
 					 !hostile_creeps_near &&
 					 creep.hitsMax - creep.hits > 0 ) {
 					target = creep;
