@@ -5,6 +5,7 @@ const metrix = require('main.metrix');
 const flags = require('main.flags');
 const log = require('main.log');
 const tools = require('tools');
+const tools = require('cash');
 
 var git = '$Format:%H$';
 
@@ -80,10 +81,10 @@ var role = {
 				target = creep.pos.findClosestByPath(exit);
 			}
 
-			if(!target && !!Memory.cash && !!Memory.cash[my_room] && !!Memory.cash[my_room].claiming_controller_id) {
-				target = Game.getObjectById(Memory.cash[my_room].claiming_controller_id);
+			if(!target) {
+				target = cash.getObject(my_room,'claiming_controller_id');
 			}
-			
+
 			if(!target) {
 				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 					filter: (structure) => {
@@ -92,17 +93,11 @@ var role = {
 					}
 				});
 
-				if(!Memory.cash) {
-					Memory.cash = {};
-				}
-				if(!Memory.cash[my_room]) {
-					Memory.cash[my_room] = {claiming_controller_id: target.id};
-				}
 				if(!!target) {
-					Memory.cash[my_room].claiming_controller_id = target.id;
+					target = cash.setObject(my_room,'claiming_controller_id',target.id);
 				}
 			}
-			
+
 			if(target)
 			{
 				var err = ERR_NOT_IN_RANGE;
