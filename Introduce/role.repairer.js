@@ -39,7 +39,7 @@ var roleRepairer = {
 				
 				var target;
 				
-				if(!creep.memory.prev_target_id || !creep.memory.prev_target_time || creep.memory.prev_target_time < Game.time - 10) {
+				if(!creep.memory.prev_target_id || !creep.memory.prev_target_time || creep.memory.prev_target_time < Game.time - 100) {
 					creep.memory.prev_target_id = '0';
 					creep.memory.prev_target_time = 0;
 				}
