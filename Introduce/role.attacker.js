@@ -93,7 +93,7 @@ var role = {
 					var creep2 = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (healer) => {
 							const healer_tough_count = healer.body.reduce((p,c) => p += (c.type == TOUGH),0);
-							const healer_canAttack = ((healer.hitsMax - healer.hits) < tough_count*100)e;
+							const healer_canAttack = ((healer.hitsMax - healer.hits) < tough_count*100);
 							return healer_canAttack && healer.getActiveBodyparts(HEAL) > 0;
 						}
 					});
