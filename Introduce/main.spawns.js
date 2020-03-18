@@ -187,8 +187,6 @@ var spawns = {
           // if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1500001000000025, 66, 1); // V 1-2 E   Attacker
           // if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1000000007000009, 67, 1); // V 1-2 E     Healer
           // if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  500100000000015, 68, 1); // V 1-2 E  RAttacker
-					//                                                                 TTClRrAaHhWwCcMm,100, 3); // V 1-2 E   Attacker
-
 
 					// 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  500100000000015, 87, 3); // V 1-2 E  RAttacker
 					if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002, 90, 1); // V 1-1 E   Claimer
@@ -199,7 +197,8 @@ var spawns = {
           if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,            80808,104, 1); // V 1-1 E    Worker
 					if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             2412,101, 1); // V 1-1 E    Carier
 
-					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  160000004000020, 86, 3); // V 1-1 E     Healer
+					//                                                                 TTClRrAaHhWwCcMm,100, 3); // V 1-2 E   Attacker
+					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1600000004000020, 86, 3); // V 1-1 E     Healer
 				}
 
 				if(CL >= 4) spawns.tryCreateCreep(spawn,        80808, 20, Memory.totals.WORK< 8? 1:0); // E 1600 Worker
