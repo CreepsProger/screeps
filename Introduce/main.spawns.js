@@ -213,7 +213,6 @@ var spawns = {
 															 , {align: 'left', opacity: 0.8});
 			}
 		}
-		return rerun;
 	}
 };
 
