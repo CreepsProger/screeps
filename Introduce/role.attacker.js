@@ -61,8 +61,9 @@ var role = {
 				const good_healer_near = creep.pos.findInRange(FIND_MY_CREEPS, 2, {filter: (healer) => {
 						return healer.getActiveBodyparts(HEAL) > 0 /*&& healer.hits == healer.hitsMax*/;}}).length > 0;
 				const tough_count = creep.body.reduce((p,c) => p += (c.type == TOUGH),0);
-				const canAttack = creep.hitsMax - creep.hits < tough_count*100/2;
-				const canAttack2 = creep.hitsMax - creep.hits < tough_count*100;
+				const shouldHeal = creep.hitsMax - creep.hits;
+				const canAttack = shouldHeal < tough_count*50;
+				const canAttack2 = shouldHeal < tough_count*100;
 				
 				if(creep.memory.n == 0) {
 					console.log('tough_count:', tough_count, 'creep.body:', JSON.stringify(creep.body));
