@@ -142,7 +142,7 @@ var config = {
 												 ]
 									   , heal_room: 'W26S33'
 										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W26S34', W25S34: 'W26S34'
-																		, W27S33: 'W26S33', W28S33: 'W27S33', W28S34: 'W28S33'}'}
+																		, W27S33: 'W26S33', W28S33: 'W27S33', W28S34: 'W28S33'}
 										 , escape_path:{ W26S34: 'W26S33'}
 										 },
 						 W27S34: { containers: {weight: 83}
