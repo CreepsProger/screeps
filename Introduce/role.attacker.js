@@ -82,8 +82,9 @@ var role = {
 					!canAttack && canAttack2 && !good_healer_near) {
 					var creep2 = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (healer) => {
-							return healer.getActiveBodyparts(HEAL) > 0 &&
-										healer.hits == healer.hitsMax;
+							return healer.getActiveBodyparts(HEAL) > 0;
+// 								&&
+// 										healer.hits == healer.hitsMax;
 						}
 					});
 					var path = creep.pos.findPathTo(target);
@@ -92,20 +93,7 @@ var role = {
 					}
 				}
 
-				if(!target && this_room != my_heal_room && !canAttack2) {
-					const exit = creep.room.findExitTo(my_next_escape_room);
-					target = creep.pos.findClosestByPath(exit);
-				}
-
-				// if(!target && creep.getActiveBodyparts(HEAL)) {
-				// 	target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
-				// 		filter: (mycreep) => {
-				// 			return mycreep.hitsMax - mycreep.hits > 12 * creep.getActiveBodyparts(HEAL);
-				// 		}
-				// 	});
-				// }
-
-				if(!target && creep.getActiveBodyparts(HEAL)) {
+				if(!target && creep.getActiveBodyparts(HEAL) && canAttack2) {
 					target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (mycreep) => {
 							return mycreep.hitsMax - mycreep.hits > 0 &&
@@ -114,6 +102,11 @@ var role = {
 			           mycreep.getActiveBodyparts(HEAL) > 0);
 						}
 					});
+				}
+
+				if(!target && this_room != my_heal_room && !canAttack2) {
+					const exit = creep.room.findExitTo(my_next_escape_room);
+					target = creep.pos.findClosestByPath(exit);
 				}
 
 				if(!target && creep.getActiveBodyparts(HEAL)) {
