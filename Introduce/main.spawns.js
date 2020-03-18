@@ -139,7 +139,7 @@ var spawns = {
 
 	run: function(rerun = 0) {
 
-		if(Game.time % constants.TICKS_TO_SPAWN != 0 || Game.cpu.bucket < constants.CPU_BUCKET_TO_SPAWN)
+		if(Game.time % (constants.TICKS_TO_SPAWN*(1+rerun)) != 0 || Game.cpu.bucket < constants.CPU_BUCKET_TO_SPAWN)
 			return;
 
 		if(!!rerun)
