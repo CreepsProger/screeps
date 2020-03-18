@@ -62,6 +62,9 @@ var role = {
 						return healer.getActiveBodyparts(HEAL) > 0 /*&& healer.hits == healer.hitsMax*/;}}).length > 0;
 				const canAttack = creep.hitsMax - creep.hits < creep.getActiveBodyparts(TOUGH)*100/2;
 				const canAttack2 = creep.hitsMax - creep.hits < creep.getActiveBodyparts(TOUGH)*100;
+				
+				if(creep.memory.n == 11853)
+					console.log('creep.body:', JSON.stringify(creep.body));
 
 				if(!target && this_room == my_heal_room && creep.hits < creep.hitsMax) {
 					var rampart = creep.pos.findClosestByPath(FIND_STRUCTURES, {
