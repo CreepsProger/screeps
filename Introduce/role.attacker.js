@@ -123,7 +123,10 @@ var role = {
 				if(!target && creep.getActiveBodyparts(HEAL)) {
 					target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (mycreep) => {
-							return mycreep.hitsMax - mycreep.hits > 0;
+							return mycreep.hitsMax - mycreep.hits > 0 &&
+								!(mycreep.getActiveBodyparts(RANGED_ATTACK) > 0 ||
+			            mycreep.getActiveBodyparts(ATTACK) > 0 ||
+			            mycreep.getActiveBodyparts(HEAL) > 0);
 						}
 					});
 				}
