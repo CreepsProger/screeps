@@ -82,6 +82,10 @@ var role = {
 						target = rampart;
 					}
 				}
+				
+				if(creep.memory.n == 11987) {
+					console.log(JSON.stringify({my_heal_room: my_heal_room, shouldHeal: shouldHeal, canAttack: canAttack, canAttack2: canAttack2}));
+				}
 
 				// if(!target && creep.hits < creep.hitsMax) { //creep.hitsMax - creep.hits > creep.getActiveBodyparts(TOUGH)*100 && !creep.getActiveBodyparts(HEAL)) {
 			  if(!target && //!creep.getActiveBodyparts(HEAL) &&
@@ -89,8 +93,8 @@ var role = {
 					var creep2 = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (healer) => {
 							const healer_tough_count = healer.body.reduce((p,c) => p += (c.type == TOUGH),0);
-							const healer_canAttack2 = healer.hitsMax - healer.hits < tough_count*100;
-							return healer_canAttack2 && healer.getActiveBodyparts(HEAL) > 0;
+							const healer_canAttack = ((healer.hitsMax - healer.hits) < tough_count*100)e;
+							return healer_canAttack && healer.getActiveBodyparts(HEAL) > 0;
 						}
 					});
 					var path = creep.pos.findPathTo(target);
