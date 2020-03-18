@@ -130,7 +130,7 @@ var role = {
 							const mycreep_tough_count = mycreep.body.reduce((p,c) => p += (c.type == TOUGH),0);
 							const mycreep_canAttack2 = mycreep.hitsMax - mycreep.hits < tough_count*100;
 							return mycreep_canAttack2 && mycreep.hitsMax - mycreep.hits > 0 &&
-								creep.pos.getRangeTo(mycreep) < 10 &&
+								creep.pos.getRangeTo(mycreep) <= 10 &&
 								(mycreep.getActiveBodyparts(RANGED_ATTACK) > 0 ||
 			           mycreep.getActiveBodyparts(ATTACK) > 0 ||
 			           mycreep.getActiveBodyparts(HEAL) > 0);
@@ -142,6 +142,7 @@ var role = {
 					target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (mycreep) => {
 							return mycreep.hitsMax - mycreep.hits > 0 &&
+								creep.pos.getRangeTo(mycreep) <= 10 &&
 								!(mycreep.getActiveBodyparts(RANGED_ATTACK) > 0 ||
 			            mycreep.getActiveBodyparts(ATTACK) > 0 ||
 			            mycreep.getActiveBodyparts(HEAL) > 0);
