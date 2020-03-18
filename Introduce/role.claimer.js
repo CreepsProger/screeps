@@ -98,7 +98,9 @@ var role = {
 				if(!Memory.cash[my_room]) {
 					Memory.cash[my_room] = {claiming_controller_id: target.id};
 				}
-				Memory.cash[my_room].claiming_controller_id = target.id;
+				if(!!target) {
+					Memory.cash[my_room].claiming_controller_id = target.id;
+				}
 			}
 			
 			if(target)
