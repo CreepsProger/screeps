@@ -224,7 +224,7 @@ var role = {
 					target = DP2.pos;
 				}
 
-				if(!target && this_room != my_room && canAttack2) {
+				if(!target && this_room != my_room && !shouldHeal) {
 					const exit = creep.room.findExitTo(my_room);
 					target = creep.pos.findClosestByPath(exit);
 				}
