@@ -199,7 +199,7 @@ var spawns = {
 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,             1608, 71, 1); // V 1-1 E    Worker
 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  500100000000015, 76, 2); // V 1-2 E  RAttacker
 					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  200000008000005, 77, 0); // V 1-2 E     Healer
-					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  100000005000015, 86, 1); // V 1-1 E     Healer
+					if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  160000004000020, 86, 2); // V 1-1 E     Healer
 				}
 
 				if(CL >= 4) spawns.tryCreateCreep(spawn,        80808, 20, Memory.totals.WORK< 8? 1:0); // E 1600 Worker
