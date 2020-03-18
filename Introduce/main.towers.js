@@ -11,6 +11,7 @@ var towers = {
 		 towers.push(Game.getObjectById('5e548bd68e41f2b534bffe4b'));
 		 towers.push(Game.getObjectById('5e5abedb9083d52a982adcf6'));
 		 towers.push(Game.getObjectById('5e6cb0041a23303a5ce6fc0a'));
+		 towers.push(Game.getObjectById('5e70ed814bb541278a0b0039'))
 		 
 		 var target;
 
