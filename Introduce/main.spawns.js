@@ -156,9 +156,9 @@ var spawns = {
 		// for(var name in Game.spawns)
      {
 			var spawn = Game.spawns[Object.keys(Game.spawns)[I]];
-			console.log('✒️', Math.trunc(Game.time/10000), Game.time%10000
-									, 'spawn:'
-									, JSON.stringify(spawn));
+			// console.log('✒️', Math.trunc(Game.time/10000), Game.time%10000
+			// 						, 'spawn:'
+			// 						, JSON.stringify(spawn));
 
 			if(!spawn.spawning && spawn.name != 'Spawn19' && Nspawns) {
 
