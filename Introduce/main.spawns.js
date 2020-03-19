@@ -53,7 +53,8 @@ var spawns = {
 			}
 			if(!!Memory.CreepsIdleTicksByWeight[weight]) {
 				var creepNs = Object.keys(Memory.CreepsIdleTicksByWeight[weight]);
-				idle = creepNs.reduce((p,c) => p + Memory.CreepsIdleTicksByWeight[weight][c],0);
+				idle = creepNs.reduce((p,c) => p +
+															!Memory.CreepsIdleTicksByWeight[weight][c].idle?0:Memory.CreepsIdleTicksByWeight[weight][c].idle,0);
 				const bucketWeight = Game.cpu.bucket <= constants.CPU_BUCKET_TO_SPAWN? 1:Game.cpu.bucket-constants.CPU_BUCKET_TO_SPAWN;
  				idle = Math.round(idle/(creepNs.length + Math.log(bucketWeight+Math.E)));
 			}
