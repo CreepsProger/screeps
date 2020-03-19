@@ -46,6 +46,7 @@ var roleDismantler = {
 				if(!creep.memory.prev_target_id)
 					creep.memory.prev_target_id = '0';
 
+				const D = Game.flags['D'];// dismanle
 				const D1 = Game.flags['D1'];// dismanle
 				const D2 = Game.flags['D2'];// dismanle
 				if(!target) {
@@ -73,7 +74,7 @@ var roleDismantler = {
 									return true;
 								}
 							}
-							return false;
+							return !!D;
 						}
 					});
 					if(structures.length > 0) {
