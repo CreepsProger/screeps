@@ -21,7 +21,7 @@ var metrix = {
 			creep.memory.idle_time = Game.time;
 			creep.memory.idle++;
 			const percent = Math.round(100*creep.memory.idle/creep.ticksToLive);
-			Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n] = {idle:creep.memory.idle, ttl:creep.ticksToLive, pct:percent};
+			Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n] = {idle:creep.memory.idle, ttl:creep.ticksToLive, pct:percent, weight:creep.memory.weight};
 		}
 	},
 
