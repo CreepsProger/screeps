@@ -73,7 +73,7 @@ var role = {
 			var target;
 
 			if(!target && this_room != my_room) {
-				const my_path_room = my_room_config.path_rooms[my_room];
+				const my_path_room = my_room_config.path_rooms[this_room];
 				const exit = creep.room.findExitTo(my_path_room);
 				target = creep.pos.findClosestByPath(exit);
 			}
