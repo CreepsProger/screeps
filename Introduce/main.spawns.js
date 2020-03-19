@@ -138,7 +138,7 @@ var spawns = {
 		}
 	},
 
-	run: function(rerun = 0) {
+	run: function() {
 
     const Nspawns = Object.keys(Game.spawns).length;
     const I = Game.time % constants.TICKS_TO_SPAWN;
