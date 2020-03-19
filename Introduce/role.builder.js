@@ -37,16 +37,14 @@ var roleBuilder = {
 			if(creep.memory.building) {
 
 				const this_room = creep.room.name;
-				const this_room_config = Memory.config.rooms[this_room];
-				// const my_room = creep.memory[role.name].room;
 				const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
-				const my_room_config = Memory.config.rooms[my_room];
 
 
 				var target;
 
 				if(!target && this_room != my_room) {
-					const exit = creep.room.findExitTo(my_room);
+					const my_path_room = my_room_config.path_rooms[this_room];
+					const exit = creep.room.findExitTo(my_path_room);
 					target = creep.pos.findClosestByPath(exit);
 				}
 
