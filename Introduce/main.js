@@ -47,9 +47,9 @@ module.exports.loop = function () {
 
 	Memory.targets = {};
 	Memory.cpu = {};
-	Memory.cpu = { creep: {dt: 0, creep: '', t: Game.cpu.getUsed(), n:1}
-							 , role : {dt: 0, creep: '', role: '', t: Game.cpu.getUsed()}
-							 , step : {dt: 0, creep: '', role: '', step: '', t: Game.cpu.getUsed()}
+	Memory.cpu = { creep: {dt: 0, creep: '', t: Math.round((Game.cpu.getUsed()) * 100)/100, n:1}
+							 , role : {dt: 0, creep: '', role: '', t: Math.round((Game.cpu.getUsed()) * 100)/100}
+							 , step : {dt: 0, creep: '', role: '', step: '', t: Math.round((Game.cpu.getUsed()) * 100)/100}
 						   };
 
 	for(var name in Game.creeps) {
