@@ -203,7 +203,7 @@ var spawns = {
 						Memory.spawn_to_attack = false;
 					}
 					if(Memory.spawn_to_attack) {
-						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1000000005000015, 87, 9); // V 1-1 E    Healer
+						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1000000005000015, 87, 5); // V 1-1 E    Healer
 					}
 				}
 
