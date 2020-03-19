@@ -140,21 +140,25 @@ var spawns = {
 
 	run: function(rerun = 0) {
 
-		if(Game.time % (constants.TICKS_TO_SPAWN*(1+rerun)) != 0 || Game.cpu.bucket < constants.CPU_BUCKET_TO_SPAWN)
+    const Nspawns = Object.keys(Game.spawns).length;
+    const I = Game.time % (constants.TICKS_TO_SPAWN*(1+rerun));
+
+		if(I >= Nspawns || Game.cpu.bucket < constants.CPU_BUCKET_TO_SPAWN)
 			return;
 
 		if(!!rerun)
 			Memory.CreepsNeedsByWeight = {};
 
-		for(var name in Game.spawns) {
-			var spawn = Game.spawns[name];
+		// for(var name in Game.spawns)
+     {
+			var spawn = Game.spawns[Object.keys(Game.spawns)[I]];
 /*
 			console.log('✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'spawn:'
 									, JSON.stringify(spawn));
 									*/
 
-			if(!spawn.spawning && spawn.name != 'Spawn19') {
+			if(!spawn.spawning && spawn.name != 'Spawn19' && Nspawns) {
 
 				var controller = spawn.room.controller;
 				const CL = controller.level;
@@ -191,7 +195,7 @@ var spawns = {
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,            80808,114, 1); // V 1-1 E    Worker
 						// if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             2412,111, 1); // V 1-1 E    Carier
 						// if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015,115, 1); // V 1-2 E  Attacker
-					}					
+					}
 					//                                                                                      28)
 					//                                                                 TTClRrAaHhWwCcMm,100, 3); // V 1-2 E  Attacker
 					if(Game.cpu.bucket > constants.CPU_BUCKET_TO_START_SPAWN_TO_ATTACK) {
