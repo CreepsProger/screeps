@@ -10,7 +10,7 @@ var last_tick = 0;
 
 var tools = {
 
-	
+
 	getRoomX: function(roomName) {
 		const codeO = 'O'.charCodeAt(0);
 		const code0 = '0'.charCodeAt(0);
@@ -30,7 +30,7 @@ var tools = {
 		const Y = sy*(yy+y);
 		return Y;
 	},
-	
+
 	getRoomRange: function(room1, room2) {
 		return Math.abs(tools.getRoomX(room1)-tools.getRoomX(room2))
 				 + Math.abs(tools.getRoomY(room1)-tools.getRoomY(room2));
@@ -51,7 +51,7 @@ var tools = {
 		}
 		return range;
 	},
-		
+
 	areFullContainers: function(creep) {
 		return creep.room.find(FIND_STRUCTURES, {filter: (structure) =>
 			structure.structureType == STRUCTURE_CONTAINER &&
@@ -83,10 +83,8 @@ var tools = {
         }
       }
     }
-		else {
-			return err;
-		}
-		return constants.ERR_NO_PATH_2;
+		return err;
+		// return constants.ERR_NO_PATH_2;
 	},
 
 	areEmptySources: function(creep) {
