@@ -67,8 +67,8 @@ module.exports.loop = function () {
 	}
 	if(Game.time % constants.TICKS_TO_CHECK_CPU == 0) {
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
-								, 'bucket'
-								, Game.cpu.bucket
+								, 'CPU:'
+								, JSON.stringify({bucket:Game.cpu.bucket})
 								, JSON.stringify(Memory.cpu));
 	}
 }
