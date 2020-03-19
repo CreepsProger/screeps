@@ -51,10 +51,19 @@ var roleDismantler = {
 				if(!target) {
 					var structures = creep.room.find(FIND_STRUCTURES, {
 						filter: (structure) => {
-							if((structure.structureType == STRUCTURE_ROAD ||
-                  structure.structureType == STRUCTURE_CONTAINER ||
-                  structure.structureType == STRUCTURE_TOWER ||
-								  structure.structureType == STRUCTURE_LINK)) {
+							if((structure.structureType == STRUCTURE_SPAWN ||
+                  structure.structureType == STRUCTURE_EXTENSION ||
+									structure.structureType == STRUCTURE_ROAD ||
+									structure.structureType == STRUCTURE_WALL ||
+									structure.structureType == STRUCTURE_RAMPART ||
+									structure.structureType == STRUCTURE_LINK ||
+									structure.structureType == STRUCTURE_STORAGE ||
+									structure.structureType == STRUCTURE_TOWER ||
+									structure.structureType == STRUCTURE_LAB ||
+									structure.structureType == STRUCTURE_TERMINAL ||
+									structure.structureType == STRUCTURE_CONTAINER ||
+									structure.structureType == STRUCTURE_NUKER ||
+								  structure.structureType == STRUCTURE_FACTORY)) {
 								if(!!D1 && D1.pos.roomName == creep.room.name &&
 									D1.pos.getRangeTo(structure) < 11-D1.color) {
 									return true;
