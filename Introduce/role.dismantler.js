@@ -34,7 +34,7 @@ var roleDismantler = {
 				const this_room = creep.room.name;
 				const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
 				const my_room_config = Memory.config.rooms[my_room];
-				
+
 				var target;
 
 				if(!target && this_room != my_room) {
@@ -42,7 +42,7 @@ var roleDismantler = {
 					const exit = creep.room.findExitTo(my_path_room);
 					target = creep.pos.findClosestByPath(exit);
 				}
-				
+
 				if(!creep.memory.prev_target_id)
 					creep.memory.prev_target_id = '0';
 
@@ -52,7 +52,8 @@ var roleDismantler = {
 					var structures = creep.room.find(FIND_STRUCTURES, {
 						filter: (structure) => {
 							if((structure.structureType == STRUCTURE_ROAD ||
-									structure.structureType == STRUCTURE_CONTAINER ||
+                  structure.structureType == STRUCTURE_CONTAINER ||
+                  structure.structureType == STRUCTURE_TOWER ||
 								  structure.structureType == STRUCTURE_LINK)) {
 								if(!!D1 && D1.pos.roomName == creep.room.name &&
 									D1.pos.getRangeTo(structure) < 11-D1.color) {
