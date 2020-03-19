@@ -28,4 +28,4 @@ var cash = {
 
 };
 
-module.exports = tools;
+module.exports = cash;
