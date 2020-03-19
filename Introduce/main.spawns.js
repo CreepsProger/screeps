@@ -148,7 +148,7 @@ var spawns = {
 
 			console.log('✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'spawning:'
-									, JSON.stringify({I:I,N:Nspawns}}));
+									, JSON.stringify({I:I,N:Nspawns}));
 
 		if(!!rerun && I == 0)
 			Memory.CreepsNeedsByWeight = {};
