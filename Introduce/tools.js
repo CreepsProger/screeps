@@ -63,24 +63,16 @@ var tools = {
 
 		if (err == ERR_NO_PATH) {
       if (creep.pos.x <= 1) {
-        if (creep.move(RIGHT) == OK) {
-          return OK;
-        }
+				return creep.move(RIGHT);
       }
       if (creep.pos.x >= 48) {
-        if (creep.move(LEFT) == OK) {
-          return OK;
-        }
+				return creep.move(LEFT);
       }
       if (creep.pos.y <= 1) {
-        if (creep.move(BOTTOM) == OK) {
-          return OK;
-        }
+        return creep.move(BOTTOM);
       }
       if (creep.pos.y >= 48) {
-        if (creep.move(TOP) == OK) {
-          return OK;
-        }
+				return creep.move(TOP);
       }
     }
 		return err;
