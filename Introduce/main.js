@@ -31,7 +31,7 @@ module.exports.loop = function () {
 									, 'Clearing non-existing creep memory:'
 									, name, weight, JSON.stringify(Memory.CreepsIdleTicksByWeight[weight])
 									, 'total idle:', total_idle, JSON.stringify(Memory.CreepsIdleTicksByWeight));
-			Memory.CreepsIdleTicksByWeight[weight] = {};
+			Memory.CreepsIdleTicksByWeight[weight] = {};e
 			delete Memory.creeps[name];
 		}
 	}
@@ -68,7 +68,8 @@ module.exports.loop = function () {
 	if(Game.time % constants.TICKS_TO_CHECK_CPU == 0) {
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 								, 'CPU:'
-								, JSON.stringify({bucket:Game.cpu.bucket})
+								, JSON.stringify({bucket:Game.cpu.bucket, delta: Game.cpu.bucket - Memory.cpu_prev_bucket})
 								, JSON.stringify(Memory.cpu));
+		Memory.cpu_prev_bucket = Game.cpu.bucket;
 	}
 }
