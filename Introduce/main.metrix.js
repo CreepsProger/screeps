@@ -131,9 +131,9 @@ var metrix = {
 				Memory.totals.Cost += !!creep.memory.cost? creep.memory.cost:0;
 				Memory.totals.Bodys += creep.body.length;
 				Memory.totals.ticksToLive += creep.ticksToLive;
-				if(!!Memory.totals.Capacity) Memory.totals.Capacity += creep.store.getCapacity();
-				if(!!Memory.totals.FreeCapacity) Memory.totals.FreeCapacity += creep.store.getFreeCapacity();
-				if(!!Memory.totals.UsedCapacity) Memory.totals.UsedCapacity += creep.store.getUsedCapacity();
+				Memory.totals.Capacity += creep.store.getCapacity();
+				Memory.totals.FreeCapacity += creep.store.getFreeCapacity();
+				Memory.totals.UsedCapacity += creep.store.getUsedCapacity();
 				Memory.totals.hits += creep.hits;
 				Memory.totals.hitsMax += creep.hitsMax;
 				Memory.totals.WORK += creep.getActiveBodyparts(WORK);
@@ -159,6 +159,8 @@ var metrix = {
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'CREEPS:'
 									, '' + Memory.totals.CreepsNumber + '/' + Memory.totals.NeedsCreeps + '/' + Memory.totals.NeedsPlusCreeps
+									,'TtL:'
+									, '' + Memory.totals.ticksToLive
 									,'Body:'
 									, '' + Memory.totals.Bodys + '/' + Memory.totals.NeedsBodys
 									,'Cost:'
