@@ -25,10 +25,9 @@ module.exports.loop = function () {
 			if(n >= 0 && n < 10)
 				weight = weight*10+n;
 			const	total_idle = Object.keys(Memory.CreepsIdleTicksByWeight).reduce((p,w) => p + 
-															Object.keys(Memory.CreepsIdleTicksByWeight[w]).reduce((pp,c) => pp +
-																																										Memory.CreepsIdleTicksByWeight[w][c],0),0);
+													Object.keys(Memory.CreepsIdleTicksByWeight[w]).reduce((pp,c) => pp +
+																			!Memory.CreepsIdleTicksByWeight[w][c].idle?0:Memory.CreepsIdleTicksByWeight[w][c].idle,0),0);
 			const percent = Math.round((total_idle/Memory.totals.ticksToLive) * 100)/100;
-
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'Clearing non-existing creep memory:'
 									, name, weight, JSON.stringify(Memory.CreepsIdleTicksByWeight[weight])
