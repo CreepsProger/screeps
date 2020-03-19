@@ -65,18 +65,15 @@ var role = {
 
 		if(creep.memory[role.name].on) {
 
-		const this_room = creep.room.name;
-		const this_room_config = Memory.config.rooms[this_room];
-		const my_room = creep.memory[role.name].room;
-		const my_room_config = Memory.config.rooms[my_room];
-		// console.log(creep, my_room, JSON.stringify(my_room_config));
-		const my_path_room = my_room_config.path_rooms[this_room];
-		// const my_path_room = (!!my_room_config.path_rooms && !!my_room_config.path_rooms[this_room])?
-		// 	my_room_config.path_rooms[this_room]:my_room;
+			const this_room = creep.room.name;
+			const this_room_config = Memory.config.rooms[this_room];
+			const my_room = creep.memory[role.name].room;
+			const my_room_config = Memory.config.rooms[my_room];
 
 			var target;
 
 			if(!target && this_room != my_room) {
+				const my_path_room = my_room_config.path_rooms[this_room];
 				const exit = creep.room.findExitTo(my_room);
 				target = creep.pos.findClosestByPath(exit);
 			}
