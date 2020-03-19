@@ -60,7 +60,7 @@ var role = {
 		const this_room_config = Memory.config.rooms[this_room];
 		const my_room = creep.memory[role.name].room;
 		const my_room_config = Memory.config.rooms[my_room];
- 		
+
 
 		var target;
 
@@ -89,7 +89,7 @@ var role = {
 			});
 
 			const this_room_sources_are_not_empty = !tools.areEmptySources(creep);
-			
+
 			if(conts.length > 0) {
 				var cont = conts.reduce((p,c) => tools.checkTarget(executer,p.id) && creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				if(!!cont) {
@@ -236,6 +236,8 @@ var role = {
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.say('🔜⚡');
 					err = tools.moveTo(creep,target);
+					if(err != OK)
+						console.log('🔜⚡', creep, err, 'moving from', JSON.stringify(creep.pos), 'to', JSON.stringify(target));
 					role.log('🔜⚡', creep, err, 'moving from', JSON.stringify(creep.pos), 'to', JSON.stringify(target));
 				}
 				else if(!err) {
