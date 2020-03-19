@@ -74,7 +74,7 @@ var roleDismantler = {
 									return true;
 								}
 							}
-							return !!D;
+							return !!D && !structure.my;
 						}
 					});
 					if(structures.length > 0) {
