@@ -31,7 +31,7 @@ module.exports.loop = function () {
 									, 'Clearing non-existing creep memory:'
 									, name, weight, JSON.stringify(Memory.CreepsIdleTicksByWeight[weight])
 									, 'total idle:', total_idle, JSON.stringify(Memory.CreepsIdleTicksByWeight));
-			Memory.CreepsIdleTicksByWeight[weight] = {};e
+			Memory.CreepsIdleTicksByWeight[weight] = {};
 			delete Memory.creeps[name];
 		}
 	}
