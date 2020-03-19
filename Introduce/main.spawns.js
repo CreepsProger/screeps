@@ -146,7 +146,11 @@ var spawns = {
 		if(I >= Nspawns || Game.cpu.bucket < constants.CPU_BUCKET_TO_SPAWN)
 			return;
 
-		if(!!rerun)
+			console.log('✒️', Math.trunc(Game.time/10000), Game.time%10000
+									, 'spawning:'
+									, JSON.stringify({I:I,N:Nspawns}}));
+
+		if(!!rerun && I == 0)
 			Memory.CreepsNeedsByWeight = {};
 
 		// for(var name in Game.spawns)
