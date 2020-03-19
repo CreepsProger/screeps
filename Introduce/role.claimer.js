@@ -5,7 +5,7 @@ const metrix = require('main.metrix');
 const flags = require('main.flags');
 const log = require('main.log');
 const tools = require('tools');
-const tools = require('cash');
+const cash = require('cash');
 
 var git = '$Format:%H$';
 
