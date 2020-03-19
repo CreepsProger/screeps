@@ -24,7 +24,7 @@ module.exports.loop = function () {
 			const n = name.charCodeAt(9) - code0;
 			if(n >= 0 && n < 10)
 				weight = weight*10+n;
-			const	total_idle = Object.keys(Memory.CreepsIdleTicksByWeight).reduce((p,w) => p + 
+			const	total_idle = Object.keys(Memory.CreepsIdleTicksByWeight).reduce((p,w) => p +
 													Object.keys(Memory.CreepsIdleTicksByWeight[w]).reduce((pp,c) => pp +
 																			!Memory.CreepsIdleTicksByWeight[w][c].idle?0:Memory.CreepsIdleTicksByWeight[w][c].idle,0),0);
 			const percent = Math.round(100*total_idle/Memory.totals.ticksToLive);
@@ -42,7 +42,7 @@ module.exports.loop = function () {
 	flags.run()
 	links.run();
 	towers.run();
-	spawns.run(0);	spawns.run(1);
+	spawns.run();
 	metrix.output();
 
 	Memory.targets = {};
