@@ -6,14 +6,14 @@ var cash = {
 		if(!Memory.cash) {
 			Memory.cash = {};
 		}
-		if(!Memory.cash[my_room]) {
-			Memory.cash[my_room] = {};
+		if(!Memory.cash[room]) {
+			Memory.cash[room] = {};
 		}
 	},
 
 	getObject: function(room,property) {
 		var obj;
-		if(!!Memory.cash && !!Memory.cash[my_room] && !!Memory.cash[room][property]) {
+		if(!!Memory.cash && !!Memory.cash[room] && !!Memory.cash[room][property]) {
 			obj = Game.getObjectById(Memory.cash[room][property]);
 		}
 		return obj;
