@@ -208,7 +208,7 @@ var role = {
 		if(!target && creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
 			var emptysources = creep.room.find(FIND_SOURCES, {
 				filter: (source) => {
-					return source.energy == 0 && source.ticksToRegeneration < 50 &&
+					return source.energy == 0 && source.ticksToRegeneration < 100 &&
 						(!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0 ||
 						  (!!DP2 && DP2.pos.roomName == this_room && DP2.pos.findPathTo(source).length <= 5))
 				}
