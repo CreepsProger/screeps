@@ -23,14 +23,17 @@ var links = {
 						 (structure.id == '5e62c05bf15a4888dff60e26' ||
 							structure.id == '5e61d337f15a48007bf5b603' ||
 							structure.id == '5e6778dfcfa64f5485786f84' ||
-							structure.id == '5e56dc7a28e44c6f77878b87' ||
 							structure.id == '5e5f8ed0124b9b1087db5d47' ||
-							structure.id == '5e70e2cac19c1cd2f3542b55' ) && 
+							structure.id == '5e56dc7a28e44c6f77878b87' ||
+							structure.id == '5e70e2cac19c1cd2f3542b55' ) &&
 						 tools.checkTarget(executer,structure.id);
 				 }
 			 });
 			 if(links.length > 0) {
-				 target = tools.setTarget(creep,links[0],links[0].id,role_run);
+				 var link = links.reduce((p,c) => tools.checkTarget(executer,p.id) && creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+ 				 if(!!link) {
+					 target = tools.setTarget(creep,link,link.id,role.run);
+ 					}
 			 }
 		 }
 		 return target;
