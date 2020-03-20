@@ -225,7 +225,7 @@ var spawns = {
 					}
 					if(Game.cpu.bucket > constants.CPU_BUCKET_TO_SPAWN_KEEPERS_ROOMS &&
 						 Memory.totals.WORK > 100 &&
-						 !Memory.stop_upgrading)) {
+						 !Memory.stop_upgrading) {
 						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1500001000000025, 75, 2); // V 1-2 E  Attacker
 						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           130911, 74, 1); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,              804, 71, 1); // V 1-1 E    Carier
