@@ -74,7 +74,10 @@ var roleDismantler = {
 									return true;
 								}
 							}
-							return !!D && !structure.my;
+							return !!D && !structure.my &&
+								!(structure.structureType == STRUCTURE_EXTENSION ||
+									structure.structureType == STRUCTURE_ROAD ||
+									structure.structureType == STRUCTURE_WALL );
 						}
 					});
 					if(structures.length > 0) {
