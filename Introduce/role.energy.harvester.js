@@ -192,7 +192,7 @@ var role = {
 					return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 						creep2.memory.weight > creep.memory.weight &&
 						creep2.getActiveBodyparts(WORK) &&
-						creep2.memory.transfering &&
+						//creep2.memory.transfering &&
 						tools.checkTarget(executer,creep2.id);
 				}
 			});
