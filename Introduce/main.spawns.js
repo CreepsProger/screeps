@@ -1,5 +1,5 @@
 const constants = require('main.constants');
-const constants = require('main.conditions');
+const conditions = require('main.conditions');
 const config = require('main.config');
 const flags = require('main.flags');
 const tools = require('tools');
