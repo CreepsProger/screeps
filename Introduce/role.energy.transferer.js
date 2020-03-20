@@ -80,7 +80,7 @@ var roleEnergyTransferer = {
 			}
 
 			if(!target && this_room == my_room &&
-				 (!creep.getActiveBodyparts(WORK) || (this_room_sources_are_empty && creep.memory.rerun))) {
+				 (!creep.getActiveBodyparts(WORK) || (this_room_sources_are_empty && creep.memory.rerun && Memory.totals.WORK > 100))) {
 				var extensions = creep.room.find(FIND_STRUCTURES, {
 					filter: (structure) => {
 						return (
