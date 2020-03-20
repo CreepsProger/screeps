@@ -199,7 +199,7 @@ var role = {
 			if(weightcreeps.length > 0) {
 				 var weightcreep = weightcreeps.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				 if(!!source) {
-					 target = tools.setTarget(creep,source,source.id,role.run);
+					 target = tools.setTarget(creep,weightcreep,weightcreep.id,role.run);
 				 }
 			 }
 			if(!!target) return target;
