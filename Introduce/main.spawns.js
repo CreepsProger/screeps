@@ -192,7 +192,9 @@ var spawns = {
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,            90909, 64, 3); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             2412, 61, 2); // V 1-1 E    Carier
 					}
-					if(Game.cpu.bucket > constants.CPU_BUCKET_TO_SPAWN_CLAIMING_ROOMS && Memory.totals.WORK > 50 && Memory.totals.CARRY > 50) {
+					if(Game.cpu.bucket > constants.CPU_BUCKET_TO_SPAWN_CLAIMING_ROOMS &&
+						 Memory.totals.WORK > 50 && Memory.totals.CARRY > 50 &&
+						 !Memory.stop_upgrading) {
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002, 50, 1); // V 1-1 E   Claimer
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             2412, 51, 2); // V 1-1 E    Carier
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,            80808, 54, 3); // V 1-1 E    Worker
@@ -216,10 +218,14 @@ var spawns = {
 					if(Game.cpu.bucket < constants.CPU_BUCKET_TO_STOP_SPAWN_TO_ATTACK) {
 						Memory.spawn_to_attack = false;
 					}
-					if(Memory.spawn_to_attack && Memory.totals.WORK > 50 && Memory.totals.CARRY > 50) {
+					if(Memory.spawn_to_attack &&
+						 Memory.totals.WORK > 50 && Memory.totals.CARRY > 50 &&
+						 !Memory.stop_upgrading) {
 						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1000000005000015, 87, 5); // V 1-1 E    Healer
 					}
-					if(Game.cpu.bucket > constants.CPU_BUCKET_TO_SPAWN_KEEPERS_ROOMS && Memory.totals.WORK > 100) {
+					if(Game.cpu.bucket > constants.CPU_BUCKET_TO_SPAWN_KEEPERS_ROOMS &&
+						 Memory.totals.WORK > 100 &&
+						 !Memory.stop_upgrading)) {
 						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1500001000000025, 75, 2); // V 1-2 E  Attacker
 						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           130911, 74, 1); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,              804, 71, 1); // V 1-1 E    Carier
