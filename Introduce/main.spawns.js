@@ -166,14 +166,15 @@ var spawns = {
 				var controller = spawn.room.controller;
 				const CL = controller.level;
 				var N = Memory.totals.CreepsNumber;
-				
-				if(CL >= 4) spawns.tryCreateCreep(spawn,        80808, 20, Memory.totals.WORK< 8? 1:0); // E 1600 Worker
-				if(CL >= 4) spawns.tryCreateCreep(spawn,        70707, 20, Memory.totals.WORK< 7? 1:0); // E 1400 Worker
-				if(CL >= 3) spawns.tryCreateCreep(spawn,        60606, 20, Memory.totals.WORK< 6? 1:0); // E 1200 Worker
-				if(CL >= 3) spawns.tryCreateCreep(spawn,        50505, 20, Memory.totals.WORK< 5? 1:0); // E 1000 Worker
-				if(CL >= 3) spawns.tryCreateCreep(spawn,        40404, 20, Memory.totals.WORK< 4? 1:0); // E  800 Worker
-				if(Memory.totals.CARRY < 10) spawns.tryCreateCreep(spawn,          506, 15, 1:0); // E 550 Carier
-				if(Memory.totals.CARRY < 10) spawns.tryCreateCreep(spawn,          303, 10, 1:0); // E 300 Carier
+
+				if(Memory.totals.CARRY < 9) spawns.tryCreateCreep(spawn,          506, 15, 1:0); // E 550  Carier
+				if(Memory.totals.CARRY < 9) spawns.tryCreateCreep(spawn,          303, 10, 1:0); // E 300  Carier
+				if(Memory.totals.WORK < 10) spawns.tryCreateCreep(spawn,        80808, 20, 1:0); // E 1600 Worker
+				if(Memory.totals.WORK < 10) spawns.tryCreateCreep(spawn,        70707, 20, 1:0); // E 1400 Worker
+				if(Memory.totals.WORK < 10) spawns.tryCreateCreep(spawn,        60606, 20, 1:0); // E 1200 Worker
+				if(Memory.totals.WORK < 10) spawns.tryCreateCreep(spawn,        50505, 20, 1:0); // E 1000 Worker
+				if(Memory.totals.WORK < 10) spawns.tryCreateCreep(spawn,        40404, 20, 1:0); // E  800 Worker
+
 				// 22*1800+2*1300+4*650 = 44800 -> 30 per game tick
 				if(false) {
 					spawns.tryCreateCreep(spawn,             3015, 31, 1); // V 1-1 E  1800   Carier
