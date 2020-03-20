@@ -187,9 +187,9 @@ var spawns = {
 					if(Game.cpu.bucket > constants.CPU_BUCKET_TO_SPAWN_MAIN_ROOMS) {
 						if(spawn.name == 'Spawn1' || !!rerun) spawns.tryCreateCreep(spawn,            90909, 34, 1); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn1' || !!rerun) spawns.tryCreateCreep(spawn,             2412, 31, 1); // V 1-1 E    Carier
-						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,            90909, 44, 4); // V 1-1 E    Worker
+						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,            90909, 44, 3); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,             2412, 41, 2); // V 1-1 E    Carier
-						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,            90909, 64, 3); // V 1-1 E    Worker
+						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,            90909, 64, 4); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             2412, 61, 2); // V 1-1 E    Carier
 					}
 					if(Game.cpu.bucket > constants.CPU_BUCKET_TO_SPAWN_CLAIMING_ROOMS && Memory.totals.WORK > 50 && Memory.totals.CARRY > 50) {
