@@ -1,4 +1,4 @@
-const roleNext = require('role.energy.transferer');
+const roleNext = require('role.builder');
 const constants = require('main.constants');
 const config = require('main.config');
 const metrix = require('main.metrix');
@@ -21,10 +21,10 @@ var roleRepairer = {
 					creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0)) {
 				creep.memory.repairing = false;
 			}
-			
-			const this_room = creep.room.name;				
+
+			const this_room = creep.room.name;
 			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
-			
+
 			if(!creep.memory.repairing &&
 				 this_room == my_room &&
 				 creep.getActiveBodyparts(WORK) > 0 && Memory.totals.WORK > 50 &&
@@ -36,9 +36,9 @@ var roleRepairer = {
 			}
 
 			if(creep.memory.repairing) {
-				
+
 				var target;
-				
+
 				if(!creep.memory.prev_target_id || !creep.memory.prev_target_time || creep.memory.prev_target_time < Game.time - 100) {
 					creep.memory.prev_target_id = '0';
 					creep.memory.prev_target_time = 0;

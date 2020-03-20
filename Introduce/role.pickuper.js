@@ -1,4 +1,4 @@
-const roleNext = require('role.builder');
+const roleNext = require('role.upgrader');
 const constants = require('main.constants');
 const config = require('main.config');
 const metrix = require('main.metrix');
@@ -16,11 +16,11 @@ var rolePickuper = {
 				roleNext.run(creep);
 				return;
 			}
-			
+
 			if(creep.memory.pickuping && creep.store.getFreeCapacity() == 0) {
 				creep.memory.pickuping = false;
 			}
-			
+
 			const this_room = creep.room.name;
 			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
 
@@ -33,9 +33,9 @@ var rolePickuper = {
 			}
 
 			if(creep.memory.pickuping) {
-				
+
 				var target;
-				
+
 				if(!target) {
 					var droppeds = creep.room.find(FIND_DROPPED_RESOURCES, {
 						filter: (dropped) => {
@@ -51,7 +51,7 @@ var rolePickuper = {
 						}
 					}
 				}
-				
+
 				if(!!target) {
 					var err = creep.pickup(target);
 					if(err == ERR_NOT_IN_RANGE) {

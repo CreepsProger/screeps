@@ -1,4 +1,4 @@
-var roleNext = require('role.upgrader');
+var roleNext = require('role.energy.transferer');
 const constants = require('main.constants');
 const config = require('main.config');
 const metrix = require('main.metrix');
@@ -20,7 +20,7 @@ var roleBuilder = {
 					creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0)) {
 				creep.memory.building = false;
 			}
-			
+
 			const this_room = creep.room.name;
 			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
 
