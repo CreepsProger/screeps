@@ -32,7 +32,7 @@ var links = {
 			 if(links.length > 0) {
 				 var link = links.reduce((p,c) => tools.checkTarget(executer,p.id) && creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
  				 if(!!link) {
-					 target = tools.setTarget(creep,link,link.id,role.run);
+					 target = tools.setTarget(creep,link,link.id,role_run);
  					}
 			 }
 		 }
