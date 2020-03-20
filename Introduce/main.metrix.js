@@ -3,7 +3,7 @@ const log = require('main.log');
 const tools = require('tools');
 
 var metrix = {
-	
+
 	idle: function(creep) {
 		if(!Memory.CreepsIdleTicksByWeight) {
 			Memory.CreepsIdleTicksByWeight = {};
@@ -77,7 +77,7 @@ var metrix = {
 
 		if(Game.time % constants.TICKS_TO_CHECK_CREEPS_NUMBER == 0) {
 
-			Memory.totals = { CreepsNumber: 0, NeedsCreeps: 0, NeedsPlusCreeps: 0
+			Memory.totals = { CreepsNumber: 0, SpawningCreeps:0, NeedsCreeps: 0, NeedsPlusCreeps: 0
 											 , Bodys : 0, NeedsBodys: 0
 											 , Cost: 0, NeedsCost: 0
 											 , ticksToLive: 0
@@ -106,6 +106,7 @@ var metrix = {
 		if(Game.time % constants.TICKS_TO_CHECK_CREEPS_NUMBER == 0) {
 //          var creeps = _.filter(Game.creeps, (creep) => creep.memory.role == 'creep');
 			Memory.totals.CreepsNumber = 0;
+			Memory.totals.SpawningCreeps = 0;
 
 			for(var name in Game.creeps) {
 				var creep = Game.creeps[name];
@@ -132,6 +133,7 @@ var metrix = {
 						};
 				}
 				Memory.totals.CreepsNumber += 1;
+				if(creep.spawning) Memory.totals.SpawningCreeps += 1;
 				Memory.totals.Cost += !!creep.memory.cost? creep.memory.cost:0;
 				Memory.totals.Bodys += creep.body.length;
 				Memory.totals.ticksToLive += !creep.ticksToLive?0:creep.ticksToLive;

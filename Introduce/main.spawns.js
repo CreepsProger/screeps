@@ -113,7 +113,10 @@ var spawns = {
 											, 'mittl+idle-range-3*bodys:'
 											, '' + mittl + '+' + idle +'-' + range + '-3*' + body.length + '=' + diff_mittli_range_bodys
 										 );
-					Memory.CreepsCounter++;
+
+          Memory.CreepsCounter++;
+          Memory.totals.SpawningCreeps++;
+          Memory.CreepsNumberByWeight[weight]++;
 					last_game_time_created_creep[spawn.name] = Game.time;
 				}
 			}
