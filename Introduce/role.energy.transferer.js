@@ -65,13 +65,6 @@ var roleEnergyTransferer = {
 							creep2.memory.weight < creep.memory.weight;
 					}
 				});
-				if(closests.length > 0) {
-					target = closests[0];
-				}
-			}
-
-			if(!target && (this_room_sources_are_not_empty || !creep.getActiveBodyparts(WORK))) {
-			//if(!target) {
 				var containers = creep.room.find(FIND_STRUCTURES, {
 					filter: (structure) => {
 						return (structure.structureType == STRUCTURE_CONTAINER ||
@@ -80,8 +73,9 @@ var roleEnergyTransferer = {
 							structure.store.getFreeCapacity() > 0;
 					}
 				});
-				if(containers.length > 0) {
-					target = containers.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+				const targs = containers.concat(closests);
+				if(targs.length > 0) {
+					target = targs.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				}
 			}
 
