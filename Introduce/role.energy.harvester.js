@@ -185,9 +185,9 @@ var role = {
 			target = creep.room.storage;
 			if(!!target) return target;
 		}
-				/*
+
 		if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
-			var weightcreep = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
+			var weightcreeps = creep.room.find(FIND_MY_CREEPS, {
 				filter: (creep2) => {
 					return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 						creep2.memory.weight > creep.memory.weight &&
@@ -196,11 +196,15 @@ var role = {
 						tools.checkTarget(executer,creep2.id);
 				}
 			});
-			if(!!weightcreep) {
-				target = tools.setTarget(creep,weightcreep,weightcreep.id,role.run);
-			}
+			if(weightcreeps.length > 0) {
+				 var weightcreep = weightcreeps.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+				 if(!!source) {
+					 target = tools.setTarget(creep,source,source.id,role.run);
+				 }
+			 }
+			if(!!target) return target;
 		}
-*/
+
 		if(!target && creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
 			var emptysources = creep.room.find(FIND_SOURCES, {
 				filter: (source) => {
