@@ -56,6 +56,29 @@ var roleEnergyTransferer = {
 			const this_room_sources_are_empty = tools.areEmptySources(creep);
 			const this_room_sources_are_not_empty = !this_room_sources_are_empty;
 
+			if(!target && this_room == my_room &&
+				 (!creep.getActiveBodyparts(WORK) || (this_room_sources_are_empty && creep.memory.rerun && Memory.totals.WORK < 100))) {
+				var extensions = creep.room.find(FIND_STRUCTURES, {
+					filter: (structure) => {
+						return (
+							(structure.structureType == STRUCTURE_SPAWN && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
+							||
+							(structure.structureType == STRUCTURE_EXTENSION && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
+							||
+							(structure.structureType == STRUCTURE_TOWER && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 400)
+						)
+						&&
+							tools.checkTarget(executer,structure.id);
+					}
+				});
+				if(extensions.length > 0) {
+					var extension = extensions.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+					if(!!extension) {
+						target = tools.setTarget(creep,extension,extension.id,roleEnergyTransferer.run);
+					}
+				}
+			}
+
 			//if(!target) {
 			//if(!target && (this_room != my_room || this_room_sources_are_not_empty)) {
 			if(!target && (this_room_sources_are_not_empty || !creep.getActiveBodyparts(WORK))) {
@@ -76,29 +99,6 @@ var roleEnergyTransferer = {
 				const targs = containers.concat(closests);
 				if(targs.length > 0) {
 					target = targs.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-				}
-			}
-
-			if(!target && this_room == my_room &&
-				 (!creep.getActiveBodyparts(WORK) || (this_room_sources_are_empty && creep.memory.rerun && Memory.totals.WORK > 100))) {
-				var extensions = creep.room.find(FIND_STRUCTURES, {
-					filter: (structure) => {
-						return (
-							(structure.structureType == STRUCTURE_SPAWN && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
-							||
-							(structure.structureType == STRUCTURE_EXTENSION && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
-							||
-							(structure.structureType == STRUCTURE_TOWER && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 400)
-						)
-						&&
-							tools.checkTarget(executer,structure.id);
-					}
-				});
-				if(extensions.length > 0) {
-					var extension = extensions.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-					if(!!extension) {
-						target = tools.setTarget(creep,extension,extension.id,roleEnergyTransferer.run);
-					}
 				}
 			}
 
