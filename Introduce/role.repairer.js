@@ -56,19 +56,19 @@ var roleRepairer = {
 								 structure.pos.roomName == my_room &&
 								 structure.hitsMax - structure.hits > structure.hitsMax/(2+98*(structure.id == creep.memory.prev_target_id))) {
 								 if(!!D1 && D1.pos.roomName == my_room &&
- 									D1.pos.getRangeTo(structure) < 1*D1.color) {
+ 									D1.pos.getRangeTo(structure) < 11-D1.color) {
  									return false;
  								}
  								if(!!D2 && D2.pos.roomName == creep.room.name &&
- 									D2.pos.getRangeTo(structure) < 1*D2.color) {
+ 									D2.pos.getRangeTo(structure) < 11-D2.color) {
  									return false;
  								}
 								if(!!NR1 && NR1.pos.roomName == my_room &&
-									NR1.pos.getRangeTo(structure) < 1*NR1.color) {
+									NR1.pos.getRangeTo(structure) < 11-NR1.color) {
 									return false;
 								}
 								if(!!NR2 && NR2.pos.roomName == creep.room.name &&
-									NR2.pos.getRangeTo(structure) < 1*NR2.color) {
+									NR2.pos.getRangeTo(structure) < 11-NR2.color) {
 									return false;
 								}
 								return true;
