@@ -109,17 +109,14 @@ var role = {
 						}
 					}
 				}
+				creep.say('🗝')
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.say('🔜🗝');
 					err = tools.moveTo(creep,target);
 					role.log(creep, 'err:', err, 'moving from', JSON.stringify(creep.pos), 'to', JSON.stringify(target));
 				}
-				else if(!err) {
-					creep.say('🗝');
+				if(!err) {
 					role.log(creep, action, JSON.stringify(target), JSON.stringify(Game.rooms));
-// 					console.log('Game.rooms:', JSON.stringify(Game.rooms));
-//  					console.log('Game.gcl:', JSON.stringify(Game.gcl));
-//  					console.log('Game.rooms my:', JSON.stringify(_.filter(Game.rooms, function(room) { return room.energyCapacityAvailable > 0; })));
 				}
 				else {
 					role.log(creep, action, 'err:', err, JSON.stringify(creep.reserveController));
