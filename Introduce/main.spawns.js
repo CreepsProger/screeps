@@ -23,7 +23,7 @@ var spawns = {
       return Math.floor(300 * Cs * 50 / (harvest_ticks + move_to_rc_ticks + upgrade_ticks + move_from_rc_ticks));
    },
 
-    tryCreateCreep: function(spawn, type, weight, needed = 0) {
+    tryCreateCreep: function(spawn, type, weight, needed = 0, max_needed = 100) {
 			var body = [];
 			const  Ts = Math.trunc(type%10000000000000000/100000000000000);
 			const CLs = Math.trunc(type%100000000000000  /1000000000000);
@@ -56,16 +56,16 @@ var spawns = {
 			var plus = 0;
 			var minus = 0;
 			if(!!Memory.CreepsIdleTicksByWeight[weight]) {
-				sum_pst = Object.keys(Memory.CreepsIdleTicksByWeight[weight]).reduce((p,c) => p +
+				sum_pst = 1+Object.keys(Memory.CreepsIdleTicksByWeight[weight]).reduce((p,c) => p +
 															(!Memory.CreepsIdleTicksByWeight[weight][c].pc?1:Memory.CreepsIdleTicksByWeight[weight][c].pc),0);
-				plus = (Game.cpu.bucket < constants.CPU_BUCKET_TO_SPAWN)?0:(sum_pst > target_idle_sum_pst? -1:+1);
+				plus = (Game.cpu.bucket < constants.CPU_BUCKET_TO_SPAWN)?0:Math.round(target_idle_sum_pst/sum_pst);
 			}
 			if(!!Memory.CreepsMinTicksToLive[weight] && !!Memory.CreepsMinTicksToLive[weight].pos) {
 				range = tools.getRangeTo(spawn.pos,Memory.CreepsMinTicksToLive[weight].pos);
 				mittl = Memory.CreepsMinTicksToLive[weight].mittl;
 				mittl_to_spawn = Math.round(constants.TICKS_TO_SPAWN*200/(50+range)) + body.length*3;
 			}
-			const needed_plus = needed + (plus + (mittl < mittl_to_spawn)) >= 1? 1:0;
+			const needed_plus = Math.max(needed+plus, max_needed) + (mittl < mittl_to_spawn);
 			Memory.CreepsNeedsByWeight[weight] = {needs: needed, needs_plus: needed_plus, bodys: body.length*needed, cost: cost*needed};
 			const needsNumber = needed_plus - existsNumber;
 			if((!last_game_time_created_creep[spawn.name] || last_game_time_created_creep[spawn.name] != Game.time) && needsNumber > 0) {
@@ -200,17 +200,17 @@ var spawns = {
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             2412, 61, 1); // V 1-1 E    Carier
 					}
 					if(conditions.TO_SPAWN_CLAIMING_ROOMS()) {
-						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002, 50, 1); // V 1-1 E   Claimer
+						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002, 50, 1, 1); // V 1-1 E   Claimer
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             2412, 51, 1); // V 1-1 E    Carier
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,            80808, 54, 1); // V 1-1 E    Worker
-						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002, 90, 1); // V 1-1 E   Claimer
+						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002, 90, 1, 1); // V 1-1 E   Claimer
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,            80808, 94, 1); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,              201, 91, 1); // V 1-1 E    Carier
-						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,100, 1); // V 1-1 E   Claimer
+						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,100, 1, 1); // V 1-1 E   Claimer
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,            80808,104, 1); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             2412,101, 1); // V 1-1 E    Carier
-						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015,105, 1); // V 1-2 E  Attacker
-						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,110, 1); // V 1-1 E   Claimer
+						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015,105, 1, 1); // V 1-2 E  Attacker
+						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,110, 1, 1); // V 1-1 E   Claimer
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,            80808,114, 1); // V 1-1 E    Worker
 						// if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             2412,111, 1); // V 1-1 E    Carier
 						// if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015,115, 1); // V 1-2 E  Attacker
@@ -218,14 +218,14 @@ var spawns = {
 					//                                                                                      30)
 					//                                                                 TTClRrAaHhWwCcMm,100, 3); // V 1-2 E  Attacker
 					if(conditions.TO_SPAWN_KEEPERS_ROOMS()) {
-						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1500001000000025, 75, 2); // V 1-2 E  Attacker
+						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1500001000000025, 75, 2, 2); // V 1-2 E  Attacker
 						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           130911, 74, 1); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,              804, 71, 1); // V 1-1 E    Carier
-						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1000100000000010, 76, 0); // V 1-2 E RAttacker
-						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  500000007000006, 77, 1); // V 1-1 E    Healer
+						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1000100000000010, 76, 0, 0); // V 1-2 E RAttacker
+						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  500000007000006, 77, 1, 1); // V 1-1 E    Healer
 					}
 					if(conditions.TO_SPAWN_TO_ATTACK()) {
-						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1000000005000015, 87, 5); // V 1-1 E    Healer
+						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1000000005000015, 87, 5, 5); // V 1-1 E    Healer
 					}
 				}
 			}
