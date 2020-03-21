@@ -47,14 +47,15 @@ var spawns = {
 			var range = 1;
 			var mittl = 1665;
 			var mittl_to_spawn = 1667;
+			const target_idle_sum_pst = 50;
+			var sum_pst = 0;
 			if(!!Memory.CreepsNumberByWeight[weight]) {
 				//existsNumber = Memory.CreepsNumberByType[full_type];
 				existsNumber = Memory.CreepsNumberByWeight[weight];
 			}
 			var plus = 0;
 			if(!!Memory.CreepsIdleTicksByWeight[weight]) {
-				const target_idle_sum_pst = 50;
-				var sum_pst = Object.keys(Memory.CreepsIdleTicksByWeight[weight]).reduce((p,c) => p +
+				sum_pst = Object.keys(Memory.CreepsIdleTicksByWeight[weight]).reduce((p,c) => p +
 															(!Memory.CreepsIdleTicksByWeight[weight][c].pc?0:Memory.CreepsIdleTicksByWeight[weight][c].pc),0);
 				plus = (Game.cpu.bucket < constants.CPU_BUCKET_TO_SPAWN)?0:Math.round(target_idle_sum_pst/(!sum_pst? 10000:sum_pst));
 			}
@@ -110,9 +111,11 @@ var spawns = {
 										  , cost
 											, 'exists/needs/needs+:'
 										  , '' + existsNumber + '/' + needed + '/' + needed_plus
+											, 'sum_idle_pct/to_plus:'
+											, '' + sum_pst + '/' + target_idle_sum_pst
 											, 'mittl/to_spawn:'
 											, '' + mittl + '/' + mittl_to_spawn
-										 );
+										 ); 
 
           Memory.CreepsCounter++;
           Memory.totals.SpawningCreeps++;
