@@ -20,9 +20,9 @@ var metrix = {
 		if(creep.memory.idle_time != Game.time) {
 			creep.memory.idle_time = Game.time;
 			creep.memory.idle++;
-			const liveTicks = 1500-creep.ticksToLive:
-			const percent = Math.round(100*creep.memory.idle/liveTicks?liveTicks:1);
-			Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n] = {i:creep.memory.idle, lt:liveTicks, pc:percent, w:creep.memory.weight};
+			const livedTicks = 1500-creep.ticksToLive;
+			const percent = Math.round(100*creep.memory.idle/livedTicks?livedTicks:1);
+			Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n] = {i:creep.memory.idle, lt:livedTicks, pc:percent, w:creep.memory.weight};
 		}
 	},
 
@@ -82,6 +82,7 @@ var metrix = {
 											 , Bodys : 0, NeedsBodys: 0
 											 , Cost: 0, NeedsCost: 0
 											 , ticksToLive: 0
+											 , livedTicks: 0
 											 , Capacity: 0
 											 , FreeCapacity: 0
 											 , UsedCapacity: 0
