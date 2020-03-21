@@ -24,14 +24,15 @@ module.exports.loop = function () {
 			const n = name.charCodeAt(9) - code0;
 			if(n >= 0 && n < 10)
 				weight = weight*10+n;
-			const	total_idle = Object.keys(Memory.CreepsIdleTicksByWeight).reduce((p,w) => p +
+			const	total_sum_pst = Object.keys(Memory.CreepsIdleTicksByWeight).reduce((p,w) => p +
 													Object.keys(Memory.CreepsIdleTicksByWeight[w]).reduce((pp,c) => pp +
-																			(!Memory.CreepsIdleTicksByWeight[w][c].i?0:Memory.CreepsIdleTicksByWeight[w][c].i),0),0);
-			const percent = Math.round(100*total_idle/(!Memory.totals.livedTicks?1:Memory.totals.livedTicks));
+																			(!Memory.CreepsIdleTicksByWeight[w][c].pc?0:Memory.CreepsIdleTicksByWeight[w][c].pc),0),0);
+			const sum_pst = Object.keys(Memory.CreepsIdleTicksByWeight[weight]).reduce((p,c) => p +
+															(!Memory.CreepsIdleTicksByWeight[weight][c].pc?0:Memory.CreepsIdleTicksByWeight[weight][c].pc),0);
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'Clearing non-existing creep memory:'
-									, name, weight, JSON.stringify(Memory.CreepsIdleTicksByWeight[weight])
-									, 'total idle:', total_idle, ''+percent+'%', JSON.stringify(Memory.CreepsIdleTicksByWeight));
+									, name, weight, 'sum_pst =', sum_pst, JSON.stringify(Memory.CreepsIdleTicksByWeight[weight])
+									, ' - - - - - - - total_sum_pst =', total_sum_pst, JSON.stringify(Memory.CreepsIdleTicksByWeight));
 			Memory.CreepsIdleTicksByWeight[weight] = {};
 			delete Memory.creeps[name];
 		}
