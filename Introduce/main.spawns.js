@@ -58,7 +58,7 @@ var spawns = {
 			if(!!Memory.CreepsIdleTicksByWeight[weight]) {
 				sum_pst = 1+Object.keys(Memory.CreepsIdleTicksByWeight[weight]).reduce((p,c) => p +
 															(!Memory.CreepsIdleTicksByWeight[weight][c].pc?1:Memory.CreepsIdleTicksByWeight[weight][c].pc),0);
-				plus = (Game.cpu.bucket < constants.CPU_BUCKET_TO_SPAWN)?0:Math.round(target_idle_sum_pst/sum_pst);
+				plus = (Game.cpu.bucket < constants.CPU_BUCKET_TO_SPAWN)?0:Math.floor(target_idle_sum_pst/sum_pst);
 			}
 			if(!!Memory.CreepsMinTicksToLive[weight] && !!Memory.CreepsMinTicksToLive[weight].pos) {
 				range = tools.getRangeTo(spawn.pos,Memory.CreepsMinTicksToLive[weight].pos);
