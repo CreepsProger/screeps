@@ -112,8 +112,8 @@ var spawns = {
 										  , cost
 											, 'exists/needs/+/++:'
 										  , '' + existsNumber + '/' + needed + '/' + needed2 + '/' + needed_plus
-											, 'sum_idle_pct/to_plus:'
-											, '' + sum_pst + '/' + target_idle_sum_pst
+											, 'sum_to_plus/sum_idle_pct:'
+											, '' + target_idle_sum_pst + '/' + sum_pst
 											, 'mittl/to_spawn:'
 											, '' + mittl + '/' + mittl_to_spawn
 										 ); 
