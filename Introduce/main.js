@@ -29,7 +29,7 @@ module.exports.loop = function () {
 																			(!Memory.CreepsIdleTicksByWeight[w][c].pc?0:Memory.CreepsIdleTicksByWeight[w][c].pc),0),0);
 			const	total_cnt_pst = Object.keys(Memory.CreepsIdleTicksByWeight).reduce((p,w) => p +
 													Object.keys(Memory.CreepsIdleTicksByWeight[w]).reduce((pp,c) => pp +
-																			!!Memory.CreepsIdleTicksByWeight[w][c].w),0),0);
+																			!!Memory.CreepsIdleTicksByWeight[w][c].w,0),0);
 			const	total_avg_pst = Math.round(total_sum_pst/total_cnt_pst);
 			const sum_pst = Object.keys(Memory.CreepsIdleTicksByWeight[weight]).reduce((p,c) => p +
 															(!Memory.CreepsIdleTicksByWeight[weight][c].pc?0:Memory.CreepsIdleTicksByWeight[weight][c].pc),0);
