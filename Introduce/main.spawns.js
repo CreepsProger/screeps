@@ -47,7 +47,7 @@ var spawns = {
 			var range = 1;
 			var mittl = 1665;
 			var mittl_to_spawn = 1667;
-			const target_idle_sum_pst = 50;
+			const target_idle_sum_pst = 20;
 			var sum_pst = 0;
 			if(!!Memory.CreepsNumberByWeight[weight]) {
 				//existsNumber = Memory.CreepsNumberByType[full_type];
