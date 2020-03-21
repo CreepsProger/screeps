@@ -2,9 +2,9 @@ const constants = require('main.constants');
 
 const conditions = {
 	  MAIN_ROOM_CRISIS: 				function() {
-																			return 	Memory.totals.WORK < 49 && Memory.totals.CARRY < 100;}
+																			return 	Memory.totals.WORK < 25 && Memory.totals.CARRY < 50;}
 	, CLAIMING_ROOM_CRISIS: 		function() {
-																			return 	Memory.totals.WORK < 90;}
+																			return 	Memory.totals.WORK < 50;}
 	, TO_SPAWN_MAIN_ROOMS: 			function() {
 																			return 	Game.cpu.bucket > constants.CPU_BUCKET_TO_SPAWN_MAIN_ROOMS;}
 	, TO_SPAWN_CLAIMING_ROOMS: 	function() {
