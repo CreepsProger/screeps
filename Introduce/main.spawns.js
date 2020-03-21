@@ -44,27 +44,26 @@ var spawns = {
 			const cost = 10*Ts + 600*CLs + 150*RAs + 80*As + 250*Hs + 100*Ws + 50*Cs + 50*Ms;
 			var existsNumber = 0;
 			const full_type = '' + type + '/' + weight;
-			var range = 0;
-			var mittl = 1667;
-			var diff_mittli_range_bodys = 6667;
-			var idle = 0;
+			var range = 1;
+			var mittl = 1665;
+			var mittl_to_spawn = 1667;
 			if(!!Memory.CreepsNumberByWeight[weight]) {
 				//existsNumber = Memory.CreepsNumberByType[full_type];
 				existsNumber = Memory.CreepsNumberByWeight[weight];
 			}
+			var plus = 0;
 			if(!!Memory.CreepsIdleTicksByWeight[weight]) {
-				var creepNs = Object.keys(Memory.CreepsIdleTicksByWeight[weight]);
-				idle = creepNs.reduce((p,c) => p +
-															(!Memory.CreepsIdleTicksByWeight[weight][c].i?0:Memory.CreepsIdleTicksByWeight[weight][c].i),0);
-				const bucketWeight = (Game.cpu.bucket <= constants.CPU_BUCKET_TO_SPAWN)? 1:Game.cpu.bucket-constants.CPU_BUCKET_TO_SPAWN;
- 				idle = Math.round(idle/(creepNs.length + Math.log(bucketWeight+Math.E)));
+				const target_idle_sum_pst = 50;
+				var sum_pst = Object.keys(Memory.CreepsIdleTicksByWeight[weight]).reduce((p,c) => p +
+															(!Memory.CreepsIdleTicksByWeight[weight][c].pc?0:Memory.CreepsIdleTicksByWeight[weight][c].pc),0);
+				plus = (Game.cpu.bucket < constants.CPU_BUCKET_TO_SPAWN)?0:Math.round(target_idle_sum_pst/(!sum_pst? 10000:sum_pst));
 			}
 			if(!!Memory.CreepsMinTicksToLive[weight] && !!Memory.CreepsMinTicksToLive[weight].pos) {
 				range = tools.getRangeTo(spawn.pos,Memory.CreepsMinTicksToLive[weight].pos);
-				mittl= Memory.CreepsMinTicksToLive[weight].mittl;
-				diff_mittli_range_bodys = mittl + idle - range - body.length*3;
+				mittl = Memory.CreepsMinTicksToLive[weight].mittl;
+				mittl_to_spawn = Math.round(constants.TICKS_TO_SPAWN*200/(50+range)) + body.length*3;
 			}
-			const needed_plus = needed + (diff_mittli_range_bodys < constants.TICKS_TO_SPAWN);
+			const needed_plus = needed + plus + (mittl < mittl_to_spawn);
 			Memory.CreepsNeedsByWeight[weight] = {needs: needed, needs_plus: needed_plus, bodys: body.length*needed, cost: cost*needed};
 			const needsNumber = needed_plus - existsNumber;
 			if((!last_game_time_created_creep[spawn.name] || last_game_time_created_creep[spawn.name] != Game.time) && needsNumber > 0) {
@@ -111,8 +110,8 @@ var spawns = {
 										  , cost
 											, 'exists/needs/needs+:'
 										  , '' + existsNumber + '/' + needed + '/' + needed_plus
-											, 'mittl+idle-range-3*bodys:'
-											, '' + mittl + '+' + idle +'-' + range + '-3*' + body.length + '=' + diff_mittli_range_bodys
+											, 'mittl/to_spawn:'
+											, '' + mittl + '/' + mittl_to_spawn
 										 );
 
           Memory.CreepsCounter++;
