@@ -65,7 +65,7 @@ var spawns = {
 				mittl = Memory.CreepsMinTicksToLive[weight].mittl;
 				mittl_to_spawn = Math.round(constants.TICKS_TO_SPAWN*200/(50+range)) + body.length*3;
 			}
-			const needed_plus = Math.max(needed+plus, max_needed) + (mittl < mittl_to_spawn);
+			const needed_plus = Math.min(needed+plus, max_needed) + (mittl < mittl_to_spawn);
 			Memory.CreepsNeedsByWeight[weight] = {needs: needed, needs_plus: needed_plus, bodys: body.length*needed, cost: cost*needed};
 			const needsNumber = needed_plus - existsNumber;
 			if((!last_game_time_created_creep[spawn.name] || last_game_time_created_creep[spawn.name] != Game.time) && needsNumber > 0) {
