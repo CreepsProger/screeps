@@ -146,7 +146,7 @@ var spawns = {
 
     const Nspawns = Object.keys(Game.spawns).length;
     const I = Game.time % constants.TICKS_TO_SPAWN;
-		const rerun = (Game.time % (constants.TICKS_TO_SPAWN*2)) < Nspawns;
+		const rerun = (Game.time % constants.TICKS_TO_SPAWN_BY_ANY) < Nspawns;
 
 		if(I >= Nspawns || Game.cpu.bucket < constants.CPU_BUCKET_TO_SPAWN)
 			return;
