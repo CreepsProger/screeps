@@ -1,4 +1,5 @@
 const constants = require('main.constants');
+const conditions = require('main.conditions');
 const config = require('main.config');
 const metrix = require('main.metrix');
 const flags = require('main.flags');
@@ -172,7 +173,7 @@ var role = {
 			 (!creep.getActiveBodyparts(WORK) || false) &&
 			 !!creep.room.storage &&
 			 !!creep.room.storage.my &&
-			 (creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_STORAGE_ENERGY || Memory.totals.WORK < 50 || Memory.totals.CARRY < 50)) {
+			 (creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_STORAGE_ENERGY || !conditions.TO_SPAWN_CLAIMING_ROOMS())) {
 			target = creep.room.storage;
 			if(!!target) return target;
 		}
