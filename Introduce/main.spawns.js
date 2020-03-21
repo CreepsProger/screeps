@@ -212,7 +212,7 @@ var spawns = {
 						// if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             2412,111, 1); // V 1-1 E    Carier
 						// if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015,115, 1); // V 1-2 E  Attacker
 					}
-					//                                                                                      28)
+					//                                                                                      30)
 					//                                                                 TTClRrAaHhWwCcMm,100, 3); // V 1-2 E  Attacker
 					if(conditions.TO_SPAWN_KEEPERS_ROOMS()) {
 						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1500001000000025, 75, 2); // V 1-2 E  Attacker
