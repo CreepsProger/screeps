@@ -56,7 +56,7 @@ var spawns = {
 			var plus = 0;
 			if(!!Memory.CreepsIdleTicksByWeight[weight]) {
 				sum_pst = Object.keys(Memory.CreepsIdleTicksByWeight[weight]).reduce((p,c) => p +
-															(!Memory.CreepsIdleTicksByWeight[weight][c].pc?1:Memory.CreepsIdleTicksByWeight[weight][c].pc),0);
+															(!Memory.CreepsIdleTicksByWeight[weight][c].pc?0:Memory.CreepsIdleTicksByWeight[weight][c].pc),0);
 				plus = (Game.cpu.bucket < constants.CPU_BUCKET_TO_SPAWN)?0:Math.floor(target_idle_sum_pst/(!sum_pst?10000:sum_pst));
 			}
 			if(!!Memory.CreepsMinTicksToLive[weight] && !!Memory.CreepsMinTicksToLive[weight].pos) {
