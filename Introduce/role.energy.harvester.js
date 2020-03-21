@@ -275,7 +275,8 @@ var role = {
 				require('role.claimer').run(creep);
 			}
 		}
-		metrix.idle(creep);
+		if(creep.memory.rerun && !creep.memory[role.name].on)
+			metrix.idle(creep);
 	}
 };
 
