@@ -168,8 +168,8 @@ var metrix = {
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'CREEPS:'
 									, '' + Memory.totals.CreepsNumber + '(' + Memory.totals.SpawningCreeps +')' + '/' + Memory.totals.NeedsCreeps + '/' + Memory.totals.NeedsPlusCreeps
-									,'TtL:'
-									, '' + Memory.totals.ticksToLive
+									,'lt/ttl:'
+									, '' + Memory.totals.livedTicks + '/'+ Memory.totals.ticksToLive
 									,'Body:'
 									, '' + Memory.totals.Bodys + '/' + Memory.totals.NeedsBodys
 									,'Cost:'
