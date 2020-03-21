@@ -36,9 +36,7 @@ var roleBuilder = {
 
 			if(creep.memory.building) {
 
-				const this_room = creep.room.name;
-				const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
-
+				const my_room_config = Memory.config.rooms[my_room];
 
 				var target;
 
