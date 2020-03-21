@@ -78,7 +78,7 @@ var role = {
 				target = creep.pos.findClosestByPath(exit);
 			}
 
-			if(!target && (Game.time%10 != 0)) {
+			if(!target) {
 				target = cash.getObject(my_room,'claiming_controller_id');
 			}
 
