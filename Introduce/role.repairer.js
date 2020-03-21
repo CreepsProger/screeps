@@ -27,11 +27,11 @@ var roleRepairer = {
 
 			if(!creep.memory.repairing &&
 				 this_room == my_room &&
-				 creep.getActiveBodyparts(WORK) > 0 && Memory.totals.WORK > 50 &&
-				 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-					 creep.store.getFreeCapacity() == 0) ||
-					(creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-					 creep.memory.rerun))) {
+				 creep.getActiveBodyparts(WORK) > 0 &&
+				 conditions.TO_SPAWN_CLAIMING_ROOMS() &&
+				 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() == 0)
+					||
+					(creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun))) {
 				creep.memory.repairing = true;
 			}
 
