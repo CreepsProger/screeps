@@ -237,23 +237,18 @@ var role = {
 				(target.energy == 0 && creep.pos.getRangeTo(target) > 1 )? // a source
 						ERR_NOT_IN_RANGE:
 				creep.harvest(target);
-
+				creep.say('⚡');
+				
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.say('🔜⚡');
 					err = tools.moveTo(creep,target);
 					role.log('🔜⚡', creep, err, 'moving from', JSON.stringify(creep.pos), 'to', JSON.stringify(target));
 				}
-				else if(!err) {
-					creep.say('⚡');
-					role.log('⚡', creep, 'harvest', JSON.stringify(target));
-				}
-				else {
+				if(err) {
+					creep.say('⚡⚠️'+err)
 					role.log( '⚡⚠️', creep, 'err:', err, JSON.stringify(creep.harvest));
 					creep.memory[role.name].on = false;
 				}
-			}
-			else {
-				creep.memory[role.name].on = false;
 			}
 		}
 
@@ -268,6 +263,7 @@ var role = {
 		}
 
 		metrix.cpu.role_time(creep, role.name);
+
 		if(!creep.memory.rerun) {
 			creep.memory.rerun = 1;
 			if(!creep.memory[role.name].on) {
