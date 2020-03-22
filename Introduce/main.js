@@ -59,7 +59,7 @@ module.exports.loop = function () {
 	Memory.cpu = { creep: {max_dt: 0, creep: '', dt: 0, t: Math.round((Game.cpu.getUsed()) * 100)/100, n:1}
 							 , role : {max_dt: 0, creep: '', role: '', dt: 0, t: Math.round((Game.cpu.getUsed()) * 100)/100}
 							 , step : {max_dt: 0, creep: '', role: '', step: '', dt: 0, t: Math.round((Game.cpu.getUsed()) * 100)/100}
-							 , max	: {}
+							 , max	: {sum:0}
 						   };
 
 	for(var name in Game.creeps) {
@@ -85,6 +85,7 @@ module.exports.loop = function () {
 						Memory.cpu.max[role_name] = {sum:0, max_weight:0, max_weight_sum:0};
 					if(!Memory.cpu.max[role_name][creep.memory.weight])
 						Memory.cpu.max[role_name][creep.memory.weight] = 0;
+					Memory.cpu.max.sum += Math.round(creep.memory.cpu[role_name]);
 					Memory.cpu.max[role_name].sum += Math.round(creep.memory.cpu[role_name]);
 					Memory.cpu.max[role_name][creep.memory.weight] += Math.round(creep.memory.cpu[role_name]);
 					if(Memory.cpu.max[role_name].max_weight_sum < Memory.cpu.max[role_name][creep.memory.weight]) {
@@ -101,7 +102,12 @@ module.exports.loop = function () {
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 								, 'CPU:'
 								, JSON.stringify({bucket:Game.cpu.bucket, delta: Game.cpu.bucket - Memory.cpu_prev_bucket})
-								, JSON.stringify({max_role_name:max_role,max_role:Memory.cpu.max[max_role], max_role_name_by_weight:max_role_by_weight, max_role_by_weight:Memory.cpu.max[max_role_by_weight]})
+								, JSON.stringify({ sum:Memory.cpu.max.sum
+																 , max_role:max_role
+																 , max_role_sum:Memory.cpu.max[max_role].sum
+																 , max_role_by_weight:max_role_by_weight
+																 , max_weight:Memory.cpu.max[max_role_by_weight].max_weight})
+																 , max_weight_sum:Memory.cpu.max[max_role_by_weight].max_weight_sum})
 								, JSON.stringify(Memory.cpu));
 		Memory.cpu_prev_bucket = Game.cpu.bucket;
 	}
