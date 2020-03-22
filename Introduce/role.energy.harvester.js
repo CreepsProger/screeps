@@ -100,8 +100,6 @@ var role = {
 			if(!!target) return target;
 		}
 
-		metrix.cpu.step_time(creep, role.name, 'getTarget 1/2');
-
 		const DP2 = Game.flags['DP2'];
 
 		if(!target &&
@@ -125,6 +123,8 @@ var role = {
 			 }
 			if(!!target) return target;
 		}
+
+		metrix.cpu.step_time(creep, role.name, 'getTarget 1/2');
 
 		if(!target &&
 			 //this_room_sources_are_not_empty &&
@@ -238,7 +238,7 @@ var role = {
 						ERR_NOT_IN_RANGE:
 				creep.harvest(target);
 				creep.say('⚡');
-				
+
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.say('🔜⚡');
 					err = tools.moveTo(creep,target);
