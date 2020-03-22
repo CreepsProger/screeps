@@ -161,7 +161,7 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			metrix.cpu.step_time(creep, 'transfering', new Error().stack);
+			metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
 
 			if(target) {
 
@@ -207,7 +207,8 @@ var roleEnergyTransferer = {
 				creep.memory.transfering = false;
 			}
 		}
-		metrix.cpu.step_time(creep, 'transfering', new Error().stack);
+		// console.log(('Error\n    at Object.run (role.energy.transferer:210:46)\n    at Object.run (role.builder:108:14)\n').split('\n')[1]);
+		metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
 
 		metrix.cpu.role_time(creep, 'transfering');
 		if(!creep.memory.transfering) {
