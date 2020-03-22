@@ -134,6 +134,8 @@ var roleEnergyTransferer = {
 				}
 			}
 
+			metrix.cpu.step_time(creep, 'transfering', 'find interroom storage');
+
 			if(!target &&
 				 creep.memory.rerun &&
 				 !!creep.room.storage &&
