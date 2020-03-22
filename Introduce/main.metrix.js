@@ -67,7 +67,7 @@ var metrix = {
 			metrix.cpu.step_time(creep, role, 'end step');
 			// return;
 			metrix.cpu.time(Memory.cpu.role, constants.CPU_LIMIT_OF_CREEP_ROLE_RUN, creep, role);
-			if(!creep.memory.cpu)
+			// if(!creep.memory.cpu)
 				creep.memory.cpu = {};
 			// if(!creep.memory.cpu[role] || typeof creep.memory.cpu[role] !== 'number')
 				creep.memory.cpu[role] = 0;
