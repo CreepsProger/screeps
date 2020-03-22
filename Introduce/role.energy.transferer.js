@@ -161,6 +161,8 @@ var roleEnergyTransferer = {
 				}
 			}
 
+			metrix.cpu.step_time(creep, 'transfering', ''+Error().lineNumber);
+
 			if(target) {
 
 				var err = ERR_NOT_IN_RANGE;
