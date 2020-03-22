@@ -81,12 +81,11 @@ module.exports.loop = function () {
 			var creep = Game.creeps[name];
 			if(!creep.spawning) {
 				for(var role_name in creep.memory.cpu) {
-					// if(!Memory.cpu.max)
-					// 	Memory.cpu.max = {};
 					if(!Memory.cpu.max[role_name])
-						Memory.cpu.max[role_name] = {};
+						Memory.cpu.max[role_name] = {sum:0};
 					if(!Memory.cpu.max[role_name][creep.memory.weight])
 						Memory.cpu.max[role_name][creep.memory.weight] = 0;
+					Memory.cpu.max[role_name].sum += creep.memory.cpu[role_name];
 					Memory.cpu.max[role_name][creep.memory.weight] = creep.memory.cpu[role_name];
 				}
 			}
