@@ -87,7 +87,7 @@ module.exports.loop = function () {
 						Memory.cpu.max[role_name] = {};
 					if(!Memory.cpu.max[role_name][creep.memory.weight])
 						Memory.cpu.max[role_name][creep.memory.weight] = 0;
-					Memory.cpu.max[role_name][creep.memory.weight] += creep.memory.cpu[role_name];
+					Memory.cpu.max[role_name][creep.memory.weight] = Math.round(Memory.cpu.max[role_name][creep.memory.weight] + creep.memory.cpu[role_name]);
 				}
 			}
 		}
