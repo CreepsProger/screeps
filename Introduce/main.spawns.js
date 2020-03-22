@@ -199,10 +199,10 @@ var spawns = {
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,            90909, 64, 1, 3); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             2412, 61, 1, 3); // V 1-1 E    Carier
 					}
-					if(conditions.TO_SPAWN_DEFENDERS_ROOM('W29S33')) {
+					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S33')) {
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015,105, 1, 1); // V 1-2 E  Attacker
 					}
-					if(conditions.TO_SPAWN_DEFENDERS_ROOM('W29S35')) {
+					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S35')) {
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015,125, 1, 1); // V 1-2 E  Attacker
 						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  500000007000006,127, 1, 1); // V 1-1 E    Healer
 					}
