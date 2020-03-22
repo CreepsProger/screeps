@@ -94,8 +94,10 @@ module.exports.loop = function () {
 				}
 			}
 		}
-		var max_role = Object.keys(Memory.cpu.max).reduce((p,c) => Memory.cpu.max[p].sum > Memory.cpu.max[c].sum ? p:c);
-		var max_role_by_weight = Object.keys(Memory.cpu.max).reduce((p,c) => Memory.cpu.max[p].max_weight_sum > Memory.cpu.max[c].max_weight_sum ? p:c);
+		var max_role = Object.keys(Memory.cpu.max).reduce((p,c) =>
+		 																		 Memory.cpu.max[p].sum > Memory.cpu.max[c].sum ? p:c);
+		var max_role_by_weight = Object.keys(Memory.cpu.max).reduce((p,c) =>
+		 																		 Memory.cpu.max[p].max_weight_sum > Memory.cpu.max[c].max_weight_sum ? p:c);
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 								, 'CPU:'
 								, JSON.stringify({bucket:Game.cpu.bucket, delta: Game.cpu.bucket - Memory.cpu_prev_bucket})
