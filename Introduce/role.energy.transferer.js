@@ -43,9 +43,9 @@ var roleEnergyTransferer = {
 			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
 			const my_room_config = Memory.config.rooms[my_room];
 			// const this_room_sources_is_empty = !creep.pos.findClosestByRange(FIND_SOURCES, { no use because: storage->containers->storage
-			const a_source_is_not_near = !creep.pos.findInRange(FIND_SOURCES, 2, {
-				filter: (source) => source.energy > 0 && source.room.name == this_room
-			});
+			// const a_source_is_not_near = !creep.pos.findInRange(FIND_SOURCES, 2, {
+			// 	filter: (source) => source.energy > 0 && source.room.name == this_room
+			// });
 
 			var target;
 
@@ -57,7 +57,7 @@ var roleEnergyTransferer = {
 			const this_room_sources_are_not_empty = !this_room_sources_are_empty;
 
 			if(!target && this_room == my_room &&
-				 (!creep.getActiveBodyparts(WORK) || (this_room_sources_are_empty && creep.memory.rerun) || Memory.totals.WORK < 50)) {
+				 (!creep.getActiveBodyparts(WORK) || (this_room_sources_are_empty && creep.memory.rerun) || conditions.MAIN_ROOM_CRISIS())) {
 				var extensions = creep.room.find(FIND_STRUCTURES, {
 					filter: (structure) => {
 						return (
@@ -113,6 +113,8 @@ var roleEnergyTransferer = {
 					target = labs[0];
 				}
 			}
+
+			metrix.cpu.step_time(creep, 'transfering', 'first_part');
 
 			if(!target &&
 				 !creep.getActiveBodyparts(WORK) &&
