@@ -13,7 +13,7 @@ var cash = {
 
 	getObject: function(room,property) {
 		var obj;
-		if(!!Memory.cash && !!Memory.cash[room] && !!Memory.cash[room][property]) {
+		if((Game.time % constants.TICKS_TO_RESET_CASH != 0) && !!Memory.cash && !!Memory.cash[room] && !!Memory.cash[room][property]) {
 			obj = Game.getObjectById(Memory.cash[room][property]);
 		}
 		return obj;
