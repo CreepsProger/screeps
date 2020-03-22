@@ -63,12 +63,12 @@ var metrix = {
 		},
 
 		role_time: function(creep, role) {
-			metrix.cpu.step_time(creep, role, 'endstep:' + Error().stack);
+			metrix.cpu.step_time(creep, role, 'end step'+ Error().toSource());
 			metrix.cpu.time(Memory.cpu.role, constants.CPU_LIMIT_OF_CREEP_ROLE_RUN, creep, role);
 		},
 
 		creep_time: function(creep) {
-			metrix.cpu.role_time(creep, 'endrole:' + Error().stack);
+			metrix.cpu.role_time(creep, 'end role' + Error().toSource());
 			metrix.cpu.time(Memory.cpu.creep, constants.CPU_LIMIT_OF_CREEP_RUN, creep);
 			Memory.cpu.creep.n++;
 		}

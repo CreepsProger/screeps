@@ -115,7 +115,7 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			metrix.cpu.step_time(creep, 'transfering', 'first_part');
+			metrix.cpu.step_time(creep, 'transfering',  + Error().toSource());
 
 			if(!target &&
 				 !creep.getActiveBodyparts(WORK) &&
