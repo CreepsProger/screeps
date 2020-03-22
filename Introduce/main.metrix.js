@@ -71,7 +71,6 @@ var metrix = {
 				creep.memory.cpu = {};
 			if(!creep.memory.cpu[role])
 				creep.memory.cpu[role] = 0;
-			creep.memory.cpu[role] = 0;
 			creep.memory.cpu[role] += Memory.cpu.role.dt
 		},
 
