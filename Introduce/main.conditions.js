@@ -28,7 +28,9 @@ const conditions = {
 																							!conditions.CLAIMING_ROOM_CRISIS() &&
 																							!Memory.stop_upgrading;}
 	, TO_SPAWN_ROOM_DEFENDERS:			function(roomName) {
-																			return 	Game.rooms[roomName].find(FIND_HOSTILE_CREEPS).length > 0;}
+																			const room = Game.rooms[roomName];
+																			if(!room) return false;
+																			return 	room.find(FIND_HOSTILE_CREEPS).length > 0;}
 };
 
 
