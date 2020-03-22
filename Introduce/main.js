@@ -59,7 +59,7 @@ module.exports.loop = function () {
 	Memory.cpu = { creep: {dt: 0, creep: '', t: Math.round((Game.cpu.getUsed()) * 100)/100, n:1}
 							 , role : {dt: 0, creep: '', role: '', t: Math.round((Game.cpu.getUsed()) * 100)/100}
 							 , step : {dt: 0, creep: '', role: '', step: '', t: Math.round((Game.cpu.getUsed()) * 100)/100}
-							 // , max	: {}
+							 , max	: {}
 						   };
 
 	for(var name in Game.creeps) {
@@ -77,20 +77,20 @@ module.exports.loop = function () {
 		}
 	}
 	if(Game.time % constants.TICKS_TO_CHECK_CPU == 0) {
-		// for(var name in Game.creeps) {
-		// 	var creep = Game.creeps[name];
-		// 	if(!creep.spawning) {
-		// 		for(var role in creep.memory.cpu) {
-		// 			if(!Memory.cpu.max)
-		// 				Memory.cpu.max = {};
-		// 			if(!Memory.cpu.max[role])
-		// 				Memory.cpu.max[role] = {};
-		// 			if(!Memory.cpu.max[role][creep.memory.weight])
-		// 				Memory.cpu.max[role][creep.memory.weight] = 0;
-		// 			Memory.cpu.max[role][creep.memory.weight] += creep.memory.cpu[role];
-		// 		}
-		// 	}
-		// }
+		for(var name in Game.creeps) {
+			var creep = Game.creeps[name];
+			if(!creep.spawning) {
+				for(var role_name in creep.memory.cpu) {
+					// if(!Memory.cpu.max)
+					// 	Memory.cpu.max = {};
+					if(!Memory.cpu.max[role_name])
+						Memory.cpu.max[role_name] = {};
+					if(!Memory.cpu.max[role_name][creep.memory.weight])
+						Memory.cpu.max[role_name][creep.memory.weight] = 0;
+					Memory.cpu.max[role_name][creep.memory.weight] += creep.memory.cpu[role];
+				}
+			}
+		}
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 								, 'CPU:'
 								, JSON.stringify({bucket:Game.cpu.bucket, delta: Game.cpu.bucket - Memory.cpu_prev_bucket})
