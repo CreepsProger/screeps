@@ -79,6 +79,7 @@ module.exports.loop = function () {
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 								, 'CPU:'
 								, JSON.stringify({bucket:Game.cpu.bucket, delta: Game.cpu.bucket - Memory.cpu_prev_bucket})
+								, JSON.stringify({max:{weight:0, role: '', sum_dt: 0}})
 								, JSON.stringify(Memory.cpu));
 		Memory.cpu_prev_bucket = Game.cpu.bucket;
 	}
