@@ -16,10 +16,10 @@ var roleNoEnergyTransferer = {
             creep.memory.noenergytransfering = false;
         }
 
-        if(!creep.memory.noenergytransfering &&
-          creep.store.getUsedCapacity() > creep.store.getUsedCapacity(RESOURCE_ENERGY)) {
-            creep.memory.noenergytransfering = false;
-        }
+        // if(!creep.memory.noenergytransfering &&
+        //   creep.store.getUsedCapacity() > creep.store.getUsedCapacity(RESOURCE_ENERGY)) {
+        //     creep.memory.noenergytransfering = false;
+        // }
 
         if(creep.memory.noenergytransfering) {
             var target;
