@@ -94,12 +94,12 @@ module.exports.loop = function () {
 				}
 			}
 		}
-		var max_role = Object.keys(Memory.cpu.max).reduce((p,c) => p.sum > c.sum ? p:c);
-		var max_role_weight = Object.keys(Memory.cpu.max).reduce((p,c) => p.max_weight_sum > c.max_weight_sum ? p:c);
+		var max_role = Object.keys(Memory.cpu.max).reduce((p,c) => Memory.cpu.max[p].sum > Memory.cpu.max[c].sum ? p:c);
+		var max_role_weight = Object.keys(Memory.cpu.max).reduce((p,c) => Memory.cpu.max[p].max_weight_sum > Memory.cpu.max[c].max_weight_sum ? p:c);
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 								, 'CPU:'
 								, JSON.stringify({bucket:Game.cpu.bucket, delta: Game.cpu.bucket - Memory.cpu_prev_bucket})
-								, JSON.stringify({max_role:max_role, max_role_weight:max_role_weight})
+								, JSON.stringify({max_role:Memory.cpu.max[max_role], max_role_weight:Memory.cpu.max[max_role_weight]})
 								, JSON.stringify(Memory.cpu));
 		Memory.cpu_prev_bucket = Game.cpu.bucket;
 	}
