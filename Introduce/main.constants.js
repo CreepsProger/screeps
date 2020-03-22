@@ -21,7 +21,7 @@ const constants = {
 	, START_UPGRADING_ENERGY : 20000
 	, CPU_LIMIT_OF_CREEP_RUN : 4
 	, CPU_LIMIT_OF_CREEP_ROLE_RUN : 4
-	, CPU_LIMIT_OF_CREEP_ROLE_STEP_RUN : 4
+	, CPU_LIMIT_OF_CREEP_ROLE_STEP_RUN : 2
 	, ERR_NO_PATH_2 : -22
 	, CRISIS: function() {return Memory.totals.WORK < 49 && Memory.totals.CARRY < 100}
 };
