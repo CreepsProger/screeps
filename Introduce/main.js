@@ -106,7 +106,7 @@ module.exports.loop = function () {
 																 , max_role:max_role
 																 , max_role_sum:Memory.cpu.max[max_role].sum
 																 , max_role_by_weight:max_role_by_weight
-																 , max_weight:Memory.cpu.max[max_role_by_weight].max_weight})
+																 , max_weight:Memory.cpu.max[max_role_by_weight].max_weight
 																 , max_weight_sum:Memory.cpu.max[max_role_by_weight].max_weight_sum})
 								, JSON.stringify(Memory.cpu));
 		Memory.cpu_prev_bucket = Game.cpu.bucket;
