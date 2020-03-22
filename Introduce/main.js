@@ -77,20 +77,20 @@ module.exports.loop = function () {
 		}
 	}
 	if(Game.time % constants.TICKS_TO_CHECK_CPU == 0) {
-		for(var name in Game.creeps) {
-			var creep = Game.creeps[name];
-			if(!creep.spawning) {
-				for(var role in creep.memory.cpu) {
-					if(!Memory.cpu.max)
-						Memory.cpu.max = {};
-					if(!Memory.cpu.max[role])
-						Memory.cpu.max[role] = {};
-					if(!Memory.cpu.max[role][creep.memory.weight])
-						Memory.cpu.max[role][creep.memory.weight] = 0;
-					Memory.cpu.max[role][creep.memory.weight] += creep.memory.cpu[role];
-				}
-			}
-		}
+		// for(var name in Game.creeps) {
+		// 	var creep = Game.creeps[name];
+		// 	if(!creep.spawning) {
+		// 		for(var role in creep.memory.cpu) {
+		// 			if(!Memory.cpu.max)
+		// 				Memory.cpu.max = {};
+		// 			if(!Memory.cpu.max[role])
+		// 				Memory.cpu.max[role] = {};
+		// 			if(!Memory.cpu.max[role][creep.memory.weight])
+		// 				Memory.cpu.max[role][creep.memory.weight] = 0;
+		// 			Memory.cpu.max[role][creep.memory.weight] += creep.memory.cpu[role];
+		// 		}
+		// 	}
+		// }
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 								, 'CPU:'
 								, JSON.stringify({bucket:Game.cpu.bucket, delta: Game.cpu.bucket - Memory.cpu_prev_bucket})
