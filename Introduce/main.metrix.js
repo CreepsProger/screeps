@@ -71,7 +71,7 @@ var metrix = {
 
 		creep_time: function(creep) {
 			metrix.cpu.role_time(creep, 'end role');
-			return;
+			// return;
 			metrix.cpu.time(Memory.cpu.creep, constants.CPU_LIMIT_OF_CREEP_RUN, creep);
 			Memory.cpu.creep.n++;
 		}
