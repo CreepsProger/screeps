@@ -83,7 +83,7 @@ var roleEnergyTransferer = {
 			//if(!target) {
 			//if(!target && (this_room != my_room || this_room_sources_are_not_empty)) {
 			if(!target && (this_room_sources_are_not_empty || !creep.getActiveBodyparts(WORK))) {
-				var closests = creep.pos.findInRange(FIND_MY_CREEPS, 3, {
+				var closests = creep.pos.findInRange(FIND_MY_CREEPS, 5, {
 					filter: (creep2) => {
 						return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 							creep2.memory.weight < creep.memory.weight;
