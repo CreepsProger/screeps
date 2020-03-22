@@ -85,8 +85,8 @@ module.exports.loop = function () {
 						Memory.cpu.max[role_name] = {sum:0, max_weight:0, max_weight_sum:0};
 					if(!Memory.cpu.max[role_name][creep.memory.weight])
 						Memory.cpu.max[role_name][creep.memory.weight] = 0;
-					Memory.cpu.max[role_name].sum += creep.memory.cpu[role_name];
-					Memory.cpu.max[role_name][creep.memory.weight] += creep.memory.cpu[role_name];
+					Memory.cpu.max[role_name].sum += Math.round(creep.memory.cpu[role_name]);
+					Memory.cpu.max[role_name][creep.memory.weight] += Math.round(creep.memory.cpu[role_name]);
 					if(Memory.cpu.max[role_name].max_weight_sum < Memory.cpu.max[role_name][creep.memory.weight]) {
 						Memory.cpu.max[role_name].max_weight_sum = Memory.cpu.max[role_name][creep.memory.weight];
 						Memory.cpu.max[role_name].max_weight = creep.memory.weight;
