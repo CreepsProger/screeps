@@ -115,7 +115,7 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			metrix.cpu.step_time(creep, 'transfering', ''+(new Error).lineNumber);
+			metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
 
 			if(!target &&
 				 !creep.getActiveBodyparts(WORK) &&
@@ -134,7 +134,7 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			metrix.cpu.step_time(creep, 'transfering', 'find interroom storage');
+			// metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
 
 			if(!target &&
 				 creep.memory.rerun &&
@@ -208,8 +208,8 @@ var roleEnergyTransferer = {
 			}
 		}
 		// console.log(('Error\n    at Object.run (role.energy.transferer:210:46)\n    at Object.run (role.builder:108:14)\n').split('\n')[1]);
-		metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
 
+		metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
 		metrix.cpu.role_time(creep, 'transfering');
 		if(!creep.memory.transfering) {
 			roleNext.run(creep);
