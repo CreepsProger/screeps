@@ -209,7 +209,6 @@ var roleEnergyTransferer = {
 		}
 		// console.log(('Error\n    at Object.run (role.energy.transferer:210:46)\n    at Object.run (role.builder:108:14)\n').split('\n')[1]);
 
-		metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
 		metrix.cpu.role_time(creep, 'transfering');
 		if(!creep.memory.transfering) {
 			roleNext.run(creep);
