@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 142,
+	version: 143,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -181,13 +181,13 @@ var config = {
 												 , {name: '2', time: 0, min_weight: 90, max_weight: 99}
 												 ]
 										 , attacker:
-												 [ {name: '1', time: 0, min_weight: 90, max_weight:99}
-												 , {name: '2', time: 0, min_weight: 90, max_weight:99}
-												 , {name: '3', time: 0, min_weight: 90, max_weight:99}
-												 , {name: '4', time: 0, min_weight: 90, max_weight:99}
-												 , {name: '5', time: 0, min_weight: 90, max_weight:99}
-												 , {name: '6', time: 0, min_weight: 90, max_weight:99}
-												 , {name: '7', time: 0, min_weight: 90, max_weight:99}
+												 [ {name: '1', time: 0, min_weight: 90, max_weight: 99}
+												 , {name: '2', time: 0, min_weight: 90, max_weight: 99}
+												 , {name: '3', time: 0, min_weight: 90, max_weight: 99}
+												 , {name: '4', time: 0, min_weight: 90, max_weight: 99}
+												 , {name: '5', time: 0, min_weight: 90, max_weight: 99}
+												 , {name: '6', time: 0, min_weight: 90, max_weight: 99}
+												 , {name: '7', time: 0, min_weight: 90, max_weight: 99}
 												 ]
 									   , heal_room: 'W28S33'
 										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
