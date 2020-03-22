@@ -59,7 +59,7 @@ module.exports.loop = function () {
 	Memory.cpu = { creep: {dt: 0, creep: '', t: Math.round((Game.cpu.getUsed()) * 100)/100, n:1}
 							 , role : {dt: 0, creep: '', role: '', t: Math.round((Game.cpu.getUsed()) * 100)/100}
 							 , step : {dt: 0, creep: '', role: '', step: '', t: Math.round((Game.cpu.getUsed()) * 100)/100}
-							 , max	: {}
+							 // , max	: {}
 						   };
 
 	for(var name in Game.creeps) {
@@ -81,6 +81,8 @@ module.exports.loop = function () {
 			var creep = Game.creeps[name];
 			if(!creep.spawning) {
 				for(var role in creep.memory.cpu) {
+					if(!Memory.cpu.max)
+						Memory.cpu.max = {};
 					if(!Memory.cpu.max[role])
 						Memory.cpu.max[role] = {};
 					if(!Memory.cpu.max[role][creep.memory.weight])
