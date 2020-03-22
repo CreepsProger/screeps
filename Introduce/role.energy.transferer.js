@@ -115,7 +115,7 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			metrix.cpu.step_time(creep, 'transfering', ''+Error().lineNumber);
+			metrix.cpu.step_time(creep, 'transfering', ''+(new Error).lineNumber);
 
 			if(!target &&
 				 !creep.getActiveBodyparts(WORK) &&
@@ -161,7 +161,7 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			metrix.cpu.step_time(creep, 'transfering', ''+Error().lineNumber);
+			metrix.cpu.step_time(creep, 'transfering', ''+(new Error).lineNumber);
 
 			if(target) {
 
@@ -207,7 +207,7 @@ var roleEnergyTransferer = {
 				creep.memory.transfering = false;
 			}
 		}
-		metrix.cpu.step_time(creep, 'transfering', ''+Error().lineNumber);
+		metrix.cpu.step_time(creep, 'transfering', ''+(new Error).lineNumber);
 
 		metrix.cpu.role_time(creep, 'transfering');
 		if(!creep.memory.transfering) {
