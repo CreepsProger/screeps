@@ -183,8 +183,26 @@ var role = {
 			 !!creep.room.storage &&
 			 !!creep.room.storage.my &&
 			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 2*constants.START_UPGRADING_ENERGY) {
-			target = creep.room.storage;
-			if(!!target) return target;
+			var storages = _.filter(Game.structures, (structure) => !!structure.my &&
+															structure.structureType == STRUCTURE_STORAGE &&
+															structure.store.getUsedCapacity(RESOURCE_ENERGY) < 2*constants.START_UPGRADING_ENERGY);
+			if(storages.length > 0) {
+				var storage = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
+																 < c.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,c.pos)? p:c);
+				const range_to_store = tools.getRangeTo(creep.pos, storage.pos);
+				const my_store_energy_value = creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY);
+				const store_energy_value = storage.store.getUsedCapacity(RESOURCE_ENERGY);
+				if(range_to_store >= constants.RANGE_TO_STORE_TO_CONSOLE_LOG) {
+					console.log( '🔜⚡2️⃣', creep
+											, 'my store energy value:', my_store_energy_value
+											, 'range to possible target store:', range_to_store
+											, creep.pos.roomName, '->', target.pos.roomName
+											, 'store energy value:', store_energy_value
+										 );
+					}
+				target = creep.room.storage;
+				if(!!target) return target;
+			}
 		}
 
 		if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
