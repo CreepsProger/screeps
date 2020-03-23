@@ -250,6 +250,9 @@ var role = {
 					creep.memory[role.name].on = false;
 				}
 			}
+			else {
+				creep.memory[role.name].on = false;
+			}
 		}
 
 		for(var name in Game.spawns) {
