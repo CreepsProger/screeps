@@ -137,14 +137,6 @@ var roleEnergyTransferer = {
 			// metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
 
 			if(!target &&
-				 creep.memory.rerun &&
-				 !!creep.room.storage &&
-				 !!creep.room.storage.my &&
-				 creep.room.storage.store.getFreeCapacity(RESOURCE_ENERGY) > 0) {
-					 target = creep.room.storage;
-			}
-
-			if(!target &&
 				 !creep.getActiveBodyparts(WORK) &&
 				 creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
 				 creep.memory.rerun) {
@@ -159,6 +151,14 @@ var roleEnergyTransferer = {
 						console.log( '✒️2', creep, 'range_to_store:', range_to_store, creep.pos.roomName, '->', target.pos.roomName);
 					}
 				}
+			}
+
+			if(!target &&
+				 creep.memory.rerun &&
+				 !!creep.room.storage &&
+				 !!creep.room.storage.my &&
+				 creep.room.storage.store.getFreeCapacity(RESOURCE_ENERGY) > 0) {
+					 target = creep.room.storage;
 			}
 
 			metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
