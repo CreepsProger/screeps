@@ -192,7 +192,7 @@ var role = {
 				const range_to_store = tools.getRangeTo(creep.pos, storage.pos);
 				const my_store_energy_value = creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY);
 				const store_energy_value = storage.store.getUsedCapacity(RESOURCE_ENERGY);
-				if(range_to_store >= constants.RANGE_TO_STORE_TO_CONSOLE_LOG) {
+				if(range_to_store >= constants.HARVEST_RANGE_TO_STORE_2_TO_CONSOLE_LOG) {
 					console.log( '🔜⚡2️⃣', creep
 											, 'my store energy value:', my_store_energy_value
 											, 'range to possible target store:', range_to_store
