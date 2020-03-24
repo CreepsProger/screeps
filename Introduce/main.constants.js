@@ -13,7 +13,7 @@ const constants = {
 	, TICKS_TO_SPAWN: 25
 	, TICKS_TO_SPAWN_BY_ANY: 100
 	, TICKS_TO_CHECK_CPU: 25
-	, RANGE_TO_STORE_TO_CONSOLE_LOG: 300
+	, RANGE_TO_STORE_TO_CONSOLE_LOG: 50
 	, ROLE_ENERGY_HARVESTING: 'energy_harvesting'
 	, TICKS_TO_LIVE_TO_RENEW: 1200
 	, TICKS_TO_LIVE_TO_TRANSFER_ENERGY_TO_SPAWN: 1000
@@ -24,8 +24,6 @@ const constants = {
 	, CPU_LIMIT_OF_CREEP_ROLE_RUN : 4
 	, CPU_LIMIT_OF_CREEP_ROLE_STEP_RUN : 4
 	, ERR_NO_PATH_2 : -22
-	, CRISIS: function() {return Memory.totals.WORK < 49 && Memory.totals.CARRY < 100}
 };
-
 
 module.exports = constants;
