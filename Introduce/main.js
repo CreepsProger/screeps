@@ -47,10 +47,10 @@ module.exports.loop = function () {
 		}
 		else if(creep.ticksToLive == 1) {
 			const sum_role_cpu = Object.keys(creep.memory.cpu).reduce((sum,role) => sum + creep.memory.cpu[role],0);
-			const max_role_cpu = Object.keys(creep.memory.cpu).reduce((max_role,role) =>
-																																creep.memory.cpu[max_role] > creep.memory.cpu[role]?
-																															  {max_role:max_role, v:creep.memory.cpu[max_role]}:
-																																{max_role:role, v:creep.memory.cpu[role]},
+			const max_role_cpu = Object.keys(creep.memory.cpu).reduce((a,role) =>
+																																!creep.memory.cpu[a.max_role] || creep.memory.cpu[a.max_role] < creep.memory.cpu[role]?
+																															  {max_role:a.role, v:creep.memory.cpu[a.role]}:
+																																{max_role:a.max_role, v:a.v},
 																																{max_role:'', v:0});
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'ticksToLive:', creep.ticksToLive
