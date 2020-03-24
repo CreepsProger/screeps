@@ -61,8 +61,9 @@ module.exports.loop = function () {
 							 , step : {max_dt: 0, creep: '', role: '', step: '', dt: 0, t: Math.round((Game.cpu.getUsed()) * 100)/100}
 							 , max	: {sum:0}
 						   };
-	
-	Memory.cpu_main_part_dt += Math.round((Game.cpu.getUsed()) * 100)/100;
+
+	var main_part_dt = Math.round((Game.cpu.getUsed()) * 100)/100;
+	Memory.cpu_main_part_dt += main_part_dt;
 
 	for(var name in Game.creeps) {
 		var creep = Game.creeps[name];
@@ -119,6 +120,6 @@ module.exports.loop = function () {
 		Memory.cpu_creeps_part_dt = 0;
 	}
 
-	Memory.cpu_creeps_part_dt += Math.round((Game.cpu.getUsed()) * 100)/100 - Memory.cpu_main_part_dt;
+	Memory.cpu_creeps_part_dt += Math.round((Game.cpu.getUsed()) * 100)/100 - main_part_dt;
 	Memory.cpu_dt += Math.round((Game.cpu.getUsed()) * 100)/100;
 }
