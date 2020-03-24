@@ -93,9 +93,9 @@ module.exports.loop = function () {
 						Memory.cpu.max[role_name] = {sum:0, max_weight:0, max_weight_sum:0};
 					if(!Memory.cpu.max[role_name][creep.memory.weight])
 						Memory.cpu.max[role_name][creep.memory.weight] = 0;
-					Memory.cpu.max.sum += Math.round(creep.memory.cpu[role_name]);
-					Memory.cpu.max[role_name].sum += Math.round(creep.memory.cpu[role_name]);
-					Memory.cpu.max[role_name][creep.memory.weight] += Math.round(creep.memory.cpu[role_name]);
+					Memory.cpu.max.sum += Math.round(creep.memory.cpu[role_name]*100)/100;
+					Memory.cpu.max[role_name].sum += Math.round(creep.memory.cpu[role_name]*100)/100;
+					Memory.cpu.max[role_name][creep.memory.weight] += Math.round(creep.memory.cpu[role_name]*100)/100 ;
 					if(Memory.cpu.max[role_name].max_weight_sum < Memory.cpu.max[role_name][creep.memory.weight]) {
 						Memory.cpu.max[role_name].max_weight_sum = Memory.cpu.max[role_name][creep.memory.weight];
 						Memory.cpu.max[role_name].max_weight = creep.memory.weight;
@@ -110,16 +110,20 @@ module.exports.loop = function () {
 
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 								, 'CPU:'
-								, JSON.stringify({ dt:Math.round(Memory.cpu_dt*100)/100, "main part": Math.round(Memory.cpu_main_part_dt*100)/100, "creeps part": Math.round(Memory.cpu_creeps_part_dt*100)/100})
+								, JSON.stringify({ dt:Math.round(Memory.cpu_dt*100)/100
+																	, "main part": Math.round(Memory.cpu_main_part_dt*100)/100
+																	, "creeps part": Math.round(Memory.cpu_creeps_part_dt*100)/100})
 								, JSON.stringify({ limit:Game.cpu.limit, bucket:Game.cpu.bucket, delta: Game.cpu.bucket - Memory.cpu_prev_bucket})
-								, JSON.stringify({ sum:Memory.cpu.max.sum
+								, JSON.stringify({ "creeps sum":Math.round(Memory.cpu.max.sum*100)/100
+																	, "delta":Math.round((Memory.cpu.max.sum - Memory.cpu_prev_creeps_sum) * 100)/100
 																 , max_role:max_role
-																 , max_role_sum:Memory.cpu.max[max_role].sum
+																 , max_role_sum:Math.round(Memory.cpu.max[max_role].sum*100)/100
 																 , max_role_by_weight:max_role_by_weight
-																 , max_weight:Memory.cpu.max[max_role_by_weight].max_weight
-																 , max_weight_sum:Memory.cpu.max[max_role_by_weight].max_weight_sum})
+																 , max_weight:Math.round(Memory.cpu.max[max_role_by_weight].max_weight*100)/100
+																 , max_weight_sum:Math.round(Memory.cpu.max[max_role_by_weight].max_weight_sum*100)/100})
 								, JSON.stringify(Memory.cpu));
 		Memory.cpu_prev_bucket = Game.cpu.bucket;
+		Memory.cpu_prev_creeps_sum = Memory.cpu.max.sum;
 		Memory.cpu_main_part_dt = Math.round((Game.cpu.getUsed() - cpu_dt) * 100)/100;
 		Memory.cpu_dt = Memory.cpu_main_part_dt;
 		Memory.cpu_creeps_part_dt = 0;
