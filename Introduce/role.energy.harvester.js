@@ -195,7 +195,7 @@ var role = {
 				if(range_to_store >= constants.HARVEST_RANGE_TO_STORE_2_TO_CONSOLE_LOG &&
 					(!creep.memory.prev_target_id || creep.memory.prev_target_id != creep.room.storage.id) 
 					) {
-					console.log( '🔜⚡2️⃣', creep
+					console.log( '🔜⚡2️⃣', Math.trunc(Game.time/10000), Game.time%10000, creep
 											, 'my store energy value:', my_store_energy_value
 											, 'range to possible target store:', range_to_store
 											, creep.pos.roomName, '->', storage.pos.roomName
