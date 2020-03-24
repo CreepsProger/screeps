@@ -57,7 +57,7 @@ var roleEnergyTransferer = {
 			const this_room_sources_are_empty = tools.areEmptySources(creep);
 			const this_room_sources_are_not_empty = !this_room_sources_are_empty;
 
-			metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
+			// metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
 
 			if(!target && this_room == my_room &&
 				 (!creep.getActiveBodyparts(WORK) || (this_room_sources_are_empty && creep.memory.rerun) || conditions.MAIN_ROOM_CRISIS())) {
@@ -82,7 +82,7 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
+			// metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
 
 			//if(!target) {
 			//if(!target && (this_room != my_room || this_room_sources_are_not_empty)) {
@@ -107,7 +107,7 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
+			// metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
 
 			if(!target && creep.memory.rerun) {
 				var labs = creep.room.find(FIND_STRUCTURES, {
@@ -147,7 +147,7 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
+			// metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
 
 			if(!target &&
 				 !creep.getActiveBodyparts(WORK) &&
@@ -173,7 +173,7 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
+			// metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
 
 			if(!target &&
 				 creep.memory.rerun &&
@@ -183,7 +183,7 @@ var roleEnergyTransferer = {
 					 target = creep.room.storage;
 			}
 
-			metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
+			// metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
 
 			if(!target &&
 				 !creep.getActiveBodyparts(WORK) &&
