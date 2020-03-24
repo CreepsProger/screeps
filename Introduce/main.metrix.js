@@ -12,10 +12,11 @@ var metrix = {
 			Memory.CreepsIdleTicksByWeight[creep.memory.weight] = {};
 		}
 		if(!Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n]) {
-			Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n] = 0;
+			Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n] = {};
 		}
-		if(!creep.memory.idle) {
+		if(!creep.memory.idle_time) {
 			creep.memory.idle = 0;
+			creep.memory.idle_time = 0;
 		}
 		if(creep.memory.idle_time != Game.time) {
 			creep.memory.idle_time = Game.time;
@@ -39,7 +40,7 @@ var metrix = {
 	cpu:
 	{
 		time: function(cpu_time, limit, creep = undefined, role = undefined, step = undefined) {
-			cpu_time.dt = Math.round((Game.cpu.getUsed() - cpu_time.t) * 10)/10;
+			cpu_time.dt = Math.round((Game.cpu.getUsed() - cpu_time.t) * 100)/100;
 			if(cpu_time.dt > cpu_time.max_dt) {
 				cpu_time.max_dt = cpu_time.dt;
 				if(!!creep)

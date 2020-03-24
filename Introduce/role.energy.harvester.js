@@ -183,8 +183,28 @@ var role = {
 			 !!creep.room.storage &&
 			 !!creep.room.storage.my &&
 			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 2*constants.START_UPGRADING_ENERGY) {
-			target = creep.room.storage;
-			if(!!target) return target;
+			var storages = _.filter(Game.structures, (structure) => !!structure.my &&
+															structure.structureType == STRUCTURE_STORAGE &&
+															structure.store.getUsedCapacity(RESOURCE_ENERGY) < 2*constants.START_UPGRADING_ENERGY);
+			if(storages.length > 0) {
+				var storage = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
+																 < c.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,c.pos)? p:c);
+				const range_to_store = tools.getRangeTo(creep.pos, storage.pos);
+				const my_store_energy_value = creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY);
+				const store_energy_value = storage.store.getUsedCapacity(RESOURCE_ENERGY);
+				if(range_to_store >= constants.HARVEST_RANGE_TO_STORE_2_TO_CONSOLE_LOG &&
+					(!creep.memory.prev_target_id || creep.memory.prev_target_id != creep.room.storage.id) 
+					) {
+					console.log( '🔜⚡2️⃣', Math.trunc(Game.time/10000), Game.time%10000, creep
+											, 'my store energy value:', my_store_energy_value
+											, 'range to possible target store:', range_to_store
+											, creep.pos.roomName, '->', storage.pos.roomName
+											, 'store energy value:', store_energy_value
+										 );
+					}
+				target = creep.room.storage;
+				if(!!target) return target;
+			}
 		}
 
 		if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
@@ -237,6 +257,11 @@ var role = {
 				(target.energy == 0 && creep.pos.getRangeTo(target) > 1 )? // a source
 						ERR_NOT_IN_RANGE:
 				creep.harvest(target);
+				
+				if(!!target.id) {
+					creep.memory.prev_target_id = target.id;
+					creep.memory.prev_target_time = Game.time;
+				}
 				creep.say('⚡');
 
 				if(err == ERR_NOT_IN_RANGE) {

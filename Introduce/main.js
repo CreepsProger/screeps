@@ -36,13 +36,28 @@ module.exports.loop = function () {
 
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'Clearing non-existing creep memory:'
-									, name, weight, 'sum_pst:', sum_pst, JSON.stringify(Memory.CreepsIdleTicksByWeight[weight])
+									, name, weight//, 'cpu:', JSON.stringify(creep.memory.cpu)
+									, 'sum idle pst:', sum_pst, JSON.stringify(Memory.CreepsIdleTicksByWeight[weight])
 									, 'total_sum_pst:', total_sum_pst
 									, 'total_cnt_pst:', total_cnt_pst
 									, 'total_avg_pst:', total_avg_pst
 									, JSON.stringify(Memory.CreepsIdleTicksByWeight));
 			Memory.CreepsIdleTicksByWeight[weight] = {};
 			delete Memory.creeps[name];
+		}
+		else if(creep.ticksToLive == 1) {
+			const sum_role_cpu = Object.keys(creep.memory.cpu).reduce((sum,role) => sum + creep.memory.cpu[role],0);
+			const max_role_cpu = Object.keys(creep.memory.cpu).reduce((a,role) =>
+																																!creep.memory.cpu[a.max_role] || creep.memory.cpu[a.max_role] < creep.memory.cpu[role]?
+																															  {max_role:role, v:creep.memory.cpu[role]}:
+																																{max_role:a.max_role, v:a.v},
+																																{max_role:'', v:0});
+			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+									, 'ticksToLive:', creep.ticksToLive
+									, name
+									, 'idle:', creep.memory.idle, JSON.stringify(Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n])
+									, 'cpu:', sum_role_cpu, JSON.stringify(max_role_cpu), JSON.stringify(creep.memory.cpu)
+								 );
 		}
 	}
 
@@ -62,6 +77,9 @@ module.exports.loop = function () {
 							 , max	: {sum:0}
 						   };
 
+	var main_part_dt = Math.round((Game.cpu.getUsed()) * 100)/100;
+	Memory.cpu_main_part_dt += main_part_dt;
+
 	for(var name in Game.creeps) {
 		var creep = Game.creeps[name];
 		if(!creep.spawning) {
@@ -76,6 +94,11 @@ module.exports.loop = function () {
 			}
 		}
 	}
+
+	var cpu_dt = Math.round((Game.cpu.getUsed()) * 100)/100;
+	Memory.cpu_dt += cpu_dt;
+	Memory.cpu_creeps_part_dt += cpu_dt - main_part_dt;
+
 	if(Game.time % constants.TICKS_TO_CHECK_CPU == 0) {
 		for(var name in Game.creeps) {
 			var creep = Game.creeps[name];
@@ -85,9 +108,9 @@ module.exports.loop = function () {
 						Memory.cpu.max[role_name] = {sum:0, max_weight:0, max_weight_sum:0};
 					if(!Memory.cpu.max[role_name][creep.memory.weight])
 						Memory.cpu.max[role_name][creep.memory.weight] = 0;
-					Memory.cpu.max.sum += Math.round(creep.memory.cpu[role_name]);
-					Memory.cpu.max[role_name].sum += Math.round(creep.memory.cpu[role_name]);
-					Memory.cpu.max[role_name][creep.memory.weight] += Math.round(creep.memory.cpu[role_name]);
+					Memory.cpu.max.sum += Math.round(creep.memory.cpu[role_name]*100)/100;
+					Memory.cpu.max[role_name].sum += Math.round(creep.memory.cpu[role_name]*100)/100;
+					Memory.cpu.max[role_name][creep.memory.weight] += Math.round(creep.memory.cpu[role_name]*100)/100 ;
 					if(Memory.cpu.max[role_name].max_weight_sum < Memory.cpu.max[role_name][creep.memory.weight]) {
 						Memory.cpu.max[role_name].max_weight_sum = Memory.cpu.max[role_name][creep.memory.weight];
 						Memory.cpu.max[role_name].max_weight = creep.memory.weight;
@@ -99,16 +122,30 @@ module.exports.loop = function () {
 		 																		 Memory.cpu.max[p].sum > Memory.cpu.max[c].sum ? p:c);
 		var max_role_by_weight = Object.keys(Memory.cpu.max).reduce((p,c) =>
 		 																		 Memory.cpu.max[p].max_weight_sum > Memory.cpu.max[c].max_weight_sum ? p:c);
+
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 								, 'CPU:'
-								, JSON.stringify({bucket:Game.cpu.bucket, delta: Game.cpu.bucket - Memory.cpu_prev_bucket})
-								, JSON.stringify({ sum:Memory.cpu.max.sum
+								, JSON.stringify({ dt:Math.round(Memory.cpu_dt*100)/100
+																	, "main part": Math.round(Memory.cpu_main_part_dt*100)/100
+																	, "creeps part": Math.round(Memory.cpu_creeps_part_dt*100)/100})
+								, JSON.stringify({ limit:Game.cpu.limit * constants.TICKS_TO_CHECK_CPU
+																	, bucket:Game.cpu.bucket
+																	, delta: Game.cpu.bucket - Memory.cpu_prev_bucket})
+								, JSON.stringify({ "creeps sum":Math.round(Memory.cpu.max.sum*100)/100
+																	, "delta":Math.round((Memory.cpu.max.sum - Memory.cpu_prev_creeps_sum) * 100)/100
 																 , max_role:max_role
-																 , max_role_sum:Memory.cpu.max[max_role].sum
+																 , max_role_sum:Math.round(Memory.cpu.max[max_role].sum*100)/100
 																 , max_role_by_weight:max_role_by_weight
-																 , max_weight:Memory.cpu.max[max_role_by_weight].max_weight
-																 , max_weight_sum:Memory.cpu.max[max_role_by_weight].max_weight_sum})
+																 , max_weight:Math.round(Memory.cpu.max[max_role_by_weight].max_weight*100)/100
+																 , max_weight_sum:Math.round(Memory.cpu.max[max_role_by_weight].max_weight_sum*100)/100})
 								, JSON.stringify(Memory.cpu));
 		Memory.cpu_prev_bucket = Game.cpu.bucket;
+		Memory.cpu_prev_creeps_sum = Memory.cpu.max.sum;
+		Memory.cpu_main_part_dt = 0;
+		Memory.cpu_creeps_part_dt = 0;
+		Memory.cpu_dt = 0;
 	}
+	var main_part2_dt = Math.round((Game.cpu.getUsed() - cpu_dt) * 100)/100;
+	Memory.cpu_main_part_dt += main_part2_dt;
+	Memory.cpu_dt += main_part2_dt;
 }
