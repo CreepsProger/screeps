@@ -57,6 +57,8 @@ var roleEnergyTransferer = {
 			const this_room_sources_are_empty = tools.areEmptySources(creep);
 			const this_room_sources_are_not_empty = !this_room_sources_are_empty;
 
+			metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
+
 			if(!target && this_room == my_room &&
 				 (!creep.getActiveBodyparts(WORK) || (this_room_sources_are_empty && creep.memory.rerun) || conditions.MAIN_ROOM_CRISIS())) {
 				var extensions = creep.room.find(FIND_STRUCTURES, {
@@ -80,6 +82,8 @@ var roleEnergyTransferer = {
 				}
 			}
 
+			metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
+
 			//if(!target) {
 			//if(!target && (this_room != my_room || this_room_sources_are_not_empty)) {
 			if(!target && (this_room_sources_are_not_empty || !creep.getActiveBodyparts(WORK))) {
@@ -102,6 +106,8 @@ var roleEnergyTransferer = {
 					target = targs.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				}
 			}
+
+			metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
 
 			if(!target && creep.memory.rerun) {
 				var labs = creep.room.find(FIND_STRUCTURES, {
@@ -141,7 +147,7 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			// metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
+			metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
 
 			if(!target &&
 				 !creep.getActiveBodyparts(WORK) &&
@@ -167,6 +173,8 @@ var roleEnergyTransferer = {
 				}
 			}
 
+			metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
+
 			if(!target &&
 				 creep.memory.rerun &&
 				 !!creep.room.storage &&
@@ -174,6 +182,8 @@ var roleEnergyTransferer = {
 				 creep.room.storage.store.getFreeCapacity(RESOURCE_ENERGY) > 0) {
 					 target = creep.room.storage;
 			}
+
+			metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
 
 			if(!target &&
 				 !creep.getActiveBodyparts(WORK) &&
