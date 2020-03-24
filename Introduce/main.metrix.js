@@ -12,10 +12,11 @@ var metrix = {
 			Memory.CreepsIdleTicksByWeight[creep.memory.weight] = {};
 		}
 		if(!Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n]) {
-			Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n] = 0;
+			Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n] = {};
 		}
-		if(!creep.memory.idle) {
+		if(!creep.memory.idle_time) {
 			creep.memory.idle = 0;
+			creep.memory.idle_time = 0;
 		}
 		if(creep.memory.idle_time != Game.time) {
 			creep.memory.idle_time = Game.time;
