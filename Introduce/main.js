@@ -127,8 +127,11 @@ module.exports.loop = function () {
 								, JSON.stringify(Memory.cpu));
 		Memory.cpu_prev_bucket = Game.cpu.bucket;
 		Memory.cpu_prev_creeps_sum = Memory.cpu.max.sum;
-		Memory.cpu_main_part_dt = Math.round((Game.cpu.getUsed() - cpu_dt) * 100)/100;
-		Memory.cpu_dt = Memory.cpu_main_part_dt;
+		Memory.cpu_main_part_dt = 0;
 		Memory.cpu_creeps_part_dt = 0;
+		Memory.cpu_dt = 0;
 	}
+	var main_part2_dt = Math.round((Game.cpu.getUsed() - cpu_dt) * 100)/100;
+	Memory.cpu_main_part_dt += main_part2_dt;
+	Memory.cpu_dt += main_part2_dt;
 }
