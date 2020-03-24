@@ -36,7 +36,8 @@ module.exports.loop = function () {
 
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'Clearing non-existing creep memory:'
-									, name, weight, 'sum_pst:', sum_pst, JSON.stringify(Memory.CreepsIdleTicksByWeight[weight])
+									, name, weight//, 'cpu:', JSON.stringify(creep.memory.cpu)
+									, 'sum idle pst:', sum_pst, JSON.stringify(Memory.CreepsIdleTicksByWeight[weight])
 									, 'total_sum_pst:', total_sum_pst
 									, 'total_cnt_pst:', total_cnt_pst
 									, 'total_avg_pst:', total_avg_pst
