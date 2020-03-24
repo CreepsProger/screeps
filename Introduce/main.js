@@ -49,9 +49,9 @@ module.exports.loop = function () {
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'ticksToLive:', creep.ticksToLive
 									, name
+									, 'idle:', creep.memory.idle, JSON.stringify(Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n])
 									, 'cpu:', JSON.stringify(creep.memory.cpu)
-									, 'idle:', creep.memory.idle_time, JSON.stringify(Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n])
-									);
+								 );
 		}
 	}
 
