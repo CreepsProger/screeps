@@ -175,6 +175,29 @@ var roleEnergyTransferer = {
 					 target = creep.room.storage;
 			}
 
+			if(!target &&
+				 !creep.getActiveBodyparts(WORK) &&
+				 creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
+				 creep.memory.rerun) {
+				var storages = _.filter(Game.structures, (structure) => !!structure.my &&
+						structure.structureType == STRUCTURE_STORAGE;
+				if(storages.length > 0) {
+					target = storages.reduce((p,c) =>  tools.getRangeTo(creep.pos,p.pos)
+																	 < tools.getRangeTo(creep.pos,c.pos)? p:c);
+					const range_to_store = tools.getRangeTo(creep.pos,target.pos);
+					const store_energy_value = target.store.getUsedCapacity(RESOURCE_ENERGY);
+					if(range_to_store >= constants.RANGE_TO_STORE_2_TO_CONSOLE_LOG &&
+						 (!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id)
+						) {
+						console.log( '🔜💡3️⃣', Math.trunc(Game.time/10000), Game.time%10000, creep
+												, 'range to store:', range_to_store
+												, creep.pos.roomName, '->', target.pos.roomName
+												, 'store energy value:', store_energy_value
+											 );
+					}
+				}
+			}
+
 			metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
 
 			if(target) {
