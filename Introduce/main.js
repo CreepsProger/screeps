@@ -101,8 +101,10 @@ module.exports.loop = function () {
 		 																		 Memory.cpu.max[p].sum > Memory.cpu.max[c].sum ? p:c);
 		var max_role_by_weight = Object.keys(Memory.cpu.max).reduce((p,c) =>
 		 																		 Memory.cpu.max[p].max_weight_sum > Memory.cpu.max[c].max_weight_sum ? p:c);
+		var dt = Math.round((Game.cpu.getUsed()) * 100)/100;
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
-								, 'CPU: main_part_dt:', main_part_dt
+								, 'CPU:'
+								, JSON.stringify({tick_dt: {whole:dt, "main part": main_part_dt}})
 								, JSON.stringify({bucket:Game.cpu.bucket, delta: Game.cpu.bucket - Memory.cpu_prev_bucket})
 								, JSON.stringify({ sum:Memory.cpu.max.sum
 																 , max_role:max_role
