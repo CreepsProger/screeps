@@ -39,7 +39,7 @@ var metrix = {
 	cpu:
 	{
 		time: function(cpu_time, limit, creep = undefined, role = undefined, step = undefined) {
-			cpu_time.dt = Math.round((Game.cpu.getUsed() - cpu_time.t) * 10)/10;
+			cpu_time.dt = Math.round((Game.cpu.getUsed() - cpu_time.t) * 100)/100;
 			if(cpu_time.dt > cpu_time.max_dt) {
 				cpu_time.max_dt = cpu_time.dt;
 				if(!!creep)
