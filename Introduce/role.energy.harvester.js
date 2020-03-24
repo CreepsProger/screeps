@@ -192,7 +192,9 @@ var role = {
 				const range_to_store = tools.getRangeTo(creep.pos, storage.pos);
 				const my_store_energy_value = creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY);
 				const store_energy_value = storage.store.getUsedCapacity(RESOURCE_ENERGY);
-				if(range_to_store >= constants.HARVEST_RANGE_TO_STORE_2_TO_CONSOLE_LOG) {
+				if(range_to_store >= constants.HARVEST_RANGE_TO_STORE_2_TO_CONSOLE_LOG &&
+					(!creep.memory.prev_target_id || creep.memory.prev_target_id != creep.room.storage.id) 
+					) {
 					console.log( '🔜⚡2️⃣', creep
 											, 'my store energy value:', my_store_energy_value
 											, 'range to possible target store:', range_to_store
@@ -255,6 +257,11 @@ var role = {
 				(target.energy == 0 && creep.pos.getRangeTo(target) > 1 )? // a source
 						ERR_NOT_IN_RANGE:
 				creep.harvest(target);
+				
+				if(!!target.id) {
+					creep.memory.prev_target_id = target.id;
+					creep.memory.prev_target_time = Game.time;
+				}
 				creep.say('⚡');
 
 				if(err == ERR_NOT_IN_RANGE) {
