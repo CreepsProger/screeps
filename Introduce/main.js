@@ -105,7 +105,7 @@ module.exports.loop = function () {
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 								, 'CPU:'
 								, JSON.stringify({tick_dt: {whole:dt, "main part": main_part_dt}})
-								, JSON.stringify({bucket:Game.cpu.bucket, delta: Game.cpu.bucket - Memory.cpu_prev_bucket})
+								, JSON.stringify({limit:Game.cpu.limit, bucket:Game.cpu.bucket, delta: Game.cpu.bucket - Memory.cpu_prev_bucket})
 								, JSON.stringify({ sum:Memory.cpu.max.sum
 																 , max_role:max_role
 																 , max_role_sum:Memory.cpu.max[max_role].sum
