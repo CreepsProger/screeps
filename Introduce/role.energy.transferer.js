@@ -129,7 +129,9 @@ var roleEnergyTransferer = {
 																	 < c.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,c.pos)? p:c);
 					const range_to_store = tools.getRangeTo(creep.pos,target.pos);
 					const store_energy_value = target.store.getUsedCapacity(RESOURCE_ENERGY);
-					if(range_to_store >= constants.RANGE_TO_STORE_1_TO_CONSOLE_LOG) {
+					if(range_to_store >= constants.RANGE_TO_STORE_1_TO_CONSOLE_LOG &&
+						 (!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id)
+						) {
 						console.log( '🔜💡1️⃣', creep
 												, 'range to store:', range_to_store
 												, creep.pos.roomName, '->', target.pos.roomName
@@ -153,7 +155,9 @@ var roleEnergyTransferer = {
 																	 < c.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,c.pos)? p:c);
 					const range_to_store = tools.getRangeTo(creep.pos,target.pos);
 					const store_energy_value = target.store.getUsedCapacity(RESOURCE_ENERGY);
-					if(range_to_store >= constants.RANGE_TO_STORE_2_TO_CONSOLE_LOG) {
+					if(range_to_store >= constants.RANGE_TO_STORE_2_TO_CONSOLE_LOG &&
+						 (!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id)
+						) {
 						console.log( '🔜💡2️⃣', creep
 												, 'range to store:', range_to_store
 												, creep.pos.roomName, '->', target.pos.roomName
@@ -179,6 +183,11 @@ var roleEnergyTransferer = {
 
 				if(target.id !== undefined) {
 					err = creep.transfer(target, RESOURCE_ENERGY);
+				}
+
+				if(!!target.id) {
+					creep.memory.prev_target_id = target.id;
+					creep.memory.prev_target_time = Game.time;
 				}
 
 				if(err == ERR_NOT_IN_RANGE) {
