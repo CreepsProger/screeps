@@ -46,11 +46,17 @@ module.exports.loop = function () {
 			delete Memory.creeps[name];
 		}
 		else if(creep.ticksToLive == 1) {
+			const sum_role_cpu = Object.keys(creep.memory.cpu).reduce((sum,role) => sum + creep.memory.cpu[role],0);
+			const max_role_cpu = Object.keys(creep.memory.cpu).reduce((max_role,role) =>
+																																creep.memory.cpu[max_role] > creep.memory.cpu[role]?
+																															  {max_role:max_role, v:creep.memory.cpu[max_role]}:
+																																{max_role:role, v:creep.memory.cpu[role]},
+																																{max_role:'', v:0});
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'ticksToLive:', creep.ticksToLive
 									, name
 									, 'idle:', creep.memory.idle, JSON.stringify(Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n])
-									, 'cpu:', JSON.stringify(creep.memory.cpu)
+									, 'cpu:', sum_role_cpu, JSON.stringify(max_role_cpu), JSON.stringify(creep.memory.cpu)
 								 );
 		}
 	}
