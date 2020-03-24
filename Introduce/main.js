@@ -45,6 +45,14 @@ module.exports.loop = function () {
 			Memory.CreepsIdleTicksByWeight[weight] = {};
 			delete Memory.creeps[name];
 		}
+		else if(creep.ticksToLive == 1) {
+			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+									, 'ticksToLive:', creep.ticksToLive
+									, name
+									, 'cpu:', JSON.stringify(creep.memory.cpu)
+									, 'idle:', creep.memory.idle_time, JSON.stringify(Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n])
+									);
+		}
 	}
 
 	metrix.run();
