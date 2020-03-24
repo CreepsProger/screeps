@@ -120,7 +120,7 @@ module.exports.loop = function () {
 																 , max_weight_sum:Memory.cpu.max[max_role_by_weight].max_weight_sum})
 								, JSON.stringify(Memory.cpu));
 		Memory.cpu_prev_bucket = Game.cpu.bucket;
-		Memory.cpu_main_part_dt = Math.round((Game.cpu.getUsed()) * 100)/100 - cpu_dt;
+		Memory.cpu_main_part_dt = Math.round((Game.cpu.getUsed() - cpu_dt) * 100)/100;
 		Memory.cpu_dt = Memory.cpu_main_part_dt;
 		Memory.cpu_creeps_part_dt = 0;
 	}
