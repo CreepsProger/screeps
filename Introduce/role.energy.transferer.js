@@ -132,7 +132,7 @@ var roleEnergyTransferer = {
 					if(range_to_store >= constants.RANGE_TO_STORE_1_TO_CONSOLE_LOG &&
 						 (!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id)
 						) {
-						console.log( '🔜💡1️⃣', creep
+						console.log( '🔜💡1️⃣', Math.trunc(Game.time/10000), Game.time%10000, creep
 												, 'range to store:', range_to_store
 												, creep.pos.roomName, '->', target.pos.roomName
 												, 'store energy value:', store_energy_value
@@ -158,7 +158,7 @@ var roleEnergyTransferer = {
 					if(range_to_store >= constants.RANGE_TO_STORE_2_TO_CONSOLE_LOG &&
 						 (!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id)
 						) {
-						console.log( '🔜💡2️⃣', creep
+						console.log( '🔜💡2️⃣', Math.trunc(Game.time/10000), Game.time%10000, creep
 												, 'range to store:', range_to_store
 												, creep.pos.roomName, '->', target.pos.roomName
 												, 'store energy value:', store_energy_value
