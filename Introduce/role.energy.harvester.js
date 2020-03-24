@@ -196,7 +196,7 @@ var role = {
 					console.log( '🔜⚡2️⃣', creep
 											, 'my store energy value:', my_store_energy_value
 											, 'range to possible target store:', range_to_store
-											, creep.pos.roomName, '->', target.pos.roomName
+											, creep.pos.roomName, '->', storage.pos.roomName
 											, 'store energy value:', store_energy_value
 										 );
 					}
