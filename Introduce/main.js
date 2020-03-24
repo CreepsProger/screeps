@@ -110,7 +110,7 @@ module.exports.loop = function () {
 
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 								, 'CPU:'
-								, JSON.stringify({ dt:Memory.cpu_dt, "main part": Memory.cpu_main_part_dt, "creeps part": Memory.cpu_creeps_part_dt})
+								, JSON.stringify({ dt:Math.round(Memory.cpu_dt*100)/100, "main part": Math.round(Memory.cpu_main_part_dt*100)/100, "creeps part": Math.round(Memory.cpu_creeps_part_dt*100)/100})
 								, JSON.stringify({ limit:Game.cpu.limit, bucket:Game.cpu.bucket, delta: Game.cpu.bucket - Memory.cpu_prev_bucket})
 								, JSON.stringify({ sum:Memory.cpu.max.sum
 																 , max_role:max_role
