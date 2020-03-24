@@ -79,6 +79,11 @@ module.exports.loop = function () {
 			}
 		}
 	}
+
+	var cpu_dt = Math.round((Game.cpu.getUsed()) * 100)/100;
+	Memory.cpu_dt += cpu_dt;
+	Memory.cpu_creeps_part_dt += cpu_dt - main_part_dt;
+
 	if(Game.time % constants.TICKS_TO_CHECK_CPU == 0) {
 		for(var name in Game.creeps) {
 			var creep = Game.creeps[name];
@@ -115,11 +120,8 @@ module.exports.loop = function () {
 																 , max_weight_sum:Memory.cpu.max[max_role_by_weight].max_weight_sum})
 								, JSON.stringify(Memory.cpu));
 		Memory.cpu_prev_bucket = Game.cpu.bucket;
-		Memory.cpu_dt = 0;
-		Memory.cpu_main_part_dt = 0;
+		Memory.cpu_main_part_dt = Math.round((Game.cpu.getUsed()) * 100)/100 - cpu_dt;
+		Memory.cpu_dt = Memory.cpu_main_part_dt;
 		Memory.cpu_creeps_part_dt = 0;
 	}
-
-	Memory.cpu_creeps_part_dt += Math.round((Game.cpu.getUsed()) * 100)/100 - main_part_dt;
-	Memory.cpu_dt += Math.round((Game.cpu.getUsed()) * 100)/100;
 }
