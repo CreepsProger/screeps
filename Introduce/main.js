@@ -61,6 +61,8 @@ module.exports.loop = function () {
 							 , step : {max_dt: 0, creep: '', role: '', step: '', dt: 0, t: Math.round((Game.cpu.getUsed()) * 100)/100}
 							 , max	: {sum:0}
 						   };
+	
+	var main_part_dt = Math.round((Game.cpu.getUsed()) * 100)/100;
 
 	for(var name in Game.creeps) {
 		var creep = Game.creeps[name];
@@ -100,7 +102,7 @@ module.exports.loop = function () {
 		var max_role_by_weight = Object.keys(Memory.cpu.max).reduce((p,c) =>
 		 																		 Memory.cpu.max[p].max_weight_sum > Memory.cpu.max[c].max_weight_sum ? p:c);
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
-								, 'CPU:'
+								, 'CPU: main_part_dt:', main_part_dt
 								, JSON.stringify({bucket:Game.cpu.bucket, delta: Game.cpu.bucket - Memory.cpu_prev_bucket})
 								, JSON.stringify({ sum:Memory.cpu.max.sum
 																 , max_role:max_role
