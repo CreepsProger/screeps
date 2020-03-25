@@ -23,7 +23,7 @@ var cash = {
 		var property = cash.initProperty(STRUCTURE_CONTROLLER,room.name);
 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
 			property.ids = room.find(FIND_STRUCTURES, {
-				filter: (structure) => 	structure.structureType == STRUCTURE_CONTROLLER });
+				filter: (structure) => 	structure.structureType == STRUCTURE_CONTROLLER }).map((obj) => obj.id);
 		}
 		if(property.time != Game.time) {
 			delete property.objects;
