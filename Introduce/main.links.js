@@ -19,7 +19,7 @@ var links = {
 			 var link_objs = cash.getLinks(creep.room).filter( (link) => {
 					 return link.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 						 			creep.pos.inRangeTo(link, 5) &&
-									!!links.links.map((l) => l.from).find(link.id) &&
+									!!links.links.map((l) => l.from).find((id) => id == link.id)) &&
 									// (	link.id == '5e62c05bf15a4888dff60e26' ||
 									// 	link.id == '5e61d337f15a48007bf5b603' ||
 									// 	link.id == '5e6778dfcfa64f5485786f84' ||
