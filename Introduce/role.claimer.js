@@ -79,7 +79,7 @@ var role = {
 			}
 
 			if(!target) {
-				target = cash.getController(my_room);
+				target = cash.getController(creep.room);
 			}
 			//
 			// if(!target) {
