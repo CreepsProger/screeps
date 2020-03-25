@@ -67,15 +67,13 @@ module.exports.loop = function () {
 
 	var dt = Game.cpu.getUsed();
 
-	metrix.run();
-	config.run();
-	flags.run()
-
-	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main run dt:', (dt = Game.cpu.getUsed()-dt,dt));
-	links.run();
-	towers.run();
-	spawns.run();
-	metrix.output();
+	metrix.run(); 	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main metrix run dt:', (dt = Game.cpu.getUsed()-dt,dt));
+	config.run(); 	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main config run dt:', (dt = Game.cpu.getUsed()-dt,dt));
+	flags.run()	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main flags run dt:', (dt = Game.cpu.getUsed()-dt,dt));
+	links.run();	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main links run dt:', (dt = Game.cpu.getUsed()-dt,dt));
+	towers.run();	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main towers run dt:', (dt = Game.cpu.getUsed()-dt,dt));
+	spawns.run();	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main spawns run dt:', (dt = Game.cpu.getUsed()-dt,dt));
+	metrix.output();	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main metrix run dt:', (dt = Game.cpu.getUsed()-dt,dt));
 	// cash.getStorages();
 
 	delete Memory.targets;
