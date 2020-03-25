@@ -69,7 +69,7 @@ module.exports.loop = function () {
 	towers.run();
 	spawns.run();
 	metrix.output();
-	cash.getStorages();
+	// cash.getStorages();
 
 	Memory.targets = {};
 	Memory.cpu = {};
