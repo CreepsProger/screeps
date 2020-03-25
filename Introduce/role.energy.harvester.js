@@ -6,6 +6,7 @@ const flags = require('main.flags');
 const links = require('main.links');
 const log = require('main.log');
 const tools = require('tools');
+const cash = require('cash');
 
 var git = '$Format:%H$';
 
@@ -183,6 +184,7 @@ var role = {
 			 !!creep.room.storage &&
 			 !!creep.room.storage.my &&
 			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 2*constants.START_UPGRADING_ENERGY) {
+		 	var t = Game.cpu.getUsed();
 			var storages = _.filter(Game.structures, (structure) => !!structure.my &&
 															structure.structureType == STRUCTURE_STORAGE &&
 															structure.store.getUsedCapacity(RESOURCE_ENERGY) < 2*constants.START_UPGRADING_ENERGY);
@@ -193,9 +195,10 @@ var role = {
 				const my_store_energy_value = creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY);
 				const store_energy_value = storage.store.getUsedCapacity(RESOURCE_ENERGY);
 				if(range_to_store >= constants.HARVEST_RANGE_TO_STORE_2_TO_CONSOLE_LOG &&
-					(!creep.memory.prev_target_id || creep.memory.prev_target_id != creep.room.storage.id) 
+					(!creep.memory.prev_target_id || creep.memory.prev_target_id != creep.room.storage.id)
 					) {
-					console.log( '🔜⚡2️⃣', Math.trunc(Game.time/10000), Game.time%10000, creep
+					var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
+					console.log( '🔜⚡2️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 											, 'my store energy value:', my_store_energy_value
 											, 'range to possible target store:', range_to_store
 											, creep.pos.roomName, '->', storage.pos.roomName
@@ -257,7 +260,7 @@ var role = {
 				(target.energy == 0 && creep.pos.getRangeTo(target) > 1 )? // a source
 						ERR_NOT_IN_RANGE:
 				creep.harvest(target);
-				
+
 				if(!!target.id) {
 					creep.memory.prev_target_id = target.id;
 					creep.memory.prev_target_time = Game.time;
