@@ -69,14 +69,14 @@ var roleEnergyTransferer = {
 						return 	e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 						 				tools.checkTarget(executer,e.id);
 						});
-						extensions.reduce((l,c) => l.push(c), infras);
+						extensions.reduce((l,c) => (l.push(c),l), infras);
 								// infras = infras.concat(extensions);
 				}
 				var towers = cash.getTowers(creep.room).filter((t) => {
 					return	t.store.getFreeCapacity(RESOURCE_ENERGY) > 400 &&
 					 				tools.checkTarget(executer,t.id);
 					});
-				towers.reduce((l,c) => l.push(c), infras);
+				towers.reduce((l,c) => (l.push(c),l), infras);
 				// infras = infras.concat(towers);
 				// var extensions = creep.room.find(FIND_STRUCTURES, {
 				// 	filter: (structure) => {
