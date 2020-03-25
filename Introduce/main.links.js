@@ -16,7 +16,7 @@ var links = {
 	 getTargetLinkToTransferEnergy: function(creep, executer, role_run, link_weight) {
 		 var target;
 		 if(link_weight < creep.memory.weight) {
-			 var links = cash.getLinks(room).filter( (link) => {
+			 var link_objs = cash.getLinks(room).filter( (link) => {
 					 return link.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 						 			creep.pos.inRangeTo(link, 5) &&
 									!!links.links.map((l) => l.from).find(link.id) &&
@@ -29,13 +29,13 @@ var links = {
 						 			tools.checkTarget(executer,link.id);
 				 }
 			 );
-		 }
 
-		 if(links.length > 0) {
-			 var link = links.reduce((p,c) => tools.checkTarget(executer,p.id) &&
-				  															creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-			 if(!!link) {
-				 target = tools.setTarget(creep,link,link.id,role_run);
+			 if(link_objs.length > 0) {
+				 var link = links.reduce((p,c) => tools.checkTarget(executer,p.id) &&
+				 creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+				 if(!!link) {
+					 target = tools.setTarget(creep,link,link.id,role_run);
+				 }
 			 }
 		 }
 
@@ -45,7 +45,7 @@ var links = {
 	 getTargetLinkToHarvest: function(creep, executer, role_run) {
 		 var target;
 		 if(true) {
-			 var links = cash.getLinks(creep.room).filter( (link) => {
+			 var link_objs = cash.getLinks(creep.room).filter( (link) => {
 					 return link.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 					 				!!links.links.map((l) => l.to).find(link.id) &&
 					 				tools.checkTarget(executer,link.id);
@@ -69,6 +69,13 @@ var links = {
 				// 	tools.checkTarget(executer,link.id)) {
 				//  target = tools.setTarget(creep,link,link.id,role_run);
 			 // }
+			 if(link_objs.length > 0) {
+				 var link = links.reduce((p,c) => tools.checkTarget(executer,p.id) &&
+				 creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+				 if(!!link) {
+					 target = tools.setTarget(creep,link,link.id,role_run);
+				 }
+			 }
 		 }
 		 // else {
 			//  var link = creep.room.find(FIND_MY_STRUCTURES, {
@@ -84,13 +91,6 @@ var links = {
 			// 	 target = tools.setTarget(creep,link,link.id,role_run);
 			//  }
 		 // }
-		 if(links.length > 0) {
-			 var link = links.reduce((p,c) => tools.checkTarget(executer,p.id) &&
-																				creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-			 if(!!link) {
-				 target = tools.setTarget(creep,link,link.id,role_run);
-			 }
-		 }
 		 return target;
 	 },
 
