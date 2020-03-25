@@ -78,22 +78,22 @@ var role = {
 				target = creep.pos.findClosestByPath(exit);
 			}
 
-			if(!target) {
-				target = cash.getController(creep.room);
-			}
-			//
 			// if(!target) {
-			// 	target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-			// 		filter: (structure) => {
-			// 			return (structure.structureType == STRUCTURE_CONTROLLER) &&
-			// 				!structure.my;
-			// 		}
-			// 	});
-			//
-			// 	if(!!target) {
-			// 		target = cash.setObject(my_room,'claiming_controller_id',target.id);
-			// 	}
+			// 	target = cash.getController(creep.room);
 			// }
+
+			if(!target) {
+				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+					filter: (structure) => {
+						return (structure.structureType == STRUCTURE_CONTROLLER) &&
+							!structure.my;
+					}
+				});
+
+				if(!!target) {
+					target = cash.setObject(my_room,'claiming_controller_id',target.id);
+				}
+			}
 
 			if(target)
 			{
