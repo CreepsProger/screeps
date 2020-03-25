@@ -20,7 +20,7 @@ var cash = {
 					// 					 , 'storages:', JSON.stringify(Memory.cash.storages_ids.map((id) => Game.getObjectById(id)))
 					// 				);
 		}
-		if(Memory.cash.storages_time != Game.time){
+		if(!Memory.cash.storages_time || Memory.cash.storages_time != Game.time){
 			Memory.cash.storages = Memory.cash.storages_ids.map((id) => Game.getObjectById(id));
 			Memory.cash.storages_time = Game.time;
 		}
