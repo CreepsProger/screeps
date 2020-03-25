@@ -12,7 +12,6 @@ var cash = {
 	},
 
 	getStorages: function() {
-		var obj;
 		if((Game.time % constants.TICKS_TO_RESET_CASH != 0) || !Memory.cash.storages_ids) {
 			Memory.cash.storages_ids = _.filter(Game.structures,
 				 (structure) => !!structure.my && structure.structureType == STRUCTURE_STORAGE).map((obj) => obj.id);
