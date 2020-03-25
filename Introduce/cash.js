@@ -24,17 +24,16 @@ var cash = {
 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
 			property.ids = room.find(FIND_STRUCTURES, {
 				filter: (structure) => 	structure.structureType == STRUCTURE_CONTROLLER });
-			if(true)
-				console.log( '💽', Math.trunc(Game.time/10000), Game.time%10000
-										, 'getController:', JSON.stringify(property.ids)
-								 		);
-
 		}
 		if(property.time != Game.time) {
 			delete property.objects;
 			property.objects = property.ids.map((id) => Game.getObjectById(id));
 			property.time = Game.time;
 		}
+		if(true)
+			console.log( '💽', Math.trunc(Game.time/10000), Game.time%10000
+									, 'getController:', JSON.stringify(property.ids), JSON.stringify(property.objects)
+									);
 		return property.objects[0];
 	},
 
