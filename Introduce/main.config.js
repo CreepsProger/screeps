@@ -19,8 +19,10 @@ var config = {
 	},
 
 	init: function() {
-		if(Memory.config === undefined ||
-			 Memory.config.v === undefined ||
+		// if(Memory.config === undefined ||
+		// 	 Memory.config.v === undefined ||
+	  if(!Memory.config ||
+			 !Memory.config.v ||
 			 Memory.config.v != config.version) {
 			Memory.config = { v: config.version , rooms : {
 						 W25S33: { containers: {weight: 33}
