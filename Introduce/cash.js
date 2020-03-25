@@ -30,7 +30,7 @@ var cash = {
 	},
 
 	getExtensions: function(room) {
-		var property = cash.initProperty(room.name,STRUCTURE_EXTENSION+2);
+		var property = cash.initProperty(room.name,STRUCTURE_EXTENSION);
 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
 			property.ids = room.find(FIND_STRUCTURES, {
 				filter: (structure) => 	structure.structureType == STRUCTURE_SPAWN ||
@@ -44,8 +44,22 @@ var cash = {
 		return property.objects;
 	},
 
+	getLinks: function(room) {
+		var property = cash.initProperty(room.name,STRUCTURE_LINK);
+		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
+			property.ids = room.find(FIND_STRUCTURES, {
+				filter: (structure) => 	structure.structureType == STRUCTURE_LINK }).map((obj) => obj.id);
+		}
+		if(property.time != Game.time) {
+			delete property.objects;
+			property.objects = property.ids.map((id) => Game.getObjectById(id));
+			property.time = Game.time;
+		}
+		return property.objects;
+	},
+
 	getTowers: function(room) {
-		var property = cash.initProperty(room.name,STRUCTURE_TOWER+2);
+		var property = cash.initProperty(room.name,STRUCTURE_TOWER);
 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
 			property.ids = room.find(FIND_STRUCTURES, {
 				filter: (structure) => 	structure.structureType == STRUCTURE_TOWER }).map((obj) => obj.id);
