@@ -25,7 +25,7 @@ var cash = {
 			property.ids = room.find(FIND_STRUCTURES, {
 				filter: (structure) => 	structure.structureType == STRUCTURE_CONTROLLER });
 			if(true)
-				console.log( '💽', Math.trunc(Game.time/10000), Game.time%10000,
+				console.log( '💽', Math.trunc(Game.time/10000), Game.time%10000
 										, 'getController:', property.ids
 								 		);
 
