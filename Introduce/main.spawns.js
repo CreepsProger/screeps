@@ -121,7 +121,9 @@ var spawns = {
 
           Memory.CreepsCounter++;
           Memory.totals.SpawningCreeps++;
-          Memory.CreepsNumberByWeight[weight]++;
+					if(!Memory.CreepsNumberByWeight[weight])
+						Memory.CreepsNumberByWeight[weight] = 0;
+					Memory.CreepsNumberByWeight[weight]++;
 					last_game_time_created_creep[spawn.name] = Game.time;
 				}
 			}
