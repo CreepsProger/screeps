@@ -90,9 +90,9 @@ var role = {
 					}
 				});
 
-				if(!!target) {
-					target = cash.setObject(my_room,'claiming_controller_id',target.id);
-				}
+				// if(!!target) {
+					// target = cash.setObject(my_room,'claiming_controller_id',target.id);
+				// }
 			}
 
 			if(target)
