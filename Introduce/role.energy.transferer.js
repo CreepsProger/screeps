@@ -63,19 +63,26 @@ var roleEnergyTransferer = {
 			if(!target && this_room == my_room &&
 				 (!creep.getActiveBodyparts(WORK) || (this_room_sources_are_empty && creep.memory.rerun) || conditions.MAIN_ROOM_CRISIS())) {
 				var t = Game.cpu.getUsed();
-				var extensions = creep.room.find(FIND_STRUCTURES, {
-					filter: (structure) => {
-						return (
-							(structure.structureType == STRUCTURE_SPAWN && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
-							||
-							(structure.structureType == STRUCTURE_EXTENSION && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
-							||
-							(structure.structureType == STRUCTURE_TOWER && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 400)
-						)
-						&&
-							tools.checkTarget(executer,structure.id);
-					}
-				});
+				var extensions = cash.getExtensions(creep.room).filter((e) => {
+					return (	(e.structureType == STRUCTURE_SPAWN && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0) ||
+										(e.structureType == STRUCTURE_EXTENSION && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0) ||
+										(e.structureType == STRUCTURE_TOWER && e.store.getFreeCapacity(RESOURCE_ENERGY) > 400)
+									)
+									&& tools.checkTarget(executer,e.id);
+					});
+				// var extensions = creep.room.find(FIND_STRUCTURES, {
+				// 	filter: (structure) => {
+				// 		return (
+				// 			(structure.structureType == STRUCTURE_SPAWN && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
+				// 			||
+				// 			(structure.structureType == STRUCTURE_EXTENSION && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
+				// 			||
+				// 			(structure.structureType == STRUCTURE_TOWER && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 400)
+				// 		)
+				// 		&&
+				// 			tools.checkTarget(executer,structure.id);
+				// 	}
+				// });
 				if(extensions.length > 0) {
 					var extension = extensions.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 					if(!!extension) {

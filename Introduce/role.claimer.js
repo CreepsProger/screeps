@@ -79,21 +79,21 @@ var role = {
 			}
 
 			if(!target) {
-				target = cash.getObject(my_room,'claiming_controller_id');
+				target = cash.getController(my_room);
 			}
-
-			if(!target) {
-				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-					filter: (structure) => {
-						return (structure.structureType == STRUCTURE_CONTROLLER) &&
-							!structure.my;
-					}
-				});
-
-				if(!!target) {
-					target = cash.setObject(my_room,'claiming_controller_id',target.id);
-				}
-			}
+			//
+			// if(!target) {
+			// 	target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+			// 		filter: (structure) => {
+			// 			return (structure.structureType == STRUCTURE_CONTROLLER) &&
+			// 				!structure.my;
+			// 		}
+			// 	});
+			//
+			// 	if(!!target) {
+			// 		target = cash.setObject(my_room,'claiming_controller_id',target.id);
+			// 	}
+			// }
 
 			if(target)
 			{

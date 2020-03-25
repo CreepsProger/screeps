@@ -2,13 +2,45 @@ const constants = require('main.constants');
 
 var cash = {
 
-	initProperty: function(room,property) {
+	initProperty: function(room, property, ids = '') {
 		if(!Memory.cash) {
 			Memory.cash = {};
 		}
 		if(!Memory.cash[room]) {
 			Memory.cash[room] = {};
 		}
+		if(!Memory.cash[room][property]) {
+			Memory.cash[room][property] = { ids:ids, time:0, objects:{} };
+		}
+		return Memory.cash[room][property];
+	},
+
+	getController: function(room) {
+		var property = cash.initProperty(room.name,STRUCTURE_CONTROLLER);
+		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
+			property.ids = room.find(FIND_STRUCTURES, {
+				filter: (structure) => 	structure.structureType == STRUCTURE_CONTROLLER });
+		}
+		if(property.time != Game.time) {
+			property.objects = property.ids.map((id) => Game.getObjectById(id));
+			property.time = Game.time;
+		}
+		return property.objects[0];
+	},
+
+	getExtensions: function(room) {
+		var property = cash.initProperty(room.name,STRUCTURE_EXTENSION);
+		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
+			property.ids = room.find(FIND_STRUCTURES, {
+				filter: (structure) => 	structure.structureType == STRUCTURE_SPAWN ||
+																structure.structureType == STRUCTURE_EXTENSION ||
+																structure.structureType == STRUCTURE_TOWER });
+		}
+		if(property.time != Game.time) {
+			property.objects = property.ids.map((id) => Game.getObjectById(id));
+			property.time = Game.time;
+		}
+		return property.objects;
 	},
 
 	getStorages: function() {
@@ -28,15 +60,15 @@ var cash = {
 	},
 
 	getObject: function(room,property) {
-		var obj;
-		if((Game.time % constants.TICKS_TO_RESET_CASH != 0) && !!Memory.cash && !!Memory.cash[room] && !!Memory.cash[room][property]) {
+		var property = cash.initProperty(room,property);
+		if((Game.time % constants.TICKS_TO_RESET_CASH != 0) && property.time != 0) {
 			obj = Game.getObjectById(Memory.cash[room][property]);
 		}
 		return obj;
 	},
 
 	setObject: function(room,property,id) {
-		cash.initProperty(room,property);
+		var property = cash.initProperty(room,property,id);
 		if(!!id) {
 			Memory.cash[room][property] = id;
 		}
