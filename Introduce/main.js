@@ -67,8 +67,6 @@ module.exports.loop = function () {
 		}
 	}
 
-	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main run dt:', (dt = Game.cpu.getUsed()-dt,dt));
-
 	metrix.run();
 	config.run();
 	flags.run()
@@ -86,6 +84,8 @@ module.exports.loop = function () {
 							 , step : {max_dt: 0, creep: '', role: '', step: '', dt: 0, t: Math.round((Game.cpu.getUsed()) * 100)/100}
 							 , max	: {sum:0}
 						   };
+
+ console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main run dt:', (dt = Game.cpu.getUsed()-dt,dt));
 
 	var main_part_dt = Math.round((Game.cpu.getUsed()) * 100)/100;
 	Memory.cpu_main_part_dt += main_part_dt;
