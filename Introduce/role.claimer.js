@@ -78,9 +78,9 @@ var role = {
 				target = creep.pos.findClosestByPath(exit);
 			}
 
-			// if(!target) {
-			// 	target = cash.getController(creep.room);
-			// }
+			if(!target) {
+				target = cash.getController(creep.room);
+			}
 
 			if(!target) {
 				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {

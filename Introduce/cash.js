@@ -24,6 +24,11 @@ var cash = {
 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
 			property.ids = room.find(FIND_STRUCTURES, {
 				filter: (structure) => 	structure.structureType == STRUCTURE_CONTROLLER });
+			if(true)
+				console.log( '💽', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
+										, 'getController:', property.ids
+								 		);
+
 		}
 		if(property.time != Game.time) {
 			delete property.objects;
