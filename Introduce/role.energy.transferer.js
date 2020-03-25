@@ -130,8 +130,6 @@ var roleEnergyTransferer = {
 				 creep.memory.rerun) {
 				var t = Game.cpu.getUsed();
 				var storages = cash.getStorages();
-				// var storages = _.filter(Game.structures, (structure) => !!structure.my &&
-				// 																												structure.structureType == STRUCTURE_STORAGE);
 				if(storages.length > 0) {
 					target = storages.reduce((p,c) => (p.store.getUsedCapacity(RESOURCE_ENERGY) < constants.START_UPGRADING_ENERGY &&
 																	p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
@@ -158,9 +156,7 @@ var roleEnergyTransferer = {
 				 creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
 				 creep.memory.rerun) {
 				var t = Game.cpu.getUsed();
-				var storages = _.filter(Game.structures, (structure) => !!structure.my &&
-						structure.structureType == STRUCTURE_STORAGE &&
-						structure.store.getUsedCapacity(RESOURCE_ENERGY) < 2*constants.START_UPGRADING_ENERGY);
+				var storages = cash.getStorages();
 				if(storages.length > 0) {
 					target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
 																	 < c.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,c.pos)? p:c);
@@ -196,8 +192,7 @@ var roleEnergyTransferer = {
 				 creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
 				 creep.memory.rerun) {
 				var t = Game.cpu.getUsed();
-				var storages = _.filter(Game.structures, (structure) => !!structure.my &&
-						structure.structureType == STRUCTURE_STORAGE);
+				var storages = cash.getStorages();
 				if(storages.length > 0) {
 					target = storages.reduce((p,c) =>  tools.getRangeTo(creep.pos,p.pos)
 																	 < tools.getRangeTo(creep.pos,c.pos)? p:c);
