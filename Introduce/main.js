@@ -62,6 +62,7 @@ module.exports.loop = function () {
 								 );
 		}
 	}
+	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main run dt:', (dt = Game.cpu.getUsed()-dt,dt));
 
 	metrix.run();
 	config.run();
@@ -71,7 +72,6 @@ module.exports.loop = function () {
 	spawns.run();
 	metrix.output();
 	// cash.getStorages();
-	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main run dt:', (dt = Game.cpu.getUsed()-dt,dt));
 
 	delete Memory.targets;
 	Memory.targets = {};
