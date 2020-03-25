@@ -80,7 +80,7 @@ var roleEnergyTransferer = {
 					var extension = extensions.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 					if(!!extension) {
 						target = tools.setTarget(creep,extension,extension.id,roleEnergyTransferer.run);
-						if(!!target && !!target.id) {
+						if(!!target) {
 							if(creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || true) {
 								var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
 								console.log( '⭕️', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
