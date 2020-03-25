@@ -52,6 +52,7 @@ var cash = {
 			// 				 		);
 		}
 		if(property.time != Game.time) {
+			delete property.objects;
 			property.objects = property.ids.map((id) => Game.getObjectById(id));
 			property.time = Game.time;
 			// console.log( 'C', Math.trunc(Game.time/10000), Game.time%10000, room.name
@@ -71,6 +72,7 @@ var cash = {
 					// 				);
 		}
 		if(!Memory.cash.storages_time || Memory.cash.storages_time != Game.time){
+			delete Memory.cash.storages;
 			Memory.cash.storages = Memory.cash.storages_ids.map((id) => Game.getObjectById(id));
 			Memory.cash.storages_time = Game.time;
 		}
