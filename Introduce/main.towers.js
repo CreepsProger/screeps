@@ -1,6 +1,6 @@
 const constants = require('main.constants');
 const tools = require('tools');
-const tools = require('tools');
+const cash = require('cash');
 
 var towers = {
 
