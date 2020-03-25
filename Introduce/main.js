@@ -62,7 +62,8 @@ module.exports.loop = function () {
 		}
 	}
 
-	metrix.run();
+  var dt = Game.cpu.getUsed();
+	metrix.run(); console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'metrix dt:', (dt = Game.cpu.getUsed()-dt,dt));
 	config.run();
 	flags.run()
 	links.run();
