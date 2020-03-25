@@ -185,9 +185,6 @@ var role = {
 			 !!creep.room.storage.my &&
 			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 2*constants.START_UPGRADING_ENERGY) {
 		 	var t = Game.cpu.getUsed();
-			// var storages = _.filter(Game.structures, (structure) => !!structure.my &&
-			// 												structure.structureType == STRUCTURE_STORAGE &&
-			// 												structure.store.getUsedCapacity(RESOURCE_ENERGY) < 2*constants.START_UPGRADING_ENERGY);
 			var storages = cash.getStorages().filter((s) => s.store.getUsedCapacity(RESOURCE_ENERGY) < 2*constants.START_UPGRADING_ENERGY);
 			if(storages.length > 0) {
 				var storage = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
