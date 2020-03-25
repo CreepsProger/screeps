@@ -26,7 +26,7 @@ var cash = {
 				filter: (structure) => 	structure.structureType == STRUCTURE_CONTROLLER });
 			if(true)
 				console.log( '💽', Math.trunc(Game.time/10000), Game.time%10000
-										, 'getController:', JSON.stringify(property.ids));
+										, 'getController:', JSON.stringify(property.ids)
 								 		);
 
 		}
