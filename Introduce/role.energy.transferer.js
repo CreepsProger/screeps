@@ -62,6 +62,7 @@ var roleEnergyTransferer = {
 
 			if(!target && this_room == my_room &&
 				 (!creep.getActiveBodyparts(WORK) || (this_room_sources_are_empty && creep.memory.rerun) || conditions.MAIN_ROOM_CRISIS())) {
+				var t = Game.cpu.getUsed();
 				var extensions = creep.room.find(FIND_STRUCTURES, {
 					filter: (structure) => {
 						return (
@@ -79,6 +80,12 @@ var roleEnergyTransferer = {
 					var extension = extensions.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 					if(!!extension) {
 						target = tools.setTarget(creep,extension,extension.id,roleEnergyTransferer.run);
+						if(creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || true) {
+							var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
+							console.log( '⭕️', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
+													, 'extension id:', target.id
+												 );
+						}
 					}
 				}
 			}
