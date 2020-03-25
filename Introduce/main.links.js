@@ -98,7 +98,9 @@ var links = {
 		 links.links.forEach(function(link) {
 			 const from = Game.getObjectById(link.from);
 			 const to = Game.getObjectById(link.to);
-			 if(!!from && !!to) {
+			 if(!!from && !!to &&
+				  from.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
+					to.store.getFreeCapacity(RESOURCE_ENERGY) > 0) {
 				 from.transferEnergy(to);
 			 }
 		 });
