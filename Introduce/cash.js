@@ -42,6 +42,9 @@ var cash = {
 		if(property.time != Game.time) {
 			property.objects = property.ids.map((id) => Game.getObjectById(id));
 			property.time = Game.time;
+			console.log( 'C', Math.trunc(Game.time/10000), Game.time%10000, room.name
+									, 'property.objects.length:', property.objects.length
+							 		);
 		}
 		return property.objects;
 	},
