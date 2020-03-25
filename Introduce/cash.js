@@ -22,7 +22,11 @@ var cash = {
 									);
 
 		}
-		return Memory.cash.storages_ids.map((id) => Game.getObjectById(id));
+		if(Memory.cash.storages_time != Game.time){
+			Memory.cash.storages = Memory.cash.storages_ids.map((id) => Game.getObjectById(id));
+			Memory.cash.storages_time = Game.time;
+		}
+		return Memory.cash.storages;
 	},
 
 	getObject: function(room,property) {
