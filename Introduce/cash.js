@@ -34,7 +34,7 @@ var cash = {
 			property.ids = room.find(FIND_STRUCTURES, {
 				filter: (structure) => 	structure.structureType == STRUCTURE_SPAWN ||
 																structure.structureType == STRUCTURE_EXTENSION ||
-																structure.structureType == STRUCTURE_TOWER });
+																structure.structureType == STRUCTURE_TOWER }).map((obj) => obj.id);
 		}
 		if(property.time != Game.time) {
 			property.objects = property.ids.map((id) => Game.getObjectById(id));
