@@ -29,7 +29,7 @@ var cash = {
 	},
 
 	getExtensions: function(room) {
-		var property = cash.initProperty(room.name,STRUCTURE_EXTENSION);
+		var property = cash.initProperty(room.name,STRUCTURE_EXTENSION+1);
 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
 			property.ids = room.find(FIND_STRUCTURES, {
 				filter: (structure) => 	structure.structureType == STRUCTURE_SPAWN ||
