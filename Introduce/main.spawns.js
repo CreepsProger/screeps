@@ -200,15 +200,15 @@ var spawns = {
 						if(spawn.name == 'Spawn1' || spawn.name == 'Spawn2' || !!rerun)
                                                   spawns.tryCreateCreep(spawn,           130911, 44, 1, 2); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn1' || spawn.name == 'Spawn2' || !!rerun)
-                                                  spawns.tryCreateCreep(spawn,             2412, 41, 1, 2); // V 1-1 E    Carier
-						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             2412, 61, 1, 2); // V 1-1 E    Carier
-						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,            90909, 64, 1, 3); // V 1-1 E    Worker
+                                                  spawns.tryCreateCreep(spawn,             3015, 41, 1, 2); // V 1-1 E    Carier
+						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             3015, 61, 1, 2); // V 1-1 E    Carier
+						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,           130911, 64, 1, 2); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn2' || spawn.name == 'Spawn3' || !!rerun)
 						 																			spawns.tryCreateCreep(spawn,    2000000000002, 50, 1, 1); // V 1-1 E   Claimer
 						if(spawn.name == 'Spawn2' || spawn.name == 'Spawn3' || !!rerun)
-						 																			spawns.tryCreateCreep(spawn,            90909, 54, 1, 3); // V 1-1 E    Worker
+						 																			spawns.tryCreateCreep(spawn,           130911, 54, 1, 2); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn2' || spawn.name == 'Spawn3' || !!rerun)
-						 																			spawns.tryCreateCreep(spawn,             2412, 51, 1, 3); // V 1-1 E    Carier
+						 																			spawns.tryCreateCreep(spawn,             3015, 51, 1, 2); // V 1-1 E    Carier
 					}
 					if(conditions.TO_SPAWN_CLAIMING_ROOMS()) {
 						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W27S33')) {
