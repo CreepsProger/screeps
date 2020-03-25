@@ -35,6 +35,9 @@ var cash = {
 				filter: (structure) => 	structure.structureType == STRUCTURE_SPAWN ||
 																structure.structureType == STRUCTURE_EXTENSION ||
 																structure.structureType == STRUCTURE_TOWER }).map((obj) => obj.id);
+			console.log( 'C', Math.trunc(Game.time/10000), Game.time%10000, room.name
+									, 'property.ids.length:', property.ids.length
+							 		);
 		}
 		if(property.time != Game.time) {
 			property.objects = property.ids.map((id) => Game.getObjectById(id));
