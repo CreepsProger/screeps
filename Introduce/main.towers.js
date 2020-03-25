@@ -1,21 +1,22 @@
 const constants = require('main.constants');
 const tools = require('tools');
+const tools = require('tools');
 
 var towers = {
 
    run: function() {
-		 var towers = [];
+		 // var towers = [];
+		 //
+		 // towers.push(Game.getObjectById('5e45eb20d4e9fbbbbb4bee7d'));
+		 // towers.push(Game.getObjectById('5e4dfed162e84714acb66b58'));
+		 // towers.push(Game.getObjectById('5e548bd68e41f2b534bffe4b'));
+		 // towers.push(Game.getObjectById('5e5abedb9083d52a982adcf6'));
+		 // towers.push(Game.getObjectById('5e6cb0041a23303a5ce6fc0a'));
+		 // towers.push(Game.getObjectById('5e70ed814bb541278a0b0039'))
 
-		 towers.push(Game.getObjectById('5e45eb20d4e9fbbbbb4bee7d'));
-		 towers.push(Game.getObjectById('5e4dfed162e84714acb66b58'));
-		 towers.push(Game.getObjectById('5e548bd68e41f2b534bffe4b'));
-		 towers.push(Game.getObjectById('5e5abedb9083d52a982adcf6'));
-		 towers.push(Game.getObjectById('5e6cb0041a23303a5ce6fc0a'));
-		 towers.push(Game.getObjectById('5e70ed814bb541278a0b0039'))
-		 
 		 var target;
 
-		 towers.forEach(function(tower,i) {
+		 cash.getAllMyTowers().forEach(function(tower,i) {
 			 target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
 					 filter: (hostile) => {
 						 return hostile.pos.x%48 > 1 || hostile.pos.y%48 > 1;

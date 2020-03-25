@@ -4,7 +4,7 @@ var cash = {
 
 	version: 1,
 
-	initProperty: function(room, property, ids = '') {
+	initProperty: function(property, room = 'all', ids = '') {
 		if(!Memory.cash) {
 			Memory.cash = {};
 		}
@@ -20,7 +20,7 @@ var cash = {
 	},
 
 	getController: function(room) {
-		var property = cash.initProperty(room.name,STRUCTURE_CONTROLLER);
+		var property = cash.initProperty(STRUCTURE_CONTROLLER,room.name);
 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
 			property.ids = room.find(FIND_STRUCTURES, {
 				filter: (structure) => 	structure.structureType == STRUCTURE_CONTROLLER });
@@ -34,7 +34,7 @@ var cash = {
 	},
 
 	getExtensions: function(room) {
-		var property = cash.initProperty(room.name,STRUCTURE_EXTENSION);
+		var property = cash.initProperty(STRUCTURE_EXTENSION,room.name);
 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
 			property.ids = room.find(FIND_STRUCTURES, {
 				filter: (structure) => 	structure.structureType == STRUCTURE_SPAWN ||
@@ -49,7 +49,7 @@ var cash = {
 	},
 
 	getLinks: function(room) {
-		var property = cash.initProperty(room.name,STRUCTURE_LINK);
+		var property = cash.initProperty(STRUCTURE_LINK,room.name);
 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
 			property.ids = room.find(FIND_STRUCTURES, {
 				filter: (structure) => 	structure.structureType == STRUCTURE_LINK }).map((obj) => obj.id);
@@ -63,40 +63,45 @@ var cash = {
 	},
 
 	getTowers: function(room) {
-		var property = cash.initProperty(room.name,STRUCTURE_TOWER);
+		var property = cash.initProperty(STRUCTURE_TOWER,room.name);
 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
 			property.ids = room.find(FIND_STRUCTURES, {
 				filter: (structure) => 	structure.structureType == STRUCTURE_TOWER }).map((obj) => obj.id);
-			// console.log( 'C', Math.trunc(Game.time/10000), Game.time%10000, room.name
-			// 						, 'property.ids.length:', property.ids.length
-			// 				 		);
 		}
 		if(property.time != Game.time) {
 			delete property.objects;
 			property.objects = property.ids.map((id) => Game.getObjectById(id));
 			property.time = Game.time;
-			// console.log( 'C', Math.trunc(Game.time/10000), Game.time%10000, room.name
-			// 						, 'property.objects.length:', property.objects.length
-			// 				 		);
+		}
+		return property.objects;
+	},
+
+	getAllMyTowers: function() {
+		var property = cash.initProperty(STRUCTURE_TOWER);
+		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
+			property.ids = _.filter(Game.structures,
+				 (structure) => !!structure.my && structure.structureType == STRUCTURE_TOWER).map((obj) => obj.id);
+		}
+		if(property.time != Game.time) {
+			delete property.objects;
+			property.objects = property.ids.map((id) => Game.getObjectById(id));
+			property.time = Game.time;
 		}
 		return property.objects;
 	},
 
 	getStorages: function() {
-		if((Game.time % constants.TICKS_TO_RESET_CASH == 0) || !Memory.cash.storages_ids) {
-			Memory.cash.storages_ids = _.filter(Game.structures,
-				 (structure) => !!structure.my && structure.structureType == STRUCTURE_STORAGE).map((obj) => obj.id);
-				 // console.log( '🔜💡1️⃣', Math.trunc(Game.time/10000), Game.time%10000
-					// 					 , 'Memory.cash.storages_ids:', JSON.stringify(Memory.cash.storages_ids)
-					// 					 , 'storages:', JSON.stringify(Memory.cash.storages_ids.map((id) => Game.getObjectById(id)))
-					// 				);
-		}
-		if(!Memory.cash.storages_time || Memory.cash.storages_time != Game.time){
-			delete Memory.cash.storages;
-			Memory.cash.storages = Memory.cash.storages_ids.map((id) => Game.getObjectById(id));
-			Memory.cash.storages_time = Game.time;
-		}
-		return Memory.cash.storages;
+		var property = cash.initProperty(STRUCTURE_STORAGE);
+ 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
+ 			property.ids = _.filter(Game.structures,
+ 				 (structure) => !!structure.my && structure.structureType == STRUCTURE_STORAGE).map((obj) => obj.id);
+ 		}
+ 		if(property.time != Game.time) {
+ 			delete property.objects;
+ 			property.objects = property.ids.map((id) => Game.getObjectById(id));
+ 			property.time = Game.time;
+ 		}
+ 		return property.objects;
 	},
 
 	getObject: function(room,property) {
