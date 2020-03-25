@@ -27,7 +27,7 @@ var towers = {
 			 }
 
 			 if(!target) {
-				 target = tower.pos.findClosestByPath(FIND_MY_CREEPS, {
+				 target = tower.pos.findClosestByRange(FIND_MY_CREEPS, {
 					 filter: (mycreep) => {
 						 return mycreep.hitsMax - mycreep.hits > 0;
 					 }
