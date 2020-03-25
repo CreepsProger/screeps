@@ -62,14 +62,15 @@ module.exports.loop = function () {
 		}
 	}
 
-  var dt = Game.cpu.getUsed();
-	metrix.run(); console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'metrix dt:', (dt = Game.cpu.getUsed()-dt,dt));
+	var dt = Game.cpu.getUsed();
+	metrix.run();
 	config.run();
 	flags.run()
 	links.run();
 	towers.run();
 	spawns.run();
 	metrix.output();
+	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main run dt:', (dt = Game.cpu.getUsed()-dt,dt));
 	// cash.getStorages();
 
 	delete Memory.targets;
