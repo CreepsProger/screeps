@@ -13,8 +13,6 @@ var role = require('role.claimer');
 
 module.exports.loop = function () {
 
-	var dt = Game.cpu.getUsed();
-
 	if(Game.time % constants.TICKS_TO_CHECK_NON_EXISTING == 0) {
 		// console.log( '⏳', Game.cpu.getUsed() + '/' + Game.cpu.tickLimit);
 		for(var name in Memory.creeps) {
@@ -70,6 +68,8 @@ module.exports.loop = function () {
 	metrix.run();
 	config.run();
 	flags.run()
+
+	var dt = Game.cpu.getUsed();
 	links.run();
 	towers.run();
 	spawns.run();
