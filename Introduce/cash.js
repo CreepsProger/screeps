@@ -2,6 +2,8 @@ const constants = require('main.constants');
 
 var cash = {
 
+	version: 1,
+
 	initProperty: function(room, property, ids = '') {
 		if(!Memory.cash) {
 			Memory.cash = {};
@@ -9,8 +11,10 @@ var cash = {
 		if(!Memory.cash[room]) {
 			Memory.cash[room] = {};
 		}
-		if(!Memory.cash[room][property]) {
-			Memory.cash[room][property] = { ids:ids, time:0, objects:{} };
+		if(!Memory.cash[room][property] ||
+			 !Memory.cash[room][property].ver ||
+			 Memory.cash[room][property].ver != cash.version) {
+			Memory.cash[room][property] = { ids:ids, time:0, objects:{}, ver:cash.version };
 		}
 		return Memory.cash[room][property];
 	},
