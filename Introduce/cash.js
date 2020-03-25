@@ -29,12 +29,24 @@ var cash = {
 	},
 
 	getExtensions: function(room) {
-		var property = cash.initProperty(room.name,STRUCTURE_EXTENSION+1);
+		var property = cash.initProperty(room.name,STRUCTURE_TOWER);
 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
 			property.ids = room.find(FIND_STRUCTURES, {
 				filter: (structure) => 	structure.structureType == STRUCTURE_SPAWN ||
-																structure.structureType == STRUCTURE_EXTENSION ||
-																structure.structureType == STRUCTURE_TOWER }).map((obj) => obj.id);
+																structure.structureType == STRUCTURE_EXTENSION }).map((obj) => obj.id);
+		}
+		if(property.time != Game.time) {
+			property.objects = property.ids.map((id) => Game.getObjectById(id));
+			property.time = Game.time;
+		}
+		return property.objects;
+	},
+
+	getTowers: function(room) {
+		var property = cash.initProperty(room.name,STRUCTURE_EXTENSION);
+		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
+			property.ids = room.find(FIND_STRUCTURES, {
+				filter: (structure) => 	structure.structureType == STRUCTURE_TOWER }).map((obj) => obj.id);
 			// console.log( 'C', Math.trunc(Game.time/10000), Game.time%10000, room.name
 			// 						, 'property.ids.length:', property.ids.length
 			// 				 		);

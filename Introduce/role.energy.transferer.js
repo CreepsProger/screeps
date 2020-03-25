@@ -64,12 +64,14 @@ var roleEnergyTransferer = {
 				 (!creep.getActiveBodyparts(WORK) || (this_room_sources_are_empty && creep.memory.rerun) || conditions.MAIN_ROOM_CRISIS())) {
 				var t = Game.cpu.getUsed();
 				var extensions = cash.getExtensions(creep.room).filter((e) => {
-					return (	(e.structureType == STRUCTURE_SPAWN && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0) ||
-										(e.structureType == STRUCTURE_EXTENSION && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0) ||
-										(e.structureType == STRUCTURE_TOWER && e.store.getFreeCapacity(RESOURCE_ENERGY) > 400)
-									)
-									&& tools.checkTarget(executer,e.id);
+					return 	e.store.getFreeCapacity(RESOURCE_ENERGY) > 0) &&
+					 				tools.checkTarget(executer,e.id);
 					});
+				var towers = cash.getTowers(creep.room).filter((t) => {
+					return	t.store.getFreeCapacity(RESOURCE_ENERGY) > 400 &&
+					 				tools.checkTarget(executer,t.id);
+					});
+				const infras = extensions.concat(towers);
 				// var extensions = creep.room.find(FIND_STRUCTURES, {
 				// 	filter: (structure) => {
 				// 		return (
@@ -83,15 +85,15 @@ var roleEnergyTransferer = {
 				// 			tools.checkTarget(executer,structure.id);
 				// 	}
 				// });
-				if(extensions.length > 0) {
-					var extension = extensions.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-					if(!!extension) {
-						target = tools.setTarget(creep,extension,extension.id,roleEnergyTransferer.run);
+				if(infras.length > 0) {
+					var infra = infras.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+					if(!!infra) {
+						target = tools.setTarget(creep,infra,infra.id,roleEnergyTransferer.run);
 						if(!!target) {
 							if(creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || true) {
 								var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
 								console.log( '⭕️', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
-														, 'extension id:', target.id
+														, 'infra id:', target.id
 												 		);
 							}
 						}
