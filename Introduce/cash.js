@@ -14,11 +14,10 @@ var cash = {
 	getStorages: function() {
 		var obj;
 		if((Game.time % constants.TICKS_TO_RESET_CASH != 0) || !Memory.cash.storages) {
-			Memory.cash.storages = _.filter(Game.structures, (structure) => !!structure.my &&
-			 																												structure.structureType == STRUCTURE_STORAGE);
-
+			Memory.cash.storages_ids = _.filter(Game.structures, (structure) => !!structure.my &&
+			 																												structure.structureType == STRUCTURE_STORAGE).map((obj) => obj.id);
 		}
-		return Memory.cash.storages;
+		return Memory.cash.storages_ids.map((id) => Game.getObjectById(id));
 	},
 
 	getObject: function(room,property) {
