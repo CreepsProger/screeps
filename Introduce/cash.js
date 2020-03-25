@@ -30,12 +30,12 @@ var cash = {
 			property.objects = property.ids.map((id) => Game.getObjectById(id));
 			property.time = Game.time;
 		}
-		if(true)
-			console.log( '💽', Math.trunc(Game.time/10000), Game.time%10000
-									, 'getController:'
-									, 'ids:', JSON.stringify(property.ids)
-									, 'objects:', JSON.stringify(property.objects)
-									);
+		// if(true)
+		// 	console.log( '💽', Math.trunc(Game.time/10000), Game.time%10000
+		// 							, 'getController:'
+		// 							, 'ids:', JSON.stringify(property.ids)
+		// 							, 'objects:', JSON.stringify(property.objects)
+		// 							);
 		return property.objects[0];
 	},
 
