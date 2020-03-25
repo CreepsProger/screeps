@@ -127,9 +127,10 @@ var roleEnergyTransferer = {
 				 !creep.getActiveBodyparts(WORK) &&
 				 creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
 				 creep.memory.rerun) {
+				var t = Game.cpu.getUsed();
 				var storages = _.filter(Game.structures, (structure) => !!structure.my &&
-						structure.structureType == STRUCTURE_STORAGE &&
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) < constants.START_UPGRADING_ENERGY);
+						structure.structureType == STRUCTURE_STORAGE &&
 				if(storages.length > 0) {
 					target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
 																	 < c.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,c.pos)? p:c);
@@ -138,7 +139,8 @@ var roleEnergyTransferer = {
 					if(range_to_store >= constants.RANGE_TO_STORE_1_TO_CONSOLE_LOG &&
 						 (!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id)
 						) {
-						console.log( '🔜💡1️⃣', Math.trunc(Game.time/10000), Game.time%10000, creep
+							var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
+							console.log( '🔜💡1️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 												, 'range to store:', range_to_store
 												, creep.pos.roomName, '->', target.pos.roomName
 												, 'store energy value:', store_energy_value
@@ -153,6 +155,7 @@ var roleEnergyTransferer = {
 				 !creep.getActiveBodyparts(WORK) &&
 				 creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
 				 creep.memory.rerun) {
+				var t = Game.cpu.getUsed();
 				var storages = _.filter(Game.structures, (structure) => !!structure.my &&
 						structure.structureType == STRUCTURE_STORAGE &&
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) < 2*constants.START_UPGRADING_ENERGY);
@@ -164,7 +167,8 @@ var roleEnergyTransferer = {
 					if(range_to_store >= constants.RANGE_TO_STORE_2_TO_CONSOLE_LOG &&
 						 (!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id)
 						) {
-						console.log( '🔜💡2️⃣', Math.trunc(Game.time/10000), Game.time%10000, creep
+						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
+						console.log( '🔜💡2️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 												, 'range to store:', range_to_store
 												, creep.pos.roomName, '->', target.pos.roomName
 												, 'store energy value:', store_energy_value
@@ -189,6 +193,7 @@ var roleEnergyTransferer = {
 				 !creep.getActiveBodyparts(WORK) &&
 				 creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
 				 creep.memory.rerun) {
+				var t = Game.cpu.getUsed();
 				var storages = _.filter(Game.structures, (structure) => !!structure.my &&
 						structure.structureType == STRUCTURE_STORAGE);
 				if(storages.length > 0) {
@@ -199,7 +204,8 @@ var roleEnergyTransferer = {
 					if(range_to_store >= constants.RANGE_TO_STORE_2_TO_CONSOLE_LOG &&
 						 (!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id)
 						) {
-						console.log( '🔜💡3️⃣', Math.trunc(Game.time/10000), Game.time%10000, creep
+						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
+						console.log( '🔜💡3️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 												, 'range to store:', range_to_store
 												, creep.pos.roomName, '->', target.pos.roomName
 												, 'store energy value:', store_energy_value
