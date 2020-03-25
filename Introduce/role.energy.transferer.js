@@ -129,8 +129,8 @@ var roleEnergyTransferer = {
 				 creep.memory.rerun) {
 				var t = Game.cpu.getUsed();
 				var storages = _.filter(Game.structures, (structure) => !!structure.my &&
+				structure.structureType == STRUCTURE_STORAGE &&
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) < constants.START_UPGRADING_ENERGY);
-						structure.structureType == STRUCTURE_STORAGE &&
 				if(storages.length > 0) {
 					target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
 																	 < c.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,c.pos)? p:c);
