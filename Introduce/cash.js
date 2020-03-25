@@ -11,6 +11,16 @@ var cash = {
 		}
 	},
 
+	getStorages: function() {
+		var obj;
+		if((Game.time % constants.TICKS_TO_RESET_CASH != 0) || !Memory.cash.storages) {
+			Memory.cash.storages = _.filter(Game.structures, (structure) => !!structure.my &&
+			 																												structure.structureType == STRUCTURE_STORAGE);
+
+		}
+		return Memory.cash.storages;
+	},
+
 	getObject: function(room,property) {
 		var obj;
 		if((Game.time % constants.TICKS_TO_RESET_CASH != 0) && !!Memory.cash && !!Memory.cash[room] && !!Memory.cash[room][property]) {

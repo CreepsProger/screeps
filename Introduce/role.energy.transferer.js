@@ -7,6 +7,7 @@ const flags = require('main.flags');
 const links = require('main.links');
 const log = require('main.log');
 const tools = require('tools');
+const cash = require('cash');
 
 var roleEnergyTransferer = {
 
@@ -128,8 +129,9 @@ var roleEnergyTransferer = {
 				 creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
 				 creep.memory.rerun) {
 				var t = Game.cpu.getUsed();
-				var storages = _.filter(Game.structures, (structure) => !!structure.my &&
-																																structure.structureType == STRUCTURE_STORAGE);
+				var storages = cash.getStorages();
+				// var storages = _.filter(Game.structures, (structure) => !!structure.my &&
+				// 																												structure.structureType == STRUCTURE_STORAGE);
 				if(storages.length > 0) {
 					target = storages.reduce((p,c) => (p.store.getUsedCapacity(RESOURCE_ENERGY) < constants.START_UPGRADING_ENERGY &&
 																	p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
