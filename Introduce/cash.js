@@ -22,6 +22,7 @@ var cash = {
 				filter: (structure) => 	structure.structureType == STRUCTURE_CONTROLLER });
 		}
 		if(property.time != Game.time) {
+			delete property.objects;
 			property.objects = property.ids.map((id) => Game.getObjectById(id));
 			property.time = Game.time;
 		}
@@ -36,6 +37,7 @@ var cash = {
 																structure.structureType == STRUCTURE_EXTENSION }).map((obj) => obj.id);
 		}
 		if(property.time != Game.time) {
+			delete property.objects;
 			property.objects = property.ids.map((id) => Game.getObjectById(id));
 			property.time = Game.time;
 		}
