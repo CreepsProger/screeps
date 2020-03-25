@@ -17,7 +17,8 @@ var cash = {
 			Memory.cash.storages_ids = _.filter(Game.structures,
 				 (structure) => !!structure.my && structure.structureType == STRUCTURE_STORAGE).map((obj) => obj.id);
 				 console.log( '🔜💡1️⃣', Math.trunc(Game.time/10000), Game.time%10000
-									 , 'Memory.cash.storages_ids:', JSON.stringify(Memory.cash.storages_ids)
+										 , 'Memory.cash.storages_ids:', JSON.stringify(Memory.cash.storages_ids)
+										 , 'storages:', JSON.stringify(Memory.cash.storages_ids.map((id) => Game.getObjectById(id)))
 									);
 
 		}
