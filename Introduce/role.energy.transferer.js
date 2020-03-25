@@ -63,7 +63,7 @@ var roleEnergyTransferer = {
 			if(!target && this_room == my_room &&
 				 (!creep.getActiveBodyparts(WORK) || (this_room_sources_are_empty && creep.memory.rerun) || conditions.MAIN_ROOM_CRISIS())) {
 				var t = Game.cpu.getUsed();
-				var infras;
+				var infras = [];
 				if(creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
 					var extensions = cash.getExtensions(creep.room).filter((e) => {
 						return 	e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
