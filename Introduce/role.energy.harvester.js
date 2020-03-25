@@ -196,7 +196,7 @@ var role = {
 				const my_store_energy_value = creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY);
 				const store_energy_value = storage.store.getUsedCapacity(RESOURCE_ENERGY);
 				if(range_to_store >= constants.HARVEST_RANGE_TO_STORE_2_TO_CONSOLE_LOG &&
-					(!creep.memory.prev_target_id || creep.memory.prev_target_id != creep.room.storage.id || true)
+					(!creep.memory.prev_target_id || creep.memory.prev_target_id != creep.room.storage.id || false)
 					) {
 					var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
 					console.log( '🔜⚡2️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
