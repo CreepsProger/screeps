@@ -32,7 +32,9 @@ var cash = {
 		}
 		if(true)
 			console.log( '💽', Math.trunc(Game.time/10000), Game.time%10000
-									, 'getController:', JSON.stringify(property.ids), JSON.stringify(property.objects)
+									, 'getController:'
+									, 'ids:', JSON.stringify(property.ids)
+									, 'objects:', JSON.stringify(property.objects)
 									);
 		return property.objects[0];
 	},
