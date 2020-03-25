@@ -211,6 +211,9 @@ var spawns = {
 						 																			spawns.tryCreateCreep(spawn,             2412, 51, 1, 3); // V 1-1 E    Carier
 					}
 					if(conditions.TO_SPAWN_CLAIMING_ROOMS()) {
+						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W27S33')) {
+							if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015, 55, 1, 1); // V 1-2 E  Attacker
+						}
 						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S33')) {
 							if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015, 95, 1, 1); // V 1-2 E  Attacker
 						}
