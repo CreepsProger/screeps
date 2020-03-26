@@ -2,7 +2,7 @@ const constants = require('main.constants');
 
 var cash = {
 
-	version: 4,
+	version: 5,
 
 	initProperty: function(property, room = 'all', ids = '') {
 		if(!Memory.cash) {
@@ -14,7 +14,7 @@ var cash = {
 		if(!Memory.cash[room][property] ||
 			 !Memory.cash[room][property].ver ||
 			 Memory.cash[room][property].ver != cash.version) {
-			Memory.cash[room][property] = { ids:ids, time:0, objects:{}, ver:cash.version };
+			Memory.cash[room][property] = { ids:ids, time:0, ver:cash.version };
 		}
 		return Memory.cash[room][property];
 	},
@@ -25,23 +25,23 @@ var cash = {
 			property.ids = room.find(FIND_STRUCTURES, {
 				filter: (structure) => 	structure.structureType == STRUCTURE_CONTROLLER }).map((obj) => obj.id);
 		}
-		if(true)
+		// if(true)
 			return property.ids.map((id) => Game.getObjectById(id))[0];
-		if(property.time != Game.time) {
-			delete property.objects;
-			property.objects = property.ids.map((id) => Game.getObjectById(id));
-			property.time = Game.time;
-		}
+		// if(property.time != Game.time) {
+		// 	delete property.objects;
+		// 	property.objects = property.ids.map((id) => Game.getObjectById(id));
+		// 	property.time = Game.time;
+		// }
 		// if(true)
 		// 	console.log( '💽', Math.trunc(Game.time/10000), Game.time%10000
 		// 							, 'getController:'
 		// 							, 'ids:', JSON.stringify(property.ids)
 		// 							, 'objects:', JSON.stringify(property.objects)
 		// 							);
-		return property.objects[0];
+		// return property.objects[0];
 	},
 
-	extensions: {},
+	// extensions: {},
 	getExtensions: function(room) {
 		var property = cash.initProperty(STRUCTURE_EXTENSION,room.name);
 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
@@ -49,15 +49,15 @@ var cash = {
 				filter: (structure) => 	structure.structureType == STRUCTURE_SPAWN ||
 																structure.structureType == STRUCTURE_EXTENSION }).map((obj) => obj.id);
 		}
-		if(true)
+		// if(true)
 			return property.ids.map((id) => Game.getObjectById(id));
-		if(property.time != Game.time) {
-			// delete property.objects;
-			// property.objects = property.ids.map((id) => Game.getObjectById(id));
-			cash.extensions[room.name] = property.ids.map((id) => Game.getObjectById(id));
-			property.time = Game.time;
-		}
-		return cash.extensions[room.name];
+		// if(property.time != Game.time) {
+		// 	// delete property.objects;
+		// 	// property.objects = property.ids.map((id) => Game.getObjectById(id));
+		// 	cash.extensions[room.name] = property.ids.map((id) => Game.getObjectById(id));
+		// 	property.time = Game.time;
+		// }
+		// return cash.extensions[room.name];
 	},
 
 	getLinks: function(room) {
@@ -66,14 +66,14 @@ var cash = {
 			property.ids = room.find(FIND_STRUCTURES, {
 				filter: (structure) => 	structure.structureType == STRUCTURE_LINK }).map((obj) => obj.id);
 		}
-		if(true)
+		// if(true)
 			return property.ids.map((id) => Game.getObjectById(id));
-		if(property.time != Game.time) {
-			delete property.objects;
-			property.objects = property.ids.map((id) => Game.getObjectById(id));
-			property.time = Game.time;
-		}
-		return property.objects;
+		// if(property.time != Game.time) {
+		// 	delete property.objects;
+		// 	property.objects = property.ids.map((id) => Game.getObjectById(id));
+		// 	property.time = Game.time;
+		// }
+		// return property.objects;
 	},
 
 	getTowers: function(room) {
@@ -82,14 +82,14 @@ var cash = {
 			property.ids = room.find(FIND_STRUCTURES, {
 				filter: (structure) => 	structure.structureType == STRUCTURE_TOWER }).map((obj) => obj.id);
 		}
-		if(true)
+		// if(true)
 			return property.ids.map((id) => Game.getObjectById(id));
-		if(property.time != Game.time) {
-			delete property.objects;
-			property.objects = property.ids.map((id) => Game.getObjectById(id));
-			property.time = Game.time;
-		}
-		return property.objects;
+		// if(property.time != Game.time) {
+		// 	delete property.objects;
+		// 	property.objects = property.ids.map((id) => Game.getObjectById(id));
+		// 	property.time = Game.time;
+		// }
+		// return property.objects;
 	},
 
 	getAllMyTowers: function() {
@@ -98,14 +98,14 @@ var cash = {
 			property.ids = _.filter(Game.structures,
 				 (structure) => !!structure.my && structure.structureType == STRUCTURE_TOWER).map((obj) => obj.id);
 		}
-		if(true)
+		// if(true)
 			return property.ids.map((id) => Game.getObjectById(id));
-		if(property.time != Game.time) {
-			delete property.objects;
-			property.objects = property.ids.map((id) => Game.getObjectById(id));
-			property.time = Game.time;
-		}
-		return property.objects;
+		// if(property.time != Game.time) {
+		// 	delete property.objects;
+		// 	property.objects = property.ids.map((id) => Game.getObjectById(id));
+		// 	property.time = Game.time;
+		// }
+		// return property.objects;
 	},
 
 	getStorages: function() {
@@ -114,14 +114,14 @@ var cash = {
  			property.ids = _.filter(Game.structures,
  				 (structure) => !!structure.my && structure.structureType == STRUCTURE_STORAGE).map((obj) => obj.id);
  		}
-		if(true)
+		// if(true)
 			return property.ids.map((id) => Game.getObjectById(id));
- 		if(property.time != Game.time) {
- 			delete property.objects;
- 			property.objects = property.ids.map((id) => Game.getObjectById(id));
- 			property.time = Game.time;
- 		}
- 		return property.objects;
+ 		// if(property.time != Game.time) {
+ 		// 	delete property.objects;
+ 		// 	property.objects = property.ids.map((id) => Game.getObjectById(id));
+ 		// 	property.time = Game.time;
+ 		// }
+ 		// return property.objects;
 	},
 
 	getObject: function(room,property) {
