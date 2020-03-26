@@ -34,41 +34,41 @@ var cash = {
 	controller: 0,
 	getController: function(room) {
 		return cash.getRoomEntity(STRUCTURE_CONTROLLER+1, cash.controller, room, (room) => {
-			return room.find(FIND_STRUCTURES, { filter:
-				(structure) => 	structure.structureType == STRUCTURE_CONTROLLER }).map((obj) => obj.id);
+			return room.find(FIND_STRUCTURES, {
+				filter: (structure) => structure.structureType == STRUCTURE_CONTROLLER }).map((obj) => obj.id);
 			})[0];
 	},
 
 	storage: 0,
 	getStorage: function(room) {
 		return cash.getRoomEntity(STRUCTURE_STORAGE+1, cash.storage, room, (room) => {
-			return room.find(FIND_STRUCTURES, { filter:
-				(structure) => 	structure.structureType == STRUCTURE_STORAGE }).map((obj) => obj.id);
+			return room.find(FIND_STRUCTURES, {
+				filter: (structure) => structure.structureType == STRUCTURE_STORAGE }).map((obj) => obj.id);
 			})[0];
 	},
 
 	containers: {},
 	getContainers: function(room) {
 		return cash.getRoomEntity(STRUCTURE_CONTAINER, cash.containers, room, (room) => {
-			return room.find(FIND_STRUCTURES, { filter:
-				(structure) => 	structure.structureType == STRUCTURE_CONTAINER }).map((obj) => obj.id);
+			return room.find(FIND_STRUCTURES, {
+				filter: (structure) => structure.structureType == STRUCTURE_CONTAINER }).map((obj) => obj.id);
 			});
 	},
 
 	extensions: {},
 	getExtensions: function(room) {
 		return cash.getRoomEntity(STRUCTURE_EXTENSION, cash.extensions, room, (room) => {
-			return room.find(FIND_STRUCTURES, { filter:
-				(structure) => 	structure.structureType == STRUCTURE_SPAWN ||
-												structure.structureType == STRUCTURE_EXTENSION }).map((obj) => obj.id);
+			return room.find(FIND_STRUCTURES, {
+				filter: (structure) => structure.structureType == STRUCTURE_SPAWN ||
+															 structure.structureType == STRUCTURE_EXTENSION }).map((obj) => obj.id);
 			});
 	},
 
 	links: {},
 	getLinks: function(room) {
 		return cash.getRoomEntity(STRUCTURE_LINK, cash.links, room, (room) => {
-			return room.find(FIND_STRUCTURES, { filter:
-				(structure) => 	structure.structureType == STRUCTURE_LINK }).map((obj) => obj.id);
+			return room.find(FIND_STRUCTURES, {
+				filter: (structure) => structure.structureType == STRUCTURE_LINK }).map((obj) => obj.id);
 			});
 	},
 
@@ -76,7 +76,7 @@ var cash = {
 	getTowers: function(room) {
 		return cash.getRoomEntity(STRUCTURE_LINK, cash.towers, room, (room) => {
 			return room.find(FIND_STRUCTURES, {
-				filter: (structure) => 	structure.structureType == STRUCTURE_TOWER }).map((obj) => obj.id);
+				filter: (structure) => structure.structureType == STRUCTURE_TOWER }).map((obj) => obj.id);
 			});
 	},
 
