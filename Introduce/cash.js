@@ -76,23 +76,20 @@ var cash = {
 		// return property.objects;
 	},
 
+	towers: {},
 	getTowers: function(room) {
 		var property = cash.initProperty(STRUCTURE_TOWER,room.name);
 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
 			property.ids = room.find(FIND_STRUCTURES, {
 				filter: (structure) => 	structure.structureType == STRUCTURE_TOWER }).map((obj) => obj.id);
 		}
-		// if(true)
-			return property.ids.map((id) => Game.getObjectById(id));
-		// if(property.time != Game.time) {
-		// 	delete property.objects;
-		// 	property.objects = property.ids.map((id) => Game.getObjectById(id));
-		// 	property.time = Game.time;
-		// }
-		// return property.objects;
+		if(property.time != Game.time) {
+			cash.towers[room.name] = property.ids.map((id) => Game.getObjectById(id));
+ 			property.time = Game.time;
+ 		}
+		return cash.towers[room.name];
 	},
 
-	all_my_towers_time: 0,
 	all_my_towers: 0,
 	getAllMyTowers: function() {
 		var property = cash.initProperty(STRUCTURE_TOWER);
@@ -100,14 +97,13 @@ var cash = {
 			property.ids = _.filter(Game.structures,
 				 (structure) => !!structure.my && structure.structureType == STRUCTURE_TOWER).map((obj) => obj.id);
 		}
-		if(cash.all_my_towers_time != Game.time) {
+		if(property.time != Game.time) {
 			cash.all_my_towers = property.ids.map((id) => Game.getObjectById(id));
- 			cash.all_my_towers_time = Game.time;
+ 			property.time = Game.time;
  		}
 		return cash.all_my_towers;
 	},
 
-	storages_time: 0,
 	storages: 0,
 	getStorages: function() {
 		var property = cash.initProperty(STRUCTURE_STORAGE);
@@ -115,9 +111,9 @@ var cash = {
  			property.ids = _.filter(Game.structures,
  				 (structure) => !!structure.my && structure.structureType == STRUCTURE_STORAGE).map((obj) => obj.id);
  		}
-		if(cash.storages_time != Game.time) {
+		if(property.time != Game.time) {
 			cash.storages = property.ids.map((id) => Game.getObjectById(id));
- 			cash.storages_time = Game.time;
+ 			property.time = Game.time;
  		}
 		return cash.storages;
 	},
