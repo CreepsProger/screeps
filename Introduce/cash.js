@@ -116,9 +116,9 @@ var cash = {
  			property.ids = _.filter(Game.structures,
  				 (structure) => !!structure.my && structure.structureType == STRUCTURE_STORAGE).map((obj) => obj.id);
  		}
-		if(storages_time != Game.time) {
+		if(cash.storages_time != Game.time) {
 			cash.storages = property.ids.map((id) => Game.getObjectById(id));
- 			storages_time = Game.time;
+ 			cash.storages_time = Game.time;
  		}
 		// if(true)
 			return cash.storages;
