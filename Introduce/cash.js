@@ -75,8 +75,8 @@ var cash = {
 	towers: {},
 	getTowers: function(room) {
 		return cash.getRoomEntity(STRUCTURE_LINK, cash.towers, room, (room) => {
-			return room.find(FIND_STRUCTURES, { filter:
-				(structure) => 	structure.structureType == STRUCTURE_TOWER }).map((obj) => obj.id);
+			return room.find(FIND_STRUCTURES, {
+				filter: (structure) => 	structure.structureType == STRUCTURE_TOWER }).map((obj) => obj.id);
 			});
 	},
 
