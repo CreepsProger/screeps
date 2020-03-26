@@ -78,7 +78,7 @@ module.exports.loop = function () {
 	links.run();			Memory.cpu_main_part.links += (dt = Game.cpu.getUsed()-dt,Math.round(dt*100)/100);
 	towers.run();			Memory.cpu_main_part.towers += (dt = Game.cpu.getUsed()-dt,Math.round(dt*100)/100);
 	spawns.run();			Memory.cpu_main_part.spawns += (dt = Game.cpu.getUsed()-dt,Math.round(dt*100)/100);
-	metrix.output();	Memory.cpu_main_part.metrix += (dt = Game.cpu.getUsed()-dt,Math.round(dt*100)/100);
+	metrix.output();	Memory.cpu_main_part.metrix2 += (dt = Game.cpu.getUsed()-dt,Math.round(dt*100)/100);
 	// cash.getStorages();
 
 	delete Memory.targets;
