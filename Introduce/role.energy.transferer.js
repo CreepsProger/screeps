@@ -140,7 +140,7 @@ var roleEnergyTransferer = {
 
 				cash.getContainers(creep.room).filter((cont) => {
 					return	this_room_config.containers.weight < creep.memory.weight &&
-									!!(cont.store) && cont.store.getFreeCapacity() > 0;
+									!!cont.store && cont.store.getFreeCapacity() > 0;
 					}).reduce((l,c) => (l.push(c),l), targs);
 
 				if(!!creep.room.storage &&
