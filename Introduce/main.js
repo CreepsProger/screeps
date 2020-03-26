@@ -72,13 +72,13 @@ module.exports.loop = function () {
 
 	Memory.cpu_main_part.clearing += Math.round((Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 
-	metrix.run();			Memory.cpu_main_part.metrix += Math.round((Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
-	config.run();			Memory.cpu_main_part.config += Math.round((Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
-	flags.run();			Memory.cpu_main_part.flags += Math.round((Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
-	links.run();			Memory.cpu_main_part.links += Math.round((Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
-	towers.run();			Memory.cpu_main_part.towers += Math.round((Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
-	spawns.run();			Memory.cpu_main_part.spawns += Math.round((Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
-	metrix.output();	Memory.cpu_main_part.metrix2 += Math.round((Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
+	metrix.run();			Memory.cpu_main_part.metrix = Math.round((Memory.cpu_main_part.metrix+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
+	config.run();			Memory.cpu_main_part.config = Math.round((Memory.cpu_main_part.config+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
+	flags.run();			Memory.cpu_main_part.flags = Math.round((Memory.cpu_main_part.flags+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
+	links.run();			Memory.cpu_main_part.links = Math.round((Memory.cpu_main_part.links+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
+	towers.run();			Memory.cpu_main_part.towers = Math.round((Memory.cpu_main_part.towers+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
+	spawns.run();			Memory.cpu_main_part.spawns = Math.round((Memory.cpu_main_part.spawns+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
+	metrix.output();	Memory.cpu_main_part.metrix2 = Math.round((Memory.cpu_main_part.metrix2+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	// cash.getStorages();
 
 	delete Memory.targets;
@@ -92,7 +92,7 @@ module.exports.loop = function () {
 	var main_part_dt = Math.round((Game.cpu.getUsed()) * 100)/100;
 	Memory.cpu_main_part_dt += main_part_dt;
 
-	Memory.cpu_main_part.others += Math.round((Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
+	Memory.cpu_main_part.others = Math.round((Memory.cpu_main_part.others+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	if(Game.time % constants.TICKS_TO_CHECK_CPU_MAIN_PART == 0) {
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 							 , 'MAIN PART CPU:'
