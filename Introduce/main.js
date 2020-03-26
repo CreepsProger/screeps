@@ -70,7 +70,7 @@ module.exports.loop = function () {
 		}
 	}
 
-	Memory.cpu_main_part.clearing += Math.round((Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
+	Memory.cpu_main_part.clearing = Math.round((Memory.cpu_main_part.clearing+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 
 	metrix.run();			Memory.cpu_main_part.metrix = Math.round((Memory.cpu_main_part.metrix+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	config.run();			Memory.cpu_main_part.config = Math.round((Memory.cpu_main_part.config+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
