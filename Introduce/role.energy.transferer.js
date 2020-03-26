@@ -129,7 +129,7 @@ var roleEnergyTransferer = {
 				if(!!creep.room.storage &&
 						creep.getActiveBodyparts(WORK) &&
 						this_room_config.containers.weight < creep.memory.weight &&
-						!!stg.store && stg.store.getFreeCapacity() > 0) {
+						creep.room.storage.store.getFreeCapacity() > 0) {
 					targs.push(storage);
 				}
 				// var containers = creep.room.find(FIND_STRUCTURES, {
