@@ -125,12 +125,13 @@ var roleEnergyTransferer = {
 					return	this_room_config.containers.weight < creep.memory.weight &&
 									!!cont.store && cont.store.getFreeCapacity() > 0;
 					}).reduce((l,c) => (l.push(c),l), targs);
-				var storage = cash.getStorage(creep.room).filter((stg) => {
-					return	creep.getActiveBodyparts(WORK) &&
-									this_room_config.containers.weight < creep.memory.weight &&
-									!!stg.store && stg.store.getFreeCapacity() > 0;
-					});
-				targs.push(storage);
+
+				if(!!creep.room.storage &&
+						creep.getActiveBodyparts(WORK) &&
+						this_room_config.containers.weight < creep.memory.weight &&
+						!!stg.store && stg.store.getFreeCapacity() > 0) {
+					targs.push(storage);
+				}
 				// var containers = creep.room.find(FIND_STRUCTURES, {
 				// 	filter: (structure) => {
 				// 		return (structure.structureType == STRUCTURE_CONTAINER ||
