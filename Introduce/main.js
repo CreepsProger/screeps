@@ -97,8 +97,8 @@ module.exports.loop = function () {
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 							 , 'MAIN PART CPU:'
 							 , JSON.stringify(Memory.cpu_main_part)
-						   , (dt = Math.round((Game.cpu.getUsed()-dt)*100)/100)
-						   , dt
+						   // , (dt = Math.round((Game.cpu.getUsed()-dt)*100)/100)
+						   // , dt
 						 );
 		delete Memory.cpu_main_part;
 		Memory.cpu_main_part = {perf:0, clearing:0, metrix:0, config:0, flags:0, links:0, towers:0, spawns:0, metrix2:0, others:0};
