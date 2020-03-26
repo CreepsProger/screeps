@@ -69,8 +69,7 @@ var roleEnergyTransferer = {
 						return 	!!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 						 				tools.checkTarget(executer,e.id);
 						});
-						extensions.reduce((l,c) => (l.push(c),l), infras);
-								// infras = infras.concat(extensions);
+						infras = extensions;
 				}
 				var towers = cash.getTowers(creep.room).filter((t) => {
 					return	!!t.store && t.store.getFreeCapacity(RESOURCE_ENERGY) > 400 &&
@@ -84,7 +83,7 @@ var roleEnergyTransferer = {
 						if(!!target) {
 							if(creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || true) {
 								var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
-								if(dt > 0.02)
+								if(dt > 0.2)
 									console.log( '⭕️', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 															, 'infra id:', target.id
 													 		);
