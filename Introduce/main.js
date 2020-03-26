@@ -14,9 +14,9 @@ var role = require('role.claimer');
 module.exports.loop = function () {
 	var dt = 0;
 	// perf.run();
-	if(!Memory.cpu_main_part)
-		Memory.cpu_main_part = {perf:0, clearing:0, metrix:0, config:0, flags:0, links:0, towers:0, spawns:0, metrix2:0, others:0};
-					Memory.cpu_main_part.perf += (dt = Math.round((Game.cpu.getUsed()-dt)*100)/100);
+	// if(!Memory.cpu_main_part)
+	// 	Memory.cpu_main_part = {perf:0, clearing:0, metrix:0, config:0, flags:0, links:0, towers:0, spawns:0, metrix2:0, others:0};
+	Memory.cpu_main_part.perf += (dt = Math.round((Game.cpu.getUsed()-dt)*100)/100);
 
 	if(Game.time % constants.TICKS_TO_CHECK_NON_EXISTING == 0) {
 		// console.log( '⏳', Game.cpu.getUsed() + '/' + Game.cpu.tickLimit);
