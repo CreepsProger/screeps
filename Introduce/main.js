@@ -92,7 +92,7 @@ module.exports.loop = function () {
 	var main_part_dt = Math.round((Game.cpu.getUsed()) * 100)/100;
 	Memory.cpu_main_part_dt += main_part_dt;
 
-	Memory.cpu_main_part.others += (dt = Game.cpu.getUsed()-dt,dt);
+	Memory.cpu_main_part.others += Math.round((Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	if(Game.time % constants.TICKS_TO_CHECK_CPU_MAIN_PART == 0) {
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 							 , 'MAIN PART CPU:'
