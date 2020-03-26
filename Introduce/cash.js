@@ -50,10 +50,10 @@ var cash = {
 		if(property.time != Game.time) {
 			// delete property.objects;
 			// property.objects = property.ids.map((id) => Game.getObjectById(id));
-			cash.extensions = property.ids.map((id) => Game.getObjectById(id));
+			cash.extensions[room.name] = property.ids.map((id) => Game.getObjectById(id));
 			property.time = Game.time;
 		}
-		return cash.extensions;
+		return cash.extensions[room.name];
 	},
 
 	getLinks: function(room) {
