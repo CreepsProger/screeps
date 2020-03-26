@@ -8,7 +8,7 @@ const metrix = require('main.metrix');
 const spawns = require('main.spawns');
 const flags = require('main.flags');
 const log = require('main.log');
-const cash = require('cash');
+// const cash = require('cash');
 var role = require('role.claimer');
 
 module.exports.loop = function () {
