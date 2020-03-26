@@ -70,7 +70,7 @@ module.exports.loop = function () {
 		}
 	}
 
-	Memory.cpu_main_part[clearing] = (dt = Game.cpu.getUsed()-dt,dt);
+	Memory.cpu_main_part.clearing = (dt = Game.cpu.getUsed()-dt,dt);
 
 	metrix.run();			Memory.cpu_main_part.metrix += (dt = Game.cpu.getUsed()-dt,dt);
 	config.run();			Memory.cpu_main_part.config += (dt = Game.cpu.getUsed()-dt,dt);
