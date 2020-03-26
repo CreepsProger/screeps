@@ -130,7 +130,7 @@ var roleEnergyTransferer = {
 						creep.getActiveBodyparts(WORK) &&
 						this_room_config.containers.weight < creep.memory.weight &&
 						creep.room.storage.store.getFreeCapacity() > 0) {
-					targs.push(storage);
+					targs.push(creep.room.storage);
 				}
 				// var containers = creep.room.find(FIND_STRUCTURES, {
 				// 	filter: (structure) => {
