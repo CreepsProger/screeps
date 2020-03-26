@@ -102,21 +102,6 @@ var cash = {
  			property.time = Game.time;
  		}
 		return cash.storages;
-	},
-
-	getObject: function(room,property) {
-		var property = cash.initProperty(room,property);
-		if((Game.time % constants.TICKS_TO_RESET_CASH != 0) && property.time != 0) {
-			obj = Game.getObjectById(Memory.cash[room][property]);
-		}
-		return obj;
-	},
-
-	setObject: function(room,property,id) {
-		var property = cash.initProperty(room,property,id);
-		if(!!id) {
-			Memory.cash[room][property] = id;
-		}
 	}
 
 };
