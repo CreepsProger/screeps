@@ -33,7 +33,7 @@ var cash = {
 
 	controller: {},
 	getController: function(room) {
-		var property = cash.initProperty(STRUCTURE_CONTROLLER,room.name);
+		var property = cash.initEntity(STRUCTURE_CONTROLLER,room.name);
 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
 			property.ids = room.find(FIND_STRUCTURES, {
 				filter: (structure) => 	structure.structureType == STRUCTURE_CONTROLLER }).map((obj) => obj.id);
