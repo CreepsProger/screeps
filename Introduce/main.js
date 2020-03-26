@@ -16,7 +16,7 @@ module.exports.loop = function () {
 	// perf.run();
 	if(!Memory.cpu_main_part)
 		Memory.cpu_main_part = {perf:0, clearing:0, metrix:0, config:0, flags:0, links:0, towers:0, spawns:0, metrix2:0, others:0};
-					Memory.cpu_main_part.perf += (dt = Game.cpu.getUsed()-dt,dt);
+					Memory.cpu_main_part.perf += (dt = Game.cpu.getUsed()-dt,Math.round(dt*100)/100);
 
 	if(Game.time % constants.TICKS_TO_CHECK_NON_EXISTING == 0) {
 		// console.log( '⏳', Game.cpu.getUsed() + '/' + Game.cpu.tickLimit);
@@ -70,15 +70,15 @@ module.exports.loop = function () {
 		}
 	}
 
-	Memory.cpu_main_part.clearing = (dt = Game.cpu.getUsed()-dt,dt);
+	Memory.cpu_main_part.clearing += (dt = Game.cpu.getUsed()-dt,Math.round(dt*100)/100);
 
-	metrix.run();			Memory.cpu_main_part.metrix += (dt = Game.cpu.getUsed()-dt,dt);
-	config.run();			Memory.cpu_main_part.config += (dt = Game.cpu.getUsed()-dt,dt);
-	flags.run();			Memory.cpu_main_part.flags += (dt = Game.cpu.getUsed()-dt,dt);
-	links.run();			Memory.cpu_main_part.links += (dt = Game.cpu.getUsed()-dt,dt);
-	towers.run();			Memory.cpu_main_part.towers += (dt = Game.cpu.getUsed()-dt,dt);
-	spawns.run();			Memory.cpu_main_part.spawns += (dt = Game.cpu.getUsed()-dt,dt);
-	metrix.output();	Memory.cpu_main_part.metrix += (dt = Game.cpu.getUsed()-dt,dt);
+	metrix.run();			Memory.cpu_main_part.metrix += (dt = Game.cpu.getUsed()-dt,Math.round(dt*100)/100);
+	config.run();			Memory.cpu_main_part.config += (dt = Game.cpu.getUsed()-dt,Math.round(dt*100)/100);
+	flags.run();			Memory.cpu_main_part.flags += (dt = Game.cpu.getUsed()-dt,Math.round(dt*100)/100);
+	links.run();			Memory.cpu_main_part.links += (dt = Game.cpu.getUsed()-dt,Math.round(dt*100)/100);
+	towers.run();			Memory.cpu_main_part.towers += (dt = Game.cpu.getUsed()-dt,Math.round(dt*100)/100);
+	spawns.run();			Memory.cpu_main_part.spawns += (dt = Game.cpu.getUsed()-dt,Math.round(dt*100)/100);
+	metrix.output();	Memory.cpu_main_part.metrix += (dt = Game.cpu.getUsed()-dt,Math.round(dt*100)/100);
 	// cash.getStorages();
 
 	delete Memory.targets;
