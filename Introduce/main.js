@@ -12,7 +12,9 @@ const cash = require('cash');
 var role = require('role.claimer');
 
 module.exports.loop = function () {
-	var dt = Game.cpu.getUsed();
+	var dt = 0;
+	// perf.run();
+					Memory.cpu_main_part[perf] += (dt = Game.cpu.getUsed()-dt,dt);
 
 	if(Game.time % constants.TICKS_TO_CHECK_NON_EXISTING == 0) {
 		// console.log( '⏳', Game.cpu.getUsed() + '/' + Game.cpu.tickLimit);
@@ -66,14 +68,15 @@ module.exports.loop = function () {
 		}
 	}
 
+	Memory.cpu_main_part[clearing] = (dt = Game.cpu.getUsed()-dt,dt);
 
-	metrix.run();			// 	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main metrix run dt:', (dt = Game.cpu.getUsed()-dt,dt));
-	config.run();			// 	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main config run dt:', (dt = Game.cpu.getUsed()-dt,dt));
-	flags.run();			//	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main flags run dt:', (dt = Game.cpu.getUsed()-dt,dt));
-	links.run();			//	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main links run dt:', (dt = Game.cpu.getUsed()-dt,dt));
-	towers.run();			//	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main towers run dt:', (dt = Game.cpu.getUsed()-dt,dt));
-	spawns.run();			//	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main spawns run dt:', (dt = Game.cpu.getUsed()-dt,dt));
-	metrix.output();	//	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main metrix run dt:', (dt = Game.cpu.getUsed()-dt,dt));
+	metrix.run();			Memory.cpu_main_part[metrix] += (dt = Game.cpu.getUsed()-dt,dt);
+	config.run();			Memory.cpu_main_part[config] += (dt = Game.cpu.getUsed()-dt,dt);
+	flags.run();			Memory.cpu_main_part[flags] += (dt = Game.cpu.getUsed()-dt,dt);
+	links.run();			Memory.cpu_main_part[links] += (dt = Game.cpu.getUsed()-dt,dt);
+	towers.run();			Memory.cpu_main_part[towers] += (dt = Game.cpu.getUsed()-dt,dt);
+	spawns.run();			Memory.cpu_main_part[spawns] += (dt = Game.cpu.getUsed()-dt,dt);
+	metrix.output();	Memory.cpu_main_part[metrix] += (dt = Game.cpu.getUsed()-dt,dt);
 	// cash.getStorages();
 
 	delete Memory.targets;
@@ -84,10 +87,14 @@ module.exports.loop = function () {
 							 , step : {max_dt: 0, creep: '', role: '', step: '', dt: 0, t: Math.round((Game.cpu.getUsed()) * 100)/100}
 							 , max	: {sum:0}
 						   };
-	if(Game.time % constants.TICKS_TO_CHECK_CPU_MAIN_PART == 0)
-		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main delete run dt:', (dt = Game.cpu.getUsed()-dt,dt));
 	var main_part_dt = Math.round((Game.cpu.getUsed()) * 100)/100;
 	Memory.cpu_main_part_dt += main_part_dt;
+
+	Memory.cpu_main_part[others] += (dt = Game.cpu.getUsed()-dt,dt);
+	if(Game.time % constants.TICKS_TO_CHECK_CPU_MAIN_PART == 0) {
+		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main delete run dt:', (dt = Game.cpu.getUsed()-dt,dt));
+		Memory.cpu_main_part = {perf:0, clearing:0, metrix:0, config:0, flags:0, links:0, towers:0, spawns:0, metrix2:0, others:0};
+	}
 
 	for(var name in Game.creeps) {
 		var creep = Game.creeps[name];
