@@ -1,15 +1,5 @@
 //import {checkFlags} from 'main.flags.js';
 //import {checkMainCommit} from 'main.flags.js';
-const constants = require('main.constants');
-const config = require('main.config');
-const links = require('main.links');
-const towers = require('main.towers');
-const metrix = require('main.metrix');
-const spawns = require('main.spawns');
-const flags = require('main.flags');
-const log = require('main.log');
-// const cash = require('cash');
-const role = require('role.claimer');
 
 module.exports.loop = function () {
 	var t = 0;
@@ -17,6 +7,16 @@ module.exports.loop = function () {
 	// if(!Memory.cpu_main_part)
 	// 	Memory.cpu_main_part = {perf:0, clearing:0, metrix:0, config:0, flags:0, links:0, towers:0, spawns:0, metrix2:0, others:0};
 	Memory.cpu_main_part.perf += Math.round((Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
+	const constants = require('main.constants');
+	const config = require('main.config');
+	const links = require('main.links');
+	const towers = require('main.towers');
+	const metrix = require('main.metrix');
+	const spawns = require('main.spawns');
+	const flags = require('main.flags');
+	const log = require('main.log');
+	// const cash = require('cash');
+	const role = require('role.claimer');
 
 	if(Game.time % constants.TICKS_TO_CHECK_NON_EXISTING == 0) {
 		// console.log( '⏳', Game.cpu.getUsed() + '/' + Game.cpu.tickLimit);
