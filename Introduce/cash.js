@@ -21,7 +21,7 @@ var cash = {
 
 	getRoomEntity: function(type, cash_objects, room, get_ids) {
 		var entity = cash.initEntity(type, room.name);
- 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
+ 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || entity.time == 0) {
  			property.ids = get_ids(room);
 		}
 		if(property.time != Game.time) {
