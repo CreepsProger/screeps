@@ -2,8 +2,8 @@
 
 module.exports.loop = function () {
 	var t = 0;
-	for(var i=0; i < 1000; i++)
-		Game.cpu.getUsed();
+	// for(var i=0; i < 1000; i++)
+	// 	Game.cpu.getUsed();
 	// perf.run();
 	// if(!Memory.cpu_main_part)
 	// 	Memory.cpu_main_part = {perf:0, clearing:0, metrix:0, config:0, flags:0, links:0, towers:0, spawns:0, metrix2:0, others:0};
