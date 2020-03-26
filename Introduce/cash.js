@@ -39,6 +39,7 @@ var cash = {
 		return property.objects[0];
 	},
 
+	extensions: {}
 	getExtensions: function(room) {
 		var property = cash.initProperty(STRUCTURE_EXTENSION,room.name);
 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
@@ -47,11 +48,12 @@ var cash = {
 																structure.structureType == STRUCTURE_EXTENSION }).map((obj) => obj.id);
 		}
 		if(property.time != Game.time) {
-			delete property.objects;
-			property.objects = property.ids.map((id) => Game.getObjectById(id));
+			// delete property.objects;
+			// property.objects = property.ids.map((id) => Game.getObjectById(id));
+			cash.extensions = property.ids.map((id) => Game.getObjectById(id));
 			property.time = Game.time;
 		}
-		return property.objects;
+		return cash.extensions;
 	},
 
 	getLinks: function(room) {
