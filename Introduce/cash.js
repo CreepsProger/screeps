@@ -82,7 +82,7 @@ var cash = {
 
 	all_my_towers: {},
 	getAllMyTowers: function() {
-		return cash.getRoomEntity(STRUCTURE_TOWER, cash.all_my_towers, 'all', (room) => {
+		return cash.getRoomEntity(STRUCTURE_TOWER+2, cash.all_my_towers, 'all', (room) => {
 			return _.filter(Game.structures,
 				 (structure) => !!structure.my && structure.structureType == STRUCTURE_TOWER).map((obj) => obj.id);
 			 });
@@ -90,7 +90,7 @@ var cash = {
 
 	all_my_storages: {},
 	getStorages: function() {
-		return cash.getRoomEntity(STRUCTURE_STORAGE, cash.all_my_storages, 'all', (room) => {
+		return cash.getRoomEntity(STRUCTURE_STORAGE+2, cash.all_my_storages, 'all', (room) => {
  			return _.filter(Game.structures,
  				 (structure) => !!structure.my && structure.structureType == STRUCTURE_STORAGE).map((obj) => obj.id);
 			 });
