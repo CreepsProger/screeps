@@ -12,6 +12,7 @@ const cash = require('cash');
 var role = require('role.claimer');
 
 module.exports.loop = function () {
+	var dt = Game.cpu.getUsed();
 
 	if(Game.time % constants.TICKS_TO_CHECK_NON_EXISTING == 0) {
 		// console.log( '⏳', Game.cpu.getUsed() + '/' + Game.cpu.tickLimit);
@@ -65,7 +66,6 @@ module.exports.loop = function () {
 		}
 	}
 
-	var dt = Game.cpu.getUsed();
 
 	metrix.run();			// 	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main metrix run dt:', (dt = Game.cpu.getUsed()-dt,dt));
 	config.run();			// 	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main config run dt:', (dt = Game.cpu.getUsed()-dt,dt));
@@ -84,7 +84,8 @@ module.exports.loop = function () {
 							 , step : {max_dt: 0, creep: '', role: '', step: '', dt: 0, t: Math.round((Game.cpu.getUsed()) * 100)/100}
 							 , max	: {sum:0}
 						   };
-	// console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main delete run dt:', (dt = Game.cpu.getUsed()-dt,dt));
+	if(Game.time % constants.TICKS_TO_CHECK_CPU_MAIN_PART)
+		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main delete run dt:', (dt = Game.cpu.getUsed()-dt,dt));
 	var main_part_dt = Math.round((Game.cpu.getUsed()) * 100)/100;
 	Memory.cpu_main_part_dt += main_part_dt;
 
