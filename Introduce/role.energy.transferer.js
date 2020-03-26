@@ -77,20 +77,6 @@ var roleEnergyTransferer = {
 					 				tools.checkTarget(executer,t.id);
 					});
 				towers.reduce((l,c) => (l.push(c),l), infras);
-				// infras = infras.concat(towers);
-				// var extensions = creep.room.find(FIND_STRUCTURES, {
-				// 	filter: (structure) => {
-				// 		return (
-				// 			(structure.structureType == STRUCTURE_SPAWN && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
-				// 			||
-				// 			(structure.structureType == STRUCTURE_EXTENSION && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
-				// 			||
-				// 			(structure.structureType == STRUCTURE_TOWER && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 400)
-				// 		)
-				// 		&&
-				// 			tools.checkTarget(executer,structure.id);
-				// 	}
-				// });
 				if(infras.length > 0) {
 					var infra = infras.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 					if(!!infra) {
@@ -98,10 +84,10 @@ var roleEnergyTransferer = {
 						if(!!target) {
 							if(creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || true) {
 								var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
-								// if(dt > 0.01)
-									// console.log( '⭕️', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
-									// 						, 'infra id:', target.id
-									// 				 		);
+								if(dt > 0.02)
+									console.log( '⭕️', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
+															, 'infra id:', target.id
+													 		);
 							}
 						}
 					}
