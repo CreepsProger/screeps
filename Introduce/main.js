@@ -15,7 +15,7 @@ module.exports.loop = function () {
 	var dt = 0;
 	// perf.run();
 	if(!Memory.cpu_main_part)
-		Memory.cpu_main_part = {};
+		Memory.cpu_main_part = {perf:0, clearing:0, metrix:0, config:0, flags:0, links:0, towers:0, spawns:0, metrix2:0, others:0};
 					Memory.cpu_main_part[perf] += (dt = Game.cpu.getUsed()-dt,dt);
 
 	if(Game.time % constants.TICKS_TO_CHECK_NON_EXISTING == 0) {
