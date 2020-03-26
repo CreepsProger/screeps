@@ -49,8 +49,8 @@ var cash = {
 	getStorage: function(room) {
 		return cash.getRoomEntity(STRUCTURE_STORAGE+1, cash.storage, room, (room) => {
 			return room.find(FIND_STRUCTURES, { filter:
-				(structure) => 	structure.structureType == STRUCTURE_STORAGE }).map((obj) => obj.id)[0];
-			});
+				(structure) => 	structure.structureType == STRUCTURE_STORAGE }).map((obj) => obj.id);
+			})[0];
 	},
 
 	containers: 0,
