@@ -92,20 +92,19 @@ var cash = {
 		// return property.objects;
 	},
 
+	all_my_towers_time: 0,
+	all_my_towers: 0,
 	getAllMyTowers: function() {
 		var property = cash.initProperty(STRUCTURE_TOWER);
 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
 			property.ids = _.filter(Game.structures,
 				 (structure) => !!structure.my && structure.structureType == STRUCTURE_TOWER).map((obj) => obj.id);
 		}
-		// if(true)
-			return property.ids.map((id) => Game.getObjectById(id));
-		// if(property.time != Game.time) {
-		// 	delete property.objects;
-		// 	property.objects = property.ids.map((id) => Game.getObjectById(id));
-		// 	property.time = Game.time;
-		// }
-		// return property.objects;
+		if(cash.all_my_towers_time != Game.time) {
+			cash.all_my_towers = property.ids.map((id) => Game.getObjectById(id));
+ 			cash.all_my_towers_time = Game.time;
+ 		}
+		return cash.all_my_towers;
 	},
 
 	storages_time: 0,
@@ -120,14 +119,7 @@ var cash = {
 			cash.storages = property.ids.map((id) => Game.getObjectById(id));
  			cash.storages_time = Game.time;
  		}
-		// if(true)
-			return cash.storages;
- 		// if(property.time != Game.time) {
- 		// 	delete property.objects;
- 		// 	property.objects = property.ids.map((id) => Game.getObjectById(id));
- 		// 	property.time = Game.time;
- 		// }
- 		// return property.objects;
+		return cash.storages;
 	},
 
 	getObject: function(room,property) {
