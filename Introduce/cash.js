@@ -108,6 +108,7 @@ var cash = {
 		// return property.objects;
 	},
 
+	storages_time: 0,
 	storages: 0,
 	getStorages: function() {
 		var property = cash.initProperty(STRUCTURE_STORAGE);
@@ -115,9 +116,9 @@ var cash = {
  			property.ids = _.filter(Game.structures,
  				 (structure) => !!structure.my && structure.structureType == STRUCTURE_STORAGE).map((obj) => obj.id);
  		}
-		if(property.time != Game.time) {
+		if(storages_time != Game.time) {
 			cash.storages = property.ids.map((id) => Game.getObjectById(id));
- 			property.time = Game.time;
+ 			storages_time = Game.time;
  		}
 		// if(true)
 			return cash.storages;
