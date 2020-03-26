@@ -25,10 +25,10 @@ var cash = {
  			entity.ids = get_ids(room);
 		}
 		if(entity.time != Game.time) {
-			cash_objects[room] = entity.ids.map((id) => Game.getObjectById(id));
+			cash_objects[room.name] = entity.ids.map((id) => Game.getObjectById(id));
  			entity.time = Game.time;
  		}
-		return cash_objects[room];
+		return cash_objects[room.name];
 	},
 
 	controller: 0,
