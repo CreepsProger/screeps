@@ -39,7 +39,7 @@ var cash = {
 		return property.objects[0];
 	},
 
-	extensions: {}
+	extensions: {},
 	getExtensions: function(room) {
 		var property = cash.initProperty(STRUCTURE_EXTENSION,room.name);
 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
