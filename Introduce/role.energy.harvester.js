@@ -236,6 +236,8 @@ var role = {
 				}
 			});
 			if(emptysources.length > 0) {
+				target = emptysources.reduce((p,c) => (p.ticksToRegeneration < c.ticksToRegeneration ||
+				 																			creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c))? p:c);
 				// target = tools.setTarget(creep,emptysources[0],emptysources[0].id,role.run);
 			}
 			if(!!target) return target;
