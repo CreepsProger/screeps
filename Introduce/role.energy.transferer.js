@@ -63,23 +63,25 @@ var roleEnergyTransferer = {
 			if(!target && this_room == my_room &&
 				 (!creep.getActiveBodyparts(WORK) || (this_room_sources_are_empty && creep.memory.rerun) || conditions.MAIN_ROOM_CRISIS())) {
 				var t = Game.cpu.getUsed();
-				const look = creep.room.lookForAtArea(LOOK_STRUCTURES, creep.pos.y-1
-																														 , creep.pos.x-1
-																														 , creep.pos.y+1
-																														 , creep.pos.x+1
-																													   , true);
-				const looks = look.filter((a) => {
-					return 	  a[LOOK_STRUCTURES].structureType == STRUCTURE_EXTENSION &&
-									!!a[LOOK_STRUCTURES].store &&
-									  a[LOOK_STRUCTURES].store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-									tools.checkTarget(executer,a[LOOK_STRUCTURES].id);
-					}).map((a) => a[LOOK_STRUCTURES]);
 				var infras;
 				if(creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
-					infras = cash.getExtensions(creep.room).filter((e) => {
-						return 	!!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-						 				tools.checkTarget(executer,e.id);
-						});
+					const look = creep.room.lookForAtArea(LOOK_STRUCTURES, creep.pos.y-1
+																															 , creep.pos.x-1
+																															 , creep.pos.y+1
+																															 , creep.pos.x+1
+																														   , true);
+					infras = look.filter((a) => {
+						return 	  a[LOOK_STRUCTURES].structureType == STRUCTURE_EXTENSION &&
+										!!a[LOOK_STRUCTURES].store &&
+										  a[LOOK_STRUCTURES].store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+										tools.checkTarget(executer,a[LOOK_STRUCTURES].id);
+						}).map((a) => a[LOOK_STRUCTURES]);
+					if(infras.length == 0) {
+						infras = cash.getExtensions(creep.room).filter((e) => {
+							return 	!!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+							 				tools.checkTarget(executer,e.id);
+							});
+					}
 				}
 				infras = cash.getTowers(creep.room).filter((t) => {
 					return	!!t.store && t.store.getFreeCapacity(RESOURCE_ENERGY) > 400 &&
@@ -96,7 +98,7 @@ var roleEnergyTransferer = {
 								if(dt > 0.2)
 									console.log( '⭕️', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 															, 'infra id:', target.id
-															, 'looks:', JSON.stringify(looks)
+															, 'infras:', JSON.stringify(infras)
 													 		);
 							}
 						}
