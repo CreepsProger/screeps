@@ -2,19 +2,19 @@ const constants = require('main.constants');
 
 var cash = {
 
-	version: 7,
+	version: 8,
 
 	initEntity: function(type, room = 'all') {
-		if(!Memory.cash) {
-			Memory.cash = {};
+		if(!Memory.cash ||
+			 !Memory.cash.version ||
+				Memory.cash.version != cash.version) {
+			Memory.cash = {version:cash.version};
 		}
 		if(!Memory.cash[room]) {
 			Memory.cash[room] = {};
 		}
-		if(!Memory.cash[room][type] ||
-			 !Memory.cash[room][type].ver ||
-			 Memory.cash[room][type].ver != cash.version) {
-			Memory.cash[room][type] = { ids:0, time:0, ver:cash.version };
+		if(!Memory.cash[room][type]) {
+			Memory.cash[room][type] = { ids:0, time:0 };
 		}
 		return Memory.cash[room][type];
 	},
@@ -41,7 +41,7 @@ var cash = {
 
 	storage: {},
 	getStorage: function(room) {
-		return cash.getRoomEntity(STRUCTURE_STORAGE+1, cash.storage, room, (room) => {
+		return cash.getRoomEntity(STRUCTURE_STORAGE, cash.storage, room, (room) => {
 			return room.find(FIND_STRUCTURES, {
 				filter: (structure) => structure.structureType == STRUCTURE_STORAGE }).map((obj) => obj.id);
 			})[0];
@@ -82,7 +82,7 @@ var cash = {
 
 	all_my_towers: {},
 	getAllMyTowers: function() {
-		return cash.getRoomEntity(STRUCTURE_TOWER+2, cash.all_my_towers, 'all', (room) => {
+		return cash.getRoomEntity(STRUCTURE_TOWER, cash.all_my_towers, 'all', (room) => {
 			return _.filter(Game.structures,
 				 (structure) => !!structure.my && structure.structureType == STRUCTURE_TOWER).map((obj) => obj.id);
 			 });
@@ -90,7 +90,7 @@ var cash = {
 
 	all_my_storages: {},
 	getStorages: function() {
-		return cash.getRoomEntity(STRUCTURE_STORAGE+2, cash.all_my_storages, 'all', (room) => {
+		return cash.getRoomEntity(STRUCTURE_STORAGE, cash.all_my_storages, 'all', (room) => {
  			return _.filter(Game.structures,
  				 (structure) => !!structure.my && structure.structureType == STRUCTURE_STORAGE).map((obj) => obj.id);
 			 });
