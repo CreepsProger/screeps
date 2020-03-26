@@ -4,7 +4,7 @@ var cash = {
 
 	version: 5,
 
-	initProperty: function(property, room = 'all', ids = '') {
+	initEntity: function(property, room = 'all') {
 		if(!Memory.cash) {
 			Memory.cash = {};
 		}
@@ -14,9 +14,21 @@ var cash = {
 		if(!Memory.cash[room][property] ||
 			 !Memory.cash[room][property].ver ||
 			 Memory.cash[room][property].ver != cash.version) {
-			Memory.cash[room][property] = { ids:ids, time:0, ver:cash.version };
+			Memory.cash[room][property] = { ids:0, time:0, ver:cash.version };
 		}
 		return Memory.cash[room][property];
+	},
+
+	getRoomEntity: function(type, cash_objects, room, get_ids) {
+		var entity = cash.initEntity(type, room.name);
+ 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
+ 			property.ids = get_ids(room);
+		}
+		if(property.time != Game.time) {
+			cash_objects = property.ids.map((id) => Game.getObjectById(id));
+ 			property.time = Game.time;
+ 		}
+		return cash_objects;
 	},
 
 	controller: {},
@@ -33,9 +45,25 @@ var cash = {
 		return cash.controller[room.name];
 	},
 
+	storage: 0,
+	getStorage: function(room) {
+		return getRoomEntity(STRUCTURE_STORAGE+1, cash.storage, room, (room) => {
+			return room.find(FIND_STRUCTURES, { filter:
+				(structure) => 	structure.structureType == STRUCTURE_STORAGE }).map((obj) => obj.id)[0];
+			});
+	},
+
+	containers: 0,
+	getContainers: function(room) {
+		return getRoomEntity(STRUCTURE_CONTAINER, cash.containers, room, (room) => {
+			return room.find(FIND_STRUCTURES, { filter:
+				(structure) => 	structure.structureType == STRUCTURE_CONTAINER }).map((obj) => obj.id);
+			});
+	},
+
 	extensions: {},
 	getExtensions: function(room) {
-		var property = cash.initProperty(STRUCTURE_EXTENSION,room.name);
+		var property = cash.initEntity(STRUCTURE_EXTENSION,room.name);
 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
 			property.ids = room.find(FIND_STRUCTURES, {
 				filter: (structure) => 	structure.structureType == STRUCTURE_SPAWN ||
@@ -50,7 +78,7 @@ var cash = {
 
 	links: {},
 	getLinks: function(room) {
-		var property = cash.initProperty(STRUCTURE_LINK,room.name);
+		var property = cash.initEntity(STRUCTURE_LINK,room.name);
 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
 			property.ids = room.find(FIND_STRUCTURES, {
 				filter: (structure) => 	structure.structureType == STRUCTURE_LINK }).map((obj) => obj.id);
@@ -64,7 +92,7 @@ var cash = {
 
 	towers: {},
 	getTowers: function(room) {
-		var property = cash.initProperty(STRUCTURE_TOWER,room.name);
+		var property = cash.initEntity(STRUCTURE_TOWER,room.name);
 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
 			property.ids = room.find(FIND_STRUCTURES, {
 				filter: (structure) => 	structure.structureType == STRUCTURE_TOWER }).map((obj) => obj.id);
@@ -78,7 +106,7 @@ var cash = {
 
 	all_my_towers: 0,
 	getAllMyTowers: function() {
-		var property = cash.initProperty(STRUCTURE_TOWER);
+		var property = cash.initEntity(STRUCTURE_TOWER);
 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
 			property.ids = _.filter(Game.structures,
 				 (structure) => !!structure.my && structure.structureType == STRUCTURE_TOWER).map((obj) => obj.id);
@@ -92,7 +120,7 @@ var cash = {
 
 	storages: 0,
 	getStorages: function() {
-		var property = cash.initProperty(STRUCTURE_STORAGE);
+		var property = cash.initEntity(STRUCTURE_STORAGE);
  		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
  			property.ids = _.filter(Game.structures,
  				 (structure) => !!structure.my && structure.structureType == STRUCTURE_STORAGE).map((obj) => obj.id);

@@ -113,23 +113,35 @@ var roleEnergyTransferer = {
 			//if(!target) {
 			//if(!target && (this_room != my_room || this_room_sources_are_not_empty)) {
 			if(!target && (this_room_sources_are_not_empty || !creep.getActiveBodyparts(WORK))) {
-				var closests = creep.pos.findInRange(FIND_MY_CREEPS, 2, {
+				var targs = []
+				creep.pos.findInRange(FIND_MY_CREEPS, 2, {
 					filter: (creep2) => {
 						return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 							creep2.memory.weight < creep.memory.weight;
 					}
-				});
-				var containers = creep.room.find(FIND_STRUCTURES, {
-					filter: (structure) => {
-						return (structure.structureType == STRUCTURE_CONTAINER ||
-										(structure.structureType == STRUCTURE_STORAGE && creep.getActiveBodyparts(WORK))) &&
-							this_room_config.containers.weight < creep.memory.weight &&
-							structure.store.getFreeCapacity() > 0;
-					}
-				});
-				const targs = containers.concat(closests);
+				}).reduce((l,c) => (l.push(c),l), targs);
+
+				cash.getContainers(creep.room).filter((cont) => {
+					return	this_room_config.containers.weight < creep.memory.weight &&
+									!!cont.store && cont.store.getFreeCapacity() > 0;
+					}).reduce((l,c) => (l.push(c),l), targs);
+				var storage = cash.getStorage(creep.room).filter((stg) => {
+					return	creep.getActiveBodyparts(WORK) &&
+									this_room_config.containers.weight < creep.memory.weight &&
+									!!stg.store && stg.store.getFreeCapacity() > 0;
+					});
+				targs.push(storage);
+				// var containers = creep.room.find(FIND_STRUCTURES, {
+				// 	filter: (structure) => {
+				// 		return (structure.structureType == STRUCTURE_CONTAINER ||
+				// 						(structure.structureType == STRUCTURE_STORAGE && creep.getActiveBodyparts(WORK))) &&
+				// 			this_room_config.containers.weight < creep.memory.weight &&
+				// 			structure.store.getFreeCapacity() > 0;
+				// 	}
+				// });
+				// const targs = containers.concat(closests);
 				if(targs.length > 0) {
-					target = targs.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+					target = targs.reduce((p,c) => !!p && !!c && creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				}
 			}
 
