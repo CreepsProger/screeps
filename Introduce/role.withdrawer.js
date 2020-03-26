@@ -14,14 +14,14 @@ var roleWithdrawer = {
 			roleNext.run(creep);
 			return;
 		}
-		
+
 		if(creep.memory.withdrawing && creep.store.getFreeCapacity() == 0) {
 			creep.memory.withdrawing = false;
 		}
 
 		const this_room = creep.room.name;
 		const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
-		
+
 		if(!creep.memory.withdrawing &&
 			 this_room == my_room &&
 			 creep.getActiveBodyparts(CARRY) > 0 &&
@@ -59,7 +59,7 @@ var roleWithdrawer = {
 				if(ruins.length > 0) {
 					var ruin = ruins.reduce((p,c) => tools.checkTarget(executer,p.id) &&
 																						creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-					if(!!tombstone && tools.checkTarget(executer,ruin.id)) {
+					if(!!ruin && tools.checkTarget(executer,ruin.id)) {
 						target = tools.setTarget(creep,ruin,ruin.id,roleWithdrawer.run);
 					}
 				}
