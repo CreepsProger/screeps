@@ -53,7 +53,7 @@ var cash = {
 			})[0];
 	},
 
-	containers: 0,
+	containers: [],
 	getContainers: function(room) {
 		return cash.getRoomEntity(STRUCTURE_CONTAINER, cash.containers, room, (room) => {
 			return room.find(FIND_STRUCTURES, { filter:
