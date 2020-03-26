@@ -108,14 +108,19 @@ var cash = {
 		// return property.objects;
 	},
 
+	storages: 0,
 	getStorages: function() {
 		var property = cash.initProperty(STRUCTURE_STORAGE);
  		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || property.time == 0) {
  			property.ids = _.filter(Game.structures,
  				 (structure) => !!structure.my && structure.structureType == STRUCTURE_STORAGE).map((obj) => obj.id);
  		}
+		if(property.time != Game.time) {
+			cash.storages = property.ids.map((id) => Game.getObjectById(id));
+ 			property.time = Game.time;
+ 		}
 		// if(true)
-			return property.ids.map((id) => Game.getObjectById(id));
+			return cash.storages;
  		// if(property.time != Game.time) {
  		// 	delete property.objects;
  		// 	property.objects = property.ids.map((id) => Game.getObjectById(id));
