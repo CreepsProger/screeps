@@ -66,14 +66,14 @@ var roleEnergyTransferer = {
 				var infras = [];
 				if(creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
 					var extensions = cash.getExtensions(creep.room).filter((e) => {
-						return 	e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+						return 	!!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 						 				tools.checkTarget(executer,e.id);
 						});
 						extensions.reduce((l,c) => (l.push(c),l), infras);
 								// infras = infras.concat(extensions);
 				}
 				var towers = cash.getTowers(creep.room).filter((t) => {
-					return	t.store.getFreeCapacity(RESOURCE_ENERGY) > 400 &&
+					return	!!t.store && t.store.getFreeCapacity(RESOURCE_ENERGY) > 400 &&
 					 				tools.checkTarget(executer,t.id);
 					});
 				towers.reduce((l,c) => (l.push(c),l), infras);
