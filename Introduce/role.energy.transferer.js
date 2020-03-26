@@ -83,12 +83,12 @@ var roleEnergyTransferer = {
 							return 	!!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 							 				tools.checkTarget(executer,e.id);
 							});
-						infras = cash.getTowers(creep.room).filter((t) => {
-							return	!!t.store && t.store.getFreeCapacity(RESOURCE_ENERGY) > 400 &&
-							 				tools.checkTarget(executer,t.id);
-							}).concat(infras);
 					}
 				}
+				infras = cash.getTowers(creep.room).filter((t) => {
+					return	!!t.store && t.store.getFreeCapacity(RESOURCE_ENERGY) > 400 &&
+					 				tools.checkTarget(executer,t.id);
+					}).concat(infras);
 
 				if(infras.length > 0) {
 					var infra = infras.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
