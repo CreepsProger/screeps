@@ -63,13 +63,13 @@ var roleEnergyTransferer = {
 			if(!target && this_room == my_room &&
 				 (!creep.getActiveBodyparts(WORK) || (this_room_sources_are_empty && creep.memory.rerun) || conditions.MAIN_ROOM_CRISIS())) {
 				var t = Game.cpu.getUsed();
-				var infras;
+				var infras = [];
 				var use_look = true;
 				if(creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
-					const look = creep.room.lookForAtArea(LOOK_STRUCTURES, creep.pos.y-1
-																															 , creep.pos.x-1
-																															 , creep.pos.y+1
-																															 , creep.pos.x+1
+					const look = creep.room.lookForAtArea(LOOK_STRUCTURES, creep.pos.y-2
+																															 , creep.pos.x-2
+																															 , creep.pos.y+2
+																															 , creep.pos.x+2
 																														   , true);
 					infras = look.filter((a) => {
 						return 	  a[LOOK_STRUCTURES].structureType == STRUCTURE_EXTENSION &&
@@ -77,18 +77,19 @@ var roleEnergyTransferer = {
 										  a[LOOK_STRUCTURES].store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 										tools.checkTarget(executer,a[LOOK_STRUCTURES].id);
 						}).map((a) => a[LOOK_STRUCTURES]);
+
 					if(infras.length == 0) {
 						use_look = false;
 						infras = cash.getExtensions(creep.room).filter((e) => {
 							return 	!!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 							 				tools.checkTarget(executer,e.id);
 							});
+						infras = cash.getTowers(creep.room).filter((t) => {
+							return	!!t.store && t.store.getFreeCapacity(RESOURCE_ENERGY) > 400 &&
+							 				tools.checkTarget(executer,t.id);
+							}).concat(infras);
 					}
 				}
-				infras = cash.getTowers(creep.room).filter((t) => {
-					return	!!t.store && t.store.getFreeCapacity(RESOURCE_ENERGY) > 400 &&
-					 				tools.checkTarget(executer,t.id);
-					}).concat(infras);
 
 				if(infras.length > 0) {
 					var infra = infras.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
