@@ -1,5 +1,4 @@
-//import {checkFlags} from 'main.flags.js';
-//import {checkMainCommit} from 'main.flags.js';
+
 
 module.exports.loop = function () {
 	var t = 0;
