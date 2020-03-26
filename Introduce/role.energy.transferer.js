@@ -100,6 +100,7 @@ var roleEnergyTransferer = {
 					}
 				}
 				if(infras.length == 0) {
+					use_look = false;
 					infras = cash.getTowers(creep.room).filter((t) => {
 						return	!!t.store && t.store.getFreeCapacity(RESOURCE_ENERGY) > 400 &&
 										tools.checkTarget(executer,t.id);
