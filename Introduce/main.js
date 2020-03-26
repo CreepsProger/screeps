@@ -14,6 +14,8 @@ var role = require('role.claimer');
 module.exports.loop = function () {
 	var dt = 0;
 	// perf.run();
+	if(!Memory.cpu_main_part)
+		Memory.cpu_main_part = {};
 					Memory.cpu_main_part[perf] += (dt = Game.cpu.getUsed()-dt,dt);
 
 	if(Game.time % constants.TICKS_TO_CHECK_NON_EXISTING == 0) {
