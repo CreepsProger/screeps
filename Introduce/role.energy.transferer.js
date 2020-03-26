@@ -63,6 +63,7 @@ var roleEnergyTransferer = {
 			if(!target && this_room == my_room &&
 				 (!creep.getActiveBodyparts(WORK) || (this_room_sources_are_empty && creep.memory.rerun) || conditions.MAIN_ROOM_CRISIS())) {
 				var t = Game.cpu.getUsed();
+				const look = creep.room.lookForAtArea(LOOK_STRUCTURES,creep.pos.y-1,creep.pos.x-1,creep.pos.y+1,creep.pos.x-1);
 				var infras;
 				if(creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
 					infras = cash.getExtensions(creep.room).filter((e) => {
@@ -85,6 +86,7 @@ var roleEnergyTransferer = {
 								if(dt > 0.2)
 									console.log( '⭕️', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 															, 'infra id:', target.id
+															, 'look:', JSON.stringify(look);
 													 		);
 							}
 						}
