@@ -16,7 +16,7 @@ module.exports.loop = function () {
 	// perf.run();
 	if(!Memory.cpu_main_part)
 		Memory.cpu_main_part = {perf:0, clearing:0, metrix:0, config:0, flags:0, links:0, towers:0, spawns:0, metrix2:0, others:0};
-					Memory.cpu_main_part[perf] += (dt = Game.cpu.getUsed()-dt,dt);
+					Memory.cpu_main_part.perf += (dt = Game.cpu.getUsed()-dt,dt);
 
 	if(Game.time % constants.TICKS_TO_CHECK_NON_EXISTING == 0) {
 		// console.log( '⏳', Game.cpu.getUsed() + '/' + Game.cpu.tickLimit);
@@ -72,13 +72,13 @@ module.exports.loop = function () {
 
 	Memory.cpu_main_part[clearing] = (dt = Game.cpu.getUsed()-dt,dt);
 
-	metrix.run();			Memory.cpu_main_part[metrix] += (dt = Game.cpu.getUsed()-dt,dt);
-	config.run();			Memory.cpu_main_part[config] += (dt = Game.cpu.getUsed()-dt,dt);
-	flags.run();			Memory.cpu_main_part[flags] += (dt = Game.cpu.getUsed()-dt,dt);
-	links.run();			Memory.cpu_main_part[links] += (dt = Game.cpu.getUsed()-dt,dt);
-	towers.run();			Memory.cpu_main_part[towers] += (dt = Game.cpu.getUsed()-dt,dt);
-	spawns.run();			Memory.cpu_main_part[spawns] += (dt = Game.cpu.getUsed()-dt,dt);
-	metrix.output();	Memory.cpu_main_part[metrix] += (dt = Game.cpu.getUsed()-dt,dt);
+	metrix.run();			Memory.cpu_main_part.metrix += (dt = Game.cpu.getUsed()-dt,dt);
+	config.run();			Memory.cpu_main_part.config += (dt = Game.cpu.getUsed()-dt,dt);
+	flags.run();			Memory.cpu_main_part.flags += (dt = Game.cpu.getUsed()-dt,dt);
+	links.run();			Memory.cpu_main_part.links += (dt = Game.cpu.getUsed()-dt,dt);
+	towers.run();			Memory.cpu_main_part.towers += (dt = Game.cpu.getUsed()-dt,dt);
+	spawns.run();			Memory.cpu_main_part.spawns += (dt = Game.cpu.getUsed()-dt,dt);
+	metrix.output();	Memory.cpu_main_part.metrix += (dt = Game.cpu.getUsed()-dt,dt);
 	// cash.getStorages();
 
 	delete Memory.targets;
@@ -92,7 +92,7 @@ module.exports.loop = function () {
 	var main_part_dt = Math.round((Game.cpu.getUsed()) * 100)/100;
 	Memory.cpu_main_part_dt += main_part_dt;
 
-	Memory.cpu_main_part[others] += (dt = Game.cpu.getUsed()-dt,dt);
+	Memory.cpu_main_part.others. += (dt = Game.cpu.getUsed()-dt,dt);
 	if(Game.time % constants.TICKS_TO_CHECK_CPU_MAIN_PART == 0) {
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, 'main delete run dt:', (dt = Game.cpu.getUsed()-dt,dt));
 		Memory.cpu_main_part = {perf:0, clearing:0, metrix:0, config:0, flags:0, links:0, towers:0, spawns:0, metrix2:0, others:0};
