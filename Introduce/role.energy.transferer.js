@@ -63,19 +63,18 @@ var roleEnergyTransferer = {
 			if(!target && this_room == my_room &&
 				 (!creep.getActiveBodyparts(WORK) || (this_room_sources_are_empty && creep.memory.rerun) || conditions.MAIN_ROOM_CRISIS())) {
 				var t = Game.cpu.getUsed();
-				var infras = [];
+				var infras;
 				if(creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
-					var extensions = cash.getExtensions(creep.room).filter((e) => {
+					infras = cash.getExtensions(creep.room).filter((e) => {
 						return 	!!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 						 				tools.checkTarget(executer,e.id);
 						});
-						infras = extensions;
 				}
-				var towers = cash.getTowers(creep.room).filter((t) => {
+				infras = cash.getTowers(creep.room).filter((t) => {
 					return	!!t.store && t.store.getFreeCapacity(RESOURCE_ENERGY) > 400 &&
 					 				tools.checkTarget(executer,t.id);
-					});
-				towers.reduce((l,c) => (l.push(c),l), infras);
+					}).concat(infras);
+
 				if(infras.length > 0) {
 					var infra = infras.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 					if(!!infra) {
