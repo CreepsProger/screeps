@@ -4,7 +4,7 @@ var cash = {
 
 	version: 5,
 
-	initProperty: function(property, room = 'all', ids = '') {
+	initProperty: function(property, room = 'all', ids = {''}) {
 		if(!Memory.cash) {
 			Memory.cash = {};
 		}
