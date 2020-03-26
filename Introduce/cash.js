@@ -47,6 +47,8 @@ var cash = {
 				filter: (structure) => 	structure.structureType == STRUCTURE_SPAWN ||
 																structure.structureType == STRUCTURE_EXTENSION }).map((obj) => obj.id);
 		}
+		return property.ids.map((id) => Game.getObjectById(id));
+
 		if(property.time != Game.time) {
 			// delete property.objects;
 			// property.objects = property.ids.map((id) => Game.getObjectById(id));
