@@ -68,6 +68,12 @@ var roleEnergyTransferer = {
 																														 , creep.pos.y+1
 																														 , creep.pos.x+1
 																													   , true);
+				const looks = look.filter((a) => {
+					return 	  a[LOOK_STRUCTURES].structureType == STRUCTURE_EXTENSION &&
+									!!a[LOOK_STRUCTURES].store &&
+									  a[LOOK_STRUCTURES].store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+									tools.checkTarget(executer,a[LOOK_STRUCTURES].id);
+					}).map((a) => a[LOOK_STRUCTURES]));
 				var infras;
 				if(creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
 					infras = cash.getExtensions(creep.room).filter((e) => {
@@ -90,7 +96,7 @@ var roleEnergyTransferer = {
 								if(dt > 0.2)
 									console.log( '⭕️', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 															, 'infra id:', target.id
-															, 'look:', JSON.stringify(look)
+															, 'looks:', JSON.stringify(looks)
 													 		);
 							}
 						}
