@@ -73,7 +73,7 @@ var roleEnergyTransferer = {
 									!!a[LOOK_STRUCTURES].store &&
 									  a[LOOK_STRUCTURES].store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 									tools.checkTarget(executer,a[LOOK_STRUCTURES].id);
-					}).map((a) => a[LOOK_STRUCTURES]));
+					}).map((a) => a[LOOK_STRUCTURES]);
 				var infras;
 				if(creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
 					infras = cash.getExtensions(creep.room).filter((e) => {
