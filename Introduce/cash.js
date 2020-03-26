@@ -31,7 +31,7 @@ var cash = {
 		return cash_objects[room.name];
 	},
 
-	controller: 0,
+	controller: {},
 	getController: function(room) {
 		return cash.getRoomEntity(STRUCTURE_CONTROLLER+1, cash.controller, room, (room) => {
 			return room.find(FIND_STRUCTURES, {
@@ -39,7 +39,7 @@ var cash = {
 			})[0];
 	},
 
-	storage: 0,
+	storage: {},
 	getStorage: function(room) {
 		return cash.getRoomEntity(STRUCTURE_STORAGE+1, cash.storage, room, (room) => {
 			return room.find(FIND_STRUCTURES, {
