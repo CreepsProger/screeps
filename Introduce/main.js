@@ -12,11 +12,11 @@ const cash = require('cash');
 var role = require('role.claimer');
 
 module.exports.loop = function () {
-	var dt = 0;
+	var t = 0;
 	// perf.run();
 	// if(!Memory.cpu_main_part)
 	// 	Memory.cpu_main_part = {perf:0, clearing:0, metrix:0, config:0, flags:0, links:0, towers:0, spawns:0, metrix2:0, others:0};
-	Memory.cpu_main_part.perf += (dt = Math.round((Game.cpu.getUsed()-dt)*100)/100);
+	Memory.cpu_main_part.perf += Math.round((Game.cpu.getUsed()-t)*100)/100); t = Game.cpu.getUsed();
 
 	if(Game.time % constants.TICKS_TO_CHECK_NON_EXISTING == 0) {
 		// console.log( '⏳', Game.cpu.getUsed() + '/' + Game.cpu.tickLimit);
@@ -70,15 +70,15 @@ module.exports.loop = function () {
 		}
 	}
 
-	Memory.cpu_main_part.clearing += (dt = Game.cpu.getUsed()-dt,Math.round(dt*100)/100);
+	Memory.cpu_main_part.clearing += Math.round((Game.cpu.getUsed()-t)*100)/100); t = Game.cpu.getUsed();
 
-	metrix.run();			Memory.cpu_main_part.metrix += (dt = Math.round((Game.cpu.getUsed()-dt)*100)/100);
-	config.run();			Memory.cpu_main_part.config += (dt = Math.round((Game.cpu.getUsed()-dt)*100)/100);
-	flags.run();			Memory.cpu_main_part.flags += (dt = Math.round((Game.cpu.getUsed()-dt)*100)/100);
-	links.run();			Memory.cpu_main_part.links += (dt = Math.round((Game.cpu.getUsed()-dt)*100)/100);
-	towers.run();			Memory.cpu_main_part.towers += (dt = Math.round((Game.cpu.getUsed()-dt)*100)/100);
-	spawns.run();			Memory.cpu_main_part.spawns += (dt = Math.round((Game.cpu.getUsed()-dt)*100)/100);
-	metrix.output();	Memory.cpu_main_part.metrix2 += (dt = Math.round((Game.cpu.getUsed()-dt)*100)/100);
+	metrix.run();			Memory.cpu_main_part.metrix += Math.round((Game.cpu.getUsed()-t)*100)/100); t = Game.cpu.getUsed();
+	config.run();			Memory.cpu_main_part.config += Math.round((Game.cpu.getUsed()-t)*100)/100); t = Game.cpu.getUsed();
+	flags.run();			Memory.cpu_main_part.flags += Math.round((Game.cpu.getUsed()-t)*100)/100); t = Game.cpu.getUsed();
+	links.run();			Memory.cpu_main_part.links += Math.round((Game.cpu.getUsed()-t)*100)/100); t = Game.cpu.getUsed();
+	towers.run();			Memory.cpu_main_part.towers += Math.round((Game.cpu.getUsed()-t)*100)/100); t = Game.cpu.getUsed();
+	spawns.run();			Memory.cpu_main_part.spawns += Math.round((Game.cpu.getUsed()-t)*100)/100); t = Game.cpu.getUsed();
+	metrix.output();	Memory.cpu_main_part.metrix2 += Math.round((Game.cpu.getUsed()-t)*100)/100); t = Game.cpu.getUsed();
 	// cash.getStorages();
 
 	delete Memory.targets;
@@ -100,6 +100,7 @@ module.exports.loop = function () {
 						   , (dt = Math.round((Game.cpu.getUsed()-dt)*100)/100)
 						   , dt
 						 );
+		delete Memory.cpu_main_part;
 		Memory.cpu_main_part = {perf:0, clearing:0, metrix:0, config:0, flags:0, links:0, towers:0, spawns:0, metrix2:0, others:0};
 	}
 
