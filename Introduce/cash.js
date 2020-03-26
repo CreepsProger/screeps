@@ -4,29 +4,29 @@ var cash = {
 
 	version: 5,
 
-	initEntity: function(property, room = 'all') {
+	initEntity: function(type, room = 'all') {
 		if(!Memory.cash) {
 			Memory.cash = {};
 		}
 		if(!Memory.cash[room]) {
 			Memory.cash[room] = {};
 		}
-		if(!Memory.cash[room][property] ||
-			 !Memory.cash[room][property].ver ||
-			 Memory.cash[room][property].ver != cash.version) {
-			Memory.cash[room][property] = { ids:0, time:0, ver:cash.version };
+		if(!Memory.cash[room][type] ||
+			 !Memory.cash[room][type].ver ||
+			 Memory.cash[room][type].ver != cash.version) {
+			Memory.cash[room][type] = { ids:0, time:0, ver:cash.version };
 		}
-		return Memory.cash[room][property];
+		return Memory.cash[room][type];
 	},
 
 	getRoomEntity: function(type, cash_objects, room, get_ids) {
 		var entity = cash.initEntity(type, room.name);
  		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || entity.time == 0) {
- 			property.ids = get_ids(room);
+ 			entity.ids = get_ids(room);
 		}
-		if(property.time != Game.time) {
-			cash_objects = property.ids.map((id) => Game.getObjectById(id));
- 			property.time = Game.time;
+		if(entity.time != Game.time) {
+			cash_objects = entity.ids.map((id) => Game.getObjectById(id));
+ 			entity.time = Game.time;
  		}
 		return cash_objects;
 	},
