@@ -236,7 +236,7 @@ var role = {
 				}
 			});
 			if(emptysources.length > 0) {
-				target = tools.setTarget(creep,emptysources[0],emptysources[0].id,role.run);
+				// target = tools.setTarget(creep,emptysources[0],emptysources[0].id,role.run);
 			}
 			if(!!target) return target;
 		}
