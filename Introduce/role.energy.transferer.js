@@ -179,10 +179,10 @@ var roleEnergyTransferer = {
 
 			metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
 			const this_room_containers_are_empty = tools.areEmptyContainers(creep);
-			if(this_room_containers_are_empty)
-				console.log( '🔜💡1️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
-									, 'this_room_containers_are_empty:', this_room_containers_are_empty
-								 );
+			// if(this_room_containers_are_empty)
+			// 	console.log( '🔜💡1️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
+			// 						, 'this_room_containers_are_empty:', this_room_containers_are_empty
+			// 					 );
 
 			if(!target &&
 				 !creep.getActiveBodyparts(WORK) &&
@@ -202,7 +202,7 @@ var roleEnergyTransferer = {
 						 (!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id)
 						) {
 							var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
-							if(dt > 0.003)
+							if(dt > 0.01)
 								console.log( '🔜💡1️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 													, 'range to store:', range_to_store
 													, creep.pos.roomName, '->', target.pos.roomName
@@ -232,7 +232,7 @@ var roleEnergyTransferer = {
 						 (!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || false)
 						) {
 						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
-						if(dt > 0.003)
+						if(dt > 0.01)
 							console.log( '🔜💡2️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 													, 'range to store:', range_to_store
 													, creep.pos.roomName, '->', target.pos.roomName
@@ -269,7 +269,7 @@ var roleEnergyTransferer = {
 						 (!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id)
 						) {
 						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
-						if(dt > 0.003)
+						if(dt > 0.01)
 							console.log( '🔜💡3️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 													, 'range to store:', range_to_store
 													, creep.pos.roomName, '->', target.pos.roomName
