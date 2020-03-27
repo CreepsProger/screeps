@@ -2,7 +2,7 @@ const constants = require('main.constants');
 
 var cash = {
 
-	version: 12,
+	version: 13,
 
 	initEntry: function(type, entry_name = 'all') {
 		if(!Memory.cash ||
@@ -20,7 +20,7 @@ var cash = {
 		return Memory.cash[type][entry_name];
 	},
 
-	getEntry: function(type, cash_objects, entry_name, get_ids) {
+	getEntry: function(cash_objects, type, entry_name, get_ids) {
 		var entry = cash.initEntry(type, entry_name);
  		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || entry.time == 0) {
  			entry.ids = get_ids();
