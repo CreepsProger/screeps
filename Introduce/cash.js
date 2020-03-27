@@ -13,9 +13,12 @@ var cash = {
 		if(!Memory.cash[type]) {
 			Memory.cash[type] = {};
 		}
-		const dir = entry_path+'|.'.split('|');
+		const dir = entry_path+'|all'.split('|');
 		const entry = dir[0];
 		const subentry = dir[1];
+		if(!Memory.cash[type][entry]) {
+			Memory.cash[type][entry] = {};
+		}
 		if(!Memory.cash[type][entry][subentry]) {
 			Memory.cash[type][entry][subentry] = { ids:0, time:0 };
 		}
