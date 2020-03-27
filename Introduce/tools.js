@@ -57,6 +57,13 @@ var tools = {
 		return cash.getContainers(creep.room).filter( (cont) => cont.store.getUsedCapacity(RESOURCE_ENERGY) > 0).length == 0;
 	},
 
+	areFullContainers: function(creep) {
+		return cash.getContainers(creep.room).filter( (cont) => cont.store.getFreeCapacity()) > 0).length == 0;
+		// return creep.room.find(FIND_STRUCTURES, {filter: (structure) =>
+		// 	structure.structureType == STRUCTURE_CONTAINER &&
+		// 	structure.store.getFreeCapacity() > 0}).length == 0;
+	},
+
 	moveTo: function(creep,target) {
 		var err = creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
 
@@ -83,12 +90,6 @@ var tools = {
 
 	areEmptySources: function(creep) {
 		return creep.room.find(FIND_SOURCES, {filter: (source) => source.energy > 0}).length == 0;
-	},
-
-	areFullContainers: function(creep) {
-		return creep.room.find(FIND_STRUCTURES, {filter: (structure) =>
-			structure.structureType == STRUCTURE_CONTAINER &&
-			structure.store.getFreeCapacity() > 0}).length == 0;
 	},
 
 	checkTarget: function(executer,id) {
