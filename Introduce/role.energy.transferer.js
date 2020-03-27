@@ -183,7 +183,7 @@ var roleEnergyTransferer = {
 			if(!target &&
 				 !creep.getActiveBodyparts(WORK) &&
 				 creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
-				 this_room_containers_are_empty &&
+				 (this_room_containers_are_empty || !creep.room.storage) &&
 				 creep.memory.rerun) {
 				var t = Game.cpu.getUsed();
 				var storages = cash.getStorages().filter((s) => s.store.getUsedCapacity(RESOURCE_ENERGY) < constants.START_UPGRADING_ENERGY);;
@@ -211,7 +211,7 @@ var roleEnergyTransferer = {
 			if(!target &&
 				 !creep.getActiveBodyparts(WORK) &&
 				 creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
-				 this_room_containers_are_empty &&
+				 (this_room_containers_are_empty || !creep.room.storage) &&
 				 creep.memory.rerun) {
 				var t = Game.cpu.getUsed();
 				var storages = cash.getStorages().filter((s) => s.store.getUsedCapacity(RESOURCE_ENERGY) < 2*constants.START_UPGRADING_ENERGY);;
