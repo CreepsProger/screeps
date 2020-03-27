@@ -173,12 +173,14 @@ var roleEnergyTransferer = {
 				if(targs.length > 0) {
 					target = targs.reduce((p,c) => !!p && !!c && creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				}
-				if(!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id) {
-						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
-						if(dt > 0.01)
-							console.log( '🔜💡⬜️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
-												, 'target:', (!!target.name)? target.name:target.id + '(' + target.store.getUsedCapacity(RESOURCE_ENERGY) + ')'
-											 );
+				if(!!target) {
+					if(!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id) {
+							var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
+							if(dt > 0.01)
+								console.log( '🔜💡⬜️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
+													, 'target:', (!!target.name)? target.name:target.id + '(' + target.store.getUsedCapacity(RESOURCE_ENERGY) + ')'
+												 );
+					}
 				}
 			}
 
