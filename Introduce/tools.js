@@ -59,9 +59,6 @@ var tools = {
 
 	areFullContainers: function(creep) {
 		return cash.getContainers(creep.room).filter( (cont) => !!cont && cont.store.getFreeCapacity() > 0).length == 0;
-		// return creep.room.find(FIND_STRUCTURES, {filter: (structure) =>
-		// 	structure.structureType == STRUCTURE_CONTAINER &&
-		// 	structure.store.getFreeCapacity() > 0}).length == 0;
 	},
 
 	moveTo: function(creep,target) {
