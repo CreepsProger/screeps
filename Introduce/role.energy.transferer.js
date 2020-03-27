@@ -80,7 +80,7 @@ var roleEnergyTransferer = {
 										tools.checkTarget(executer,t.id);
 						});
 				if(towers.length > 0) {
-					infra = towers.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c,null);
+					infra = towers.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				}
 				var use_find = true;
 				if(!infra && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
