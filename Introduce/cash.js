@@ -21,13 +21,13 @@ var cash = {
 	},
 
 	getEntry: function(type, cash_objects, entry, get_ids) {
-		var entity = cash.initEntry(type, entry);
+		var entry = cash.initEntry(type, entry);
  		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || entity.time == 0) {
- 			entity.ids = get_ids();
+ 			entry.ids = get_ids();
 		}
-		if(entity.time != Game.time) {
-			cash_objects[room.name] = entity.ids.map((id) => Game.getObjectById(id));
- 			entity.time = Game.time;
+		if(entry.time != Game.time) {
+			cash_objects[entry] = entry.ids.map((id) => Game.getObjectById(id));
+ 			entry.time = Game.time;
  		}
 		return cash_objects[room.name];
 	},
