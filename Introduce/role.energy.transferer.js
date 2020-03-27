@@ -198,7 +198,7 @@ var roleEnergyTransferer = {
 						 (!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id)
 						) {
 							var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
-							if(dt > 0.03)
+							if(dt > 0.003)
 								console.log( '🔜💡1️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 													, 'range to store:', range_to_store
 													, creep.pos.roomName, '->', target.pos.roomName
@@ -228,7 +228,7 @@ var roleEnergyTransferer = {
 						 (!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || false)
 						) {
 						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
-						if(dt > 0.03)
+						if(dt > 0.003)
 							console.log( '🔜💡2️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 													, 'range to store:', range_to_store
 													, creep.pos.roomName, '->', target.pos.roomName
@@ -265,7 +265,7 @@ var roleEnergyTransferer = {
 						 (!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id)
 						) {
 						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
-						if(dt > 0.03)
+						if(dt > 0.003)
 							console.log( '🔜💡3️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 													, 'range to store:', range_to_store
 													, creep.pos.roomName, '->', target.pos.roomName
