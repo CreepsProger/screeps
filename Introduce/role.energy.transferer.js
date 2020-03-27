@@ -52,7 +52,17 @@ var roleEnergyTransferer = {
 			var target;
 
 			if(!target) {
+				var t = Game.cpu.getUsed();
 				 target = links.getTargetLinkToTransferEnergy(creep, executer, roleEnergyTransferer.run, this_room_config.containers.weight);
+				 if(!!target) {
+					 if(creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || true) {
+						 var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
+						 if(dt > 0.01)
+							 console.log( '🔶', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
+													 , 'link:', JSON.stringify(target)
+													 );
+					 }
+				 }
 			}
 
 			const this_room_sources_are_empty = tools.areEmptySources(creep);
@@ -130,18 +140,19 @@ var roleEnergyTransferer = {
 			//if(!target) {
 			//if(!target && (this_room != my_room || this_room_sources_are_not_empty)) {
 			if(!target && (this_room_sources_are_not_empty || !creep.getActiveBodyparts(WORK))) {
-				var targs = []
-				creep.pos.findInRange(FIND_MY_CREEPS, 2, {
+				var t = Game.cpu.getUsed();
+				var targs = creep.pos.findInRange(FIND_MY_CREEPS, 2, {
 					filter: (creep2) => {
 						return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 							creep2.memory.weight < creep.memory.weight;
 					}
-				}).reduce((l,c) => (l.push(c),l), targs);
+				});
 
-				cash.getContainers(creep.room).filter((cont) => {
-					return	this_room_config.containers.weight < creep.memory.weight &&
+				if(!targs) {
+					targs = cash.getContainers(creep.room).filter((cont) => {
+						return	this_room_config.containers.weight < creep.memory.weight &&
 									!!cont && !!cont.store && cont.store.getFreeCapacity() > 0;
-					}).reduce((l,c) => (l.push(c),l), targs);
+					});
 
 				if(!!creep.room.storage &&
 						creep.getActiveBodyparts(WORK) &&
@@ -160,6 +171,13 @@ var roleEnergyTransferer = {
 				// const targs = containers.concat(closests);
 				if(targs.length > 0) {
 					target = targs.reduce((p,c) => !!p && !!c && creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+				}
+				if(!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id) {
+						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
+						if(dt > 0.01)
+							console.log( '🔜💡⬜️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
+												, 'target:', (!!target.name)? target.name:target.id + '(' + target.store.getUsedCapacity(RESOURCE_ENERGY) + ')'
+											 );
 				}
 			}
 
