@@ -153,6 +153,7 @@ var roleEnergyTransferer = {
 						return	this_room_config.containers.weight < creep.memory.weight &&
 									!!cont && !!cont.store && cont.store.getFreeCapacity() > 0;
 					});
+				}
 
 				if(!!creep.room.storage &&
 						creep.getActiveBodyparts(WORK) &&
