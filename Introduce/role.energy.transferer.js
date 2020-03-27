@@ -85,7 +85,7 @@ var roleEnergyTransferer = {
 				var use_find;
 				if(!infra && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
 					use_find = true;
-					var exts = creep.pos.findInRange(FIND_STRUCTURES, 2, {
+					var exts = creep.pos.findInRange(FIND_STRUCTURES, 1, {
 						filter: (structure) => {
 							return ( structure.structureType == STRUCTURE_SPAWN ||
 													structure.structureType == STRUCTURE_EXTENSION)  &&
