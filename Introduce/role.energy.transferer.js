@@ -94,7 +94,7 @@ var roleEnergyTransferer = {
 					if(infras.length == 0) {
 						use_look = false;
 						infras = cash.getExtensions(creep.room).filter((e) => {
-							return 	!!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+							return 	!!e && !!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 							 				tools.checkTarget(executer,e.id);
 							});
 					}
