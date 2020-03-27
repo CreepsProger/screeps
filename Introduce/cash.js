@@ -2,9 +2,9 @@ const constants = require('main.constants');
 
 var cash = {
 
-	version: 13,
+	version: 14,
 
-	initEntry: function(type, entry_name = 'all') {
+	initEntry: function(type, entry_path = 'all') {
 		if(!Memory.cash ||
 			 !Memory.cash.version ||
 				Memory.cash.version != cash.version) {
@@ -13,8 +13,11 @@ var cash = {
 		if(!Memory.cash[type]) {
 			Memory.cash[type] = {};
 		}
-		if(!Memory.cash[type][entry_name]) {
-			Memory.cash[type][entry_name] = { ids:0, time:0 };
+		const dir = entry_path+'|.'.split('|');
+		const entry = dir[0];
+		const subentry = dir[1];
+		if(!Memory.cash[type][entry][subentry]) {
+			Memory.cash[type][entry][subentry] = { ids:0, time:0 };
 		}
 
 		return Memory.cash[type][entry_name];
@@ -59,7 +62,7 @@ var cash = {
 	pos_extensions: {},
 	getPosExtensions: function(creep) {
 		return cash.getEntry( cash.pos_extensions, STRUCTURE_EXTENSION
-												 , creep.room.name + '-' + creep.pos.x + ',' + creep.pos.y
+												 , creep.room.name + '|' + creep.pos.x + ',' + creep.pos.y
 												 , () => {
 			return creep.pos.findInRange(FIND_STRUCTURES, 2, {
 				filter: (structure) => structure.structureType == STRUCTURE_SPAWN ||
