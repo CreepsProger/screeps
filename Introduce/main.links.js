@@ -41,7 +41,7 @@ var links = {
 		 var target;
 		 if(true) {
 			 var link_objs = cash.getLinks(creep.room).filter( (link) => {
-					 return !!link.store && link.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
+					 return !!link && link.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 					 				!!links.links.find((ft) => ft.to == link.id) &&
 					 				tools.checkTarget(executer,link.id);
 			   }
