@@ -1,4 +1,5 @@
 const constants = require('main.constants');
+const cash = require('cash');
 
 // C1         C2         C3     T1  T2  T3
 // C1(T1)
@@ -52,10 +53,8 @@ var tools = {
 		return range;
 	},
 
-	areFullContainers: function(creep) {
-		return creep.room.find(FIND_STRUCTURES, {filter: (structure) =>
-			structure.structureType == STRUCTURE_CONTAINER &&
-			structure.store.getFreeCapacity() > 0}).length == 0;
+	areEmptyContainers: function(creep) {
+		return cash.getContainers(creep.room).filter( (cont) => cont.store.getUsedCapacity() > 0}).length == 0;
 	},
 
 	moveTo: function(creep,target) {
@@ -84,6 +83,12 @@ var tools = {
 
 	areEmptySources: function(creep) {
 		return creep.room.find(FIND_SOURCES, {filter: (source) => source.energy > 0}).length == 0;
+	},
+
+	areFullContainers: function(creep) {
+		return creep.room.find(FIND_STRUCTURES, {filter: (structure) =>
+			structure.structureType == STRUCTURE_CONTAINER &&
+			structure.store.getFreeCapacity() > 0}).length == 0;
 	},
 
 	checkTarget: function(executer,id) {
