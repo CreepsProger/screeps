@@ -178,9 +178,11 @@ var role = {
 			target = creep.room.storage;
 			if(!!target) return target;
 		}
+		
+		const this_room_containers_are_empty = tools.areEmptyContainers(creep);
 
 		if(!target &&
-			 !creep.getActiveBodyparts(WORK) && creep.memory.rerun &&
+			 !creep.getActiveBodyparts(WORK) && creep.memory.rerun && this_room_containers_are_empty &&
 			 !!creep.room.storage &&
 			 !!creep.room.storage.my &&
 			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 2*constants.START_UPGRADING_ENERGY) {
