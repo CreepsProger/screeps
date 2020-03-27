@@ -66,10 +66,10 @@ var roleEnergyTransferer = {
 				var infras = [];
 				var use_look = true;
 				if(creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
-					const look = creep.room.lookForAtArea(LOOK_STRUCTURES, creep.pos.y-1
-																															 , creep.pos.x-1
-																															 , creep.pos.y+1
-																															 , creep.pos.x+1
+					const look = creep.room.lookForAtArea(LOOK_STRUCTURES, creep.pos.y>0?creep.pos.y-1:creep.pos.y
+																															 , creep.pos.x>0?creep.pos.x-1:creep.pos.x
+																															 , creep.pos.y<49?creep.pos.y+1:creep.pos.y
+																															 , creep.pos.x<49?creep.pos.x+1:creep.pos.x
 																														   , true);
 					infras = look.filter((a) => {
 						return 	  a[LOOK_STRUCTURES].structureType == STRUCTURE_EXTENSION &&
@@ -79,10 +79,10 @@ var roleEnergyTransferer = {
 						}).map((a) => a[LOOK_STRUCTURES]);
 
 					if(infras.length == 0) {
-						const look = creep.room.lookForAtArea(LOOK_STRUCTURES, creep.pos.y-2
-																																 , creep.pos.x-2
-																																 , creep.pos.y+2
-																																 , creep.pos.x+2
+						const look = creep.room.lookForAtArea(LOOK_STRUCTURES, creep.pos.y>1?creep.pos.y-2:creep.pos.y
+																															   , creep.pos.x>1?creep.pos.x-2:creep.pos.x
+																															   , creep.pos.y<48?creep.pos.y+2:creep.pos.y
+																															   , creep.pos.x<48?creep.pos.x+2:creep.pos.x
 																															   , true);
 						infras = look.filter((a) => {
 							return 	  a[LOOK_STRUCTURES].structureType == STRUCTURE_EXTENSION &&
