@@ -188,8 +188,10 @@ var roleEnergyTransferer = {
 				var t = Game.cpu.getUsed();
 				var storages = cash.getStorages().filter((s) => s.store.getUsedCapacity(RESOURCE_ENERGY) < constants.START_UPGRADING_ENERGY);;
 				if(storages.length > 0) {
-					target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
-																					< c.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,c.pos)? p:c);
+					// target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
+					// 																< c.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,c.pos)? p:c);
+					target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY)
+																					< c.store.getUsedCapacity(RESOURCE_ENERGY)? p:c);
 					const range_to_store = tools.getRangeTo(creep.pos,target.pos);
 					const store_energy_value = target.store.getUsedCapacity(RESOURCE_ENERGY);
 					if(range_to_store >= constants.RANGE_TO_STORE_1_TO_CONSOLE_LOG &&
@@ -216,8 +218,10 @@ var roleEnergyTransferer = {
 				var t = Game.cpu.getUsed();
 				var storages = cash.getStorages().filter((s) => s.store.getUsedCapacity(RESOURCE_ENERGY) < 2*constants.START_UPGRADING_ENERGY);;
 				if(storages.length > 0) {
-					target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
-																	 				< c.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,c.pos)? p:c);
+					// target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
+					// 												 				< c.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,c.pos)? p:c);
+					target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY)
+																	 				< c.store.getUsedCapacity(RESOURCE_ENERGY)? p:c);
 					const range_to_store = tools.getRangeTo(creep.pos,target.pos);
 					const store_energy_value = target.store.getUsedCapacity(RESOURCE_ENERGY);
 					if(range_to_store >= constants.RANGE_TO_STORE_2_TO_CONSOLE_LOG &&
