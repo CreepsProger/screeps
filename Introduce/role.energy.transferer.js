@@ -84,15 +84,18 @@ var roleEnergyTransferer = {
 				}
 				var use_find = true;
 				if(!infra && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
-					// infra = creep.pos.findInRange(FIND_STRUCTURES, 3, {
-					// 	filter: (structure) => {
-					// 		return ( structure.structureType == STRUCTURE_SPAWN ||
-					// 								structure.structureType == STRUCTURE_EXTENSION)  &&
-					// 						structure.store &&
-					// 						structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-					// 						tools.checkTarget(executer,structure.id);
-					// 		}
-					// 	});
+					var exts = creep.pos.findInRange(FIND_STRUCTURES, 3, {
+						filter: (structure) => {
+							return ( structure.structureType == STRUCTURE_SPAWN ||
+													structure.structureType == STRUCTURE_EXTENSION)  &&
+											structure.store &&
+											structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+											tools.checkTarget(executer,structure.id);
+							}
+						});
+					if(exts.length > 0) {
+						infra = exts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+					}
 
 
 
@@ -124,10 +127,13 @@ var roleEnergyTransferer = {
 					// }
 					if(!infra) {
 						use_find = false;
-						infra = cash.getExtensions(creep.room).filter((e) => {
+						var exts = cash.getExtensions(creep.room).filter((e) => {
 							return 	!!e && !!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 							 				tools.checkTarget(executer,e.id);
-							}).reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+							})
+						if(exts.length > 0) {
+							infra = exts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+						}
 					}
 				}
 
