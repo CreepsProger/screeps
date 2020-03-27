@@ -71,13 +71,13 @@ var roleEnergyTransferer = {
 			// metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
 
 			if(!target && this_room == my_room &&
-				 (!creep.getActiveBodyparts(WORK) || (this_room_sources_are_empty && creep.memory.rerun) || conditions.MAIN_ROOM_CRISIS())) {
+				 (!creep.getActiveBodyparts(WORK) ||
+				  (this_room_sources_are_empty && creep.memory.rerun) || conditions.MAIN_ROOM_CRISIS())) {
 				var t = Game.cpu.getUsed();
 				var infra = cash.getTowers(creep.room).filter((t) => {
 						return	!!t && !!t.store && t.store.getFreeCapacity(RESOURCE_ENERGY) > 400 &&
 										tools.checkTarget(executer,t.id);
 						}).reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-				}
 				var use_find = true;
 				if(!infra == 0 && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
 					infra = creep.pos.findInRange(FIND_STRUCTURES, 3, {
@@ -133,7 +133,6 @@ var roleEnergyTransferer = {
  																 , 'infra id:', target.id
 																 , use_look, 'infras:', JSON.stringify(infras)
 													 			);
-							}
 						}
 					}
 				}
