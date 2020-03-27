@@ -22,7 +22,7 @@ var cash = {
 
 	getEntry: function(type, cash_objects, entry, get_ids) {
 		var entry = cash.initEntry(type, entry);
- 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || entity.time == 0) {
+ 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || entry.time == 0) {
  			entry.ids = get_ids();
 		}
 		if(entry.time != Game.time) {
