@@ -68,7 +68,7 @@ var role = {
 				const canAttack2 = tough_less_then_half && (creep.getActiveBodyparts(RANGED_ATTACK) || creep.getActiveBodyparts(ATTACK));
 				const canHeal = tough_more_then_half && creep.getActiveBodyparts(HEAL);
 				const canHeal2 = tough_less_then_half && creep.getActiveBodyparts(HEAL);
-				
+
 				if(creep.memory.n == 1276) {
 					console.log(JSON.stringify({tough_count: tough_count, shouldHeal: shouldHeal, canAttack: canAttack, canAttack2: canAttack2}));
 				}
@@ -86,7 +86,7 @@ var role = {
 						target = rampart;
 					}
 				}
-				
+
 				if(creep.memory.n == 1276) {
 					console.log(JSON.stringify({n:creep.memory.n, my_heal_room: my_heal_room, shouldHeal: shouldHeal, canAttack: canAttack, canAttack2: canAttack2}));
 				}
@@ -224,7 +224,7 @@ var role = {
 					target = DP2.pos;
 				}
 
-				if(!target && this_room != my_room && !shouldHeal) {
+				if(!target && this_room != my_room && canAttack /*!shouldHeal*/) {
 					const my_path_room = my_room_config.path_rooms[this_room];
 					const exit = creep.room.findExitTo(my_path_room);
 					target = creep.pos.findClosestByPath(exit);
