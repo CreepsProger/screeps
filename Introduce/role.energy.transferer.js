@@ -96,35 +96,6 @@ var roleEnergyTransferer = {
 					if(exts.length > 0) {
 						infra = exts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 					}
-
-
-
-
-					// const look = creep.room.lookForAtArea(LOOK_STRUCTURES, creep.pos.y>0?creep.pos.y-1:creep.pos.y
-					// 																										 , creep.pos.x>0?creep.pos.x-1:creep.pos.x
-					// 																										 , creep.pos.y<49?creep.pos.y+1:creep.pos.y
-					// 																										 , creep.pos.x<49?creep.pos.x+1:creep.pos.x
-					// 																									   , true);
-					// infras = look.filter((a) => {
-					// 	return 	  a[LOOK_STRUCTURES].structureType == STRUCTURE_EXTENSION &&
-					// 					!!a[LOOK_STRUCTURES].store &&
-					// 					  a[LOOK_STRUCTURES].store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-					// 					tools.checkTarget(executer,a[LOOK_STRUCTURES].id);
-					// 	}).map((a) => a[LOOK_STRUCTURES]);
-					//
-					// if(infras.length == 0) {
-					// 	const look = creep.room.lookForAtArea(LOOK_STRUCTURES, creep.pos.y>1?creep.pos.y-2:creep.pos.y
-					// 																										   , creep.pos.x>1?creep.pos.x-2:creep.pos.x
-					// 																										   , creep.pos.y<48?creep.pos.y+2:creep.pos.y
-					// 																										   , creep.pos.x<48?creep.pos.x+2:creep.pos.x
-					// 																										   , true);
-					// 	infras = look.filter((a) => {
-					// 		return 	  a[LOOK_STRUCTURES].structureType == STRUCTURE_EXTENSION &&
-					// 						!!a[LOOK_STRUCTURES].store &&
-					// 						  a[LOOK_STRUCTURES].store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-					// 						tools.checkTarget(executer,a[LOOK_STRUCTURES].id);
-					// 		}).map((a) => a[LOOK_STRUCTURES]);
-					// }
 					if(!infra) {
 						use_find = false;
 						var exts = cash.getExtensions(creep.room).filter((e) => {
@@ -142,7 +113,7 @@ var roleEnergyTransferer = {
 					if(!!target) {
 						if(creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || true) {
 							var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
-							if(dt > 0.01)
+							if(dt > 0.3)
 								console.log( '⭕️', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
  																 , 'infra id:', target.id
 																 , use_find, 'infra:', JSON.stringify(infra)
