@@ -63,8 +63,7 @@ var cash = {
 												 , (room) => {
 			return creep.pos.findInRange(FIND_STRUCTURES, 2, {
 				filter: (structure) => structure.structureType == STRUCTURE_SPAWN ||
-											structure.structureType == STRUCTURE_EXTENSION
-					}).map((obj) => obj.id);
+															 structure.structureType == STRUCTURE_EXTENSION}).map((obj) => obj.id);
 			});
 	},
 
