@@ -131,7 +131,7 @@ var roleEnergyTransferer = {
 							if(dt > 0.01)
 								console.log( '⭕️', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
  																 , 'infra id:', target.id
-																 , use_look, 'infras:', JSON.stringify(infras)
+																 , use_find, 'infra:', JSON.stringify(infra)
 													 			);
 						}
 					}
