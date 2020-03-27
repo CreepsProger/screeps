@@ -2,7 +2,7 @@ const constants = require('main.constants');
 
 var cash = {
 
-	version: 9,
+	version: 10,
 
 	initEntity: function(type, room = 'all') {
 		if(!Memory.cash ||
@@ -10,13 +10,14 @@ var cash = {
 				Memory.cash.version != cash.version) {
 			Memory.cash = {version:cash.version};
 		}
-		if(!Memory.cash[room]) {
-			Memory.cash[room] = {};
+		if(!Memory.cash[type]) {
+			Memory.cash[type] = {};
 		}
-		if(!Memory.cash[room][type]) {
-			Memory.cash[room][type] = { ids:0, time:0 };
+		if(!Memory.cash[type][room]) {
+			Memory.cash[type][room] = { ids:0, time:0 };
 		}
-		return Memory.cash[room][type];
+
+		return Memory.cash[type][room];
 	},
 
 	getEntity: function(type, cash_objects, room, get_ids) {
@@ -52,6 +53,18 @@ var cash = {
 		return cash.getEntity(STRUCTURE_CONTAINER, cash.containers, room, (room) => {
 			return room.find(FIND_STRUCTURES, {
 				filter: (structure) => structure.structureType == STRUCTURE_CONTAINER }).map((obj) => obj.id);
+			});
+	},
+
+	pos_extensions: {},
+	getCloseExtensions: function(creep) {
+		return cash.getEntity( STRUCTURE_EXTENSION, cash.pos_extensions
+												 , creep.room.name + '-' + creep.pos.x + ',' + creep.pos.y
+												 , (room) => {
+			return creep.pos.findInRange(FIND_STRUCTURES, 2, {
+				filter: (structure) => structure.structureType == STRUCTURE_SPAWN ||
+											structure.structureType == STRUCTURE_EXTENSION;
+					}).map((obj) => obj.id);
 			});
 	},
 
