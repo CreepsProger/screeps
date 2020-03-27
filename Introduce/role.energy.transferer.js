@@ -79,7 +79,7 @@ var roleEnergyTransferer = {
 										tools.checkTarget(executer,t.id);
 						}).reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c,null);
 				var use_find = true;
-				if(!infra == 0 && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
+				if(!infra && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
 					infra = creep.pos.findInRange(FIND_STRUCTURES, 3, {
 						filter: (structure) => {
 							( structure.structureType == STRUCTURE_SPAWN ||
