@@ -85,7 +85,10 @@ var roleEnergyTransferer = {
 				var use_find;
 				if(!infra && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
 					use_find = true;
-					var exts = cash.getPosExtensions(creep);
+					var exts = cash.getPosExtensions(creep).filter((e) => {
+						return 	!!e && !!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+										tools.checkTarget(executer,e.id);
+						});
 					// var exts = creep.pos.findInRange(FIND_STRUCTURES, 1, {
 					// 	filter: (structure) => {
 					// 		return ( structure.structureType == STRUCTURE_SPAWN ||
@@ -103,7 +106,7 @@ var roleEnergyTransferer = {
 						var exts = cash.getExtensions(creep.room).filter((e) => {
 							return 	!!e && !!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 							 				tools.checkTarget(executer,e.id);
-							})
+							});
 						if(exts.length > 0) {
 							infra = exts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 						}
