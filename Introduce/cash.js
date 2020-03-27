@@ -23,7 +23,7 @@ var cash = {
 			Memory.cash[type][entry][subentry] = { ids:0, time:0 };
 		}
 
-		return Memory.cash[type][entry_name];
+		return Memory.cash[type][entry][subentry];
 	},
 
 	getEntry: function(cash_objects, type, entry_name, get_ids) {
