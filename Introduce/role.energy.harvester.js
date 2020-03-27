@@ -80,6 +80,7 @@ var role = {
 			   (!creep.getActiveBodyparts(WORK) || creep.pos.inRangeTo(link,5))) {
 			  target = link;
 			  return target;
+			}
 		}
 
 		if(!target &&
