@@ -72,7 +72,7 @@ var metrix = {
 				creep.memory.cpu = {};
 			if(!creep.memory.cpu[role] || typeof creep.memory.cpu[role] !== 'number')
 				creep.memory.cpu[role] = 0;
-			creep.memory.cpu[role] += Memory.cpu.role.dt
+			creep.memory.cpu[role] = Math.round((creep.memory.cpu[role] + Memory.cpu.role.dt) * 100)/100
 		},
 
 		creep_time: function(creep) {
