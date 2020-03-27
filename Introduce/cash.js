@@ -57,7 +57,7 @@ var cash = {
 	},
 
 	pos_extensions: {},
-	getCloseExtensions: function(creep) {
+	getPosExtensions: function(creep) {
 		return cash.getEntity( STRUCTURE_EXTENSION, cash.pos_extensions
 												 , creep.room.name + '-' + creep.pos.x + ',' + creep.pos.y
 												 , (room) => {
