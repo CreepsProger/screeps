@@ -88,6 +88,7 @@ var roleEnergyTransferer = {
 								structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 								tools.checkTarget(executer,structure.id);
 							}
+						});
 					// const look = creep.room.lookForAtArea(LOOK_STRUCTURES, creep.pos.y>0?creep.pos.y-1:creep.pos.y
 					// 																										 , creep.pos.x>0?creep.pos.x-1:creep.pos.x
 					// 																										 , creep.pos.y<49?creep.pos.y+1:creep.pos.y
