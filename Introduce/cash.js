@@ -4,7 +4,7 @@ var cash = {
 
 	version: 11,
 
-	initEntry: function(type, entry = 'all') {
+	initEntry: function(type, entry_name = 'all') {
 		if(!Memory.cash ||
 			 !Memory.cash.version ||
 				Memory.cash.version != cash.version) {
@@ -13,23 +13,23 @@ var cash = {
 		if(!Memory.cash[type]) {
 			Memory.cash[type] = {};
 		}
-		if(!Memory.cash[type][entry]) {
-			Memory.cash[type][entry] = { ids:0, time:0 };
+		if(!Memory.cash[type][entry_name]) {
+			Memory.cash[type][entry_name] = { ids:0, time:0 };
 		}
 
-		return Memory.cash[type][entry];
+		return Memory.cash[type][entry_name];
 	},
 
-	getEntry: function(type, cash_objects, entry, get_ids) {
-		var entry = cash.initEntry(type, entry);
+	getEntry: function(type, cash_objects, entry_name, get_ids) {
+		var entry = cash.initEntry(type, entry_name);
  		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || entry.time == 0) {
  			entry.ids = get_ids();
 		}
 		if(entry.time != Game.time) {
-			cash_objects[entry] = entry.ids.map((id) => Game.getObjectById(id));
+			cash_objects[entry_name] = entry.ids.map((id) => Game.getObjectById(id));
  			entry.time = Game.time;
  		}
-		return cash_objects[room.name];
+		return cash_objects[entry_name];
 	},
 
 	controller: {},
