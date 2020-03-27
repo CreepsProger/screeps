@@ -54,7 +54,7 @@ var tools = {
 	},
 
 	areEmptyContainers: function(creep) {
-		return cash.getContainers(creep.room).filter( (cont) => cont.store.getUsedCapacity() > 0).length == 0;
+		return cash.getContainers(creep.room).filter( (cont) => cont.store.getUsedCapacity(RESOURCE_ENERGY) > 0).length == 0;
 	},
 
 	moveTo: function(creep,target) {
