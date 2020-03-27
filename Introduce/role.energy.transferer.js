@@ -73,62 +73,65 @@ var roleEnergyTransferer = {
 			if(!target && this_room == my_room &&
 				 (!creep.getActiveBodyparts(WORK) || (this_room_sources_are_empty && creep.memory.rerun) || conditions.MAIN_ROOM_CRISIS())) {
 				var t = Game.cpu.getUsed();
-				var infras = [];
-				var use_look = true;
-				if(creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
-					const look = creep.room.lookForAtArea(LOOK_STRUCTURES, creep.pos.y>0?creep.pos.y-1:creep.pos.y
-																															 , creep.pos.x>0?creep.pos.x-1:creep.pos.x
-																															 , creep.pos.y<49?creep.pos.y+1:creep.pos.y
-																															 , creep.pos.x<49?creep.pos.x+1:creep.pos.x
-																														   , true);
-					infras = look.filter((a) => {
-						return 	  a[LOOK_STRUCTURES].structureType == STRUCTURE_EXTENSION &&
-										!!a[LOOK_STRUCTURES].store &&
-										  a[LOOK_STRUCTURES].store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-										tools.checkTarget(executer,a[LOOK_STRUCTURES].id);
-						}).map((a) => a[LOOK_STRUCTURES]);
-
-					if(infras.length == 0) {
-						const look = creep.room.lookForAtArea(LOOK_STRUCTURES, creep.pos.y>1?creep.pos.y-2:creep.pos.y
-																															   , creep.pos.x>1?creep.pos.x-2:creep.pos.x
-																															   , creep.pos.y<48?creep.pos.y+2:creep.pos.y
-																															   , creep.pos.x<48?creep.pos.x+2:creep.pos.x
-																															   , true);
-						infras = look.filter((a) => {
-							return 	  a[LOOK_STRUCTURES].structureType == STRUCTURE_EXTENSION &&
-											!!a[LOOK_STRUCTURES].store &&
-											  a[LOOK_STRUCTURES].store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-											tools.checkTarget(executer,a[LOOK_STRUCTURES].id);
-							}).map((a) => a[LOOK_STRUCTURES]);
-					}
-					if(infras.length == 0) {
-						use_look = false;
-						infras = cash.getExtensions(creep.room).filter((e) => {
-							return 	!!e && !!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-							 				tools.checkTarget(executer,e.id);
-							});
-					}
-				}
-				if(infras.length == 0) {
-					use_look = false;
-					infras = cash.getTowers(creep.room).filter((t) => {
+				var infra = cash.getTowers(creep.room).filter((t) => {
 						return	!!t && !!t.store && t.store.getFreeCapacity(RESOURCE_ENERGY) > 400 &&
 										tools.checkTarget(executer,t.id);
-						});
+						}).reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+				}
+				var use_find = true;
+				if(!infra == 0 && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
+					infra = creep.pos.findInRange(FIND_STRUCTURES, 3, {
+						filter: (structure) => {
+							( structure.structureType == STRUCTURE_SPAWN ||
+									structure.structureType == STRUCTURE_EXTENSION)  &&
+								structure.store &&
+								structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+								tools.checkTarget(executer,structure.id);
+							}
+					// const look = creep.room.lookForAtArea(LOOK_STRUCTURES, creep.pos.y>0?creep.pos.y-1:creep.pos.y
+					// 																										 , creep.pos.x>0?creep.pos.x-1:creep.pos.x
+					// 																										 , creep.pos.y<49?creep.pos.y+1:creep.pos.y
+					// 																										 , creep.pos.x<49?creep.pos.x+1:creep.pos.x
+					// 																									   , true);
+					// infras = look.filter((a) => {
+					// 	return 	  a[LOOK_STRUCTURES].structureType == STRUCTURE_EXTENSION &&
+					// 					!!a[LOOK_STRUCTURES].store &&
+					// 					  a[LOOK_STRUCTURES].store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+					// 					tools.checkTarget(executer,a[LOOK_STRUCTURES].id);
+					// 	}).map((a) => a[LOOK_STRUCTURES]);
+					//
+					// if(infras.length == 0) {
+					// 	const look = creep.room.lookForAtArea(LOOK_STRUCTURES, creep.pos.y>1?creep.pos.y-2:creep.pos.y
+					// 																										   , creep.pos.x>1?creep.pos.x-2:creep.pos.x
+					// 																										   , creep.pos.y<48?creep.pos.y+2:creep.pos.y
+					// 																										   , creep.pos.x<48?creep.pos.x+2:creep.pos.x
+					// 																										   , true);
+					// 	infras = look.filter((a) => {
+					// 		return 	  a[LOOK_STRUCTURES].structureType == STRUCTURE_EXTENSION &&
+					// 						!!a[LOOK_STRUCTURES].store &&
+					// 						  a[LOOK_STRUCTURES].store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+					// 						tools.checkTarget(executer,a[LOOK_STRUCTURES].id);
+					// 		}).map((a) => a[LOOK_STRUCTURES]);
+					// }
+					if(!infra) {
+						use_find = false;
+						infra = cash.getExtensions(creep.room).filter((e) => {
+							return 	!!e && !!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+							 				tools.checkTarget(executer,e.id);
+							}).reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+					}
 				}
 
-				if(infras.length > 0) {
-					var infra = infras.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-					if(!!infra) {
-						target = tools.setTarget(creep,infra,infra.id,roleEnergyTransferer.run);
-						if(!!target) {
-							if(creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || true) {
-								var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
-								if(dt > 0.4)
-									console.log( '⭕️', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
-															, 'infra id:', target.id
-															, use_look, 'infras:', JSON.stringify(infras)
-													 		);
+				if(!!infra) {
+					target = tools.setTarget(creep,infra,infra.id,roleEnergyTransferer.run);
+					if(!!target) {
+						if(creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || true) {
+							var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
+							if(dt > 0.01)
+								console.log( '⭕️', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
+ 																 , 'infra id:', target.id
+																 , use_look, 'infras:', JSON.stringify(infras)
+													 			);
 							}
 						}
 					}
