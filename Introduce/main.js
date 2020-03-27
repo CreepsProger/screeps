@@ -54,12 +54,12 @@ module.exports.loop = function () {
 				delete Memory.creeps[name];
 			}
 			else if(0 < creep.ticksToLive && creep.ticksToLive <= constants.TICKS_TO_CHECK_NON_EXISTING) {
-				const sum_role_cpu = Object.keys(creep.memory.cpu).reduce((sum,role) => sum + creep.memory.cpu[role],0);
-				const max_role_cpu = Object.keys(creep.memory.cpu).reduce((a,role) =>
+				const sum_role_cpu = Math.round(Object.keys(creep.memory.cpu).reduce((sum,role) => sum + creep.memory.cpu[role],0));
+				const max_role_cpu = Math.round(Object.keys(creep.memory.cpu).reduce((a,role) =>
 																																	!creep.memory.cpu[a.max_role] || creep.memory.cpu[a.max_role] < creep.memory.cpu[role]?
 																																  {max_role:role, v:creep.memory.cpu[role]}:
 																																	{max_role:a.max_role, v:a.v},
-																																	{max_role:'', v:0});
+																																	{max_role:'', v:0}));
 				console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 										, 'ticksToLive:', creep.ticksToLive
 										, name
