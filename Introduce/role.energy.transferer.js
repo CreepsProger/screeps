@@ -77,7 +77,7 @@ var roleEnergyTransferer = {
 				var infra = cash.getTowers(creep.room).filter((t) => {
 						return	!!t && !!t.store && t.store.getFreeCapacity(RESOURCE_ENERGY) > 400 &&
 										tools.checkTarget(executer,t.id);
-						}).reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c,null);
+						}).reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c,NaN);
 				var use_find = true;
 				if(!infra && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
 					infra = creep.pos.findInRange(FIND_STRUCTURES, 3, {
