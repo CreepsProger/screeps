@@ -84,15 +84,19 @@ var roleEnergyTransferer = {
 				}
 				var use_find = true;
 				if(!infra && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
-					infra = creep.pos.findInRange(FIND_STRUCTURES, 3, {
-						filter: (structure) => {
-							return ( structure.structureType == STRUCTURE_SPAWN ||
-													structure.structureType == STRUCTURE_EXTENSION)  &&
-											structure.store &&
-											structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-											tools.checkTarget(executer,structure.id);
-							}
-						});
+					// infra = creep.pos.findInRange(FIND_STRUCTURES, 3, {
+					// 	filter: (structure) => {
+					// 		return ( structure.structureType == STRUCTURE_SPAWN ||
+					// 								structure.structureType == STRUCTURE_EXTENSION)  &&
+					// 						structure.store &&
+					// 						structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+					// 						tools.checkTarget(executer,structure.id);
+					// 		}
+					// 	});
+
+
+
+
 					// const look = creep.room.lookForAtArea(LOOK_STRUCTURES, creep.pos.y>0?creep.pos.y-1:creep.pos.y
 					// 																										 , creep.pos.x>0?creep.pos.x-1:creep.pos.x
 					// 																										 , creep.pos.y<49?creep.pos.y+1:creep.pos.y
