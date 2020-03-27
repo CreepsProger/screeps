@@ -47,8 +47,7 @@ var links = {
 			   }
 			 );
 			 if(link_objs.length > 0) {
-				 var link = link_objs.reduce((p,c) => tools.checkTarget(executer,p.id) &&
-				 creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+				 var link = link_objs.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				 if(!!link) {
 					 target = tools.setTarget(creep,link,link.id,role_run);
 				 }
