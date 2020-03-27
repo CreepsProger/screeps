@@ -69,7 +69,7 @@ var cash = {
 
 	extensions: {},
 	getExtensions: function(room) {
-		return cash.getEntity(STRUCTURE_EXTENSION, cash.extensions, room, (room) => {
+		return cash.getEntity(STRUCTURE_EXTENSION, cash.extensions, room, () => {
 			return room.find(FIND_STRUCTURES, {
 				filter: (structure) => structure.structureType == STRUCTURE_SPAWN ||
 															 structure.structureType == STRUCTURE_EXTENSION }).map((obj) => obj.id);
