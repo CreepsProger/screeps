@@ -200,7 +200,7 @@ var spawns = {
 						if(spawn.name == 'Spawn1' || spawn.name == 'Spawn2' || !!rerun)
                                                   spawns.tryCreateCreep(spawn,           130911, 44, 1, 2); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn1' || spawn.name == 'Spawn2' || !!rerun)
-                                                  spawns.tryCreateCreep(spawn,             3015, 41, 1, 2); // V 1-1 E    Carier
+                                                  spawns.tryCreateCreep(spawn,             3015, 41, 1, 3); // V 1-1 E    Carier
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             3015, 61, 1, 3); // V 1-1 E    Carier
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,           160410, 64, 1, 2); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn2' || spawn.name == 'Spawn3' || !!rerun)
