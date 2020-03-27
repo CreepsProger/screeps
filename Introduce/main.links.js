@@ -18,7 +18,7 @@ var links = {
 		 var target;
 		 if(link_weight < creep.memory.weight) {
 			 var link_objs = cash.getLinks(creep.room).filter( (link) => {
-					 return link.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+					 return !!link && link.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 						 			creep.pos.inRangeTo(link, 5) &&
 									!!links.links.find((ft) => ft.from == link.id) &&
 						 			tools.checkTarget(executer,link.id);
