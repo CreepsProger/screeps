@@ -193,7 +193,7 @@ var roleEnergyTransferer = {
 			}
 
 			metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
-			const this_room_containers_are_empty = tools.areEmptyContainers(creep);
+			const this_room_containers_are_empty = cash.areEmptyContainers(creep);
 			// if(this_room_containers_are_empty)
 			// 	console.log( '🔜💡1️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 			// 						, 'this_room_containers_are_empty:', this_room_containers_are_empty

@@ -1,5 +1,5 @@
 const constants = require('main.constants');
-const cash = require('cash');
+// const cash = require('cash');
 
 // C1         C2         C3     T1  T2  T3
 // C1(T1)
@@ -57,14 +57,6 @@ var tools = {
 	    	                , 'range:', range);
 		}
 		return range;
-	},
-
-	areEmptyContainers: function(creep) {
-		return cash.getContainers(creep.room).filter( (cont) => !!cont && cont.store.getUsedCapacity(RESOURCE_ENERGY) > 0).length == 0;
-	},
-
-	areFullContainers: function(creep) {
-		return cash.getContainers(creep.room).filter( (cont) => !!cont && cont.store.getFreeCapacity() > 0).length == 0;
 	},
 
 	moveTo: function(creep,target) {

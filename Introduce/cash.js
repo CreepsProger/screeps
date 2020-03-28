@@ -119,6 +119,13 @@ var cash = {
 			 });
  	}
 
+	areEmptyContainers: function(creep) {
+		return cash.getContainers(creep.room).filter( (cont) => !!cont && cont.store.getUsedCapacity(RESOURCE_ENERGY) > 0).length == 0;
+	},
+
+	areFullContainers: function(creep) {
+		return cash.getContainers(creep.room).filter( (cont) => !!cont && cont.store.getFreeCapacity() > 0).length == 0;
+	},
 };
 
 module.exports = cash;

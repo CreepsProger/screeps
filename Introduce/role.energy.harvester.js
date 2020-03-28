@@ -181,7 +181,7 @@ var role = {
 			if(!!target) return target;
 		}
 
-		const this_room_containers_are_empty = tools.areEmptyContainers(creep);
+		const this_room_containers_are_empty = cash.areEmptyContainers(creep);
 
 		if(!target &&
 			 !creep.getActiveBodyparts(WORK) && creep.memory.rerun && this_room_containers_are_empty &&

@@ -5,6 +5,7 @@ const metrix = require('main.metrix');
 const flags = require('main.flags');
 const links = require('main.links');
 const log = require('main.log');
+const cash = require('cash');
 const tools = require('tools');
 
 
@@ -63,7 +64,7 @@ var roleUpgrader = {
 			const this_room_config = Memory.config.rooms[this_room];
 			const my_room_config = Memory.config.rooms[my_room];
 			const this_room_sources_are_empty = tools.areEmptySources(creep);
-			const this_room_containers_are_full = tools.areFullContainers(creep);
+			const this_room_containers_are_full = cash.areFullContainers(creep);
 
 			const canDo =
 						(creep.getActiveBodyparts(WORK) &&
