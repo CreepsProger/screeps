@@ -101,8 +101,9 @@ var roleEnergyTransferer = {
 					if(exts.length > 0) {
 						infra = exts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 					}
+					var use_cash;
 					if(!infra) {
-						use_cash_pos = false;
+						use_cash = true;
 						var exts = cash.getExtensions(creep.room).filter((e) => {
 							return 	!!e && !!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 							 				tools.checkTarget(executer,e.id);
@@ -121,7 +122,7 @@ var roleEnergyTransferer = {
 							if(dt > 0.3)
 								console.log( '⭕️', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
  																 , 'infra id:', target.id
-																 , use_cash_pos
+																 , use_cash_pos, use_cash
 																 , 'infra:', JSON.stringify(infra)
 																 , 'pos:', JSON.stringify(creep.pos)
 													 			);
