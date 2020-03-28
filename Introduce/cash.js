@@ -13,16 +13,16 @@ var cash = {
 		if(!Memory.cash[type]) {
 			Memory.cash[type] = {};
 		}
-		const entry = !entry_path ? 0 : !entry_path.length ? entry_path : entry_path.length > 0 ? entry_path[0]:0;
-		const subentry = !entry_path ? 100 : !entry_path.length ? 100 : entry_path.length > 1 ? entry_path[1]:100;
-		if(!Memory.cash[type][entry]) {
-			Memory.cash[type][entry] = {};
+		const entry_id = !entry_path ? 0 : !entry_path.length ? entry_path : entry_path.length > 0 ? entry_path[0]:0;
+		const subentry_id = !entry_path ? 100 : !entry_path.length ? 100 : entry_path.length > 1 ? entry_path[1]:100;
+		if(!Memory.cash[type][entry_id]) {
+			Memory.cash[type][entry_id] = {};
 		}
-		if(!Memory.cash[type][entry][subentry]) {
-			Memory.cash[type][entry][subentry] = { ids:0, time:0 };
+		if(!Memory.cash[type][entry_id][subentry_id]) {
+			Memory.cash[type][entry_id][subentry_id] = { ids:0, time:0 };
 		}
 
-		return Memory.cash[type][entry][subentry];
+		return Memory.cash[type][entry_id][subentry_id];
 	},
 
 	getEntry: function(cash_objects, type, entry_path, get_ids) {
@@ -30,16 +30,16 @@ var cash = {
  		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || entry.time == 0) {
  			entry.ids = get_ids();
 		}
-		const entry = entry_path.length > 0 ? entry_path[0]:0;
-		const subentry = entry_path.length > 1 ? entry_path[1]:100;
+		const entry_id = entry_path.length > 0 ? entry_path[0]:0;
+		const subentry_id = entry_path.length > 1 ? entry_path[1]:100;
 		if(entry.time != Game.time) {
-			if(!cash_objects[entry]) {
-				cash_objects[entry] = {};
+			if(!cash_objects[entry_id]) {
+				cash_objects[entry_id] = {};
 			}
-			cash_objects[entry][subentry] = entry.ids.map((id) => Game.getObjectById(id));
+			cash_objects[entry_id][subentry_id] = entry.ids.map((id) => Game.getObjectById(id));
  			entry.time = Game.time;
  		}
-		return cash_objects[entry][subentry];
+		return cash_objects[entry_id][subentry_id];
 	},
 
 	controller: {},
