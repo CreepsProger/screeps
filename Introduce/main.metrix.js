@@ -175,7 +175,7 @@ var metrix = {
 			}
 
 			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-									, 'CREEPS:'
+									, '🤖 CREEPS:'
 									, '' + Memory.totals.CreepsNumber - Memory.totals.SpawningCreeps + (!Memory.totals.SpawningCreeps?'':'(' + Memory.totals.SpawningCreeps +')') + '/' + Memory.totals.NeedsCreeps + '/' + Memory.totals.NeedsPlusCreeps
 									,'lt/ttl:'
 									, '' + Memory.totals.livedTicks + '/'+ Memory.totals.ticksToLive
