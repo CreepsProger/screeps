@@ -2,7 +2,7 @@ const constants = require('main.constants');
 
 var cash = {
 
-	version: 15,
+	version: 16,
 
 	initEntry: function(type, entry_path = 'all') {
 		if(!Memory.cash ||
@@ -67,7 +67,7 @@ var cash = {
 		return cash.getEntry( cash.pos_extensions, STRUCTURE_EXTENSION
 												 , creep.room.name + '|' + creep.pos.x + ',' + creep.pos.y
 												 , () => {
-			return creep.pos.findInRange(FIND_STRUCTURES, 2, {
+			return creep.pos.findInRange(FIND_STRUCTURES, 1, {
 				filter: (structure) => structure.structureType == STRUCTURE_SPAWN ||
 															 structure.structureType == STRUCTURE_EXTENSION}).map((obj) => obj.id);
 			});
