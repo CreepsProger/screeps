@@ -83,9 +83,11 @@ var roleEnergyTransferer = {
 					infra = towers.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				}
 
-				var use_cash_pos;
-				var use_cash;
+				var use_api = false;
+				var use_cash_pos = false;
+				var use_cash = false;
 				if(!infra && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
+					use_api = true;
 					var exts = creep.pos.findInRange(FIND_STRUCTURES, 2, {
 						filter: (structure) => {
 							return ( structure.structureType == STRUCTURE_SPAWN ||
