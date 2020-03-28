@@ -187,7 +187,7 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			// metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
+			metrix.cpu.step_time(creep, 'transfering', '🔜💡🛢️');
 
 			if(!target && creep.memory.rerun) {
 				var labs = creep.room.find(FIND_STRUCTURES, {
@@ -236,7 +236,7 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			// metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
+			metrix.cpu.step_time(creep, 'transfering', '🔜💡1️⃣');
 
 			if(!target &&
 				 !creep.getActiveBodyparts(WORK) &&
@@ -266,7 +266,7 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			// metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
+			metrix.cpu.step_time(creep, 'transfering', '🔜💡2️⃣');
 
 			if(!target &&
 				 creep.memory.rerun &&
@@ -305,7 +305,7 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
+			metrix.cpu.step_time(creep, 'transfering', '🔜💡3️⃣');
 
 			if(target) {
 
@@ -356,7 +356,8 @@ var roleEnergyTransferer = {
 				creep.memory.transfering = false;
 			}
 		}
-		// console.log(('Error\n    at Object.run (role.energy.transferer:210:46)\n    at Object.run (role.builder:108:14)\n').split('\n')[1]);
+		
+		metrix.cpu.step_time(creep, 'transfering', '💡🔚');
 
 		metrix.cpu.role_time(creep, 'transfering');
 		if(!creep.memory.transfering) {
