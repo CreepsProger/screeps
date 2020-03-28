@@ -68,7 +68,7 @@ var roleEnergyTransferer = {
 			const this_room_sources_are_empty = tools.areEmptySources(creep);
 			const this_room_sources_are_not_empty = !this_room_sources_are_empty;
 
-			// metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
+			metrix.cpu.step_time(creep, 'transfering', '🚸');
 
 			if(!target && this_room == my_room &&
 				 (!creep.getActiveBodyparts(WORK) ||
@@ -140,7 +140,7 @@ var roleEnergyTransferer = {
 				}
 			}
 
-			// metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
+			metrix.cpu.step_time(creep, 'transfering', '🌕');
 
 			//if(!target) {
 			//if(!target && (this_room != my_room || this_room_sources_are_not_empty)) {
