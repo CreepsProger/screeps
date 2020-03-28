@@ -37,23 +37,18 @@ var links = {
 		 return target;
 	 },
 
-	 getTargetLinkToHarvest: function(creep, executer, role_run) {
-		 var target;
-		 if(true) {
-			 var link_objs = cash.getLinks(creep.room).filter( (link) => {
-					 return !!link && link.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-					 				!!links.links.find((ft) => ft.to == link.id) &&
-					 				tools.checkTarget(executer,link.id);
-			   }
-			 );
-			 if(link_objs.length > 0) {
-				 var link = link_objs.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-				 if(!!link) {
-					 target = tools.setTarget(creep,link,link.id,role_run);
-				 }
-			 }
+	 getTargetLinkToHarvest: function(creep, executer) {
+		 var link;
+		 var links = cash.getLinks(creep.room).filter( (link) => {
+				 return !!link && link.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
+				 				!!links.links.find((ft) => ft.to == link.id) &&
+				 				tools.checkTarget(executer,link.id);
+		   }
+		 );
+		 if(links.length > 0) {
+			 link = links.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 		 }
-		 return target;
+		 return link;
 	 },
 
    run: function() {

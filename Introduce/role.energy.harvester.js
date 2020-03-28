@@ -75,11 +75,9 @@ var role = {
 
 		//if(!target && (!creep.getActiveBodyparts(WORK) || (this_room_sources_is_empty && creep.memory.rerun))) {
 		if(!target) {
-			var link = links.getTargetLinkToHarvest(creep,executer,role.run);
-			if(!!link &&
-			   (!creep.getActiveBodyparts(WORK) || creep.pos.inRangeTo(link,5))) {
-			  target = link;
-			  return target;
+			var link = links.getTargetLinkToHarvest(creep,executer);
+			if(!!link && (!creep.getActiveBodyparts(WORK) || creep.pos.inRangeTo(link,5))) {
+				target = tools.setTarget(creep,link,link.id,role.run);
 			}
 		}
 
