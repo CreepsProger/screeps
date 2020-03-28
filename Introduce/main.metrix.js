@@ -104,9 +104,9 @@ var metrix = {
 			Memory.CreepsNumberByType = {};
 			Memory.CreepsNumberByWeight = {};
 			Memory.CreepsMinTicksToLive = {};
-			metrix.updateMovingAverage(Memory.harvestersMovements.Value);
-			metrix.updateMovingAverage(Memory.harvestersMovements.Count);
-			metrix.updateMovingAverage(Memory.harvestersMovements.Avg);
+			// metrix.updateMovingAverage(Memory.harvestersMovements.Value);
+			// metrix.updateMovingAverage(Memory.harvestersMovements.Count);
+			// metrix.updateMovingAverage(Memory.harvestersMovements.Avg);
 
 			Memory.totals.NeedsCreeps = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].needs,0);
 			Memory.totals.NeedsPlusCreeps = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].needs_plus,0);
@@ -198,14 +198,6 @@ var metrix = {
 		// 									, Spawn.room.energyAvailable
 		// 									, Spawn.room.energyCapacityAvailable
 		//                   , 'hmV/hmC/hmA:'
-		//                   , Memory.harvestersMovements.Value.v
-		//                   , Memory.harvestersMovements.Count.v
-		//                   , Memory.harvestersMovements.Avg.v
-		//                   , 'hmVd/hmCd/hmdA/hmAd:'
-		//                   , Memory.harvestersMovements.Value.movingAverage.delta
-		//                   , Memory.harvestersMovements.Count.movingAverage.delta
-		//                   , Math.floor(Memory.harvestersMovements.Value.movingAverage.delta / Memory.harvestersMovements.Count.movingAverage.delta)
-		//                   , Memory.harvestersMovements.Avg.movingAverage.delta
 									, JSON.stringify(Memory.CreepsNumberByWeight)
 									, JSON.stringify(Memory.CreepsNumberByType)
 									, JSON.stringify(Memory.CreepsMinTicksToLive)
