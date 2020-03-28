@@ -117,7 +117,7 @@ var cash = {
  			return _.filter(Game.structures,
  				 (structure) => !!structure.my && structure.structureType == STRUCTURE_STORAGE).map((obj) => obj.id);
 			 });
- 	}
+ 	},
 
 	areEmptyContainers: function(creep) {
 		return cash.getContainers(creep.room).filter( (cont) => !!cont && cont.store.getUsedCapacity(RESOURCE_ENERGY) > 0).length == 0;
@@ -125,7 +125,8 @@ var cash = {
 
 	areFullContainers: function(creep) {
 		return cash.getContainers(creep.room).filter( (cont) => !!cont && cont.store.getFreeCapacity() > 0).length == 0;
-	},
+	}
+
 };
 
 module.exports = cash;
