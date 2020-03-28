@@ -153,7 +153,7 @@ module.exports.loop = function () {
 								, JSON.stringify({ dt:Math.round(Memory.cpu_dt*100)/100
 																	, '⚙️': Math.round(Memory.cpu_main_part_dt*100)/100
 																	, "🤖": Math.round(Memory.cpu_creeps_part_dt*100)/100})
-								, JSON.stringify({ limit:Game.cpu.limit * constants.TICKS_TO_CHECK_CPU
+								, JSON.stringify({ '🛐':Game.cpu.limit * constants.TICKS_TO_CHECK_CPU
 																	, "🛒":Game.cpu.bucket
 																	, "🧀": Game.cpu.bucket - Memory.cpu_prev_bucket})
 								, JSON.stringify({ "creeps sum":Math.round(Memory.cpu.max.sum*100)/100
