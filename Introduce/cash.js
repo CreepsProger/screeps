@@ -3,9 +3,9 @@ const tools = require('tools');
 
 var cash = {
 
-	version: 21,
+	version: 22,
 
-	initEntry: function(type, entry_path = [0][100]) {
+	initEntry: function(type, entry_id, subentry_id) {
 		if(!Memory.cash ||
 			 !Memory.cash.version ||
 				Memory.cash.version != cash.version) {
@@ -14,8 +14,6 @@ var cash = {
 		if(!Memory.cash[type]) {
 			Memory.cash[type] = {};
 		}
-		const entry_id = !entry_path ? 0 : !entry_path.length ? entry_path : entry_path.length > 0 ? entry_path[0]:0;
-		const subentry_id = !entry_path ? 100 : !entry_path.length ? 100 : entry_path.length > 1 ? entry_path[1]:100;
 		if(!Memory.cash[type][entry_id]) {
 			Memory.cash[type][entry_id] = {};
 		}
@@ -27,12 +25,12 @@ var cash = {
 	},
 
 	getEntry: function(cash_objects, type, entry_path, get_ids) {
-		var entry = cash.initEntry(type, entry_path);
+		const entry_id = !entry_path ? 0 : !entry_path.length ? entry_path : entry_path.length > 0 ? entry_path[0]:0;
+		const subentry_id = !entry_path ? 100 : !entry_path.length ? 100 : entry_path.length > 1 ? entry_path[1]:100;
+		var entry = cash.initEntry(type, entry_id, subentry_id);
  		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || entry.time == 0) {
  			entry.ids = get_ids();
 		}
-		const entry_id = entry_path.length > 0 ? entry_path[0]:0;
-		const subentry_id = entry_path.length > 1 ? entry_path[1]:100;
 		if(entry.time != Game.time) {
 			if(!cash_objects[entry_id]) {
 				cash_objects[entry_id] = {};
