@@ -95,7 +95,7 @@ module.exports.loop = function () {
 	Memory.cpu_main_part.others = Math.round((Memory.cpu_main_part.others+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	if(Game.time % constants.TICKS_TO_CHECK_CPU_MAIN_PART == 0 && Memory.cpu_main_part_dt > Game.gcl*constants.TICKS_TO_CHECK_CPU_MAIN_PART) {
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
-							 , '⚙️PART CPU:'
+							 , '⚙️ PART CPU:'
 							 , JSON.stringify(Memory.cpu_main_part)
 						   // , (dt = Math.round((Game.cpu.getUsed()-dt)*100)/100)
 						   // , dt
@@ -149,13 +149,13 @@ module.exports.loop = function () {
 		 																		 Memory.cpu.max[p].max_weight_sum > Memory.cpu.max[c].max_weight_sum ? p:c);
 
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
-								, '📟CPU:'
+								, '📟 CPU:'
 								, JSON.stringify({ dt:Math.round(Memory.cpu_dt*100)/100
-																	, "main ⚙️part": Math.round(Memory.cpu_main_part_dt*100)/100
-																	, "creeps 🤖part": Math.round(Memory.cpu_creeps_part_dt*100)/100})
+																	, "⚙️": Math.round(Memory.cpu_main_part_dt*100)/100
+																	, "🤖": Math.round(Memory.cpu_creeps_part_dt*100)/100})
 								, JSON.stringify({ limit:Game.cpu.limit * constants.TICKS_TO_CHECK_CPU
 																	, "🛒":Game.cpu.bucket
-																	, delta: Game.cpu.bucket - Memory.cpu_prev_bucket})
+																	, "🧀": Game.cpu.bucket - Memory.cpu_prev_bucket})
 								, JSON.stringify({ "creeps sum":Math.round(Memory.cpu.max.sum*100)/100
 																	, "delta":Math.round((Memory.cpu.max.sum - Memory.cpu_prev_creeps_sum) * 100)/100
 																 , max_role:max_role
