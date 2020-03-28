@@ -151,8 +151,8 @@ module.exports.loop = function () {
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 								, '📟CPU:'
 								, JSON.stringify({ dt:Math.round(Memory.cpu_dt*100)/100
-																	, "main part":, Math.round(Memory.cpu_main_part_dt*100)/100
-																	, "creeps part": Math.round(Memory.cpu_creeps_part_dt*100)/100})
+																	, "main ⚙️part": Math.round(Memory.cpu_main_part_dt*100)/100
+																	, "creeps 🤖part": Math.round(Memory.cpu_creeps_part_dt*100)/100})
 								, JSON.stringify({ limit:Game.cpu.limit * constants.TICKS_TO_CHECK_CPU
 																	, "🛒":Game.cpu.bucket
 																	, delta: Game.cpu.bucket - Memory.cpu_prev_bucket})
