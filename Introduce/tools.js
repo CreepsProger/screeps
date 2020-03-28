@@ -11,6 +11,12 @@ var last_tick = 0;
 
 var tools = {
 
+	getRoomCode: function(roomName) {
+		const X = tools.getRoomX(roomName);
+		const Y = tools.getRoomY(roomName);
+		const R = (Math.sign(X)>0?0:1) + (Math.sign(Y)>0?0:1);
+		return R*100000+X*100+Y;
+	},
 
 	getRoomX: function(roomName) {
 		const codeO = 'O'.charCodeAt(0);
