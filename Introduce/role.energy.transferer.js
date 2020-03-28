@@ -86,11 +86,11 @@ var roleEnergyTransferer = {
 				var use_cash_pos;
 				var use_cash;
 				if(!infra && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
-					var exts = creep.pos.findInRange(FIND_STRUCTURES, 1, {
+					var exts = creep.pos.findInRange(FIND_STRUCTURES, 2, {
 						filter: (structure) => {
 							return ( structure.structureType == STRUCTURE_SPAWN ||
 													structure.structureType == STRUCTURE_EXTENSION)  &&
-											structure.store &&
+											!!structure.store &&
 											structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 											tools.checkTarget(executer,structure.id);
 										}
