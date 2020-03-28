@@ -82,32 +82,38 @@ var roleEnergyTransferer = {
 				if(towers.length > 0) {
 					infra = towers.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				}
+
 				var use_cash_pos;
+				var use_cash;
 				if(!infra && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
-					use_cash_pos = true;
-					var exts = cash.getPosExtensions(creep).filter((e) => {
-						return 	!!e && !!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-										tools.checkTarget(executer,e.id);
-						});
-					// var exts = creep.pos.findInRange(FIND_STRUCTURES, 1, {
-					// 	filter: (structure) => {
-					// 		return ( structure.structureType == STRUCTURE_SPAWN ||
-					// 								structure.structureType == STRUCTURE_EXTENSION)  &&
-					// 						structure.store &&
-					// 						structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-					// 						tools.checkTarget(executer,structure.id);
-					// 		}
-					// 	});
+					var exts = creep.pos.findInRange(FIND_STRUCTURES, 1, {
+						filter: (structure) => {
+							return ( structure.structureType == STRUCTURE_SPAWN ||
+													structure.structureType == STRUCTURE_EXTENSION)  &&
+											structure.store &&
+											structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+											tools.checkTarget(executer,structure.id);
+										}
+									});
 					if(exts.length > 0) {
 						infra = exts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 					}
-					var use_cash;
+					if(!infra) {
+						use_cash_pos = true;
+						exts = cash.getPosExtensions(creep).filter((e) => {
+							return 	!!e && !!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+											tools.checkTarget(executer,e.id);
+										});
+						if(exts.length > 0) {
+							infra = exts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+						}
+					}
 					if(!infra) {
 						use_cash = true;
-						var exts = cash.getExtensions(creep.room).filter((e) => {
+						exts = cash.getExtensions(creep.room).filter((e) => {
 							return 	!!e && !!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 							 				tools.checkTarget(executer,e.id);
-							});
+										});
 						if(exts.length > 0) {
 							infra = exts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 						}
