@@ -120,7 +120,7 @@ var roleEnergyTransferer = {
 						if(creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || true) {
 							var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
 							if(dt > 0.3)
-								console.log( '⭕️🌕', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
+								console.log( '🌕', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
  																 , 'infra id:', target.id
 																 , use_cash_pos, use_cash
 																 , 'infra:', JSON.stringify(infra)
@@ -171,7 +171,7 @@ var roleEnergyTransferer = {
 					if(!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id) {
 							var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
 							if(dt > 0.1)
-								console.log( '🔜💡⬜️⃣📦🛢️', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
+								console.log( '🔜💡🛢️', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 													, 'target:', (!!target.name)? target.name:target.id + '(' + target.store.getUsedCapacity(RESOURCE_ENERGY) + ')'
 												 );
 					}
