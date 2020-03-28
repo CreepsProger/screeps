@@ -144,16 +144,16 @@ var roleEnergyTransferer = {
 					}
 				});
 
-				if(targs.length == 0 && this_room_config.containers.weight < creep.memory.weight) {
+				if(!targs && !targs.length && this_room_config.containers.weight < creep.memory.weight) {
 					targs = cash.getContainers(creep.room).filter((cont) =>
 						!!cont && !!cont.store && cont.store.getFreeCapacity() > 0);
 				}
 
-				if(targs.length == 0 && !!creep.room.storage &&
+				if(!targs && !targs.length && !!creep.room.storage &&
 						creep.getActiveBodyparts(WORK) &&
 						this_room_config.containers.weight < creep.memory.weight &&
 						creep.room.storage.store.getFreeCapacity() > 0) {
-					targs.push(creep.room.storage);
+					targs = [creep.room.storage];
 				}
 				// var containers = creep.room.find(FIND_STRUCTURES, {
 				// 	filter: (structure) => {
@@ -164,7 +164,7 @@ var roleEnergyTransferer = {
 				// 	}
 				// });
 				// const targs = containers.concat(closests);
-				if(targs.length > 0) {
+				if(!!targs && targs.length > 0) {
 					target = targs.reduce((p,c) => !!p && !!c && creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				}
 				if(!!target) {
