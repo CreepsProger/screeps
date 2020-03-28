@@ -143,14 +143,12 @@ var roleEnergyTransferer = {
 					}
 				});
 
-				if(!targs) {
-					targs = cash.getContainers(creep.room).filter((cont) => {
-						return	this_room_config.containers.weight < creep.memory.weight &&
-									!!cont && !!cont.store && cont.store.getFreeCapacity() > 0;
-					});
+				if(targs.length == 0 && this_room_config.containers.weight < creep.memory.weight) {
+					targs = cash.getContainers(creep.room).filter((cont) =>
+						!!cont && !!cont.store && cont.store.getFreeCapacity() > 0);
 				}
 
-				if(!!creep.room.storage &&
+				if(targs.length == 0 && !!creep.room.storage &&
 						creep.getActiveBodyparts(WORK) &&
 						this_room_config.containers.weight < creep.memory.weight &&
 						creep.room.storage.store.getFreeCapacity() > 0) {
