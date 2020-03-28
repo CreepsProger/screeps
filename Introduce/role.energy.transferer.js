@@ -82,9 +82,9 @@ var roleEnergyTransferer = {
 				if(towers.length > 0) {
 					infra = towers.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				}
-				var use_find;
+				var use_cash_pos;
 				if(!infra && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
-					use_find = true;
+					use_cash_pos = true;
 					var exts = cash.getPosExtensions(creep).filter((e) => {
 						return 	!!e && !!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 										tools.checkTarget(executer,e.id);
@@ -102,7 +102,7 @@ var roleEnergyTransferer = {
 						infra = exts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 					}
 					if(!infra) {
-						use_find = false;
+						use_cash_pos = false;
 						var exts = cash.getExtensions(creep.room).filter((e) => {
 							return 	!!e && !!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 							 				tools.checkTarget(executer,e.id);
@@ -121,7 +121,7 @@ var roleEnergyTransferer = {
 							if(dt > 0.3)
 								console.log( '⭕️', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
  																 , 'infra id:', target.id
-																 , use_find
+																 , use_cash_pos
 																 , 'infra:', JSON.stringify(infra)
 																 , 'pos:', JSON.stringify(creep.pos)
 													 			);
