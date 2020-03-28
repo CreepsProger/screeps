@@ -2,7 +2,7 @@ const constants = require('main.constants');
 
 var cash = {
 
-	version: 18,
+	version: 19,
 
 	initEntry: function(type, entry_path = 'all') {
 		if(!Memory.cash ||
