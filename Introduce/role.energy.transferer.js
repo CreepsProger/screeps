@@ -112,6 +112,8 @@ var roleEnergyTransferer = {
 										});
 						if(exts.length > 0) {
 							var infra = exts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+							console.log( '🌕', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
+													, 'infra id:', infra.id);
 							target = tools.setTarget(creep,infra,infra.id,roleEnergyTransferer.run);
 						}
 					}
