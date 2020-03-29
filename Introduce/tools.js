@@ -107,9 +107,12 @@ var tools = {
 		else {
 			var creep2 = Game.getObjectById(Memory.targets[id]);
 			if(creep2 !== undefined) {
-				var path2 = creep2.pos.findPathTo(target);
-				var path = creep.pos.findPathTo(target);
-				if(path2.length > path.length+1) {
+//				var path2 = creep2.pos.findPathTo(target);
+//				var path = creep.pos.findPathTo(target);
+				var range2 = creep2.pos.getRangeTo(target);
+				var range = creep.pos.getRangeTo(target);
+//				if(path2.length > path.length+1) {
+        if(range2 > range+1) {
 					const order = 'move'; // creep2.moveTo.name
 					const err = creep2.cancelOrder(order);
 					if(err == OK) {
@@ -118,16 +121,16 @@ var tools = {
 						run(creep2,creep);
 					}
 					else {
-						console.log( creep, 'path:', path.length
-												, creep2, 'path2:', path2.length
+						console.log( creep, 'range:', range
+												, creep2, 'range2:', range2
 												, 'cancelOrder:', order, 'err:', err
 												, 'for', id, JSON.stringify(target));
 					}
 				}
 			}
 		}
-		var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
-		if(dt > 0.1)
+		var dt = Math.round((Game.cpu.getUsed() - t)*10000)/10000;
+		if(dt > 0.0005)
 			console.log( '🧿', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 									, 'setTarget:', JSON.stringify(mytarget)
 								 );
