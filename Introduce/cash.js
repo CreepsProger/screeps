@@ -36,18 +36,22 @@ var cash = {
 			if(!cash_objects[entry_id]) {
 				cash_objects[entry_id] = {};
 			}
-			cash_objects[entry_id][subentry_id] = entry.ids.map((id) => Game.getObjectById(id));
+			if(!Memory.cash[type][entry_id][subentry_id]) {
+				cash_objects[entry_id][subentry_id] = {dt:0, n:0, objs = entry.ids.map((id) => Game.getObjectById(id))};
+			}
  			entry.time = Game.time;
  		}
-		var objects = cash_objects[entry_id][subentry_id];
-		var dt = Math.round((Game.cpu.getUsed() - t)*1000)/1000;
-		if(dt > 0.01 || (false && type == STRUCTURE_TOWER)) {
-			console.log( '💵', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt
+		var cash = cash_objects[entry_id][subentry_id];
+		cash.dt = Math.round((cash.dt + Game.cpu.getUsed() - t)*1000)/1000;
+		cash.n++;
+		if(cash.dt/(n+1) > 0.01 || (false && type == STRUCTURE_TOWER)) {
+			console.log( '💵', Math.trunc(Game.time/10000), Game.time%10000
 									, '[' + type + '][' + entry_id + '][' + subentry_id + ']'
-									, 'objects.length:', objects.length
+									, 'dt:', cash.dt, 'n:', cash.n
+									, 'objs.length:', objs.length
 								 );
 		}
-		return objects;
+		return cash.objs;
 	},
 
 	controller: {},
