@@ -81,8 +81,6 @@ module.exports.loop = function () {
 	metrix.output();	Memory.cpu_main_part.metrix2 = Math.round((Memory.cpu_main_part.metrix2+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	// cash.getStorages();
 
-	delete Memory.targets;
-	Memory.targets = {};
 	delete Memory.cpu;
 	Memory.cpu = { creep: {max_dt: 0, creep: '', dt: 0, t: Math.round((Game.cpu.getUsed()) * 100)/100, n:1}
 							 , role : {max_dt: 0, creep: '', role: '', dt: 0, t: Math.round((Game.cpu.getUsed()) * 100)/100}
