@@ -35,13 +35,14 @@ var cash = {
 			if(!cash_objects[entry_id]) {
 				cash_objects[entry_id] = {};
 			}
-			cash_objects[entry_id][subentry_id] = {dt:0, n:0, ids: entry.ids, objs: entry.ids.map((id) => Game.getObjectById(id))};
+			cash_objects[entry_id][subentry_id] = {dt:0, n:0, ids: entry.ids, objs: {}};
 		}
+		var cash_o = cash_objects[entry_id][subentry_id];
 		if(entry.time < cash.time || cash.time == 0) {
+			cash_o.objs: cash_o.ids.map((id) => Game.getObjectById(id))};
  			entry.time = Game.time;
 			cash.time = Game.time;
  		}
-		var cash_o = cash_objects[entry_id][subentry_id];
 		cash_o.dt = Math.round((cash_o.dt + Game.cpu.getUsed() - t)*10000)/10000;
 		cash_o.n++;
 		if(Game.time % constants.TICKS_TO_CHECK_CPU == 0 && cash_o.dt/cash_o.n > 0.01 || (true && type == STRUCTURE_EXTENSION)) {
