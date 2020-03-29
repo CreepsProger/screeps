@@ -41,17 +41,17 @@ var cash = {
 			}
  			entry.time = Game.time;
  		}
-		var cash = cash_objects[entry_id][subentry_id];
-		cash.dt = Math.round((cash.dt + Game.cpu.getUsed() - t)*1000)/1000;
-		cash.n++;
-		if(cash.dt/(n+1) > 0.01 || (false && type == STRUCTURE_TOWER)) {
+		var cash_o = cash_objects[entry_id][subentry_id];
+		cash_o.dt = Math.round((cash.dt + Game.cpu.getUsed() - t)*1000)/1000;
+		cash_o.n++;
+		if(cash_o.dt/(n+1) > 0.01 || (false && type == STRUCTURE_TOWER)) {
 			console.log( '💵', Math.trunc(Game.time/10000), Game.time%10000
 									, '[' + type + '][' + entry_id + '][' + subentry_id + ']'
-									, 'dt:', cash.dt, 'n:', cash.n
-									, 'objs.length:', objs.length
+									, 'dt:', cash_o.dt, 'n:', cash_o.n
+									, 'objs.length:', cash_o.objs.length
 								 );
 		}
-		return cash.objs;
+		return cash_o.objs;
 	},
 
 	controller: {},
