@@ -88,7 +88,7 @@ var tools = {
 	},
 
 	checkTarget: function(executer,id) {
-		return (executer === undefined)? true:Memory.targets[id] === undefined;
+		return (executer === undefined)? true:tools.targets[id] === undefined;
 	},
 	
 	targets: {time:0},
