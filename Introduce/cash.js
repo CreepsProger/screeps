@@ -42,7 +42,7 @@ var cash = {
  			entry.time = Game.time;
  		}
 		var cash_o = cash_objects[entry_id][subentry_id];
-		cash_o.dt = Math.round((cash.dt + Game.cpu.getUsed() - t)*10000)/10000;
+		cash_o.dt = Math.round((cash_o.dt + Game.cpu.getUsed() - t)*10000)/10000;
 		cash_o.n++;
 		if(cash_o.dt/(cash_o.n+1) > 0 || (false && type == STRUCTURE_TOWER)) {
 			console.log( '💵', Math.trunc(Game.time/10000), Game.time%10000
