@@ -74,19 +74,19 @@ var roleEnergyTransferer = {
 				 (!creep.getActiveBodyparts(WORK) ||
 				  (this_room_sources_are_empty && creep.memory.rerun) || conditions.MAIN_ROOM_CRISIS())) {
 				var t = Game.cpu.getUsed();
-				var infra;
 				var towers = cash.getTowers(creep.room).filter((t) => {
 						return	!!t && !!t.store && t.store.getFreeCapacity(RESOURCE_ENERGY) > 400 &&
 										tools.checkTarget(executer,t.id);
 						});
 				if(towers.length > 0) {
-					infra = towers.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+					var infra = towers.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+					target = tools.setTarget(creep,infra,infra.id,roleEnergyTransferer.run);
 				}
 
 				var use_api = false; var sz = 0;
 				var use_cash_pos = false;
 				var use_cash = false;
-				if(!infra && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
+				if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
 					use_api = true;
 					var exts = creep.pos.findInRange(FIND_STRUCTURES, 1, {
 						filter: (structure) => {
@@ -99,43 +99,43 @@ var roleEnergyTransferer = {
 									});
 					if(exts.length > 0) {
 						sz = exts.length;
-						infra = exts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+						var infra = exts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+						target = tools.setTarget(creep,infra,infra.id,roleEnergyTransferer.run);
 					}
-					if(!infra) {
+					if(!target) {
 						use_cash_pos = true;
 						exts = cash.getPosExtensions(creep).filter((e) => {
 							return 	!!e && !!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 											tools.checkTarget(executer,e.id);
 										});
 						if(exts.length > 0) {
-							infra = exts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+							var infra = exts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+							target = tools.setTarget(creep,infra,infra.id,roleEnergyTransferer.run);
 						}
 					}
-					if(!infra) {
+					if(!target) {
 						use_cash = true;
 						exts = cash.getExtensions(creep.room).filter((e) => {
 							return 	!!e && !!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 							 				tools.checkTarget(executer,e.id);
 										});
 						if(exts.length > 0) {
-							infra = exts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+							var infra = exts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+							target = tools.setTarget(creep,infra,infra.id,roleEnergyTransferer.run);
 						}
 					}
 				}
 
-				if(!!infra) {
-					target = tools.setTarget(creep,infra,infra.id,roleEnergyTransferer.run);
-					if(!!target) {
-						if(creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || true) {
-							var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
-							if(dt > 0.4)
-								console.log( '🌕', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
- 																 , 'infra id:', target.id
-																 , use_api, sz, use_cash_pos, use_cash
-																 , 'infra:', JSON.stringify(infra)
-																 , 'pos:', JSON.stringify(creep.pos)
-													 			);
-						}
+				if(!!target) {
+					if(creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || true) {
+						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
+						if(dt > 0.4)
+							console.log( '🌕', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
+													, 'infra id:', target.id
+													, use_api, sz, use_cash_pos, use_cash
+													, 'infra:', JSON.stringify(target)
+													, 'pos:', JSON.stringify(creep.pos)
+												 );
 					}
 				}
 			}
