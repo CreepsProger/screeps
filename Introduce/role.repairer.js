@@ -40,6 +40,14 @@ var roleRepairer = {
 
 				var target;
 
+				const my_room_config = Memory.config.rooms[my_room];
+			
+				if(!target && this_room != my_room) {
+					const my_path_room = my_room_config.path_rooms[this_room];
+					const exit = creep.room.findExitTo(my_path_room);
+					target = creep.pos.findClosestByPath(exit);
+				}
+
 				if(!creep.memory.prev_target_id || !creep.memory.prev_target_time || creep.memory.prev_target_time < Game.time - 100) {
 					creep.memory.prev_target_id = '0';
 					creep.memory.prev_target_time = 0;
