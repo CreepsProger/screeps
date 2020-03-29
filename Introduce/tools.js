@@ -92,42 +92,47 @@ var tools = {
 	},
 
 	setTarget: function(creep,target,id,run) {
-		 var mytarget;
+		var t = Game.cpu.getUsed();
+		var mytarget;
 
-		 if(!target && !id) {
-			 return mytarget;
-		 }
-
-		 if(Memory.targets[id] === undefined) {
-			 Memory.targets[id] = creep.id;
-			 mytarget = target;
-			 return mytarget;
-		 }
-		 else {
-			 var creep2 = Game.getObjectById(Memory.targets[id]);
-			 if(creep2 !== undefined) {
-				 var path2 = creep2.pos.findPathTo(target);
-				 var path = creep.pos.findPathTo(target);
-				 if(path2.length > path.length+1) {
-					 const order = 'move'; // creep2.moveTo.name
-					 const err = creep2.cancelOrder(order);
-					 if(err == OK) {
-						 mytarget = target;
-						 Memory.targets[id] = creep.id;
-						 run(creep2,creep);
-					 }
-					 else {
-						 console.log( creep, 'path:', path.length
+		if(!target && !id) {
+			return mytarget;
+		}
+		
+		if(Memory.targets[id] === undefined) {
+			Memory.targets[id] = creep.id;
+			mytarget = target;
+			return mytarget;
+		}
+		else {
+			var creep2 = Game.getObjectById(Memory.targets[id]);
+			if(creep2 !== undefined) {
+				var path2 = creep2.pos.findPathTo(target);
+				var path = creep.pos.findPathTo(target);
+				if(path2.length > path.length+1) {
+					const order = 'move'; // creep2.moveTo.name
+					const err = creep2.cancelOrder(order);
+					if(err == OK) {
+						mytarget = target;
+						Memory.targets[id] = creep.id;
+						run(creep2,creep);
+					}
+					else {
+						console.log( creep, 'path:', path.length
 												, creep2, 'path2:', path2.length
 												, 'cancelOrder:', order, 'err:', err
 												, 'for', id, JSON.stringify(target));
-					 }
-				 }
-			 }
-		 }
-		 return mytarget;
-	 }
-
+					}
+				}
+			}
+		}
+		var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
+		if(dt > 0.1)
+			console.log( '🧿', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
+									, 'setTarget:', JSON.stringify(mytarget)
+								 );
+		return mytarget;
+	}
 };
 
 module.exports = tools;
