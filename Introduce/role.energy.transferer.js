@@ -157,15 +157,9 @@ var roleEnergyTransferer = {
 					}
 				});
 
-				console.log( '🛢️1', Math.trunc(Game.time/10000), Game.time%10000, creep
-													, 'targs:', JSON.stringify(targs)
-												 );
 				if((!targs || !targs.length || targs.length == 0) && this_room_config.containers.weight < creep.memory.weight) {
 					targs = cash.getContainers(creep.room).filter((cont) =>
 						!!cont && !!cont.store && cont.store.getFreeCapacity() > 0);
-					console.log( '🛢️2', Math.trunc(Game.time/10000), Game.time%10000, creep
-													, 'targs:', JSON.stringify(targs)
-												 );
 				}
 
 				if((!targs || !targs.length) && !!creep.room.storage &&
@@ -183,9 +177,7 @@ var roleEnergyTransferer = {
 				// 	}
 				// });
 				// const targs = containers.concat(closests);
-				console.log( '🛢️3', Math.trunc(Game.time/10000), Game.time%10000, creep
-													, 'targs:', JSON.stringify(targs)
-												 );
+
 				if(!!targs && targs.length > 0) {
 					target = targs.reduce((p,c) => !!p && !!c && creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				}
