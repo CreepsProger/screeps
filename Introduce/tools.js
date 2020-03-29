@@ -90,22 +90,27 @@ var tools = {
 	checkTarget: function(executer,id) {
 		return (executer === undefined)? true:Memory.targets[id] === undefined;
 	},
-
+	
+	targets: {time:0},
 	setTarget: function(creep,target,id,run) {
 		var t = Game.cpu.getUsed();
+		if(tools.targets.time != Game.time) {
+			tools.targets = {time:Game.time},
+		}
+
 		var mytarget;
 
 		if(!target && !id) {
 			return mytarget;
 		}
 		
-		if(Memory.targets[id] === undefined) {
-			Memory.targets[id] = creep.id;
+		if(!tools.targets[id]) {
+			tools.targets[id] = creep.id;
 			mytarget = target;
 			return mytarget;
 		}
 		else {
-			var creep2 = Game.getObjectById(Memory.targets[id]);
+			var creep2 = Game.getObjectById(tools.targets[id]);
 			if(creep2 !== undefined) {
 //				var path2 = creep2.pos.findPathTo(target);
 //				var path = creep.pos.findPathTo(target);
@@ -117,7 +122,7 @@ var tools = {
 					const err = creep2.cancelOrder(order);
 					if(err == OK) {
 						mytarget = target;
-						Memory.targets[id] = creep.id;
+						tools.targets[id] = creep.id;
 						run(creep2,creep);
 					}
 					else {
