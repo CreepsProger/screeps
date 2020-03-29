@@ -39,7 +39,7 @@ var cash = {
 		}
 		var cash_o = cash_objects[entry_id][subentry_id];
 		if(entry.time < cash.time || cash.time == 0) {
-			cash_o.objs: cash_o.ids.map((id) => Game.getObjectById(id))};
+			cash_o.objs: cash_o.ids.map((id) => Game.getObjectById(id));
  			entry.time = Game.time;
 			cash.time = Game.time;
  		}
