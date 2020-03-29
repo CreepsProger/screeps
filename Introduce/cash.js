@@ -39,16 +39,15 @@ var cash = {
 			cash_objects[entry_id][subentry_id] = entry.ids.map((id) => Game.getObjectById(id));
  			entry.time = Game.time;
  		}
-		return cash_objects[entry_id][subentry_id];
-		if(type == STRUCTURE_TOWER) {
-			var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
+		var objects = cash_objects[entry_id][subentry_id];
+		var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
+		if(dt > 0.1 || type == STRUCTURE_TOWER) {
 			console.log( '💵', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt
-									, 'type:', type
-									, 'entry_id:', entry_id
-									, 'subentry_id:', subentry_id
-									, 'cash_objects.length:', cash_objects.length
+									, '[' + type + '][' + entry_id + '][' + subentry_id + ']'
+									, 'objects.length:', objects.length
 								 );
 		}
+		return objects;
 	},
 
 	controller: {},
