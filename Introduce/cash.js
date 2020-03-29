@@ -30,7 +30,7 @@ var cash = {
 		const entry_id = !entry_path ? 0 : !entry_path.length ? entry_path : entry_path.length > 0 ? entry_path[0]:0;
 		const subentry_id = !entry_path ? 100 : !entry_path.length ? 100 : entry_path.length > 1 ? entry_path[1]:100;
 		var entry = cash.initEntry(type, entry_id, subentry_id);
- 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || entry.time == 0 || cash.time == 0) {
+ 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || entry.time == 0 || cash.time == 0 || entry.time < cash.time) {
  			entry.ids = get_ids();
 			if(!cash_objects[entry_id]) {
 				cash_objects[entry_id] = {};
@@ -39,7 +39,7 @@ var cash = {
 				cash_objects[entry_id][subentry_id] = {dt:0, n:0, objs: entry.ids.map((id) => Game.getObjectById(id))};
 			}
  			entry.time = Game.time;
-			cash.time = Game.time;
+			cash.time = !cash.time? Game.time:cash.time;
  		}
 		var cash_o = cash_objects[entry_id][subentry_id];
 		cash_o.dt = Math.round((cash_o.dt + Game.cpu.getUsed() - t)*10000)/10000;
