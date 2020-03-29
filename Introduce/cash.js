@@ -41,7 +41,7 @@ var cash = {
  		}
 		var objects = cash_objects[entry_id][subentry_id];
 		var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
-		if(dt > 0.1 || type == STRUCTURE_TOWER) {
+		if(dt > 0.01 || (false && type == STRUCTURE_TOWER)) {
 			console.log( '💵', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt
 									, '[' + type + '][' + entry_id + '][' + subentry_id + ']'
 									, 'objects.length:', objects.length
