@@ -25,6 +25,7 @@ var cash = {
 	},
 
 	getEntry: function(cash_objects, type, entry_path, get_ids) {
+		var t = Game.cpu.getUsed();
 		const entry_id = !entry_path ? 0 : !entry_path.length ? entry_path : entry_path.length > 0 ? entry_path[0]:0;
 		const subentry_id = !entry_path ? 100 : !entry_path.length ? 100 : entry_path.length > 1 ? entry_path[1]:100;
 		var entry = cash.initEntry(type, entry_id, subentry_id);
@@ -39,6 +40,15 @@ var cash = {
  			entry.time = Game.time;
  		}
 		return cash_objects[entry_id][subentry_id];
+		if(type == STRUCTURE_TOWER) {
+			var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
+			console.log( '💵', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt
+									, 'type:', type
+									, 'entry_id:', entry_id
+									, 'subentry_id:', subentry_id
+									, 'cash_objects.length:', cash_objects.length
+								 );
+		}
 	},
 
 	controller: {},
