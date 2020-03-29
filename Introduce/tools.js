@@ -103,14 +103,16 @@ var tools = {
 		if(!target && !id) {
 			return mytarget;
 		}
-		
+
+		var creep2;
+		var rerun_creep2 = false;
 		if(!tools.targets[id]) {
 			tools.targets[id] = creep.id;
 			mytarget = target;
 			return mytarget;
 		}
 		else {
-			var creep2 = Game.getObjectById(tools.targets[id]);
+			creep2 = Game.getObjectById(tools.targets[id]);
 			if(creep2 !== undefined) {
 //				var path2 = creep2.pos.findPathTo(target);
 //				var path = creep.pos.findPathTo(target);
@@ -121,6 +123,7 @@ var tools = {
 					const order = 'move'; // creep2.moveTo.name
 					const err = creep2.cancelOrder(order);
 					if(err == OK) {
+						rerun_creep2 = true;
 						mytarget = target;
 						tools.targets[id] = creep.id;
 						run(creep2,creep);
@@ -134,10 +137,10 @@ var tools = {
 				}
 			}
 		}
-		var dt = Math.round((Game.cpu.getUsed() - t)*10000)/10000;
+		var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
 		if(dt > 0.05)
 			console.log( '🧿', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
-									, 'setTarget:', JSON.stringify(mytarget)
+									, 'setTarget', rerun_creep2, creep2
 								 );
 		return mytarget;
 	}
