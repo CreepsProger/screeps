@@ -87,20 +87,22 @@ var roleEnergyTransferer = {
 				var use_cash_pos = false;
 				var use_cash = false;
 				if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
-					use_api = true;
-					var exts = creep.pos.findInRange(FIND_STRUCTURES, 1, {
-						filter: (structure) => {
-							return ( structure.structureType == STRUCTURE_SPAWN ||
-													structure.structureType == STRUCTURE_EXTENSION)  &&
-											!!structure.store &&
-											structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-											tools.checkTarget(executer,structure.id);
-										}
-									});
-					if(exts.length > 0) {
-						sz = exts.length;
-						var infra = exts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-						target = tools.setTarget(creep,infra,infra.id,roleEnergyTransferer.run);
+					if(false) {
+						use_api = true;
+						var exts = creep.pos.findInRange(FIND_STRUCTURES, 1, {
+							filter: (structure) => {
+								return ( structure.structureType == STRUCTURE_SPAWN ||
+												structure.structureType == STRUCTURE_EXTENSION)  &&
+									!!structure.store &&
+									structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+									tools.checkTarget(executer,structure.id);
+							}
+						});
+						if(exts.length > 0) {
+							sz = exts.length;
+							var infra = exts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+							target = tools.setTarget(creep,infra,infra.id,roleEnergyTransferer.run);
+						}
 					}
 					if(!target) {
 						use_cash_pos = true;
