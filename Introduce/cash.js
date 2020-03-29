@@ -36,8 +36,8 @@ var cash = {
 			if(!cash_objects[entry_id]) {
 				cash_objects[entry_id] = {};
 			}
-			if(!Memory.cash[type][entry_id][subentry_id]) {
-				cash_objects[entry_id][subentry_id] = {dt:0, n:0, objs = entry.ids.map((id) => Game.getObjectById(id))};
+			if(!cash_objects[entry_id][subentry_id]) {
+				cash_objects[entry_id][subentry_id] = {dt:0, n:0, objs: entry.ids.map((id) => Game.getObjectById(id))};
 			}
  			entry.time = Game.time;
  		}
