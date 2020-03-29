@@ -37,7 +37,7 @@ var cash = {
 			}
 			cash_objects[entry_id][subentry_id] = {dt:0, n:0, objs: entry.ids.map((id) => Game.getObjectById(id))};
  			entry.time = Game.time;
-			cash.time = !cash.time? Game.time:cash.time;
+			cash.time = Game.time;
  		}
 		var cash_o = cash_objects[entry_id][subentry_id];
 		cash_o.dt = Math.round((cash_o.dt + Game.cpu.getUsed() - t)*10000)/10000;
