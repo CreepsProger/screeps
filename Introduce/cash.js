@@ -46,7 +46,7 @@ var cash = {
 			console.log( '💵', Math.trunc(Game.time/10000), Game.time%10000
 									, '[' + type + '][' + entry_id + '][' + subentry_id + ']'
 									, 'dt:', cash_o.dt, 'n:', cash_o.n
-									, 'objs.length:', cash_o.objs.length
+									, 'length:', cash_o.objs.length, JSON.stringify(cash_o.objs)
 								 );
 		}
 		return cash_o.objs;
