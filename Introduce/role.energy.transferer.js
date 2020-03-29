@@ -157,7 +157,7 @@ var roleEnergyTransferer = {
 					}
 				});
 
-				if((!targs || !targs.length) && this_room_config.containers.weight < creep.memory.weight) {
+				if((!targs || !targs.length || targs.length == 0) && this_room_config.containers.weight < creep.memory.weight) {
 					targs = cash.getContainers(creep.room).filter((cont) =>
 						!!cont && !!cont.store && cont.store.getFreeCapacity() > 0);
 				}
