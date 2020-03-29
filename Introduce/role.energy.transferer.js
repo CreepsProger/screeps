@@ -106,7 +106,7 @@ var roleEnergyTransferer = {
 					}
 					if(!target) {
 						use_cash_pos = true;
-						exts = cash.getPosExtensions(creep).filter((e) => {
+						var exts = cash.getPosExtensions(creep).filter((e) => {
 							return 	!!e && !!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 											tools.checkTarget(executer,e.id);
 										});
@@ -117,7 +117,7 @@ var roleEnergyTransferer = {
 					}
 					if(!target) {
 						use_cash = true;
-						exts = cash.getExtensions(creep.room).filter((e) => {
+						var exts = cash.getExtensions(creep.room).filter((e) => {
 							return 	!!e && !!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 							 				tools.checkTarget(executer,e.id);
 										});
