@@ -130,7 +130,7 @@ var tools = {
 			}
 		}
 		var dt = Math.round((Game.cpu.getUsed() - t)*10000)/10000;
-		if(dt > 0.0005)
+		if(dt > 0.05)
 			console.log( '🧿', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 									, 'setTarget:', JSON.stringify(mytarget)
 								 );
