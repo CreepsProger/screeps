@@ -204,9 +204,9 @@ var spawns = {
 						if(spawn.name == 'Spawn2' || spawn.name == 'Spawn3' || !!rerun)
 						 																			spawns.tryCreateCreep(spawn,    2000000000002, 50, 1, 1); // V 1-1 E   Claimer
 						if(spawn.name == 'Spawn2' || spawn.name == 'Spawn3' || !!rerun)
-						 																			spawns.tryCreateCreep(spawn,           160608, 54, 1, 2); // V 1-1 E    Worker
+						 																			spawns.tryCreateCreep(spawn,           140711, 54, 1, 2); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn2' || spawn.name == 'Spawn3' || !!rerun)
-						 																			spawns.tryCreateCreep(spawn,             3015, 51, 1, 2); // V 1-1 E    Carier
+						 																			spawns.tryCreateCreep(spawn,             3015, 51, 1, 3); // V 1-1 E    Carier
 					}
 					if(conditions.TO_SPAWN_CLAIMING_ROOMS()) {
 						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W27S33')) {
