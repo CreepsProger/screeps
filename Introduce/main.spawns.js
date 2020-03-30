@@ -204,7 +204,7 @@ var spawns = {
 						if(spawn.name == 'Spawn2' || spawn.name == 'Spawn3' || !!rerun)
 						 																			spawns.tryCreateCreep(spawn,    2000000000002, 50, 1, 1); // V 1-1 E   Claimer
 						if(spawn.name == 'Spawn2' || spawn.name == 'Spawn3' || !!rerun)
-						 																			spawns.tryCreateCreep(spawn,           130911, 54, 1, 2); // V 1-1 E    Worker
+						 																			spawns.tryCreateCreep(spawn,           160608, 54, 1, 2); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn2' || spawn.name == 'Spawn3' || !!rerun)
 						 																			spawns.tryCreateCreep(spawn,             3015, 51, 1, 2); // V 1-1 E    Carier
 					}
