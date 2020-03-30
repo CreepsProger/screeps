@@ -70,6 +70,7 @@ var roleUpgrader = {
 						(creep.getActiveBodyparts(WORK) &&
 						 (!Memory.stop_upgrading || this_room_containers_are_full) &&
 						 this_room == my_room &&
+						 creep.room.energyAvailable == creep.room.energyCapacityAvailable &&
 						 !!creep.room.controller &&
 						 !!creep.room.controller.my &&
 						 creep.room.controller.level > 0 &&
