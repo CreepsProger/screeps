@@ -30,7 +30,7 @@ var roleRepairer = {
 				 this_room == my_room &&
 				 creep.getActiveBodyparts(WORK) > 0 &&
 				 conditions.TO_SPAWN_CLAIMING_ROOMS() &&
-				 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() == 0)
+				 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity() < creep.getActiveBodyparts(WORK)*2)
 					||
 					(creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun))) {
 				creep.memory.repairing = true;
@@ -41,7 +41,7 @@ var roleRepairer = {
 				var target;
 
 				const my_room_config = Memory.config.rooms[my_room];
-			
+
 				if(!target && this_room != my_room) {
 					const my_path_room = my_room_config.path_rooms[this_room];
 					const exit = creep.room.findExitTo(my_path_room);
