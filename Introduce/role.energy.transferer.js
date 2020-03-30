@@ -24,7 +24,7 @@ var roleEnergyTransferer = {
 
 		if(!creep.memory.transfering
 			 &&
-			 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0)
+			 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity(RESOURCE_ENERGY)  < creep.getActiveBodyparts(WORK)*2)
 				||
 				(creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0
 				 &&
@@ -359,7 +359,7 @@ var roleEnergyTransferer = {
 				creep.memory.transfering = false;
 			}
 		}
-		
+
 		metrix.cpu.step_time(creep, 'transfering', '💡🔚');
 
 		metrix.cpu.role_time(creep, 'transfering');
