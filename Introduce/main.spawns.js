@@ -223,7 +223,7 @@ var spawns = {
 						}
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002, 90, 1, 1); // V 1-1 E   Claimer
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,            90909, 94, 1, 1); // V 1-1 E    Worker
-						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             2010, 91, 1, 1); // V 1-1 E    Carier
+						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             1608, 91, 1, 1); // V 1-1 E    Carier
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,100, 1, 1); // V 1-1 E   Claimer
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,            90909,104, 1, 1); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             1608,101, 1, 1); // V 1-1 E    Carier
