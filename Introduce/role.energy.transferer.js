@@ -50,13 +50,13 @@ var roleEnergyTransferer = {
 			// });
 
 			var target;
+			var t = Game.cpu.getUsed();
 
 			if(!target) {
-				var t = Game.cpu.getUsed();
 				 target = links.getTargetLinkToTransferEnergy(creep, executer, roleEnergyTransferer.run, this_room_config.containers.weight);
 				 if(!!target) {
 					 if(creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || true) {
-						 var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
+						 var dt = Math.round((Game.cpu.getUsed() - t)*100)/100; t = Game.cpu.getUsed();
 						 if(dt > 0.1)
 							 console.log( '🚸', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 													 , 'link:', JSON.stringify(target)
@@ -73,7 +73,6 @@ var roleEnergyTransferer = {
 			if(!target && this_room == my_room &&
 				 (!creep.getActiveBodyparts(WORK) ||
 				  (this_room_sources_are_empty && creep.memory.rerun) || conditions.MAIN_ROOM_CRISIS())) {
-				var t = Game.cpu.getUsed();
 				var towers = cash.getTowers(creep.room).filter((t) => {
 						return	!!t && !!t.store && t.store.getFreeCapacity(RESOURCE_ENERGY) > 400 &&
 										tools.checkTarget(executer,t.id);
@@ -130,7 +129,7 @@ var roleEnergyTransferer = {
 
 				if(!!target) {
 					if(creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || true) {
-						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
+						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100; t = Game.cpu.getUsed();
 						if(dt > 0.4)
 							console.log( '🌕', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 													, 'infra id:', target.id
@@ -147,7 +146,6 @@ var roleEnergyTransferer = {
 			//if(!target) {
 			//if(!target && (this_room != my_room || this_room_sources_are_not_empty)) {
 			if(!target && (this_room_sources_are_not_empty || !creep.getActiveBodyparts(WORK))) {
-				var t = Game.cpu.getUsed();
 				var targs = creep.pos.findInRange(FIND_MY_CREEPS, 1, {
 					filter: (creep2) => {
 						return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
@@ -181,7 +179,7 @@ var roleEnergyTransferer = {
 				}
 				if(!!target) {
 					if(!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id) {
-							var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
+							var dt = Math.round((Game.cpu.getUsed() - t)*100)/100; t = Game.cpu.getUsed();
 							if(dt > 0.1)
 								console.log( '🔜💡🛢️', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 													, 'target:', (!!target.name)? target.name:target.id + '(' + target.store.getUsedCapacity(RESOURCE_ENERGY) + ')'
@@ -216,7 +214,6 @@ var roleEnergyTransferer = {
 				 creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
 				 (this_room_containers_are_empty || !creep.room.storage) &&
 				 creep.memory.rerun) {
-				var t = Game.cpu.getUsed();
 				var storages = cash.getStorages().filter((s) => s.store.getUsedCapacity(RESOURCE_ENERGY) < constants.START_UPGRADING_ENERGY);;
 				if(storages.length > 0) {
 					// target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
@@ -228,7 +225,7 @@ var roleEnergyTransferer = {
 					if(range_to_store >= constants.RANGE_TO_STORE_1_TO_CONSOLE_LOG &&
 						 (!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id)
 						) {
-							var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
+							var dt = Math.round((Game.cpu.getUsed() - t)*100)/100; t = Game.cpu.getUsed();
 							if(dt > 0.1)
 								console.log( '🔜💡1️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 													, 'range to store:', range_to_store
@@ -246,7 +243,6 @@ var roleEnergyTransferer = {
 				 creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
 				 (this_room_containers_are_empty || !creep.room.storage) &&
 				 creep.memory.rerun) {
-				var t = Game.cpu.getUsed();
 				var storages = cash.getStorages().filter((s) => s.store.getUsedCapacity(RESOURCE_ENERGY) < 2*constants.START_UPGRADING_ENERGY);;
 				if(storages.length > 0) {
 					// target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
@@ -258,7 +254,7 @@ var roleEnergyTransferer = {
 					if(range_to_store >= constants.RANGE_TO_STORE_2_TO_CONSOLE_LOG &&
 						 (!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || false)
 						) {
-						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
+						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100; t = Game.cpu.getUsed();
 						if(dt > 0.1)
 							console.log( '🔜💡2️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 													, 'range to store:', range_to_store
@@ -285,7 +281,6 @@ var roleEnergyTransferer = {
 				 !creep.getActiveBodyparts(WORK) &&
 				 creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
 				 creep.memory.rerun) {
-				var t = Game.cpu.getUsed();
 				var storages = cash.getStorages();
 				if(storages.length > 0) {
 					target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
@@ -297,7 +292,7 @@ var roleEnergyTransferer = {
 					if(range_to_store >= constants.RANGE_TO_STORE_3_TO_CONSOLE_LOG &&
 						 (!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id)
 						) {
-						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
+						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100; t = Game.cpu.getUsed();
 						if(dt > 0.05)
 							console.log( '🔜💡3️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 													, 'range to store:', range_to_store
