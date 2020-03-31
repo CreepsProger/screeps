@@ -91,7 +91,8 @@ var roleDismantler = {
 							}
 							return !!D && D.pos.roomName == my_room &&
 								!structure.my &&
-								!(structure.structureType != STRUCTURE_CONTAINER &&
+								!(structure.structureType != STRUCTURE_CONTROLLER &&
+									structure.structureType != STRUCTURE_CONTAINER &&
 									structure.structureType != STRUCTURE_ROAD &&
 									structure.structureType != STRUCTURE_WALL );
 						}
