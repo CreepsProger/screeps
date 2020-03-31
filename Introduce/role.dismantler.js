@@ -46,10 +46,16 @@ var roleDismantler = {
 				if(!creep.memory.prev_target_id)
 					creep.memory.prev_target_id = '0';
 
-				const D = Game.flags['D'];// dismanle
+				const D = Game.flags['D'];
 				const D1 = Game.flags['D1'];// dismanle
 				const D2 = Game.flags['D2'];// dismanle
-				if(!target) {
+				if(!target &&
+					 ( (!!D && D.pos.roomName == my_room)
+						||
+						(!!D1 && D1.pos.roomName == my_room)
+						||
+						(!!D2 && D2.pos.roomName == my_room)
+					 )) {
 					var structures = creep.room.find(FIND_STRUCTURES, {
 						filter: (structure) => {
 							if((structure.structureType == STRUCTURE_SPAWN ||
@@ -65,17 +71,14 @@ var roleDismantler = {
 									structure.structureType == STRUCTURE_CONTAINER ||
 									structure.structureType == STRUCTURE_NUKER ||
 								  structure.structureType == STRUCTURE_FACTORY)) {
-								if(!!D1 && D1.pos.roomName == creep.room.name &&
-									D1.pos.getRangeTo(structure) < 11-D1.color) {
+								if(!!D1 && D1.pos.roomName == my_room && D1.pos.getRangeTo(structure) < 11-D1.color) {
 									return true;
 								}
-								if(!!D2 && D2.pos.roomName == creep.room.name &&
-									D2.pos.getRangeTo(structure) < 11-D2.color) {
+								if(!!D2 && D2.pos.roomName == my_room && D2.pos.getRangeTo(structure) < 11-D2.color) {
 									return true;
 								}
 							}
-							return !!D &&
-								D.pos.roomName == creep.room.name &&
+							return !!D && D.pos.roomName == my_room &&
 								!structure.my &&
 								!(structure.structureType == STRUCTURE_EXTENSION ||
 									structure.structureType == STRUCTURE_ROAD ||
@@ -90,7 +93,7 @@ var roleDismantler = {
 					}
 				}
 
-				if(target) {
+				if(!!target) {
 					var action;
 					var err = ERR_NOT_IN_RANGE
 					if(!!target.id) {
