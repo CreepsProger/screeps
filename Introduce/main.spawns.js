@@ -197,8 +197,8 @@ var spawns = {
 					if(conditions.TO_SPAWN_MAIN_ROOMS()) {
 						if(spawn.name == 'Spawn1' || !!rerun) spawns.tryCreateCreep(spawn,           160410, 34, 1, 2); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn1' || !!rerun) spawns.tryCreateCreep(spawn,             2412, 31, 1, 1); // V 1-1 E    Carier
-						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           140711, 44, 1, 2); // V 1-1 E    Worker
-						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,             3015, 41, 1, 2); // V 1-1 E    Carier
+						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           140711, 44, 1, 3); // V 1-1 E    Worker
+						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,             3015, 41, 1, 3); // V 1-1 E    Carier
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,           140711, 64, 1, 3); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             3015, 61, 1, 2); // V 1-1 E    Carier
 						if(spawn.name == 'Spawn2' || spawn.name == 'Spawn3' || !!rerun)
@@ -232,8 +232,8 @@ var spawns = {
 							}
 							else {
 								if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,110, 1, 1); // V 1-1 E   Claimer
-								if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,           140711,114, 1, 2); // V 1-1 E    Worker
-								if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             3015,111, 1, 2); // V 1-1 E    Carier
+								if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,           140711,114, 1, 1); // V 1-1 E    Worker
+								if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             3015,111, 1, 1); // V 1-1 E    Carier
 								if(conditions.TO_SPAWN_CLAIMING_ROOMS2()) {
 									if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S35')) {
 										if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015,125, 1, 1); // V 1-2 E  Attacker
