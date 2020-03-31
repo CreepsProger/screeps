@@ -8,9 +8,19 @@ const tools = require('tools');
 
 
 var roleDismantler = {
-
-    /** @param {Creep} creep **/
-    run: function(creep,executer) {
+	
+	time:0,
+	flags:{D:{}, D1:{}, D2:{}},
+	cashFlags: function() {
+		if(roleDismantler.time != Game.time) {
+			roleDismantler.time = Game.time;
+			roleDismantler.flags.D = Game.flags['D'];
+			roleDismantler.flags.D1 = Game.flags['D1'];
+			roleDismantler.flags.D2 = Game.flags['D2'];
+		} 
+	},
+	
+	run: function(creep,executer) {
 			if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
 				roleNext.run(creep);
 				return;
@@ -46,9 +56,10 @@ var roleDismantler = {
 				if(!creep.memory.prev_target_id)
 					creep.memory.prev_target_id = '0';
 
-				const D = Game.flags['D'];
-				const D1 = Game.flags['D1'];// dismanle
-				const D2 = Game.flags['D2'];// dismanle
+				roleDismantler.cashFlags();
+				const D = roleDismantler.flags.D;
+				const D1 = roleDismantler.flags.D1;
+				const D2 = roleDismantler.flags.D2;
 				if(!target &&
 					 ( (!!D && D.pos.roomName == my_room)
 						||
@@ -80,9 +91,9 @@ var roleDismantler = {
 							}
 							return !!D && D.pos.roomName == my_room &&
 								!structure.my &&
-								!(structure.structureType == STRUCTURE_EXTENSION ||
-									structure.structureType == STRUCTURE_ROAD ||
-									structure.structureType == STRUCTURE_WALL );
+								!(structure.structureType != STRUCTURE_CONTAINER &&
+									structure.structureType != STRUCTURE_ROAD &&
+									structure.structureType != STRUCTURE_WALL );
 						}
 					});
 					if(structures.length > 0) {
