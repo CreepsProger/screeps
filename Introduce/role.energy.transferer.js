@@ -39,6 +39,7 @@ var roleEnergyTransferer = {
 		}
 
 		if(creep.memory.transfering) {
+			var t = Game.cpu.getUsed();
 
 			const this_room = creep.room.name;
 			const this_room_config = Memory.config.rooms[this_room];
@@ -50,7 +51,6 @@ var roleEnergyTransferer = {
 			// });
 
 			var target;
-			var t = Game.cpu.getUsed();
 
 			if(!target) {
 				 target = links.getTargetLinkToTransferEnergy(creep, executer, roleEnergyTransferer.run, this_room_config.containers.weight);
