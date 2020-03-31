@@ -224,11 +224,11 @@ var spawns = {
 							if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015,105, 1, 1); // V 1-2 E  Attacker
 						}
 						else {
+							if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,100, 1, 1); // V 1-1 E   Claimer
 							if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,            90909,104, 1, 1); // V 1-1 E    Worker
 							if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             1608,101, 1, 1); // V 1-1 E    Carier
 							if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S35')) {
 								if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015,115, 1, 1); // V 1-2 E  Attacker
-								if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,100, 1, 1); // V 1-1 E   Claimer
 							}
 							else {
 								if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,110, 1, 1); // V 1-1 E   Claimer
