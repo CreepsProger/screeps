@@ -191,7 +191,7 @@ var role = {
  			}
  			if(!!creep.room.storage &&
  				 !!creep.room.storage.my &&
- 				 	 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 3*constants.START_UPGRADING_ENERGY + constants.MIN_STORAGE_ENERGY) {
+ 				 	 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.START_UPGRADING_ENERGY + constants.MIN_STORAGE_ENERGY) {
  				st.push(creep.room.storage);
  			}
 			if(st.length > 0) {
@@ -229,7 +229,7 @@ var role = {
 			 !creep.getActiveBodyparts(WORK) && creep.memory.rerun && this_room_containers_are_empty &&
 			 !!creep.room.storage &&
 			 !!creep.room.storage.my &&
-			 energy > 2*constants.START_UPGRADING_ENERGY) {
+			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.START_UPGRADING_ENERGY + constants.MIN_STORAGE_ENERGY) {
 		 	var t = Game.cpu.getUsed();
 			var storages = cash.getStorages().filter((s) => s.store.getUsedCapacity(RESOURCE_ENERGY) < constants.START_UPGRADING_ENERGY);
 			if(storages.length > 0) {
