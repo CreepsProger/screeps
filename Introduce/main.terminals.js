@@ -26,16 +26,18 @@ var terminals = {
 					});
 		var from_a = from.store.getUsedCapacity(RESOURCE_ENERGY) + from.room.storage.store.getUsedCapacity(RESOURCE_ENERGY);
 		var to_a = to.store.getUsedCapacity(RESOURCE_ENERGY) + to.room.storage.store.getUsedCapacity(RESOURCE_ENERGY);
+		var amount = Math.max(Math.floor((from_a - to_a) / 2) - constants.MIN_TERMINAL_ENERGY,constants.MIN_ENERGY_TO_TERMINAL_SEND);
 
-	 	if(!!from && !!to && from_a - to_a > constants.MIN_ENERGY_TO_TERMINAL_SEND) {
+	 	if(!!from && !!to && amount > constants.MIN_ENERGY_TO_TERMINAL_SEND) {
 			var before = all.map((t) => t.pos.roomName
 			 														+ '(' + t.store.getUsedCapacity(RESOURCE_ENERGY)
 				 											 		+ '+' + t.room.storage.store.getUsedCapacity(RESOURCE_ENERGY)
 															 		+ '=' + (t.store.getUsedCapacity(RESOURCE_ENERGY)
 														 								+t.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))
 															 		+ ')');
-			var v = Math.min(from_a - to_a, from.store.getUsedCapacity(RESOURCE_ENERGY));
-			var err = from.send(RESOURCE_ENERGY, v, to.pos.roomName);
+
+			var err = from.send(RESOURCE_ENERGY, amount, to.pos.roomName);
+
 			var after = all.map((t) => t.pos.roomName
 			 														+ '(' + t.store.getUsedCapacity(RESOURCE_ENERGY)
 				 											 		+ '+' + t.room.storage.store.getUsedCapacity(RESOURCE_ENERGY)
@@ -44,7 +46,7 @@ var terminals = {
 															 		+ ')');
 
 	 		console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000
-								 , '\namount:', v, 'err:', err
+								 , '\namount:', amount, 'err:', err
 								 , '\nbefore:', before
 								 , '\nafter:', after
 			 					 , '\nfrom:', from.pos.roomName, JSON.stringify(from)
