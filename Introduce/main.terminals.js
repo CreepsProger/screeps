@@ -5,8 +5,10 @@ const cash = require('cash');
 var terminals = {
 
    run: function() {
+		 if(Game.time % constants.TICKS_TO_TERMINAL_SEND)
+		  	return;
 
-		 var target;
+		 if(I >= Nspawns || Game.cpu.bucket < constants.CPU_BUCKET_TO_SPAWN)
 
 		 var all = cash.getAllMyTerminals();
 		 var from = all.reduce((p,c) => {
