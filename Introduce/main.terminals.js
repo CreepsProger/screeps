@@ -10,13 +10,13 @@ var terminals = {
 
 		 var all = cash.getAllMyTerminals();
 		 var from = all.reduce((p,c) => {
-			 p.store.getUsedCapacity(RESOURCE_ENERGY) > 10000 &&
+			 return p.store.getUsedCapacity(RESOURCE_ENERGY) > 10000 &&
 			 	(p.store.getUsedCapacity(RESOURCE_ENERGY) + p.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))/10000
 			 		> (c.store.getUsedCapacity(RESOURCE_ENERGY) + c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))/10000
 			 ? p:c;
 		 });
 		 var to = all.reduce((p,c) => {
-			 p.store.getFreeCapacity(RESOURCE_ENERGY) > 10000 &&
+			 return p.store.getFreeCapacity(RESOURCE_ENERGY) > 10000 &&
 			 	(p.store.getUsedCapacity(RESOURCE_ENERGY) + p.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))/10000
 			 		< (c.store.getUsedCapacity(RESOURCE_ENERGY) + c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))/10000
 			 ? p:c;
