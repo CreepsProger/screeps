@@ -26,7 +26,9 @@ var terminals = {
 					});
 		var from_a = from.store.getUsedCapacity(RESOURCE_ENERGY) + from.room.storage.store.getUsedCapacity(RESOURCE_ENERGY);
 		var to_a = to.store.getUsedCapacity(RESOURCE_ENERGY) + to.room.storage.store.getUsedCapacity(RESOURCE_ENERGY);
-		var values = all.map((t) => t.pos.roomName + '(' + t.store.getUsedCapacity(RESOURCE_ENERGY) + ')');
+		var values = all.map((t) => {
+			var r = t.pos.roomName + '(' + t.store.getUsedCapacity(RESOURCE_ENERGY) + ')';
+		 	return r;});
 		  // return { room: t.pos.roomName
 			//  		   , terminal: t.store.getUsedCapacity(RESOURCE_ENERGY)
 			//     	 , storage: t.storage.store.getUsedCapacity(RESOURCE_ENERGY)
