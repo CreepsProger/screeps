@@ -15,7 +15,9 @@ var roleUpgrader = {
 		checkStopUpgrading: function(creep) {
 			var storages = _.filter(Game.structures, function(structure) {
 				return (structure.structureType == STRUCTURE_STORAGE) &&
-					structure.store.getUsedCapacity(RESOURCE_ENERGY) < constants.STOP_UPGRADING_ENERGY;
+					structure.store.getUsedCapacity(RESOURCE_ENERGY) +
+					(!structure.room.terminal? 0:structure.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY))
+					 < constants.STOP_UPGRADING_ENERGY + constants.MIN_TERMINAL_ENERGY + constants.MIN_STORAGE_ENERGY;
 			});
 			if(storages.length > 0) {
 				return true;
@@ -26,7 +28,9 @@ var roleUpgrader = {
 		checkStartUpgrading: function(creep) {
 			var storages = _.filter(Game.structures, function(structure) {
 				return (structure.structureType == STRUCTURE_STORAGE) &&
-					structure.store.getUsedCapacity(RESOURCE_ENERGY) < constants.START_UPGRADING_ENERGY;
+				structure.store.getUsedCapacity(RESOURCE_ENERGY) +
+				(!structure.room.terminal? 0:structure.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY))
+				 < constants.START_UPGRADING_ENERGY + constants.MIN_TERMINAL_ENERGY + constants.MIN_STORAGE_ENERGY;
 			});
 			if(storages.length == 0) {
 				return true;
