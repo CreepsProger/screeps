@@ -8,8 +8,6 @@ var terminals = {
 		 if(Game.time % constants.TICKS_TO_TERMINAL_SEND)
 		  	return;
 
-		 if(I >= Nspawns || Game.cpu.bucket < constants.CPU_BUCKET_TO_SPAWN)
-
 		 var all = cash.getAllMyTerminals();
 		 var from = all.reduce((p,c) => {
 			 return p.store.getUsedCapacity(RESOURCE_ENERGY) > 10000 &&
