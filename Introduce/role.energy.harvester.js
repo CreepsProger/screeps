@@ -174,7 +174,7 @@ var role = {
 				var target = st.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 			}
 			if(!!target) {
-				console.log('🔜⚡', creep, 'st for W:', target);
+				// console.log('🔜⚡', creep, 'st for W:', target);
 			 return target;
 		  }
 		}
