@@ -29,7 +29,7 @@ var terminals = {
 							);
 
 		 if(!!from && !!to) {
-			 from.send(to);
+			 from.send(RESOURCE_ENERGY,from.store.getUsedCapacity(RESOURCE_ENERGY) - 10000,to);
 		 }
 	 }
 };
