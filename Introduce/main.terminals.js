@@ -22,14 +22,15 @@ var terminals = {
 			 ? p:c;
 		 });
 
-		 console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000
-							 , '\nfrom:', JSON.stringify(from)
-							 , '\nto:', JSON.stringify(to)
-							 , '\nall:', JSON.stringify(all)
-							);
-
 		 if(!!from && !!to) {
-			 from.send(RESOURCE_ENERGY,from.store.getUsedCapacity(RESOURCE_ENERGY) - 10000,to);
+			 var err = from.send(RESOURCE_ENERGY,from.store.getUsedCapacity(RESOURCE_ENERGY) - 10000,to);
+
+	 		 console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000
+			 						, 'err:', err
+			 						, '\nfrom:', JSON.stringify(from)
+	 							 	, '\nto:', JSON.stringify(to)
+	 							 	, '\nall:', JSON.stringify(all)
+	 								);
 		 }
 	 }
 };
