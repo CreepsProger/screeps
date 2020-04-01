@@ -36,7 +36,7 @@ var terminals = {
 																+ ')');
 		var cost = Game.market.calcTransactionCost(amount, from.pos.roomName, to.pos.roomName);
 		console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000
-							 , '\namount:', amount, 'cost:', cost, from.pos.roomName, '->', to.pos.roomName
+							 , 'amount:', amount, 'cost:', cost, from.pos.roomName, '->', to.pos.roomName
 							 , '\nvalues:', values
 						 	 );
 
