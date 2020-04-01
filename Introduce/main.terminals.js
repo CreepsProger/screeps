@@ -10,13 +10,13 @@ var terminals = {
 
 		 var all = cash.getAllMyTerminals();
 		 var from = all.reduce((p,c) => {
-			 return p.store.getUsedCapacity(RESOURCE_ENERGY) > 20000 &&
+			 return p.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_ENERGY_TO_TERMINAL_SEND &&
 			 	(p.store.getUsedCapacity(RESOURCE_ENERGY) + p.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))/10000
 			 		> (c.store.getUsedCapacity(RESOURCE_ENERGY) + c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))/10000
 			 ? p:c;
 		 });
 		 var to = all.reduce((p,c) => {
-			 return p.store.getFreeCapacity(RESOURCE_ENERGY) > 20000 &&
+			 return p.store.getFreeCapacity(RESOURCE_ENERGY) > constants.MIN_ENERGY_TO_TERMINAL_SEND &&
 			 	(p.store.getUsedCapacity(RESOURCE_ENERGY) + p.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))/10000
 			 		< (c.store.getUsedCapacity(RESOURCE_ENERGY) + c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))/10000
 			 ? p:c;
@@ -24,7 +24,7 @@ var terminals = {
 		 var from_a = from.store.getUsedCapacity(RESOURCE_ENERGY) + from.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))
 		 var to_a = to.store.getUsedCapacity(RESOURCE_ENERGY) + to.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))
 
-		 if(!!from && !!to && from_a - to_a > 20000) {
+		 if(!!from && !!to && from_a - to_a > constants.MIN_ENERGY_TO_TERMINAL_SEND) {
 			 var v = Math.min(from_a - to_a, from.store.getUsedCapacity(RESOURCE_ENERGY));
 			 var err = from.send(RESOURCE_ENERGY, v, to.pos.roomName);
 
