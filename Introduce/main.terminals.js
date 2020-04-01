@@ -28,9 +28,9 @@ var terminals = {
 		var to_a = to.store.getUsedCapacity(RESOURCE_ENERGY) + to.room.storage.store.getUsedCapacity(RESOURCE_ENERGY);
 		var values = all.map((t) => {
 			var r = t.pos.roomName + '(' + t.store.getUsedCapacity(RESOURCE_ENERGY)
-			 											 + '+' + t.storage.store.getUsedCapacity(RESOURCE_ENERGY)
+			 											 + '+' + t.room.storage.store.getUsedCapacity(RESOURCE_ENERGY)
 														 + '=' + (t.store.getUsedCapacity(RESOURCE_ENERGY)
-													 						+t.storage.store.getUsedCapacity(RESOURCE_ENERGY))
+													 						+t.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))
 														 + ')';
 		 	return r;});
 		  // return { room: t.pos.roomName
