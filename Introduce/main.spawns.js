@@ -195,7 +195,7 @@ var spawns = {
 				}
 				else {
 					if(conditions.TO_SPAWN_MAIN_ROOMS()) {
-						if(spawn.name == 'Spawn1' || !!rerun) spawns.tryCreateCreep(spawn,           160411, 34, 1, 2); // V 1-1 E    Worker
+						if(spawn.name == 'Spawn1' || !!rerun) spawns.tryCreateCreep(spawn,           140711, 34, 1, 2); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn1' || !!rerun) spawns.tryCreateCreep(spawn,             3015, 31, 1, 1); // V 1-1 E    Carier
 						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           140711, 44, 1, 2); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,             3015, 41, 1, 1); // V 1-1 E    Carier
