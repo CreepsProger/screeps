@@ -45,8 +45,8 @@ var terminals = {
 						 	 );
 
 	 	if(	!!from && !!to &&
-			 	amount > constants.MIN_ENERGY_TO_TERMINAL_SEND &&
-		  	from.store.getUsedCapacity(RESOURCE_ENERGY) > amount + constants.MIN_TERMINAL_ENERGY) {
+			 	amount >= constants.MIN_ENERGY_TO_TERMINAL_SEND &&
+		  	from.store.getUsedCapacity(RESOURCE_ENERGY) >= amount + constants.MIN_TERMINAL_ENERGY) {
 
 			var err = from.send(RESOURCE_ENERGY, amount, to.pos.roomName);
 
