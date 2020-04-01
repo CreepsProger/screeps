@@ -21,7 +21,7 @@ var terminals = {
 			 		< (c.store.getUsedCapacity(RESOURCE_ENERGY) + c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))/10000
 			 ? p:c;
 		 });
-		 if(!!from && !!to &&) {
+		 if(!!from && !!to) {
 			 from.send(to);
 		 }
 	 }
