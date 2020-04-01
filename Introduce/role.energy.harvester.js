@@ -156,7 +156,7 @@ var role = {
 			 !!creep.room.terminal &&
 			 !!creep.room.terminal.my &&
 			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) < 4*constants.START_UPGRADING_ENERGY &&
-			 creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_ENERGY_TO_TERMINAL_SEND) {
+			 creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_TERMINAL_ENERGY) {
 				 target = creep.room.terminal;
 		}
 
