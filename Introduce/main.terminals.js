@@ -30,18 +30,17 @@ var terminals = {
 				amount = Math.min(amount,from.store.getUsedCapacity(RESOURCE_ENERGY)-constants.MIN_TERMINAL_ENERGY);
 				amount = Math.max(amount,constants.MIN_ENERGY_TO_TERMINAL_SEND);
 
-		var before = all.map((t) => t.pos.roomName
+		var values = all.map((t) => t.pos.roomName
 																+ '(' + t.store.getUsedCapacity(RESOURCE_ENERGY)
 																+ '+' + t.room.storage.store.getUsedCapacity(RESOURCE_ENERGY)
 																+ '=' + (t.store.getUsedCapacity(RESOURCE_ENERGY)
 																					+t.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))
 																+ ')');
-
+		var cost = Game.market.calcTransactionCost(amount, from.pos.roomName, to.pos.roomName);
 		console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000
-							 , '\namount:', amount
-							 , '\nvalues:', before
-							 , '\nfrom:', from.pos.roomName
-							 , '\nto:', to.pos.roomName
+							 , '\namount:', amount, 'cost:', cost
+							 , '\nvalues:', values
+							 , '\nfrom:', from.pos.roomName, 'to:', to.pos.roomName
 						 	 );
 
 	 	if(	!!from && !!to &&
@@ -50,20 +49,11 @@ var terminals = {
 
 			var err = from.send(RESOURCE_ENERGY, amount, to.pos.roomName);
 
-			var after = all.map((t) => t.pos.roomName
-			 														+ '(' + t.store.getUsedCapacity(RESOURCE_ENERGY)
-				 											 		+ '+' + t.room.storage.store.getUsedCapacity(RESOURCE_ENERGY)
-															 		+ '=' + (t.store.getUsedCapacity(RESOURCE_ENERGY)
-														 								+t.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))
-															 		+ ')');
-
 	 		console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000
-								 , '\namount:', amount, 'err:', err
-								 , '\nbefore:', before
-								 , '\nafter:', after
+								 , '\namount:', amount, 'cost:', cost, 'err:', err
+								 , '\nvalues:', values
 			 					 , '\nfrom:', from.pos.roomName, JSON.stringify(from)
 	 							 , '\nto:', to.pos.roomName, JSON.stringify(to)
-	 							 , '\nall:', JSON.stringify(all)
 	 							 );
 		 }
 	 }
