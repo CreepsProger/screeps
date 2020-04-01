@@ -223,36 +223,36 @@ var role = {
 			if(!!target) return target;
 		}
 
-		const this_room_containers_are_empty = cash.areEmptyContainers(creep);
-
-		if(!target &&
-			 !creep.getActiveBodyparts(WORK) && creep.memory.rerun && this_room_containers_are_empty &&
-			 !!creep.room.storage &&
-			 !!creep.room.storage.my &&
-			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.START_UPGRADING_ENERGY + constants.MIN_STORAGE_ENERGY) {
-		 	var t = Game.cpu.getUsed();
-			var storages = cash.getStorages().filter((s) => s.store.getUsedCapacity(RESOURCE_ENERGY) < constants.START_UPGRADING_ENERGY);
-			if(storages.length > 0) {
-				var storage = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
-																 < c.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,c.pos)? p:c);
-				const range_to_store = tools.getRangeTo(creep.pos, storage.pos);
-				const my_store_energy_value = creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY);
-				const store_energy_value = storage.store.getUsedCapacity(RESOURCE_ENERGY);
-				if(range_to_store >= constants.HARVEST_RANGE_TO_STORE_2_TO_CONSOLE_LOG &&
-					(!creep.memory.prev_target_id || creep.memory.prev_target_id != creep.room.storage.id || false)
-					) {
-					var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
-					console.log( '🔜⚡2️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
-											, 'my store energy value:', my_store_energy_value
-											, 'range to possible target store:', range_to_store
-											, creep.pos.roomName, '->', storage.pos.roomName
-											, 'store energy value:', store_energy_value
-										 );
-					}
-				target = creep.room.storage;
-				if(!!target) return target;
-			}
-		}
+		// const this_room_containers_are_empty = cash.areEmptyContainers(creep);
+		//
+		// if(!target &&
+		// 	 !creep.getActiveBodyparts(WORK) && creep.memory.rerun && this_room_containers_are_empty &&
+		// 	 !!creep.room.storage &&
+		// 	 !!creep.room.storage.my &&
+		// 	 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.START_UPGRADING_ENERGY + constants.MIN_STORAGE_ENERGY) {
+		//  	var t = Game.cpu.getUsed();
+		// 	var storages = cash.getStorages().filter((s) => s.store.getUsedCapacity(RESOURCE_ENERGY) < constants.START_UPGRADING_ENERGY);
+		// 	if(storages.length > 0) {
+		// 		var storage = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
+		// 														 < c.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,c.pos)? p:c);
+		// 		const range_to_store = tools.getRangeTo(creep.pos, storage.pos);
+		// 		const my_store_energy_value = creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY);
+		// 		const store_energy_value = storage.store.getUsedCapacity(RESOURCE_ENERGY);
+		// 		if(range_to_store >= constants.HARVEST_RANGE_TO_STORE_2_TO_CONSOLE_LOG &&
+		// 			(!creep.memory.prev_target_id || creep.memory.prev_target_id != creep.room.storage.id || false)
+		// 			) {
+		// 			var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
+		// 			console.log( '🔜⚡2️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
+		// 									, 'my store energy value:', my_store_energy_value
+		// 									, 'range to possible target store:', range_to_store
+		// 									, creep.pos.roomName, '->', storage.pos.roomName
+		// 									, 'store energy value:', store_energy_value
+		// 								 );
+		// 			}
+		// 		target = creep.room.storage;
+		// 		if(!!target) return target;
+		// 	}
+		// }
 
 		if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
 			var weightcreeps = creep.room.find(FIND_MY_CREEPS, {
