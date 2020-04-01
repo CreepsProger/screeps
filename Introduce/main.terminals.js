@@ -5,11 +5,11 @@ const cash = require('cash');
 var terminals = {
 
 	run: function() {
-		console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000);
+		// console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000);
 		 	if(Game.time % constants.TICKS_TO_TERMINAL_SEND)
 		 		return;
 
-		console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000);
+		// console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000);
 
 		var all = cash.getAllMyTerminals();
 		var from = all.reduce((p,c) => {
