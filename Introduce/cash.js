@@ -118,6 +118,14 @@ var cash = {
 			});
 	},
 
+	all_my_terminals: {},
+	getAllMyTerminals: function() {
+		return cash.getEntry(cash.all_my_terminals, STRUCTURE_TERMINAL, 0, () => {
+			return _.filter(Game.structures,
+				 (structure) => !!structure.my && structure.structureType == STRUCTURE_TERMINAL).map((obj) => obj.id);
+			 });
+ 	},
+
 	all_my_towers: {},
 	getAllMyTowers: function() {
 		return cash.getEntry(cash.all_my_towers, STRUCTURE_TOWER, 0, () => {
