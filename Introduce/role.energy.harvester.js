@@ -158,7 +158,7 @@ var role = {
 		if(!target &&
 			 Memory.stop_upgrading == false &&
 			 creep.getActiveBodyparts(WORK) &&
-			 energy > constants.STOP_UPGRADING_ENERGY) {
+			 energy > constants.START_UPGRADING_ENERGY) {
 			var st = [];
 			if(!!creep.room.terminal &&
 				 !!creep.room.terminal.my &&
@@ -231,7 +231,7 @@ var role = {
 			 !!creep.room.storage.my &&
 			 energy > 2*constants.START_UPGRADING_ENERGY) {
 		 	var t = Game.cpu.getUsed();
-			var storages = cash.getStorages().filter((s) => s.store.getUsedCapacity(RESOURCE_ENERGY) < 2*constants.START_UPGRADING_ENERGY);
+			var storages = cash.getStorages().filter((s) => s.store.getUsedCapacity(RESOURCE_ENERGY) < 3*constants.START_UPGRADING_ENERGY);
 			if(storages.length > 0) {
 				var storage = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
 																 < c.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,c.pos)? p:c);
