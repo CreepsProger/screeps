@@ -23,11 +23,11 @@ var terminals = {
 		 });
 		 var from_a = from.store.getUsedCapacity(RESOURCE_ENERGY) + from.room.storage.store.getUsedCapacity(RESOURCE_ENERGY);
 		 var to_a = to.store.getUsedCapacity(RESOURCE_ENERGY) + to.room.storage.store.getUsedCapacity(RESOURCE_ENERGY);
-		 var values = all.map((t) =>
-		  return { room: t.pos.roomName
-			 		   , terminal: t.store.getUsedCapacity(RESOURCE_ENERGY)
-			    	 , storage: t.storage.store.getUsedCapacity(RESOURCE_ENERGY)
-					   });
+		 var values = all.map((t) => t.pos.roomName);
+		  // return { room: t.pos.roomName
+			//  		   , terminal: t.store.getUsedCapacity(RESOURCE_ENERGY)
+			//     	 , storage: t.storage.store.getUsedCapacity(RESOURCE_ENERGY)
+			// 		   });
  		 console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000
 		 						, 'VALUES:', JSON.stringify(values)
  								);
