@@ -4,6 +4,7 @@ const links = require('main.links');
 const towers = require('main.towers');
 const metrix = require('main.metrix');
 const spawns = require('main.spawns');
+const terminals = require('main.terminals');
 const flags = require('main.flags');
 const log = require('main.log');
 const cash = require('cash');
@@ -78,6 +79,7 @@ module.exports.loop = function () {
 	links.run();			Memory.cpu_main_part.links = Math.round((Memory.cpu_main_part.links+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	towers.run();			Memory.cpu_main_part.towers = Math.round((Memory.cpu_main_part.towers+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	spawns.run();			Memory.cpu_main_part.spawns = Math.round((Memory.cpu_main_part.spawns+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
+	terminals.run();	Memory.cpu_main_part.terminals = Math.round((Memory.cpu_main_part.terminals+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	metrix.output();	Memory.cpu_main_part.metrix2 = Math.round((Memory.cpu_main_part.metrix2+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	// cash.getStorages();
 
@@ -99,7 +101,7 @@ module.exports.loop = function () {
 						   // , dt
 						 );
 		delete Memory.cpu_main_part;
-		Memory.cpu_main_part = {perf:0, clearing:0, metrix:0, config:0, flags:0, links:0, towers:0, spawns:0, metrix2:0, others:0};
+		Memory.cpu_main_part = {perf:0, clearing:0, metrix:0, config:0, flags:0, links:0, towers:0, spawns:0, terminals:0, metrix2:0, others:0};
 	}
 
 	for(var name in Game.creeps) {

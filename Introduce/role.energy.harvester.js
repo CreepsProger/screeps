@@ -151,6 +151,16 @@ var role = {
 		}
 
 		if(!target &&
+			 !!creep.room.storage &&
+			 !!creep.room.storage.my &&
+			 !!creep.room.terminal &&
+			 !!creep.room.terminal.my &&
+			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) < 2*constants.START_UPGRADING_ENERGY &&
+			 creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > 10000) {
+				 target = creep.room.terminal;
+		}
+
+		if(!target &&
 			 Memory.stop_upgrading == false &&
 			 creep.getActiveBodyparts(WORK) &&
 			 !!creep.room.storage &&

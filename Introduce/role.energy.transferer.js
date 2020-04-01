@@ -12,6 +12,9 @@ const cash = require('cash');
 var roleEnergyTransferer = {
 
     /** @param {Creep} creep **/
+	getTarget: function(creep, executer = undefined) {
+	},
+
 	run: function(creep, executer = undefined) {
 		if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
 				roleNext.run(creep);
@@ -203,6 +206,19 @@ var roleEnergyTransferer = {
 			}
 
 			metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
+
+			if(!target &&
+				 creep.memory.rerun &&
+				 !!creep.room.storage &&
+				 !!creep.room.storage.my &&
+				 !!creep.room.terminal &&
+				 !!creep.room.terminal.my &&
+				 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 2*constants.START_UPGRADING_ENERGY) {
+					 target = creep.room.terminal;
+			}
+
+			metrix.cpu.step_time(creep, 'transfering', '🔜💡 0️⃣⃣');
+
 			const this_room_containers_are_empty = cash.areEmptyContainers(creep);
 			// if(this_room_containers_are_empty)
 			// 	console.log( '🔜💡1️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
