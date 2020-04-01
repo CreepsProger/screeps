@@ -35,8 +35,8 @@ var terminals = {
 																					+t.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))
 																+ ')');
 
-		var value = all.reduce((t) => p + t.store.getUsedCapacity(RESOURCE_ENERGY)
-																		 + t.room.storage.store.getUsedCapacity(RESOURCE_ENERGY),0);
+		var value = all.reduce((p,c) => p + c.store.getUsedCapacity(RESOURCE_ENERGY)
+																		 + c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY),0);
 
 		var cost = Game.market.calcTransactionCost(amount, from.pos.roomName, to.pos.roomName);
 		console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000
