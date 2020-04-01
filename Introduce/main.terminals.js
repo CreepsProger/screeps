@@ -26,31 +26,31 @@ var terminals = {
 					});
 		var from_a = from.store.getUsedCapacity(RESOURCE_ENERGY) + from.room.storage.store.getUsedCapacity(RESOURCE_ENERGY);
 		var to_a = to.store.getUsedCapacity(RESOURCE_ENERGY) + to.room.storage.store.getUsedCapacity(RESOURCE_ENERGY);
-		var values = all.map((t) => {
-			var r = t.pos.roomName + '(' + t.store.getUsedCapacity(RESOURCE_ENERGY)
-			 											 + '+' + t.room.storage.store.getUsedCapacity(RESOURCE_ENERGY)
-														 + '=' + (t.store.getUsedCapacity(RESOURCE_ENERGY)
-													 						+t.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))
-														 + ')';
-		 	return r;});
-		  // return { room: t.pos.roomName
-			//  		   , terminal: t.store.getUsedCapacity(RESOURCE_ENERGY)
-			//     	 , storage: t.storage.store.getUsedCapacity(RESOURCE_ENERGY)
-			// 		   });
- 		console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000
-							 , 'VALUES:', JSON.stringify(values)
- 							 );
 
 	 	if(!!from && !!to && from_a - to_a > constants.MIN_ENERGY_TO_TERMINAL_SEND) {
+			var before = all.map((t) => t.pos.roomName
+			 														+ '(' + t.store.getUsedCapacity(RESOURCE_ENERGY)
+				 											 		+ '+' + t.room.storage.store.getUsedCapacity(RESOURCE_ENERGY)
+															 		+ '=' + (t.store.getUsedCapacity(RESOURCE_ENERGY)
+														 								+t.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))
+															 		+ ')');
 			var v = Math.min(from_a - to_a, from.store.getUsedCapacity(RESOURCE_ENERGY));
 			var err = from.send(RESOURCE_ENERGY, v, to.pos.roomName);
+			var after = all.map((t) => t.pos.roomName
+			 														+ '(' + t.store.getUsedCapacity(RESOURCE_ENERGY)
+				 											 		+ '+' + t.room.storage.store.getUsedCapacity(RESOURCE_ENERGY)
+															 		+ '=' + (t.store.getUsedCapacity(RESOURCE_ENERGY)
+														 								+t.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))
+															 		+ ')');
 
 	 		console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000
-			 						, 'amount:', v, 'err:', err
-			 						, '\nfrom:', JSON.stringify(from)
-	 							 	, '\nto:', JSON.stringify(to)
-	 							 	, '\nall:', JSON.stringify(all)
-	 								);
+								 , '\namount:', v, 'err:', err
+								 , '\nbefore:', before
+								 , '\nafter:', after
+			 					 , '\nfrom:', from.pos.roomName, JSON.stringify(from)
+	 							 , '\nto:', to.pos.roomName, JSON.stringify(to)
+	 							 , '\nall:', JSON.stringify(all)
+	 							 );
 		 }
 	 }
 };
