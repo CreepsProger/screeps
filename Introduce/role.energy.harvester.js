@@ -150,16 +150,6 @@ var role = {
 			if(!!target) return target;
 		}
 
-		if(!target &&
-			 !!creep.room.storage &&
-			 !!creep.room.storage.my &&
-			 !!creep.room.terminal &&
-			 !!creep.room.terminal.my &&
-			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) < constants.STOP_UPGRADING_ENERGY &&
-			 creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_TERMINAL_ENERGY) {
-				 target = creep.room.terminal;
-		}
-
 		var energy = (!!creep.room.terminal && !!creep.room.terminal.my)? creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY):0;
 			  energy +=  (!!creep.room.storage && !!creep.room.storage.my)? creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0;
 				energy -= constants.MIN_TERMINAL_ENERGY;
