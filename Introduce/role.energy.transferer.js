@@ -213,7 +213,7 @@ var roleEnergyTransferer = {
 				 !!creep.room.storage.my &&
 				 !!creep.room.terminal &&
 				 !!creep.room.terminal.my &&
-				 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 2*constants.START_UPGRADING_ENERGY) {
+				 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 4*constants.START_UPGRADING_ENERGY) {
 					 target = creep.room.terminal;
 			}
 
