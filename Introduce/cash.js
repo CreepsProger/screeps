@@ -27,7 +27,7 @@ var cash = {
 		return Memory.cash[type][entry_id][subentry_id];
 	},
 
-	getEntry: function(cash_objects, type, entry_path, get_ids) {
+	getEntry: function(cash_objects, type, entry_path, get) {
 		var t = Game.cpu.getUsed();
 		const entry_id = !entry_path ? 0 : !entry_path.length ? entry_path : entry_path.length > 0 ? entry_path[0]:0;
 		const subentry_id = !entry_path ? 100 : !entry_path.length ? 100 : entry_path.length > 1 ? entry_path[1]:100;
@@ -35,7 +35,7 @@ var cash = {
  		if(Game.time % constants.TICKS_TO_RESET_CASH == 0)
 			cash.time = Game.time;
 		if(entry.time == 0 || entry.time < cash.time) {
- 			entry.ids = get_ids();
+ 			entry.ids = get().map((obj) => obj.id);
 			if(!cash_objects[entry_id]) {
 				cash_objects[entry_id] = {};
 			}
@@ -62,7 +62,7 @@ var cash = {
 	getController: function(room) {
 		return cash.getEntry(cash.controller, STRUCTURE_CONTROLLER, tools.getRoomCode(room.name), () => {
 			return room.find(FIND_STRUCTURES, {
-				filter: (structure) => structure.structureType == STRUCTURE_CONTROLLER }).map((obj) => obj.id);
+				filter: (structure) => structure.structureType == STRUCTURE_CONTROLLER });
 			})[0];
 	},
 
@@ -70,7 +70,7 @@ var cash = {
 	getStorage: function(room) {
 		return cash.getEntry(cash.storage, STRUCTURE_STORAGE, tools.getRoomCode(room.name), () => {
 			return room.find(FIND_STRUCTURES, {
-				filter: (structure) => structure.structureType == STRUCTURE_STORAGE }).map((obj) => obj.id);
+				filter: (structure) => structure.structureType == STRUCTURE_STORAGE });
 			})[0];
 	},
 
@@ -78,7 +78,7 @@ var cash = {
 	getContainers: function(room) {
 		return cash.getEntry(cash.containers, STRUCTURE_CONTAINER, tools.getRoomCode(room.name), () => {
 			return room.find(FIND_STRUCTURES, {
-				filter: (structure) => structure.structureType == STRUCTURE_CONTAINER }).map((obj) => obj.id);
+				filter: (structure) => structure.structureType == STRUCTURE_CONTAINER });
 			});
 	},
 
@@ -89,7 +89,7 @@ var cash = {
 												 , () => {
 			return creep.pos.findInRange(FIND_STRUCTURES, 1, {
 				filter: (structure) => structure.structureType == STRUCTURE_SPAWN ||
-															 structure.structureType == STRUCTURE_EXTENSION}).map((obj) => obj.id);
+															 structure.structureType == STRUCTURE_EXTENSION}));
 			});
 	},
 
@@ -98,7 +98,7 @@ var cash = {
 		return cash.getEntry(cash.extensions, STRUCTURE_EXTENSION, tools.getRoomCode(room.name), () => {
 			return room.find(FIND_STRUCTURES, {
 				filter: (structure) => structure.structureType == STRUCTURE_SPAWN ||
-															 structure.structureType == STRUCTURE_EXTENSION }).map((obj) => obj.id);
+															 structure.structureType == STRUCTURE_EXTENSION });
 			});
 	},
 
@@ -106,7 +106,7 @@ var cash = {
 	getLinks: function(room) {
 		return cash.getEntry(cash.links, STRUCTURE_LINK, tools.getRoomCode(room.name), () => {
 			return room.find(FIND_STRUCTURES, {
-				filter: (structure) => structure.structureType == STRUCTURE_LINK }).map((obj) => obj.id);
+				filter: (structure) => structure.structureType == STRUCTURE_LINK });
 			});
 	},
 
@@ -114,7 +114,7 @@ var cash = {
 	getTowers: function(room) {
 		return cash.getEntry(cash.towers, STRUCTURE_TOWER, tools.getRoomCode(room.name), () => {
 			return room.find(FIND_STRUCTURES, {
-				filter: (structure) => structure.structureType == STRUCTURE_TOWER }).map((obj) => obj.id);
+				filter: (structure) => structure.structureType == STRUCTURE_TOWER });
 			});
 	},
 
@@ -122,7 +122,7 @@ var cash = {
 	getAllMyTerminals: function() {
 		return cash.getEntry(cash.all_my_terminals, STRUCTURE_TERMINAL, 0, () => {
 			return _.filter(Game.structures,
-				 (structure) => !!structure.my && structure.structureType == STRUCTURE_TERMINAL).map((obj) => obj.id);
+				 (structure) => !!structure.my && structure.structureType == STRUCTURE_TERMINAL);
 			 });
  	},
 
@@ -130,7 +130,7 @@ var cash = {
 	getAllMyTowers: function() {
 		return cash.getEntry(cash.all_my_towers, STRUCTURE_TOWER, 0, () => {
 			return _.filter(Game.structures,
-				 (structure) => !!structure.my && structure.structureType == STRUCTURE_TOWER).map((obj) => obj.id);
+				 (structure) => !!structure.my && structure.structureType == STRUCTURE_TOWER);
 			 });
  	},
 
@@ -138,7 +138,7 @@ var cash = {
 	getStorages: function() {
 		return cash.getEntry(cash.all_my_storages, STRUCTURE_STORAGE, 0, () => {
  			return _.filter(Game.structures,
- 				 (structure) => !!structure.my && structure.structureType == STRUCTURE_STORAGE).map((obj) => obj.id);
+ 				 (structure) => !!structure.my && structure.structureType == STRUCTURE_STORAGE);
 			 });
  	},
 
