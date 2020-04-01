@@ -28,6 +28,13 @@ var terminals = {
 		var to_a = to.store.getUsedCapacity(RESOURCE_ENERGY) + to.room.storage.store.getUsedCapacity(RESOURCE_ENERGY);
 		var amount = Math.max(Math.floor((from_a - to_a) / 2) - constants.MIN_TERMINAL_ENERGY,constants.MIN_ENERGY_TO_TERMINAL_SEND);
 
+		var before = all.map((t) => t.pos.roomName
+																+ '(' + t.store.getUsedCapacity(RESOURCE_ENERGY)
+																+ '+' + t.room.storage.store.getUsedCapacity(RESOURCE_ENERGY)
+																+ '=' + (t.store.getUsedCapacity(RESOURCE_ENERGY)
+																					+t.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))
+																+ ')');
+
 		console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000
 							 , '\namount:', amount
 							 , '\nvalues:', before
@@ -38,12 +45,6 @@ var terminals = {
 	 	if(	!!from && !!to &&
 			 	amount > constants.MIN_ENERGY_TO_TERMINAL_SEND &&
 		  	t.store.getUsedCapacity(RESOURCE_ENERGY) > amount + constants.MIN_TERMINAL_ENERGY) {
-			var before = all.map((t) => t.pos.roomName
-			 														+ '(' + t.store.getUsedCapacity(RESOURCE_ENERGY)
-				 											 		+ '+' + t.room.storage.store.getUsedCapacity(RESOURCE_ENERGY)
-															 		+ '=' + (t.store.getUsedCapacity(RESOURCE_ENERGY)
-														 								+t.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))
-															 		+ ')');
 
 			var err = from.send(RESOURCE_ENERGY, amount, to.pos.roomName);
 
