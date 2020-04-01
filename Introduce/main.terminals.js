@@ -11,18 +11,18 @@ var terminals = {
 		 var all = cash.getAllMyTerminals();
 		 var from = all.reduce((p,c) => {
 			 return p.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_ENERGY_TO_TERMINAL_SEND &&
-			 	(p.store.getUsedCapacity(RESOURCE_ENERGY) + p.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))/10000
-			 		> (c.store.getUsedCapacity(RESOURCE_ENERGY) + c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))/10000
+			 	(p.store.getUsedCapacity(RESOURCE_ENERGY) + p.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))/constants.MIN_ENERGY_TO_TERMINAL_SEND
+			 		> (c.store.getUsedCapacity(RESOURCE_ENERGY) + c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))/constants.MIN_ENERGY_TO_TERMINAL_SEND
 			 ? p:c;
 		 });
 		 var to = all.reduce((p,c) => {
 			 return p.store.getFreeCapacity(RESOURCE_ENERGY) > constants.MIN_ENERGY_TO_TERMINAL_SEND &&
-			 	(p.store.getUsedCapacity(RESOURCE_ENERGY) + p.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))/10000
-			 		< (c.store.getUsedCapacity(RESOURCE_ENERGY) + c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))/10000
+			 	(p.store.getUsedCapacity(RESOURCE_ENERGY) + p.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))/constants.MIN_ENERGY_TO_TERMINAL_SEND
+			 		< (c.store.getUsedCapacity(RESOURCE_ENERGY) + c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))/constants.MIN_ENERGY_TO_TERMINAL_SEND
 			 ? p:c;
 		 });
-		 var from_a = from.store.getUsedCapacity(RESOURCE_ENERGY) + from.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))
-		 var to_a = to.store.getUsedCapacity(RESOURCE_ENERGY) + to.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))
+		 var from_a = from.store.getUsedCapacity(RESOURCE_ENERGY) + from.room.storage.store.getUsedCapacity(RESOURCE_ENERGY));
+		 var to_a = to.store.getUsedCapacity(RESOURCE_ENERGY) + to.room.storage.store.getUsedCapacity(RESOURCE_ENERGY));
 
 		 if(!!from && !!to && from_a - to_a > constants.MIN_ENERGY_TO_TERMINAL_SEND) {
 			 var v = Math.min(from_a - to_a, from.store.getUsedCapacity(RESOURCE_ENERGY));
