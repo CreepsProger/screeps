@@ -230,7 +230,9 @@ var roleEnergyTransferer = {
 				 creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
 				 (this_room_containers_are_empty || !creep.room.storage) &&
 				 creep.memory.rerun) {
-				var storages = cash.getStorages().filter((s) => s.store.getUsedCapacity(RESOURCE_ENERGY) < constants.START_UPGRADING_ENERGY);;
+				var storages = cash.getStorages().filter((s) => s.store.getUsedCapacity(RESOURCE_ENERGY)
+				 		+ (!s.room.terminal? 0:s.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY))
+				 		< constants.START_UPGRADING_ENERGY + constants.MIN_TERMINAL_ENERGY + constants.MIN_STORAGE_ENERGY);
 				if(storages.length > 0) {
 					// target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
 					// 																< c.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,c.pos)? p:c);
@@ -259,7 +261,9 @@ var roleEnergyTransferer = {
 				 creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0 &&
 				 (this_room_containers_are_empty || !creep.room.storage) &&
 				 creep.memory.rerun) {
-				var storages = cash.getStorages().filter((s) => s.store.getUsedCapacity(RESOURCE_ENERGY) < 2*constants.START_UPGRADING_ENERGY);;
+				var storages = cash.getStorages().filter((s) => s.store.getUsedCapacity(RESOURCE_ENERGY)
+				 		+ (!s.room.terminal? 0:s.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY))
+				 		< 2*constants.START_UPGRADING_ENERGY + constants.MIN_TERMINAL_ENERGY + constants.MIN_STORAGE_ENERGY);
 				if(storages.length > 0) {
 					// target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,p.pos)
 					// 												 				< c.store.getUsedCapacity(RESOURCE_ENERGY) * tools.getRangeTo(creep.pos,c.pos)? p:c);
