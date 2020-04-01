@@ -180,7 +180,7 @@ var role = {
 		}
 
 		if(!target &&
-			 (creep.room.energyAvailable != creep.room.energyCapacityAvailable /*|| Memory.stop_upgrading*/) &&
+			 // (creep.room.energyAvailable != creep.room.energyCapacityAvailable || Memory.stop_upgrading) &&
 			 (!creep.getActiveBodyparts(WORK) || creep.memory.rerun) &&
 			 energy > constants.START_UPGRADING_ENERGY) {
 			var st = [];
