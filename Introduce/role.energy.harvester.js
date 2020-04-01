@@ -180,7 +180,9 @@ var role = {
 				 	 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_STORAGE_ENERGY) {
 				st.push(creep.room.storage);
 			}
-			var target = st.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+			if(st.length > 0) {
+				var target = st.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+			}
 			if(!!target) {
 				// console.log('🔜⚡', creep, 'st:', target);
 			 return target;
@@ -202,7 +204,9 @@ var role = {
  				 	 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.STOP_UPGRADING_ENERGY + constants.MIN_STORAGE_ENERGY) {
  				st.push(creep.room.storage);
  			}
- 			var target = st.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+			if(st.length > 0) {
+				var target = st.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+			}
  			if(!!target) {
  				// console.log('🔜⚡', creep, 'st:', target);
  			 return target;
