@@ -119,7 +119,7 @@ var tools = {
 				var range2 = creep2.pos.getRangeTo(target);
 				var range = creep.pos.getRangeTo(target);
 //				if(path2.length > path.length+1) {
-        if(range2 > range+2) {
+        if(range2 > range+5) {
 					const order = 'move'; // creep2.moveTo.name
 					const err = creep2.cancelOrder(order);
 					if(err == OK) {
