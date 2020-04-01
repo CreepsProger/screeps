@@ -155,28 +155,66 @@ var role = {
 			 !!creep.room.storage.my &&
 			 !!creep.room.terminal &&
 			 !!creep.room.terminal.my &&
-			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) < 4*constants.START_UPGRADING_ENERGY &&
+			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) < constants.STOP_UPGRADING_ENERGY &&
 			 creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_TERMINAL_ENERGY) {
 				 target = creep.room.terminal;
 		}
 
+		var energy = (!!creep.room.terminal && !!creep.room.terminal.my)? creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY):0;
+			  energy +=  (!!creep.room.storage && !!creep.room.storage.my)? creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0;
+				energy -= constants.MIN_TERMINAL_ENERGY;
+				energy -= constants.MIN_STORAGE_ENERGY;
+
 		if(!target &&
 			 Memory.stop_upgrading == false &&
 			 creep.getActiveBodyparts(WORK) &&
-			 !!creep.room.storage &&
-			 !!creep.room.storage.my &&
-			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.STOP_UPGRADING_ENERGY) {
-			target = creep.room.storage;
-			role.log('🔜⚡', creep, 'STRUCTURE_STORAGE');
-			if(!!target) return target;
+			 energy > constants.STOP_UPGRADING_ENERGY) {
+			var st = [];
+			if(!!creep.room.terminal &&
+				 !!creep.room.terminal.my &&
+				   creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_TERMINAL_ENERGY) {
+				st.push(creep.room.terminal);
+			}
+			if(!!creep.room.storage &&
+				 !!creep.room.storage.my &&
+				 	 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_STORAGE_ENERGY) {
+				st.push(creep.room.storage);
+			}
+			var target = st.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+			if(!!target) {
+				// console.log('🔜⚡', creep, 'st:', target);
+			 return target;
+		  }
 		}
 
 		if(!target &&
 			 (creep.room.energyAvailable != creep.room.energyCapacityAvailable || Memory.stop_upgrading) &&
 			 (!creep.getActiveBodyparts(WORK) || creep.memory.rerun) &&
-			 !!creep.room.storage &&
-			 !!creep.room.storage.my &&
-			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.START_UPGRADING_ENERGY) {
+			 energy > constants.START_UPGRADING_ENERGY) {
+			var st = [];
+ 			if(!!creep.room.terminal &&
+ 				 !!creep.room.terminal.my &&
+ 				   creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_TERMINAL_ENERGY) {
+ 				st.push(creep.room.terminal);
+ 			}
+ 			if(!!creep.room.storage &&
+ 				 !!creep.room.storage.my &&
+ 				 	 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_STORAGE_ENERGY) {
+ 				st.push(creep.room.storage);
+ 			}
+ 			var target = st.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+ 			if(!!target) {
+ 				// console.log('🔜⚡', creep, 'st:', target);
+ 			 return target;
+ 		  }
+		}
+
+		if(!target &&
+			 creep.room.energyAvailable != creep.room.energyCapacityAvailable &&
+			 (!creep.getActiveBodyparts(WORK) || false) &&
+			 !!creep.room.terminal &&
+			 !!creep.room.terminal.my &&
+			 (creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_TERMINAL_ENERGY || !conditions.TO_SPAWN_CLAIMING_ROOMS())) {
 			target = creep.room.storage;
 			if(!!target) return target;
 		}
