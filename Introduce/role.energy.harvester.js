@@ -191,7 +191,7 @@ var role = {
  			}
  			if(!!creep.room.storage &&
  				 !!creep.room.storage.my &&
- 				 	 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > (constants.STOP_UPGRADING_ENERGY + constants.MIN_STORAGE_ENERGY)) {
+ 				 	 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > (2*constants.START_UPGRADING_ENERGY + constants.MIN_STORAGE_ENERGY)) {
  				st.push(creep.room.storage);
  			}
 			if(st.length > 0) {
