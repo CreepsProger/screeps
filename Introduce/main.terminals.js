@@ -23,9 +23,9 @@ var terminals = {
 		 });
 
 		 console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000
-							 , 'from:', JSON.stringify(from)
-							 , 'to:', JSON.stringify(to)
-							 , 'all:', JSON.stringify(all)
+							 , '\nfrom:', JSON.stringify(from)
+							 , '\nto:', JSON.stringify(to)
+							 , '\nall:', JSON.stringify(all)
 							);
 
 		 if(!!from && !!to) {
