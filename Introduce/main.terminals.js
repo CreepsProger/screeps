@@ -23,6 +23,13 @@ var terminals = {
 			 		< (c.store.getUsedCapacity(RESOURCE_ENERGY) + c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY))/10000
 			 ? p:c;
 		 });
+
+		 console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000
+							 , 'from:', JSON.stringify(from)
+							 , 'to:', JSON.stringify(to)
+							 , 'all:', JSON.stringify(all)
+							);
+
 		 if(!!from && !!to) {
 			 from.send(to);
 		 }
