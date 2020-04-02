@@ -136,7 +136,7 @@ var role = {
 			) {
 			var sources = creep.room.find(FIND_SOURCES, {
 				filter: (source) => {
-					return source.energy > 0 && creep.pos.findPathTo(source).length > 0 &&
+					return source.energy > 0 && creep.pos.findClosestByPath(source) &&
 						(!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0 ||
 						  (!!DP2 && DP2.pos.roomName == this_room && DP2.pos.getRangeTo(source) <= 5))
 						}
