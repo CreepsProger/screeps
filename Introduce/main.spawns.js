@@ -175,7 +175,7 @@ var spawns = {
 
 				var controller = spawn.room.controller;
 				const CL = controller.level;
-				var N = Memory.totals.CreepsNumber; const Bm = Game.cpu.bucket(10000 - 5000);
+				var N = Memory.totals.CreepsNumber; //const Bm = Game.cpu.bucket(10000 - 5000);
 
 				if(Memory.totals.CARRY < 75) spawns.tryCreateCreep(spawn,         808, 10, 3); // E  800 Carier
 				if(Memory.totals.CARRY < 75) spawns.tryCreateCreep(spawn,         505, 10, 3); // E  500 Carier
