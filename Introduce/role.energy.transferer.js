@@ -60,7 +60,7 @@ var roleEnergyTransferer = {
 				 if(!!target) {
 					 if(creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || true) {
 						 var dt = Math.round((Game.cpu.getUsed() - t)*100)/100; t = Game.cpu.getUsed();
-						 if(dt > 0.1)
+						 if(dt > 0.2)
 							 console.log( '🚸', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 													 , 'link:', JSON.stringify(target)
 													 );
@@ -133,7 +133,7 @@ var roleEnergyTransferer = {
 				if(!!target) {
 					if(creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || true) {
 						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100; t = Game.cpu.getUsed();
-						if(dt > 0.4)
+						if(dt > 0.6)
 							console.log( '🌕', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 													, 'infra id:', target.id
 													, use_api, sz, use_cash_pos, use_cash
@@ -183,7 +183,7 @@ var roleEnergyTransferer = {
 				if(!!target) {
 					if(!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id) {
 							var dt = Math.round((Game.cpu.getUsed() - t)*100)/100; t = Game.cpu.getUsed();
-							if(dt > 0.1)
+							if(dt > 0.2)
 								console.log( '🔜💡🛢️', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 													, 'target:', (!!target.name)? target.name:target.id + '(' + target.store.getUsedCapacity(RESOURCE_ENERGY) + ')'
 												 );
@@ -318,7 +318,7 @@ var roleEnergyTransferer = {
 						 (!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id)
 						) {
 						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100; t = Game.cpu.getUsed();
-						if(dt > 0.05)
+						if(dt > 0.01)
 							console.log( '🔜💡3️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 													, 'range to store:', range_to_store
 													, creep.pos.roomName, '->', target.pos.roomName
