@@ -183,7 +183,7 @@ var spawns = {
 				if(Memory.totals.WORK < 32) spawns.tryCreateCreep(spawn,        80808, 20, 1); // E 1600 Worker
 				if(Memory.totals.WORK < 16) spawns.tryCreateCreep(spawn,        40404, 20, 2); // E  800 Worker
 				if(Memory.totals.WORK < 16) spawns.tryCreateCreep(spawn,        20202, 20, 4); // E  400 Worker
-				if(Memory.totals.WORK <  8) spawns.tryCreateCreep(spawn,        10101, 20, 8); // E  200 Worker
+				if(Memory.totals.WORK < 16) spawns.tryCreateCreep(spawn,        10101, 20, 8); // E  200 Worker
 
 				// 22*1800+2*1300+4*650 = 44800 -> 30 per game tick
 				if(false) {
