@@ -1,5 +1,6 @@
 var roleNext = require('role.energy.transferer');
 const constants = require('main.constants');
+const conditions = require('main.conditions');
 const config = require('main.config');
 const metrix = require('main.metrix');
 const flags = require('main.flags');
