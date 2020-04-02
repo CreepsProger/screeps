@@ -2,7 +2,7 @@ const constants = require('main.constants');
 
 const conditions = {
 	  MAIN_ROOM_CRISIS: 						function() {
-																			return 	Memory.totals.WORK < 25 && Memory.totals.CARRY < 50;}
+																			return 	Memory.totals.WORK < 25 || Memory.totals.CARRY < 50;}
 	, CLAIMING_ROOM_CRISIS: 				function() {
 																			return 	Memory.totals.WORK < 50;}
 	, TO_SPAWN_MAIN_ROOMS: 					function() {
