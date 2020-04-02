@@ -131,7 +131,7 @@ var role = {
 
 		if(!target &&
 			 //this_room_sources_are_not_empty &&
-			 creep.getActiveBodyparts(WORK) //&&
+			 creep.getActiveBodyparts(WORK) && !conditions.MAIN_ROOM_CRISIS() || creep.memory.rerun
 			 //creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0
 			) {
 			var sources = creep.room.find(FIND_SOURCES, {
