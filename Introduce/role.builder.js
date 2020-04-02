@@ -27,6 +27,7 @@ var roleBuilder = {
 			if(!creep.memory.building &&
 				 this_room == my_room &&
 				 creep.getActiveBodyparts(WORK) > 0 &&
+				 !conditions.MAIN_ROOM_CRISIS() &&
 				 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 					 creep.store.getFreeCapacity() < creep.getActiveBodyparts(WORK)*2) ||
 					(creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
