@@ -34,7 +34,7 @@ var cash = {
 		var entry = cash.initEntry(type, entry_id, subentry_id);
  		if(Game.time % constants.TICKS_TO_RESET_CASH == 0)
 			cash.time = Game.time;
-		if(entry.time == 0 || entry.time < cash.time) {
+		if(entry.time == 0 || entry.time < cash.time || !cash_objects[entry_id]) {
  			entry.ids = get().map((obj) => obj.id);
 			if(!cash_objects[entry_id]) {
 				cash_objects[entry_id] = {};
