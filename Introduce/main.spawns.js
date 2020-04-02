@@ -177,14 +177,13 @@ var spawns = {
 				const CL = controller.level;
 				var N = Memory.totals.CreepsNumber;
 
-				if(Memory.totals.CARRY <50) spawns.tryCreateCreep(spawn,          808, 10, 2); // E  800 Carier
-				if(Memory.totals.CARRY <50) spawns.tryCreateCreep(spawn,          808, 10, 2); // E  800 Carier
-				if(Memory.totals.CARRY <50) spawns.tryCreateCreep(spawn,          505, 10, 2); // E  500 Carier
-				if(Memory.totals.CARRY <50) spawns.tryCreateCreep(spawn,          303, 10, 3); // E  300 Carier
+				if(Memory.totals.CARRY < 100) spawns.tryCreateCreep(spawn,        808, 10, 2); // E  800 Carier
+				if(Memory.totals.CARRY < 50) spawns.tryCreateCreep(spawn,         505, 10, 2); // E  500 Carier
+				if(Memory.totals.CARRY < 50) spawns.tryCreateCreep(spawn,         303, 10, 3); // E  300 Carier
 				if(Memory.totals.WORK < 25) spawns.tryCreateCreep(spawn,        80808, 20, 1); // E 1600 Worker
 				if(Memory.totals.WORK < 25) spawns.tryCreateCreep(spawn,        40404, 20, 2); // E  800 Worker
-				if(Memory.totals.WORK < 25) spawns.tryCreateCreep(spawn,        20202, 20, 4); // E  400 Worker
-				if(Memory.totals.WORK < 25) spawns.tryCreateCreep(spawn,        10101, 20, 8); // E  200 Worker
+				if(Memory.totals.WORK < 15) spawns.tryCreateCreep(spawn,        20202, 20, 4); // E  400 Worker
+				if(Memory.totals.WORK < 15) spawns.tryCreateCreep(spawn,        10101, 20, 8); // E  200 Worker
 
 				// 22*1800+2*1300+4*650 = 44800 -> 30 per game tick
 				if(false) {
