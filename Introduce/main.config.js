@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 149,
+	version: 150,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -119,6 +119,39 @@ var config = {
 										 , escape_path:{ W28S37: 'W28S38', W28S38: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
 																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
 																	 , W28S33: 'W27S33', W27S33: 'W26S33'}
+										 },
+						 W28S32: { containers: {weight: 163}
+										 , energy_harvesting:
+												 [ {name: '1', time: 0, min_weight: 160, max_weight:169}
+												 , {name: '2', time: 0, min_weight: 160, max_weight:169}
+												 , {name: '3', time: 0, min_weight: 160, max_weight:169}
+												 , {name: '4', time: 0, min_weight: 160, max_weight:169}
+												 , {name: '5', time: 0, min_weight: 160, max_weight:169}
+												 , {name: '6', time: 0, min_weight: 160, max_weight:169}
+												 , {name: '7', time: 0, min_weight: 160, max_weight:169}
+												 , {name: '8', time: 0, min_weight: 160, max_weight:169}
+												 ]
+										 , claiming:
+												 [ {name: '1', time: 0, min_weight: 160, max_weight:169}
+												 , {name: '2', time: 0, min_weight: 160, max_weight:169}
+												 ]
+										 , attacker:
+												 [ {name: '1', time: 0, min_weight: 160, max_weight:169}
+												 , {name: '2', time: 0, min_weight: 160, max_weight:169}
+												 , {name: '3', time: 0, min_weight: 160, max_weight:169}
+												 , {name: '4', time: 0, min_weight: 160, max_weight:169}
+												 , {name: '5', time: 0, min_weight: 160, max_weight:169}
+												 , {name: '6', time: 0, min_weight: 160, max_weight:169}
+												 , {name: '7', time: 0, min_weight: 160, max_weight:169}
+												 ]
+									   , heal_room: 'W28S33'
+										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
+									 								 , W28S33: 'W28S32'}
+										 , escape_path:{ W28S37: 'W28S38', W28S38: 'W29S38', W29S38: 'W30S38'
+										               , W30S38: 'W30S37', W30S37: 'W30S36', W30S36: 'W30S35'
+																	 , W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33'
+																	 , W29S33: 'W28S33', W28S33: 'W27S33', W27S33: 'W26S33'
+																   , W28S32: 'W28S33'}
 										 },
 						 W26S34: { containers: {weight: 73}
 										 , energy_harvesting:
@@ -341,24 +374,24 @@ var config = {
 										 , escape_path:{ W29S37: 'W28S37', W28S37: 'W28S36', W28S36: 'W28S35'
 										 							 , W28S35: 'W28S34', W28S34: 'W28S33'}
 										 },
-						 W29S32: { containers: {weight: 163}
+						 W29S32: { containers: {weight: 173}
 										 , energy_harvesting:
-												 [ {name: '1', time: 0, min_weight: 160, max_weight: 169}
-												 , {name: '2', time: 0, min_weight: 160, max_weight: 169}
-												 , {name: '3', time: 0, min_weight: 160, max_weight: 169}
+												 [ {name: '1', time: 0, min_weight: 170, max_weight: 179}
+												 , {name: '2', time: 0, min_weight: 170, max_weight: 179}
+												 , {name: '3', time: 0, min_weight: 170, max_weight: 179}
 												 ]
 										 , claiming:
-												 [ {name: '1', time: 0, min_weight: 160, max_weight: 169}
-												 , {name: '2', time: 0, min_weight: 160, max_weight: 169}
+												 [ {name: '1', time: 0, min_weight: 170, max_weight: 179}
+												 , {name: '2', time: 0, min_weight: 170, max_weight: 179}
 												 ]
 										 , attacker:
-												 [ {name: '1', time: 0, min_weight: 160, max_weight: 169}
-												 , {name: '2', time: 0, min_weight: 160, max_weight: 169}
-												 , {name: '3', time: 0, min_weight: 160, max_weight: 169}
-												 , {name: '4', time: 0, min_weight: 160, max_weight: 169}
-												 , {name: '5', time: 0, min_weight: 160, max_weight: 169}
-												 , {name: '6', time: 0, min_weight: 160, max_weight: 169}
-												 , {name: '7', time: 0, min_weight: 160, max_weight: 169}
+												 [ {name: '1', time: 0, min_weight: 170, max_weight: 179}
+												 , {name: '2', time: 0, min_weight: 170, max_weight: 179}
+												 , {name: '3', time: 0, min_weight: 170, max_weight: 179}
+												 , {name: '4', time: 0, min_weight: 170, max_weight: 179}
+												 , {name: '5', time: 0, min_weight: 170, max_weight: 179}
+												 , {name: '6', time: 0, min_weight: 170, max_weight: 179}
+												 , {name: '7', time: 0, min_weight: 170, max_weight: 179}
 												 ]
 									   , heal_room: 'W28S33'
 										 , path_rooms: { W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
