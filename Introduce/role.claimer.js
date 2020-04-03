@@ -91,6 +91,10 @@ var role = {
 						action = 'claiming controller';
 						err = creep.claimController(target);
 						if(OK != err) {
+							action = 'attacking controller';
+							err = creep.attackController(target);
+						}
+						if(OK != err) {
 							action = 'reserving controller';
 							err = creep.reserveController(target);
 						}
