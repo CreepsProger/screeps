@@ -1,4 +1,5 @@
 const constants = require('main.constants');
+const conditions = require('main.conditions');
 const config = require('main.config');
 const links = require('main.links');
 const towers = require('main.towers');
