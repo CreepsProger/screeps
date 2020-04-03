@@ -271,7 +271,7 @@ var spawns = {
 												// if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,  500000007000006,167, 1, 1); // V 1-1 E    Healer
 											}
 											else {
-												if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,160, 1, 1); // V 1-1 E   Claimer
+												if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,160, 1, 2); // V 1-1 E   Claimer
 											}
 										}
 									}
