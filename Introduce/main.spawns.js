@@ -1,5 +1,6 @@
 const constants = require('main.constants');
 const conditions = require('main.conditions');
+const terminals = require('main.terminals');
 const config = require('main.config');
 const flags = require('main.flags');
 const tools = require('tools');
@@ -175,7 +176,10 @@ var spawns = {
 
 				var controller = spawn.room.controller;
 				const CL = controller.level;
-				var N = Memory.totals.CreepsNumber; //const Bm = Game.cpu.bucket(10000 - 5000);
+				var N = Memory.totals.CreepsNumber;
+				const total_energy = terminals.getTotalEnergy();
+				const extra_upgrade = Game.cpu.bucket > constants.CPU_BUCKET_TO_EXTRA_UPGRADE &&
+															total_energy > constants.TOTAL_ENERGY_TO_EXTRA_UPGRADE;
 
 				if(Memory.totals.CARRY < 75) spawns.tryCreateCreep(spawn,         808, 10, 3); // E  800 Carier
 				if(Memory.totals.CARRY < 75) spawns.tryCreateCreep(spawn,         505, 10, 3); // E  500 Carier
@@ -196,14 +200,14 @@ var spawns = {
 				else {
 					if(conditions.TO_SPAWN_MAIN_ROOMS()) {
 						if(spawn.name == 'Spawn1' || spawn.name == 'Spawn2' || !!rerun)
-                                                  spawns.tryCreateCreep(spawn,           160410, 34, 1, 1); // V 1-1 E    Worker
+                                                  spawns.tryCreateCreep(spawn,           160410, 34, 1, extra_upgrade?4:1); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn1' || spawn.name == 'Spawn2' || !!rerun)
                                                   spawns.tryCreateCreep(spawn,             2010, 31, 1, 1); // V 1-1 E    Carier
 						if(spawn.name == 'Spawn1' || spawn.name == 'Spawn2' || !!rerun)
-                                                  spawns.tryCreateCreep(spawn,           130911, 44, 1, 2); // V 1-1 E    Worker
+                                                  spawns.tryCreateCreep(spawn,           130911, 44, 1, extra_upgrade?2:1); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn1' || spawn.name == 'Spawn2' || !!rerun)
                                                   spawns.tryCreateCreep(spawn,             1608, 41, 1, 2); // V 1-1 E    Carier
-						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,           140711, 64, 1, 2); // V 1-1 E    Worker
+						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,           140711, 64, 1, extra_upgrade?3:2); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             3015, 61, 1, 2); // V 1-1 E    Carier
 						if(spawn.name == 'Spawn2' || spawn.name == 'Spawn3' || !!rerun)
 						 																			spawns.tryCreateCreep(spawn,    2000000000002, 50, 1, 1); // V 1-1 E   Claimer

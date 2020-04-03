@@ -4,6 +4,12 @@ const cash = require('cash');
 
 var terminals = {
 
+	getTotalEnergy: function() {
+		var all = cash.getAllMyTerminals();
+		return all.reduce((p,c) => p + c.store.getUsedCapacity(RESOURCE_ENERGY)
+																		 + c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY),0);
+	},
+
 	run: function() {
 		// console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000);
 		 	if(Game.time % constants.TICKS_TO_TERMINAL_SEND)
