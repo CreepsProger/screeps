@@ -12,7 +12,10 @@ const conditions = {
 						 																	!conditions.MAIN_ROOM_CRISIS();}
 	, TO_SPAWN_CLAIMING_ROOMS2:			function() {
 																			return 	Game.cpu.bucket > constants.CPU_BUCKET_TO_SPAWN_CLAIMING_ROOMS2 &&
-		 																					!conditions.MAIN_ROOM_CRISIS();}
+		 																					!conditions.CLAIMING_ROOM_CRISIS();}
+	, TO_SPAWN_CLAIMING_ROOMS3:			function() {
+																			return 	Game.cpu.bucket > constants.CPU_BUCKET_TO_SPAWN_CLAIMING_ROOMS3 &&
+		 																					!conditions.CLAIMING_ROOM_CRISIS();}
 	, TO_SPAWN_KEEPERS_ROOMS: 			function() {
 																			return 	Game.cpu.bucket > constants.CPU_BUCKET_TO_SPAWN_KEEPERS_ROOMS &&
 																							!conditions.CLAIMING_ROOM_CRISIS() &&

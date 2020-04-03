@@ -247,6 +247,8 @@ var spawns = {
 									else {
 										if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,90, 1, 2); // V 1-1 E   Claimer
 									}
+								}
+								if(conditions.TO_SPAWN_CLAIMING_ROOMS3()) {
 									if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S35')) {
 										if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015,135, 1, 1); // V 1-2 E  Attacker
 										if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,  500000007000006,137, 1, 1); // V 1-1 E    Healer
