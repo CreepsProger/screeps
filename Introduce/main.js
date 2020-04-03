@@ -11,6 +11,10 @@ const cash = require('cash');
 const role = require('role.claimer');
 
 module.exports.loop = function () {
+
+	if(!conditions.TO_SPAWN_MAIN_ROOMS() && Game.time % 2)
+		return;
+
 	var t = 0;
 	// for(var i=0; i < 1000; i++)
 	// 	Game.cpu.getUsed();
