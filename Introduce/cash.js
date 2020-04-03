@@ -42,7 +42,7 @@ var cash = {
 			cash_objects[entry_id][subentry_id] = {dt:0, n:0, ids: entry.ids, objs: []};
 		}
 		var cash_o = cash_objects[entry_id][subentry_id];
-		if(false && entry.time != Game.time) {
+		if(true && entry.time != Game.time) {
 			cash_o.objs = cash_o.ids.map((id) => Game.getObjectById(id));
  			entry.time = Game.time;
  		}
@@ -84,12 +84,13 @@ var cash = {
 
 	pos_extensions: {},
 	getPosExtensions: function(creep) {
+		var q = Math.floor(creep.pos.x/5)*10 + Math. floor(creep.pos.y/5);
 		return cash.getEntry( cash.pos_extensions, STRUCTURE_EXTENSION
-												 , [tools.getRoomCode(creep.room.name),(Math.floor(creep.pos.x/5)*10 + Math. floor(creep.pos.y/5))]
-												 , () => {
-			return creep.pos.findInRange(FIND_STRUCTURES, 1, {
-				filter: (structure) => structure.structureType == STRUCTURE_SPAWN ||
-															 structure.structureType == STRUCTURE_EXTENSION});
+												 , [tools.getRoomCode(creep.room.name),q]
+												 , () => { 
+			return creep.pos.findInRange(FIND_STRUCTURES, 10, {
+				filter: (structure) => (structure.structureType == STRUCTURE_SPAWN ||
+															 structure.structureType == STRUCTURE_EXTENSION) && q == Math.floor(structure.pos.x/5)*10 + Math. floor(structure.pos.y/5)});
 			});
 	},
 
