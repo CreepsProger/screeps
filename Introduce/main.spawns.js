@@ -180,6 +180,16 @@ var spawns = {
 				const total_energy = terminals.getTotalEnergy();
 				const extra_upgrade = Game.cpu.bucket > constants.CPU_BUCKET_TO_EXTRA_UPGRADE &&
 															total_energy > constants.TOTAL_ENERGY_TO_EXTRA_UPGRADE;
+				const All = !!rerun;
+				const Sp1 = (All || spawn.name == 'Spawn1' || spawn.name == 'Spawn4');
+				const Sp2 = (All || spawn.name == 'Spawn2');
+				const Sp3 = (All || spawn.name == 'Spawn3');
+				const Sp4 = (All || spawn.name == 'Spawn5');
+				const Sp12 = (Sp1 || Sp2);
+				const Sp23 = (Sp2 || Sp3);
+				const Sp34 = (Sp3 || Sp4);
+				const Sp123 = (Sp12 || Sp23);
+				const Sp234 = (Sp23 || Sp34);
 
 				if(Memory.totals.CARRY < 75) spawns.tryCreateCreep(spawn,         808, 10, 3); // E  800 Carier
 				if(Memory.totals.CARRY < 75) spawns.tryCreateCreep(spawn,         505, 10, 3); // E  500 Carier
@@ -199,96 +209,88 @@ var spawns = {
 				}
 				else {
 					if(conditions.TO_SPAWN_MAIN_ROOMS()) {
-						if(spawn.name == 'Spawn1' || spawn.name == 'Spawn2' || !!rerun)
-                                                  spawns.tryCreateCreep(spawn,           140711, 34, 1, 1); // V 1-1 E    Worker
-						if(spawn.name == 'Spawn1' || spawn.name == 'Spawn2' || !!rerun)
-                                                  spawns.tryCreateCreep(spawn,             3015, 31, 1, 1); // V 1-1 E    Carier
-						if(spawn.name == 'Spawn1' || spawn.name == 'Spawn2' || !!rerun)
-                                                  spawns.tryCreateCreep(spawn,           161616, 44, 1, extra_upgrade?3:1); // V 1-1 E    Worker
-						if(spawn.name == 'Spawn1' || spawn.name == 'Spawn2' || !!rerun)
-                                                  spawns.tryCreateCreep(spawn,             3015, 41, 1, 1); // V 1-1 E    Carier
-						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,           140711, 64, 1, 2); // V 1-1 E    Worker
-						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             3015, 61, 1, 2); // V 1-1 E    Carier
+						if(Sp12	)	spawns.tryCreateCreep(spawn,           140711, 34, 1, 1); // V 1-1 E    Worker
+						if(Sp12	)	spawns.tryCreateCreep(spawn,             3015, 31, 1, 1); // V 1-1 E    Carier
+						if(Sp12	)	spawns.tryCreateCreep(spawn,           161616, 44, 1, extra_upgrade?3:1); // V 1-1 E    Worker
+						if(Sp12	)	spawns.tryCreateCreep(spawn,             3015, 41, 1, 1); // V 1-1 E    Carier
+						if(Sp234)	spawns.tryCreateCreep(spawn,           140711, 64, 1, 2); // V 1-1 E    Worker
+						if(Sp234)	spawns.tryCreateCreep(spawn,             3015, 61, 1, 2); // V 1-1 E    Carier
             if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S35')) {
-              if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015,125, 1, 1); // V 1-2 E  Attacker
+              if(Sp34) spawns.tryCreateCreep(spawn, 1000000500000015,125, 1, 1); // V 1-2 E  Attacker
             }
             else {
-              //if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,120, 1, 1); // V 1-1 E   Claimer
-              if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,           111111,124, 1, 4); // V 1-1 E    Worker
-              //if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             3015,121, 1, 1); // V 1-1 E    Carier
+              //if(I3 || A) spawns.tryCreateCreep(spawn,    2000000000002,120, 1, 1); // V 1-1 E   Claimer
+              if(Sp34) spawns.tryCreateCreep(spawn,           111111,124, 1, 4); // V 1-1 E    Worker
+              //if(I3 || A) spawns.tryCreateCreep(spawn,             3015,121, 1, 1); // V 1-1 E    Carier
             }
 						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W27S33')) {
-							if(spawn.name == 'Spawn2' || spawn.name == 'Spawn3' || !!rerun)
-                                                  spawns.tryCreateCreep(spawn, 1000000500000015, 55, 1, 1); // V 1-2 E  Attacker
+							if(Sp123)	spawns.tryCreateCreep(spawn, 1000000500000015, 55, 1, 1); // V 1-2 E  Attacker
 						}
             else {
-              if(spawn.name == 'Spawn2' || spawn.name == 'Spawn3' || !!rerun)
-                                                    spawns.tryCreateCreep(spawn,    2000000000002, 50, 1, 1); // V 1-1 E   Claimer
-  						if(spawn.name == 'Spawn2' || spawn.name == 'Spawn3' || !!rerun)
-  						 																			spawns.tryCreateCreep(spawn,           140711, 54, 1, 2); // V 1-1 E    Worker
-  						if(spawn.name == 'Spawn2' || spawn.name == 'Spawn3' || !!rerun)
-  						 																			spawns.tryCreateCreep(spawn,             2412, 51, 1, 2); // V 1-1 E    Carie
+              if(Sp123)	spawns.tryCreateCreep(spawn,    2000000000002, 50, 1, 1); // V 1-1 E   Claimer
+  						if(Sp123)	spawns.tryCreateCreep(spawn,           140711, 54, 1, 2); // V 1-1 E    Worker
+  						if(Sp123)	spawns.tryCreateCreep(spawn,             2412, 51, 1, 2); // V 1-1 E    Carie
             }
 					}
 					if(conditions.TO_SPAWN_CLAIMING_ROOMS()) {
 						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S33')) {
-							if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015,105, 1, 1); // V 1-2 E  Attacker
+							if(Sp234) spawns.tryCreateCreep(spawn, 1000000500000015,105, 1, 1); // V 1-2 E  Attacker
 						}
 						else {
-							if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,100, 1, 1); // V 1-1 E   Claimer
-							if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,           111111,104, 1, 1); // V 1-1 E    Worker
-							if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             1608,101, 1, 1); // V 1-1 E    Carier
+							if(Sp234) spawns.tryCreateCreep(spawn,    2000000000002,100, 1, 1); // V 1-1 E   Claimer
+							if(Sp234) spawns.tryCreateCreep(spawn,           111111,104, 1, 1); // V 1-1 E    Worker
+							if(Sp234) spawns.tryCreateCreep(spawn,             1608,101, 1, 1); // V 1-1 E    Carier
 						}
 						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S34')) {
-							if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015,105, 1, 1); // V 1-2 E  Attacker
+							if(Sp234) spawns.tryCreateCreep(spawn, 1000000500000015,105, 1, 1); // V 1-2 E  Attacker
 						}
 						else {
-							if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,110, 1, 1); // V 1-1 E   Claimer
-							if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,            90909,114, 1, 1); // V 1-1 E    Worker
-							if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             1608,111, 1, 1); // V 1-1 E    Carier
+							if(Sp234) spawns.tryCreateCreep(spawn,    2000000000002,110, 1, 1); // V 1-1 E   Claimer
+							if(Sp234) spawns.tryCreateCreep(spawn,            90909,114, 1, 1); // V 1-1 E    Worker
+							if(Sp234) spawns.tryCreateCreep(spawn,             1608,111, 1, 1); // V 1-1 E    Carier
               if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S35')) {
-                if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015,135, 1, 1); // V 1-2 E  Attacker
-                if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,  500000007000006,137, 1, 1); // V 1-1 E    Healer
+                if(Sp34) spawns.tryCreateCreep(spawn, 1000000500000015,135, 1, 1); // V 1-2 E  Attacker
+                if(Sp34) spawns.tryCreateCreep(spawn,  500000007000006,137, 1, 1); // V 1-1 E    Healer
               }
               else {
-                if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,130, 1, 1); // V 1-1 E   Claimer
-                if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,           140711,134, 1, 2); // V 1-1 E    Worker
-                if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             3015,131, 1, 1); // V 1-1 E    Carier
+                if(Sp34) spawns.tryCreateCreep(spawn,    2000000000002,130, 1, 1); // V 1-1 E   Claimer
+                if(Sp34) spawns.tryCreateCreep(spawn,           140711,134, 1, 2); // V 1-1 E    Worker
+                if(Sp34) spawns.tryCreateCreep(spawn,             3015,131, 1, 1); // V 1-1 E    Carier
               }
 							if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S36')) {
-								if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015,145, 1, 1); // V 1-2 E  Attacker
-								if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,  500000007000006,147, 1, 1); // V 1-1 E    Healer
+								if(Sp34) spawns.tryCreateCreep(spawn, 1000000500000015,145, 1, 1); // V 1-2 E  Attacker
+								if(Sp34) spawns.tryCreateCreep(spawn,  500000007000006,147, 1, 1); // V 1-1 E    Healer
 							}
 							else {
-								if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,140, 1, 1); // V 1-1 E   Claimer
+								if(Sp34) spawns.tryCreateCreep(spawn,    2000000000002,140, 1, 1); // V 1-1 E   Claimer
 								if(conditions.TO_SPAWN_CLAIMING_ROOMS2()) {
 									if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S32')) {
-										if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015,95, 1, 1); // V 1-2 E  Attacker
-										// if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,  500000007000006,97, 1, 1); // V 1-1 E    Healer
+										if(Sp3) spawns.tryCreateCreep(spawn, 1000000500000015,95, 1, 1); // V 1-2 E  Attacker
+										// if(I3 || A) spawns.tryCreateCreep(spawn,  500000007000006,97, 1, 1); // V 1-1 E    Healer
 									}
 									else {
-										if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,90, 1, 2); // V 1-1 E   Claimer
+										if(Sp3) spawns.tryCreateCreep(spawn,    2000000000002,90, 1, 2); // V 1-1 E   Claimer
 									}
 								}
 								if(conditions.TO_SPAWN_CLAIMING_ROOMS3()) {
 								// if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S36')) {
-								// 	if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015,145, 1, 1); // V 1-2 E  Attacker
-								// 	if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,  500000007000006,147, 1, 1); // V 1-1 E    Healer
+								// 	if(I3 || A) spawns.tryCreateCreep(spawn, 1000000500000015,145, 1, 1); // V 1-2 E  Attacker
+								// 	if(I3 || A) spawns.tryCreateCreep(spawn,  500000007000006,147, 1, 1); // V 1-1 E    Healer
 								// }
 								// else {
-								// 	if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,140, 1, 1); // V 1-1 E   Claimer
+								// 	if(I3 || A) spawns.tryCreateCreep(spawn,    2000000000002,140, 1, 1); // V 1-1 E   Claimer
 									// if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S37')) {
-									// 	if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015,155, 1, 1); // V 1-2 E  Attacker
-									// 	if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,  500000007000006,157, 1, 1); // V 1-1 E    Healer
+									// 	if(I3 || A) spawns.tryCreateCreep(spawn, 1000000500000015,155, 1, 1); // V 1-2 E  Attacker
+									// 	if(I3 || A) spawns.tryCreateCreep(spawn,  500000007000006,157, 1, 1); // V 1-1 E    Healer
 									// }
 									// else {
-									// 	if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,150, 1, 1); // V 1-1 E   Claimer
+									// 	if(I3 || A) spawns.tryCreateCreep(spawn,    2000000000002,150, 1, 1); // V 1-1 E   Claimer
 									// 	if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S37')) {
-									// 		if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015,165, 1, 1); // V 1-2 E  Attacker
-									// 		if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,  500000007000006,167, 1, 1); // V 1-1 E    Healer
+									// 		if(I3 || A) spawns.tryCreateCreep(spawn, 1000000500000015,165, 1, 1); // V 1-2 E  Attacker
+									// 		if(I3 || A) spawns.tryCreateCreep(spawn,  500000007000006,167, 1, 1); // V 1-1 E    Healer
 									// 	}
 									// 	else {
-									// 		if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,    2000000000002,160, 1, 2); // V 1-1 E   Claimer
+									// 		if(I3 || A) spawns.tryCreateCreep(spawn,    2000000000002,160, 1, 2); // V 1-1 E   Claimer
 									// 	}
 									// }
 								}
@@ -298,14 +300,14 @@ var spawns = {
 					//                                                                                      30)
 					//                                                                 TTClRrAaHhWwCcMm,100, 3); // V 1-2 E  Attacker
 					if(conditions.TO_SPAWN_KEEPERS_ROOMS()) {
-						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1500001000000025, 75, 2, 2); // V 1-2 E  Attacker
-						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,           130911, 74, 1, 2); // V 1-1 E    Worker
-						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,              804, 71, 1, 2); // V 1-1 E    Carier
-						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1000100000000010, 76, 0, 0); // V 1-2 E RAttacker
-						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn,  500000007000006, 77, 1, 1); // V 1-1 E    Healer
+						if(Sp2) spawns.tryCreateCreep(spawn, 1500001000000025, 75, 2, 2); // V 1-2 E  Attacker
+						if(Sp2) spawns.tryCreateCreep(spawn,           130911, 74, 1, 2); // V 1-1 E    Worker
+						if(Sp2) spawns.tryCreateCreep(spawn,              804, 71, 1, 2); // V 1-1 E    Carier
+						if(Sp2) spawns.tryCreateCreep(spawn, 1000100000000010, 76, 0, 0); // V 1-2 E RAttacker
+						if(Sp2) spawns.tryCreateCreep(spawn,  500000007000006, 77, 1, 1); // V 1-1 E    Healer
 					}
 					if(conditions.TO_SPAWN_TO_ATTACK()) {
-						if(spawn.name == 'Spawn2' || !!rerun) spawns.tryCreateCreep(spawn, 1000000005000015, 87, 5, 5); // V 1-1 E    Healer
+						if(Sp2) spawns.tryCreateCreep(spawn, 1000000005000015, 87, 5, 5); // V 1-1 E    Healer
 					}
 				}
 			}
