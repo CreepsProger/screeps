@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 155,
+	version: 156,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -286,6 +286,7 @@ var config = {
 										 , claiming:
 												 [ {name: '1', time: 0, min_weight:130, max_weight:139}
 												 , {name: '2', time: 0, min_weight:130, max_weight:139}
+													, {name: '3', time: 0, min_weight:130, max_weight:139}
 												 ]
 										 , attacker:
 												 [ {name: '1', time: 0, min_weight:130, max_weight:139}
@@ -310,6 +311,7 @@ var config = {
 										 , claiming:
 												 [ {name: '1', time: 0, min_weight:140, max_weight:149}
 												 , {name: '2', time: 0, min_weight:140, max_weight:149}
+													, {name: '3', time: 0, min_weight:140, max_weight:149}
 												 ]
 										 , attacker:
 												 [ {name: '1', time: 0, min_weight:140, max_weight:149}
