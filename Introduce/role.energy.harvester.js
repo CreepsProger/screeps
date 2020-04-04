@@ -81,7 +81,7 @@ var role = {
 			}
 		}
 
-		const U = !!Game.flags['U'] && Game.flags['U'].pos.roomName == creep.pos.roomName;
+		const U = !!Game.flags['U'] && Game.flags['U'].pos.roomName == my_room;
 
 		if(!target &&
 			 (!creep.getActiveBodyparts(WORK) || U) &&

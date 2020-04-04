@@ -70,7 +70,7 @@ var roleUpgrader = {
 			const my_room_config = Memory.config.rooms[my_room];
 			const this_room_sources_are_empty = tools.areEmptySources(creep);
 			const this_room_containers_are_full = cash.areFullContainers(creep);
-			const U = !!Game.flags['U'] && Game.flags['U'].pos.roomName == creep.pos.roomName;
+			const U = !!Game.flags['U'] && Game.flags['U'].pos.roomName == my_room;
 
 			const canDo =
 						(creep.getActiveBodyparts(WORK) &&
