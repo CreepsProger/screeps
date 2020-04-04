@@ -81,14 +81,17 @@ var role = {
 			}
 		}
 
+		// const U = false || !!Game.flags['U'] && Game.flags['U'].pos.roomName == creep.pos.roomName;
+		const U = !!Game.flags['U'] && Game.flags['U'].pos.roomName == creep.pos.roomName;
+
 		if(!target &&
-			 !creep.getActiveBodyparts(WORK) &&
+			 (!creep.getActiveBodyparts(WORK) || U) &&
 			 creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0) {
 			var conts = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_CONTAINER) &&
 						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-						creep.memory.weight < my_room_config.containers.weight;
+						(creep.memory.weight < my_room_config.containers.weight && !U;
 				}
 			});
 
@@ -131,7 +134,7 @@ var role = {
 
 		if(!target &&
 			 //this_room_sources_are_not_empty &&
-			 creep.getActiveBodyparts(WORK)// && (!conditions.MAIN_ROOM_CRISIS() || creep.memory.rerun) 
+			 creep.getActiveBodyparts(WORK)// && (!conditions.MAIN_ROOM_CRISIS() || creep.memory.rerun)
 			 //creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0
 			) {
 			var sources = creep.room.find(FIND_SOURCES, {

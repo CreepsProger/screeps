@@ -156,13 +156,17 @@ var roleEnergyTransferer = {
 					}
 				});
 
-				if((!targs || !targs.length || targs.length == 0) && this_room_config.containers.weight < creep.memory.weight) {
+				// const U = false || !!Game.flags['U'] && Game.flags['U'].pos.roomName == creep.pos.roomName;
+				const U = !!Game.flags['U'] && Game.flags['U'].pos.roomName == creep.pos.roomName;
+
+				if((!targs || !targs.length || targs.length == 0) &&
+				  (this_room_config.containers.weight < creep.memory.weight && !U) {
 					targs = cash.getContainers(creep.room).filter((cont) =>
 						!!cont && !!cont.store && cont.store.getFreeCapacity() > 0);
 				}
 
 				if((!targs || !targs.length) && !!creep.room.storage &&
-						creep.getActiveBodyparts(WORK) &&
+						creep.getActiveBodyparts(WORK)  && !U &&
 						this_room_config.containers.weight < creep.memory.weight &&
 						creep.room.storage.store.getFreeCapacity() > 0) {
 					targs = [creep.room.storage];
