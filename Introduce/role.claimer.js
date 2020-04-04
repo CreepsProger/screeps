@@ -89,7 +89,7 @@ var role = {
 				if(target.id) {
 					const myRoomsNumber = 3;
 					const C = !!Game.flags['C'] && Game.flags['C'].pos.roomName == creep.pos.roomName;
-					if(!target.my && (Game.gcl == myRoomsNumber || C)) {
+					if(!target.my && (Game.gcl.level == myRoomsNumber || C)) {
 						action = 'claiming controller';
 						err = creep.claimController(target);
 						if(OK != err) {
