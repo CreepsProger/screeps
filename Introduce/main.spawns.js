@@ -200,11 +200,11 @@ var spawns = {
 				else {
 					if(conditions.TO_SPAWN_MAIN_ROOMS()) {
 						if(spawn.name == 'Spawn1' || spawn.name == 'Spawn2' || !!rerun)
-                                                  spawns.tryCreateCreep(spawn,           250817, 34, 1, extra_upgrade?4:1); // V 1-1 E    Worker
+                                                  spawns.tryCreateCreep(spawn,           140711, 34, 1, 1); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn1' || spawn.name == 'Spawn2' || !!rerun)
                                                   spawns.tryCreateCreep(spawn,             3015, 31, 1, 1); // V 1-1 E    Carier
 						if(spawn.name == 'Spawn1' || spawn.name == 'Spawn2' || !!rerun)
-                                                  spawns.tryCreateCreep(spawn,           250817, 44, 1, 1); // V 1-1 E    Worker
+                                                  spawns.tryCreateCreep(spawn,           161616, 44, 1, extra_upgrade?3:1); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn1' || spawn.name == 'Spawn2' || !!rerun)
                                                   spawns.tryCreateCreep(spawn,             3015, 41, 1, 1); // V 1-1 E    Carier
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,           140711, 64, 1, 2); // V 1-1 E    Worker
