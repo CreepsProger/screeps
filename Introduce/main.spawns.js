@@ -204,10 +204,10 @@ var spawns = {
 						if(spawn.name == 'Spawn1' || spawn.name == 'Spawn2' || !!rerun)
                                                   spawns.tryCreateCreep(spawn,             2010, 31, 1, 1); // V 1-1 E    Carier
 						if(spawn.name == 'Spawn1' || spawn.name == 'Spawn2' || !!rerun)
-                                                  spawns.tryCreateCreep(spawn,           130911, 44, 1, 2); // V 1-1 E    Worker
+                                                  spawns.tryCreateCreep(spawn,           250817, 44, 1, 1); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn1' || spawn.name == 'Spawn2' || !!rerun)
-                                                  spawns.tryCreateCreep(spawn,             1608, 41, 1, 2); // V 1-1 E    Carier
-						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,           140711, 64, 1, 3); // V 1-1 E    Worker
+                                                  spawns.tryCreateCreep(spawn,             3015, 41, 1, 1); // V 1-1 E    Carier
+						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,           140711, 64, 1, 2); // V 1-1 E    Worker
 						if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn,             3015, 61, 1, 2); // V 1-1 E    Carier
             if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S35')) {
               if(spawn.name == 'Spawn3' || !!rerun) spawns.tryCreateCreep(spawn, 1000000500000015,125, 1, 1); // V 1-2 E  Attacker
