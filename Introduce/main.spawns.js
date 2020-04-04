@@ -220,11 +220,11 @@ var spawns = {
 				}
 				else {
 					if(conditions.TO_SPAWN_MAIN_ROOMS()) {
-						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[2,B], 34, 1, 1);
+						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[2][B], 34, 1, 1);
 						if(Sp12	)	spawns.tryCreateCreep(spawn,        3015, 31, 1, 1); // Carier
-						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[3,B], 44, 1, extra_upgrade?3:1);
+						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[3][B], 44, 1, extra_upgrade?3:1);
 						if(Sp12	)	spawns.tryCreateCreep(spawn,        3015, 41, 1, 1); // Carier
-						if(Sp234)	spawns.tryCreateCreep(spawn, WORKER[2,B], 64, 1, 2);
+						if(Sp234)	spawns.tryCreateCreep(spawn, WORKER[2][B], 64, 1, 2);
 						if(Sp234)	spawns.tryCreateCreep(spawn,        3015, 61, 1, 2); // Carier
             if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S35')) {
               if(Sp34) spawns.tryCreateCreep(spawn, ATTACKER,125, 1, 1);
