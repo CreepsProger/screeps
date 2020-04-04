@@ -156,7 +156,6 @@ var roleEnergyTransferer = {
 					}
 				});
 
-				// const U = false || !!Game.flags['U'] && Game.flags['U'].pos.roomName == creep.pos.roomName;
 				const U = !!Game.flags['U'] && Game.flags['U'].pos.roomName == creep.pos.roomName;
 
 				if((!targs || !targs.length || targs.length == 0) &&

@@ -70,10 +70,11 @@ var roleUpgrader = {
 			const my_room_config = Memory.config.rooms[my_room];
 			const this_room_sources_are_empty = tools.areEmptySources(creep);
 			const this_room_containers_are_full = cash.areFullContainers(creep);
+			const U = !!Game.flags['U'] && Game.flags['U'].pos.roomName == creep.pos.roomName;
 
 			const canDo =
 						(creep.getActiveBodyparts(WORK) &&
-						 (!Memory.stop_upgrading || this_room_containers_are_full) &&
+						 (!Memory.stop_upgrading || this_room_containers_are_full || U) &&
 						 this_room == my_room &&
 						 (creep.room.energyAvailable == creep.room.energyCapacityAvailable || conditions.TO_SPAWN_CLAIMING_ROOMS()) &&
 						 !!creep.room.controller &&
