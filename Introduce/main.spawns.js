@@ -199,8 +199,8 @@ var spawns = {
 				if(Memory.totals.WORK < 25	) spawns.tryCreateCreep(spawn, 20202, 20, 3); // E  400 Worker
 				if(Memory.totals.WORK < 25	) spawns.tryCreateCreep(spawn, 10101, 20, 3); // E  200 Worker
 
- 				const A = 0; const B = 1; const C = 2;
-				                  //   A       B       C
+ 				const L = 0; const M = 1; const H = 2;
+				                  //   L       M       H
 				const WORKER = [ [ 10101,  20202,  40404]  // 0
 											 , [ 80808,  90909, 111111]  // 1
 											 , [130911, 140711, 160410]  // 2
@@ -220,25 +220,25 @@ var spawns = {
 				}
 				else {
 					if(conditions.TO_SPAWN_MAIN_ROOMS()) {
-						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[2][B], 34, 1, 1);
+						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[2][M], 34, 1, 1);
 						if(Sp12	)	spawns.tryCreateCreep(spawn,         3015, 31, 1, 1); // Carier
-						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[3][B], 44, 1, extra_upgrade?3:2);
+						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[3][M], 44, 1, extra_upgrade?3:2);
 						if(Sp12	)	spawns.tryCreateCreep(spawn,         1608, 41, 1, 2); // Carier
-						if(Sp234)	spawns.tryCreateCreep(spawn, WORKER[2][B], 64, 1, 2);
+						if(Sp234)	spawns.tryCreateCreep(spawn, WORKER[3][H], 64, 1, 1);
 						if(Sp234)	spawns.tryCreateCreep(spawn,         3015, 61, 1, 2); // Carier
             if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S35')) {
               if(Sp34) spawns.tryCreateCreep(spawn, ATTACKER,125, 1, 1);
             }
             else {
-              if(Sp34) spawns.tryCreateCreep(spawn, WORKER[2][A],124, 1, 3); // Worker
-              if(Sp34) spawns.tryCreateCreep(spawn,          804,121, 1, 1); // Carier
+              if(Sp34) spawns.tryCreateCreep(spawn, WORKER[2][H],124, 1, 2); // Worker
+              if(Sp34) spawns.tryCreateCreep(spawn,         1608,121, 1, 1); // Carier
             }
 						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W27S33')) {
 							if(Sp123)	spawns.tryCreateCreep(spawn, ATTACKER, 55, 1, 1);
 						}
             else {
               if(Sp123)	spawns.tryCreateCreep(spawn,      CLAIMER, 50, 1, 1);
-  						if(Sp123)	spawns.tryCreateCreep(spawn, WORKER[3][C], 54, 1, 1); // Worker
+  						if(Sp123)	spawns.tryCreateCreep(spawn, WORKER[3][H], 54, 1, 1); // Worker
   						if(Sp123)	spawns.tryCreateCreep(spawn,         3015, 51, 1, 1); // Carier
             }
 					}
@@ -248,7 +248,7 @@ var spawns = {
 						}
 						else {
 							if(Sp234) spawns.tryCreateCreep(spawn,  CLAIMER, 100, 1, 1);
-							if(Sp234) spawns.tryCreateCreep(spawn,    80808, 104, 1, 1); // Worker
+							if(Sp234) spawns.tryCreateCreep(spawn,    70506, 104, 1, 1); // Worker
 							if(Sp234) spawns.tryCreateCreep(spawn,     1608, 101, 1, 1); // Carier
 						}
 						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S34')) {
@@ -256,24 +256,22 @@ var spawns = {
 						}
 						else {
 							if(Sp234) spawns.tryCreateCreep(spawn,  CLAIMER, 110, 1, 1);
-							if(Sp234) spawns.tryCreateCreep(spawn,    80808, 114, 1, 1); // Worker
-							if(Sp234) spawns.tryCreateCreep(spawn,     1206, 111, 1, 1); // Carier
+							if(Sp234) spawns.tryCreateCreep(spawn,    70506, 114, 1, 1); // Worker
+							if(Sp234) spawns.tryCreateCreep(spawn,     1608, 111, 1, 1); // Carier
               if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S35')) {
                 if(Sp34) spawns.tryCreateCreep(spawn, ATTACKER, 135, 1, 1);
-                if(Sp34) spawns.tryCreateCreep(spawn,   HEALER, 137, 1, 1);
               }
               else {
                 if(Sp34) spawns.tryCreateCreep(spawn,  CLAIMER, 130, 1, 1);
-                if(Sp34) spawns.tryCreateCreep(spawn,   140711, 134, 1, 1); // Worker
-                if(Sp34) spawns.tryCreateCreep(spawn,     3015, 131, 1, 1); // Carier
+                if(Sp34) spawns.tryCreateCreep(spawn,    70506, 134, 1, 2); // Worker
+                if(Sp34) spawns.tryCreateCreep(spawn,     1608, 131, 1, 2); // Carier
               }
 							if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S36')) {
 								if(Sp34) spawns.tryCreateCreep(spawn, ATTACKER, 145, 1, 1);
-								if(Sp34) spawns.tryCreateCreep(spawn,   HEALER, 147, 1, 1);
 							}
 							else {
 								if(Sp34) spawns.tryCreateCreep(spawn,  CLAIMER, 140, 1, 1);
-								if(Sp34) spawns.tryCreateCreep(spawn,    80808, 144, 1, 1); // Worker
+								if(Sp34) spawns.tryCreateCreep(spawn,    70506, 144, 1, 1); // Worker
                 if(Sp34) spawns.tryCreateCreep(spawn,     1608, 141, 1, 1); // Carier
 								if(conditions.TO_SPAWN_CLAIMING_ROOMS2()) {
 									if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S32')) {

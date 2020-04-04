@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 153,
+	version: 154,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -272,7 +272,7 @@ var config = {
 												 , {name: '6', time: 0, min_weight:120, max_weight:129}
 												 , {name: '7', time: 0, min_weight:120, max_weight:129}
 												 ]
-									   , heal_room: 'W28S33'
+									   , heal_room: 'W28S35'
 										 , path_rooms: { W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
 																	 , W28S33: 'W28S34', W28S34: 'W28S35'}
 										 , escape_path:{ W28S35: 'W28S34', W28S34: 'W28S33'}
@@ -296,7 +296,7 @@ var config = {
 												 , {name: '6', time: 0, min_weight:130, max_weight:139}
 												 , {name: '7', time: 0, min_weight:130, max_weight:139}
 												 ]
-									   , heal_room: 'W28S33'
+									   , heal_room: 'W28S35'
 										 , path_rooms: { W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
 																	 , W28S33: 'W28S34', W28S34: 'W28S35', W28S35: 'W29S35'}
 										 , escape_path:{ W29S35: 'W28S35', W28S35: 'W28S34', W28S34: 'W28S33'}
@@ -320,7 +320,7 @@ var config = {
 												 , {name: '6', time: 0, min_weight:140, max_weight:149}
 												 , {name: '7', time: 0, min_weight:140, max_weight:149}
 												 ]
-									   , heal_room: 'W28S33'
+									   , heal_room: 'W28S35'
 										 , path_rooms: { W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
 																	 , W28S33: 'W28S34', W28S34: 'W28S35', W28S35: 'W28S36'}
 										 , escape_path:{ W28S36: 'W28S35', W28S35: 'W28S34', W28S34: 'W28S33'}
