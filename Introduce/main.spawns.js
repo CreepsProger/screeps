@@ -204,7 +204,7 @@ var spawns = {
 				const WORKER = [ [ 10101,  20202,  40404]  // 0
 											 , [ 80808,  90909, 111111]  // 1
 											 , [130911, 140711, 160410]  // 2
-											 , [102015, 161616, 250817]];// 3
+											 , [102216, 161616, 250817]];// 3
 				const CARIER = [1608,2412,3015];
 				const ATTACKER = 1000000500000015;
 				const HEALER = 500000007000006;
@@ -237,9 +237,9 @@ var spawns = {
 							if(Sp123)	spawns.tryCreateCreep(spawn, ATTACKER, 55, 1, 1);
 						}
             else {
-              if(Sp123)	spawns.tryCreateCreep(spawn,  CLAIMER, 50, 1, 1);
-  						if(Sp123)	spawns.tryCreateCreep(spawn,   140711, 54, 1, 2); // Worker
-  						if(Sp123)	spawns.tryCreateCreep(spawn,     3015, 51, 1, 1); // Carier
+              if(Sp123)	spawns.tryCreateCreep(spawn,      CLAIMER, 50, 1, 1);
+  						if(Sp123)	spawns.tryCreateCreep(spawn, WORKER[3][C], 54, 1, 1); // Worker
+  						if(Sp123)	spawns.tryCreateCreep(spawn,         3015, 51, 1, 1); // Carier
             }
 					}
 					if(conditions.TO_SPAWN_CLAIMING_ROOMS()) {
@@ -256,7 +256,7 @@ var spawns = {
 						}
 						else {
 							if(Sp234) spawns.tryCreateCreep(spawn,  CLAIMER, 110, 1, 1);
-							if(Sp234) spawns.tryCreateCreep(spawn,    90909, 114, 1, 1); // Worker
+							if(Sp234) spawns.tryCreateCreep(spawn,    80808, 114, 1, 1); // Worker
 							if(Sp234) spawns.tryCreateCreep(spawn,     1206, 111, 1, 1); // Carier
               if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S35')) {
                 if(Sp34) spawns.tryCreateCreep(spawn, ATTACKER, 135, 1, 1);
@@ -273,7 +273,7 @@ var spawns = {
 							}
 							else {
 								if(Sp34) spawns.tryCreateCreep(spawn,  CLAIMER, 140, 1, 1);
-								if(Sp34) spawns.tryCreateCreep(spawn,    90909, 144, 1, 1); // Worker
+								if(Sp34) spawns.tryCreateCreep(spawn,    80808, 144, 1, 1); // Worker
                 if(Sp34) spawns.tryCreateCreep(spawn,     1608, 141, 1, 1); // Carier
 								if(conditions.TO_SPAWN_CLAIMING_ROOMS2()) {
 									if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S32')) {
