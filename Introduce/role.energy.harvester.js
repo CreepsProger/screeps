@@ -332,8 +332,8 @@ var role = {
 		for(var name in Game.spawns) {
 			var spawn = Game.spawns[name];
 			if(creep.room.name == spawn.room.name &&
-				 creep.pos.x == spawn.pos.x+1 &&
-				 creep.pos.y == spawn.pos.y &&
+				 creep.pos.x == spawn.pos.x &&
+				 creep.pos.y == spawn.pos.y+1 &&
 				 creep.memory.rerun) {
 				creep.move(Game.time%8+1); // TOP:1 ,..., TOP_LEFT:8
 			}
