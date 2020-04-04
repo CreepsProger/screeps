@@ -87,7 +87,9 @@ var role = {
 				var err = ERR_NOT_IN_RANGE;
 				var action;
 				if(target.id) {
-					if(!target.my) {
+					const myRoomsNumber = 3;
+					const C = !!Game.flags['C'] && Game.flags['C'].pos.roomName == creep.pos.roomName;
+					if(!target.my && (Game.gcl == myRoomsNumber || C)) {
 						action = 'claiming controller';
 						err = creep.claimController(target);
 						if(OK != err) {
