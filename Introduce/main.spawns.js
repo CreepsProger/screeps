@@ -303,7 +303,7 @@ var spawns = {
 			}
 
 			if(spawn.spawning) {
-				spawn.spawning.setDirections([RIGHT]);
+				spawn.spawning.setDirections([BOTTOM]);
 
 				var spawningCreep = Game.creeps[spawn.spawning.name];
 				spawn.room.visual.text('🛠️' + spawn.spawning.name
