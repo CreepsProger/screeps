@@ -25,10 +25,13 @@ var roleBuilder = {
 			const this_room = creep.room.name;
 			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
 
+			const B = !!Game.flags['B'] && Game.flags['B'].pos.roomName == my_room;
+
 			if(!creep.memory.building &&
 				 this_room == my_room &&
 				 creep.getActiveBodyparts(WORK) > 0 &&
-				 !conditions.MAIN_ROOM_CRISIS() && (creep.room.energyAvailable == creep.room.energyCapacityAvailable) &&
+				 !conditions.MAIN_ROOM_CRISIS() &&
+				  (creep.room.energyAvailable == creep.room.energyCapacityAvailable || B) &&
 				 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 					 creep.store.getFreeCapacity() < creep.getActiveBodyparts(WORK)*2) ||
 					(creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
