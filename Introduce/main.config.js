@@ -1,5 +1,6 @@
 const constants = require('main.constants');
 const flags = require('main.flags');
+const tools = require('tools');
 const log = require('main.log');
 
 var git = '$Format:%H$';
