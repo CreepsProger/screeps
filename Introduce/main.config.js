@@ -6,7 +6,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 157,
+	version: 158,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -23,19 +23,20 @@ var config = {
 		// 	 Memory.config.v === undefined ||
 	  if(!Memory.config ||
 			 !Memory.config.v ||
-		Memory.config.v != config.version) {
-			Memory.config			 = { v: config.version , rooms : {
-				main_path:{ W28S37: 'W28S36', W28S36: 'W28S35'
-									, W29S35: 'W28S35'
-									, W28S35: 'W28S34', W28S34: 'W28S33'
-									, W29S33: 'W28S33'
-									, W28S32: 'W28S33'
-									, W28S33: 'W27S33'
-									, W27S34: 'W27S33'
-									, W27S33: 'W26S33'
-									, W26S34: 'W26S33'
-									, W26S32: 'W26S33'
-									, W26S33: 'W25S33'}, 
+			  Memory.config.v != config.version) {
+				Memory.config	= { v: config.version,
+					main_path:{ W28S37: 'W28S36', W28S36: 'W28S35'
+										, W29S35: 'W28S35'
+										, W28S35: 'W28S34', W28S34: 'W28S33'
+										, W29S33: 'W28S33'
+										, W28S32: 'W28S33'
+										, W28S33: 'W27S33'
+										, W27S34: 'W27S33'
+										, W27S33: 'W26S33'
+										, W26S34: 'W26S33'
+										, W26S32: 'W26S33'
+										, W26S33: 'W25S33'},
+					rooms : {
 						 W25S33: { containers: {weight: 33}
 										 , links:
 												 [ {from: '1', to: '0'}
