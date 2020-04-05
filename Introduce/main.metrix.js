@@ -54,7 +54,9 @@ var metrix = {
 					console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify(cpu_time)
 											, Memory.cpu.creep.n
-											, JSON.stringify(creep.pos));
+											, JSON.stringify(creep.pos)
+											, creep.memory.prev_target_id
+											, creep.memory.prev_target_time);
 				}
 			}
 			cpu_time.t = Math.round((Game.cpu.getUsed()) * 1000)/1000;
