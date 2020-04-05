@@ -317,7 +317,7 @@ var role = {
 
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.say('🔜⚡');
-					err = tools.moveTo(creep,target);
+					err = tools.moveTo(creep, target, {reusePath:500});
 					role.log('🔜⚡', creep, err, 'moving from', JSON.stringify(creep.pos), 'to', JSON.stringify(target));
 				}
 				if(err) {
@@ -340,7 +340,7 @@ var role = {
 				creep.move(Game.time%8+1); // TOP:1 ,..., TOP_LEFT:8
 			}
 		}
-
+		metrix.cpu.step_time(creep, role.name, '⚡🔚');
 		metrix.cpu.role_time(creep, role.name);
 
 		if(!creep.memory.rerun) {
