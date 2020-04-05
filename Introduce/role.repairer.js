@@ -7,6 +7,7 @@ const flags = require('main.flags');
 const links = require('main.links');
 const log = require('main.log');
 const tools = require('tools');
+const cash = require('cash');
 
 var roleRepairer = {
 
