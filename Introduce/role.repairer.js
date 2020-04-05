@@ -80,8 +80,7 @@ var roleRepairer = {
 								return true;
 							}
 							return false;
-						}
-					});
+						});
 					if(structures.length > 0) {
 						var structure = structures.reduce((p,c) => tools.checkTarget(executer,p.id) &&
 																							creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
