@@ -312,23 +312,18 @@ var roleEnergyTransferer = {
 				 creep.memory.rerun) {
 				var storages = cash.getStorages();
 				if(storages.length > 0) {
-					var storage = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY)
+					var target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY)
 					 																		* tools.getRangeTo(creep.pos,p.pos)
 																						 	* tools.getRoomRange(p.pos.roomName,'W25S33')
 																	 				< c.store.getUsedCapacity(RESOURCE_ENERGY)
 																					 		* tools.getRangeTo(creep.pos,c.pos)
 																							* tools.getRoomRange(c.pos.roomName,'W25S33')
 																					? p:c);
-					if(!!storage && this_room != storage.pos.roomName) {
-						const my_path_room = Memory.config.main_path[this_room];
-						const exit = creep.room.findExitTo(my_path_room);
-						target = creep.pos.findClosestByPath(exit);
-					}
 
 					// target = storages.reduce((p,c) =>  tools.getRangeTo(creep.pos,p.pos)
 					// 												 				 < tools.getRangeTo(creep.pos,c.pos)? p:c);
-					const range_to_store = tools.getRangeTo(creep.pos,storage.pos);
-					const store_energy_value = storage.store.getUsedCapacity(RESOURCE_ENERGY);
+					const range_to_store = tools.getRangeTo(creep.pos,target.pos);
+					const store_energy_value = target.store.getUsedCapacity(RESOURCE_ENERGY);
 					if(range_to_store >= constants.RANGE_TO_STORE_3_TO_CONSOLE_LOG) {
 						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100; t = Game.cpu.getUsed();
 						if(dt > 0.5)
@@ -360,7 +355,7 @@ var roleEnergyTransferer = {
 
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.say('🔜💡');
-					err = tools.moveTo(creep, target, {reusePath:500});
+					err = config.moveTo(creep, target);
 					if(!!Game.flags['LET'] || !!Game.flags['LE'] || !!Game.flags['L']) {
 						console.log( '🔜💡', Math.trunc(Game.time/10000), Game.time%10000
 												, creep.name

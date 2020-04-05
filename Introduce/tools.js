@@ -60,6 +60,7 @@ var tools = {
 	},
 
 	moveTo: function(creep,target) {
+
 		var err = creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
 
 		if (err == ERR_NO_PATH) {

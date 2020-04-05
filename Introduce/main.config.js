@@ -18,6 +18,17 @@ var config = {
 			}
 	},
 
+	moveTo: function(creep,target) {
+
+		if(creep.room != target.pos.roomName) {
+			const my_path_room = Memory.config.main_path[creep.room];
+			const exit = creep.room.findExitTo(my_path_room);
+			target = creep.pos.findClosestByPath(exit);
+		}
+
+		return tools.moveTo(creep,target);
+	},
+
 	init: function() {
 		// if(Memory.config === undefined ||
 		// 	 Memory.config.v === undefined ||
