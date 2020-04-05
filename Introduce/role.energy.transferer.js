@@ -335,7 +335,7 @@ var roleEnergyTransferer = {
 					const store_energy_value = storage.store.getUsedCapacity(RESOURCE_ENERGY);
 					if(range_to_store >= constants.RANGE_TO_STORE_3_TO_CONSOLE_LOG) {
 						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100; t = Game.cpu.getUsed();
-						if(dt > 0.01)
+						if(dt > 0.5)
 							console.log( '🔜💡3️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 													, 'range to store:', range_to_store
 													, creep.pos.roomName, '->', storage.pos.roomName
