@@ -329,7 +329,7 @@ var roleEnergyTransferer = {
 						if(dt > 0.5)
 							console.log( '🔜💡3️⃣', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 													, 'range to store:', range_to_store
-													, creep.pos.roomName, '->', storage.pos.roomName
+													, creep.pos.roomName, '->', target.pos.roomName
 													, JSON.stringify(target)
 													, 'store energy value:', store_energy_value
 												 );
