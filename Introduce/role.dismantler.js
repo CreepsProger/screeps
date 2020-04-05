@@ -8,7 +8,7 @@ const tools = require('tools');
 
 
 var roleDismantler = {
-	
+
 	time:0,
 	flags:{D:{}, D1:{}, D2:{}},
 	cashFlags: function() {
@@ -17,9 +17,9 @@ var roleDismantler = {
 			roleDismantler.flags.D = Game.flags['D'];
 			roleDismantler.flags.D1 = Game.flags['D1'];
 			roleDismantler.flags.D2 = Game.flags['D2'];
-		} 
+		}
 	},
-	
+
 	run: function(creep,executer) {
 			if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
 				roleNext.run(creep);
@@ -53,8 +53,8 @@ var roleDismantler = {
 					target = creep.pos.findClosestByPath(exit);
 				}
 
-				if(!creep.memory.prev_target_id)
-					creep.memory.prev_target_id = '0';
+				if(!creep.memory.target)
+					creep.memory.target = {id:'0', pos:{}, time: 0};
 
 				roleDismantler.cashFlags();
 				const D = roleDismantler.flags.D;

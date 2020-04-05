@@ -58,7 +58,9 @@ var roleEnergyTransferer = {
 			if(!target) {
 				 target = links.getTargetLinkToTransferEnergy(creep, executer, roleEnergyTransferer.run, this_room_config.containers.weight);
 				 if(!!target) {
-					 if(creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || true) {
+					 if(!creep.memory.target ||
+						 	!creep.memory.target.id ||
+							 creep.memory.target.id != target.id || true) {
 						 var dt = Math.round((Game.cpu.getUsed() - t)*100)/100; t = Game.cpu.getUsed();
 						 if(dt > 0.2)
 							 console.log( '🚸', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
@@ -131,7 +133,9 @@ var roleEnergyTransferer = {
 				}
 
 				if(!!target) {
-					if(creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || true) {
+					if(!creep.memory.target ||
+						 !creep.memory.target.id ||
+							creep.memory.target.id != target.id || true) {
 						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100; t = Game.cpu.getUsed();
 						if(dt > 0.6)
 							console.log( '🌕', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
@@ -184,7 +188,9 @@ var roleEnergyTransferer = {
 					target = targs.reduce((p,c) => !!p && !!c && creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				}
 				if(!!target) {
-					if(!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id) {
+					if(!creep.memory.target ||
+						 !creep.memory.target.id ||
+							creep.memory.target.id != target.id || true) {
 							var dt = Math.round((Game.cpu.getUsed() - t)*100)/100; t = Game.cpu.getUsed();
 							if(dt > 0.2)
 								console.log( '🔜💡🛢️', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
@@ -244,7 +250,9 @@ var roleEnergyTransferer = {
 			// 		const range_to_store = tools.getRangeTo(creep.pos,target.pos);
 			// 		const store_energy_value = target.store.getUsedCapacity(RESOURCE_ENERGY);
 			// 		if(range_to_store >= constants.RANGE_TO_STORE_1_TO_CONSOLE_LOG &&
-			// 			 (!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id)
+			// 			 (!creep.memory.target ||
+				 // !creep.memory.target.id ||
+					// creep.memory.target.id != target.id || true)
 			// 			) {
 			// 				var dt = Math.round((Game.cpu.getUsed() - t)*100)/100; t = Game.cpu.getUsed();
 			// 				if(dt > 0.1)
@@ -275,7 +283,9 @@ var roleEnergyTransferer = {
 			// 		const range_to_store = tools.getRangeTo(creep.pos,target.pos);
 			// 		const store_energy_value = target.store.getUsedCapacity(RESOURCE_ENERGY);
 			// 		if(range_to_store >= constants.RANGE_TO_STORE_2_TO_CONSOLE_LOG &&
-			// 			 (!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id || false)
+			// 			 (!creep.memory.target ||
+				 // !creep.memory.target.id ||
+					// creep.memory.target.id != target.id || true)
 			// 			) {
 			// 			var dt = Math.round((Game.cpu.getUsed() - t)*100)/100; t = Game.cpu.getUsed();
 			// 			if(dt > 0.1)
@@ -318,7 +328,9 @@ var roleEnergyTransferer = {
 					const range_to_store = tools.getRangeTo(creep.pos,target.pos);
 					const store_energy_value = target.store.getUsedCapacity(RESOURCE_ENERGY);
 					if(range_to_store >= constants.RANGE_TO_STORE_3_TO_CONSOLE_LOG &&
-						 (!creep.memory.prev_target_id || creep.memory.prev_target_id != target.id)
+						 (!creep.memory.target ||
+							!creep.memory.target.id ||
+							 creep.memory.target.id != target.id || true)
 						) {
 						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100; t = Game.cpu.getUsed();
 						if(dt > 0.01)
@@ -342,8 +354,9 @@ var roleEnergyTransferer = {
 				}
 
 				if(!!target.id) {
-					creep.memory.prev_target_id = target.id;
-					creep.memory.prev_target_time = Game.time;
+					creep.memory.target = {id:target.id, pos:target.pos, time: Game.time};
+					delete creep.memory.prev_target_id;
+					delete creep.memory.prev_target_time;
 				}
 
 				if(err == ERR_NOT_IN_RANGE) {

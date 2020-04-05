@@ -55,8 +55,7 @@ var metrix = {
 											, JSON.stringify(cpu_time)
 											, Memory.cpu.creep.n
 											, JSON.stringify(creep.pos)
-											, creep.memory.prev_target_id
-											, creep.memory.prev_target_time);
+											, JSON.stringify(creep.memory.target));
 				}
 			}
 			cpu_time.t = Math.round((Game.cpu.getUsed()) * 1000)/1000;

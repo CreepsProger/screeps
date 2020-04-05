@@ -48,9 +48,10 @@ var roleRepairer = {
 					target = creep.pos.findClosestByPath(exit);
 				}
 
-				if(!creep.memory.prev_target_id || !creep.memory.prev_target_time || creep.memory.prev_target_time < Game.time - 100) {
-					creep.memory.prev_target_id = '0';
-					creep.memory.prev_target_time = 0;
+				if(!creep.memory.target ||
+					 !creep.memory.target.id ||
+						creep.memory.target.time < Game.time - 100) {
+					creep.memory.target = {id:'0', pos:{}, time: 0};
 				}
 
 				const NR1 = Game.flags['NR1'];// don't repair
@@ -62,7 +63,7 @@ var roleRepairer = {
 						filter: (structure) => {
 							if((structure.structureType == STRUCTURE_ROAD || structure.structureType == STRUCTURE_CONTAINER) &&
 								 structure.pos.roomName == my_room &&
-								 structure.hitsMax - structure.hits > structure.hitsMax/(2+98*(structure.id == creep.memory.prev_target_id))) {
+								 structure.hitsMax - structure.hits > structure.hitsMax/(2+98*(!!creep.memory.target && structure.id == creep.memory.target.id))) {
 								 if(!!D1 && D1.pos.roomName == my_room &&
  									D1.pos.getRangeTo(structure) < 11-D1.color) {
  									return false;
@@ -99,8 +100,7 @@ var roleRepairer = {
 					if(!!target.hitsMax && target.hits < target.hitsMax) {
 						action = 'repairing:';
 						err = creep.repair(target);
-						creep.memory.prev_target_id = target.id;
-						creep.memory.prev_target_time = Game.time;
+						creep.memory.target = {id:target.id, pos:target.pos, time: Game.time};
 					}
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜🔧');
