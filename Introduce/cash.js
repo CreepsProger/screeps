@@ -3,7 +3,7 @@ const tools = require('tools');
 
 var cash = {
 
-	version: 33,
+	version: 34,
 	time: 0,
 
 	initEntry: function(type, entry_id, subentry_id) {
@@ -97,8 +97,11 @@ var cash = {
 												 , [tools.getRoomCode(creep.room.name),q]
 												 , () => {
 			return creep.pos.findInRange(FIND_STRUCTURES, 10, {
-				filter: (structure) => (structure.structureType == STRUCTURE_SPAWN ||
-															 structure.structureType == STRUCTURE_EXTENSION) && q == Math.floor(structure.pos.x/5)*10 + Math. floor(structure.pos.y/5)});
+				filter: (s) => (s.structureType == STRUCTURE_SPAWN || s.structureType == STRUCTURE_EXTENSION) &&
+				 							 // q == Math.floor(s.pos.x/5)*10 + Math. floor(s.pos.y/5) &&
+											 Math.abs(s.pos.x - Math.floor(creep.pos.x/5)*5 - 2) < 5 &&
+											 Math.abs(s.pos.y - Math.floor(creep.pos.y/5)*5 - 2) < 5
+											 });
 			});
 	},
 
