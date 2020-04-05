@@ -331,7 +331,7 @@ var roleEnergyTransferer = {
 
 					// target = storages.reduce((p,c) =>  tools.getRangeTo(creep.pos,p.pos)
 					// 												 				 < tools.getRangeTo(creep.pos,c.pos)? p:c);
-					const range_to_store = tools.getRangeTo(creep.pos,target.pos);
+					const range_to_store = tools.getRangeTo(creep.pos,storage.pos);
 					const store_energy_value = target.store.getUsedCapacity(RESOURCE_ENERGY);
 					if(range_to_store >= constants.RANGE_TO_STORE_3_TO_CONSOLE_LOG) {
 						var dt = Math.round((Game.cpu.getUsed() - t)*100)/100; t = Game.cpu.getUsed();
