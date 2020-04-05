@@ -21,8 +21,12 @@ var config = {
 
 	moveTo: function(creep,target) {
 
-		if(creep.room != target.pos.roomName) {
-			const my_path_room = Memory.config.main_path[creep.room];
+		if(!!target.id || !!target.pos) {
+			creep.memory.target = {id:target.id, pos:target.pos, time: Game.time};
+		}
+
+		if(creep.room.name != target.pos.roomName) {
+			const my_path_room = Memory.config.main_path[creep.room.name];
 			const exit = creep.room.findExitTo(my_path_room);
 			target = creep.pos.findClosestByPath(exit);
 		}

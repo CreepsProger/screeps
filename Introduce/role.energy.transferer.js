@@ -347,12 +347,6 @@ var roleEnergyTransferer = {
 					err = creep.transfer(target, RESOURCE_ENERGY);
 				}
 
-				if(!!target.id || !!target.pos) {
-					creep.memory.target = {id:target.id, pos:target.pos, time: Game.time};
-					delete creep.memory.prev_target_id;
-					delete creep.memory.prev_target_time;
-				}
-
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.say('🔜💡');
 					err = config.moveTo(creep, target);
