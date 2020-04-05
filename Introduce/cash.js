@@ -82,12 +82,20 @@ var cash = {
 			});
 	},
 
+	labs: {},
+	getLabs: function(room) {
+		return cash.getEntry(cash.containers, STRUCTURE_CONTAINER, tools.getRoomCode(room.name), () => {
+			return room.find(FIND_STRUCTURES, {
+				filter: (structure) => structure.structureType == STRUCTURE_LAB });
+			});
+	},
+
 	pos_extensions: {},
 	getPosExtensions: function(creep) {
 		var q = Math.floor(creep.pos.x/5)*10 + Math. floor(creep.pos.y/5);
 		return cash.getEntry( cash.pos_extensions, STRUCTURE_EXTENSION
 												 , [tools.getRoomCode(creep.room.name),q]
-												 , () => { 
+												 , () => {
 			return creep.pos.findInRange(FIND_STRUCTURES, 10, {
 				filter: (structure) => (structure.structureType == STRUCTURE_SPAWN ||
 															 structure.structureType == STRUCTURE_EXTENSION) && q == Math.floor(structure.pos.x/5)*10 + Math. floor(structure.pos.y/5)});

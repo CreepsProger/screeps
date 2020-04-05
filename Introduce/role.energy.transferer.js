@@ -203,14 +203,10 @@ var roleEnergyTransferer = {
 			metrix.cpu.step_time(creep, 'transfering', '🔜💡🛢️');
 
 			if(!target && creep.memory.rerun) {
-				var labs = creep.room.find(FIND_STRUCTURES, {
-					filter: (structure) => {
-						return structure.structureType == STRUCTURE_LAB &&
-							structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-					}
-				});
+				var labs = cash.getLabs(creep).filter((e) =>
+						!!e && !!e.store && e.store.getFreeCapacity(RESOURCE_ENERGY) > 0);
 				if(labs.length > 0) {
-					target = labs[0];
+					target = labs.reduce((p,c) => !!p && !!c && creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				}
 			}
 
