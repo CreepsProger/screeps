@@ -3,7 +3,7 @@ const tools = require('tools');
 
 var cash = {
 
-	version: 32,
+	version: 33,
 	time: 0,
 
 	initEntry: function(type, entry_id, subentry_id) {
@@ -84,7 +84,7 @@ var cash = {
 
 	labs: {},
 	getLabs: function(room) {
-		return cash.getEntry(cash.containers, STRUCTURE_LAB, tools.getRoomCode(room.name), () => {
+		return cash.getEntry(cash.labs, STRUCTURE_LAB, tools.getRoomCode(room.name), () => {
 			return room.find(FIND_STRUCTURES, {
 				filter: (structure) => structure.structureType == STRUCTURE_LAB });
 			});
@@ -124,6 +124,15 @@ var cash = {
 		return cash.getEntry(cash.towers, STRUCTURE_TOWER, tools.getRoomCode(room.name), () => {
 			return room.find(FIND_STRUCTURES, {
 				filter: (structure) => structure.structureType == STRUCTURE_TOWER });
+			});
+	},
+
+	structers_to_repaire: {},
+	getStructuresToRepaire: function(room) {
+		return cash.getEntry(cash.structers_to_repaire, STRUCTURE_ROAD + '&' + STRUCTURE_CONTAINER, tools.getRoomCode(room.name), () => {
+			return room.find(FIND_STRUCTURES, {
+				filter: (structure) => structure.structureType == STRUCTURE_ROAD ||
+				 											structure.structureType == STRUCTURE_CONTAINER });
 			});
 	},
 
