@@ -3,7 +3,7 @@ const tools = require('tools');
 
 var cash = {
 
-	version: 31,
+	version: 32,
 	time: 0,
 
 	initEntry: function(type, entry_id, subentry_id) {
@@ -84,7 +84,7 @@ var cash = {
 
 	labs: {},
 	getLabs: function(room) {
-		return cash.getEntry(cash.containers, STRUCTURE_CONTAINER, tools.getRoomCode(room.name), () => {
+		return cash.getEntry(cash.containers, STRUCTURE_LAB, tools.getRoomCode(room.name), () => {
 			return room.find(FIND_STRUCTURES, {
 				filter: (structure) => structure.structureType == STRUCTURE_LAB });
 			});
