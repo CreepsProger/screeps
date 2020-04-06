@@ -182,7 +182,7 @@ var spawns = {
 															total_energy > constants.TOTAL_ENERGY_TO_EXTRA_UPGRADE;
 				const All = !!rerun;
 				const Sp1 = (All || spawn.name == 'Spawn1' || spawn.name == 'Spawn4');
-				const Sp2 = (All || spawn.name == 'Spawn2');
+				const Sp2 = (All || spawn.name == 'Spawn2' || spawn.name == 'Spawn6') 
 				const Sp3 = (All || spawn.name == 'Spawn3');
 				const Sp4 = (All || spawn.name == 'Spawn5');
 				const Sp12 = (Sp1 || Sp2);
