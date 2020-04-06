@@ -98,7 +98,7 @@ module.exports.loop = function () {
 	Memory.cpu_main_part_dt += main_part_dt;
 
 	Memory.cpu_main_part.others = Math.round((Memory.cpu_main_part.others+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
-	if(Game.time % constants.TICKS_TO_CHECK_CPU_MAIN_PART == 0 && Memory.cpu_main_part_dt > 0.6666*Game.gcl*constants.TICKS_TO_CHECK_CPU_MAIN_PART) {
+	if(Game.time % constants.TICKS_TO_CHECK_CPU_MAIN_PART == 0 && Memory.cpu_main_part_dt > 2*constants.TICKS_TO_CHECK_CPU_MAIN_PART) {
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 							 , '⚙️ PART CPU:'
 							 , JSON.stringify(Memory.cpu_main_part)
