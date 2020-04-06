@@ -310,18 +310,11 @@ var role = {
 				(target.energy == 0 && creep.pos.getRangeTo(target) > 1 )? // a source
 						ERR_NOT_IN_RANGE:
 				creep.harvest(target);
-
-				if(!!target.id) {
-					creep.memory.target = {id:target.id, pos:target.pos, time: Game.time};
-					delete creep.memory.prev_target_id;
-					delete creep.memory.prev_target_time;
-				}
-
 				creep.say('⚡');
 
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.say('🔜⚡');
-					err = tools.moveTo(creep, target, {reusePath:500});
+					err = tools.moveTo(creep, target);
 					role.log('🔜⚡', creep, err, 'moving from', JSON.stringify(creep.pos), 'to', JSON.stringify(target));
 				}
 				if(err) {
