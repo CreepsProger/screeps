@@ -222,7 +222,7 @@ var spawns = {
 					if(conditions.TO_SPAWN_MAIN_ROOMS()) {
 						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[2][M], 34, 1, 1);
 						if(Sp12	)	spawns.tryCreateCreep(spawn,         3015, 31, 1, 1); // Carier
-						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[2][L], 44, 1, 3);
+						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[2][L], 44, 1, 2);
 						if(Sp12	)	spawns.tryCreateCreep(spawn,         3216, 41, 1, 2); // Carier
 						if(Sp234)	spawns.tryCreateCreep(spawn, WORKER[2][M], 64, 1, extra_upgrade?4:2);
 						if(Sp234)	spawns.tryCreateCreep(spawn,         3015, 61, 1, 2); // Carier
