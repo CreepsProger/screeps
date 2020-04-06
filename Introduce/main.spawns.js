@@ -199,7 +199,7 @@ var spawns = {
 				if(Memory.totals.WORK < 25	) spawns.tryCreateCreep(spawn, 20202, 20, 3); // E  400 Worker
 				if(Memory.totals.WORK < 25	) spawns.tryCreateCreep(spawn, 10101, 20, 3); // E  200 Worker
 
- 				const L = 0; const M = 1; const H = 2; const EX = extra_upgrade;
+ 				const L = 0; const M = 1; const H = 2; const X = extra_upgrade; const U = !Memory.stop_upgrading;
 				                  //   L       M       H
 				const WORKER = [ [     0,      0,      0]  // 0  000
 											 , [ 10101,  10202,  20101]  // 1  300
@@ -235,15 +235,15 @@ var spawns = {
 					if(conditions.TO_SPAWN_MAIN_ROOMS()) {
 						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[6][M], 34, 1, 1);
 						if(Sp12	)	spawns.tryCreateCreep(spawn, CARIER[6][H], 31, 1, 1);
-						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[6][L], 44, 1, 2);
+						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[6][L], 44, 1, !U?1:2);
 						if(Sp12	)	spawns.tryCreateCreep(spawn, CARIER[6][H], 41, 1, 2);
-						if(Sp234)	spawns.tryCreateCreep(spawn, WORKER[6+EX][M+EX], 64, 1, 3);
+						if(Sp234)	spawns.tryCreateCreep(spawn, WORKER[6+X][M+X], 64, 1,!U?1:!X?2:3);
 						if(Sp234)	spawns.tryCreateCreep(spawn, CARIER[6][H], 61, 1, 2);
             if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S35')) {
               if(Sp34) spawns.tryCreateCreep(spawn, ATTACKER[M], 125, 1, 1);
             }
             else {
-              if(Sp34) spawns.tryCreateCreep(spawn, WORKER[6][H], 124, 1, 3);
+              if(Sp34) spawns.tryCreateCreep(spawn, WORKER[6][H], 124, 1, !U?2:!X?3:5);
               if(Sp34) spawns.tryCreateCreep(spawn, CARIER[4][H], 121, 1, 1);
             }
 						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W27S33')) {
@@ -251,7 +251,7 @@ var spawns = {
 						}
             else {
               if(Sp123)	spawns.tryCreateCreep(spawn,      CLAIMER, 50, 1, 1);
-  						if(Sp123)	spawns.tryCreateCreep(spawn, WORKER[6][H], 54, 1, 2);
+  						if(Sp123)	spawns.tryCreateCreep(spawn, WORKER[6+U][H], 54, 1, !U?2:1);
   						if(Sp123)	spawns.tryCreateCreep(spawn, CARIER[6][H], 51, 1, 1);
             }
 					}
