@@ -201,10 +201,14 @@ var spawns = {
 
  				const L = 0; const M = 1; const H = 2; const EX = extra_upgrade;
 				                  //   L       M       H
-				const WORKER = [ [ 10101,  20202,  40404]  // 0
-											 , [ 61410,  90909, 120408]  // 1
-											 , [130911, 140711, 160410]  // 2
-											 , [102216, 161616, 250817]];// 3
+				const WORKER = [ [      0,      0,      0]  // 0 000
+												, [ 10101,  10202,  20101]  // 1 300
+												, [ 10503,  20403,  30203]  // 2 550
+												, [ 30504,  40404,  50204]  // 3 800
+											 , [ 50907,  70506,  80406]  // 4 1300
+												, [ 61410,  90909, 120408]  // 5 1800
+											 , [130911, 140711, 160410]  // 6 2600
+											 , [102216, 161616, 250817]];// 7 5300
 				const CARIER = [1608,2412,3015];
 				const ATTACKER = [500000500000010, 1000000500000015];
 				const HEALER = 500000007000006;
@@ -220,17 +224,17 @@ var spawns = {
 				}
 				else {
 					if(conditions.TO_SPAWN_MAIN_ROOMS()) {
-						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[2][M], 34, 1, 1);
+						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[6][M], 34, 1, 1);
 						if(Sp12	)	spawns.tryCreateCreep(spawn,         3015, 31, 1, 1); // Carier
-						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[2][L], 44, 1, 2);
+						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[6][L], 44, 1, 2);
 						if(Sp12	)	spawns.tryCreateCreep(spawn,         3216, 41, 1, 2); // Carier
-						if(Sp234)	spawns.tryCreateCreep(spawn, WORKER[2+EX][M+EX], 64, 1, EX?3:2);
+						if(Sp234)	spawns.tryCreateCreep(spawn, WORKER[6+EX][M+EX], 64, 1, EX?3:2);
 						if(Sp234)	spawns.tryCreateCreep(spawn,         3015, 61, 1, 2); // Carier
             if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S35')) {
               if(Sp34) spawns.tryCreateCreep(spawn, ATTACKER[M], 125, 1, 1);
             }
             else {
-              if(Sp34) spawns.tryCreateCreep(spawn, WORKER[1+EX][H],124, 1, EX?3:1); // Worker
+              if(Sp34) spawns.tryCreateCreep(spawn, WORKER[5+EX][H],124, 1, EX?3:1); // Worker
               if(Sp34) spawns.tryCreateCreep(spawn,         1608, 121, 1, 1+EX); // Carier
             }
 						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W27S33')) {
@@ -238,7 +242,7 @@ var spawns = {
 						}
             else {
               if(Sp123)	spawns.tryCreateCreep(spawn,      CLAIMER, 50, 1, 1);
-  						if(Sp123)	spawns.tryCreateCreep(spawn, WORKER[2][H], 54, 1, 2); // Worker
+  						if(Sp123)	spawns.tryCreateCreep(spawn, WORKER[6][H], 54, 1, 2); // Worker
   						if(Sp123)	spawns.tryCreateCreep(spawn,         3015, 51, 1, 1); // Carier
             }
 					}
@@ -256,14 +260,14 @@ var spawns = {
 						}
 						else {
 							if(Sp234) spawns.tryCreateCreep(spawn,  CLAIMER, 110, 1, 1);
-							if(Sp234) spawns.tryCreateCreep(spawn,    70506, 114, 1, 1); // Worker
+							if(Sp234) spawns.tryCreateCreep(spawn, WORKER[4][M], 114, 1, 1); // Worker
 							if(Sp234) spawns.tryCreateCreep(spawn,     1608, 111, 1, 1); // Carier
               if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S35')) {
                 if(Sp34) spawns.tryCreateCreep(spawn, ATTACKER[L], 135, 1, 1);
               }
               else {
                 if(Sp34) spawns.tryCreateCreep(spawn,  CLAIMER, 130, 1, 1);
-                if(Sp34) spawns.tryCreateCreep(spawn,    70506, 134, 1, 2); // Worker
+                if(Sp34) spawns.tryCreateCreep(spawn,    WORKER[4][M], 134, 1, 2); // Worker
                 if(Sp34) spawns.tryCreateCreep(spawn,     1608, 131, 1, 2); // Carier
               }
 							if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S36')) {
@@ -271,7 +275,7 @@ var spawns = {
 							}
 							else {
 								if(Sp34) spawns.tryCreateCreep(spawn,  CLAIMER, 140, 1, 1);
-								if(Sp34) spawns.tryCreateCreep(spawn,    70506, 144, 1, 1); // Worker
+								if(Sp34) spawns.tryCreateCreep(spawn,    WORKER[4][M], 144, 1, 1); // Worker
                 // if(Sp34) spawns.tryCreateCreep(spawn,     1608, 141, 1, 1); // Carier
 								if(conditions.TO_SPAWN_CLAIMING_ROOMS2()) {
 									if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S32')) {
