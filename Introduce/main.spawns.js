@@ -237,7 +237,7 @@ var spawns = {
 						if(Sp12	)	spawns.tryCreateCreep(spawn, CARIER[6][H], 31, 1, 1);
 						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[6][L], 44, 1, 2);
 						if(Sp12	)	spawns.tryCreateCreep(spawn, CARIER[6][H], 41, 1, 2);
-						if(Sp234)	spawns.tryCreateCreep(spawn, WORKER[6+X][M+X], 64, 1, 3);
+						if(Sp234)	spawns.tryCreateCreep(spawn, WORKER[6+X][M+X], 64, 1, 2+X);
 						if(Sp234)	spawns.tryCreateCreep(spawn, CARIER[6][H], 61, 1, 2);
             if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S35')) {
               if(Sp34) spawns.tryCreateCreep(spawn, ATTACKER[M], 125, 1, 1);
