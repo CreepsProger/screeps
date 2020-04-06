@@ -238,7 +238,7 @@ var spawns = {
 						}
             else {
               if(Sp123)	spawns.tryCreateCreep(spawn,      CLAIMER, 50, 1, 1);
-  						if(Sp123)	spawns.tryCreateCreep(spawn, WORKER[3][H], 54, 1, 1); // Worker
+  						if(Sp123)	spawns.tryCreateCreep(spawn, WORKER[2][H], 54, 1, 2); // Worker
   						if(Sp123)	spawns.tryCreateCreep(spawn,         3015, 51, 1, 1); // Carier
             }
 					}
