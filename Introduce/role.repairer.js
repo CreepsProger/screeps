@@ -90,6 +90,8 @@ var roleRepairer = {
 						}
 					}
 				}
+				
+				metrix.cpu.step_time(creep, 'repairing', '🔧');
 
 				if(target) {
 					var action;
@@ -130,7 +132,7 @@ var roleRepairer = {
 					creep.memory.repairing = false;
 				}
 			}
-
+			metrix.cpu.step_time(creep, 'repairing', '🔧🔚');
 			metrix.cpu.role_time(creep, 'repairing');
 			if(!creep.memory.repairing) {
 				roleNext.run(creep);
