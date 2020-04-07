@@ -182,7 +182,7 @@ var spawns = {
 															total_energy > constants.TOTAL_ENERGY_TO_EXTRA_UPGRADE;
 				const All = !!rerun;
 				const Sp1 = (All || spawn.name == 'Spawn1' || spawn.name == 'Spawn4');
-				const Sp2 = (All || spawn.name == 'Spawn2' || spawn.name == 'Spawn6') 
+				const Sp2 = (All || spawn.name == 'Spawn2' || spawn.name == 'Spawn6')
 				const Sp3 = (All || spawn.name == 'Spawn3');
 				const Sp4 = (All || spawn.name == 'Spawn5');
 				const Sp12 = (Sp1 || Sp2);
@@ -235,8 +235,8 @@ var spawns = {
 					if(conditions.TO_SPAWN_MAIN_ROOMS()) {
 						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[6][M], 34, 1, 1);
 						if(Sp12	)	spawns.tryCreateCreep(spawn, CARIER[6][H], 31, 1, 1);
-						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[6][L], 44, 1, 2);
-						if(Sp12	)	spawns.tryCreateCreep(spawn, CARIER[6][H], 41, 1, 2);
+						if(Sp12	)	spawns.tryCreateCreep(spawn, WORKER[7][M], 44, 1, 1);
+						if(Sp12	)	spawns.tryCreateCreep(spawn, CARIER[7][M], 41, 1, 2);
 						if(Sp234)	spawns.tryCreateCreep(spawn, WORKER[6+X][M+X], 64, 1, 2+X);
 						if(Sp234)	spawns.tryCreateCreep(spawn, CARIER[6][H], 61, 1, 2);
             if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S35')) {
@@ -244,7 +244,7 @@ var spawns = {
             }
             else {
               if(Sp34) spawns.tryCreateCreep(spawn, WORKER[6][H], 124, 1, 3+X+X);
-              if(Sp34) spawns.tryCreateCreep(spawn, CARIER[4][H], 121, 1, 2);
+              if(Sp34) spawns.tryCreateCreep(spawn, CARIER[4][H], 121, 1, 1);
             }
 						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W27S33')) {
 							if(Sp123)	spawns.tryCreateCreep(spawn, ATTACKER[M], 55, 1, 1);
