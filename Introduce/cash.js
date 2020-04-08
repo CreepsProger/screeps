@@ -43,11 +43,23 @@ var cash = {
 		}
 		var cash_o = cash_objects[entry_id][subentry_id];
 		if(true && entry.time != Game.time) {
-			var new_objs = cash_o.ids.map((id) => Game.getObjectById(id));
-			if(_.isEqual(cash_o.objs, new_objs)) {
-				cash_o.e++;
+			if(true && cash_o.ids.length == cash_o.objs.length) {
+				cash_o.objs.forEach(function(obj,i) {
+					if(!obj) {
+						obj = Game.getObjectById(cash_o.ids[i]);
+					}
+					else {
+						var new_obj = Game.getObjectById(obj.id);
+						if(!_.isEqual(obj, new_obj)
+							obj = new_obj;
+						else
+							cash_o.e++;
+					}
+				});
 			}
-			cash_o.objs = new_objs;
+			else {
+				cash_o.objs = cash_o.ids.map((id) => Game.getObjectById(id));
+			}
  			entry.time = Game.time;
  		}
 		cash_o.n++;
