@@ -50,7 +50,7 @@ var cash = {
 					}
 					else {
 						var new_obj = Game.getObjectById(obj.id);
-						if(!_.isEqual(obj, new_obj)
+						if(!_.isEqual(obj, new_obj))
 							obj = new_obj;
 						else
 							cash_o.e++;
