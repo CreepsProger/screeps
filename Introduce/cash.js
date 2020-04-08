@@ -45,16 +45,13 @@ var cash = {
 		if(true && entry.time != Game.time) {
 			if(true && cash_o.ids.length == cash_o.objs.length) {
 				cash_o.objs.forEach(function(obj,i) {
-					if(!obj) {
+					var new_obj = Game.getObjectById(cash_o.ids[i]);
+					// if(JSON.stringify(obj) !== JSON.stringify(new_obj))
+					if(!obj || !_.isEqual(obj, new_obj)) {
 						obj = Game.getObjectById(cash_o.ids[i]);
 					}
 					else {
-						var new_obj = Game.getObjectById(obj.id);
-						// if(!_.isEqual(obj, new_obj))
-						if(JSON.stringify(obj) !== JSON.stringify(new_obj))
-							obj = new_obj;
-						else
-							cash_o.e++;
+						cash_o.e++;
 					}
 				});
 			}
