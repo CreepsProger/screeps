@@ -146,7 +146,7 @@ var cash = {
 	structures: {},
 	getStructures: function(room) {
 		return cash.getEntry(cash.structures, LOOK_STRUCTURES, tools.getRoomCode(room.name), () => {
-			return room.find(FIND_STRUCTURES);
+			return room.find(FIND_STRUCTURES);});
  	},
 
 	all_my_terminals: {},
