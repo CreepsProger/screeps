@@ -50,17 +50,31 @@ var towers = {
 			 }
 
  			 if(!target) {
- 				 target = tower.pos.findClosestByRange(FIND_STRUCTURES, {
- 					 filter: (structure) => {
- 						 if(structure.structureType == STRUCTURE_WALL) {
- 							 return structure.hits < 32000;// 8000 E = 10 * 8000 / 800 = 100
- 						 }
- 						 if(structure.structureType == STRUCTURE_RAMPART) {
- 							 return structure.hits < 160000;// 8000 E = 10 * 8000 / 800 = 100
- 						 }
- 						 return structure.hitsMax - structure.hits > 2400; //towers.length*800;
- 					 }
- 				 });
+ 				 // target = tower.pos.findClosestByRange(FIND_STRUCTURES, {
+ 					//  filter: (structure) => {
+ 					// 	 if(structure.structureType == STRUCTURE_WALL) {
+ 					// 		 return structure.hits < 32000;// 8000 E = 10 * 8000 / 800 = 100
+ 					// 	 }
+ 					// 	 if(structure.structureType == STRUCTURE_RAMPART) {
+ 					// 		 return structure.hits < 160000;// 8000 E = 10 * 8000 / 800 = 100
+ 					// 	 }
+ 					// 	 return structure.hitsMax - structure.hits > 2400; //towers.length*800;
+ 					//  }
+ 				 // });
+
+				var structures = cash.getStructures(tower.room).filter((structure) => {
+					 if(structure.structureType == STRUCTURE_WALL) {
+						 return structure.hits < 32000;// 8000 E = 10 * 8000 / 800 = 100
+					 }
+					 if(structure.structureType == STRUCTURE_RAMPART) {
+						 return structure.hits < 160000;// 8000 E = 10 * 8000 / 800 = 100
+					 }
+					 return structure.hitsMax - structure.hits > 2400; //towers.length*800;
+				});
+
+				if(structures.length > 0) {
+ 					target = structures.reduce((p,c) => tower.pos.getRangeTo(p) < tower.pos.getRangeTo(c)? p:c);
+ 				}
 
  				 if(target) {
  					 tower.repair(target);

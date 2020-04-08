@@ -39,19 +39,23 @@ var cash = {
 			if(!cash_objects[entry_id]) {
 				cash_objects[entry_id] = {};
 			}
-			cash_objects[entry_id][subentry_id] = {dt:0, n:0, ids: entry.ids, objs: []};
+			cash_objects[entry_id][subentry_id] = {dt:0, n:0, ids: entry.ids, objs: [], e:0};
 		}
 		var cash_o = cash_objects[entry_id][subentry_id];
 		if(true && entry.time != Game.time) {
-			cash_o.objs = cash_o.ids.map((id) => Game.getObjectById(id));
+			var new_objs = cash_o.ids.map((id) => Game.getObjectById(id));
+			if(_.isEqual(cash_o.objs, new_objs)) {
+				cash_o.e++;
+			}
+			cash_o.objs = new_objs;
  			entry.time = Game.time;
  		}
 		cash_o.n++;
 		cash_o.dt = Math.round((cash_o.dt + Game.cpu.getUsed() - t)*10000)/10000;
-		if(Game.time % constants.TICKS_TO_CHECK_CPU == 0 && cash_o.dt/cash_o.n > 0.1 || (false && type == STRUCTURE_EXTENSION)) {
+		if(Game.time % constants.TICKS_TO_CHECK_CPU == 0 && cash_o.dt/cash_o.n > 0.05 || (false && type == STRUCTURE_EXTENSION)) {
 			console.log( '💵', Math.trunc(Game.time/10000), Game.time%10000
 									, '[' + type + '][' + entry_id + '][' + subentry_id + ']'
-									, 'dt:', cash_o.dt, 'n:', cash_o.n
+									, 'dt:', cash_o.dt, 'n:', cash_o.n, 'e:', cash_o.e
 									, 'length:', cash_o.objs.length, JSON.stringify(cash_o.objs)
 								 );
 		}
@@ -138,6 +142,12 @@ var cash = {
 				 											structure.structureType == STRUCTURE_CONTAINER });
 			});
 	},
+
+	structures: {},
+	getStructures: function(room) {
+		return cash.getEntry(cash.structures, LOOK_STRUCTURES, tools.getRoomCode(room.name), () => {
+			return room.find(FIND_STRUCTURES);
+ 	},
 
 	all_my_terminals: {},
 	getAllMyTerminals: function() {
