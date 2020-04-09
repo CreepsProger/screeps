@@ -4,7 +4,12 @@ const cash = require('cash');
 
 var towers = {
 
+	sleep: 0,
+
    run: function() {
+
+		 if(sleep > 0 && Game.ticks % sleep == 0)
+			 return;
 
 		 var target;
 
@@ -16,6 +21,7 @@ var towers = {
 				 });
 			 if(!!target) {
 				 tower.attack(target);
+				 sleep = 0;
 			 }
 
 			 if(!target) {
@@ -27,6 +33,7 @@ var towers = {
 
 				 if(target) {
 					 tower.heal(target);
+					 sleep = 0;
 				 }
 			 }
 
@@ -46,6 +53,7 @@ var towers = {
 					 tower.heal(target);
 					 target.memory.healer = tower.id;
 					 target.memory.heal_time = Game.time;
+					 sleep = 0;
 				 }
 			 }
 
@@ -78,9 +86,13 @@ var towers = {
 
  				 if(target) {
  					 tower.repair(target);
+					 sleep = 0;
  				 }
  			 }
 
+			 if(!target && sleep <= 5) {
+				 sleep++;
+			 }
 		 });
 	 }
 };
