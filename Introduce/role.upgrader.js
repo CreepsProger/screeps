@@ -1,5 +1,6 @@
 const roleNext = require('role.energy.harvester');
 const constants = require('main.constants');
+const terminals = require('main.terminals');
 const conditions = require('main.conditions');
 const config = require('main.config');
 const metrix = require('main.metrix');
@@ -71,12 +72,14 @@ var roleUpgrader = {
 			const this_room_sources_are_empty = tools.areEmptySources(creep);
 			const this_room_containers_are_full = cash.areFullContainers(creep);
 			const U = !!Game.flags['U'] && (Game.flags['U'].pos.roomName == my_room);
+				const total_energy = cash.getTotalEnergy();
+				const X = condition.TO_EXTRA_UPGRADE(total_energy);
 
 			const canDo =
 						(creep.getActiveBodyparts(WORK) &&
 						 (!Memory.stop_upgrading || this_room_containers_are_full || U) &&
 						 this_room == my_room &&
-						 (creep.room.energyAvailable == creep.room.energyCapacityAvailable || conditions.TO_SPAWN_CLAIMING_ROOMS() || U) &&
+						 (creep.room.energyAvailable == creep.room.energyCapacityAvailable || conditions.TO_SPAWN_CLAIMING_ROOMS() || U || X) &&
 						 !!creep.room.controller &&
 						 !!creep.room.controller.my &&
 						 creep.room.controller.level > 0 &&
