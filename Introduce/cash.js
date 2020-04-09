@@ -27,12 +27,12 @@ var cash = {
 		return Memory.cash[type][entry_id][subentry_id];
 	},
 
-	getEntry: function(cash_objects, type, entry_path, get) {
+	getEntry: function(cash_objects, type, entry_path, get, ticksToReset = 0) {
 		var t = Game.cpu.getUsed();
 		const entry_id = !entry_path ? 0 : !entry_path.length ? entry_path : entry_path.length > 0 ? entry_path[0]:0;
 		const subentry_id = !entry_path ? 100 : !entry_path.length ? 100 : entry_path.length > 1 ? entry_path[1]:100;
 		var entry = cash.initEntry(type, entry_id, subentry_id);
- 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0)
+ 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || (ticksToReset > 0 && Game.time % ticksToReset == 0))
 			cash.time = Game.time;
 		if(entry.time == 0 || entry.time < cash.time || !cash_objects[entry_id] || !cash_objects[entry_id][subentry_id]) {
  			entry.ids = get().map((obj) => obj.id);
@@ -148,9 +148,10 @@ var cash = {
 	getStructuresToRepaire: function(room) {
 		return cash.getEntry(cash.structers_to_repaire, STRUCTURE_ROAD + '&' + STRUCTURE_CONTAINER, tools.getRoomCode(room.name), () => {
 			return room.find(FIND_STRUCTURES, {
-				filter: (structure) => structure.structureType == STRUCTURE_ROAD ||
-				 											structure.structureType == STRUCTURE_CONTAINER });
-			});
+				filter: (structure) => (structure.structureType == STRUCTURE_ROAD ||
+				 											structure.structureType == STRUCTURE_CONTAINER) &&
+														 structure.hitsMax - structure.hits > structure.hitsMax/2 });
+			}, 1000);
 	},
 
 	structures: {},
