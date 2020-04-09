@@ -73,7 +73,7 @@ var roleUpgrader = {
 			const this_room_containers_are_full = cash.areFullContainers(creep);
 			const U = !!Game.flags['U'] && (Game.flags['U'].pos.roomName == my_room);
 				const total_energy = cash.getTotalEnergy();
-				const X = condition.TO_EXTRA_UPGRADE(total_energy);
+				const X = conditions.TO_EXTRA_UPGRADE(total_energy);
 
 			const canDo =
 						(creep.getActiveBodyparts(WORK) &&
