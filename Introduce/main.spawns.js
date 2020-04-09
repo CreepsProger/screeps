@@ -177,7 +177,7 @@ var spawns = {
 				var controller = spawn.room.controller;
 				const CL = controller.level;
 				var N = Memory.totals.CreepsNumber;
-				const total_energy = terminals.getTotalEnergy();
+				const total_energy = cash.getTotalEnergy();
 				const extra_upgrade = condition.TO_EXTRA_UPGRADE(total_energy);
 				const All = !!rerun;
 				const Sp1 = (All || spawn.name == 'Spawn1' || spawn.name == 'Spawn4');
