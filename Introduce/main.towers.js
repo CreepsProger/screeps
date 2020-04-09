@@ -5,7 +5,7 @@ const cash = require('cash');
 var towers = {
 	
 	sleep: 0,
-	prev_target = {}, 
+	prev_target: {}, 
 
    run: function() {
 
