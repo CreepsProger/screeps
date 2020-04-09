@@ -3,8 +3,9 @@ const tools = require('tools');
 const cash = require('cash');
 
 var towers = {
-
+	
 	sleep: 0,
+	prev_target = {}, 
 
    run: function() {
 
@@ -66,7 +67,8 @@ var towers = {
  						 if(structure.structureType == STRUCTURE_RAMPART) {
  							 return structure.hits < 160000;// 8000 E = 10 * 8000 / 800 = 100
  						 }
- 						 return structure.hitsMax - structure.hits > 2400; //towers.length*800;
+ 						 return structure.hitsMax - structure.hits >= structure.hitsMax/
+							 (2+98*(!!towers.prev_target[tower.id] && structure.id == towers.prev_target[tower.id])) ;
  					 }
  				 });
 
@@ -86,6 +88,7 @@ var towers = {
 
  				 if(target) {
  					 tower.repair(target);
+					 towers.prev_target[tower.id] = target.id;
 					 towers.sleep = 0;
  				 }
  			 }
