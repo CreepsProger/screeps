@@ -9,7 +9,7 @@ var towers = {
 
    run: function() {
 
-		 if(towers.sleep > 0 && Game.ticks % towers.sleep == 0)
+		 if(towers.sleep > 0 && Game.time % towers.sleep == 0)
 			 return;
 
 		 var target;
