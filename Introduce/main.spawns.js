@@ -3,6 +3,7 @@ const conditions = require('main.conditions');
 const terminals = require('main.terminals');
 const config = require('main.config');
 const flags = require('main.flags');
+const cash = require('cash');
 const tools = require('tools');
 
 var last_game_time_created_creep = {};
