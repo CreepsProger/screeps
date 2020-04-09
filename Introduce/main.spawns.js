@@ -178,8 +178,7 @@ var spawns = {
 				const CL = controller.level;
 				var N = Memory.totals.CreepsNumber;
 				const total_energy = terminals.getTotalEnergy();
-				const extra_upgrade = Game.cpu.bucket > constants.CPU_BUCKET_TO_EXTRA_UPGRADE &&
-															total_energy > constants.TOTAL_ENERGY_TO_EXTRA_UPGRADE;
+				const extra_upgrade = condition.TO_EXTRA_UPGRADE(total_energy);
 				const All = !!rerun;
 				const Sp1 = (All || spawn.name == 'Spawn1' || spawn.name == 'Spawn4');
 				const Sp2 = (All || spawn.name == 'Spawn2' || spawn.name == 'Spawn6')
