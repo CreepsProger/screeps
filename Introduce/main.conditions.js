@@ -34,6 +34,9 @@ const conditions = {
 																			const room = Game.rooms[roomName];
 																			if(!room) return false;
 																			return 	room.find(FIND_HOSTILE_CREEPS).length > 0;}
+	, TO_EXTRA_UPGRADE:			function(total_energy) {
+																			return Game.cpu.bucket > constants.CPU_BUCKET_TO_EXTRA_UPGRADE &&
+															total_energy > constants.TOTAL_ENERGY_TO_EXTRA_UPGRADE;}
 };
 
 
