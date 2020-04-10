@@ -8,10 +8,10 @@ var towers = {
 	sleep_summ: 0,
 	work_summ: 0,
 	prev_target: {}, 
+	
+	run: function() {
 
-   run: function() {
-
-		 if(Game.time % constants.TICKS_TO_CHECK_CPU != 0) {
+		if(Game.time % constants.TICKS_TO_CHECK_CPU != 0) {
 			 console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
 									 , 'Towers sleep/work:', towers.sleep_summ, '/', towers.work_summ
 									 , 'prev targets:', JSON.stringify(towers.prev_target) 
