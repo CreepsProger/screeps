@@ -105,7 +105,7 @@ var towers = {
  				 }
  			 }
 
-			 if(!target && towers.sleep < 5) {
+			 if(!target && towers.sleep[i] < 5) {
 				 towers.sleep[i]++;
 				 delete towers.prev_target[i];
 			 }
