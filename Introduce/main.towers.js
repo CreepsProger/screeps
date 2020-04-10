@@ -100,7 +100,7 @@ var towers = {
  				// }
 
  				 if(target && OK == tower.repair(target)) {
-					 towers.prev_target[i] = target.id;
+					 towers.prev_target[i] = {id:target.id, obj:target};
 					 towers.sleep = 0;
  				 }
  			 }
