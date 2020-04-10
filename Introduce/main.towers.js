@@ -115,6 +115,8 @@ var towers = {
  			 }
 
 			 if(!target && (!towers.sleep[i] || towers.sleep[i] < 5)) {
+				 if(!towers.sleep[i])
+					 towers.sleep[i] = 0;
 				 towers.sleep[i]++;
 				 delete towers.prev_target[i];
 			 }
