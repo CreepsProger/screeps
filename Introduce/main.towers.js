@@ -106,6 +106,7 @@ var towers = {
 
 			 if(!target && towers.sleep <= 5) {
 				 towers.sleep++;
+				 towers.prev_target[i] = {};
 			 }
 		 });
 	 }
