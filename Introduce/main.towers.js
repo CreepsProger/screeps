@@ -99,8 +99,7 @@ var towers = {
  				// 	target = structures.reduce((p,c) => tower.pos.getRangeTo(p) < tower.pos.getRangeTo(c)? p:c);
  				// }
 
- 				 if(target) {
- 					 tower.repair(target);
+ 				 if(target && OK == tower.repair(target)) {
 					 towers.prev_target[i] = target.id;
 					 towers.sleep = 0;
  				 }
