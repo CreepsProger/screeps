@@ -13,7 +13,7 @@ var towers = {
 
 		if(Game.time % constants.TICKS_TO_CHECK_CPU == 0) {
 			 console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
-									 , 'Towers sleep/work:', towers.sleep_summ, '/', towers.work_summ
+									 , 'Towers work/sleep:', towers.work_summ, '/', towers.sleep_summ
 									 , 'prev targets:', JSON.stringify(towers.prev_target) 
 									);
 		 }
