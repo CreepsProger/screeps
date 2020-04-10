@@ -39,20 +39,15 @@ var cash = {
 			if(!cash_objects[entry_id]) {
 				cash_objects[entry_id] = {};
 			}
-			cash_objects[entry_id][subentry_id] = {dt:0, n:0, ids: entry.ids, objs: [], eqn:0};
+			cash_objects[entry_id][subentry_id] = {dt:0, n:0, ids: entry.ids, objs: [], dn:0};
 		}
 		var cash_o = cash_objects[entry_id][subentry_id];
 		if(true && entry.time != Game.time) {
-			if(false && cash_o.ids.length == cash_o.objs.length) {
+			if(true && cash_o.ids.length == cash_o.objs.length) {
 				cash_o.objs.forEach(function(obj,i) {
-					var new_obj = Game.getObjectById(cash_o.ids[i]);
-					// if(JSON.stringify(obj) !== JSON.stringify(new_obj))
-					if(!obj || !_.isEqual(obj, new_obj)) {
-						obj = Game.getObjectById(cash_o.ids[i]);
-					}
-					else {
-						cash_o.eqn++;
-					}
+					delete obj;
+					cash_o.dn++;
+					obj = Game.getObjectById(cash_o.ids[i]);
 				});
 			}
 			else {
@@ -65,7 +60,7 @@ var cash = {
 		if(Game.time % constants.TICKS_TO_CHECK_CPU == 0 && cash_o.dt/cash_o.n > 0.05 || (false && type == STRUCTURE_EXTENSION)) {
 			console.log( '💵', Math.trunc(Game.time/10000), Game.time%10000
 									, '[' + type + '][' + entry_id + '][' + subentry_id + ']'
-									, 'dt:', cash_o.dt, 'n:', cash_o.n, 'eqn:', cash_o.eqn
+									, 'dt:', cash_o.dt, 'n:', cash_o.n, 'dn:', cash_o.dn
 									, 'length:', cash_o.objs.length, JSON.stringify(cash_o.objs)
 								 );
 		}
