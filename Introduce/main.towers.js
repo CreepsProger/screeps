@@ -21,7 +21,7 @@ var towers = {
 			 return;
 		 }
 		 
-		 towers.work_summ++
+		 towers.work_summ++;
 
 		 var target;
 
