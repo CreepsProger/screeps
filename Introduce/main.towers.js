@@ -5,12 +5,23 @@ const cash = require('cash');
 var towers = {
 	
 	sleep: 0,
+	sleep_summ: 0,
+	work_summ: 0,
 	prev_target: {}, 
 
    run: function() {
 
-		 if(towers.sleep > 0 && Game.time % towers.sleep)
+		 if(towers.sleep > 0 && Game.time % towers.sleep) {
+			 towers.sleep_summ++;
+			 if(Game.time % constants.TICKS_TO_CHECK_CPU == 0 || towers.sleep_summ % 100 == 0) {
+				 console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
+										 , 'Towers sleep/work:', towers.sleep_summ, '/', towers.work_summ
+								 );
+			 }
 			 return;
+		 }
+		 
+		 towers.work_summ++
 
 		 var target;
 
@@ -68,7 +79,7 @@ var towers = {
  							 return structure.hits < 160000;// 8000 E = 10 * 8000 / 800 = 100
  						 }
  						 return structure.hitsMax - structure.hits >= structure.hitsMax/
-							 (2+98*(!!towers.prev_target[tower.id] && structure.id == towers.prev_target[tower.id])) ;
+							 (2+98*(!!towers.prev_target[i] && structure.id == towers.prev_target[i])) ;
  					 }
  				 });
 
@@ -88,7 +99,7 @@ var towers = {
 
  				 if(target) {
  					 tower.repair(target);
-					 towers.prev_target[tower.id] = target.id;
+					 towers.prev_target[i] = target.id;
 					 towers.sleep = 0;
  				 }
  			 }
