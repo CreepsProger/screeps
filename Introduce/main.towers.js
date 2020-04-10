@@ -4,6 +4,7 @@ const cash = require('cash');
 
 var towers = {
 	
+	count: 99999,
 	sleep: {},
 	work_sleep: {work:0, sleep:0},
 	prev_target: {}, 
@@ -11,31 +12,39 @@ var towers = {
 	run: function() {
 
 		if(Game.time % constants.TICKS_TO_CHECK_CPU == 0) {
-			 console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
-									 , 'Towers:', JSON.stringify(towers.work_sleep)
-									 , JSON.stringify(towers.sleep)
-									 , 'prev targets:', JSON.stringify(towers.prev_target) 
+			console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
+									, 'Towers('+towers.count+')', JSON.stringify(towers.work_sleep)
+									, JSON.stringify(towers.sleep), Object.keys(towers.sleep).length
+									, 'prev targets:', JSON.stringify(towers.prev_target) 
 									);
-		 }
+		}
 
-		 var target;
-
-		 cash.getAllMyTowers().forEach(function(tower,i) {
-			 if(!!towers.sleep[i] && towers.sleep[i] > 0 && Game.time % towers.sleep[i]) {
-				 towers.work_sleep.sleep++;
+		if(Object.keys(towers.sleep).length == towers.count && Game.time % 5) {
+				 towers.work_sleep.sleep += towers.count;
 				 return;
-			 }
+		}
+		
+		var target;
+		
+		const allMyTowers = cash.getAllMyTowers();
+		towers.count = allMyTowers.length;
+
+		allMyTowers.forEach(function(tower,i) {
+			if(!!towers.sleep[i] && towers.sleep[i] > 0 && Game.time % towers.sleep[i]) {
+				towers.work_sleep.sleep++;
+				return;
+			}
+			
+			towers.work_sleep.work++;
 			 
-			 towers.work_sleep.work++;
-			 
-			 target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+			target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
 					 filter: (hostile) => {
 						 return hostile.pos.x%48 > 1 || hostile.pos.y%48 > 1;
 					 }
 				 });
 			 if(!!target) {
 				 tower.attack(target);
-				 towers.sleep[i] = 0;
+				 delete towers.sleep[i];
 			 }
 
 			 if(!target) {
@@ -47,7 +56,7 @@ var towers = {
 
 				 if(target) {
 					 tower.heal(target);
-					 towers.sleep[i] = 0;
+					 delete towers.sleep[i];
 				 }
 			 }
 
@@ -67,7 +76,7 @@ var towers = {
 					 tower.heal(target);
 					 target.memory.healer = tower.id;
 					 target.memory.heal_time = Game.time;
-					 towers.sleep[i] = 0;
+					 delete towers.sleep[i];
 				 }
 			 }
 
@@ -101,11 +110,11 @@ var towers = {
 
  				 if(target && OK == tower.repair(target)) {
 					 towers.prev_target[i] = target.id;
-					 towers.sleep[i] = 0;
+					 delete towers.sleep[i];
  				 }
  			 }
 
-			 if(!target && towers.sleep[i] < 5) {
+			 if(!target && (!towers.sleep[i] || towers.sleep[i] < 5)) {
 				 towers.sleep[i]++;
 				 delete towers.prev_target[i];
 			 }
