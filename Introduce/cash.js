@@ -43,7 +43,7 @@ var cash = {
 		}
 		var cash_o = cash_objects[entry_id][subentry_id];
 		if(true && entry.time != Game.time) {
-			if(true && cash_o.ids.length == cash_o.objs.length) {
+			if(false && cash_o.ids.length == cash_o.objs.length) {
 				cash_o.objs.forEach(function(obj,i) {
 					var t = obj;
 					cash_o.dn++;
