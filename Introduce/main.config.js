@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 160,
+	version: 161,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -66,7 +66,8 @@ var config = {
 												 , {name: '5', time: 0, min_weight: 30, max_weight: 39}
 												 ]
 										 , heal_room: 'W25S33'
-										 , path_rooms: {W28S33: 'W27S33', W27S33: 'W26S33', W26S33: 'W25S33'}
+										 , path_rooms: { W28S33: 'W27S33', W27S33: 'W26S33', W26S33: 'W25S33'}
+										 							 , W28S35: 'W28S34', W28S34: 'W28S33'}
 										 , escape_path:{ W28S37: 'W28S38', W28S38: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
 																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
 																	 , W28S33: 'W27S33', W27S33: 'W26S33', W26S33: 'W25S33'}
@@ -83,7 +84,8 @@ var config = {
 												 , {name: '8', time: 0, min_weight: 40, max_weight: 49}
 												 ]
 										 , heal_room: 'W26S33'
-										 , path_rooms: {W25S33: 'W26S33', W28S33: 'W27S33', W27S33: 'W26S33'}
+										 , path_rooms: { W25S33: 'W26S33', W28S33: 'W27S33', W27S33: 'W26S33'
+									 								 , W28S35: 'W28S34', W28S34: 'W28S33'}
 										 , escape_path:{ W28S37: 'W28S38', W28S38: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
 																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
 																	 , W28S33: 'W27S33', W27S33: 'W26S33'}
@@ -113,7 +115,8 @@ var config = {
 												 // , {name: '9', time: 0, min_weight: 50, max_weight: 59}
 												 ]
 										 , heal_room: 'W26S33'
-										 , path_rooms: {W25S33: 'W26S33', W26S33: 'W27S33', W28S33: 'W27S33'}
+										 , path_rooms: { W25S33: 'W26S33', W26S33: 'W27S33', W28S33: 'W27S33'
+									 								 , W28S35: 'W28S34', W28S34: 'W28S33'}
 										 , escape_path:{ W28S37: 'W28S38', W28S38: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
 																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
 																	 , W28S33: 'W27S33', W27S33: 'W26S33'}
@@ -144,7 +147,7 @@ var config = {
 												 ]
 									   , heal_room: 'W28S33'
 										 , path_rooms: { W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
-																		, W28S35: 'W28S34', W28S34: 'W28S33'}
+																	 , W28S35: 'W28S34', W28S34: 'W28S33'}
 										 , escape_path:{ W28S37: 'W28S38', W28S38: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
 																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
 																	 , W28S33: 'W27S33', W27S33: 'W26S33'}
