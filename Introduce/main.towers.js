@@ -11,7 +11,7 @@ var towers = {
 	
 	run: function() {
 
-		if(Game.time % constants.TICKS_TO_CHECK_CPU != 0) {
+		if(Game.time % constants.TICKS_TO_CHECK_CPU == 0) {
 			 console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
 									 , 'Towers sleep/work:', towers.sleep_summ, '/', towers.work_summ
 									 , 'prev targets:', JSON.stringify(towers.prev_target) 
@@ -100,12 +100,12 @@ var towers = {
  				// }
 
  				 if(target && OK == tower.repair(target)) {
-					 towers.prev_target[i] = {id:target.id, obj:target};
+					 towers.prev_target[i] = target.id;
 					 towers.sleep = 0;
  				 }
  			 }
 
-			 if(!target && towers.sleep <= 5) {
+			 if(!target && towers.sleep < 5) {
 				 towers.sleep++;
 				 delete towers.prev_target[i];
 			 }
