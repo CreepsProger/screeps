@@ -51,7 +51,9 @@ var roleBuilder = {
 					target = creep.pos.findClosestByPath(exit);
 				}
 
-				if(!target) {
+				const this_room_sources_are_empty = tools.areEmptySources(creep);
+	
+				if(!target && this_room_sources_are_empty) {
 					target = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES)
 				}
 
