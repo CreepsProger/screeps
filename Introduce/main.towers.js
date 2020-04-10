@@ -14,12 +14,12 @@ var towers = {
 		if(Game.time % constants.TICKS_TO_CHECK_CPU == 0) {
 			console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
 									, 'Towers('+towers.count+')', JSON.stringify(towers.work_sleep)
-									, JSON.stringify(towers.sleep), Object.keys(towers.sleep).length
+									, Object.keys(towers.sleep).length, JSON.stringify(towers.sleep)
 									, 'prev targets:', JSON.stringify(towers.prev_target) 
 									);
 		}
 
-		if(Object.keys(towers.sleep).length == towers.count && Game.time % 5) {
+		if(Object.keys(towers.sleep).length == towers.count && Game.time % constants.TICKS_MAX_TOWERS_SLEEPING) {
 				 towers.work_sleep.sleep += towers.count;
 				 return;
 		}
@@ -114,7 +114,7 @@ var towers = {
  				 }
  			 }
 
-			 if(!target && (!towers.sleep[i] || towers.sleep[i] < 5)) {
+			 if(!target && (!towers.sleep[i] || towers.sleep[i] < constants.TICKS_MAX_TOWERS_SLEEPING )) {
 				 if(!towers.sleep[i])
 					 towers.sleep[i] = 0;
 				 towers.sleep[i]++;
