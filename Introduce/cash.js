@@ -43,11 +43,12 @@ var cash = {
 		}
 		var cash_o = cash_objects[entry_id][subentry_id];
 		if(true && entry.time != Game.time) {
-			if(false && cash_o.ids.length == cash_o.objs.length) {
+			if(true && cash_o.ids.length == cash_o.objs.length) {
 				cash_o.objs.forEach(function(obj,i) {
-					delete obj;
+					var t = obj;
 					cash_o.dn++;
 					obj = Game.getObjectById(cash_o.ids[i]);
+					delete t;
 				});
 			}
 			else {
