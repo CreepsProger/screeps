@@ -55,7 +55,7 @@ var roleBuilder = {
 				const this_room_is_being_claiming = !!creep.room.controller && !creep.room.controller.my;
 				//console.log(JSON.stringify(Game.rooms['W29S35'].controller));
 	
-				if(!target && this_room_sources_are_empty) {
+				if(!target && (this_room_sources_are_empty || this_room_is_being_claiming)) {
 					target = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES)
 				}
 
