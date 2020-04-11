@@ -66,7 +66,7 @@ var spawns = {
 			if(!!Memory.CreepsMinTicksToLive[weight] && !!Memory.CreepsMinTicksToLive[weight].pos) {
 				range = tools.getRangeTo(spawn.pos,Memory.CreepsMinTicksToLive[weight].pos);
 				mittl = Memory.CreepsMinTicksToLive[weight].mittl;
-				mittl_to_spawn = Math.abs(body.length*3 - range);
+				mittl_to_spawn = Math.abs(150 + body.length*3 - range);
 			}
 			const needed_plus = Math.min(needed+plus+minus, max_needed) + (mittl < mittl_to_spawn);
 			Memory.CreepsNeedsByWeight[weight] = {needs: needed, needs_plus: needed_plus, bodys: body.length*needed, cost: cost*needed};
