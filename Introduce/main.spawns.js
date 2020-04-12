@@ -322,8 +322,10 @@ var spawns = {
 						if(Sp4) spawns.tryCreateCreep(spawn, CARIER[4][H], 91, 1, 1);
 					}
 				}
+
         if(conditions.TO_SPAWN_CLAIMING_ROOMS4()) {
         }
+
 				if(conditions.TO_SPAWN_KEEPERS_ROOMS()) {
 					if(Sp2) spawns.tryCreateCreep(spawn, 1500001000000025, 75, 2, 2); // V 1-2 E  Attacker
 					if(Sp2) spawns.tryCreateCreep(spawn,           130911, 74, 1, 2); // V 1-1 E    Worker
