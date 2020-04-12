@@ -81,7 +81,9 @@ var roleDismantler = {
 									structure.structureType == STRUCTURE_TERMINAL ||
 									structure.structureType == STRUCTURE_CONTAINER ||
 									structure.structureType == STRUCTURE_NUKER ||
-								  structure.structureType == STRUCTURE_FACTORY)) {
+								  structure.structureType == STRUCTURE_FACTORY ||
+								  structure.structureType == STRUCTURE_OBSERVER ||
+								  structure.structureType == STRUCTURE_POWER_SPAWN)) {
 								if(!!D1 && D1.pos.roomName == my_room && D1.pos.getRangeTo(structure) < 11-D1.color) {
 									return true;
 								}
