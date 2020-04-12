@@ -205,7 +205,7 @@ var role = {
 						filter: (structure) => {
 							return (structure.structureType != STRUCTURE_CONTROLLER &&
 											structure.structureType != STRUCTURE_KEEPER_LAIR &&
-                      structure.structureType != STRUCTURE_RAMPART);
+                      structure.structureType == STRUCTURE_RAMPART);
 						}
 					});
 					if(targets.length > 0) {
