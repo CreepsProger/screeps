@@ -434,8 +434,8 @@ var config = {
 												 ]
 									   , heal_room: 'W28S33'
 										 , path_rooms: { W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
-																	 , W28S33: 'W29S33', W29S33: 'W30S33', W30S33: 'W30S32'
-																   , W30S32: 'W29S32'}
+																	 , W28S33: 'W28S32', W28S32: 'W29S32'
+																	 , W29S33: 'W30S33', W30S33: 'W30S32', W30S32: 'W29S32'}
 										 , escape_path:{ W29S32: 'W30S32', W30S32: 'W30S33', W30S33: 'W29S33'
 									 								 , W29S33: 'W28S33'}
 										 },
