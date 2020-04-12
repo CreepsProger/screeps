@@ -339,6 +339,15 @@ var roleEnergyTransferer = {
 
 			metrix.cpu.step_time(creep, 'transfering', '🔜💡3️⃣');
 
+			if(!target &&
+				   creep.getActiveBodyparts(WORK) &&
+				   creep.memory.rerun &&
+				 !!creep.room.storage &&
+				  !creep.room.storage.my && // !!!!
+				 creep.room.storage.store.getFreeCapacity(RESOURCE_ENERGY) > 0) {
+					 target = creep.room.storage;
+			}
+
 			if(target) {
 
 				var err = ERR_NOT_IN_RANGE;
