@@ -40,7 +40,7 @@ var rolePickuper = {
 					var droppeds = creep.room.find(FIND_DROPPED_RESOURCES, {
 						filter: (dropped) => {
 							return (!dropped.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0
-											|| (!!Game.flags['DP2'] && Game.flags['DP2'].room.name == creep.room.name && Game.flags['DP2'].pos.findPathTo(dropped).length < 5)) &&
+											|| (!!Game.flags['DP2'] && Game.flags['DP2'].pos.roomName == creep.room.name && Game.flags['DP2'].pos.findPathTo(dropped).length < 5)) &&
 								tools.checkTarget(executer,dropped.id);
 						}
 					});
