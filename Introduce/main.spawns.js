@@ -252,7 +252,7 @@ var spawns = {
 							if(Sp3) spawns.tryCreateCreep(spawn, ATTACKER[M], 105, 1, 1);
             }
             else {
-							if(Sp3) spawns.tryCreateCreep(spawn,      CLAIMER, 100, 1, 1);
+							// if(Sp3) spawns.tryCreateCreep(spawn,      CLAIMER, 100, 1, 1);
 							// if(Sp3) spawns.tryCreateCreep(spawn, WORKER[4][H], 104, 1, 1);
 							// if(Sp3) spawns.tryCreateCreep(spawn, CARIER[4][H], 101, 1, 1);
             }
@@ -260,7 +260,7 @@ var spawns = {
 							if(Sp34) spawns.tryCreateCreep(spawn, ATTACKER[M], 115, 1, 1);
 						}
 						else {
-							if(Sp34) spawns.tryCreateCreep(spawn,      CLAIMER, 110, 1, 1);
+							// if(Sp34) spawns.tryCreateCreep(spawn,      CLAIMER, 110, 1, 1);
 							// if(Sp34) spawns.tryCreateCreep(spawn, WORKER[4][H], 114, 1, 1);
 							// if(Sp34) spawns.tryCreateCreep(spawn, CARIER[4][H], 111, 1, 1);
 						}
@@ -283,7 +283,7 @@ var spawns = {
               if(Sp4) spawns.tryCreateCreep(spawn, ATTACKER[L], 135, 1, 1);
             }
             else {
-              if(Sp4 ) spawns.tryCreateCreep(spawn,      CLAIMER, 130, 1, 1);
+              // if(Sp4 ) spawns.tryCreateCreep(spawn,      CLAIMER, 130, 1, 1);
               // if(Sp23) spawns.tryCreateCreep(spawn, WORKER[7][H], 134, 1, 1);
               // if(Sp4 ) spawns.tryCreateCreep(spawn, CARIER[6][H], 131, 1, 1);
             }
