@@ -285,9 +285,9 @@ var spawns = {
               if(Sp4) spawns.tryCreateCreep(spawn, ATTACKER[L], 135, 1, 1);
             }
             else {
-              // if(Sp4 ) spawns.tryCreateCreep(spawn,      CLAIMER, 130, 1, 1);
-              // if(Sp23) spawns.tryCreateCreep(spawn, WORKER[7][H], 134, 1, 1);
-              // if(Sp4 ) spawns.tryCreateCreep(spawn, CARIER[6][H], 131, 1, 1);
+              if(Sp4 ) spawns.tryCreateCreep(spawn,      CLAIMER, 130, 1, 1);
+              if(Sp23) spawns.tryCreateCreep(spawn, WORKER[7][H], 134, 1, 1);
+              if(Sp4 ) spawns.tryCreateCreep(spawn, CARIER[6][H], 131, 1, 1);
             }
           }
           if(conditions.TO_SPAWN_CLAIMING_ROOMS2()) {
