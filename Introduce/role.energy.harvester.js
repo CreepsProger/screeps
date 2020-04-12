@@ -277,6 +277,14 @@ var role = {
 			if(!!target) return target;
 		}
 
+		if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun
+			!!creep.room.storage &&
+			 !creep.room.storage.my &&
+			  creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) >0) {
+					target = creep.room.storage;
+			if(!!target) return target;
+		}
+
 		if(!target && creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
 			var emptysources = creep.room.find(FIND_SOURCES, {
 				filter: (source) => {
