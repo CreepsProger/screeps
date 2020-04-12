@@ -41,7 +41,8 @@ var config = {
 			 !Memory.config.v ||
 			  Memory.config.v != config.version) {
 				Memory.config	= { v: config.version,
-					main_path:{ W28S37: 'W28S36', W28S36: 'W28S35'
+					main_path:{ W29S37: 'W28S37'
+					 					, W28S37: 'W28S36', W28S36: 'W28S35'
 										, W29S35: 'W28S35'
 										, W28S35: 'W28S34', W28S34: 'W28S33'
 										, W29S33: 'W28S33'
