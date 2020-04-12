@@ -188,6 +188,18 @@ var role = {
     // 			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
     		}
 
+				const DP1 = Game.flags['DP1'];
+				if(!target && !!DP1 && DP1.pos.roomName == my_room) {
+					// console.log('DP1', 'this_room:', this_room, 'DP1:', JSON.stringify(DP1));
+					target = DP1.pos;
+				}
+
+				const DP2 = Game.flags['DP2'];
+				if(!target && !!DP2 && DP2.pos.roomName == my_room) {
+					//console.log('DP2', 'this_room:', this_room, 'DP2:', JSON.stringify(DP2));
+					target = DP2.pos;
+				}
+
 				if(!target) {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5, {
 						filter: (structure) => {
@@ -212,18 +224,6 @@ var role = {
 					if(targets.length > 0) {
 						target = targets[0];
 					}
-				}
-
-				const DP1 = Game.flags['DP1'];
-				if(!target && !!DP1 && DP1.pos.roomName == my_room) {
-					// console.log('DP1', 'this_room:', this_room, 'DP1:', JSON.stringify(DP1));
-					target = DP1.pos;
-				}
-
-				const DP2 = Game.flags['DP2'];
-				if(!target && !!DP2 && DP2.pos.roomName == my_room) {
-					//console.log('DP2', 'this_room:', this_room, 'DP2:', JSON.stringify(DP2));
-					target = DP2.pos;
 				}
 
 				if(!target && this_room != my_room && canAttack /*!shouldHeal*/) {
