@@ -236,7 +236,7 @@ var role = {
 				{
 					var err = ERR_NOT_IN_RANGE;
 					if(target.id &&
-						 target.structureType != STRUCTURE_RAMPART &&
+						 // target.structureType != STRUCTURE_RAMPART &&
 						 target.structureType != STRUCTURE_CONTROLLER) {
 							 if (!target.my) {
 								 const range = creep.pos.getRangeTo(target);							;
