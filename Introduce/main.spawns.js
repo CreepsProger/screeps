@@ -266,7 +266,7 @@ var spawns = {
 							// if(Sp34) spawns.tryCreateCreep(spawn, WORKER[4][H], 114, 1, 1);
 							// if(Sp34) spawns.tryCreateCreep(spawn, CARIER[4][H], 111, 1, 1);
 						}
-            if(Sp34) spawns.tryCreateCreep(spawn, WORKER[7][H], 124, 1, 2+X+X+X);
+            if(Sp34) spawns.tryCreateCreep(spawn, WORKER[7][H], 124, 1, 1+X+X+X);
             if(Sp4 ) spawns.tryCreateCreep(spawn, CARIER[6][H], 121, 1, 1);
 					}
           if(conditions.TO_SPAWN_CLAIMING_ROOMS4()) {
