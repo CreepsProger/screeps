@@ -156,6 +156,7 @@ var roleEnergyTransferer = {
 				var targs = creep.pos.findInRange(FIND_MY_CREEPS, 1, {
 					filter: (creep2) => {
 						return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > creep2.store.getUsedCapacity(RESOURCE_ENERGY) &&
+							!creep2.getActiveBodyparts(WORK)
 							creep2.memory.weight < creep.memory.weight;
 					}
 				});
