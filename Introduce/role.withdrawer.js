@@ -1,4 +1,4 @@
-var roleNext = require('role.pickuper');
+var roleNext = require('role.upgrader');
 const constants = require('main.constants');
 const config = require('main.config');
 const metrix = require('main.metrix');
