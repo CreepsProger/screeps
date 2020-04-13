@@ -234,7 +234,7 @@ var spawns = {
 				}
 				else {
 					if(conditions.TO_SPAWN_MAIN_ROOMS()) {
-						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[5+X+X][H], 34, 1, 1);
+						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[7][H], 34, 1, 1);
 						if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[6][H], 31, 1, 1);
 						if(Sp2)	spawns.tryCreateCreep(spawn, WORKER[7][H], 44, 1, 1);
 						if(Sp2)	spawns.tryCreateCreep(spawn, CARIER[6][H], 41, 1, 1);
