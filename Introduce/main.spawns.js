@@ -221,7 +221,7 @@ var spawns = {
                        ];
 				//               TTClRrAaHhWwCcMm
 				const ATTACKER = [500000500000010, 1000000500000015];
-				const HEALER = 500000007000006;
+				const HEALER =   1000000010000020;
 				const CLAIMER = 2000000000002;
 
 				// 22*1800+2*1300+4*650 = 44800 -> 30 per game tick
