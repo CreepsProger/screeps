@@ -222,7 +222,7 @@ var spawns = {
 				//               TTClRrAaHhWwCcMm
 				const ATTACKER = [500000500000010, 1000000500000015];
 				const HEALER =   1000000010000020;
-				const CLAIMER = 2000000000002;
+				const CLAIMER = 2000000000004;
 
 				// 22*1800+2*1300+4*650 = 44800 -> 30 per game tick
 				if(false) {
@@ -302,7 +302,7 @@ var spawns = {
 									if(Sp4) spawns.tryCreateCreep(spawn,   HEALER, 167, 1, 1);
 								}
 								else {
-									// if(Sp4) spawns.tryCreateCreep(spawn,      CLAIMER, 160, 1, 1);
+									if(Sp4) spawns.tryCreateCreep(spawn,      CLAIMER, 160, 1, 1);
 									if(Sp4) spawns.tryCreateCreep(spawn, WORKER[5][M], 164, 1, 1);
 									if(Sp4) spawns.tryCreateCreep(spawn, CARIER[6][H], 161, 1, 1);
 								}
