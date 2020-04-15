@@ -184,7 +184,7 @@ var spawns = {
 				const Sp1 = (All || spawn.name == 'Spawn1' || spawn.name == 'Spawn4');
 				const Sp2 = (All || spawn.name == 'Spawn2' || spawn.name == 'Spawn6');
 				const Sp3 = (All || spawn.name == 'Spawn3' || spawn.name == 'Spawn7');
-				const Sp4 = (All || spawn.name == 'Spawn5');
+				const Sp4 = (All || spawn.name == 'Spawn5' || spawn.name == 'Spawn8');
 				const Sp12 = (Sp1 || Sp2);
 				const Sp23 = (Sp2 || Sp3);
 				const Sp34 = (Sp3 || Sp4);
@@ -249,8 +249,8 @@ var spawns = {
               if(Sp23)	spawns.tryCreateCreep(spawn, WORKER[7][H], 54, 1, 1);
               if(Sp23)	spawns.tryCreateCreep(spawn, CARIER[6][H], 51, 1, 1);
             }
-            if(Sp34) spawns.tryCreateCreep(spawn, WORKER[7][H], 124, 1, 2+X+X);
-            if(Sp4 ) spawns.tryCreateCreep(spawn, CARIER[6][H], 121, 1, 1);
+            if(Sp4) spawns.tryCreateCreep(spawn, WORKER[7][H], 124, 1, 2+X+X);
+            if(Sp4) spawns.tryCreateCreep(spawn, CARIER[6][H], 121, 1, 1);
 					}
 
 					if(conditions.TO_SPAWN_CLAIMING_ROOMS()) {
@@ -275,9 +275,9 @@ var spawns = {
 							if(Sp4) spawns.tryCreateCreep(spawn,   HEALER, 137, 1, 1);
             }
             else {
-              if(Sp4 ) spawns.tryCreateCreep(spawn,      CLAIMER, 130, 1, 1);
-              if(Sp23) spawns.tryCreateCreep(spawn, WORKER[7][H], 134, 1, 1);
-              if(Sp4 ) spawns.tryCreateCreep(spawn, CARIER[6][H], 131, 1, 1);
+              if(Sp4) spawns.tryCreateCreep(spawn,      CLAIMER, 130, 1, 1);
+              if(Sp4) spawns.tryCreateCreep(spawn, WORKER[7][H], 134, 1, 1);
+              if(Sp4) spawns.tryCreateCreep(spawn, CARIER[6][H], 131, 1, 1);
             }
           }
 
