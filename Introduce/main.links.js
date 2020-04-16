@@ -63,7 +63,7 @@ var links = {
 			 const to = Game.getObjectById(link.to);
 			 if(!!from && !!to &&
 				  !!from.store && from.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-					!!to.store && to.store.getFreeCapacity(RESOURCE_ENERGY) > 0) {
+					!!to.store && to.store.getFreeCapacity(RESOURCE_ENERGY) > 100) {
 				 from.transferEnergy(to);
 			 }
 		 });
