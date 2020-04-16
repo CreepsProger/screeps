@@ -42,8 +42,8 @@ const conditions = {
 																			if(!room) return false;
 																			var rc = room.controller;
 																			const to_spawn = !!rc && !rc.reservation || rc.reservation.ticksToEnd < 600;
-																			if(to_spawn)
-																		  	console.log('TO_SPAWN_ROOM_CLAIMER('+ roomName +') =' , to_spawn, JSON.stringify(rc));
+																			// if(to_spawn)
+																		  // 	console.log('TO_SPAWN_ROOM_CLAIMER('+ roomName +') =' , to_spawn, JSON.stringify(rc));
 																		  return to_spawn;}
 	, TO_EXTRA_UPGRADE:			function(total_energy) {
 																			return Game.cpu.bucket > constants.CPU_BUCKET_TO_EXTRA_UPGRADE &&
