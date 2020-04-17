@@ -186,7 +186,12 @@ var roleEnergyTransferer = {
 				// const targs = containers.concat(closests);
 
 				if(!!targs && targs.length > 0) {
-					target = targs.reduce((p,c) => !!p && !!c && creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+					target = targs.reduce((p,c) => !!p && !!c &&
+					 															   creep.pos.getRangeTo(p)
+																				 * (p.store.getUsedCapacity(RESOURCE_ENERGY) + 500)
+																				 < creep.pos.getRangeTo(c)
+																				 * (c.store.getUsedCapacity(RESOURCE_ENERGY) + 500)
+																				 ? p:c);
 				}
 				if(!!target) {
 					if(!creep.memory.target ||
