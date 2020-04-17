@@ -343,9 +343,9 @@ var spawns = {
 						if(Sp3) spawns.tryCreateCreep(spawn,      HEALER, 177, 1, 1);
 					}
 					else {
-						if(Sp3) spawns.tryCreateCreep(spawn,      CLAIMER,170, 1, 2);
+						if(Sp3) spawns.tryCreateCreep(spawn,   CLAIMER[H],170, 1, 2);
 						if(Sp3)	spawns.tryCreateCreep(spawn, WORKER[7][H],174, 1, 1);
-						if(Sp4) spawns.tryCreateCreep(spawn, CARIER[6][H],171, 1, 1);
+						//if(Sp3) spawns.tryCreateCreep(spawn, CARIER[7][M],171, 1, 1);
 					}
         }
 
