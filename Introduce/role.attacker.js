@@ -76,7 +76,7 @@ var role = {
 				if(!target && this_room == my_heal_room && creep.hits < creep.hitsMax) {
 					var rampart = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 						filter: (structure) => {
-							return structure.structureType == STRUCTURE_RAMPART &&
+							return structure.structureType == STRUCTURE_TOWER &&
 								structure.pos.roomName == my_heal_room &&
 								!!structure.my;
 						}
