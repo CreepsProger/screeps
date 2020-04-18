@@ -219,8 +219,8 @@ var spawns = {
 											 , [  2323,   2613,   3015]  // 6 2300
 											 , [  2525,   3216,   3317]  // 7 5300
                        ];
-				//               TTClRrAaHhWwCcMm
-				const ATTACKER = [500000500000010, 1000000500000015];
+				//                                                   TTClRrAaHhWwCcMm
+				const ATTACKER = [500000500000010, 1000000500000015, 1000000502000020];
 				const HEALER =   1000000010000020;
 				const CLAIMER = [2000000000004, 8000000000010, 8000000000014];
 
@@ -240,7 +240,7 @@ var spawns = {
 						if(Sp2)	spawns.tryCreateCreep(spawn, CARIER[7][M], 41, 1, 1);
 						if(Sp3)	spawns.tryCreateCreep(spawn, WORKER[7][H], 64, 1, 2);
 						if(Sp3)	spawns.tryCreateCreep(spawn, CARIER[7][M], 61, 1, 1);
-						if(Sp3) spawns.tryCreateCreep(spawn,  ATTACKER[M], 95, 1, 1);
+						if(Sp3) spawns.tryCreateCreep(spawn,  ATTACKER[H], 95, 1, 1);
             if(conditions.TO_SPAWN_ROOM_DEFENDERS('W27S33')) {
               if(Sp23)	spawns.tryCreateCreep(spawn, ATTACKER[M], 55, 1, 1);
             }
