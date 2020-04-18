@@ -72,18 +72,19 @@ var roleUpgrader = {
 			const this_room_sources_are_empty = tools.areEmptySources(creep);
 			const this_room_containers_are_full = cash.areFullContainers(creep);
 			const U = !!Game.flags['U'] && (Game.flags['U'].pos.roomName == my_room);
+				const UU = !!Game.flags['UU'] && Game.flags['UU'].pos.roomName == my_room;
 				const total_energy = cash.getTotalEnergy();
 				const X = conditions.TO_EXTRA_UPGRADE(total_energy);
 
 			const canDo =
 						(creep.getActiveBodyparts(WORK) &&
-						 (!Memory.stop_upgrading || this_room_containers_are_full || U) &&
+						 (!Memory.stop_upgrading || this_room_containers_are_full || U || UU) &&
 						 this_room == my_room &&
 						 (creep.room.energyAvailable == creep.room.energyCapacityAvailable || conditions.TO_SPAWN_CLAIMING_ROOMS() || U || X) &&
 						 !!creep.room.controller &&
 						 !!creep.room.controller.my &&
 						 creep.room.controller.level > 0 &&
-						 (this_room_sources_are_empty || this_room_containers_are_full || U) &&
+						 (this_room_sources_are_empty || this_room_containers_are_full || U || UU) &&
 						 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity(RESOURCE_ENERGY) < creep.getActiveBodyparts(WORK)*2) ||
 						  (creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun))) ;
 
