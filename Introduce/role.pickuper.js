@@ -24,7 +24,7 @@ var rolePickuper = {
 			const this_room = creep.room.name;
 			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
 
-			if(!creep.memory.pickuping &&
+			if(!creep.memory.pickuping && false &&
 				 this_room == my_room &&
 				 creep.getActiveBodyparts(CARRY) > 0 &&
 				 (creep.store.getUsedCapacity() == 0 ||
@@ -53,7 +53,7 @@ var rolePickuper = {
 				}
 
 				if(!!target) {
-					// var err = creep.pickup(target);
+					var err = creep.pickup(target);
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜👊');
 						err = tools.moveTo(creep,target);
