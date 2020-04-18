@@ -259,7 +259,7 @@ var spawns = {
 							if(Sp3) spawns.tryCreateCreep(spawn,   HEALER[H], 177, 1, 1);
 						}
 						else {
-							if(Sp3)	spawns.tryCreateCreep(spawn, WORKER[7][H],174, 1, 4);
+							if(Sp3)	spawns.tryCreateCreep(spawn, WORKER[7][H],174, 1, 3);
 						//if(Sp3) spawns.tryCreateCreep(spawn, CARIER[7][M],171, 1, 1);
 						}
 					}
@@ -335,7 +335,7 @@ var spawns = {
 						}
 						if(Sp4) spawns.tryCreateCreep(spawn, WORKER[6][L], 154, 1, 1);
 						if(Sp4) spawns.tryCreateCreep(spawn, CARIER[7][M], 151, 1, 1);
-					}                  
+					}
 				}
 
         if(conditions.TO_SPAWN_CLAIMING_ROOMS4()) {
