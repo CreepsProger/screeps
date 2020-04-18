@@ -263,7 +263,7 @@ var spawns = {
 							if(Sp35) spawns.tryCreateCreep(spawn,   HEALER[H], 177, 1, 1);
 						}
 						else {
-							if(Sp35) spawns.tryCreateCreep(spawn, CARIER[7][H],171, 1, 1);
+							if(Sp35) spawns.tryCreateCreep(spawn, CARIER[4][H],171, 1, 2);
 						}
 					}
 
