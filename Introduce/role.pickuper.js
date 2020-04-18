@@ -24,7 +24,7 @@ var rolePickuper = {
 			const this_room = creep.room.name;
 			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
 
-			if(!creep.memory.pickuping && false &&
+			if(!creep.memory.pickuping &&
 				 this_room == my_room &&
 				 creep.getActiveBodyparts(CARRY) > 0 &&
 				 (creep.store.getUsedCapacity() == 0 ||
@@ -32,14 +32,15 @@ var rolePickuper = {
 				creep.memory.pickuping = true;
 			}
 
-			if(creep.memory.pickuping && false) {
+			if(creep.memory.pickuping) {
 
 				var target;
 
 				if(!target) {
 					var droppeds = creep.room.find(FIND_DROPPED_RESOURCES, {
 						filter: (dropped) => {
-							return (!dropped.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0
+							return dropped.resourceType == RESOURCE_ENERGY &&
+							 			(!dropped.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0
 											|| (!!Game.flags['DP2'] && Game.flags['DP2'].pos.roomName == creep.room.name && Game.flags['DP2'].pos.findPathTo(dropped).length < 5)) &&
 								tools.checkTarget(executer,dropped.id);
 						}
@@ -53,7 +54,7 @@ var rolePickuper = {
 				}
 
 				if(!!target) {
-					// var err = creep.pickup(target);
+					var err = creep.pickup(target);
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜👊');
 						err = tools.moveTo(creep,target);
