@@ -26,11 +26,11 @@ var roleRenewer = {
 
 		if(this_room == my_room && creep.getActiveBodyparts(WORK)) {
 
-			if(creep.memory.renewing && creep.ticksToLive > 1000) {
+			if(creep.memory.renewing && creep.ticksToLive > 1200) {
 				creep.memory.renewing = false;
 			}
 
-			if(!creep.memory.renewing && creep.ticksToLive < 500) {
+			if(!creep.memory.renewing && creep.memory.upgrading && creep.ticksToLive < 800) {
 				creep.memory.renewing = true;
 			}
 
