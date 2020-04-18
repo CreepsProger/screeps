@@ -32,7 +32,7 @@ var rolePickuper = {
 				creep.memory.pickuping = true;
 			}
 
-			if(creep.memory.pickuping) {
+			if(creep.memory.pickuping && false) {
 
 				var target;
 
