@@ -36,24 +36,26 @@ var roleRenewer = {
 
 			if(creep.memory.renewing) {
 				var spawns = cash.getSpawns(creep.room);
-				var spawn = spawns.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-				if(creep.pos.getRangeTo(spawn) == 1) {
-					var rc1 = spawn.renewCreep(creep);
-					var rc2 = ERR_NOT_IN_RANGE;
-					if(creep.memory.upgrading && creep.pos.getRangeTo(creep.room.controller) <= 3) {
-						rc2 = creep.upgradeController(creep.room.controller);
-					}
-					var sign = (OK == rc1)? '👨':'';
-					sign += (OK == rc2)? '🛠':'';
-					creep.say(sign);
-				}
-				else {
-					var rc = tools.moveTo(creep,spawn);
-					if(OK == rc) {
-						creep.say('🔜👨');
+				if(spawns.length > 0) {
+					var spawn = spawns.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+					if(creep.pos.getRangeTo(spawn) == 1) {
+						var rc1 = spawn.renewCreep(creep);
+						var rc2 = ERR_NOT_IN_RANGE;
+						if(creep.memory.upgrading && creep.pos.getRangeTo(creep.room.controller) <= 3) {
+							rc2 = creep.upgradeController(creep.room.controller);
+						}
+						var sign = (OK == rc1)? '👨':'';
+						sign += (OK == rc2)? '🛠':'';
+						creep.say(sign);
 					}
 					else {
-						creep.memory.renewing = false;
+						var rc = tools.moveTo(creep,spawn);
+						if(OK == rc) {
+							creep.say('🔜👨');
+						}
+						else {
+							creep.memory.renewing = false;
+						}
 					}
 				}
 			}
