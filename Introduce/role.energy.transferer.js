@@ -78,7 +78,7 @@ var roleEnergyTransferer = {
 
 			if(!target && this_room == my_room &&
 				 (!creep.getActiveBodyparts(WORK) ||
-				  (this_room_sources_are_empty && creep.memory.rerun) || conditions.MAIN_ROOM_CRISIS())) {
+				  (this_room_sources_are_empty && creep.memory.rerun) || conditions.MAIN_ROOM_CRISIS() || UU)) {
 				var towers = cash.getTowers(creep.room).filter((t) => {
 						return	!!t && !!t.store && t.store.getFreeCapacity(RESOURCE_ENERGY) > 400 &&
 										tools.checkTarget(executer,t.id);
