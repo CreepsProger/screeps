@@ -81,7 +81,8 @@ var role = {
 			}
 		}
 
-		const U = !!Game.flags['U'] && Game.flags['U'].pos.roomName == my_room;
+		U = !!Game.flags['U'] && Game.flags['U'].pos.roomName == my_room;
+		UU = !!Game.flags['UU'] && Game.flags['UU'].pos.roomName == my_room;
 
 		if(!target &&
 			 (!creep.getActiveBodyparts(WORK) || U) &&
@@ -109,7 +110,7 @@ var role = {
 
 		if(!target &&
 			 //this_room_sources_are_not_empty &&
-			 creep.getActiveBodyparts(WORK) //&&
+			 creep.getActiveBodyparts(WORK) && !UU
 			 //creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0
 			) {
 			var sources = creep.room.find(FIND_SOURCES, {
@@ -133,7 +134,8 @@ var role = {
 
 		if(!target &&
 			 //this_room_sources_are_not_empty &&
-			 creep.getActiveBodyparts(WORK)// && (!conditions.MAIN_ROOM_CRISIS() || creep.memory.rerun)
+			 creep.getActiveBodyparts(WORK) && !UU
+			 // && (!conditions.MAIN_ROOM_CRISIS() || creep.memory.rerun)
 			 //creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0
 			) {
 			var sources = creep.room.find(FIND_SOURCES, {
@@ -277,7 +279,7 @@ var role = {
 			if(!!target) return target;
 		}
 
-		if(!target && (!creep.getActiveBodyparts(WORK) || U) && creep.memory.rerun &&
+		if(!target && (!creep.getActiveBodyparts(WORK) || UU) && (creep.memory.rerun || UU) &&
 			!!creep.room.storage &&
 			 !creep.room.storage.my &&
 			  creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) >0) {
