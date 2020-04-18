@@ -249,6 +249,9 @@ var role = {
 							 else if (target.hits < target.hitsMax && creep.getActiveBodyparts(HEAL)) {
 								 err = creep.heal(target);
 							 }
+						else if (creep.hits < creep.hitsMax && creep.getActiveBodyparts(HEAL)) {
+								 err = creep.heal(creep);
+							 }
 					}
 
 					if(err == ERR_NOT_IN_RANGE) {
