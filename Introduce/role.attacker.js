@@ -249,14 +249,14 @@ var role = {
 							 else if (target.hits < target.hitsMax && creep.getActiveBodyparts(HEAL)) {
 								 err = creep.heal(target);
 							 }
-						else if (creep.hits < creep.hitsMax && creep.getActiveBodyparts(HEAL)) {
-								 err = creep.heal(creep);
-							 }
 					}
 
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜🎯');
 						tools.moveTo(creep,target);
+						if (creep.hits < creep.hitsMax && creep.getActiveBodyparts(HEAL)) {
+								 err = creep.heal(creep);
+							}
 						if(!!Game.flags['LA '] || !!Game.flags['LA'] || !!Game.flags['L']) {
 							var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
 							console.log( '🔜🎯', Math.trunc(Game.time/10000), Game.time%10000
