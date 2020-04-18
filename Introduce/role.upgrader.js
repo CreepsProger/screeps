@@ -105,6 +105,14 @@ var roleUpgrader = {
 					const range = creep.pos.getRangeTo(target);
 					if(tools.moveTo(creep,target) != OK || (range <= 3)) {
 						err = creep.upgradeController(target);
+
+						var spawns = cash.getSpawns(creep.room);
+						if(spawns.length > 0) {
+							var spawn = spawns.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+							if(creep.pos.getRangeTo(spawn) == 1) {
+								spawn.renewCreep(creep);
+							}
+						}
 					}
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜🛠');
