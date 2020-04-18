@@ -1,4 +1,4 @@
-const roleNext = require('role.dismantler');
+const roleNext = require('role.renewer');
 const constants = require('main.constants');
 const config = require('main.config');
 const metrix = require('main.metrix');

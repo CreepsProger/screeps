@@ -97,19 +97,6 @@ var roleUpgrader = {
 			if(creep.memory.upgrading) {
 				var target;
 
-				if(!target && false && (creep.ticksToLive < 500 || (creep.memory.renewing && creep.ticksToLive < 1000))) {
-					var spawns = cash.getSpawns(creep.room);
-					var spawn = spawns.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-					if(creep.pos.getRangeTo(spawn) == 1) {
-						spawn.renewCreep(creep);
-						creep.memory.renewing = true;
-					}
-					target = spawn;
-				}
-				else {
-					creep.memory.renewing = false;
-				}
-
 				if(!target) {
 					target = creep.room.controller;
 				}
