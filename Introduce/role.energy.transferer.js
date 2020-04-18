@@ -52,7 +52,8 @@ var roleEnergyTransferer = {
 			// const a_source_is_not_near = !creep.pos.findInRange(FIND_SOURCES, 2, {
 			// 	filter: (source) => source.energy > 0 && source.room.name == this_room
 			// });
-
+			
+			const UU = !!Game.flags['UU'] && Game.flags['UU'].pos.roomName == my_room;
 			var target;
 
 			if(!target) {
@@ -170,7 +171,7 @@ var roleEnergyTransferer = {
 				}
 
 				if((!targs || !targs.length) && !!creep.room.storage &&
-						creep.getActiveBodyparts(WORK)  && !U &&
+						creep.getActiveBodyparts(WORK)  && !U && !UU &&
 						this_room_config.containers.weight < creep.memory.weight &&
 						creep.room.storage.store.getFreeCapacity() > 0) {
 					targs = [creep.room.storage];
