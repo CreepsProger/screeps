@@ -30,7 +30,7 @@ var roleRenewer = {
 				creep.memory.renewing = false;
 			}
 
-			if(!creep.memory.renewing && creep.memory.upgrading && creep.ticksToLive < 800) {
+			if(!creep.memory.renewing && creep.ticksToLive < 800) {
 				creep.memory.renewing = true;
 			}
 
