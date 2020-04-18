@@ -53,7 +53,7 @@ var rolePickuper = {
 				}
 
 				if(!!target) {
-					var err = creep.pickup(target);
+					// var err = creep.pickup(target);
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜👊');
 						err = tools.moveTo(creep,target);
