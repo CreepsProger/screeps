@@ -52,8 +52,9 @@ var roleEnergyTransferer = {
 			// const a_source_is_not_near = !creep.pos.findInRange(FIND_SOURCES, 2, {
 			// 	filter: (source) => source.energy > 0 && source.room.name == this_room
 			// });
-			
+			const B = !!Game.flags['B'] && Game.flags['B'].pos.roomName == my_room;
 			const UU = !!Game.flags['UU'] && Game.flags['UU'].pos.roomName == my_room;
+
 			var target;
 
 			if(!target) {
@@ -78,7 +79,7 @@ var roleEnergyTransferer = {
 
 			if(!target && this_room == my_room &&
 				 (!creep.getActiveBodyparts(WORK) ||
-				  (this_room_sources_are_empty && creep.memory.rerun) || conditions.MAIN_ROOM_CRISIS() || UU)) {
+				  (this_room_sources_are_empty && creep.memory.rerun) || conditions.MAIN_ROOM_CRISIS() || UU || B)) {
 				var towers = cash.getTowers(creep.room).filter((t) => {
 						return	!!t && !!t.store && t.store.getFreeCapacity(RESOURCE_ENERGY) > 400 &&
 										tools.checkTarget(executer,t.id);
