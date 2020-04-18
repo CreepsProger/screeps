@@ -3,7 +3,7 @@ const tools = require('tools');
 
 var cash = {
 
-	version: 35,
+	version: 36,
 	time: 0,
 
 	initEntry: function(type, entry_id, subentry_id) {
