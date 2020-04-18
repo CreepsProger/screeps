@@ -189,6 +189,7 @@ var spawns = {
 				const Sp12 = (Sp1 || Sp2);
 				const Sp23 = (Sp2 || Sp3);
 				const Sp34 = (Sp3 || Sp4);
+				const Sp35 = (Sp3 || Sp5);
 				const Sp123 = (Sp12 || Sp23);
 				const Sp234 = (Sp23 || Sp34);
 
@@ -257,12 +258,12 @@ var spawns = {
             if(Sp4) spawns.tryCreateCreep(spawn, CARIER[7][M], 121, 1, 1);
 						// if(Sp3) spawns.tryCreateCreep(spawn, CARIER[3][L],  91, 1, 1);
 						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S32')) {
-							if(Sp3) spawns.tryCreateCreep(spawn, ATTACKER[H], 175, 1, 2);
-							if(Sp3) spawns.tryCreateCreep(spawn,   HEALER[H], 177, 1, 1);
+							if(Sp35) spawns.tryCreateCreep(spawn, ATTACKER[H], 175, 1, 2);
+							if(Sp35) spawns.tryCreateCreep(spawn,   HEALER[H], 177, 1, 1);
 						}
 						else {
-							if(Sp3)	spawns.tryCreateCreep(spawn, WORKER[7][H],174, 1, 3);
-							if(Sp5) spawns.tryCreateCreep(spawn, CARIER[4][H],171, 1, 2);
+							if(Sp35) spawns.tryCreateCreep(spawn, WORKER[7][H],174, 1, 3);
+							if(Sp35) spawns.tryCreateCreep(spawn, CARIER[7][H],171, 1, 1);
 						}
 					}
 
