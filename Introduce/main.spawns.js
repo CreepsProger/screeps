@@ -185,6 +185,7 @@ var spawns = {
 				const Sp2 = (All || spawn.name == 'Spawn2' || spawn.name == 'Spawn6');
 				const Sp3 = (All || spawn.name == 'Spawn3' || spawn.name == 'Spawn7');
 				const Sp4 = (All || spawn.name == 'Spawn5' || spawn.name == 'Spawn8');
+				const Sp5 = (All || spawn.name == 'Spawn9' || spawn.name == 'Spawn9');
 				const Sp12 = (Sp1 || Sp2);
 				const Sp23 = (Sp2 || Sp3);
 				const Sp34 = (Sp3 || Sp4);
@@ -259,8 +260,8 @@ var spawns = {
 							if(Sp3) spawns.tryCreateCreep(spawn,   HEALER[H], 177, 1, 1);
 						}
 						else {
-							if(Sp3)	spawns.tryCreateCreep(spawn, WORKER[7][H],174, 1, 3);
-						//if(Sp3) spawns.tryCreateCreep(spawn, CARIER[7][M],171, 1, 1);
+							if(Sp3)	spawns.tryCreateCreep(spawn, WORKER[7][H],174, 1, 2);
+							if(Sp5) spawns.tryCreateCreep(spawn, CARIER[4][H],171, 1, 1);
 						}
 					}
 
