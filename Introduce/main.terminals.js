@@ -20,7 +20,7 @@ var terminals = {
 							+ (!!c.room.storage && !!c.room.storage.store)? c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0
 			 				? p:c;
 					});
-		if(!form)
+		if(!from)
 			return;
 		var to = all.reduce((p,c) => {
 			return !!p && !!c && !!p.store && !!c.store &&
