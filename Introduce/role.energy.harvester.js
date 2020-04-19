@@ -359,6 +359,7 @@ var role = {
 		}
 		if(creep.memory.rerun && !creep.memory[role.name].on) {
 			metrix.idle(creep);
+			cash.renewCreep(creep);
 		}
 	}
 };
