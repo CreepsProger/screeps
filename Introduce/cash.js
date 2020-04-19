@@ -200,8 +200,21 @@ var cash = {
 
 	areFullContainers: function(creep) {
 		return cash.getContainers(creep.room).filter( (cont) => !!cont && cont.store.getFreeCapacity() > 0).length == 0;
-	}
+	}, 
 
+	renewCreep: function(creep) {
+		var spawns = cash.getSpawns(creep.room);
+		if(spawns.length > 0 && (creep.ticksToLive < 1000 || (creep.memory.renewing && creep.ticksToLive < 1400))) {
+			var spawn = spawns.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+			if(creep.pos.getRangeTo(spawn) == 1) {
+				spawn.renewCreep(creep);
+				creep.memory.renewing = true;
+			}
+		}
+		else {
+			creep.memory.renewing = false;
+		}
+	}
 };
 
 module.exports = cash;
