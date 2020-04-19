@@ -29,7 +29,7 @@ var terminals = {
 			 				? p:c;
 					});
 		var from_a = (!!from && !!from.store)? from.store.getUsedCapacity(RESOURCE_ENERGY):0
-		 					 + (!!from && !!from.room.storage && !!from.room.storage.store)? from.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0;
+		 					 + (!!from && !!from.room && !!from.room.storage && !!from.room.storage.store)? from.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0;
 		var to_a = to.store.getUsedCapacity(RESOURCE_ENERGY) + to.room.storage.store.getUsedCapacity(RESOURCE_ENERGY);
 		var amount = Math.floor((from_a - to_a) / all.length);
 				amount = amount > constants.MIN_ENERGY_TO_TERMINAL_SEND? amount:0;
