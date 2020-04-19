@@ -182,7 +182,7 @@ var role = {
 																			? p:c);
 			}
 			if(!!target) {
-				console.log('🔜⚡', creep, 'st for W:', target);
+				// console.log('🔜⚡', creep, 'st for W:', target);
 			 return target;
 		  }
 		}
