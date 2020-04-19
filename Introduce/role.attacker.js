@@ -45,7 +45,9 @@ var role = {
 
 			if(creep.memory.attacking) {
 
-	      const this_room = creep.room.name;
+				cash.renewCreep(creep);
+
+				const this_room = creep.room.name;
 	  		const this_room_config = Memory.config.rooms[this_room];
 				const my_room = creep.memory[role.name].room;
 	  		const my_room_config = Memory.config.rooms[my_room];
@@ -295,7 +297,6 @@ var role = {
 				}
 			}
 
-      cash.renewCreep(creep);
 			metrix.cpu.role_time(creep, role.name);
 			if(!creep.memory.attacking) {
 				roleNext.run(creep);
