@@ -13,8 +13,8 @@ var terminals = {
 
 		var all = cash.getAllMyTerminals();
 		var from = all.reduce((p,c) => {
-			return !!p && !!c && p.store.getUsedCapacity(RESOURCE_ENERGY) + !p.room.storage?0:p.room.storage.store.getUsedCapacity(RESOURCE_ENERGY)
-			 				> c.store.getUsedCapacity(RESOURCE_ENERGY) + !c.room.storage?0:c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY)
+			return !!p && !!c && p.store.getUsedCapacity(RESOURCE_ENERGY) + !!p.room.storage?p.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0
+			 				> c.store.getUsedCapacity(RESOURCE_ENERGY) + !!c.room.storage?c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0
 			 				? p:c;
 					});
 		var to = all.reduce((p,c) => {
