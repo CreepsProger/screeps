@@ -52,6 +52,10 @@ var terminals = {
 		var to_a   = (!!to && !!to.store)? to.store.getUsedCapacity(RESOURCE_ENERGY):0
 		 					 + (!!to && !!to.room && !!to.room.storage && !!to.room.storage.store)?
 							   to.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0;
+		console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000
+										 , 'from_a:', JSON.stringify(from_a)
+										 , 'to_a:', JSON.stringify(to_a)
+						 	 );
 		var amount = Math.floor((from_a - to_a) / all.length);
 				amount = amount > constants.MIN_ENERGY_TO_TERMINAL_SEND? amount:0;
 				amount = Math.min(amount,((!!from && !!from.store)?from.store.getUsedCapacity(RESOURCE_ENERGY):0)-constants.MIN_TERMINAL_ENERGY);
