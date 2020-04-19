@@ -13,11 +13,12 @@ var terminals = {
 
 		var all = cash.getAllMyTerminals();
 		var from = all.reduce((p,c) => {
-			return !!p && !!c && !!p.store && !!c.store &&
+			return (!!p && !!c && !!p.store && !!c.store &&
 							p.store.getUsedCapacity(RESOURCE_ENERGY)
 							+ (!!p.room.storage && !!p.room.storage.store)? p.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0
 			 				> c.store.getUsedCapacity(RESOURCE_ENERGY)
 							+ (!!c.room.storage && !!c.room.storage.store)? c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0
+						  )
 			 				? p:c;
 					});
 		if(!from)
@@ -26,12 +27,13 @@ var terminals = {
 							 , 'from:', JSON.stringify(from)
 						 	 );
 		var to = all.reduce((p,c) => {
-			return !!p && !!c && !!p.store && !!c.store &&
+			return (!!p && !!c && !!p.store && !!c.store &&
 							p.store.getUsedCapacity(RESOURCE_ENERGY)
 							+ (!!p.room.storage && !!p.room.storage.store)? p.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0
 			 				< c.store.getUsedCapacity(RESOURCE_ENERGY)
 							+ (!!c.room.storage && !!c.room.storage.store)? c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0
-			 				? p:c;
+							)
+							? p:c;
 					});
 		if(!to)
 			return;
