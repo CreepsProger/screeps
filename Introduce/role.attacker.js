@@ -5,6 +5,7 @@ const config = require('main.config');
 const metrix = require('main.metrix');
 const flags = require('main.flags');
 const log = require('main.log');
+const cash = require('cash');
 const tools = require('tools');
 
 var role = {
@@ -294,6 +295,7 @@ var role = {
 				}
 			}
 
+      cash.renewCreep(creep);
 			metrix.cpu.role_time(creep, role.name);
 			if(!creep.memory.attacking) {
 				roleNext.run(creep);
