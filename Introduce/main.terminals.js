@@ -22,6 +22,9 @@ var terminals = {
 					});
 		if(!from)
 			return;
+		console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000
+							 , 'from:', JSON.stringify(from);
+						 	 );
 		var to = all.reduce((p,c) => {
 			return !!p && !!c && !!p.store && !!c.store &&
 							p.store.getUsedCapacity(RESOURCE_ENERGY)
@@ -32,6 +35,9 @@ var terminals = {
 					});
 		if(!to)
 			return;
+		console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000
+							 , 'to:', JSON.stringify(to);
+						 	 );
 		var from_a = (!!from && !!from.store)? from.store.getUsedCapacity(RESOURCE_ENERGY):0
 		 					 + (!!from && !!from.room && !!from.room.storage && !!from.room.storage.store)?
 							   from.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0;
