@@ -46,12 +46,12 @@ var terminals = {
 		console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000
 							 , 'to:', JSON.stringify(to)
 						 	 );
-		var from_a = (!!from && !!from.store)? from.store.getUsedCapacity(RESOURCE_ENERGY):0
-		 					 + (!!from && !!from.room && !!from.room.storage && !!from.room.storage.store)?
-							   from.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0;
-		var to_a   = (!!to && !!to.store)? to.store.getUsedCapacity(RESOURCE_ENERGY):0
-		 					 + (!!to && !!to.room && !!to.room.storage && !!to.room.storage.store)?
-							   to.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0;
+		var from_a = ((!!from && !!from.store)? from.store.getUsedCapacity(RESOURCE_ENERGY):0)
+		 					 + ((!!from && !!from.room && !!from.room.storage && !!from.room.storage.store)?
+							   from.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0);
+		var to_a   = ((!!to && !!to.store)? to.store.getUsedCapacity(RESOURCE_ENERGY):0)
+		 					 + ((!!to && !!to.room && !!to.room.storage && !!to.room.storage.store)?
+							   to.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0);
 		console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000
 										 , 'from_a:', JSON.stringify(from_a)
 										 , 'to_a:', JSON.stringify(to_a)
