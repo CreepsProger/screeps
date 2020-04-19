@@ -8,30 +8,77 @@ var towers = {
 	sleep: {},
 	work_sleep: {work:0, sleep:0},
 	prev_target: {},
-	
-	getStructureToRepaire: function(room) {
+
+	checkTargetToRepaire: function(id) {
+		return towers.targetsToRepaire[id] === undefined;
+	},
+	targetsToRepaire: {time:0},
+	setTargetToRepaire: function(my_id,target_id) {
+		var t = Game.cpu.getUsed();
+		if(towers.targetsToRepaire.time != Game.time) {
+			towers.targetsToRepaire = {time:Game.time};
+		}
+
+		var mytarget;if(!target && !id) {
+			return mytarget;
+		}
+
+		var creep2;
+		var rerun_creep2 = false;
+		if(!tools.targets[id]) {
+			tools.targets[id] = creep.id;
+			mytarget = target;
+			return mytarget;
+		}
+		else {
+			creep2 = Game.getObjectById(tools.targets[id]);
+			if(creep2 !== undefined) {
+				var range2 = creep2.pos.getRangeTo(target);
+				var range = creep.pos.getRangeTo(target);
+        if(range2 > range+6) {
+					const order = 'move'; // creep2.moveTo.name
+					const err = creep2.cancelOrder(order);
+					if(err == OK) {
+						rerun_creep2 = true;
+						mytarget = target;
+						tools.targets[id] = creep.id;
+						run(creep2,creep);
+					}
+					else {
+						console.log( creep, 'range:', range
+												, creep2, 'range2:', range2
+												, 'cancelOrder:', order, 'err:', err
+												, 'for', id, JSON.stringify(target));
+					}
+				}
+			}
+		}
+	},
+
+	getStructureToRepaire: function(pos, prev_target, executer, role_rerun_fn) {
+		var target;
+
 		const NR1 = Game.flags['NR1'];// don't repair
 		const NR2 = Game.flags['NR2'];// don't repair
 		const D1 = Game.flags['D1'];// dismanle
 		const D2 = Game.flags['D2'];// dismanle
 		
 		var structures = cash.getStructuresToRepaire(room).filter((s) => {
-			var target;
-			if(!!s && s.hitsMax - s.hits > s.hitsMax/(2+98*(!!creep.memory.target && s.id == creep.memory.target.id))) {
-				if(!!D1 && D1.pos.roomName == room.roomName &&
-					 D1.pos.getRangeTo(s) < 11-D1.color) {
+			if(!!s && s.hitsMax - s.hits > s.hitsMax/(2+98*(!!prev_target && s.id == prev_target))) {
+				if(!!D1 && D1.pos.roomName == pos.roomName &&
+					 D1.pos.getRangeTo(s) <= 10-D1.color) {
 					return false;
 				}
-				if(!!D2 && D2.pos.roomName == room.roomName &&
-					 D2.pos.getRangeTo(s) < 11-D2.color) {
+				if(!!D2 && D2.pos.roomName == pos.roomName &&
+					 D2.pos.getRangeTo(s) <= 10-D2.color) {
 					return false;
 				}
-				if(!!NR1 && NR1.pos.roomName == room.roomName &&
-					 NR1.pos.getRangeTo(s) < 11-NR1.color) {
+				if(!!NR1 && NR1.pos.roomName == pos.roomName &&
+					 NR1.pos.getRangeTo(s) <= 10-NR1.color) {
 					return false;
 				}
-				if(!!NR2 && NR2.pos.roomName == room.roomName &&
-					 NR2.pos.getRangeTo(s) < 11-NR2.color) {
+				if(!!NR2 && NR2.pos.roomName == pos.roomName &&
+					 NR2.pos.getRangeTo(s) <= 10-NR2.color) {
 					return false;
 				}
 				return true;
@@ -39,10 +86,15 @@ var towers = {
 			return false;
 		});
 		if(structures.length > 0) {
-			var structure = structures.reduce((p,c) => tools.checkTarget(executer,p.id) &&
-																				creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-			if(!!structure && tools.checkTarget(executer,structure.id)) {
-				target = tools.setTarget(creep,structure,structure.id,roleRepairer.run);
+			if(!role_rerun_fn) {
+				target = structures.reduce((p,c) => pos.getRangeTo(p) < pos.getRangeTo(c)? p:c);
+			}
+			else {
+				var structure = structures.reduce((p,c) => tools.checkTarget(executer,p.id) &&
+																					pos.getRangeTo(p) < pos.getRangeTo(c)? p:c);
+				if(!!structure && tools.checkTarget(executer,structure.id)) {
+					target = tools.setTarget(creep,structure,structure.id,role_rerun_fn);
+				}
 			}
 		}
 		return target;
