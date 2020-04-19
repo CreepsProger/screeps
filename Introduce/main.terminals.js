@@ -13,13 +13,13 @@ var terminals = {
 
 		var all = cash.getAllMyTerminals();
 		var from = all.reduce((p,c) => {
-			return !!p && !!c && p.store.getUsedCapacity(RESOURCE_ENERGY) + p.room.storage.store.getUsedCapacity(RESOURCE_ENERGY)
-			 				> c.store.getUsedCapacity(RESOURCE_ENERGY) + c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY)
+			return !!p && !!c && p.store.getUsedCapacity(RESOURCE_ENERGY) + !p.room.storage?0:p.room.storage.store.getUsedCapacity(RESOURCE_ENERGY)
+			 				> c.store.getUsedCapacity(RESOURCE_ENERGY) + !c.room.storage?0:c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY)
 			 				? p:c;
 					});
 		var to = all.reduce((p,c) => {
-			return !!p && !!c && p.store.getUsedCapacity(RESOURCE_ENERGY) + p.room.storage.store.getUsedCapacity(RESOURCE_ENERGY)
-			 				< c.store.getUsedCapacity(RESOURCE_ENERGY) + c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY)
+			return !!p && !!c && p.store.getUsedCapacity(RESOURCE_ENERGY) + !p.room.storage?0:p.room.storage.store.getUsedCapacity(RESOURCE_ENERGY)
+			 				< c.store.getUsedCapacity(RESOURCE_ENERGY) + !c.room.storage?0:c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY)
 			 				? p:c;
 					});
 		var from_a = from.store.getUsedCapacity(RESOURCE_ENERGY) + from.room.storage.store.getUsedCapacity(RESOURCE_ENERGY);
