@@ -36,7 +36,7 @@ var terminals = {
 							   to.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0;
 		var amount = Math.floor((from_a - to_a) / all.length);
 				amount = amount > constants.MIN_ENERGY_TO_TERMINAL_SEND? amount:0;
-				amount = Math.min(amount,from.store.getUsedCapacity(RESOURCE_ENERGY)-constants.MIN_TERMINAL_ENERGY);
+				amount = Math.min(amount,(!!from && !!from.store)?from.store.getUsedCapacity(RESOURCE_ENERGY):0-constants.MIN_TERMINAL_ENERGY);
 
 
 		var values = all.map((t) => t.pos.roomName
