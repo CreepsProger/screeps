@@ -17,7 +17,7 @@ var terminals = {
 							p.store.getUsedCapacity(RESOURCE_ENERGY)
 							+ ((!!p.room.storage)&&(!!p.room.storage.store))?p.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0
 			 				> c.store.getUsedCapacity(RESOURCE_ENERGY)
-							+ ((!!c.room.storage)&&(!!c.room.storage.store))?p.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0
+							+ ((!!c.room.storage)&&(!!c.room.storage.store))?c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0
 			 				? p:c;
 					});
 		var to = all.reduce((p,c) => {
@@ -25,7 +25,7 @@ var terminals = {
 							p.store.getUsedCapacity(RESOURCE_ENERGY)
 							+ ((!!p.room.storage)&&(!!p.room.storage.store))?p.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0
 			 				< c.store.getUsedCapacity(RESOURCE_ENERGY)
-							+ ((!!c.room.storage)&&(!!c.room.storage.store))?p.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0
+							+ ((!!c.room.storage)&&(!!c.room.storage.store))?c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0
 			 				? p:c;
 					});
 		var from_a = from.store.getUsedCapacity(RESOURCE_ENERGY) + from.room.storage.store.getUsedCapacity(RESOURCE_ENERGY);
