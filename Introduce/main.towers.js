@@ -7,8 +7,47 @@ var towers = {
 	count: 99999,
 	sleep: {},
 	work_sleep: {work:0, sleep:0},
-	prev_target: {}, 
+	prev_target: {},
 	
+	getStructureToRepaire: function(room) {
+		const NR1 = Game.flags['NR1'];// don't repair
+		const NR2 = Game.flags['NR2'];// don't repair
+		const D1 = Game.flags['D1'];// dismanle
+		const D2 = Game.flags['D2'];// dismanle
+		
+		var structures = cash.getStructuresToRepaire(room).filter((s) => {
+			var target;
+			if(!!s && s.hitsMax - s.hits > s.hitsMax/(2+98*(!!creep.memory.target && s.id == creep.memory.target.id))) {
+				if(!!D1 && D1.pos.roomName == room.roomName &&
+					 D1.pos.getRangeTo(s) < 11-D1.color) {
+					return false;
+				}
+				if(!!D2 && D2.pos.roomName == room.roomName &&
+					 D2.pos.getRangeTo(s) < 11-D2.color) {
+					return false;
+				}
+				if(!!NR1 && NR1.pos.roomName == room.roomName &&
+					 NR1.pos.getRangeTo(s) < 11-NR1.color) {
+					return false;
+				}
+				if(!!NR2 && NR2.pos.roomName == room.roomName &&
+					 NR2.pos.getRangeTo(s) < 11-NR2.color) {
+					return false;
+				}
+				return true;
+			}
+			return false;
+		});
+		if(structures.length > 0) {
+			var structure = structures.reduce((p,c) => tools.checkTarget(executer,p.id) &&
+																				creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+			if(!!structure && tools.checkTarget(executer,structure.id)) {
+				target = tools.setTarget(creep,structure,structure.id,roleRepairer.run);
+			}
+		}
+		return target;
+	},
+
 	run: function() {
 
 		if(Game.time % constants.TICKS_TO_CHECK_CPU == 0) {
