@@ -32,9 +32,14 @@ var cash = {
 		const entry_id = !entry_path ? 0 : !entry_path.length ? entry_path : entry_path.length > 0 ? entry_path[0]:0;
 		const subentry_id = !entry_path ? 100 : !entry_path.length ? 100 : entry_path.length > 1 ? entry_path[1]:100;
 		var entry = cash.initEntry(type, entry_id, subentry_id);
- 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0 || (ticksToReset > 0 && Game.time % ticksToReset == 0))
+ 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0)
 			cash.time = Game.time;
-		if(entry.time == 0 || entry.time < cash.time || !cash_objects[entry_id] || !cash_objects[entry_id][subentry_id]) {
+		if(entry.time == 0 ||
+			 entry.time < cash.time ||
+			 !cash_objects[entry_id] ||
+			 !cash_objects[entry_id][subentry_id] ||
+			 (ticksToReset > 0 && Game.time % ticksToReset == 0)
+			) {
  			entry.ids = get().map((obj) => obj.id);
 			if(!cash_objects[entry_id]) {
 				cash_objects[entry_id] = {};
