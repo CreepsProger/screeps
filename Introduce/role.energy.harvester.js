@@ -86,16 +86,9 @@ var role = {
 
 		if(!target &&
 			 (!creep.getActiveBodyparts(WORK) || U) &&
+			 (creep.memory.weight < my_room_config.containers.weight || U) &&
 			 creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0) {
-			var conts = creep.room.find(FIND_STRUCTURES, {
-				filter: (structure) => {
-					return (structure.structureType == STRUCTURE_CONTAINER) &&
-						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-						(creep.memory.weight < my_room_config.containers.weight || U);
-				}
-			});
-
-			const this_room_sources_are_not_empty = !tools.areEmptySources(creep);
+			var conts = cash.getContainers(creep.room).filter((cont) => cont.store.getUsedCapacity(RESOURCE_ENERGY) > 0);
 
 			if(conts.length > 0) {
 				var cont = conts.reduce((p,c) => tools.checkTarget(executer,p.id) && creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
@@ -107,6 +100,7 @@ var role = {
 		}
 
 		const DP2 = Game.flags['DP2'];
+		const this_room_sources_are_not_empty = !tools.areEmptySources(creep);
 
 		if(!target &&
 			 //this_room_sources_are_not_empty &&
