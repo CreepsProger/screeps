@@ -90,7 +90,7 @@ var role = {
 			var conts = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_CONTAINER) &&
-						structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
+						(!!structure.store && structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0) &&
 						(creep.memory.weight < my_room_config.containers.weight || U);
 				}
 			});
