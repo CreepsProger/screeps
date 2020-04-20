@@ -110,7 +110,11 @@ var roleEnergyTransferer = {
 						});
 						if(exts.length > 0) {
 							sz = exts.length;
-							var infra = exts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+							var infra = exts.reduce((p,c) => !!p && !!p.store && !!c && !!c.store &&
+													creep.pos.getRangeTo(p) * (p.store.getUsedCapacity(RESOURCE_ENERGY) + 1)
+													<
+													creep.pos.getRangeTo(c) * (c.store.getUsedCapacity(RESOURCE_ENERGY) + 1)
+													? p:c);
 							target = tools.setTarget(creep,infra,infra.id,roleEnergyTransferer.run);
 						}
 					}
@@ -121,7 +125,11 @@ var roleEnergyTransferer = {
 											tools.checkTarget(executer,e.id);
 										});
 						if(exts.length > 0) {
-							var infra = exts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+							var infra = exts.reduce((p,c) => !!p && !!p.store && !!c && !!c.store &&
+													creep.pos.getRangeTo(p) * (p.store.getUsedCapacity(RESOURCE_ENERGY) + 1)
+													<
+													creep.pos.getRangeTo(c) * (c.store.getUsedCapacity(RESOURCE_ENERGY) + 1)
+													? p:c);
 							target = tools.setTarget(creep,infra,infra.id,roleEnergyTransferer.run);
 						}
 					}
