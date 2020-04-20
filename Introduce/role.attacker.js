@@ -66,8 +66,8 @@ var role = {
 						return healer.getActiveBodyparts(HEAL) > 0 /*&& healer.hits == healer.hitsMax*/;}}).length > 0;
 				const shouldHeal = creep.hitsMax - creep.hits;
 				const tough_count = creep.body.reduce((p,c) => p += (c.type == TOUGH),0);
-				const tough_more_then_half = shouldHeal < tough_count*50;
-				const tough_less_then_half = !tough_more_then_half && shouldHeal < tough_count*100;
+				const tough_more_then_half = shouldHeal < tough_count*25;
+				const tough_less_then_half = !tough_more_then_half && shouldHeal < tough_count*50;
 				const canAttack = tough_more_then_half && (creep.getActiveBodyparts(RANGED_ATTACK) || creep.getActiveBodyparts(ATTACK));
 				const canAttack2 = tough_less_then_half && (creep.getActiveBodyparts(RANGED_ATTACK) || creep.getActiveBodyparts(ATTACK));
 				const canHeal = tough_more_then_half && creep.getActiveBodyparts(HEAL);
