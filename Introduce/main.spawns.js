@@ -202,6 +202,14 @@ var spawns = {
 				if(Memory.totals.WORK < 25	) spawns.tryCreateCreep(spawn, 10101, 20, 3); // E  200 Worker
 
  				const L = 0; const M = 1; const H = 2; const X = extra_upgrade; const U = !Memory.stop_upgrading;
+
+				if(true) {
+					console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+											, 'EXTRA UPGRADE:'
+											, JSON.stringify({total_energy:total_energy, extra_upgrade:extra_upgrade, X:X})
+										);
+				}
+
 				                  //   L       M       H
 				const WORKER = [ [     0,      0,      0]  // 0  000
 											 , [ 10101,  10202,  20101]  // 1  300
@@ -254,7 +262,7 @@ var spawns = {
               if(Sp23)	spawns.tryCreateCreep(spawn, WORKER[7][H], 54, 1, 1);
               if(Sp23)	spawns.tryCreateCreep(spawn, CARIER[7][M], 51, 1, 1);
             }
-            if(Sp4) spawns.tryCreateCreep(spawn, WORKER[7][H], 124, 2, 2);
+            if(Sp4) spawns.tryCreateCreep(spawn, WORKER[7][H], 124, 1, 1);
             if(Sp4) spawns.tryCreateCreep(spawn, CARIER[7][M], 121, 1, 1);
 						// if(Sp3) spawns.tryCreateCreep(spawn, CARIER[3][L],  91, 1, 1);
 						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S32')) {
@@ -301,7 +309,7 @@ var spawns = {
             }
           }
 
-          if(conditions.TO_SPAWN_CLAIMING_ROOMS2() && !X) {
+          if(conditions.TO_SPAWN_CLAIMING_ROOMS2()) {
 						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S36')) {
 							if(Sp4) spawns.tryCreateCreep(spawn, ATTACKER[L], 145, 1, 1);
 						}
