@@ -180,7 +180,7 @@ var cash = {
 	getTotalEnergy: function() {
 		var all = cash.getAllMyTerminals();
 		return all.reduce((p,c) => p + c.store.getUsedCapacity(RESOURCE_ENERGY)
-																		 + !c.room.storage ? 0:c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY),0);
+																		 + (!!c.room.storage? c.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0),0);
 	},
 
 	all_my_towers: {},
