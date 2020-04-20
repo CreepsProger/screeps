@@ -203,7 +203,7 @@ var spawns = {
 
  				const L = 0; const M = 1; const H = 2; const X = extra_upgrade; const U = !Memory.stop_upgrading;
 
-				if(true) {
+				if(false) {
 					console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 											, 'EXTRA UPGRADE:'
 											, JSON.stringify({total_energy:total_energy, extra_upgrade:extra_upgrade, X:X})
