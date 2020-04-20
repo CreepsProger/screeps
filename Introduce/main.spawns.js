@@ -321,7 +321,7 @@ var spawns = {
 								}
 								//if(Sp4) spawns.tryCreateCreep(spawn, CARIER[7][M], 151, 1, 1);
 								if(Sp4) spawns.tryCreateCreep(spawn, WORKER[7][H], 164, 1, 1);
-								if(Sp4) spawns.tryCreateCreep(spawn, CARIER[7][M], 161, 2, 2);
+								if(Sp4) spawns.tryCreateCreep(spawn, CARIER[7][M], 161, 1, 1);
 							}
 						}
 					}
