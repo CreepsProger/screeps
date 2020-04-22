@@ -307,9 +307,6 @@ var spawns = {
               if(Sp4) spawns.tryCreateCreep(spawn, WORKER[7][H], 134, 1, 1);
               if(Sp4) spawns.tryCreateCreep(spawn, CARIER[7][M], 131, 1, 1);
             }
-          }
-
-          if(conditions.TO_SPAWN_CLAIMING_ROOMS2()) {
 						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S36')) {
 							if(Sp4) spawns.tryCreateCreep(spawn, ATTACKER[L], 145, 1, 1);
 						}
@@ -318,20 +315,23 @@ var spawns = {
 								if(Sp4) spawns.tryCreateCreep(spawn, CLAIMER[M], 140, 1, 1);
               }
               if(Sp4) spawns.tryCreateCreep(spawn, WORKER[4][M], 144, 1, 1);
-              if(Sp4) spawns.tryCreateCreep(spawn, CARIER[7][M], 141, 1, 1);/*
-							if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S37')) {
-								if(Sp4) spawns.tryCreateCreep(spawn, ATTACKER[L], 165, 1, 1);
-								//if(Sp4) spawns.tryCreateCreep(spawn,      HEALER[L], 167, 1, 1);
-							}
-							else {
-								if(conditions.TO_SPAWN_ROOM_CLAIMER('W29S37')) {
-									if(Sp4) spawns.tryCreateCreep(spawn, CLAIMER[M], 160, 1, 1);
-								}
-								//if(Sp4) spawns.tryCreateCreep(spawn, CARIER[7][M], 151, 1, 1);
-								if(Sp4) spawns.tryCreateCreep(spawn, WORKER[7][H], 164, 1, 1);
-								if(Sp4) spawns.tryCreateCreep(spawn, CARIER[7][M], 161, 1, 1);
-							}*/
+              if(Sp4) spawns.tryCreateCreep(spawn, CARIER[7][M], 141, 1, 1);
 						}
+          }
+
+          if(conditions.TO_SPAWN_CLAIMING_ROOMS2()) {
+						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S37')) {
+							if(Sp4) spawns.tryCreateCreep(spawn, ATTACKER[L], 165, 1, 1);
+							//if(Sp4) spawns.tryCreateCreep(spawn,      HEALER[L], 167, 1, 1);
+						}
+						else {
+							if(conditions.TO_SPAWN_ROOM_CLAIMER('W29S37')) {
+								if(Sp4) spawns.tryCreateCreep(spawn, CLAIMER[M], 160, 1, 1);
+							}
+							//if(Sp4) spawns.tryCreateCreep(spawn, CARIER[7][M], 151, 1, 1);
+							if(Sp4) spawns.tryCreateCreep(spawn, WORKER[7][H], 164, 1, 1);
+							if(Sp4) spawns.tryCreateCreep(spawn, CARIER[7][M], 161, 1, 1);
+						}						
 					}
 				}
 
