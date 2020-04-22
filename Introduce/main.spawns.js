@@ -246,7 +246,7 @@ var spawns = {
 					if(conditions.TO_SPAWN_MAIN_ROOMS()) {
 						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[7][H], 34, 1, 1);
 						if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[7][M], 31, 1, 1);
-						if(Sp2)	spawns.tryCreateCreep(spawn, WORKER[7][M], 44, 2+X, 2+X);
+						if(Sp2)	spawns.tryCreateCreep(spawn, WORKER[7][M], 44, 2, 2);
 						if(Sp2)	spawns.tryCreateCreep(spawn, CARIER[7][M], 41, 1, 1);
 						if(Sp3)	spawns.tryCreateCreep(spawn, WORKER[7][H], 64, 1+X, 1+X);
 						if(Sp3)	spawns.tryCreateCreep(spawn, CARIER[7][M], 61, 1, 1);
@@ -270,7 +270,7 @@ var spawns = {
 							if(Sp35) spawns.tryCreateCreep(spawn,   HEALER[H], 177, 1, 1);
 						}
 						else {
-              if(Sp35) spawns.tryCreateCreep(spawn, WORKER[7][H],174, 1+X, 1+X);
+              if(Sp35) spawns.tryCreateCreep(spawn, WORKER[7][H],174, 2+X, 2+X);
 							if(Sp5) spawns.tryCreateCreep(spawn, CARIER[4][H],171, 1, 1);
 						}
 					}
