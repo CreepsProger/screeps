@@ -21,7 +21,7 @@ var cash = {
 			Memory.cash[type][entry_id] = {};
 		}
 		if(!Memory.cash[type][entry_id][subentry_id]) {
-			Memory.cash[type][entry_id][subentry_id] = { ids:0, time:0 };
+			Memory.cash[type][entry_id][subentry_id] = { ids:0, ids_time:0};
 		}
 
 		return Memory.cash[type][entry_id][subentry_id];
@@ -32,22 +32,24 @@ var cash = {
 		const entry_id = !entry_path ? 0 : !entry_path.length ? entry_path : entry_path.length > 0 ? entry_path[0]:0;
 		const subentry_id = !entry_path ? 100 : !entry_path.length ? 100 : entry_path.length > 1 ? entry_path[1]:100;
 		var entry = cash.initEntry(type, entry_id, subentry_id);
- 		if(Game.time % constants.TICKS_TO_RESET_CASH == 0)
+ 		if(Game.time - cash.time > constants.TICKS_TO_RESET_CASH)
 			cash.time = Game.time;
-		if(entry.time == 0 ||
-			 entry.time < cash.time ||
+		if(/*entry.time == 0 ||
+			 entry.time < cash.time ||*/
 			 !cash_objects[entry_id] ||
 			 !cash_objects[entry_id][subentry_id] ||
-			 (ticksToReset > 0 && Game.time % ticksToReset == 0)
+			 cash_objects[entry_id][subentry_id].time < cash.time ||
+			 (ticksToReset > 0 && Game.time - entry.ids_time > ticksToReset)
 			) {
  			entry.ids = get().map((obj) => obj.id);
+			entry.ids_time = Game.time;
 			if(!cash_objects[entry_id]) {
 				cash_objects[entry_id] = {};
 			}
-			cash_objects[entry_id][subentry_id] = {dt:0, n:0, ids: entry.ids, objs: [], dn:0};
+			cash_objects[entry_id][subentry_id] = {dt:0, n:0, ids: entry.ids, objs: [], dn:0, time:0};
 		}
 		var cash_o = cash_objects[entry_id][subentry_id];
-		if(true && entry.time != Game.time) {
+		if(true && cash_o.time != Game.time) {
 			if(false && cash_o.ids.length == cash_o.objs.length) {
 				cash_o.objs.forEach(function(obj,i) {
 					var t = obj;
@@ -59,7 +61,7 @@ var cash = {
 			else {
 				cash_o.objs = cash_o.ids.map((id) => Game.getObjectById(id));
 			}
- 			entry.time = Game.time;
+ 			cash_o.time = Game.time;
  		}
 		cash_o.n++;
 		cash_o.dt = Math.round((cash_o.dt + Game.cpu.getUsed() - t)*10000)/10000;
@@ -160,7 +162,7 @@ var cash = {
 				filter: (structure) => (structure.structureType == STRUCTURE_ROAD ||
 				 											structure.structureType == STRUCTURE_CONTAINER) &&
 														 structure.hitsMax - structure.hits > structure.hitsMax/2 });
-			}, 500);
+			}, 1000);
 	},
 
 	structures: {},
