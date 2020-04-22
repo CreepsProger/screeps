@@ -64,7 +64,7 @@ var cash = {
  		}
 		cash_o.n++;
 		cash_o.dt = Math.round((cash_o.dt + Game.cpu.getUsed() - t)*10000)/10000;
-		if(Game.time % constants.TICKS_TO_CHECK_CPU == 0 && cash_o.dt/cash_o.n > 0.05 || (false && type == STRUCTURE_EXTENSION)) {
+		if(Game.time % constants.TICKS_TO_CHECK_CPU == 0 && cash_o.dt/cash_o.n > 0.01 || (false && type == STRUCTURE_EXTENSION)) {
 			console.log( '💵', Math.trunc(Game.time/10000), Game.time%10000
 									, '[' + type + '][' + entry_id + '][' + subentry_id + ']'
 									, 'dt:', cash_o.dt, 'n:', cash_o.n, 'dn:', cash_o.dn
