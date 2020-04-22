@@ -34,8 +34,7 @@ var cash = {
 		var entry = cash.initEntry(type, entry_id, subentry_id);
  		if(Game.time - cash.time > constants.TICKS_TO_RESET_CASH)
 			cash.time = Game.time;
-		if(/*entry.time == 0 ||
-			 entry.time < cash.time ||*/
+		if(entry.ids_time < cash.time ||
 			 !cash_objects[entry_id] ||
 			 !cash_objects[entry_id][subentry_id] ||
 			 cash_objects[entry_id][subentry_id].time < cash.time ||
