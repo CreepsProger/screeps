@@ -161,7 +161,7 @@ var cash = {
 				filter: (structure) => (structure.structureType == STRUCTURE_ROAD ||
 				 											structure.structureType == STRUCTURE_CONTAINER) &&
 														 structure.hitsMax - structure.hits > structure.hitsMax/2 });
-			}, 100);
+			}, 500);
 	},
 
 	structures: {},
