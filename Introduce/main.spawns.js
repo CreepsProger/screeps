@@ -239,7 +239,16 @@ var spawns = {
 											 	 , [       1700000017,       1700000017,       1700000017]  // 6 2300
 											 	 , [       2500000025,     250000000025,       1213000025]  // 7 5600
 										   	 ];
-				const HEALER =   [1000000010000020, 1000000015000025,  500000020000025];
+ 		 		//                   TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
+				const HEALER =   [ [                0,                0,                0]  // 0  000
+											 	 , [           100001,           100001,           100001]  // 1  300
+											 	 , [           100001,           100001,           100001]  // 2  550
+											 	 , [           200002,           200004,           200006]  // 3  800
+											 	 , [           400004,           400005,           400006]  // 4 1300
+											 	 , [           600006,           600006,           600006]  // 5 1800
+											 	 , [           700007,           700009,           700011]  // 6 2300
+											 	 , [         15000035,         16000032,         18000022]  // 7 5600
+										   	 ];
 				const CLAIMER = [2000000000004, 8000000000010, 8000000000014];
 
 				// 22*1800+2*1300+4*650 = 44800 -> 30 per game tick
@@ -275,7 +284,7 @@ var spawns = {
 						// if(Sp3) spawns.tryCreateCreep(spawn, CARIER[3][L],  91, 1, 1);
 						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S32')) {
 							if(Sp35) spawns.tryCreateCreep(spawn, ATTACKER[7][H], 175, 1, 1);
-							if(Sp35) spawns.tryCreateCreep(spawn,   HEALER[H], 177, 1, 1);
+							if(Sp35) spawns.tryCreateCreep(spawn,   HEALER[7][M], 177, 1, 1);
 						}
 						else {
               if(Sp35) spawns.tryCreateCreep(spawn, WORKER[7][H],174, 2, 2);
@@ -375,11 +384,12 @@ var spawns = {
 					if(Sp2) spawns.tryCreateCreep(spawn, ATTACKER[7][H], 75, 2, 2);
 					if(Sp2) spawns.tryCreateCreep(spawn,   WORKER[5][H], 74, 1, 2);
 					if(Sp2) spawns.tryCreateCreep(spawn,   CARIER[5][H], 71, 1, 2);
-					if(Sp2) spawns.tryCreateCreep(spawn,      HEALER[L], 77, 1, 1);
+					if(Sp2) spawns.tryCreateCreep(spawn,   HEALER[7][M], 77, 1, 1);
 				}
 
 				if(conditions.TO_SPAWN_TO_ATTACK()) {
-					if(Sp2) spawns.tryCreateCreep(spawn, ATTACKER[7][H], 86, 3, 3);
+					if(Sp2) spawns.tryCreateCreep(spawn, ATTACKER[7][H], 86, 2, 2);
+					if(Sp2) spawns.tryCreateCreep(spawn,   HEALER[7][H], 87, 2, 2);
 				}
 
 			}
