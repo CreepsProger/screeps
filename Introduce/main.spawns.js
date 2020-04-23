@@ -388,8 +388,8 @@ var spawns = {
 				}
 
 				if(conditions.TO_SPAWN_TO_ATTACK()) {
-					if(Sp2) spawns.tryCreateCreep(spawn, ATTACKER[7][H], 86, 2, 2);
-					if(Sp2) spawns.tryCreateCreep(spawn,   HEALER[7][H], 87, 2, 2);
+					if(Sp34) spawns.tryCreateCreep(spawn, ATTACKER[7][H], 86, 2, 2);
+					if(Sp34) spawns.tryCreateCreep(spawn,   HEALER[7][H], 87, 2, 2);
 				}
 
 			}
