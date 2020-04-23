@@ -79,16 +79,14 @@ var role = {
 				}
 
 				if(!target && this_room == my_heal_room && creep.hits < creep.hitsMax && !canHeal2) {
-					var rampart = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-						filter: (structure) => {
-							return structure.structureType == STRUCTURE_TOWER &&
-								structure.pos.roomName == my_heal_room &&
-								!!structure.my;
-						}
-					});
+					var towers = cash.getTowers(creep.room);
 
-					if(!!rampart && rampart.pos != creep.pos) {
-						target = rampart;
+					if(towers.length > 0) {
+						target = towers.reduce((p,c) => !!p && !!p.store && !!c && !!c.store &&
+												creep.pos.getRangeTo(p) * (p.store.getUsedCapacity(RESOURCE_ENERGY) + 500)
+												<
+												creep.pos.getRangeTo(c) * (c.store.getUsedCapacity(RESOURCE_ENERGY) + 500)
+												? p:c);
 					}
 				}
 
