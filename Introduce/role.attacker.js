@@ -11,17 +11,18 @@ const tools = require('tools');
 var role = {
 
     name: 'attacker',
+		test_n: 29269,
 
-			init: function(creep) {
-				if(creep.memory[role.name] === undefined ||
-					 creep.memory[role.name].v === undefined ||
-					 creep.memory[role.name].v != config.version) {
-					creep.memory[role.name] = { v: config.version
-																		, on: false
-																		, room: creep.room.name
-																		};
-				}
-			},
+		init: function(creep) {
+			if(creep.memory[role.name] === undefined ||
+				 creep.memory[role.name].v === undefined ||
+				 creep.memory[role.name].v != config.version) {
+				creep.memory[role.name] = { v: config.version
+																	, on: false
+																	, room: creep.room.name
+																	};
+			}
+		},
 
     /** @param {Creep} creep **/
     run: function(creep) {
@@ -73,7 +74,7 @@ var role = {
 				const canHeal = creep.getActiveBodyparts(HEAL);
 				const canHeal2 = creep.getActiveBodyparts(HEAL);
 
-				if(creep.memory.n == 29269) {
+				if(creep.memory.n == role.test_n) {
 					console.log(JSON.stringify({tough_count: tough_count, shouldHeal: shouldHeal, canAttack: canAttack, canAttack2: canAttack2}));
 				}
 
@@ -91,7 +92,7 @@ var role = {
 					}
 				}
 
-				if(creep.memory.n == 1276) {
+				if(creep.memory.n == role.test_n) {
 					console.log(JSON.stringify({n:creep.memory.n, my_heal_room: my_heal_room, shouldHeal: shouldHeal, canAttack: canAttack, canAttack2: canAttack2}));
 				}
 
@@ -118,7 +119,7 @@ var role = {
 					 !hostile_creeps_near &&
 					 creep.hitsMax - creep.hits > 0 ) {
 					target = creep;
-					if(creep.memory.n == 29269) {
+					if(creep.memory.n == role.test_n) {
 						console.log('Heal myself:', JSON.stringify({n:creep.memory.n, my_heal_room: my_heal_room, shouldHeal: shouldHeal, canAttack: canAttack, canAttack2: canAttack2}));
 					}
 				}
@@ -126,7 +127,7 @@ var role = {
 				if(!target && this_room != my_heal_room && !canAttack && !canHeal) {
 					const exit = creep.room.findExitTo(my_next_escape_room);
 					target = creep.pos.findClosestByPath(exit);
-					if(creep.memory.n == 29269) {
+					if(creep.memory.n == role.test_n) {
 						console.log('Go to my heal room:', JSON.stringify({n:creep.memory.n, my_pos:creep.pos, my_heal_room: my_heal_room, shouldHeal: shouldHeal, canAttack: canAttack, canAttack2: canAttack2}));
 					}
 				}
