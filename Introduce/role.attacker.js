@@ -82,8 +82,7 @@ var role = {
 
 				if(!target && this_room == my_heal_room &&
 					 creep.hits < creep.hitsMax &&
-					 (!canAttack || (atack_count == 0 && !canHeal))
-				  ) {
+					 !canAttack && !canHeal) {
 					var towers = cash.getTowers(creep.room);
 
 					if(towers.length > 0) {
