@@ -202,7 +202,7 @@ var role = {
 
 				const DP2 = Game.flags['DP2'];
 				if(!target && !!DP2 && DP2.pos.roomName == my_room) {
-/				7890-/t 					//console.log('DP2', 'this_room:', this_room, 'DP2:', JSON.stringify(DP2));
+					//console.log('DP2', 'this_room:', this_room, 'DP2:', JSON.stringify(DP2));
 					target = DP2.pos;
 				}
 
