@@ -68,8 +68,8 @@ var role = {
 				const tough_count = creep.body.reduce((p,c) => p += (c.type == TOUGH),0);
 				const tough_more_then_half = shouldHeal < tough_count*50;
 				const tough_less_then_half = !tough_more_then_half && shouldHeal < tough_count*100;
-				const canAttack = creep.getActiveBodyparts(TOUGH) || (creep.getActiveBodyparts(RANGED_ATTACK) || creep.getActiveBodyparts(ATTACK));
-				const canAttack2 = creep.getActiveBodyparts(TOUGH) || (creep.getActiveBodyparts(RANGED_ATTACK) || creep.getActiveBodyparts(ATTACK));
+				const canAttack = creep.getActiveBodyparts(TOUGH) || creep.getActiveBodyparts(RANGED_ATTACK) || creep.getActiveBodyparts(ATTACK);
+				const canAttack2 = creep.getActiveBodyparts(TOUGH) || creep.getActiveBodyparts(RANGED_ATTACK) || creep.getActiveBodyparts(ATTACK);
 				const canHeal = creep.getActiveBodyparts(HEAL);
 				const canHeal2 = creep.getActiveBodyparts(HEAL);
 
@@ -118,7 +118,7 @@ var role = {
 					 !hostile_creeps_near &&
 					 creep.hitsMax - creep.hits > 0 ) {
 					target = creep;
-					if(creep.memory.n == 1276) {
+					if(creep.memory.n == 29269) {
 						console.log('Heal myself:', JSON.stringify({n:creep.memory.n, my_heal_room: my_heal_room, shouldHeal: shouldHeal, canAttack: canAttack, canAttack2: canAttack2}));
 					}
 				}
@@ -126,7 +126,7 @@ var role = {
 				if(!target && this_room != my_heal_room && !canAttack && !canHeal) {
 					const exit = creep.room.findExitTo(my_next_escape_room);
 					target = creep.pos.findClosestByPath(exit);
-					if(creep.memory.n == 1276) {
+					if(creep.memory.n == 29269) {
 						console.log('Go to my heal room:', JSON.stringify({n:creep.memory.n, my_pos:creep.pos, my_heal_room: my_heal_room, shouldHeal: shouldHeal, canAttack: canAttack, canAttack2: canAttack2}));
 					}
 				}
@@ -202,7 +202,7 @@ var role = {
 
 				const DP2 = Game.flags['DP2'];
 				if(!target && !!DP2 && DP2.pos.roomName == my_room) {
-					//console.log('DP2', 'this_room:', this_room, 'DP2:', JSON.stringify(DP2));
+/				7890-/t 					//console.log('DP2', 'this_room:', this_room, 'DP2:', JSON.stringify(DP2));
 					target = DP2.pos;
 				}
 
