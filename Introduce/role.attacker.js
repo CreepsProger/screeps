@@ -11,7 +11,7 @@ const tools = require('tools');
 var role = {
 
     name: 'attacker',
-		test_n: 30663,
+		test_n: 30673,
 
 		init: function(creep) {
 			if(creep.memory[role.name] === undefined ||
