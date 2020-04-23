@@ -11,7 +11,7 @@ const tools = require('tools');
 var role = {
 
     name: 'attacker',
-		test_n: 30673,
+		test_n: 30683,
 
 		init: function(creep) {
 			if(creep.memory[role.name] === undefined ||
@@ -63,16 +63,16 @@ var role = {
     		var target;
 
 				const hostile_creeps_near = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 4).length > 0;
-				const good_healer_near = creep.pos.findInRange(FIND_MY_CREEPS, 2, {filter: (healer) => {
+				const good_healer_near = creep.pos.findInRange(FIND_MY_CREEPS, 3, {filter: (healer) => {
 						return healer.getActiveBodyparts(HEAL) > 0 /*&& healer.hits == healer.hitsMax*/;}}).length > 0;
 				const shouldHeal = creep.hitsMax - creep.hits;
 				const tough_count = creep.body.reduce((p,c) => p += (c.type == TOUGH),0);
 				const tough_more_then_half = shouldHeal < tough_count*50;
 				const tough_less_then_half = !tough_more_then_half && shouldHeal < tough_count*100;
 				const atack_count = creep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK),0);
-				const heal_count = creep.body.reduce((p,c) => p += (c.type == HEAL),0);
 				const canAttack = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK) > atack_count/2;
 				const canAttack2 = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK);
+				const heal_count = creep.body.reduce((p,c) => p += (c.type == HEAL),0);
 				const canHeal = creep.getActiveBodyparts(HEAL) > heal_count/2;
 				const canHeal2 = creep.getActiveBodyparts(HEAL);
 
@@ -104,9 +104,9 @@ var role = {
 					!canAttack && canAttack2 && !good_healer_near) {
 					var creep2 = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (healer) => {
-							const healer_tough_count = healer.body.reduce((p,c) => p += (c.type == TOUGH),0);
-							const healer_canAttack = ((healer.hitsMax - healer.hits) < tough_count*100);
-							return healer_canAttack && healer.getActiveBodyparts(HEAL) > 0;
+							const heal_count = healer.body.reduce((p,c) => p += (c.type == HEAL),0);
+							const canHeal = healer.getActiveBodyparts(HEAL) > heal_count/2;
+							return canHeal;
 						}
 					});
 					var path = creep.pos.findPathTo(target);
@@ -114,7 +114,7 @@ var role = {
 						target = creep2;
 					}
 				}
-
+/*
 				if(!target && creep.getActiveBodyparts(HEAL) &&
 					 this_room != my_room &&
 					 creep.pos.x%48 > 1 &&
@@ -126,8 +126,8 @@ var role = {
 						console.log('Heal myself:', JSON.stringify({n:creep.memory.n, my_heal_room: my_heal_room, shouldHeal: shouldHeal, canAttack: canAttack, canAttack2: canAttack2}));
 					}
 				}
-
-				if(!target && this_room != my_heal_room && !canAttack && !canHeal) {
+*/
+				if(!target && this_room != my_heal_room && !canAttack2 && !canHeal2) {
 					const exit = creep.room.findExitTo(my_next_escape_room);
 					target = creep.pos.findClosestByPath(exit);
 					if(creep.memory.n == role.test_n) {
@@ -135,30 +135,30 @@ var role = {
 					}
 				}
 
-				if(!target && creep.getActiveBodyparts(HEAL)) {
+				if(!target && canHeal) {
 					target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (mycreep) => {
-							const mycreep_tough_count = mycreep.body.reduce((p,c) => p += (c.type == TOUGH),0);
-							const mycreep_canAttack2 = mycreep.hitsMax - mycreep.hits < tough_count*100;
-							return mycreep_canAttack2 && mycreep.hitsMax - mycreep.hits > 0 &&
+							const atack_count = mycreep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK),0);
+							const canAttack = mycreep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK) > atack_count/2;
+							const heal_count = mycreep.body.reduce((p,c) => p += (c.type == HEAL),0);
+							const canHeal = mycreep.getActiveBodyparts(HEAL) > heal_count/2;
+							return  mycreep.hitsMax - mycreep.hits > 0 &&
+											(canAttack || canHeal)
                       creep.pos.getRangeTo(mycreep) > 0 &&
-                      creep.pos.getRangeTo(mycreep) <= 10 &&
-        							(mycreep.getActiveBodyparts(RANGED_ATTACK) > 0 ||
-        		           mycreep.getActiveBodyparts(ATTACK) > 0 ||
-        		           mycreep.getActiveBodyparts(HEAL) > 0);
+                      creep.pos.getRangeTo(mycreep) <= 5;
 						}
 					});
 				}
 
-				if(!target && creep.getActiveBodyparts(HEAL)) {
+				if(!target && canHeal) {
 					target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (mycreep) => {
-							return mycreep.hitsMax - mycreep.hits > 0 &&
-                    creep.pos.getRangeTo(mycreep) > 0 &&
-    								creep.pos.getRangeTo(mycreep) <= 10 &&
-    								!(mycreep.getActiveBodyparts(RANGED_ATTACK) > 0 ||
-    			            mycreep.getActiveBodyparts(ATTACK) > 0 ||
-    			            mycreep.getActiveBodyparts(HEAL) > 0);
+							const canAttack2 = mycreep.getActiveBodyparts(RANGED_ATTACK) + mycreep.getActiveBodyparts(ATTACK);
+							const canHeal2 = mycreep.getActiveBodyparts(HEAL);
+							return 	mycreep.hitsMax - mycreep.hits > 0 &&
+											(canAttack2 || canHeal2)
+                    	creep.pos.getRangeTo(mycreep) > 0 &&
+    									creep.pos.getRangeTo(mycreep) <= 5;
 						}
 					});
 				}
@@ -167,7 +167,6 @@ var role = {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 5);
 					if(targets.length > 0) {
 						target = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS);
-						//target = targets[0];
 					}
 				}
 
