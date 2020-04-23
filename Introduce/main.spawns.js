@@ -390,7 +390,7 @@ var spawns = {
 				if(conditions.TO_SPAWN_TO_ATTACK()) {
 					if(Sp34) spawns.tryCreateCreep(spawn, ATTACKER[7][H], 86, 2, 2);
 					if(Sp34) spawns.tryCreateCreep(spawn,   HEALER[7][H], 87, 1, 1);
-					// if(Sp34) spawns.tryCreateCreep(spawn,   WORKER[7][H], 84, 1, 1);
+					if(Sp34) spawns.tryCreateCreep(spawn,   WORKER[7][H], 84, 1, 1);
 					// if(Sp34) spawns.tryCreateCreep(spawn,   CARIER[7][H], 81, 1, 1);
 				}
 
