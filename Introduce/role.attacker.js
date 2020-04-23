@@ -73,7 +73,7 @@ var role = {
 				const canHeal = creep.getActiveBodyparts(HEAL);
 				const canHeal2 = creep.getActiveBodyparts(HEAL);
 
-				if(creep.memory.n == 1276) {
+				if(creep.memory.n == 29269) {
 					console.log(JSON.stringify({tough_count: tough_count, shouldHeal: shouldHeal, canAttack: canAttack, canAttack2: canAttack2}));
 				}
 
