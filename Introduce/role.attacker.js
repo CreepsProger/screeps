@@ -70,9 +70,10 @@ var role = {
 				const tough_more_then_half = shouldHeal < tough_count*50;
 				const tough_less_then_half = !tough_more_then_half && shouldHeal < tough_count*100;
 				const atack_count = creep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK),0);
+				const heal_count = creep.body.reduce((p,c) => p += (c.type == HEAL),0);
 				const canAttack = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK) > atack_count/2;
 				const canAttack2 = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK);
-				const canHeal = creep.getActiveBodyparts(HEAL);
+				const canHeal = creep.getActiveBodyparts(HEAL) > heal_count/2;
 				const canHeal2 = creep.getActiveBodyparts(HEAL);
 
 				if(creep.memory.n == role.test_n) {
