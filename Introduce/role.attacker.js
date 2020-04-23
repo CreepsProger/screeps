@@ -69,8 +69,9 @@ var role = {
 				const tough_count = creep.body.reduce((p,c) => p += (c.type == TOUGH),0);
 				const tough_more_then_half = shouldHeal < tough_count*50;
 				const tough_less_then_half = !tough_more_then_half && shouldHeal < tough_count*100;
-				const canAttack = creep.getActiveBodyparts(TOUGH) + creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK);
-				const canAttack2 = creep.getActiveBodyparts(TOUGH) + creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK);
+				const atack_count = creep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK),0);
+				const canAttack = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK) > atack_count/2;
+				const canAttack2 = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK);
 				const canHeal = creep.getActiveBodyparts(HEAL);
 				const canHeal2 = creep.getActiveBodyparts(HEAL);
 
@@ -78,7 +79,7 @@ var role = {
 					console.log(JSON.stringify({tough_count: tough_count, shouldHeal: shouldHeal, canAttack: canAttack, canAttack2: canAttack2}));
 				}
 
-				if(!target && this_room == my_heal_room && creep.hits < creep.hitsMax && !canAttack2) {
+				if(!target && this_room == my_heal_room && creep.hits < creep.hitsMax && !canAttack) {
 					var towers = cash.getTowers(creep.room);
 
 					if(towers.length > 0) {
