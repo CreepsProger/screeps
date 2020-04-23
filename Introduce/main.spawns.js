@@ -342,7 +342,7 @@ var spawns = {
 							// if(Sp4) spawns.tryCreateCreep(spawn,   HEALER[7][H], 87, 1, 1);
 						}
 						else {
-							if(conditions.TO_SPAWN_ROOM_CLAIMER('W27S34')) {
+							if(true || conditions.TO_SPAWN_ROOM_CLAIMER('W27S34')) {
 								if(Sp4) spawns.tryCreateCreep(spawn, CLAIMER[H], 80, 1, 1);
 							}
 							//if(Sp34) spawns.tryCreateCreep(spawn,   WORKER[7][H], 84, 1, 1);
