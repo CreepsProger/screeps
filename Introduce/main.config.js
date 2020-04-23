@@ -193,10 +193,10 @@ var config = {
 
 												 ]
 										 , attacker:
-												 [ {name: '1', time: 0, min_weight: 80, max_weight:189}
-												 , {name: '2', time: 0, min_weight: 80, max_weight:189}
-												 , {name: '3', time: 0, min_weight: 80, max_weight:189}
-												 , {name: '4', time: 0, min_weight: 80, max_weight:189}
+												 [ {name: '1', time: 0, min_weight: 80, max_weight:89}
+												 , {name: '2', time: 0, min_weight: 80, max_weight:89}
+												 , {name: '3', time: 0, min_weight: 80, max_weight:89}
+												 , {name: '4', time: 0, min_weight: 80, max_weight:89}
 												 , {name: '5', time: 0, min_weight: 80, max_weight:89}
 												 , {name: '6', time: 0, min_weight: 80, max_weight:89}
 												 , {name: '7', time: 0, min_weight: 80, max_weight:89}
@@ -278,10 +278,10 @@ var config = {
 												 , {name: '2', time: 0, min_weight:110, max_weight:119}
 												 ]
 										 , attacker:
-												 [ {name: '1', time: 0, min_weight:110, max_weight:110}
-												 // , {name: '2', time: 0, min_weight:110, max_weight:119}
-												 // , {name: '3', time: 0, min_weight:110, max_weight:119}
-												 // , {name: '4', time: 0, min_weight:110, max_weight:119}
+												 [ {name: '1', time: 0, min_weight:110, max_weight:119}
+												 , {name: '2', time: 0, min_weight:110, max_weight:119}
+												 , {name: '3', time: 0, min_weight:110, max_weight:119}
+												 , {name: '4', time: 0, min_weight:110, max_weight:119}
 												 ]
 									   , heal_room: 'W28S33'
 										 , path_rooms: { W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
