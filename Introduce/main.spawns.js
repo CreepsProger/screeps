@@ -352,7 +352,7 @@ var spawns = {
 				}
 
 				if(conditions.TO_SPAWN_CLAIMING_ROOMS3()) {
-					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S37')) {
+					if(false && conditions.TO_SPAWN_ROOM_DEFENDERS('W28S37')) {
 						if(Sp4) spawns.tryCreateCreep(spawn, ATTACKER[7][H], 155, 1, 1);
                 //if(Sp4) spawns.tryCreateCreep(spawn,      HEALER[L], 157, 1, 1);
 					}
