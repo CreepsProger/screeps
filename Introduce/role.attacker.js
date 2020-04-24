@@ -149,7 +149,7 @@ var role = {
 							const heal_count = mycreep.body.reduce((p,c) => p += (c.type == HEAL),0);
 							const canHeal = mycreep.getActiveBodyparts(HEAL) > heal_count/2;
 							return  mycreep.hitsMax - mycreep.hits > 0 &&
-											(canAttack || canHeal)
+											(canAttack || canHeal) &&
                       creep.pos.getRangeTo(mycreep) > 0 &&
                       creep.pos.getRangeTo(mycreep) <= 15;
 						}
@@ -162,7 +162,7 @@ var role = {
 							const canAttack2 = mycreep.getActiveBodyparts(RANGED_ATTACK) + mycreep.getActiveBodyparts(ATTACK);
 							const canHeal2 = mycreep.getActiveBodyparts(HEAL);
 							return 	mycreep.hitsMax - mycreep.hits > 0 &&
-											(canAttack2 || canHeal2)
+											(canAttack2 || canHeal2) &&
                     	creep.pos.getRangeTo(mycreep) > 0 &&
     									creep.pos.getRangeTo(mycreep) <= 10;
 						}
