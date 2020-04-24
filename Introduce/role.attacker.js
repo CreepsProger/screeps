@@ -273,17 +273,22 @@ var role = {
 					if(target.id &&
 						 // target.structureType != STRUCTURE_RAMPART &&
 						 target.structureType != STRUCTURE_CONTROLLER) {
-							 if (!target.my) {
-								 const range = creep.pos.getRangeTo(target);							;
-								 if(creep.getActiveBodyparts(RANGED_ATTACK) &&
-										(creep.pos.findInRange(FIND_HOSTILE_CREEPS, 4).length == 1 && true|| true))
-									 err = range>1?creep.rangedAttack(target):creep.rangedMassAttack();
-								 else
-									 err = creep.attack(target);
-							 }
-							 else if (target.hits < target.hitsMax && creep.getActiveBodyparts(HEAL)) {
-								 err = creep.heal(target);
-							 }
+						if (!target.my) {
+							const range = creep.pos.getRangeTo(target);
+							if(creep.getActiveBodyparts(RANGED_ATTACK) &&
+								 (creep.pos.findInRange(FIND_HOSTILE_CREEPS, 4).length == 1 && true|| true))
+								err = range>1?creep.rangedAttack(target):creep.rangedMassAttack();
+							else
+								err = creep.attack(target);
+						}
+						else {
+							if (target.hits < target.hitsMax && creep.getActiveBodyparts(HEAL)) {
+								err = creep.heal(target);
+							}
+							else {
+								err == ERR_NOT_IN_RANGE;
+							}
+						}
 					}
 
 					if(err == ERR_NOT_IN_RANGE) {
