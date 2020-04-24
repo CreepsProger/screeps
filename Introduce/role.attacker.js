@@ -69,8 +69,8 @@ var role = {
 				const tough_count = creep.body.reduce((p,c) => p += (c.type == TOUGH),0);
 				const tough_more_then_half = shouldHeal < tough_count*50;
 				const tough_less_then_half = !tough_more_then_half && shouldHeal < tough_count*100;
-				const atack_count = creep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK),0);
-				const canAttack = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK) > atack_count/2;
+				const attack_count = creep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK),0);
+				const canAttack = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK) > attack_count/2;
 				const canAttack2 = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK);
 				const heal_count = creep.body.reduce((p,c) => p += (c.type == HEAL),0);
 				const canHeal = creep.getActiveBodyparts(HEAL) > heal_count/2;
@@ -144,8 +144,8 @@ var role = {
 				if(!target && canHeal) {
 					target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (mycreep) => {
-							const atack_count = mycreep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK),0);
-							const canAttack = mycreep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK) > atack_count/2;
+							const attack_count = mycreep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK),0);
+							const canAttack = mycreep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK) > attack_count/2;
 							const heal_count = mycreep.body.reduce((p,c) => p += (c.type == HEAL),0);
 							const canHeal = mycreep.getActiveBodyparts(HEAL) > heal_count/2;
 							return  mycreep.hitsMax - mycreep.hits > 0 &&
@@ -179,6 +179,18 @@ var role = {
 					});
 				}
 
+				if(!target && canHeal && !attack_count) {
+					target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
+						filter: (mycreep) => {
+							const attack_count = mycreep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK),0);
+							const canAttack = mycreep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK) > attack_count/2;
+							return  mycreep.hitsMax - mycreep.hits == 0 &&
+											canAttack &&
+                      creep.pos.getRangeTo(mycreep) > 0 &&
+                      creep.pos.getRangeTo(mycreep) <= 20;
+						}
+					});
+				}
 
 				var range = 50;
 
