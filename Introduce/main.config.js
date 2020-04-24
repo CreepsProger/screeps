@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 174,
+	version: 175,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -460,31 +460,31 @@ var config = {
 																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
 																	 , W28S33: 'W27S33', W27S33: 'W26S33'}
 										 },
-						 W25S34: { containers: {weight: 1095}
+						 W25S34: { containers: {weight: 195}
 										 , energy_harvesting:
-												 [ {name: '1', time: 0, min_weight: 1090, max_weight: 1099}
-												 , {name: '2', time: 0, min_weight: 1090, max_weight: 1099}
+												 [ {name: '1', time: 0, min_weight: 190, max_weight: 199}
+												 , {name: '2', time: 0, min_weight: 190, max_weight: 199}
+												 , {name: '3', time: 0, min_weight: 190, max_weight: 199}
+												 , {name: '4', time: 0, min_weight: 190, max_weight: 199}
 												 ]
 										 , claiming:
-												 [ {name: '1', time: 0, min_weight: 1090, max_weight: 1099}
-												 , {name: '2', time: 0, min_weight: 1090, max_weight: 1099}
+												 [ {name: '1', time: 0, min_weight: 190, max_weight: 199}
+												 , {name: '2', time: 0, min_weight: 190, max_weight: 199}
 												 ]
 										 , attacker:
-												 [// {name: '1', time: 0, min_weight: 90, max_weight: 99}
-												 // , {name: '2', time: 0, min_weight: 90, max_weight: 99}
-												 // , {name: '3', time: 0, min_weight: 90, max_weight: 99}
-												 // , {name: '4', time: 0, min_weight: 90, max_weight: 99}
-												 // , {name: '5', time: 0, min_weight: 90, max_weight: 99}
+												 [ {name: '1', time: 0, min_weight: 190, max_weight: 199}
+												 , {name: '2', time: 0, min_weight: 190, max_weight: 199}
+												 , {name: '3', time: 0, min_weight: 190, max_weight: 199}
+												 , {name: '4', time: 0, min_weight: 190, max_weight: 199}
+												 , {name: '5', time: 0, min_weight: 190, max_weight: 199}
 												 // , {name: '6', time: 0, min_weight: 90, max_weight: 99}
 												 // , {name: '7', time: 0, min_weight: 90, max_weight: 99}
 												 // , {name: '8', time: 0, min_weight: 90, max_weight: 99}
 												 // , {name: '9', time: 0, min_weight: 90, max_weight: 99}
 												 ]
 									   , heal_room: 'W25S33'
-										 , path_rooms: {W26S33: 'W25S33', W25S33: 'W25S34'}
-										 , escape_path:{ W28S37: 'W28S38', W28S38: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
-																	 , W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
-																	 , W28S33: 'W27S33', W27S33: 'W26S33'}
+										 , path_rooms: { W26S33: 'W25S33', W25S33: 'W25S34'}
+										 , escape_path:{ W25S34: 'W25S33'}
 									   }
 									 }
 						};
