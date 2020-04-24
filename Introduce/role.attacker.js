@@ -151,7 +151,7 @@ var role = {
 							return  mycreep.hitsMax - mycreep.hits > 0 &&
 											(canAttack || canHeal)
                       creep.pos.getRangeTo(mycreep) > 0 &&
-                      creep.pos.getRangeTo(mycreep) <= 5;
+                      creep.pos.getRangeTo(mycreep) <= 15;
 						}
 					});
 				}
@@ -163,6 +163,16 @@ var role = {
 							const canHeal2 = mycreep.getActiveBodyparts(HEAL);
 							return 	mycreep.hitsMax - mycreep.hits > 0 &&
 											(canAttack2 || canHeal2)
+                    	creep.pos.getRangeTo(mycreep) > 0 &&
+    									creep.pos.getRangeTo(mycreep) <= 10;
+						}
+					});
+				}
+				
+				if(!target && canHeal) {
+					target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
+						filter: (mycreep) => {
+							return 	mycreep.hitsMax - mycreep.hits > 0 &&
                     	creep.pos.getRangeTo(mycreep) > 0 &&
     									creep.pos.getRangeTo(mycreep) <= 5;
 						}
