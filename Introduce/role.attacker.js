@@ -262,6 +262,10 @@ var role = {
 					const exit = creep.room.findExitTo(my_path_room);
 					target = creep.pos.findClosestByPath(exit);
 				}
+				
+				if(!target) {
+					target = creep;
+				}
 
 				if(target)
 				{
