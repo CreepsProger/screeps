@@ -393,10 +393,10 @@ var spawns = {
         }
 
 				if(conditions.TO_SPAWN_KEEPERS_ROOMS()) {
-					if(Sp2) spawns.tryCreateCreep(spawn, ATTACKER[7][H], 75, 2, 2);
-					if(Sp2) spawns.tryCreateCreep(spawn,   WORKER[5][H], 74, 1, 2);
-					if(Sp2) spawns.tryCreateCreep(spawn,   CARIER[5][H], 71, 1, 2);
-					if(Sp2) spawns.tryCreateCreep(spawn,   HEALER[7][M], 77, 1, 1);
+					if(Sp1) spawns.tryCreateCreep(spawn, ATTACKER[7][H], 195, 1, 1);/*
+					if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[5][H], 194, 1, 1);
+					if(Sp1) spawns.tryCreateCreep(spawn,   CARIER[5][H], 191, 1, 1);
+					if(Sp1) spawns.tryCreateCreep(spawn,   HEALER[7][M], 197, 1, 1);*/
 				}
 
 				if(conditions.TO_SPAWN_TO_ATTACK()) {
