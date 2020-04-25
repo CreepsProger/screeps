@@ -265,8 +265,8 @@ var role = {
 					target = creep.pos.findClosestByPath(exit);
 				}
 				
-				if(!target) {
-					target = creep;
+				if(!target) {/*
+					target = creep;*/
 				}
 
 				if(target)
