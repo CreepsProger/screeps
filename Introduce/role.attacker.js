@@ -185,9 +185,8 @@ var role = {
 					target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (mycreep) => {
 							const attack_count = mycreep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK),0);
-							const mayAttack = mycreep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK) > attack_count/2;
 							return  mycreep.hitsMax - mycreep.hits == 0 &&
-											mayAttack &&
+											attack_count &&
                       creep.pos.getRangeTo(mycreep) > 0 &&
                       creep.pos.getRangeTo(mycreep) <= 20;
 						}
