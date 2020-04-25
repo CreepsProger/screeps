@@ -284,8 +284,7 @@ var role = {
 									else err = range<4?creep.rangedAttack(target):ERR_NOT_IN_RANGE;
 								}
 								if(creep.getActiveBodyparts(ATTACK)) {
-									err = creep.attack(target);
-									else err = range==1?creep.attack(target):ERR_NOT_IN_RANGE;
+									err = range==1?creep.attack(target):ERR_NOT_IN_RANGE;
 								}
 							}
 						}
