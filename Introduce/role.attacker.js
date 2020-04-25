@@ -277,11 +277,17 @@ var role = {
 						 target.structureType != STRUCTURE_CONTROLLER) {
 						if (!target.my) {
 							const range = creep.pos.getRangeTo(target);
-							if(creep.getActiveBodyparts(RANGED_ATTACK) &&
-								 (creep.pos.findInRange(FIND_HOSTILE_CREEPS, 4).length == 1 && true|| true))
-								err = range>1?creep.rangedAttack(target):creep.rangedMassAttack();
-							else
-								err = creep.attack(target);
+							if(Attacker && canAttack2) {								
+								if(creep.getActiveBodyparts(RANGED_ATTACK)) {
+									if(creep.pos.findInRange(FIND_HOSTILE_CREEPS, 3).length > 1)
+										err = creep.rangedMassAttack();
+									else err = range<4?creep.rangedAttack(target):ERR_NOT_IN_RANGE;
+								}
+								if(creep.getActiveBodyparts(ATTACK)) {
+									err = creep.attack(target);
+									else err = range==1?creep.attack(target):ERR_NOT_IN_RANGE;
+								}
+							}
 						}
 						else {
 							if (target.hits < target.hitsMax && creep.getActiveBodyparts(HEAL)) {
@@ -291,14 +297,14 @@ var role = {
 								err == ERR_NOT_IN_RANGE;
 							}
 						}
+						if (creep.hits < creep.hitsMax && creep.getActiveBodyparts(HEAL)) {
+							creep.heal(creep);
+						}
 					}
 
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜🎯');
 						tools.moveTo(creep,target);
-						if (creep.hits < creep.hitsMax && creep.getActiveBodyparts(HEAL)) {
-								 err = creep.heal(creep);
-							}
 						if(!!Game.flags['LA '] || !!Game.flags['LA'] || !!Game.flags['L']) {
 							var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
 							console.log( '🔜🎯', Math.trunc(Game.time/10000), Game.time%10000
