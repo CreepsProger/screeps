@@ -52,7 +52,8 @@ var config = {
 										, W27S33: 'W26S33'
 										, W26S34: 'W26S33'
 										, W26S32: 'W26S33'
-										, W26S33: 'W25S33'},
+										, W26S33: 'W26S33'
+										, W25S34: 'W25S33'},
 					rooms : {
 						 W25S33: { containers: {weight: 33}
 										 , links:
