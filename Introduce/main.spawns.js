@@ -201,7 +201,7 @@ var spawns = {
 				if(Memory.totals.WORK < 25	) spawns.tryCreateCreep(spawn, 20202, 20, 3); // E  400 Worker
 				if(Memory.totals.WORK < 25	) spawns.tryCreateCreep(spawn, 10101, 20, 3); // E  200 Worker
 
- 				const L = 0; const M = 1; const H = 2; const X = extra_upgrade; const U = !Memory.stop_upgrading;
+ 				const L = 0; const M = 1; const H = 2; const S = 2; const X = extra_upgrade; const U = !Memory.stop_upgrading;
 
 				if(false) {
 					console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
@@ -237,9 +237,9 @@ var spawns = {
 											 	 , [       1000000010,       1000000010,       1000000010]  // 4 1300
 											 	 , [       1300000013,       1300000013,       1300000013]  // 5 1800
 											 	 , [       1700000017,       1700000017,       1700000017]  // 6 2300
-											 	 , [       2500000025,     250000000025,       1213000025]  // 7 5600
+											 	 , [       2500000025,     250000000025,       1213000025,       2112000017]  // 7 5600
 										   	 ];
- 		 		//                   TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
+ 		 		//                   TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 				const HEALER =   [ [                0,                0,                0]  // 0  000
 											 	 , [           100001,           100001,           100001]  // 1  300
 											 	 , [           100001,           100001,           100001]  // 2  550
@@ -393,7 +393,7 @@ var spawns = {
         }
 
 				if(conditions.TO_SPAWN_KEEPERS_ROOMS()) {
-					if(Sp1) spawns.tryCreateCreep(spawn, ATTACKER[7][H], 195, 1, 1);
+					if(Sp1) spawns.tryCreateCreep(spawn, ATTACKER[7][S], 195, 1, 1);
 					if(Sp1) spawns.tryCreateCreep(spawn,   HEALER[7][H], 197, 1, 1);
 					if(Sp1) spawns.tryCreateCreep(spawn,   CARIER[7][H], 191, 1, 1);
 					if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[7][H], 194, 1, 1);
