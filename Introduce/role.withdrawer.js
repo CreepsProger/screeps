@@ -60,7 +60,7 @@ var roleWithdrawer = {
 										 	(!!DP1 && DP1.pos.roomName == creep.room.name && DP1.pos.findPathTo(dropped).length < 5) ||
 										 	(!!DP2 && DP2.pos.roomName == creep.room.name && DP2.pos.findPathTo(dropped).length < 5)
 										) &&
-										tools.checkTarget(executer,dropped.id);
+										tools.checkTarget(executer,structure.id);
 						}
 				});
 				if(tombstones.length > 0) {
