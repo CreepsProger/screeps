@@ -173,7 +173,7 @@ var role = {
 						}
 					});
 				}
-				
+
 				if(!target && Healler && canHeal) {
 					target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (mycreep) => {
@@ -220,7 +220,7 @@ var role = {
     		if(!target && this_room != my_room && creep.hitsMax == creep.hits) {
     			const exitDir = Game.map.findExit(this_room , my_path_room);
     			target = creep.pos.findClosestByPath(exitDir);
-    // 			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
+    			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
     		}
 
 				const DP1 = Game.flags['DP1'];
@@ -266,7 +266,7 @@ var role = {
 					const exit = creep.room.findExitTo(my_path_room);
 					target = creep.pos.findClosestByPath(exit);
 				}
-				
+
 				if(!target && shouldBeHealled && canHeal2) {
 					target = creep;
 				}
@@ -279,7 +279,7 @@ var role = {
 						 target.structureType != STRUCTURE_CONTROLLER) {
 						if (!target.my) {
 							const range = creep.pos.getRangeTo(target);
-							if(Attacker && canAttack2) {								
+							if(Attacker && canAttack2) {
 								if(creep.getActiveBodyparts(RANGED_ATTACK)) {
 									if(creep.pos.findInRange(FIND_HOSTILE_CREEPS, 3).length > 1)
 										err = creep.rangedMassAttack();
