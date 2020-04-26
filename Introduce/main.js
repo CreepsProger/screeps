@@ -12,6 +12,9 @@ const cash = require('cash');
 const role = require('role.claimer');
 
 module.exports.loop = function () {
+	
+	if(Game.shard != 'shard3')
+		return;
 
 	if(!conditions.TO_SPAWN_MAIN_ROOMS() && Game.time % 2)
 		return;
