@@ -128,7 +128,9 @@ var role = {
 					}
 				}
 */
-				if(!target && this_room != my_heal_room && ((Attacker && !canAttack2) || (Healler && !canHeal)) {
+				if(!target && this_room != my_heal_room &&
+					 ((Attacker && !canAttack2) || (Healler && !canHeal))
+					) {
 					const exit = creep.room.findExitTo(my_next_escape_room);
 					target = creep.pos.findClosestByPath(exit);
 					if(creep.memory.n == role.test_n) {
