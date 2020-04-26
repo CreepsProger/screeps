@@ -264,7 +264,7 @@ var role = {
 				}
 
 				if(!target && canAttack) {
-					const keeperlairs = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES, {
+					const keeperlairs = creep.room.find(FIND_HOSTILE_STRUCTURES, {
 						filter: (structure) => {
 							return (structure.structureType == STRUCTURE_KEEPER_LAIR &&
                       !!structure.tickToSpawn);
