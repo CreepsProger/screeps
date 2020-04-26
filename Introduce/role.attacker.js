@@ -220,7 +220,7 @@ var role = {
     		if(!target && this_room != my_room && creep.hitsMax == creep.hits) {
     			const exitDir = Game.map.findExit(this_room , my_path_room);
     			target = creep.pos.findClosestByPath(exitDir);
-    			role.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
+    			console.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room);
     		}
 
 				const DP1 = Game.flags['DP1'];
