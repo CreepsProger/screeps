@@ -267,8 +267,8 @@ var role = {
 					const room = Game.rooms[this_room];
 					const keeperlairs = room.find(FIND_STRUCTURES, {
 						filter: (structure) => {
-							return (structure.structureType == STRUCTURE_KEEPER_LAIR &&
-                      !!structure.tickToSpawn);
+							return (structure.structureType == STRUCTURE_KEEPER_LAIR /* &&
+                      !!structure.tickToSpawn*/);
 						}
 					});
 					console.log('keeperlairs', 'this_room:', this_room, 'keeperlairs:', JSON.stringify(keeperlairs));
