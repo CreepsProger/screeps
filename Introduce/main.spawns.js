@@ -201,7 +201,7 @@ var spawns = {
 				if(Memory.totals.WORK < 25	) spawns.tryCreateCreep(spawn, 20202, 20, 3); // E  400 Worker
 				if(Memory.totals.WORK < 25	) spawns.tryCreateCreep(spawn, 10101, 20, 3); // E  200 Worker
 
- 				const L = 0; const M = 1; const H = 2; const S = 2; const X = extra_upgrade; const U = !Memory.stop_upgrading;
+ 				const L = 0; const M = 1; const H = 2; const S = 3; const X = extra_upgrade; const U = !Memory.stop_upgrading;
 
 				if(false) {
 					console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
@@ -397,6 +397,14 @@ var spawns = {
 					if(Sp1) spawns.tryCreateCreep(spawn,   HEALER[7][H], 197, 1, 1);
 					if(Sp1) spawns.tryCreateCreep(spawn,   CARIER[7][H], 191, 1, 1);
 					if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[7][H], 194, 1, 1);
+					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W25S35')) {
+						if(Sp1) spawns.tryCreateCreep(spawn, ATTACKER[7][H], 205, 1, 1);
+						//if(Sp4) spawns.tryCreateCreep(spawn,     HEALER[L] , 137, 1, 1);
+					}
+					else {
+						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[7][H], 204, 1, 1);
+						if(Sp1) spawns.tryCreateCreep(spawn, CARIER[7][H], 201, 1, 1);
+					}
 				}
 
 				if(conditions.TO_SPAWN_TO_ATTACK()) {
