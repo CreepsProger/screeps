@@ -487,7 +487,6 @@ var config = {
 										 , path_rooms: { W28S33: 'W27S33', W27S33: 'W26S33', W26S33: 'W25S33', W25S33: 'W25S34'
 										 							 , W28S35: 'W28S34', W28S34: 'W28S33'}
 										 , escape_path:{ W25S34: 'W25S33'}
-									   }
 									 },
 					 W25S35: { containers: {weight: 205}
 									 , energy_harvesting:
