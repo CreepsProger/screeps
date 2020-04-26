@@ -83,6 +83,7 @@ var role = {
 
 		const U = !!Game.flags['U'] && Game.flags['U'].pos.roomName == my_room;
 		const UU = !!Game.flags['UU'] && Game.flags['UU'].pos.roomName == my_room;
+		const BB = !!Game.flags['BB'] && Game.flags['BB'].pos.roomName == my_room;
 
 		if(!target &&
 			 (!creep.getActiveBodyparts(WORK) || U) &&
@@ -290,7 +291,7 @@ var role = {
 			if(!!target) return target;
 		}
 
-		if(!target && creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
+		if(!target && creep.getActiveBodyparts(WORK) && creep.memory.rerun && !BB) {
 			var emptysources = creep.room.find(FIND_SOURCES, {
 				filter: (source) => {
 					return source.energy == 0 && source.ticksToRegeneration < 100 &&
