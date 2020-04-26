@@ -8,6 +8,18 @@ const log = require('main.log');
 const tools = require('tools');
 
 var roleWithdrawer = {
+
+	time:0,
+	flags:{DP:{}, DP1:{}, DP2:{}},
+	cashFlags: function() {
+		if(roleWithdrawer.time != Game.time) {
+			roleWithdrawer.time = Game.time;
+			roleWithdrawer.flags.DP = Game.flags['DP'];
+			roleWithdrawer.flags.DP1 = Game.flags['DP1'];
+			roleWithdrawer.flags.DP2 = Game.flags['DP2'];
+		}
+	},
+
 	/** @param {Creep} creep **/
 	run: function(creep,executer = undefined) {
 		if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
@@ -31,14 +43,25 @@ var roleWithdrawer = {
 		}
 
 		if(creep.memory.withdrawing) {
+
+			roleWithdrawer.cashFlags();
+			const DP = roleWithdrawer.flags.DP;
+			const DP1 = roleWithdrawer.flags.DP1;
+			const DP2 = roleWithdrawer.flags.DP2;
+
 			var target;
 
 			if(!target) {
 				var tombstones = creep.room.find(FIND_TOMBSTONES,  {
 					filter: (structure) => {
 						return structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-							tools.checkTarget(executer,structure.creep.id);
-					}
+							 		 (	!structure.pos.findInRange(FIND_HOSTILE_CREEPS, 5).length > 0 ||
+										 	(!!DP && DP.pos.roomName == creep.room.name) ||
+										 	(!!DP1 && DP1.pos.roomName == creep.room.name && DP1.pos.findPathTo(dropped).length < 5) ||
+										 	(!!DP2 && DP2.pos.roomName == creep.room.name && DP2.pos.findPathTo(dropped).length < 5)
+										) &&
+										tools.checkTarget(executer,dropped.id);
+						}
 				});
 				if(tombstones.length > 0) {
 					var tombstone = tombstones.reduce((p,c) => tools.checkTarget(executer,p.id) &&

@@ -9,7 +9,7 @@ const tools = require('tools');
 
 
 var rolePickuper = {
-	
+
 	time:0,
 	flags:{DP:{}, DP1:{}, DP2:{}},
 	cashFlags: function() {
@@ -55,8 +55,10 @@ var rolePickuper = {
 					var droppeds = creep.room.find(FIND_DROPPED_RESOURCES, {
 						filter: (dropped) => {
 							return dropped.resourceType == RESOURCE_ENERGY &&
-							 			(!dropped.pos.findInRange(FIND_HOSTILE_CREEPS, 5).length > 0
-											|| (!!DP2 && DP2.pos.roomName == creep.room.name && DP2.pos.findPathTo(dropped).length < 5)) &&
+							 			(!dropped.pos.findInRange(FIND_HOSTILE_CREEPS, 5).length > 0 ||
+										 (!!DP && DP.pos.roomName == creep.room.name) ||
+										 (!!DP1 && DP1.pos.roomName == creep.room.name && DP1.pos.findPathTo(dropped).length < 5) ||
+										 (!!DP2 && DP2.pos.roomName == creep.room.name && DP2.pos.findPathTo(dropped).length < 5)) &&
 								tools.checkTarget(executer,dropped.id);
 						}
 					});
