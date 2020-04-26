@@ -83,8 +83,9 @@ var role = {
 					console.log(JSON.stringify({Attacker: Attacker, canAttack: canAttack, Healler: Healler, canHeal: canHeal, shouldBeHealled: shouldBeHealled}));
 				}
 
-				if(!target && this_room == my_heal_room &&
-					 shouldBeHealled && ((Attacker && !canAttack) || (Healler && !canHeal))) {
+				if(!target && this_room == my_heal_room && shouldBeHealled &&
+					 ((Attacker && !canAttack) || (Healler && !canHeal) || (!Attacker && !Healler))
+					) {
 					var towers = cash.getTowers(creep.room);
 
 					if(towers.length > 0) {
