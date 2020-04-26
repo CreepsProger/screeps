@@ -270,6 +270,7 @@ var role = {
                       !!structure.tickToSpawn);
 						}
 					});
+					console.log('keeperlairs', 'this_room:', this_room, 'keeperlairs:', JSON.stringify(keeperlairs));
 					if(keeperlairs.length > 0) {
 						var lair = keeperlairs.reduce((p,c) => creep.pos.getRangeTo(p) * p.tickToSpawn
 						 																			< creep.pos.getRangeTo(c) * c.tickToSpawn? p:c);
