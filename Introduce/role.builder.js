@@ -25,7 +25,8 @@ var roleBuilder = {
 			const this_room = creep.room.name;
 			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
 
-			const B = !!Game.flags['B'] && Game.flags['B'].pos.roomName == my_room;
+      const B = !!Game.flags['B'] && Game.flags['B'].pos.roomName == my_room;
+      const BB = !!Game.flags['BB'] && Game.flags['BB'].pos.roomName == my_room;
 
 			if(!creep.memory.building &&
 				 this_room == my_room &&
@@ -56,7 +57,7 @@ var roleBuilder = {
 				//console.log(JSON.stringify(Game.rooms['W29S35'].controller));
 				const UU = !!Game.flags['UU'] && Game.flags['UU'].pos.roomName == my_room;
 
-				if(!target && (this_room_sources_are_empty || this_room_is_being_claiming || UU || B )) {
+				if(!target && (this_room_sources_are_empty || this_room_is_being_claiming || UU || B || BB )) {
 					target = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES)
 				}
 
