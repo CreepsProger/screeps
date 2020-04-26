@@ -271,11 +271,16 @@ var role = {
                       !!structure.tickToSpawn*/);
 						}
 					});
-					console.log('keeperlairs', 'this_room:', this_room, 'keeperlairs:', JSON.stringify(keeperlairs));
 					if(keeperlairs.length > 0) {
-						var lair = keeperlairs.reduce((p,c) => (((creep.pos.getRangeTo(p) + 250) * ((!p.tickToSpawn)?0:p.tickToSpawn))
-						 																		  < ((creep.pos.getRangeTo(c) + 250) * ((!c.tickToSpawn)?0:c.tickToSpawn)))? p:c);
+						var lair = keeperlairs.reduce((p,c) => {
+							const left = ((creep.pos.getRangeTo(p) + 250) * ((!p.tickToSpawn)?0:p.tickToSpawn));
+							const right = ((creep.pos.getRangeTo(c) + 250) * ((!c.tickToSpawn)?0:c.tickToSpawn));
+							console.log('keeperlairs', 'this_room:', this_room, 'left:', left, JSON.stringify(p));
+							console.log('keeperlairs', 'this_room:', this_room, 'right', right, JSON.stringify(c));
+							retrun (left < right?p:c);
+						});
 						if(!!lair) {
+							console.log('lair', 'this_room:', this_room, 'lair:', left, JSON.stringify(lair));
 							target = lair;
 						}
 					}
