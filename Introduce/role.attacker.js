@@ -264,8 +264,8 @@ var role = {
 					target = creep.pos.findClosestByPath(exit);
 				}
 				
-				if(!target) {/*
-					target = creep;*/
+				if(!target && shouldBeHealled && canHeal2) {
+					target = creep;
 				}
 
 				if(target)
