@@ -9,7 +9,17 @@ const tools = require('tools');
 
 
 var rolePickuper = {
-
+	
+	time:0,
+	flags:{DP:{}, DP1:{}, DP2:{}},
+	cashFlags: function() {
+		if(rolePickuper.time != Game.time) {
+			rolePickuper.time = Game.time;
+			rolePickuper.flags.DP = Game.flags['DP'];
+			rolePickuper.flags.DP1 = Game.flags['DP1'];
+			rolePickuper.flags.DP2 = Game.flags['DP2'];
+		}
+	},
     /** @param {Creep} creep **/
     run: function(creep,executer = undefined) {
 			if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
@@ -34,6 +44,11 @@ var rolePickuper = {
 
 			if(creep.memory.pickuping) {
 
+				rolePickuper.cashFlags();
+				const DP = rolePickuper.flags.DP;
+				const DP1 = rolePickuper.flags.DP1;
+				const DP2 = rolePickuper.flags.DP2;
+
 				var target;
 
 				if(!target) {
@@ -41,7 +56,7 @@ var rolePickuper = {
 						filter: (dropped) => {
 							return dropped.resourceType == RESOURCE_ENERGY &&
 							 			(!dropped.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0
-											|| (!!Game.flags['DP2'] && Game.flags['DP2'].pos.roomName == creep.room.name && Game.flags['DP2'].pos.findPathTo(dropped).length < 5)) &&
+											|| (!!DP2 && DP2.pos.roomName == creep.room.name && DP2.pos.findPathTo(dropped).length < 5)) &&
 								tools.checkTarget(executer,dropped.id);
 						}
 					});
