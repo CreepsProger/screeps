@@ -395,8 +395,8 @@ var spawns = {
 				if(conditions.TO_SPAWN_KEEPERS_ROOMS()) {
 					if(Sp1) spawns.tryCreateCreep(spawn, ATTACKER[7][H], 195, 1, 1);
 					if(Sp1) spawns.tryCreateCreep(spawn,   HEALER[7][H], 197, 1, 1);
-					if(Sp1) spawns.tryCreateCreep(spawn,   CARIER[5][H], 191, 1, 1);
-					if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[5][H], 194, 1, 1);
+					if(Sp1) spawns.tryCreateCreep(spawn,   CARIER[7][H], 191, 1, 1);
+					if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[7][H], 194, 1, 1);
 				}
 
 				if(conditions.TO_SPAWN_TO_ATTACK()) {
