@@ -265,7 +265,7 @@ var role = {
 
 				if(!target && canAttack) {
 					const room = Game.rooms[this_room];
-					const keeperlairs = room.find(FIND_HOSTILE_STRUCTURES, {
+					const keeperlairs = room.find(FIND_STRUCTURES, {
 						filter: (structure) => {
 							return (structure.structureType == STRUCTURE_KEEPER_LAIR &&
                       !!structure.tickToSpawn);
