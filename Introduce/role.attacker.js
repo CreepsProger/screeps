@@ -295,9 +295,9 @@ var role = {
 								err == ERR_NOT_IN_RANGE;
 							}
 						}
-						if (creep.hits < creep.hitsMax && creep.getActiveBodyparts(HEAL)) {
-							creep.heal(creep);
-						}
+					}
+					if (creep.hits < creep.hitsMax && creep.getActiveBodyparts(HEAL)) {
+						creep.heal(creep);
 					}
 
 					if(err == ERR_NOT_IN_RANGE) {
