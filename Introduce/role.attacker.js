@@ -263,6 +263,22 @@ var role = {
 					}
 				}
 
+				if(!target && canAttack) {
+					const keeperlairs = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, range, {
+						filter: (structure) => {
+							return (structure.structureType == STRUCTURE_KEEPER_LAIR &&
+                      !!structure.tickToSpawn);
+						}
+					});
+					if(keeperlairs.length > 0) {
+						var lair = keeperlairs.reduce((p,c) => creep.pos.getRangeTo(p) * p.tickToSpawn
+						 																			< creep.pos.getRangeTo(c) * c.tickToSpawn? p:c);
+						if(!!lair) {
+							target = lair;
+						}
+					}
+				}
+
 				if(!target && this_room != my_room && canAttack /*!shouldHeal*/) {
 					const my_path_room = my_room_config.path_rooms[this_room];
 					const exit = creep.room.findExitTo(my_path_room);
