@@ -262,13 +262,12 @@ var role = {
 						target = targets[0];
 					}
 				}
-
+/* TODO
 				if(!target && canAttack) {
 					// const room = Game.rooms[this_room];
 					const keeperlairs = creep.room.find(FIND_HOSTILE_STRUCTURES, {
 						filter: (structure) => {
-							return (structure.structureType == STRUCTURE_KEEPER_LAIR /* &&
-                      !!structure.tickToSpawn*/);
+							return (structure.structureType == STRUCTURE_KEEPER_LAIR);
 						}
 					});
 					if(keeperlairs.length > 0) {
@@ -285,7 +284,7 @@ var role = {
 						}
 					}
 				}
-
+*/
 				if(!target && this_room != my_room && canAttack /*!shouldHeal*/) {
 					const my_path_room = my_room_config.path_rooms[this_room];
 					const exit = creep.room.findExitTo(my_path_room);
