@@ -102,14 +102,12 @@ var metrix = {
 											 , WORK: 0
 											 , CARRY: 0
 											 , MOVE: 0};
-			// metrix.updateMovingAverage(Memory.harvestersMovements.Value);
-			// metrix.updateMovingAverage(Memory.harvestersMovements.Count);
-			// metrix.updateMovingAverage(Memory.harvestersMovements.Avg);
-
-			Memory.totals.NeedsCreeps = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].needs,0);
-			Memory.totals.NeedsPlusCreeps = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].needs_plus,0);
-			Memory.totals.NeedsBodys = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].bodys,0);
-			Memory.totals.NeedsCost = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].cost,0);
+			if(!!Memory.CreepsNeedsByWeight) {
+				Memory.totals.NeedsCreeps = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].needs,0);
+				Memory.totals.NeedsPlusCreeps = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].needs_plus,0);
+				Memory.totals.NeedsBodys = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].bodys,0);
+				Memory.totals.NeedsCost = Object.keys(Memory.CreepsNeedsByWeight).reduce((p,c) => p + Memory.CreepsNeedsByWeight[c].cost,0);
+			}
 			Memory.CreepsNumberByType = {};
 			Memory.CreepsNumberByWeight = {};
 			Memory.CreepsMinTicksToLive = {};
