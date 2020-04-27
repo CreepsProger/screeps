@@ -305,7 +305,7 @@ var role = {
 							const range = creep.pos.getRangeTo(target);
 							if(Attacker && canAttack2) {
 								if(creep.getActiveBodyparts(RANGED_ATTACK)) {
-									if(creep.pos.findInRange(FIND_HOSTILE_CREEPS, 3).length > 1)
+									if(creep.pos.findInRange(FIND_HOSTILE_CREEPS, 2).length > 1)
 										err = creep.rangedMassAttack();
 									else err = range<4?creep.rangedAttack(target):ERR_NOT_IN_RANGE;
 								}
