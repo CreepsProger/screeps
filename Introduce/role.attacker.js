@@ -272,8 +272,8 @@ var role = {
 					});
 					if(keeperlairs.length > 0) {
 						var lair = keeperlairs.reduce((p,c) => {
-							const left = ((creep.pos.getRangeTo(p) + 250) * ((!p.tickToSpawn)?0:p.tickToSpawn));
-							const right = ((creep.pos.getRangeTo(c) + 250) * ((!c.tickToSpawn)?0:c.tickToSpawn));
+							const left = ((creep.pos.getRangeTo(p) + 250) * ((!p.ticksToSpawn)?0:p.ticksToSpawn));
+							const right = ((creep.pos.getRangeTo(c) + 250) * ((!c.ticksToSpawn)?0:c.ticksToSpawn));
 							console.log('keeperlairs', 'this_room:', this_room, 'left:', left, JSON.stringify(p));
 							console.log('keeperlairs', 'this_room:', this_room, 'right', right, JSON.stringify(c));
 							return (left < right)? p:c;
