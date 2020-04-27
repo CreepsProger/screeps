@@ -276,7 +276,7 @@ var role = {
 							const right = ((creep.pos.getRangeTo(c) + 250) * ((!c.ticksToSpawn)?0:c.ticksToSpawn));
 							// console.log('keeperlairs', 'this_room:', this_room, 'left:', left, JSON.stringify(p));
 							// console.log('keeperlairs', 'this_room:', this_room, 'right', right, JSON.stringify(c));
-							return (creep.pos.getRangeTo(p)>1 && left < right)? p:c;
+							return (creep.pos.getRangeTo(p)>2 && left < right)? p:c;
 						});
 						if(!!lair) {
 							console.log('lair', 'this_room:', this_room, 'range:', creep.pos.getRangeTo(lair), 'lair:', JSON.stringify(lair));
