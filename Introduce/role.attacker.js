@@ -279,7 +279,7 @@ var role = {
 							return (left < right)? p:c;
 						});
 						if(!!lair) {
-							console.log('lair', 'this_room:', this_room, 'lair:', left, JSON.stringify(lair));
+							console.log('lair', 'this_room:', this_room, 'lair:', JSON.stringify(lair));
 							target = lair;
 						}
 					}
