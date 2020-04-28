@@ -94,8 +94,13 @@ var role = {
 					console.log(creep, role.name, JSON.stringify({this_room:this_room, my_path_room:my_path_room, shard:shard, path_rooms:path_rooms}));
 					if(shard == 'shard') {
 						var portals = creep.room.find(FIND_STRUCTURES, {
-							filter: (structure) => structure.structureType == STRUCTURE_PORTAL });
-							console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, portals:portals}));
+							filter: (structure) => structure.structureType == STRUCTURE_PORTAL &&
+																		 structure.destination.shard == shard});
+					 	console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, portals:portals}));
+						if(portals.length > 0) {
+							target = portals[0];
+							console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, target:target}));
+						}
 					}
 					else {
 						const exit = creep.room.findExitTo(my_path_room);
