@@ -66,6 +66,10 @@ var role = {
 		role.checkOff(creep);
 		role.checkOn(creep);
 
+		if(creep.memory.weight == role.test_weight) {
+			console.log(creep, role.name, JSON.stringify(creep.memory[role.name]));
+		}
+
 		if(creep.memory[role.name].on) {
 
 			if(creep.memory.weight == role.test_weight) {
