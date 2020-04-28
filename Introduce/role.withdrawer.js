@@ -60,11 +60,11 @@ var roleWithdrawer = {
 										 	(!!DP1 && DP1.pos.roomName == creep.room.name && DP1.pos.findPathTo(tombstone.length < 5) ||
 										 	(!!DP2 && DP2.pos.roomName == creep.room.name && DP2.pos.findPathTo(tombstone).length < 5)
 										) &&
-										tools.checkTarget(executer,tombstone.id);
+										tools.checkTarget(executer,tombstone.id)
 						}
 				});
 				if(tombstones.length > 0) {
-					var tombstone = tombstones.reduce((p,c) => tools.checkTarget(executer,p.id) &&
+					var tombstone = tombstones.reduce((p,c) => tools.checkTarget(executer,p.id) &&																						
 																						creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 					if(!!tombstone && tools.checkTarget(executer,tombstone.id)) {
 						target = tools.setTarget(creep,tombstone,tombstone.id,roleWithdrawer.run);
