@@ -76,14 +76,14 @@ var config = {
 													, {name: '6', time: 0, min_weight: 300, max_weight: 309}
 													, {name: '7', time: 0, min_weight: 300, max_weight: 309}
 													]
-											, heal_room: 	{ shard3: {'W29S32'} }
+											, heal_room: 	{ shard: 'shard3', room: 'W29S32'}
 											, path_rooms: { shard3:	{ W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
 																							, W28S33: 'W28S32', W28S32: 'W29S32', W29S32: 'W30S32'
 																							, W30S32: 'W30S31', W30S31: 'W30S30'
 																							, W30S30: 'shard2'}
 																		, shard2:	{ W30S30: 'shard1'}
 																		, shard1:	{ W30S30: 'W31S30', W31S30: 'W32S30', W32S30: 'W33S30'
-																							, W33S30: 'W33S29', W33S29: 'W32S29'}
+																							, W33S30: 'W33S29', W33S29: 'W32S29' }
 																		}
 											, escape_path:{ W29S32: 'W30S32', W30S32: 'W30S33', W30S33: 'W29S33'
 																		, W29S33: 'W28S33'}
