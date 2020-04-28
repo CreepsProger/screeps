@@ -21,6 +21,8 @@ var links = {
 		 , { from: '5e907d35346c517957d236f0', to: '5e97e3b51ddfadb9843d28cc'}
 		 , { from: '5ea1ad570e46b96254e962c2', to: '5e9b8bbe3904c99c7710d3cd'}
 		 , { from: '5e9b91270a28a6137925c1e9', to: '5e9b8bbe3904c99c7710d3cd'}
+		 , { from: '5ea1ad570e46b96254e962c2', to: '5ea7fecf34cf58229a5eec05'}
+		 , { from: '5e9b91270a28a6137925c1e9', to: '5ea7fecf34cf58229a5eec05'}
 	 ],
 
 	 getTargetLinkToTransferEnergy: function(creep, executer, role_run, link_weight) {
