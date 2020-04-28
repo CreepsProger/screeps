@@ -26,18 +26,10 @@ module.exports.loop = function () {
 			console.log( '📙', Math.trunc(Game.time/10000), Game.time%10000, Game.shard.name
 											 , JSON.stringify({name:name})
 										 );
-			// if(!creep.spawning) {
-			// 	creep.memory.rerun = 0;
-			// 	if(Memory.cpu.creep.t < 0.5*Game.cpu.tickLimit || creep.memory.weight < 70)
-			// 		role.run(creep);
-			// 	metrix.cpu.creep_time(creep);
-			// 	if(Memory.cpu.creep.t > 0.9*Game.cpu.tickLimit) {
-			// 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
-			// 								, 'tickLimit:'
-			// 								, Game.cpu.tickLimit
-			// 								, JSON.stringify(Memory.cpu));
-			// 	}
-			// }
+			if(!creep.spawning) {
+				creep.memory.rerun = 0;
+				role.run(creep);
+			}
 		}
 
 		return;
