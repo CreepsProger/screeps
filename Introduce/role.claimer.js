@@ -84,7 +84,7 @@ var role = {
 			if(creep.memory.weight == role.test_weight) {
 				const my_room = creep.memory[role.name].room;
 				const my_room_config = my_shard_config.rooms[my_room];
-				if(!target && (this_room != my_room || (Game.shard.name != my_shard || true)) {
+				if(!target && (this_room != my_room || Game.shard.name != my_shard || true)) {
 					// console.log(creep, role.name, JSON.stringify({my_room:my_room, my_shard_config:my_shard_config}));
 					// console.log(creep, role.name, JSON.stringify({my_room_config:my_room_config}));
 					const path_rooms = my_room_config.path_rooms[Game.shard.name];
