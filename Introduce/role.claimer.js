@@ -88,9 +88,9 @@ var role = {
 					// console.log(creep, role.name, JSON.stringify({my_room:my_room, my_shard_config:my_shard_config}));
 					// console.log(creep, role.name, JSON.stringify({my_room_config:my_room_config}));
 					const path_rooms = my_room_config.path_rooms[Game.shard.name];
-					console.log(creep, role.name, JSON.stringify({shard:Game.shard.name, path_rooms:path_rooms}));
+					// console.log(creep, role.name, JSON.stringify({shard:Game.shard.name, path_rooms:path_rooms}));
 					const my_path_room = path_rooms[this_room];
-					console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room}));
+					console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, substr:my_path_room.substring(0,5)}));
 					if(my_path_room.substring(0,5) == 'shard') {
 						var portals = creep.room.find(FIND_STRUCTURES, {
 							filter: (structure) => structure.structureType == STRUCTURE_PORTAL });
