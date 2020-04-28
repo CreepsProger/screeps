@@ -98,7 +98,7 @@ var role = {
 																		 structure.destination.shard == my_path_room});
 					 	console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, portals:portals}));
 						if(portals.length > 0) {
-							target = portals[0];
+							target = portals[0].pos;
 							console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, target:target}));
 						}
 					}
