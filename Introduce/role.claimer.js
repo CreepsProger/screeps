@@ -64,6 +64,7 @@ var role = {
 	run: function(creep) {
 		if(creep.memory[role.name].shard == 'shard1') {
 			console.log(creep, role.name, JSON.stringify(creep.memory[role.name]));
+			console.log(creep, role.name, JSON.stringify(creep.memory));
 		}
 		role.init(creep);
 		role.checkOff(creep);
