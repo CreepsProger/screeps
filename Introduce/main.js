@@ -12,9 +12,16 @@ const cash = require('cash');
 const role = require('role.claimer');
 
 module.exports.loop = function () {
-	
-	if(Game.shard.name != 'shard3')
+
+	if(Game.shard.name != 'shard3' && (Game.time % constants.TICKS_TO_CHECK_CPU == 0)) {
+		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, Game.shard.name
+								, '📟 CPU:'
+								, JSON.stringify({ '🛐':Game.cpu.limit * constants.TICKS_TO_CHECK_CPU
+																 , "🛒":Game.cpu.bucket
+																 , "🧀": Game.cpu.bucket - Memory.cpu_prev_bucket})
+								);
 		return;
+	}
 
 	if(!conditions.TO_SPAWN_MAIN_ROOMS() && Game.time % 2)
 		return;
@@ -27,7 +34,7 @@ module.exports.loop = function () {
 	// 	Memory.cpu_main_part = {perf:0, clearing:0, metrix:0, config:0, flags:0, links:0, towers:0, spawns:0, metrix2:0, others:0};
 	if(!Memory.cpu_main_part)
 		Memory.cpu_main_part = {};
-	
+
 	Memory.cpu_main_part.perf = Math.round((Memory.cpu_main_part.perf + Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 
 	if(Game.time % constants.TICKS_TO_CHECK_NON_EXISTING == 0) {
