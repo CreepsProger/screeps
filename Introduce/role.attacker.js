@@ -20,7 +20,7 @@ var role = {
 				creep.memory[role.name] = { v: config.version
 																	, on: false
                                   , room: creep.room.name
-  																, shard: Game.shard
+  																, shard: Game.shard.name
 																	};
 			}
 		},
