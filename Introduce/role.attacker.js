@@ -279,7 +279,7 @@ var role = {
 							return (creep.pos.getRangeTo(p)>2 && left < right)? p:c;
 						});
 						if(!!lair) {
-							console.log('lair', 'this_room:', this_room, 'range:', creep.pos.getRangeTo(lair), 'lair:', JSON.stringify(lair));
+							//console.log('lair', 'this_room:', this_room, 'range:', creep.pos.getRangeTo(lair), 'lair:', JSON.stringify(lair));
 							target = lair;
 						}
 					}
