@@ -38,7 +38,7 @@ module.exports.loop = function () {
 																 structure.destination.shard == 'shard1'});
 				if(portals.length > 0) {
 					target = portals[0].pos;
-					tools.moveTo(target);
+					creep.moveTo(target);
 					// console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, target:target}));
 				}
 				role.run(creep);
