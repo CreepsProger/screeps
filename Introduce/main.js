@@ -14,12 +14,32 @@ const role = require('role.claimer');
 module.exports.loop = function () {
 
 	if(Game.shard.name != 'shard3' && (Game.time % constants.TICKS_TO_CHECK_CPU == 0)) {
-		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000, Game.shard.name
+		console.log( '📙⏳', Math.trunc(Game.time/10000), Game.time%10000, Game.shard.name
 								, '📟 CPU:'
 								, JSON.stringify({ '🛐':Game.cpu.limit * constants.TICKS_TO_CHECK_CPU
 																 , "🛒":Game.cpu.bucket
 																 , "🧀": Game.cpu.bucket - Memory.cpu_prev_bucket})
 								);
+
+		for(var name in Game.creeps) {
+			var creep = Game.creeps[name];
+			console.log( '📙', Math.trunc(Game.time/10000), Game.time%10000, Game.shard.name
+											 , JSON.stringify({name:name})
+										 );
+			// if(!creep.spawning) {
+			// 	creep.memory.rerun = 0;
+			// 	if(Memory.cpu.creep.t < 0.5*Game.cpu.tickLimit || creep.memory.weight < 70)
+			// 		role.run(creep);
+			// 	metrix.cpu.creep_time(creep);
+			// 	if(Memory.cpu.creep.t > 0.9*Game.cpu.tickLimit) {
+			// 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
+			// 								, 'tickLimit:'
+			// 								, Game.cpu.tickLimit
+			// 								, JSON.stringify(Memory.cpu));
+			// 	}
+			// }
+		}
+
 		return;
 	}
 
