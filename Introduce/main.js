@@ -31,16 +31,16 @@ module.exports.loop = function () {
 			console.log( '📙', Math.trunc(Game.time/10000), Game.time%10000, Game.shard.name
 											 , JSON.stringify({name:name})
 										 );
-			if(!creep.spawning) {
-				creep.memory.rerun = 0;
-				var portals = creep.room.find(FIND_STRUCTURES, {
-					filter: (structure) => structure.structureType == STRUCTURE_PORTAL &&
-																 structure.destination.shard == 'shard1'});
-				if(portals.length > 0) {
-					target = portals[0].pos;
-					creep.moveTo(target);
-					// console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, target:target}));
-				}
+			// if(!creep.spawning) {
+			// 	creep.memory.rerun = 0;
+			// 	var portals = creep.room.find(FIND_STRUCTURES, {
+			// 		filter: (structure) => structure.structureType == STRUCTURE_PORTAL &&
+			// 													 structure.destination.shard == 'shard1'});
+			// 	if(portals.length > 0) {
+			// 		target = portals[0].pos;
+			// 		creep.moveTo(target);
+			// 		// console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, target:target}));
+			// 	}
 				role.run(creep);
 			}
 		}
