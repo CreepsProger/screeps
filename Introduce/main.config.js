@@ -40,20 +40,64 @@ var config = {
 	  if(!Memory.config ||
 			 !Memory.config.v ||
 			  Memory.config.v != config.version) {
-				Memory.config	= { v: config.version,
-					main_path:{ W29S37: 'W28S37'
-										, W29S35: 'W28S35'
-					 					, W28S37: 'W28S36', W28S36: 'W28S35'
-										, W28S35: 'W28S34', W28S34: 'W28S33'
-										, W27S34: 'W28S34'
-										, W29S33: 'W28S33'
-										, W28S32: 'W28S33'
-										, W29S32: 'W28S32', W28S32: 'W28S33', W28S33: 'W27S33'
-										, W27S33: 'W26S33'
-										, W26S34: 'W26S33'
-										, W26S32: 'W26S33'
-										, W26S33: 'W26S33'
-										, W25S35: 'W25S34', W25S34: 'W25S33'},
+				Memory.config	=
+					{ v: config.version
+					,	main_path:{ W29S37: 'W28S37'
+											, W29S35: 'W28S35'
+					 						, W28S37: 'W28S36', W28S36: 'W28S35'
+											, W28S35: 'W28S34', W28S34: 'W28S33'
+											, W27S34: 'W28S34'
+											, W29S33: 'W28S33'
+											, W28S32: 'W28S33'
+											, W29S32: 'W28S32', W28S32: 'W28S33', W28S33: 'W27S33'
+											, W27S33: 'W26S33'
+											, W26S34: 'W26S33'
+											, W26S32: 'W26S33'
+											, W26S33: 'W26S33'
+											, W25S35: 'W25S34', W25S34: 'W25S33'}
+					, shards:
+						{	shard3:
+						 	{	rooms:
+								{	W30S30:
+									{ containers: {weight: 303}
+									, energy_harvesting:
+										[ {name: '1', time: 0, min_weight: 300, max_weight: 309}
+										, {name: '2', time: 0, min_weight: 300, max_weight: 309}
+										, {name: '3', time: 0, min_weight: 300, max_weight: 309}
+										, {name: '4', time: 0, min_weight: 300, max_weight: 309}
+										]
+									, claiming:
+										[ {name: '1', time: 0, min_weight: 300, max_weight: 309}
+										, {name: '2', time: 0, min_weight: 300, max_weight: 309}
+										]
+									, attacker:
+										[ {name: '1', time: 0, min_weight: 300, max_weight: 309}
+										, {name: '2', time: 0, min_weight: 300, max_weight: 309}
+										, {name: '3', time: 0, min_weight: 300, max_weight: 309}
+										]
+									, heal_room:
+									 	{ shard: 'shard3', room: 'W29S32'}
+									, path_rooms:
+									 	{ shard3:
+											{ W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
+											, W28S33: 'W28S32', W28S32: 'W29S32', W29S32: 'W30S32'
+											, W30S32: 'W30S31', W30S31: 'W30S30'
+											, W30S30: 'shard2'
+											}
+										, shard2:
+											{ W30S30: 'shard1'}
+										, shard1:
+											{ W30S30: 'W31S30', W31S30: 'W32S30', W32S30: 'W33S30'
+											, W33S30: 'W33S29', W33S29: 'W32S29' }
+											}
+										, escape_path:
+											{ W29S32: 'W30S32', W30S32: 'W30S33', W30S33: 'W29S33'
+											, W29S33: 'W28S33'
+										}
+									}
+								}
+							}
+						},
 					rooms : {
 							W30S30: { containers: {weight: 303}
 											, energy_harvesting:
@@ -555,13 +599,14 @@ var config = {
 
 	setRoom: function(creep, role) {
 		var already = false;
-		for(var room_name in Memory.config.rooms) {
-			var room_config = Memory.config.rooms[room_name];
-// 			console.log(room_name, 'room_config:', JSON.stringify(room_config));
-			var role_config = room_config[role];
-// 			console.log(role, 'role_config:', JSON.stringify(role_config));
-			if(role_config === undefined) {
-// 				console.log(room_name, role, 'role_config:', JSON.stringify(role_config));
+		// for(var shard_name in Memory.config.shards) {
+		// 	var shard_config = Memory.config.shards[shard_name];
+		  var shard_name = 'shard3'
+			var shard_config = Memory.config;
+		for(var room_name in shard_config.rooms) {
+			var room_config = shard_config.rooms[room_name]; // console.log(room_name, 'room_config:', JSON.stringify(room_config));
+			var role_config = room_config[role]; // console.log(role, 'role_config:', JSON.stringify(role_config));
+			if(role_config === undefined) { // console.log(room_name, role, 'role_config:', JSON.stringify(role_config));
 				continue;
 			}
 			role_config.forEach(function(slot) {
@@ -569,15 +614,18 @@ var config = {
 					if(slot.name === creep.name) {
 						slot.name = '-' + creep.name;
 						slot.time = Game.time;
-						config.log('🏢', creep.memory[role].room, role, creep, 'setRoom remove slot:', JSON.stringify(slot));
+						config.log('🏢', '['+creep.memory[role].shard+']', creep.memory[role].room
+													, role, creep, 'setRoom remove slot:', JSON.stringify(slot));
 					}
 				}
 				else {
 					if(slot.name === creep.name) {
+						creep.memory[role].shard = shard_name;
 						creep.memory[role].room = room_name;
 						slot.time = Game.time;
 						already = true;
-						config.log('🏢', creep.memory[role].room, role, creep, 'setRoom update slot:', JSON.stringify(slot));
+						config.log('🏢', '['+creep.memory[role].shard+']', creep.memory[role].room
+													, role, creep, 'setRoom update slot:', JSON.stringify(slot));
 					}
 					else if(slot.time < Game.time - 10 &&
 									creep.memory.weight >= slot.min_weight &&
@@ -585,13 +633,18 @@ var config = {
             const old_name = slot.name;
             const old_time = slot.time;
 						var reset = (creep.memory[role].room != room_name);
+						creep.memory[role].shard = shard_name;
 						creep.memory[role].room = room_name;
 						slot.name = creep.name;
 						slot.time = Game.time;
 						already = true;
-						config.log('🏢', creep.memory[role].room, role, creep, 'setRoom reset('+reset+') slot:', JSON.stringify(slot), 'prev slot:', old_name, old_time);
+						config.log('🏢', '['+creep.memory[role].shard+']', creep.memory[role].room
+													, role, creep, 'setRoom reset('+reset+') slot:', JSON.stringify(slot)
+													, 'prev slot:', old_name, old_time);
 						if (reset) {
-								console.log('🏢', creep.memory[role].room, role, creep, 'setRoom reset('+reset+') slot:', JSON.stringify(slot), 'prev slot:', old_name, old_time);
+								console.log('🏢', '['+creep.memory[role].shard+']', creep.memory[role].room
+															 , role, creep, 'setRoom reset('+reset+') slot:', JSON.stringify(slot)
+															 , 'prev slot:', old_name, old_time);
 						}
 					}
 				}

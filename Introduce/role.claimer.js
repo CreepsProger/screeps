@@ -32,6 +32,7 @@ var role = {
 			creep.memory[role.name] = { v: config.version
 																, on: false
 																, room: creep.room.name
+																, shard: Game.shard
 																};
 		}
 	},
@@ -75,8 +76,21 @@ var role = {
 			const this_room_config = Memory.config.rooms[this_room];
 			const my_room = creep.memory[role.name].room;
 			const my_room_config = Memory.config.rooms[my_room];
+			const my_shard = creep.memory[role.name].shard;
+			const my_shard_config = Memory.config.shards[my_shard];
 
 			var target;
+
+			if(creep.memory.weight == role.test_weight) {
+				const my_room = creep.memory[role.name].room;
+				const my_room_config = my_shard_config[my_room];
+				if(!target && (this_room != my_room || Game.shard != my_shard)) {
+					const my_path_room = my_room_config.path_rooms[Game.shard][this_room];
+					const exit = creep.room.findExitTo(my_path_room);
+					target = creep.pos.findClosestByPath(exit);
+					console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, exit:exit, target:target}));
+				}
+			}
 
 			if(!target && this_room != my_room) {
 				const my_path_room = my_room_config.path_rooms[this_room];

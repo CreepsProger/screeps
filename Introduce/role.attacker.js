@@ -19,7 +19,8 @@ var role = {
 				 creep.memory[role.name].v != config.version) {
 				creep.memory[role.name] = { v: config.version
 																	, on: false
-																	, room: creep.room.name
+                                  , room: creep.room.name
+  																, shard: Game.shard
 																	};
 			}
 		},
