@@ -44,8 +44,8 @@ var role = {
 
 	checkOn: function(creep) {
 		if(!creep.memory[role.name].on &&
-			 creep.getActiveBodyparts(CLAIM) > 0 &&
-			 creep.memory.rerun) {
+			 creep.getActiveBodyparts(CLAIM) > 0 // && creep.memory.rerun
+		 ) {
 
 			creep.memory[role.name].on = true;
 // 			creep.memory[role.name].room = role.target_room;
@@ -58,12 +58,18 @@ var role = {
 		}
 	},
 
+	test_weight: 300,
+
 	run: function(creep) {
 		role.init(creep);
 		role.checkOff(creep);
 		role.checkOn(creep);
 
 		if(creep.memory[role.name].on) {
+
+			if(creep.memory.weight == role.test_weight) {
+				console.log(creep, role.name, JSON.stringify(creep.room));
+			}
 
 			const this_room = creep.room.name;
 			const this_room_config = Memory.config.rooms[this_room];
@@ -83,7 +89,7 @@ var role = {
 			}
 
 			metrix.cpu.step_time(creep, role.name, '🗝');
-			
+
 			if(target)
 			{
 				var err = ERR_NOT_IN_RANGE;
