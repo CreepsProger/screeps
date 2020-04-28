@@ -69,7 +69,7 @@ var role = {
 		if(creep.memory[role.name].on) {
 
 			if(creep.memory.weight == role.test_weight) {
-				// console.log(creep, role.name, JSON.stringify(creep.room));
+				console.log(creep, role.name, JSON.stringify(creep.room));
 			}
 
 			const this_room = creep.room.name;
