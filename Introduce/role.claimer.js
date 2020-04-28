@@ -95,7 +95,7 @@ var role = {
 					if(shard == 'shard') {
 						var portals = creep.room.find(FIND_STRUCTURES, {
 							filter: (structure) => structure.structureType == STRUCTURE_PORTAL &&
-																		 structure.destination.shard == shard});
+																		 structure.destination.shard == my_path_room});
 					 	console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, portals:portals}));
 						if(portals.length > 0) {
 							target = portals[0];
