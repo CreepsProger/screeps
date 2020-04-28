@@ -43,7 +43,6 @@ var config = {
 				Memory.config	= { v: config.version,
 					main_path:{ W29S37: 'W28S37'
 										, W29S35: 'W28S35'
-										, W29S32: 'W28S32', W28S32: 'W28S33'
 					 					, W28S37: 'W28S36', W28S36: 'W28S35'
 										, W28S35: 'W28S34', W28S34: 'W28S33'
 										, W27S34: 'W28S34'
@@ -482,7 +481,8 @@ var config = {
 												 , {name: '6', time: 0, min_weight: 200, max_weight: 209}
 												 ]
 									   , heal_room: 'W25S33'
-										 , path_rooms: { W28S33: 'W27S33', W27S33: 'W26S33', W26S33: 'W25S33', W25S33: 'W25S34'
+										 , path_rooms: { W29S32: 'W28S32', W28S32: 'W28S33', W28S33: 'W27S33'
+										 							 , W27S33: 'W26S33', W26S33: 'W25S33', W25S33: 'W25S34'
 										 							 , W28S35: 'W28S34', W28S34: 'W28S33'}
 										 , escape_path:{ W25S34: 'W25S33'}
 									 },
