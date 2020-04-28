@@ -33,6 +33,14 @@ module.exports.loop = function () {
 										 );
 			if(!creep.spawning) {
 				creep.memory.rerun = 0;
+				var portals = creep.room.find(FIND_STRUCTURES, {
+					filter: (structure) => structure.structureType == STRUCTURE_PORTAL &&
+																 structure.destination.shard == 'shard1'});
+				if(portals.length > 0) {
+					target = portals[0].pos;
+					tools.moveTo(target);
+					// console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, target:target}));
+				}
 				role.run(creep);
 			}
 		}
