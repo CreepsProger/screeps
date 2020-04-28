@@ -13,13 +13,17 @@ const role = require('role.claimer');
 
 module.exports.loop = function () {
 
-	if(Game.shard.name != 'shard3' && (Game.time % constants.TICKS_TO_CHECK_CPU == 0)) {
+	if(Game.shard.name != 'shard3') {
+		if(Game.time % constants.TICKS_TO_CHECK_CPU == 0) {
 		console.log( '📙⏳', Math.trunc(Game.time/10000), Game.time%10000, Game.shard.name
 								, '📟 CPU:'
 								, JSON.stringify({ '🛐':Game.cpu.limit * constants.TICKS_TO_CHECK_CPU
 																 , "🛒":Game.cpu.bucket
 																 , "🧀": Game.cpu.bucket - Memory.cpu_prev_bucket})
 								);
+		}
+
+		config.run();
 
 		for(var name in Game.creeps) {
 			var creep = Game.creeps[name];
