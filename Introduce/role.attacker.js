@@ -220,7 +220,7 @@ var role = {
     		if(!target && this_room != my_room && creep.hitsMax == creep.hits) {
     			const exitDir = Game.map.findExit(this_room , my_path_room);
     			target = creep.pos.findClosestByPath(exitDir);
-					if(target.x > 1 && target.x < 49)
+					if(!!target && target.x > 1 && target.x < 49)
 						target.x += Game.time%3 - 1;
     			// console.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room, 'target', target);
     		}
@@ -279,9 +279,18 @@ var role = {
 							return (creep.pos.getRangeTo(p)>2 && left < right)? p:c;
 						});
 						if(!!lair) {
-							console.log('lair', 'this_room:', this_room, 'range:', creep.pos.getRangeTo(lair), 'lair:', JSON.stringify(lair));
+							//console.log('lair', 'this_room:', this_room, 'range:', creep.pos.getRangeTo(lair), 'lair:', JSON.stringify(lair));
 							target = lair;
 						}
+					}
+				}
+
+				if(!target && canAttack2) {
+					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 5);
+					if(targets.length > 0) {
+						var hostile = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS);
+						creep.attack(hostile);
+						creep.rangedAttack(hostile);
 					}
 				}
 

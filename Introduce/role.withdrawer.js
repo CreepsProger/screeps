@@ -53,18 +53,18 @@ var roleWithdrawer = {
 
 			if(!target) {
 				var tombstones = creep.room.find(FIND_TOMBSTONES,  {
-					filter: (structure) => {
-						return structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-							 		 (	!structure.pos.findInRange(FIND_HOSTILE_CREEPS, 5).length > 0 ||
+					filter: (tombstone) => {
+						return tombstone.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
+							 		 (	!tombstone.pos.findInRange(FIND_HOSTILE_CREEPS, 5).length > 0 ||
 										 	(!!DP && DP.pos.roomName == creep.room.name) ||
-										 	(!!DP1 && DP1.pos.roomName == creep.room.name && DP1.pos.findPathTo(dropped).length < 5) ||
-										 	(!!DP2 && DP2.pos.roomName == creep.room.name && DP2.pos.findPathTo(dropped).length < 5)
+										 	(!!DP1 && DP1.pos.roomName == creep.room.name && DP1.pos.findPathTo(tombstone).length < 5) ||
+										 	(!!DP2 && DP2.pos.roomName == creep.room.name && DP2.pos.findPathTo(tombstone).length < 5)
 										) &&
-										tools.checkTarget(executer,structure.id);
+										tools.checkTarget(executer,tombstone.id);
 						}
 				});
 				if(tombstones.length > 0) {
-					var tombstone = tombstones.reduce((p,c) => tools.checkTarget(executer,p.id) &&
+					var tombstone = tombstones.reduce((p,c) => tools.checkTarget(executer,p.id) &&	
 																						creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 					if(!!tombstone && tools.checkTarget(executer,tombstone.id)) {
 						target = tools.setTarget(creep,tombstone,tombstone.id,roleWithdrawer.run);
