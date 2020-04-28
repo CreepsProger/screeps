@@ -285,6 +285,15 @@ var role = {
 					}
 				}
 
+				if(!target && canAttack2) {
+					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 5);
+					if(targets.length > 0) {
+						var hostile = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS);
+						creep.attack(hostile);
+						creep.rangedAttack(hostile);
+					}
+				}
+
 				if(!target && this_room != my_room && canAttack /*!shouldHeal*/) {
 					const my_path_room = my_room_config.path_rooms[this_room];
 					const exit = creep.room.findExitTo(my_path_room);
