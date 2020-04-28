@@ -89,8 +89,9 @@ var role = {
 					// console.log(creep, role.name, JSON.stringify({my_room_config:my_room_config}));
 					const path_rooms = my_room_config.path_rooms[Game.shard.name];
 					console.log(creep, role.name, JSON.stringify({shard:Game.shard.name, path_rooms:path_rooms}));
-					// const my_path_room = my_room_config.path_rooms[Game.shard][this_room];
-					// const exit = creep.room.findExitTo(my_path_room);
+					const my_path_room = path_rooms[this_room];
+					const exit = creep.room.findExitTo(my_path_room);
+					console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, exit:exit}));
 					// target = creep.pos.findClosestByPath(exit);
 					// console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, exit:exit, target:target}));
 				}
