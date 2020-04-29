@@ -105,14 +105,18 @@ var tools = {
 		return (executer === undefined)? true:tools.targets[id] === undefined;
 	},
 
-	targets: {time:0},
+	targets: {time:0,prev1:'',prev2:'',prev3:''},
 	setTarget: function(creep,target,id,run) {
 		var t = Game.cpu.getUsed();
 		if(tools.targets.time != Game.time) {
-			tools.targets = {time:Game.time};
+			tools.targets.time = time:Game.time;
 		}
 
 		var mytarget;
+
+		if(target == prev2 && prev == prev3) {
+			return mytarget;
+		}
 
 		if(!target && !id) {
 			return mytarget;
@@ -121,6 +125,9 @@ var tools = {
 		var creep2;
 		var rerun_creep2 = false;
 		if(!tools.targets[id]) {
+			prev3 = prev2;
+			prev2 = prev1;
+			prev1 = tools.targets[id];
 			tools.targets[id] = creep.id;
 			mytarget = target;
 			return mytarget;
@@ -139,6 +146,9 @@ var tools = {
 					if(err == OK) {
 						rerun_creep2 = true;
 						mytarget = target;
+						prev3 = prev2;
+						prev2 = prev1;
+						prev1 = tools.targets[id];
 						tools.targets[id] = creep.id;
 						run(creep2,creep);
 					}
