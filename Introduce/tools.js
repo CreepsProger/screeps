@@ -114,7 +114,7 @@ var tools = {
 
 		var mytarget;
 
-		if(target == prev2 && prev == prev3) {
+		if(target == prev2 && prev1 == prev3) {
 			return mytarget;
 		}
 
