@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 188,
+	version: 189,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -601,7 +601,7 @@ var config = {
 		var already = false;
 		// for(var shard_name in Memory.config.shards) {
 		// 	var shard_config = Memory.config.shards[shard_name];
-		  var shard_name = Game.shard.name; //'shard3'
+		  var shard_name = 'shard3' // Game.shard.name
 			var shard_config = Memory.config;
 		for(var room_name in shard_config.rooms) {
 			var room_config = shard_config.rooms[room_name]; // console.log(room_name, 'room_config:', JSON.stringify(room_config));
