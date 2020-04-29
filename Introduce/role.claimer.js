@@ -85,23 +85,23 @@ var role = {
 
 			if(tools.getWeight(creep.name) == role.test_weight) {// TODO
 				const my_room = creep.memory[role.name].room;
+				console.log(creep, role.name, JSON.stringify({my_room:my_room, my_shard_config:my_shard_config}));
 				const my_room_config = my_shard_config.rooms[my_room];
 				if(!target && (this_room != my_room || Game.shard.name != my_shard || true)) {
-					// console.log(creep, role.name, JSON.stringify({my_room:my_room, my_shard_config:my_shard_config}));
 					// console.log(creep, role.name, JSON.stringify({my_room_config:my_room_config}));
 					const path_rooms = my_room_config.path_rooms[Game.shard.name];
 					// console.log(creep, role.name, JSON.stringify({shard:Game.shard.name, path_rooms:path_rooms}));
 					const my_path_room = path_rooms[this_room];
 					const shard = my_path_room.substring(0,5);
-					console.log(creep, role.name, JSON.stringify({this_room:this_room, my_path_room:my_path_room, shard:shard, path_rooms:path_rooms}));
+					// console.log(creep, role.name, JSON.stringify({this_room:this_room, my_path_room:my_path_room, shard:shard, path_rooms:path_rooms}));
 					if(shard == 'shard') {
 						var portals = creep.room.find(FIND_STRUCTURES, {
 							filter: (structure) => structure.structureType == STRUCTURE_PORTAL &&
 																		 structure.destination.shard == my_path_room});
-					 	console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, portals:portals}));
+					 	// console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, portals:portals}));
 						if(portals.length > 0) {
 							target = portals[0].pos;
-							console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, target:target}));
+							// console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, target:target}));
 						}
 					}
 					else {
