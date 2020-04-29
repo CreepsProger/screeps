@@ -116,7 +116,7 @@ var tools = {
 
 		if(target == tools.targets.prev2 &&
 			 tools.targets.prev1 == tools.targets.prev3) {
-			return mytarget;
+			// return mytarget;
 		}
 
 		if(!target && !id) {
