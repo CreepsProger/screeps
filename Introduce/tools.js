@@ -117,7 +117,7 @@ var tools = {
 
 		if(id == tools.targets_prev.prev2[creep.id] &&
 			 tools.targets_prev.prev1[creep.id] == tools.targets_prev.prev3[creep.id]) {
-			return mytarget;
+			// return mytarget; TODO stak
 		}
 
 		if(!target && !id) {
