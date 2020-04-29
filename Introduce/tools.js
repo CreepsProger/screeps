@@ -114,7 +114,8 @@ var tools = {
 
 		var mytarget;
 
-		if(target == prev2 && prev1 == prev3) {
+		if(target == tools.targets.prev2 &&
+			 tools.targets.prev1 == tools.targets.prev3) {
 			return mytarget;
 		}
 
@@ -125,9 +126,9 @@ var tools = {
 		var creep2;
 		var rerun_creep2 = false;
 		if(!tools.targets[id]) {
-			prev3 = prev2;
-			prev2 = prev1;
-			prev1 = tools.targets[id];
+			tools.targets.prev3 = tools.targets.prev2;
+			tools.targets.prev2 = tools.targets.prev1;
+			tools.targets.prev1 = tools.targets[id];
 			tools.targets[id] = creep.id;
 			mytarget = target;
 			return mytarget;
@@ -146,9 +147,9 @@ var tools = {
 					if(err == OK) {
 						rerun_creep2 = true;
 						mytarget = target;
-						prev3 = prev2;
-						prev2 = prev1;
-						prev1 = tools.targets[id];
+						tools.targets.prev3 = tools.targets.prev2;
+						tools.targets.prev2 = tools.targets.prev1;
+						tools.targets.prev1 = tools.targets[id];
 						tools.targets[id] = creep.id;
 						run(creep2,creep);
 					}
