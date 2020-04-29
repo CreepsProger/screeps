@@ -105,7 +105,7 @@ var tools = {
 		return (executer === undefined)? true:tools.targets[id] === undefined;
 	},
 
-	targets_prev: {prev1:'',prev2:'',prev3:''},
+	targets_prev: {prev_time:{},prev1:{},prev2:{},prev3:{}},
 	targets: {time:0},
 	setTarget: function(creep,target,id,run) {
 		var t = Game.cpu.getUsed();
@@ -115,8 +115,8 @@ var tools = {
 
 		var mytarget;
 
-		if(id == tools.targets_prev.prev2 &&
-			 tools.targets_prev.prev1 == tools.targets_prev.prev3) {
+		if(id == tools.targets_prev.prev2[creep.id] &&
+			 tools.targets_prev.prev1[creep.id] == tools.targets_prev.prev3[creep.id]) {
 			return mytarget;
 		}
 
@@ -127,9 +127,9 @@ var tools = {
 		var creep2;
 		var rerun_creep2 = false;
 		if(!tools.targets[id]) {
-			tools.targets_prev.prev3 = tools.targets_prev.prev2;
-			tools.targets_prev.prev2 = tools.targets_prev.prev1;
-			tools.targets_prev.prev1 = tools.targets[id];
+			tools.targets_prev.prev3[creep.id] = tools.targets_prev.prev2[creep.id];
+			tools.targets_prev.prev2[creep.id] = tools.targets_prev.prev1[creep.id];
+			tools.targets_prev.prev1[creep.id] = id;
 			tools.targets[id] = creep.id;
 			mytarget = target;
 			return mytarget;
@@ -148,9 +148,9 @@ var tools = {
 					if(err == OK) {
 						rerun_creep2 = true;
 						mytarget = target;
-						tools.targets_prev.prev3 = tools.targets_prev.prev2;
-						tools.targets_prev.prev2 = tools.targets_prev.prev1;
-						tools.targets_prev.prev1 = tools.targets[id];
+						tools.targets_prev.prev3[creep.id] = tools.targets_prev.prev2[creep.id];
+						tools.targets_prev.prev2[creep.id] = tools.targets_prev.prev1[creep.id];
+						tools.targets_prev.prev1[creep.id] = id;
 						tools.targets[id] = creep.id;
 						run(creep2,creep);
 					}
