@@ -109,7 +109,7 @@ var tools = {
 	setTarget: function(creep,target,id,run) {
 		var t = Game.cpu.getUsed();
 		if(tools.targets.time != Game.time) {
-			tools.targets.time = time:Game.time;
+			tools.targets.time = Game.time;
 		}
 
 		var mytarget;
