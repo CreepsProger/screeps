@@ -50,11 +50,13 @@ var role = {
 
 			creep.memory[role.name].on = true;
 // 			creep.memory[role.name].room = role.target_room;
+			const old_shard = creep.memory[role.name].shard;
 			const old_room = creep.memory[role.name].room;
 			config.setRoom(creep, role.name);
+			const new_shard = creep.memory[role.name].shard;
 			const new_room = creep.memory[role.name].room;
-			if(new_room != old_room) {
-				console.log(creep, role.name, old_room, '->', new_room);
+			if(new_shard != old_shard || new_room != old_room) {
+				console.log(creep, role.name, '['+old_shard+']'+old_room, '->', '['+new_shard+']'+new_room);
 			}
 		}
 	},
@@ -62,6 +64,9 @@ var role = {
 	test_weight: 300,
 
 	run: function(creep) {
+		if(tools.getWeight(creep.name) == role.test_weight) {// TODO: remove
+			console.log(creep, role.name, JSON.stringify({role_memory:creep.memory[role.name], this_shard: Game.shard.name}));
+		}
 
 		role.init(creep);
 		role.checkOff(creep);
