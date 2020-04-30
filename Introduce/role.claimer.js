@@ -94,7 +94,7 @@ var role = {
 				// console.log(creep, role.name, JSON.stringify({my_shard:my_shard, my_room:my_room, my_shard_config:my_shard_config}));
 				const my_room_config = my_shard_config.rooms[my_room];
 				if(!target && (this_room != my_room || Game.shard.name != my_shard || true)) {
-					// console.log(creep, role.name, JSON.stringify({my_room_config:my_room_config}));
+					console.log(creep, role.name, JSON.stringify({my_room_config:my_room_config}));
 					const path_rooms = my_room_config.path_rooms[Game.shard.name];
 					// console.log(creep, role.name, JSON.stringify({shard:Game.shard.name, path_rooms:path_rooms}));
 					const my_path_room = path_rooms[this_room];
