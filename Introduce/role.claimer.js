@@ -44,7 +44,7 @@ var role = {
 	},
 
 	checkOn: function(creep) {
-		if(!creep.memory[role.name].on &&
+		if((!creep.memory[role.name].on || tools.getWeight(creep.name) == role.test_weight) &&
 			 creep.getActiveBodyparts(CLAIM) > 0 // && creep.memory.rerun
 		 ) {
 
