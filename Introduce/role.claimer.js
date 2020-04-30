@@ -77,6 +77,7 @@ var role = {
 
 			if(tools.getWeight(creep.name) == role.test_weight) {
 				console.log(creep, role.name, JSON.stringify(creep.room));
+				config.setRoom(creep, role.name);
 			}
 
 			const this_room = creep.room.name;
