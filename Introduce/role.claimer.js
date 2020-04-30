@@ -89,7 +89,7 @@ var role = {
 
 			if(tools.getWeight(creep.name) == role.test_weight) {// TODO
 				const my_shard = creep.memory[role.name].shard;
-				const my_shard_config = Memory.config.shards[my_shard];
+				const my_shard_config = Memory.config.shards['shard3'];
 				const my_room = creep.memory[role.name].room;
 				// console.log(creep, role.name, JSON.stringify({my_shard:my_shard, my_room:my_room, my_shard_config:my_shard_config}));
 				const my_room_config = my_shard_config.rooms[my_room];
