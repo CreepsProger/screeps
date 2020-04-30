@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 191,
+	version: 192,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -58,7 +58,7 @@ var config = {
 					, shards:
 						{	shard3:
 						 	{	rooms:
-								{	W32S28:
+								{	W33S28:
 									{ containers: {weight: 303}
 									, energy_harvesting:
 										[ {name: '1', time: 0, min_weight: 300, max_weight: 309}
@@ -88,7 +88,7 @@ var config = {
 											{ W30S30: 'shard1'}
 										, shard1:
 											{ W30S30: 'W31S30', W31S30: 'W32S30', W32S30: 'W33S30'
-											, W33S30: 'W33S29', W33S29: 'W32S28', W32S28: 'W32S28'
+											, W33S30: 'W33S29', W33S29: 'W33S28', W33S28: 'W33S28'
 										 	}
 										}
 										, escape_path:
@@ -100,7 +100,7 @@ var config = {
 							}
 						},
 					rooms : {
-							W32S28: { containers: {weight: 303}
+							W33S28: { containers: {weight: 303}
 											, energy_harvesting:
 													[ {name: '1', time: 0, min_weight: 300, max_weight: 309}
 													, {name: '2', time: 0, min_weight: 300, max_weight: 309}
@@ -128,7 +128,7 @@ var config = {
 																							, W30S30: 'shard2'}
 																		, shard2:	{ W30S30: 'shard1'}
 																		, shard1:	{ W30S30: 'W31S30', W31S30: 'W32S30', W32S30: 'W33S30'
-																							, W33S30: 'W33S29', W33S29: 'W32S28', W32S28: 'W32S28' }
+																							, W33S30: 'W33S29', W33S29: 'W33S28', W33S28: 'W33S28' }
 																		}
 											, escape_path:{ W29S32: 'W30S32', W30S32: 'W30S33', W30S33: 'W29S33'
 																		, W29S33: 'W28S33'}
