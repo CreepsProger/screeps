@@ -21,7 +21,7 @@ module.exports.loop = function () {
 																 , "🛒":Game.cpu.bucket
 																 , "🧀": Game.cpu.bucket - Memory.cpu_prev_bucket})
 								);
-			const err = Game.cpu.setShardLimits({shard1:40,shard2:10,shard3:30});
+			const err = Game.cpu.setShardLimits({shard0:50,shard1:5,shard2:5,shard3:20});
 			console.log( '📙⏳', Math.trunc(Game.time/10000), Game.time%10000, Game.shard.name
 									, '📟 setShardLimits err:'
 									, err
