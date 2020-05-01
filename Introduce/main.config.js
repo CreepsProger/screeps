@@ -96,7 +96,7 @@ var config = {
 								}
 							}
 						}
-					}
+					},
 					{	shard3:
 						{ rooms:
 							{	W25S33:
