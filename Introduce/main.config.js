@@ -558,7 +558,7 @@ var config = {
 					continue;
 				}
 				if(tools.getWeight(creep.name) == 300) {
-					console.log('setRoom:', JSON.stringify({shard_name:shard_name,room_name:room_name,role:role,role_config:role_config}));
+					// console.log('setRoom:', JSON.stringify({shard_name:shard_name,room_name:room_name,role:role,role_config:role_config}));
 				}
 				role_config.forEach(function(slot) {
 					if(already) {
@@ -579,8 +579,8 @@ var config = {
 														, role, creep, 'setRoom update slot:', JSON.stringify(slot));
 						}
 						else if(slot.time < Game.time - 10 &&
-										creep.memory.weight >= slot.min_weight &&
-										creep.memory.weight <= slot.max_weight) {
+										tools.getWeight(creep.name) >= slot.min_weight &&
+										tools.getWeight(creep.name) <= slot.max_weight) {
 	            const old_name = slot.name;
 	            const old_time = slot.time;
 							var reset = (creep.memory[role].room != room_name);
