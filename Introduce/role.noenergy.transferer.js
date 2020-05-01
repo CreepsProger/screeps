@@ -22,7 +22,7 @@ var roleNoEnergyTransferer = {
         // }
 
         if(creep.memory.noenergytransfering) {
-            var target;
+            var target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
             if(!target) {
                 target = creep.room.storage;
             }

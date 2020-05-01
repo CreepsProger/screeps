@@ -123,10 +123,8 @@ var role = {
 				}
 			}
 
-			if(!target && this_room != my_room && tools.getWeight(creep.name) != role.test_weight) {
-				const my_path_room = my_room_config.path_rooms[this_room];
-				const exit = creep.room.findExitTo(my_path_room);
-				target = creep.pos.findClosestByPath(exit);
+			if(!target)
+				target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
 			}
 
 			if(!target) {

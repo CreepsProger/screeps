@@ -39,17 +39,7 @@ var roleRepairer = {
 
 			if(creep.memory.repairing) {
 
-				var target;
-
-        const my_shard = creep.memory[constants.ROLE_ENERGY_HARVESTING].shard;
-				const my_shard_config = Memory.config.shards[my_shard];
-				const my_room_config = my_shard_config.rooms[my_room];
-
-				if(!target && this_room != my_room) {
-					const my_path_room = my_room_config.path_rooms[this_room];
-					const exit = creep.room.findExitTo(my_path_room);
-					target = creep.pos.findClosestByPath(exit);
-				}
+				var target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
 
 				if(!creep.memory.target ||
 					 !creep.memory.target.id ||
