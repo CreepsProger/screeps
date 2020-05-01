@@ -548,6 +548,7 @@ var config = {
 		var already = false;
 		for(var shard_name in Memory.config.shards) {
 			var shard_config = Memory.config.shards[shard_name];
+			console.log('setRoom:', JSON.stringify({shard_name:shard_name,shard_config:shard_config}));
 		  // var shard_name = 'shard3' // Game.shard.name
 			// var shard_config = Memory.config;
 			for(var room_name in shard_config.rooms) {
