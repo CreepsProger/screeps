@@ -61,7 +61,7 @@ var roleEnergyTransferer = {
 			const B = !!Game.flags['B'] && Game.flags['B'].pos.roomName == my_room;
 			const UU = !!Game.flags['UU'] && Game.flags['UU'].pos.roomName == my_room;
 
-			var target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
+			var target;
 
 			if(!target) {
 				 target = links.getTargetLinkToTransferEnergy(creep, executer, roleEnergyTransferer.run, this_room_config.containers.weight);
