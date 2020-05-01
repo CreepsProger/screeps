@@ -73,7 +73,8 @@ var config = {
 		}
 
 		console.log(creep, target, JSON.stringify({creep:creep, target:target}));
-		if(creep.room.name != target.pos.roomName) {
+		if((!!target.pos && creep.room.name != target.pos.roomName) ||
+		 		(!target.pos && creep.room.name != target.roomName) {
 			const my_path_room = Memory.config.main_path[creep.room.name];
 			const exit = creep.room.findExitTo(my_path_room);
 			target = creep.pos.findClosestByPath(exit);
