@@ -72,18 +72,6 @@ var role = {
 
 		if(creep.memory[role.name].on) {
 
-			if(tools.getWeight(creep.name) == role.test_weight) {
-				// console.log(creep, role.name, JSON.stringify({room:creep.room, config:Memory.config}));
-				// config.setRoom(creep, role.name);
-			}
-
-			const this_room = creep.room.name;
-			const my_room = creep.memory[role.name].room;
-			const my_shard = creep.memory[role.name].shard;
-			const my_shard_config = Memory.config.shards[my_shard];
-			const this_room_config = my_shard_config.rooms[this_room];
-			const my_room_config = my_shard_config.rooms[my_room];
-
 			var target = config.findPathToMyRoom(creep,role.name);
 
 			if(!target) {
@@ -102,6 +90,10 @@ var role = {
 					if(!target.my && C) {
 						action = 'claiming controller';
 						err = creep.claimController(target);
+
+						if(tools.getWeight(creep.name) == role.test_weight) {
+							console.log(creep, role.name, JSON.stringify({err:err, action:action}));
+						}
 					}
 					else if(!target.my){
 						if(OK != err) {
