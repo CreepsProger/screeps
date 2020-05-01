@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 201,
+	version: 202,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -92,10 +92,10 @@ var config = {
 						{	W57S52:
 							{ containers: {weight: 403}
 							, energy_harvesting:
-								[ {name: '1', time: 0, min_weight: 400, max_weight: 409}
-								, {name: '2', time: 0, min_weight: 400, max_weight: 409}
-								, {name: '3', time: 0, min_weight: 400, max_weight: 409}
-								, {name: '4', time: 0, min_weight: 400, max_weight: 409}
+								[ {name: '1', time: 0, min_weight: 300, max_weight: 409}
+								, {name: '2', time: 0, min_weight: 300, max_weight: 409}
+								, {name: '3', time: 0, min_weight: 300, max_weight: 409}
+								, {name: '4', time: 0, min_weight: 300, max_weight: 409}
 								]
 							, claiming:
 								[ {name: '1', time: 0, min_weight: 400, max_weight: 409}
@@ -137,10 +137,10 @@ var config = {
 						{	W29S31:
 							{ containers: {weight: 303}
 							, energy_harvesting:
-								[ {name: '1', time: 0, min_weight: 300, max_weight: 309}
-								, {name: '2', time: 0, min_weight: 300, max_weight: 309}
-								, {name: '3', time: 0, min_weight: 300, max_weight: 309}
-								, {name: '4', time: 0, min_weight: 300, max_weight: 309}
+								[ {name: '1', time: 0, min_weight: 1300, max_weight: 1309}
+								, {name: '2', time: 0, min_weight: 1300, max_weight: 1309}
+								, {name: '3', time: 0, min_weight: 1300, max_weight: 1309}
+								, {name: '4', time: 0, min_weight: 1300, max_weight: 1309}
 								]
 							, claiming:
 								[ {name: '1', time: 0, min_weight: 300, max_weight: 309}
