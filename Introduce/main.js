@@ -21,6 +21,7 @@ module.exports.loop = function () {
 																 , "🛒":Game.cpu.bucket
 																 , "🧀": Game.cpu.bucket - Memory.cpu_prev_bucket})
 								);
+			Game.cpu.setShardLimits({shard1:40,shard2:10,shard3:30});
 		}
 
 		config.run();
