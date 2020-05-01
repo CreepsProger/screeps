@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 197,
+	version: 198,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -88,7 +88,7 @@ var config = {
 									, W26S34: 'W26S33'
 									, W26S32: 'W26S33'
 									, W26S33: 'W26S33'
-									, W25S35: 'W25S34', W25S34: 'W25S33'}
+									, W25S35: 'W25S34', W25S34: 'W25S33', W25S33: 'W25S33'}
 			, shards:
 				{	shard1:
 				 	{	rooms:
