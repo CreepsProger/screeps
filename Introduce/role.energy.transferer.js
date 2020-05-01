@@ -45,9 +45,11 @@ var roleEnergyTransferer = {
 			var t = Game.cpu.getUsed();
 
 			const this_room = creep.room.name;
-			const this_room_config = Memory.config.rooms[this_room];
 			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
-			const my_room_config = Memory.config.rooms[my_room];
+			const my_shard = creep.memory[constants.ROLE_ENERGY_HARVESTING].shard;
+			const my_shard_config = Memory.config.shards[my_shard];
+			const this_room_config = my_shard_config[this_room];
+			const my_room_config = my_shard_config[my_room];
 			// const this_room_sources_is_empty = !creep.pos.findClosestByRange(FIND_SOURCES, { no use because: storage->containers->storage
 			// const a_source_is_not_near = !creep.pos.findInRange(FIND_SOURCES, 2, {
 			// 	filter: (source) => source.energy > 0 && source.room.name == this_room
