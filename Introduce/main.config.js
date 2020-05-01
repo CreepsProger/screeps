@@ -34,7 +34,7 @@ var config = {
 			// const my_shard = creep.memory[role.name].shard;
 			// const my_shard_config = Memory.config.shards['shard3'];
 			// const my_room = 'W29S31';//creep.memory[role.name].room;
-			console.log(creep, role.name, JSON.stringify({my_shard:my_shard, my_room:my_room, my_room_config:my_room_config}));
+			console.log(creep, role_name, JSON.stringify({my_shard:my_shard, my_room:my_room, my_room_config:my_room_config}));
 			// const my_room_config = my_shard_config.rooms[my_room];
 			if(!target && (this_room != my_room || Game.shard.name != my_shard)) {
 				// console.log(creep, role.name, JSON.stringify({my_room_config:my_room_config}));
