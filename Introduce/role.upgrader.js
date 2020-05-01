@@ -65,7 +65,7 @@ var roleUpgrader = {
 			if(Game.time%constants.TICKS_TO_CHECK_STOP_UPGRADING == 0)
 				roleUpgrader.updateStopUpgradingCondition(creep);
 
-			const my_shard = creep.memory[role.name].shard;
+			const my_shard = creep.memory[constants.ROLE_ENERGY_HARVESTING].shard;
 			const my_shard_config = Memory.config.shards[my_shard];
 			const this_room_config = my_shard_config[this_room];
 			const my_room_config = my_shard_config[my_room];
