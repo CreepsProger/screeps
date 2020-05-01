@@ -77,8 +77,8 @@ var tools = {
 		var err = creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
 
 		if (err == ERR_NO_PATH) {
-			// if(err != OK)
-			// 	console.log('🔜', creep, err, 'moving from', JSON.stringify(creep.pos), 'to', JSON.stringify(target));
+			if(err != OK)
+				console.log('🔜', creep, err, 'moving from', JSON.stringify(creep.pos), 'to', JSON.stringify(target));
 
       if (creep.pos.x <= 1) {
 				return creep.move(RIGHT);
