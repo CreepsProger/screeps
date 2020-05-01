@@ -40,7 +40,7 @@ var config = {
 		if(!!shard && shard == 'shard') {
 			const dest_shard = my_path_room;
 			const dest_room = path_rooms[dest_shard][this_room];
-			console.log(creep, role_name, JSON.stringify({dest_shard:dest_shard, dest_room:dest_room}));
+			// console.log(creep, role_name, JSON.stringify({dest_shard:dest_shard, dest_room:dest_room}));
 			var portals = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => structure.structureType == STRUCTURE_PORTAL &&
 															 structure.destination.shard == dest_shard &&
