@@ -42,15 +42,7 @@ var roleBuilder = {
 
 			if(creep.memory.building) {
 
-				const my_room_config = Memory.config.rooms[my_room];
-
-				var target;
-
-				if(!target && this_room != my_room) {
-					const my_path_room = my_room_config.path_rooms[this_room];
-					const exit = creep.room.findExitTo(my_path_room);
-					target = creep.pos.findClosestByPath(exit);
-				}
+				var target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
 
 				const this_room_sources_are_empty = tools.areEmptySources(creep);
 				const this_room_is_being_claiming = !!creep.room.controller && !creep.room.controller.my;
