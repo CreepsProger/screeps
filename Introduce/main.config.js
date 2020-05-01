@@ -55,8 +55,10 @@ var config = {
 		if(!!target.id || !!target.pos) {
 			creep.memory.target = {id:target.id, pos:target.pos, time: Game.time};
 		}
+		if(tools.getWeight(creep.name) == 201) {
+			console.log(creep, target, JSON.stringify({creep:creep, target:target}));
+		}
 
-		// console.log(creep, target, JSON.stringify({creep:creep, target:target}));
 		if(!!target.pos && creep.room.name != target.pos.roomName) {
 			const my_path_room = Memory.config.main_path[creep.room.name];
 			const exit = creep.room.findExitTo(my_path_room);
