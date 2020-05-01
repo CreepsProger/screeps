@@ -50,9 +50,9 @@ var roleEnergyTransferer = {
 			const my_shard_config = Memory.config.shards[my_shard];
 			const this_room_config = my_shard_config.rooms[this_room];
 			const my_room_config = my_shard_config.rooms[my_room];
-			console.log( '🚸', Math.trunc(Game.time/10000), Game.time%10000, Game.shard.name
-									, 'link:', JSON.stringify({my_shard:my_shard,this_room:this_room, this_room_config:this_room_config})
-									);
+			// console.log( '🚸', Math.trunc(Game.time/10000), Game.time%10000, Game.shard.name
+			// 						, 'link:', JSON.stringify({my_shard:my_shard,this_room:this_room, this_room_config:this_room_config})
+			// 						);
 
 			// const this_room_sources_is_empty = !creep.pos.findClosestByRange(FIND_SOURCES, { no use because: storage->containers->storage
 			// const a_source_is_not_near = !creep.pos.findInRange(FIND_SOURCES, 2, {

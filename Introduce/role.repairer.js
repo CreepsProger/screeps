@@ -43,7 +43,7 @@ var roleRepairer = {
 
         const my_shard = creep.memory[constants.ROLE_ENERGY_HARVESTING].shard;
 				const my_shard_config = Memory.config.shards[my_shard];
-				const my_room_config = my_shard_config[my_room];
+				const my_room_config = my_shard_config.rooms[my_room];
 
 				if(!target && this_room != my_room) {
 					const my_path_room = my_room_config.path_rooms[this_room];

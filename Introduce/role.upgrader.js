@@ -67,8 +67,8 @@ var roleUpgrader = {
 
 			const my_shard = creep.memory[constants.ROLE_ENERGY_HARVESTING].shard;
 			const my_shard_config = Memory.config.shards[my_shard];
-			const this_room_config = my_shard_config[this_room];
-			const my_room_config = my_shard_config[my_room];
+			const this_room_config = my_shard_config.rooms[this_room];
+			const my_room_config = my_shard_config.rooms[my_room];
 			const this_room_sources_are_empty = tools.areEmptySources(creep);
 			const this_room_containers_are_full = cash.areFullContainers(creep);
 			const U = !!Game.flags['U'] && (Game.flags['U'].pos.roomName == my_room);
