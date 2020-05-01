@@ -21,6 +21,7 @@ var config = {
 
 	findPathToMyRoom: function(creep,role_name) {
 
+		console.log(creep, target, JSON.stringify({role_name:role_name, creep:creep}));
 		const this_room = creep.room.name;
 		const my_room = creep.memory[role_name].room;
 		if(this_room == my_room)
@@ -72,7 +73,7 @@ var config = {
 			creep.memory.target = {id:target.id, pos:target.pos, time: Game.time};
 		}
 
-		console.log(creep, target, JSON.stringify({creep:creep, target:target}));
+		// console.log(creep, target, JSON.stringify({creep:creep, target:target}));
 		if((!!target.pos && creep.room.name != target.pos.roomName) ||
 		 		(!target.pos && creep.room.name != target.roomName)) {
 			const my_path_room = Memory.config.main_path[creep.room.name];
