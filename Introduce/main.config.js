@@ -146,10 +146,10 @@ var config = {
 						{	W29S31:
 							{ containers: {weight: 303}
 							, energy_harvesting:
-								[ {name: '1', time: 0, min_weight: 1300, max_weight: 1309}
-								, {name: '2', time: 0, min_weight: 1300, max_weight: 1309}
-								, {name: '3', time: 0, min_weight: 1300, max_weight: 1309}
-								, {name: '4', time: 0, min_weight: 1300, max_weight: 1309}
+								[ {name: '1', time: 0, min_weight: 300, max_weight: 309}
+								, {name: '2', time: 0, min_weight: 300, max_weight: 309}
+								, {name: '3', time: 0, min_weight: 300, max_weight: 309}
+								, {name: '4', time: 0, min_weight: 300, max_weight: 309}
 								]
 							, claiming:
 								[ {name: '1', time: 0, min_weight: 300, max_weight: 309}
@@ -190,7 +190,34 @@ var config = {
 					}
 				, shard3:
 					{ rooms:
-						{	W25S33:
+						{	W30S30:
+							{ containers: {weight: 333}
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 330, max_weight: 339}
+								, {name: '2', time: 0, min_weight: 330, max_weight: 339}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 330, max_weight: 339}
+								, {name: '2', time: 0, min_weight: 330, max_weight: 339}
+								, {name: '3', time: 0, min_weight: 330, max_weight: 339}
+								]
+							, heal_room:
+							 	{ shard: 'shard3', room: 'W29S32'}
+							, path_rooms:
+							 	{ shard3:
+									{ W28S35: 'W28S34', W28S34: 'W28S33'
+									, W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
+									, W28S33: 'W28S32', W28S32: 'W29S32', W29S32: 'W30S32'
+									, W30S32: 'W30S31', W30S31: 'W30S30'
+									, W30S30: 'W30S30'
+									}
+								}
+								, escape_path:
+									{ W30S30: 'W30S31', W30S31: 'W30S32', W30S32: 'W29S32'
+									, W29S32: 'W29S32'
+								}
+							},
+							W25S33:
 							{ containers: {weight: 33}
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 30, max_weight: 39}
