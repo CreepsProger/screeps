@@ -65,6 +65,10 @@ var config = {
 			target = creep.pos.findClosestByPath(exit);
 		}
 
+		if(tools.getWeight(creep.name) == 201) {
+			console.log(creep, JSON.stringify({weight:tools.getWeight(creep.name), this_room:creep.room.name, target:target}));
+		}
+
 		return tools.moveTo(creep,target);
 	},
 
