@@ -90,10 +90,6 @@ var role = {
 					if(!target.my && C) {
 						action = 'claiming controller';
 						err = creep.claimController(target);
-
-						if(tools.getWeight(creep.name) == role.test_weight) {
-							console.log(creep, role.name, JSON.stringify({err:err, action:action}));
-						}
 					}
 					else if(!target.my){
 						if(OK != err) {

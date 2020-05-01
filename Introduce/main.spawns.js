@@ -218,7 +218,7 @@ var spawns = {
 											 , [ 50907,  70506,  80406]  // 4 1300
 											 , [ 61410,  90909, 120408]  // 5 1800
 											 , [130911, 140711, 160410]  // 6 2300
-											 , [102216, 161616, 250817]  // 7 5600
+											 , [151025, 161616, 250817]  // 7 5600
                        ];
         const CARIER = [ [     0,      0,      0]  // 0  000
 											 , [   101,    201,    402]  // 1  300
@@ -290,7 +290,7 @@ var spawns = {
 							if(Sp5) spawns.tryCreateCreep(spawn, WORKER[7][H], 174, 2, 2);
 							if(Sp5) spawns.tryCreateCreep(spawn, CARIER[4][H], 171, 1, 1);
 							// if(Sp5) spawns.tryCreateCreep(spawn,   CLAIMER[L], 300, 1, 1);
-							if(Sp5) spawns.tryCreateCreep(spawn, WORKER[7][H], 304, 1, 1);
+							if(Sp5) spawns.tryCreateCreep(spawn, WORKER[7][L], 304, 2, 2);
 						}
 					}
 
