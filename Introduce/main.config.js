@@ -33,9 +33,9 @@ var config = {
 		const path_rooms = my_room_config.path_rooms;
 		const path_rooms_by_shard = path_rooms[Game.shard.name];
 		const my_path_room = !!path_rooms_by_shard?path_rooms_by_shard[this_room]:path_rooms[this_room];
-		// if(tools.getWeight(creep.name) >= 300) {
-		// 	console.log(creep, role_name, JSON.stringify({this_room:this_room, my_path_room:my_path_room}));
-		// }
+		if(tools.getWeight(creep.name) >= 300) {
+			console.log(creep, role_name, JSON.stringify({my_shard:my_shard, this_room:this_room, my_path_room:my_path_room}));
+		}
 		const shard = my_path_room.substring(0,5);
 		if(!!shard && shard == 'shard') {
 			var portals = creep.room.find(FIND_STRUCTURES, {
