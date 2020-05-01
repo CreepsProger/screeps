@@ -38,10 +38,13 @@ var config = {
 		}
 		const shard = my_path_room.substring(0,5);
 		if(!!shard && shard == 'shard') {
+			const dest_shard = my_path_room;
+			const dest_room = Memory.config.shards[dest_shard].rooms[this_room];
+			console.log(creep, role.name, JSON.stringify({dest_shard:dest_shard, dest_room:dest_room}));
 			var portals = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => structure.structureType == STRUCTURE_PORTAL &&
-															 structure.destination.shard == my_path_room});
-		 	// console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, portals:portals}));
+															 structure.destination.shard == dest_shard &&
+														 	 structure.destination.room == dest_room});
 			if(portals.length > 0) {
 				return portals[0].pos;
 			}
