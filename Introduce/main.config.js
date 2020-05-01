@@ -21,7 +21,7 @@ var config = {
 
 	findPathToMyRoom: function(creep,role_name) {
 
-		console.log(creep, target, JSON.stringify({role_name:role_name, creep:creep}));
+		console.log(creep, JSON.stringify({role_name:role_name, creep:creep}));
 		const this_room = creep.room.name;
 		const my_room = creep.memory[role_name].room;
 		if(this_room == my_room)
