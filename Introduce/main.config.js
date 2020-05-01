@@ -34,7 +34,7 @@ var config = {
 		const path_rooms_by_shard = path_rooms[Game.shard.name];
 		const my_path_room = !!path_rooms_by_shard?path_rooms_by_shard[this_room]:path_rooms[this_room];
 		if(tools.getWeight(creep.name) >= 300) {// TODO
-			var target;
+			// var target;
 			// const my_shard = creep.memory[role.name].shard;
 			// const my_shard_config = Memory.config.shards['shard3'];
 			// const my_room = 'W29S31';//creep.memory[role.name].room;
@@ -42,18 +42,18 @@ var config = {
 			// const my_room_config = my_shard_config.rooms[my_room];
 			// console.log(creep, role.name, JSON.stringify({my_room_config:my_room_config}));
 			console.log(creep, role_name, JSON.stringify({this_room:this_room, my_path_room:my_path_room}));
-			const shard = my_path_room.substring(0,5);
+		}
+		const shard = my_path_room.substring(0,5);
 			// console.log(creep, role.name, JSON.stringify({this_room:this_room, my_path_room:my_path_room, shard:shard, path_rooms:path_rooms}));
-			if(!!shard && shard == 'shard') {
-				var portals = creep.room.find(FIND_STRUCTURES, {
-					filter: (structure) => structure.structureType == STRUCTURE_PORTAL &&
-																 structure.destination.shard == my_path_room});
-			 	// console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, portals:portals}));
-				if(portals.length > 0) {
-					target = portals[0].pos;
-					// console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, target:target}));
-				}
-				return target;
+		if(!!shard && shard == 'shard') {
+			var portals = creep.room.find(FIND_STRUCTURES, {
+				filter: (structure) => structure.structureType == STRUCTURE_PORTAL &&
+															 structure.destination.shard == my_path_room});
+		 	// console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, portals:portals}));
+			if(portals.length > 0) {
+				// target = portals[0].pos;
+				// console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, target:target}));
+				return portals[0].pos;
 			}
 		}
 		const exit = creep.room.findExitTo(my_path_room);
