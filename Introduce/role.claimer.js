@@ -55,7 +55,7 @@ var role = {
 			config.setRoom(creep, role.name);
 			const new_shard = creep.memory[role.name].shard;
 			const new_room = creep.memory[role.name].room;
-			if(new_shard != old_shard || new_room != old_room || tools.getWeight(creep.name) == role.test_weight) {
+			if(new_shard != old_shard || new_room != old_room) {
 				console.log(creep, role.name, '['+old_shard+']'+old_room, '->', '['+new_shard+']'+new_room);
 			}
 		}
