@@ -43,7 +43,7 @@ var config = {
 				const path_rooms_by_shard = path_rooms[Game.shard.name];
 				// console.log(creep, role.name, JSON.stringify({shard:Game.shard.name, path_rooms:path_rooms}));
 				const my_path_room = !!path_rooms_by_shard?path_rooms_by_shard[this_room]:path_rooms[this_room];
-				console.log(creep, role.name, JSON.stringify({this_room:this_room, my_path_room:my_path_room}));
+				console.log(creep, role_name, JSON.stringify({this_room:this_room, my_path_room:my_path_room}));
 				const shard = my_path_room.substring(0,5);
 				// console.log(creep, role.name, JSON.stringify({this_room:this_room, my_path_room:my_path_room, shard:shard, path_rooms:path_rooms}));
 				if(!!shard && shard == 'shard') {
@@ -59,7 +59,7 @@ var config = {
 				else {
 					const exit = creep.room.findExitTo(my_path_room);
 					target = creep.pos.findClosestByPath(exit);
-					console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, exit:exit, target:target}));
+					console.log(creep, role_name, JSON.stringify({my_path_room:my_path_room, exit:exit, target:target}));
 				}
 				// console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, exit:exit, target:target}));
 			}
