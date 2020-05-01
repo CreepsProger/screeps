@@ -87,7 +87,7 @@ var role = {
 			const this_room_config = my_shard_config.rooms[this_room];
 			const my_room_config = my_shard_config.rooms[my_room];
 
-			var target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
+			var target = config.findPathToMyRoom(creep,role.name);
 
 			if(!target) {
 				target = cash.getController(creep.room);
