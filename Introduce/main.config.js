@@ -55,18 +55,11 @@ var config = {
 		if(!!target.id || !!target.pos) {
 			creep.memory.target = {id:target.id, pos:target.pos, time: Game.time};
 		}
-		if(tools.getWeight(creep.name) == 201) {
-			console.log(creep, JSON.stringify({weight:tools.getWeight(creep.name), this_room:creep.room.name, pos:creep.pos, target:target}));
-		}
 
 		if(!!target.pos && creep.room.name != target.pos.roomName) {
 			const my_path_room = Memory.config.main_path[creep.room.name];
 			const exit = creep.room.findExitTo(my_path_room);
 			target = creep.pos.findClosestByPath(exit);
-		}
-
-		if(tools.getWeight(creep.name) == 201) {
-			console.log(creep, JSON.stringify({weight:tools.getWeight(creep.name), this_room:creep.room.name, target:target}));
 		}
 
 		return tools.moveTo(creep,target);
