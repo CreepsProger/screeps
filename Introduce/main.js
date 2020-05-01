@@ -13,7 +13,7 @@ const role = require('role.claimer');
 
 module.exports.loop = function () {
 
-	if(Game.shard.name != 'shard3') {
+	if(false && Game.shard.name != 'shard3') {
 		if(Game.time % constants.TICKS_TO_CHECK_CPU == 0) {
 		console.log( '📙⏳', Math.trunc(Game.time/10000), Game.time%10000, Game.shard.name
 								, '📟 CPU:'
