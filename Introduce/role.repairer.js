@@ -41,7 +41,9 @@ var roleRepairer = {
 
 				var target;
 
-				const my_room_config = Memory.config.rooms[my_room];
+        const my_shard = creep.memory[constants.ROLE_ENERGY_HARVESTING].shard;
+				const my_shard_config = Memory.config.shards[my_shard];
+				const my_room_config = my_shard_config[my_room];
 
 				if(!target && this_room != my_room) {
 					const my_path_room = my_room_config.path_rooms[this_room];
@@ -90,7 +92,7 @@ var roleRepairer = {
 						}
 					}
 				}
-				
+
 				metrix.cpu.step_time(creep, 'repairing', '🔧');
 
 				if(target) {
