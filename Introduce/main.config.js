@@ -31,6 +31,7 @@ var config = {
 		const my_room_config = my_shard_config.rooms[my_room];
 		const my_path_room = my_room_config.path_rooms[this_room];
 		if(tools.getWeight(creep.name) >= 300) {// TODO
+			var target;
 			// const my_shard = creep.memory[role.name].shard;
 			// const my_shard_config = Memory.config.shards['shard3'];
 			// const my_room = 'W29S31';//creep.memory[role.name].room;
