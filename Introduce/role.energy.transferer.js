@@ -390,6 +390,10 @@ var roleEnergyTransferer = {
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.say('🔜💡');
 					err = config.moveTo(creep, target);
+					if(tools.getWeight(creep.name) == 201 && err != OK) {
+						console.log(creep, JSON.stringify({weight:tools.getWeight(creep.name), err:err, target:target}));
+					}
+
 					if(!!Game.flags['LET'] || !!Game.flags['LE'] || !!Game.flags['L']) {
 						console.log( '🔜💡', Math.trunc(Game.time/10000), Game.time%10000
 												, creep.name
