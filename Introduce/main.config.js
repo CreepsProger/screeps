@@ -72,7 +72,7 @@ var config = {
 			creep.memory.target = {id:target.id, pos:target.pos, time: Game.time};
 		}
 
-		console.log(creep, target, JSON.stringify({creep_room_name:creep.room.name, target_pos_roomName:target.pos.roomName}));
+		console.log(creep, target, JSON.stringify({creep:creep, target:target}));
 		if(creep.room.name != target.pos.roomName) {
 			const my_path_room = Memory.config.main_path[creep.room.name];
 			const exit = creep.room.findExitTo(my_path_room);
