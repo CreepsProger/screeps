@@ -56,7 +56,7 @@ var config = {
 			creep.memory.target = {id:target.id, pos:target.pos, time: Game.time};
 		}
 		if(tools.getWeight(creep.name) == 201) {
-			console.log(creep, target, JSON.stringify({creep:creep, target:target}));
+			console.log(creep, JSON.stringify({weight:tools.getWeight(creep.name), target:target}));
 		}
 
 		if(!!target.pos && creep.room.name != target.pos.roomName) {
