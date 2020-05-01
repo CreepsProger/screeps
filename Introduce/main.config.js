@@ -19,6 +19,19 @@ var config = {
 			}
 	},
 
+	findPathToMyRoom: function(creep,role_name) {
+		const this_room = creep.room.name;
+		const my_room = creep.memory[role_name].room;
+		if(this_room == my_room)
+			return null;
+		const my_shard = creep.memory[role_name].shard;
+		const my_shard_config = Memory.config.shards[my_shard];
+		const my_room_config = my_shard_config.rooms[my_room];
+		const my_path_room = my_room_config.path_rooms[this_room];
+		const exit = creep.room.findExitTo(my_path_room);
+		return creep.pos.findClosestByPath(exit);
+	},
+
 	moveTo: function(creep,target) {
 
 		if(!!target.id || !!target.pos) {

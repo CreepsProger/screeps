@@ -90,20 +90,21 @@ var role = {
 			var target;
 
 			if(tools.getWeight(creep.name) == role.test_weight) {// TODO
-				const my_shard = creep.memory[role.name].shard;
-				const my_shard_config = Memory.config.shards['shard3'];
-				const my_room = 'W29S31';//creep.memory[role.name].room;
-				// console.log(creep, role.name, JSON.stringify({my_shard:my_shard, my_room:my_room, my_shard_config:my_shard_config}));
-				const my_room_config = my_shard_config.rooms[my_room];
+				// const my_shard = creep.memory[role.name].shard;
+				// const my_shard_config = Memory.config.shards['shard3'];
+				// const my_room = 'W29S31';//creep.memory[role.name].room;
+				console.log(creep, role.name, JSON.stringify({my_shard:my_shard, my_room:my_room, my_room_config:my_room_config}));
+				// const my_room_config = my_shard_config.rooms[my_room];
 				if(!target && (this_room != my_room || Game.shard.name != my_shard || true)) {
-					console.log(creep, role.name, JSON.stringify({my_room_config:my_room_config}));
-					const path_rooms = my_room_config.path_rooms[Game.shard.name];
-					console.log(creep, role.name, JSON.stringify({shard:Game.shard.name, path_rooms:path_rooms}));
-					const my_path_room = path_rooms[this_room];
+					// console.log(creep, role.name, JSON.stringify({my_room_config:my_room_config}));
+					const path_rooms = my_room_config.path_rooms;
+					const path_rooms_by_shard = path_rooms[Game.shard.name];
+					// console.log(creep, role.name, JSON.stringify({shard:Game.shard.name, path_rooms:path_rooms}));
+					const my_path_room = !!path_rooms_by_shard?path_rooms_by_shard[this_room]:path_rooms[this_room];
 					console.log(creep, role.name, JSON.stringify({this_room:this_room, my_path_room:my_path_room}));
 					const shard = my_path_room.substring(0,5);
 					// console.log(creep, role.name, JSON.stringify({this_room:this_room, my_path_room:my_path_room, shard:shard, path_rooms:path_rooms}));
-					if(shard == 'shard') {
+					if(!!shard && shard == 'shard') {
 						var portals = creep.room.find(FIND_STRUCTURES, {
 							filter: (structure) => structure.structureType == STRUCTURE_PORTAL &&
 																		 structure.destination.shard == my_path_room});

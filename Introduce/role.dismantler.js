@@ -9,6 +9,8 @@ const tools = require('tools');
 
 var roleDismantler = {
 
+	test_weight: 304,
+
 	time:0,
 	flags:{D:{}, D1:{}, D2:{}},
 	cashFlags: function() {
@@ -42,18 +44,8 @@ var roleDismantler = {
 			if(creep.memory.dismantling) {
 
 				const this_room = creep.room.name;
-				const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
-				const my_shard = creep.memory[constants.ROLE_ENERGY_HARVESTING].shard;
-				const my_shard_config = Memory.config.shards[my_shard];
-				const my_room_config = my_shard_config.rooms[my_room];
 
-				var target;
-
-				if(!target && this_room != my_room) {
-					const my_path_room = my_room_config.path_rooms[this_room];
-					const exit = creep.room.findExitTo(my_path_room);
-					target = creep.pos.findClosestByPath(exit);
-				}
+				var target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
 
 				if(!creep.memory.target)
 					creep.memory.target = {id:'0', pos:{}, time: 0};
@@ -63,11 +55,11 @@ var roleDismantler = {
 				const D1 = roleDismantler.flags.D1;
 				const D2 = roleDismantler.flags.D2;
 				if(!target &&
-					 ( (!!D && D.pos.roomName == my_room)
+					 ( (!!D && D.pos.roomName == this_room)
 						||
-						(!!D1 && D1.pos.roomName == my_room)
+						(!!D1 && D1.pos.roomName == this_room)
 						||
-						(!!D2 && D2.pos.roomName == my_room)
+						(!!D2 && D2.pos.roomName == this_room)
 					 )) {
 					var structures = creep.room.find(FIND_STRUCTURES, {
 						filter: (structure) => {
@@ -86,14 +78,14 @@ var roleDismantler = {
 								  structure.structureType == STRUCTURE_FACTORY ||
 								  structure.structureType == STRUCTURE_OBSERVER ||
 								  structure.structureType == STRUCTURE_POWER_SPAWN)) {
-								if(!!D1 && D1.pos.roomName == my_room && D1.pos.getRangeTo(structure) < 11-D1.color) {
+								if(!!D1 && D1.pos.roomName == this_room && D1.pos.getRangeTo(structure) < 11-D1.color) {
 									return true;
 								}
-								if(!!D2 && D2.pos.roomName == my_room && D2.pos.getRangeTo(structure) < 11-D2.color) {
+								if(!!D2 && D2.pos.roomName == this_room && D2.pos.getRangeTo(structure) < 11-D2.color) {
 									return true;
 								}
 							}
-							return !!D && D.pos.roomName == my_room &&
+							return !!D && D.pos.roomName == this_room &&
 								!structure.my &&
 								!(structure.structureType != STRUCTURE_CONTROLLER &&
 									structure.structureType != STRUCTURE_CONTAINER &&
