@@ -28,9 +28,11 @@ module.exports.loop = function () {
 
 		for(var name in Game.creeps) {
 			var creep = Game.creeps[name];
-			console.log( '📙', Math.trunc(Game.time/10000), Game.time%10000, Game.shard.name
-											 , JSON.stringify({name:name})
+			if(Game.time % constants.TICKS_TO_CHECK_CPU == 0) {
+				console.log( '📙', Math.trunc(Game.time/10000), Game.time%10000, Game.shard.name
+											 	, JSON.stringify({name:name})
 										 );
+			}
 			if(!creep.spawning) {
 				creep.memory.rerun = 0;
 			// 	var portals = creep.room.find(FIND_STRUCTURES, {
