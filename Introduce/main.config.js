@@ -557,7 +557,9 @@ var config = {
 				if(role_config === undefined) { // console.log(room_name, role, 'role_config:', JSON.stringify(role_config));
 					continue;
 				}
-				console.log('setRoom:', JSON.stringify({shard_name:shard_name,room_name:room_name,role:role,role_config:role_config}));
+				if(tools.getWeight(creep.name) == 300) {
+					console.log('setRoom:', JSON.stringify({shard_name:shard_name,room_name:room_name,role:role,role_config:role_config}));
+				}
 				role_config.forEach(function(slot) {
 					if(already) {
 						if(slot.name === creep.name) {
