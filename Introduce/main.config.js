@@ -548,7 +548,7 @@ var config = {
 		var already = false;
 		for(var shard_name in Memory.config.shards) {
 			var shard_config = Memory.config.shards[shard_name];
-			console.log('setRoom:', JSON.stringify({shard_name:shard_name,shard_config:shard_config}));
+			// console.log('setRoom:', JSON.stringify({shard_name:shard_name,shard_config:shard_config}));
 		  // var shard_name = 'shard3' // Game.shard.name
 			// var shard_config = Memory.config;
 			for(var room_name in shard_config.rooms) {
@@ -557,6 +557,7 @@ var config = {
 				if(role_config === undefined) { // console.log(room_name, role, 'role_config:', JSON.stringify(role_config));
 					continue;
 				}
+				console.log('setRoom:', JSON.stringify({shard_name:shard_name,room_name:room_name,role:role,role_config:role_config}));
 				role_config.forEach(function(slot) {
 					if(already) {
 						if(slot.name === creep.name) {
