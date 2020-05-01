@@ -40,7 +40,8 @@ var config = {
 		if(!!shard && shard == 'shard') {
 			const dest_shard = my_path_room;
 			var dest_room = path_rooms[dest_shard][this_room];
-			dest_room = !!dest_room?dest_room:this_room;
+			const shard2 = dest_room.substring(0,5);
+			dest_room = (!!shard2 && shard2 == 'shard')?this_room:dest_room;
 			if(tools.getWeight(creep.name) >= 400) {
 				console.log(creep, role_name, JSON.stringify({dest_shard:dest_shard, dest_room:dest_room}));
 			}
