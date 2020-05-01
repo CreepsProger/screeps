@@ -123,7 +123,7 @@ var role = {
 				}
 			}
 
-			if(!target)
+			if(!target) {
 				target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
 			}
 
