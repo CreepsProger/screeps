@@ -223,6 +223,9 @@ var towers = {
  						if(structure.structureType == STRUCTURE_RAMPART && r) {
  							return structure.hits < 1600000*mr;// 8000 E = 10 * 8000 / 800 = 100
  						}
+						if(structure.structureType == STRUCTURE_WALL || structure.structureType == STRUCTURE_RAMPART) {
+							return false;
+						}
 
 						return structure.hitsMax - structure.hits > structure.hitsMax/
 							(2+98*(!!towers.prev_target[i] && structure.id == towers.prev_target[i])) ;
