@@ -178,21 +178,21 @@ var roleEnergyTransferer = {
 					filter: (creep2) => {
 						return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > creep2.store.getUsedCapacity(RESOURCE_ENERGY) &&
 							!creep2.getActiveBodyparts(WORK) &&
-							creep2.memory.weight < creep.memory.weight;
+							tools.getWeight(creep2.name) < tools.getWeight(creep.name);
 					}
 				});
 
 				const U = !!Game.flags['U'] && Game.flags['U'].pos.roomName == my_room;
 
 				if((!targs || !targs.length || targs.length == 0) &&
-				  (this_room_config.containers.weight < creep.memory.weight && !U && !UU)) {
+				  (this_room_config.containers.weight < tools.getWeight(creep.name) && !U && !UU)) {
 					targs = cash.getContainers(creep.room).filter((cont) =>
 						!!cont && !!cont.store && cont.store.getFreeCapacity() > 0);
 				}
 
 				if((!targs || !targs.length) && !!creep.room.storage &&
 						creep.getActiveBodyparts(WORK)  && !U && !UU &&
-						this_room_config.containers.weight < creep.memory.weight &&
+						this_room_config.containers.weight < tools.getWeight(creep.name) &&
 						creep.room.storage.store.getFreeCapacity() > 0) {
 					targs = [creep.room.storage];
 				}
