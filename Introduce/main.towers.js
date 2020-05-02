@@ -205,9 +205,6 @@ var towers = {
 			}
 
 			if(R || MW || MR) {
-			 	console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
-	 											, JSON.stringify({mr:mr, mw:mw, R:R, MW:MW, MR:MR})
-	 									);
 	 		}
 
 		 	if(!target && (!NR || R)) {
@@ -218,6 +215,9 @@ var towers = {
 							 				structure.pos.x == R.pos.x &&
 											structure.pos.y == R.pos.y)?true:!R;
 						if(structure.structureType == STRUCTURE_WALL && r) {
+							console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
+				 											, JSON.stringify({r:r,mr:mr, mw:mw, R:R, structure:structure})
+				 									);
  							return structure.hits < 32000*mw;// 8000 E = 10 * 8000 / 800 = 100
  						}
  						if(structure.structureType == STRUCTURE_RAMPART && r) {
