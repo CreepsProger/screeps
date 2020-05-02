@@ -69,6 +69,12 @@ var spawns = {
 				mittl_to_spawn = range < 50? body.length*3 + range + 15: body.length*3;
 			}
 			const needed_plus = Math.min(needed+plus+minus, max_needed) + (mittl < mittl_to_spawn);
+
+			if(Game.shard.name != 'shard0') {
+				console.log('Memory.CreepsNeedsByWeight:'
+					, JSON.stringify({weight:weight, CreepsNeedsByWeight:Memory.CreepsNeedsByWeight}));
+			}
+
 			Memory.CreepsNeedsByWeight[weight] = {needs: needed, needs_plus: needed_plus, bodys: body.length*needed, cost: cost*needed};
 			const needsNumber = needed_plus - existsNumber;
 			if((!last_game_time_created_creep[spawn.name] || last_game_time_created_creep[spawn.name] != Game.time) && needsNumber > 0) {
