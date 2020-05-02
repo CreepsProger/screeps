@@ -204,9 +204,6 @@ var towers = {
 			 	}
 			}
 
-			if(R || MW || MR) {
-	 		}
-
 		 	if(!target && (!NR || R)) {
  				target = tower.pos.findClosestByRange(FIND_STRUCTURES, {
 					filter: (structure) => {
