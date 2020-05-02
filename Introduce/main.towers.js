@@ -214,7 +214,7 @@ var towers = {
 						const r = (!!R &&
 							 				structure.pos.roomName == R.pos.roomName &&
 							 				structure.pos.x == R.pos.x &&
-											structure.pos.y == R.pos.y)?(11-R.color):1;
+											structure.pos.y == R.pos.y)?(11-R.color)*(11-R.secondaryColor):1;
 						if(structure.structureType == STRUCTURE_WALL && r) {
  							const repair = structure.hits < constants.STRUCTURE_WALL_HITS*mw*r;// 8000 E = 10 * 8000 / 800 = 100
 							if(repair && (Game.time % constants.TICKS_TO_CHECK_CPU == 0)) {
