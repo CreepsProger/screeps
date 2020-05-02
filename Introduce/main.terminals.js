@@ -12,7 +12,8 @@ var terminals = {
 		// console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000);
 
 		var all = cash.getAllMyTerminals();
-		if(!all) return;
+		if(!all || all.length == 0)
+		 	return;
 		var from = all.reduce((p,c) => {
 			return (
 								(	(!!p && !!p.store)? p.store.getUsedCapacity(RESOURCE_ENERGY):0)
