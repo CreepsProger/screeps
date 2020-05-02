@@ -5,7 +5,7 @@ const cash = require('cash');
 var towers = {
 
 	time:0,
-	flags:{D:{}, D1:{}, D2:{}, NR1:{}, NR2:{}},
+	flags:{D:{}, D1:{}, D2:{}, NR1:{}, NR2:{}, MW:{}, MR:{}},
 	cashFlags: function() {
 		if(towers.time != Game.time) {
 			towers.time = Game.time;
@@ -14,6 +14,8 @@ var towers = {
 			towers.flags.D2 = Game.flags['D2'];// dismanle
 			towers.flags.NR1 = Game.flags['NR1'];// don't repair
 			towers.flags.NR2 = Game.flags['NR2'];// don't repair
+			towers.flags.MW = Game.flags['MW'];// multiplier to repair wall
+			towers.flags.MR = Game.flags['MR'];// multiplier to repair rampart
 		}
 	},
 
@@ -150,6 +152,10 @@ var towers = {
 			const D = towers.flags.D;
 			const D1 = towers.flags.D1;
 			const D2 = towers.flags.D2;
+			const MW = towers.flags.MW;
+			const mw = (MW && MW.pos.roomName == tower.pos.roomName)?(11-MW.color):1;
+			const MR = towers.flags.MR;
+			const mr = (MR && MR.pos.roomName == tower.pos.roomName)?(11-MR.color):1;
 
 			target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
 					 filter: (hostile) => {
@@ -198,10 +204,10 @@ var towers = {
  				 target = tower.pos.findClosestByRange(FIND_STRUCTURES, {
  					 filter: (structure) => {
  						 if(structure.structureType == STRUCTURE_WALL) {
- 							 return structure.hits < 320000;// 8000 E = 10 * 8000 / 800 = 100
+ 							 return structure.hits < 32000*mw;// 8000 E = 10 * 8000 / 800 = 100
  						 }
  						 if(structure.structureType == STRUCTURE_RAMPART) {
- 							 return structure.hits < 1600000;// 8000 E = 10 * 8000 / 800 = 100
+ 							 return structure.hits < 1600000*mr;// 8000 E = 10 * 8000 / 800 = 100
  						 }
  						 return structure.hitsMax - structure.hits > structure.hitsMax/
 							 (2+98*(!!towers.prev_target[i] && structure.id == towers.prev_target[i])) ;
