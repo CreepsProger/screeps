@@ -128,6 +128,9 @@ var towers = {
 
 			towers.work_sleep.work++;
 
+			if(!tower.pos)
+				return;
+
 			target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
 					 filter: (hostile) => {
 						 return hostile.pos.x%48 > 1 || hostile.pos.y%48 > 1;
