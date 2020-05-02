@@ -13,7 +13,7 @@ const role = require('role.claimer');
 
 module.exports.loop = function () {
 
-	if(false && Game.shard.name != 'shard3') {
+	if(Game.shard.name != 'shard0' && Game.shard.name != 'shard3') {
 		if(Game.time % constants.TICKS_TO_CHECK_CPU == 0) {
 		console.log( '📙⏳', Math.trunc(Game.time/10000), Game.time%10000, Game.shard.name
 								, '📟 CPU:'
@@ -21,11 +21,11 @@ module.exports.loop = function () {
 																 , "🛒":Game.cpu.bucket
 																 , "🧀": Game.cpu.bucket - Memory.cpu_prev_bucket})
 								);
-			const err = Game.cpu.setShardLimits({shard0:50,shard1:5,shard2:5,shard3:20});
-			console.log( '📙⏳', Math.trunc(Game.time/10000), Game.time%10000, Game.shard.name
-			 						, '📟 setShardLimits err:'
-			 						, err
-			 						);
+			// const err = Game.cpu.setShardLimits({shard0:50,shard1:5,shard2:5,shard3:20});
+			// console.log( '📙⏳', Math.trunc(Game.time/10000), Game.time%10000, Game.shard.name
+			//  						, '📟 setShardLimits err:'
+			//  						, err
+			//  						);
 		}
 
 		config.run();
@@ -40,14 +40,6 @@ module.exports.loop = function () {
 			}
 			if(!creep.spawning) {
 				creep.memory.rerun = 0;
-			// 	var portals = creep.room.find(FIND_STRUCTURES, {
-			// 		filter: (structure) => structure.structureType == STRUCTURE_PORTAL &&
-			// 													 structure.destination.shard == 'shard1'});
-			// 	if(portals.length > 0) {
-			// 		target = portals[0].pos;
-			// 		creep.moveTo(target);
-			// 		// console.log(creep, role.name, JSON.stringify({my_path_room:my_path_room, target:target}));
-			// 	}
 				role.run(creep);
 			}
 		}
