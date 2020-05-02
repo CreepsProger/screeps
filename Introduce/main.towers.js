@@ -218,7 +218,7 @@ var towers = {
 							console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
 				 											, JSON.stringify({r:r,mr:mr, mw:mw, R:R, structure:structure})
 				 									);
- 							return structure.hits < 32000*mw;// 8000 E = 10 * 8000 / 800 = 100
+ 							return structure.hits < 64000*mw;// 8000 E = 10 * 8000 / 800 = 100
  						}
  						if(structure.structureType == STRUCTURE_RAMPART && r) {
  							return structure.hits < 1600000*mr;// 8000 E = 10 * 8000 / 800 = 100
