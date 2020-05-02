@@ -152,7 +152,7 @@ var towers = {
 				return;
 
 			towers.cashFlags();
-			const NA = towers.flags.NA && NA.pos.roomName == tower.pos.roomName;
+			const NA = towers.flags.NA && towers.flags.NA.pos.roomName == tower.pos.roomName;
 			const R = towers.flags.R;
 			const NR = towers.flags.NR;
 			const D = towers.flags.D;
