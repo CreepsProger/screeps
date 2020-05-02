@@ -212,7 +212,7 @@ var towers = {
 							 				structure.pos.x == R.pos.x &&
 											structure.pos.y == R.pos.y)?(11-R.color):!R;
 						if(structure.structureType == STRUCTURE_WALL && r) {
- 							const repair = structure.hits < 64000*mw*r;// 8000 E = 10 * 8000 / 800 = 100
+ 							const repair = structure.hits < constants.STRUCTURE_WALL_HITS*mw*r;// 8000 E = 10 * 8000 / 800 = 100
 							if(repair && (Game.time % constants.TICKS_TO_CHECK_CPU == 0)) {
 								console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
 					 											, JSON.stringify({r:r, mw:mw, R:R, structure:structure})
@@ -221,7 +221,7 @@ var towers = {
 							return repair;
  						}
  						if(structure.structureType == STRUCTURE_RAMPART && r) {
- 							const repair = structure.hits < 1600000*mr*r;// 8000 E = 10 * 8000 / 800 = 100
+ 							const repair = structure.hits < constants.STRUCTURE_RAMPART_HITS*mr*r;// 8000 E = 10 * 8000 / 800 = 100
 							if(repair && (Game.time % constants.TICKS_TO_CHECK_CPU == 0)) {
 								console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
 					 											, JSON.stringify({r:r, mr:mr, R:R, structure:structure})

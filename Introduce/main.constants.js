@@ -37,6 +37,8 @@ const constants = {
 	, CPU_LIMIT_OF_CREEP_ROLE_RUN : 5
 	, CPU_LIMIT_OF_CREEP_ROLE_STEP_RUN : 5
 	, ERR_NO_PATH_2 : -22
+	, STRUCTURE_WALL_HITS: 50000
+	, STRUCTURE_RAMPART_HITS: 1600000
 };
 
 module.exports = constants;
