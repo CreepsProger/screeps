@@ -163,14 +163,16 @@ var towers = {
 			const MR = towers.flags.MR;
 			const mr = (MR && MR.pos.roomName == tower.pos.roomName)?(11-MR.color):1;
 
-			target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
-					 filter: (hostile) => {
-						 return hostile.pos.x%48 > 1 || hostile.pos.y%48 > 1;
-					 }
-				 });
-			if(!!target && !NA) {
-				tower.attack(target);
-				delete towers.sleep[i];
+			if(!NA) {
+				target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+						 filter: (hostile) => {
+							 return hostile.pos.x%48 > 1 || hostile.pos.y%48 > 1;
+						 }
+					 });
+				if(!!target) {
+					tower.attack(target);
+					delete towers.sleep[i];
+				}
 			}
 
 			if(!target) {
