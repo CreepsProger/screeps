@@ -3,7 +3,7 @@ const tools = require('tools');
 const cash = require('cash');
 
 var towers = {
-	
+
 	count: 99999,
 	sleep: {},
 	work_sleep: {work:0, sleep:0},
@@ -62,7 +62,7 @@ var towers = {
 		const NR2 = Game.flags['NR2'];// don't repair
 		const D1 = Game.flags['D1'];// dismanle
 		const D2 = Game.flags['D2'];// dismanle
-		
+
 		var structures = cash.getStructuresToRepaire(room).filter((s) => {
 			if(!!s && s.hitsMax - s.hits > s.hitsMax/(2+98*(!!prev_target && s.id == prev_target))) {
 				if(!!D1 && D1.pos.roomName == pos.roomName &&
@@ -106,7 +106,7 @@ var towers = {
 			console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
 									, 'Towers('+towers.count+')', JSON.stringify(towers.work_sleep)
 									, Object.keys(towers.sleep).length, JSON.stringify(towers.sleep)
-									, 'prev targets:', JSON.stringify(towers.prev_target) 
+									, 'prev targets:', JSON.stringify(towers.prev_target)
 									);
 		}
 
@@ -114,9 +114,9 @@ var towers = {
 				 towers.work_sleep.sleep += towers.count;
 				 return;
 		}
-		
+
 		var target;
-		
+
 		const allMyTowers = cash.getAllMyTowers();
 		towers.count = allMyTowers.length;
 
@@ -125,9 +125,9 @@ var towers = {
 				towers.work_sleep.sleep++;
 				return;
 			}
-			
+
 			towers.work_sleep.work++;
-			 
+
 			target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
 					 filter: (hostile) => {
 						 return hostile.pos.x%48 > 1 || hostile.pos.y%48 > 1;
@@ -178,7 +178,7 @@ var towers = {
  							 return structure.hits < 32000;// 8000 E = 10 * 8000 / 800 = 100
  						 }
  						 if(structure.structureType == STRUCTURE_RAMPART) {
- 							 return structure.hits < 160000;// 8000 E = 10 * 8000 / 800 = 100
+ 							 return structure.hits < 1600000;// 8000 E = 10 * 8000 / 800 = 100
  						 }
  						 return structure.hitsMax - structure.hits > structure.hitsMax/
 							 (2+98*(!!towers.prev_target[i] && structure.id == towers.prev_target[i])) ;
