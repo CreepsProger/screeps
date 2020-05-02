@@ -5,11 +5,11 @@ const cash = require('cash');
 var towers = {
 
 	time:0,
-	flags:{NA:{}, R:{}, D:{}, D1:{}, D2:{}, NR:{}, NR1:{}, NR2:{}, MW:{}, MR:{}},
+	flags:{NAT:{}, R:{}, D:{}, D1:{}, D2:{}, NR:{}, NR1:{}, NR2:{}, MW:{}, MR:{}},
 	cashFlags: function() {
 		if(towers.time != Game.time) {
 			towers.time = Game.time;
-			towers.flags.NA = Game.flags['NA'];// don't attack
+			towers.flags.NAT = Game.flags['NAT'];// don't attack
 			towers.flags.R = Game.flags['R'];// repair only this pos
 			towers.flags.D = Game.flags['D'];// dismanle
 			towers.flags.D1 = Game.flags['D1'];// dismanle
@@ -152,7 +152,7 @@ var towers = {
 				return;
 
 			towers.cashFlags();
-			const NA = !!towers.flags.NA && towers.flags.NA.pos.roomName == tower.pos.roomName;
+			const NAT = !!towers.flags.NAT && towers.flags.NAT.pos.roomName == tower.pos.roomName;
 			const R = towers.flags.R;
 			const NR = towers.flags.NR;
 			const D = towers.flags.D;
@@ -163,7 +163,7 @@ var towers = {
 			const MR = towers.flags.MR;
 			const mr = (MR && MR.pos.roomName == tower.pos.roomName)?(11-MR.color):1;
 
-			if(!NA) {
+			if(!NAT) {
 				target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
 						 filter: (hostile) => {
 							 return hostile.pos.x%48 > 1 || hostile.pos.y%48 > 1;
