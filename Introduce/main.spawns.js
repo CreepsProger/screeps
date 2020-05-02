@@ -70,7 +70,7 @@ var spawns = {
 			}
 			const needed_plus = Math.min(needed+plus+minus, max_needed) + (mittl < mittl_to_spawn);
 
-			if(Game.shard.name != 'shard0') {
+			if(Game.shard.name == 'shard0') {
 				console.log('Memory.CreepsNeedsByWeight:'
 					, JSON.stringify({weight:weight, CreepsNeedsByWeight:Memory.CreepsNeedsByWeight}));
 			}
