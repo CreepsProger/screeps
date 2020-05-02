@@ -152,7 +152,7 @@ var towers = {
 				return;
 
 			towers.cashFlags();
-			const NAT = !!towers.flags.NAT && towers.flags.NAT.pos.roomName == tower.pos.roomName;
+			const NAT = towers.flags.NAT && towers.flags.NAT.pos.roomName == tower.pos.roomName;
 			const R = towers.flags.R;
 			const NR = towers.flags.NR;
 			const D = towers.flags.D;
