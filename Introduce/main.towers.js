@@ -4,6 +4,19 @@ const cash = require('cash');
 
 var towers = {
 
+	time:0,
+	flags:{D:{}, D1:{}, D2:{}, NR1:{}, NR2:{}},
+	cashFlags: function() {
+		if(towers.time != Game.time) {
+			towers.time = Game.time;
+			towers.flags.D = Game.flags['D'];// dismanle
+			towers.flags.D1 = Game.flags['D1'];// dismanle
+			towers.flags.D2 = Game.flags['D2'];// dismanle
+			towers.flags.NR1 = Game.flags['NR1'];// don't repair
+			towers.flags.NR2 = Game.flags['NR2'];// don't repair
+		}
+	},
+
 	count: 99999,
 	sleep: {},
 	work_sleep: {work:0, sleep:0},
@@ -58,10 +71,12 @@ var towers = {
 	getStructureToRepaire: function(pos, prev_target, executer, role_rerun_fn) {
 		var target;
 
-		const NR1 = Game.flags['NR1'];// don't repair
-		const NR2 = Game.flags['NR2'];// don't repair
-		const D1 = Game.flags['D1'];// dismanle
-		const D2 = Game.flags['D2'];// dismanle
+		towers.cashFlags();
+		const D = towers.flags.D;
+		const D1 = towers.flags.D1;
+		const D2 = towers.flags.D2;
+		const NR1 = towers.flags.NR1;
+		const NR2 = towers.flags.NR2;
 
 		var structures = cash.getStructuresToRepaire(room).filter((s) => {
 			if(!!s && s.hitsMax - s.hits > s.hitsMax/(2+98*(!!prev_target && s.id == prev_target))) {
@@ -131,6 +146,11 @@ var towers = {
 			if(!tower.pos)
 				return;
 
+			towers.cashFlags();
+			const D = towers.flags.D;
+			const D1 = towers.flags.D1;
+			const D2 = towers.flags.D2;
+
 			target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
 					 filter: (hostile) => {
 						 return hostile.pos.x%48 > 1 || hostile.pos.y%48 > 1;
@@ -178,7 +198,7 @@ var towers = {
  				 target = tower.pos.findClosestByRange(FIND_STRUCTURES, {
  					 filter: (structure) => {
  						 if(structure.structureType == STRUCTURE_WALL) {
- 							 return structure.hits < 32000;// 8000 E = 10 * 8000 / 800 = 100
+ 							 return structure.hits < 320000;// 8000 E = 10 * 8000 / 800 = 100
  						 }
  						 if(structure.structureType == STRUCTURE_RAMPART) {
  							 return structure.hits < 1600000;// 8000 E = 10 * 8000 / 800 = 100
