@@ -5,10 +5,11 @@ const cash = require('cash');
 var towers = {
 
 	time:0,
-	flags:{D:{}, D1:{}, D2:{}, NR:{}, NR1:{}, NR2:{}, MW:{}, MR:{}},
+	flags:{R:{}, D:{}, D1:{}, D2:{}, NR:{}, NR1:{}, NR2:{}, MW:{}, MR:{}},
 	cashFlags: function() {
 		if(towers.time != Game.time) {
 			towers.time = Game.time;
+			towers.flags.R = Game.flags['R'];// repair only this pos
 			towers.flags.D = Game.flags['D'];// dismanle
 			towers.flags.D1 = Game.flags['D1'];// dismanle
 			towers.flags.D2 = Game.flags['D2'];// dismanle
@@ -150,6 +151,7 @@ var towers = {
 				return;
 
 			towers.cashFlags();
+			const R = towers.flags.R;
 			const NR = towers.flags.NR;
 			const D = towers.flags.D;
 			const D1 = towers.flags.D1;
@@ -202,13 +204,13 @@ var towers = {
 				 }
 			 }
 
- 			 if(!target && !NR) {
+ 			 if(!target && (!NR || R)) {
  				 target = tower.pos.findClosestByRange(FIND_STRUCTURES, {
  					 filter: (structure) => {
- 						 if(structure.structureType == STRUCTURE_WALL) {
+ 						 if(structure.structureType == STRUCTURE_WALL && (!R || structure.pos == R.pos)) {
  							 return structure.hits < 32000*mw;// 8000 E = 10 * 8000 / 800 = 100
  						 }
- 						 if(structure.structureType == STRUCTURE_RAMPART) {
+ 						 if(structure.structureType == STRUCTURE_RAMPART && (!R || structure.pos == R.pos)) {
  							 return structure.hits < 1600000*mr;// 8000 E = 10 * 8000 / 800 = 100
  						 }
  						 return structure.hitsMax - structure.hits > structure.hitsMax/
