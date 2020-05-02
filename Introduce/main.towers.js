@@ -212,16 +212,22 @@ var towers = {
 							 				structure.pos.x == R.pos.x &&
 											structure.pos.y == R.pos.y)?(11-R.color):!R;
 						if(structure.structureType == STRUCTURE_WALL && r) {
-							console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
-				 											, JSON.stringify({r:r, mw:mw, R:R, structure:structure})
-				 									);
- 							return structure.hits < 64000*mw*r;// 8000 E = 10 * 8000 / 800 = 100
+ 							const repair = structure.hits < 64000*mw*r;// 8000 E = 10 * 8000 / 800 = 100
+							if(repair && (Game.time % constants.TICKS_TO_CHECK_CPU == 0)) {
+								console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
+					 											, JSON.stringify({r:r, mw:mw, R:R, structure:structure})
+					 									);
+							}
+							return repair;
  						}
  						if(structure.structureType == STRUCTURE_RAMPART && r) {
-							console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
-				 											, JSON.stringify({r:r, mr:mr, R:R, structure:structure})
-				 									);
- 							return structure.hits < 1600000*mr*r;// 8000 E = 10 * 8000 / 800 = 100
+ 							const repair = structure.hits < 1600000*mr*r;// 8000 E = 10 * 8000 / 800 = 100
+							if(repair && (Game.time % constants.TICKS_TO_CHECK_CPU == 0)) {
+								console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
+					 											, JSON.stringify({r:r, mr:mr, R:R, structure:structure})
+					 									);
+							}
+							return repair;
  						}
 						if(structure.structureType == STRUCTURE_WALL || structure.structureType == STRUCTURE_RAMPART) {
 							return false;
