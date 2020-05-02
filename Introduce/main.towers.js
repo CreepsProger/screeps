@@ -166,57 +166,64 @@ var towers = {
 						 return hostile.pos.x%48 > 1 || hostile.pos.y%48 > 1;
 					 }
 				 });
-			 if(!!target) {
-				 tower.attack(target);
-				 delete towers.sleep[i];
-			 }
+			if(!!target) {
+				tower.attack(target);
+				delete towers.sleep[i];
+			}
 
-			 if(!target) {
-				 target = tower.pos.findClosestByRange(FIND_MY_CREEPS, {
-					 filter: (mycreep) => {
-						 return mycreep.hitsMax - mycreep.hits > 0;
-					 }
-				 });
+			if(!target) {
+			 	target = tower.pos.findClosestByRange(FIND_MY_CREEPS, {
+				 	filter: (mycreep) => {
+					 	return mycreep.hitsMax - mycreep.hits > 0;
+				 	}
+			 	});
 
-				 if(target) {
-					 tower.heal(target);
-					 delete towers.sleep[i];
-				 }
-			 }
+			 	if(target) {
+				 	tower.heal(target);
+				 	delete towers.sleep[i];
+			 	}
+			}
 
-			 if(!target) {
-				 const targets = tower.pos.findInRange(FIND_MY_CREEPS, 5, {
-					 filter: (mycreep) => {
-						 return (mycreep.hitsMax - mycreep.hits > 0 &&
-										 mycreep.memory.heal_time != Game.time);
-					 }
-				 });
+			if(!target) {
+			 	const targets = tower.pos.findInRange(FIND_MY_CREEPS, 5, {
+				 	filter: (mycreep) => {
+					 	return (mycreep.hitsMax - mycreep.hits > 0 &&
+									 	mycreep.memory.heal_time != Game.time);
+				 				}
+			 			});
 
-				 if(targets.length > 0) {
-					 target = targets[0];
-				 }
+			 	if(targets.length > 0) {
+				 	target = targets[0];
+			 	}
 
-				 if(target) {
-					 tower.heal(target);
-					 target.memory.healer = tower.id;
-					 target.memory.heal_time = Game.time;
-					 delete towers.sleep[i];
-				 }
-			 }
+			 	if(target) {
+				 	tower.heal(target);
+				 	target.memory.healer = tower.id;
+				 	target.memory.heal_time = Game.time;
+				 	delete towers.sleep[i];
+			 	}
+			}
 
- 			 if(!target && (!NR || R)) {
- 				 target = tower.pos.findClosestByRange(FIND_STRUCTURES, {
- 					 filter: (structure) => {
- 						 if(structure.structureType == STRUCTURE_WALL && (!R || structure.pos == R.pos)) {
- 							 return structure.hits < 32000*mw;// 8000 E = 10 * 8000 / 800 = 100
- 						 }
- 						 if(structure.structureType == STRUCTURE_RAMPART && (!R || structure.pos == R.pos)) {
- 							 return structure.hits < 1600000*mr;// 8000 E = 10 * 8000 / 800 = 100
- 						 }
- 						 return structure.hitsMax - structure.hits > structure.hitsMax/
-							 (2+98*(!!towers.prev_target[i] && structure.id == towers.prev_target[i])) ;
- 					 }
- 				 });
+			if(R || MW || MR) {
+			 	console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
+	 											, JSON.stringify({R:R, MW:MW, mw:mw, MR:MR, mr:mr})
+	 									);
+	 		}
+
+		 	if(!target && (!NR || R)) {
+ 				target = tower.pos.findClosestByRange(FIND_STRUCTURES, {
+					filter: (structure) => {
+						if(structure.structureType == STRUCTURE_WALL && (!R || structure.pos == R.pos)) {
+ 							return structure.hits < 32000*mw;// 8000 E = 10 * 8000 / 800 = 100
+ 						}
+ 						if(structure.structureType == STRUCTURE_RAMPART && (!R || structure.pos == R.pos)) {
+ 							return structure.hits < 1600000*mr;// 8000 E = 10 * 8000 / 800 = 100
+ 						}
+
+						return structure.hitsMax - structure.hits > structure.hitsMax/
+							(2+98*(!!towers.prev_target[i] && structure.id == towers.prev_target[i])) ;
+ 					}
+ 				});
 
 				// var structures = cash.getStructures(tower.room).filter((structure) => {
 				// 	 if(structure.structureType == STRUCTURE_WALL) {
@@ -232,20 +239,21 @@ var towers = {
  				// 	target = structures.reduce((p,c) => tower.pos.getRangeTo(p) < tower.pos.getRangeTo(c)? p:c);
  				// }
 
- 				 if(target && OK == tower.repair(target)) {
-					 towers.prev_target[i] = target.id;
-					 delete towers.sleep[i];
- 				 }
- 			 }
+ 				if(target && OK == tower.repair(target)) {
+					towers.prev_target[i] = target.id;
+					delete towers.sleep[i];
+ 				}
+ 			}
 
-			 if(!target && (!towers.sleep[i] || towers.sleep[i] < constants.TICKS_MAX_TOWERS_SLEEPING )) {
-				 if(!towers.sleep[i])
-					 towers.sleep[i] = 0;
-				 towers.sleep[i]++;
-				 delete towers.prev_target[i];
-			 }
-		 });
-	 }
+			if(!target && (!towers.sleep[i] || towers.sleep[i] < constants.TICKS_MAX_TOWERS_SLEEPING )) {
+				if(!towers.sleep[i])
+					towers.sleep[i] = 0;
+				 	towers.sleep[i]++;
+				 	delete towers.prev_target[i];
+			 	}
+		 	}
+		);
+	}
 };
 
 module.exports = towers;
