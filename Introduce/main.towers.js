@@ -5,13 +5,14 @@ const cash = require('cash');
 var towers = {
 
 	time:0,
-	flags:{D:{}, D1:{}, D2:{}, NR1:{}, NR2:{}, MW:{}, MR:{}},
+	flags:{D:{}, D1:{}, D2:{}, NR:{}, NR1:{}, NR2:{}, MW:{}, MR:{}},
 	cashFlags: function() {
 		if(towers.time != Game.time) {
 			towers.time = Game.time;
 			towers.flags.D = Game.flags['D'];// dismanle
 			towers.flags.D1 = Game.flags['D1'];// dismanle
 			towers.flags.D2 = Game.flags['D2'];// dismanle
+			towers.flags.NR = Game.flags['NR'];// don't repair
 			towers.flags.NR1 = Game.flags['NR1'];// don't repair
 			towers.flags.NR2 = Game.flags['NR2'];// don't repair
 			towers.flags.MW = Game.flags['MW'];// multiplier to repair wall
@@ -149,6 +150,7 @@ var towers = {
 				return;
 
 			towers.cashFlags();
+			const NR = towers.flags.NR;
 			const D = towers.flags.D;
 			const D1 = towers.flags.D1;
 			const D2 = towers.flags.D2;
@@ -200,7 +202,7 @@ var towers = {
 				 }
 			 }
 
- 			 if(!target) {
+ 			 if(!target && !NR) {
  				 target = tower.pos.findClosestByRange(FIND_STRUCTURES, {
  					 filter: (structure) => {
  						 if(structure.structureType == STRUCTURE_WALL) {
