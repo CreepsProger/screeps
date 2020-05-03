@@ -55,9 +55,9 @@ var config = {
 		var pos = creep.pos.findClosestByPath(exit);
 		// if(tools.getWeight(creep.name) >= 424)
 		{
-			console.log(creep, role_name, JSON.stringify({pos:pos, exit:exit, my_path_room:my_path_room}));
 			const special_x = path_rooms2[this_room+'x'];
 			const special_y = path_rooms2[this_room+'y'];
+			// console.log(creep, role_name, JSON.stringify({pos:pos, exit:exit, my_path_room:my_path_room}));
 			pos.x = !special_x?pos.x:special_x;
 			pos.y = !special_y?pos.y:special_y;
 		}
