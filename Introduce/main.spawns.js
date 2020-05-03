@@ -217,7 +217,7 @@ var spawns = {
 											 , [ 10101,  10202,  20101]  // 1  300
 											 , [ 10503,  20403,  30203]  // 2  550
 											 , [ 30504,  40404,  50204]  // 3  800
-											 , [ 50907,  70506,  80406]  // 4 1300
+											 , [ 50907,  60606,  80406]  // 4 1300
 											 , [ 61410,  90909, 120408]  // 5 1800
 											 , [130911, 140711, 160410]  // 6 2300
 											 , [201020, 161616, 250817]  // 7 5600
@@ -285,7 +285,7 @@ var spawns = {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W57S53')) {
 							if(Sp1)	spawns.tryCreateCreep(spawn, CLAIMER[CL][H], 410, 1, 1);
 						}
-						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[CL][H], 414, 1, 1);
+						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[CL][M], 414, 1, 1);
 						// if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[CL][L], 411, 1, 1);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W58S52')) {
@@ -295,7 +295,7 @@ var spawns = {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W58S52')) {
 							if(Sp1)	spawns.tryCreateCreep(spawn, CLAIMER[CL][H], 420, 1, 1);
 						}
-						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[CL][H], 424, 1, 1);
+						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[CL][M], 424, 1, 1);
 						// if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[CL][L], 421, 1, 1);
 					}
 				}
