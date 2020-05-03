@@ -118,9 +118,8 @@ var config = {
 								, escape_path:
 								{ W58S52: 'W57S52', W57S52: 'W57S52'
 								}
-							}
-						},
-						{	W57S52:
+							},
+							W57S52:
 							{ containers: {weight: 403}
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 400, max_weight: 409}
