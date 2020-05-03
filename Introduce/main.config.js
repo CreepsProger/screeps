@@ -53,7 +53,8 @@ var config = {
 		}
 		const exit = creep.room.findExitTo(my_path_room);
 		var pos = creep.pos.findClosestByPath(exit);
-		if(tools.getWeight(creep.name) >= 424) {
+		// if(tools.getWeight(creep.name) >= 424)
+		{
 			console.log(creep, role_name, JSON.stringify({pos:pos, exit:exit, my_path_room:my_path_room}));
 			const special_x = path_rooms2[this_room+'x'];
 			const special_y = path_rooms2[this_room+'y'];
@@ -102,7 +103,29 @@ var config = {
 			, shards:
 				{	shard0:
 					{	rooms:
-						{	W58S52:
+						{	W56S52:
+							{ containers: {weight: 433}
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 430, max_weight: 439}
+								, {name: '2', time: 0, min_weight: 430, max_weight: 439}
+								]
+							, claiming:
+								[ {name: '1', time: 0, min_weight: 430, max_weight: 439}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 430, max_weight: 439}
+								, {name: '2', time: 0, min_weight: 430, max_weight: 439}
+								]
+							, heal_room:
+								{ shard: 'shard0', room: 'W57S52'}
+							, path_rooms:
+								{ W57S52: 'W56S52', W57S52_:20, W56S52: 'W56S52'
+								}
+								, escape_path:
+								{ W56S52: 'W57S52', W57S52: 'W57S52'
+								}
+							},
+							W58S52:
 							{ containers: {weight: 423}
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 420, max_weight: 429}
