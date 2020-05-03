@@ -365,7 +365,8 @@ var roleEnergyTransferer = {
 				}
 				else if(tools.getWeight(creep.name) >= 400) {
 					target = {pos:{x:29,y:39,roomName:'W57S52'}};
-					console.log(creep, JSON.stringify({trnsfer_without_storage:true, target:target}));
+					if(Game.time % constants.TICKS_TO_CHECK_CPU == 0)
+						console.log(creep, JSON.stringify({trnsfer_without_storage:true, target:target}));
 				}
 			}
 
