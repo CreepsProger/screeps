@@ -119,7 +119,7 @@ var config = {
 								{ W58S52: 'W57S52', W57S52: 'W57S52'
 								}
 							}
-						}
+						},
 						{	W57S52:
 							{ containers: {weight: 403}
 							, energy_harvesting:
