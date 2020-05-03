@@ -8,11 +8,11 @@ var metrix = {
 		if(!Memory.CreepsIdleTicksByWeight) {
 			Memory.CreepsIdleTicksByWeight = {};
 		}
-		if(!Memory.CreepsIdleTicksByWeight[creep.memory.weight]) {
-			Memory.CreepsIdleTicksByWeight[creep.memory.weight] = {};
+		if(!Memory.CreepsIdleTicksByWeight[tools.getWeight(creep.name)]) {
+			Memory.CreepsIdleTicksByWeight[tools.getWeight(creep.name)] = {};
 		}
-		if(!Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n]) {
-			Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n] = {};
+		if(!Memory.CreepsIdleTicksByWeight[tools.getWeight(creep.name)][creep.memory.n]) {
+			Memory.CreepsIdleTicksByWeight[tools.getWeight(creep.name)][creep.memory.n] = {};
 		}
 		if(!creep.memory.idle_time) {
 			creep.memory.idle = 0;
@@ -23,7 +23,7 @@ var metrix = {
 			creep.memory.idle++;
 			const livedTicks = (creep.getActiveBodyparts(CLAIM) > 0 ? 600:1500)-creep.ticksToLive;
 			const percent = Math.round(100*creep.memory.idle/(!livedTicks?1:livedTicks));
-			Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n] = {i:creep.memory.idle, lt:livedTicks, pc:percent, w:creep.memory.weight};
+			Memory.CreepsIdleTicksByWeight[tools.getWeight(creep.name)][creep.memory.n] = {i:creep.memory.idle, lt:livedTicks, pc:percent, w:tools.getWeight(creep.name)};
 		}
 	},
 
@@ -120,24 +120,24 @@ var metrix = {
 
 			for(var name in Game.creeps) {
 				var creep = Game.creeps[name];
-				const full_type = '' + creep.memory.type+'/'+creep.memory.weight;
+				const full_type = '' + creep.memory.type+'/'+tools.getWeight(creep.name);
 
 				if(!Memory.CreepsNumberByType[full_type])
 					Memory.CreepsNumberByType[full_type] = 0;
 
-				if(!Memory.CreepsIdleTicksByWeight[creep.memory.weight])
-					Memory.CreepsIdleTicksByWeight[creep.memory.weight] = 0;
+				if(!Memory.CreepsIdleTicksByWeight[tools.getWeight(creep.name)])
+					Memory.CreepsIdleTicksByWeight[tools.getWeight(creep.name)] = 0;
 
-				if(!Memory.CreepsNumberByWeight[creep.memory.weight])
-					Memory.CreepsNumberByWeight[creep.memory.weight] = 0;
+				if(!Memory.CreepsNumberByWeight[tools.getWeight(creep.name)])
+					Memory.CreepsNumberByWeight[tools.getWeight(creep.name)] = 0;
 
-				if(!Memory.CreepsMinTicksToLive[creep.memory.weight])
-					Memory.CreepsMinTicksToLive[creep.memory.weight] = 1500;
+				if(!Memory.CreepsMinTicksToLive[tools.getWeight(creep.name)])
+					Memory.CreepsMinTicksToLive[tools.getWeight(creep.name)] = 1500;
 
 				Memory.CreepsNumberByType[full_type]++;
-				Memory.CreepsNumberByWeight[creep.memory.weight]++;
-				if((!!creep.ticksToLive?creep.ticksToLive:1500) < Memory.CreepsMinTicksToLive[creep.memory.weight]) {
-					Memory.CreepsMinTicksToLive[creep.memory.weight] =
+				Memory.CreepsNumberByWeight[tools.getWeight(creep.name)]++;
+				if((!!creep.ticksToLive?creep.ticksToLive:1500) < Memory.CreepsMinTicksToLive[tools.getWeight(creep.name)]) {
+					Memory.CreepsMinTicksToLive[tools.getWeight(creep.name)] =
 						{ mittl: creep.ticksToLive
 						, pos: creep.pos
 						};
