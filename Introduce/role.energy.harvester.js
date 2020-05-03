@@ -314,7 +314,7 @@ var role = {
 		if(creep.memory[role.name].on) {
 			var target = role.getTarget(creep,executer);  metrix.cpu.step_time(creep, role.name, 'getTarget');
 			if(tools.getWeight(creep.name) >= 424) {
-				console.log(creep, JSON.stringify({this_room:this_room, target:target}));
+				console.log(creep, JSON.stringify({this_room:creep.room.name, target:target}));
 			}
 			if(target) {
 				var err = (target.name || !target.id)? // a creep || exit
