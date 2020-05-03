@@ -149,7 +149,7 @@ module.exports.loop = function () {
 
 	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 							 , 'Game.creeps:'
-							 , JSON.stringify(Game.creeps));
+							 , JSON.stringify(Game.creeps.sort((l,r) => tools.getWeight(l) < tools.getWeight(r))));
 
 	for(var name in Game.creeps) {//.sort((l,r) => tools.getWeight(l) < tools.getWeight(r))) {
 		var creep = Game.creeps[name];
