@@ -108,7 +108,7 @@ module.exports.loop = function () {
 				console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 										, 'ticksToLive:', creep.ticksToLive
 										, name
-										, 'idle:', creep.memory.idle, JSON.stringify(Memory.CreepsIdleTicksByWeight[creep.memory.weight][creep.memory.n])
+										, 'idle:', creep.memory.idle, JSON.stringify(Memory.CreepsIdleTicksByWeight[tools.getWeight(creep.name)][creep.memory.n])
 										, 'cpu:', sum_role_cpu, JSON.stringify(max_role_cpu), JSON.stringify(creep.memory.cpu)
 									 );
 			}
@@ -154,7 +154,7 @@ module.exports.loop = function () {
 		var creep = Game.creeps[name];
 		if(!!creep && !creep.spawning) {
 			creep.memory.rerun = 0;
-			if(Memory.cpu.creep.t < 0.5*Game.cpu.tickLimit || creep.memory.weight < 70)
+			if(Memory.cpu.creep.t < 0.5*Game.cpu.tickLimit || tools.getWeight(creep.name) < 70)
 				role.run(creep);
 			metrix.cpu.creep_time(creep);
 			if(Memory.cpu.creep.t > 0.9*Game.cpu.tickLimit) {
@@ -177,14 +177,14 @@ module.exports.loop = function () {
 				for(var role_name in creep.memory.cpu) {
 					if(!Memory.cpu.max[role_name])
 						Memory.cpu.max[role_name] = {sum:0, max_weight:0, max_weight_sum:0};
-					if(!Memory.cpu.max[role_name][creep.memory.weight])
-						Memory.cpu.max[role_name][creep.memory.weight] = 0;
+					if(!Memory.cpu.max[role_name][tools.getWeight(creep.name)])
+						Memory.cpu.max[role_name][tools.getWeight(creep.name)] = 0;
 					Memory.cpu.max.sum += Math.round(creep.memory.cpu[role_name]*100)/100;
 					Memory.cpu.max[role_name].sum += Math.round(creep.memory.cpu[role_name]*100)/100;
-					Memory.cpu.max[role_name][creep.memory.weight] += Math.round(creep.memory.cpu[role_name]*100)/100 ;
-					if(Memory.cpu.max[role_name].max_weight_sum < Memory.cpu.max[role_name][creep.memory.weight]) {
-						Memory.cpu.max[role_name].max_weight_sum = Memory.cpu.max[role_name][creep.memory.weight];
-						Memory.cpu.max[role_name].max_weight = creep.memory.weight;
+					Memory.cpu.max[role_name][tools.getWeight(creep.name)] += Math.round(creep.memory.cpu[role_name]*100)/100 ;
+					if(Memory.cpu.max[role_name].max_weight_sum < Memory.cpu.max[role_name][tools.getWeight(creep.name)]) {
+						Memory.cpu.max[role_name].max_weight_sum = Memory.cpu.max[role_name][tools.getWeight(creep.name)];
+						Memory.cpu.max[role_name].max_weight = tools.getWeight(creep.name);
 					}
 				}
 			}

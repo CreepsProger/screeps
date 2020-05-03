@@ -200,7 +200,7 @@ var roleEnergyTransferer = {
 				// 	filter: (structure) => {
 				// 		return (structure.structureType == STRUCTURE_CONTAINER ||
 				// 						(structure.structureType == STRUCTURE_STORAGE && creep.getActiveBodyparts(WORK))) &&
-				// 			this_room_config.containers.weight < creep.memory.weight &&
+				// 			this_room_config.containers.weight < tools.getWeight(creep.name) &&
 				// 			structure.store.getFreeCapacity() > 0;
 				// 	}
 				// });

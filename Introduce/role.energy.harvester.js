@@ -84,7 +84,7 @@ var role = {
 
 		if(!target &&
 			 (!creep.getActiveBodyparts(WORK) || U) &&
-			 (creep.memory.weight < my_room_config.containers.weight || U) &&
+			 (tools.getWeight(creep.name) < my_room_config.containers.weight || U) &&
 			 creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0) {
 			var conts = cash.getContainers(creep.room).filter((cont) => !!cont && !!cont.store &&
 			 																								cont.store.getUsedCapacity(RESOURCE_ENERGY) > 0);
@@ -265,7 +265,7 @@ var role = {
 			var weightcreeps = creep.room.find(FIND_MY_CREEPS, {
 				filter: (creep2) => {
 					return creep2.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-						creep2.memory.weight > creep.memory.weight &&
+						creep2.memory.weight > tools.getWeight(creep.name) &&
 						creep2.getActiveBodyparts(WORK) &&
 						//creep2.memory.transfering &&
 						tools.checkTarget(executer,creep2.id);

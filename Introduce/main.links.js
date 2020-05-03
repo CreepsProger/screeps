@@ -27,7 +27,7 @@ var links = {
 
 	 getTargetLinkToTransferEnergy: function(creep, executer, role_run, link_weight) {
 		 var target;
-		 if(link_weight < creep.memory.weight) {
+		 if(link_weight < tools.getWeight(creep.name)) {
 			 var link_objs = cash.getLinks(creep.room).filter( (link) => {
 					 return !!link && link.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 						 			creep.pos.inRangeTo(link, 5) &&

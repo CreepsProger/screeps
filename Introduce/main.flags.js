@@ -46,7 +46,7 @@ var mainFlags = {
             for(var name in Game.creeps) {
                 var creep = Game.creeps[name];
                 Memory.CreepsCounter++;
-  					    const full_type = '' + creep.memory.type + '/' + creep.memory.weight;
+  					    const full_type = '' + creep.memory.type + '/' + tools.getWeight(creep.name);
                 if(!Memory.CreepsNumberByType[full_type])
                     Memory.CreepsNumberByType[full_type] = 0;
                 Memory.CreepsNumberByType[creep.memory.type]++;
