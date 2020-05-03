@@ -103,7 +103,8 @@ var roleUpgrader = {
 					const range = creep.pos.getRangeTo(target);
 					if(tools.moveTo(creep,target) != OK || (range <= 3)) {
 						err = creep.upgradeController(target);
-						cash.renewCreep(creep);
+						if(creep.getActiveBodyparts(WORK) > 15)
+							cash.renewCreep(creep);
 					}
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜🛠');
