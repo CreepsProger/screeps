@@ -263,7 +263,7 @@ var spawns = {
 					// if(Memory.totals.WORK < 25	) spawns.tryCreateCreep(spawn, 10101, 20, 3); // E  200 Worker
 
 					//if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[7][H], 404, 3, 3);
-					if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[3][M], 404, 5, 5);
+					if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[CL][M], 404, 5, 5);
 					//if(Sp1) spawns.tryCreateCreep(spawn,   CARIER[3][H], 401, 1, 1);
 					// if(Sp1) spawns.tryCreateCreep(spawn,   CARIER[2][H], 402, 1, 1);
 				}
