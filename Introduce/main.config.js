@@ -32,7 +32,8 @@ var config = {
 		const my_room_config = my_shard_config.rooms[my_room];
 		const path_rooms = my_room_config.path_rooms;
 		const path_rooms_by_shard = path_rooms[Game.shard.name];
-		const my_path_room = !!path_rooms_by_shard?path_rooms_by_shard[this_room]:path_rooms[this_room];
+		const path_rooms2 = !!path_rooms_by_shard?path_rooms_by_shard:path_rooms;
+		const my_path_room = path_rooms2[this_room];
 		const shard = my_path_room.substring(0,5);
 		if(!!shard && shard == 'shard') {
 			const dest_shard = my_path_room;
@@ -54,7 +55,10 @@ var config = {
 		var pos = creep.pos.findClosestByPath(exit);
 		if(tools.getWeight(creep.name) >= 424) {
 			console.log(creep, role_name, JSON.stringify({pos:pos, exit:exit, my_path_room:my_path_room}));
-			pos.y = 20;
+			const special_x = path_rooms2[this_room+'x'];
+			const special_y = path_rooms2[this_room+'y'];
+			pos.x = !special_x?pos.x:special_x;
+			pos.y = !special_y?pos.y:special_y;
 		}
 		return pos;
 	},
@@ -114,7 +118,7 @@ var config = {
 							, heal_room:
 								{ shard: 'shard0', room: 'W57S52'}
 							, path_rooms:
-								{ W57S52: 'W58S52', W58S52: 'W58S52'
+								{ W57S52: 'W58S52', W57S52y:20, W58S52: 'W58S52'
 								}
 								, escape_path:
 								{ W58S52: 'W57S52', W57S52: 'W57S52'
