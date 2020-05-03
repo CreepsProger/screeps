@@ -150,7 +150,7 @@ module.exports.loop = function () {
 
 	const creeps = Object.keys(Game.creeps).sort((l,r) => tools.getWeight(l) - tools.getWeight(r));
 
-	for(var name in creeps) {
+	creeps.forEach(function(name,i) {
 		var creep = Game.creeps[name];
 		if(!!creep && !creep.spawning) {
 			creep.memory.rerun = 0;
@@ -215,7 +215,7 @@ module.exports.loop = function () {
 		Memory.cpu_main_part_dt = 0;
 		Memory.cpu_creeps_part_dt = 0;
 		Memory.cpu_dt = 0;
-	}
+	}) ;
 	var main_part2_dt = Math.round((Game.cpu.getUsed() - cpu_dt) * 100)/100;
 	Memory.cpu_main_part_dt += main_part2_dt;
 	Memory.cpu_dt += main_part2_dt;
