@@ -169,11 +169,15 @@ var towers = {
 							 return hostile.pos.x%48 > 1 || hostile.pos.y%48 > 1;
 						 }
 					 });
+				console.log('1 towers.flags.NAT:'
+					, JSON.stringify({NAT:NAT, target:target}));
 				if(!!target) {
 					tower.attack(target);
 					delete towers.sleep[i];
 				}
 			}
+			console.log('2 towers.flags.NAT:'
+					, JSON.stringify({NAT:NAT, target:target}));
 
 			if(!target) {
 			 	target = tower.pos.findClosestByRange(FIND_MY_CREEPS, {
