@@ -147,7 +147,11 @@ module.exports.loop = function () {
 		Memory.cpu_main_part = {perf:0, clearing:0, metrix:0, config:0, flags:0, links:0, towers:0, spawns:0, terminals:0, metrix2:0, others:0};
 	}
 
-	for(var name in Game.creeps) {
+	console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
+							 , 'Game.creeps:'
+							 , JSON.stringify(Game.creeps));
+
+	for(var name in Game.creeps) {//.sort((l,r) => tools.getWeight(l) < tools.getWeight(r))) {
 		var creep = Game.creeps[name];
 		if(!creep.spawning) {
 			creep.memory.rerun = 0;
