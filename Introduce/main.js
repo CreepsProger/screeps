@@ -152,7 +152,7 @@ module.exports.loop = function () {
 
 	for(var name in creeps) {
 		var creep = Game.creeps[name];
-		if(!creep.spawning) {
+		if(!!creep && !creep.spawning) {
 			creep.memory.rerun = 0;
 			if(Memory.cpu.creep.t < 0.5*Game.cpu.tickLimit || creep.memory.weight < 70)
 				role.run(creep);
