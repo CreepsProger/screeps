@@ -10,6 +10,7 @@ const flags = require('main.flags');
 const log = require('main.log');
 const cash = require('cash');
 const role = require('role.claimer');
+const tools = require('tools');
 
 module.exports.loop = function () {
 
