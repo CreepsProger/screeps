@@ -32,10 +32,7 @@ var config = {
 		const my_room_config = my_shard_config.rooms[my_room];
 		const path_rooms = my_room_config.path_rooms;
 		const path_rooms_by_shard = path_rooms[Game.shard.name];
-		const my_path_room = !!path_rooms_by_shard?path_rooms_by_shard[this_room]:path_rooms[this_room];/*
-		if(tools.getWeight(creep.name) >= 404) {
-			console.log(creep, role_name, JSON.stringify({my_shard:my_shard, this_room:this_room, my_path_room:my_path_room}));
-		}*/
+		const my_path_room = !!path_rooms_by_shard?path_rooms_by_shard[this_room]:path_rooms[this_room];
 		const shard = my_path_room.substring(0,5);
 		if(!!shard && shard == 'shard') {
 			const dest_shard = my_path_room;
@@ -54,7 +51,11 @@ var config = {
 			}
 		}
 		const exit = creep.room.findExitTo(my_path_room);
-		return creep.pos.findClosestByPath(exit);
+		var pos = creep.pos.findClosestByPath(exit);
+		if(tools.getWeight(creep.name) >= 424) {
+			console.log(creep, role_name, JSON.stringify({pos:pos, exit:exit, my_path_room:my_path_room}));
+		}
+		return pos;
 	},
 
 	moveTo: function(creep,target) {
