@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 210,
+	version: 211,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -57,7 +57,7 @@ var config = {
 		{
 			const special_x = path_rooms2[this_room+'x'];
 			const special_y = path_rooms2[this_room+'y'];
-			// console.log(creep, role_name, JSON.stringify({pos:pos, exit:exit, my_path_room:my_path_room}));
+			console.log(creep, role_name, JSON.stringify({pos:pos, exit:exit, my_path_room:my_path_room}));
 			pos.x = !special_x?pos.x:special_x;
 			pos.y = !special_y?pos.y:special_y;
 		}
@@ -107,7 +107,7 @@ var config = {
 			, shards:
 				{	shard0:
 					{	rooms:
-						{	W56S52:
+						{	W59S52:
 							{ containers: {weight: 433}
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 430, max_weight: 439}
@@ -123,10 +123,11 @@ var config = {
 							, heal_room:
 								{ shard: 'shard0', room: 'W57S52'}
 							, path_rooms:
-								{ W57S52: 'W56S52', W57S52y:44, W56S52: 'W56S52'
+								{ W57S52: 'W58S52', W57S52y:20, W58S52: 'W59S52'
+								, W59S52: 'W59S52'
 								}
 								, escape_path:
-								{ W56S52: 'W57S52', W57S52: 'W57S52'
+								{ W59S52: 'W58S52', W58S52: 'W57S52', W57S52: 'W57S52'
 								}
 							},
 							W58S52:
