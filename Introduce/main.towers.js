@@ -135,12 +135,13 @@ var towers = {
 				 return;
 		}
 
-		var target;
-
 		const allMyTowers = cash.getAllMyTowers();
 		towers.count = allMyTowers.length;
 
 		allMyTowers.forEach(function(tower,i) {
+
+			var target;
+
 			if(!!towers.sleep[i] && towers.sleep[i] > 0 && Game.time % towers.sleep[i]) {
 				towers.work_sleep.sleep++;
 				return;
