@@ -238,9 +238,28 @@ var towers = {
 							return false;
 						}
 
-						return structure.hitsMax - structure.hits > structure.hitsMax/
-							(2+98*(!!towers.prev_target[i] && structure.id == towers.prev_target[i])) ;
- 					}
+						if(structure.hitsMax - structure.hits > structure.hitsMax/
+							(2+98*(!!towers.prev_target[i] && structure.id == towers.prev_target[i]))) {
+							if(!!D1 && D1.pos.roomName == pos.roomName &&
+								 D1.pos.getRangeTo(structure) <= 10-D1.color) {
+								return false;
+							}
+							if(!!D2 && D2.pos.roomName == pos.roomName &&
+								 D2.pos.getRangeTo(structure) <= 10-D2.color) {
+								return false;
+							}
+							if(!!NR1 && NR1.pos.roomName == pos.roomName &&
+								 NR1.pos.getRangeTo(structure) <= 10-NR1.color) {
+								return false;
+							}
+							if(!!NR2 && NR2.pos.roomName == pos.roomName &&
+								 NR2.pos.getRangeTo(structure) <= 10-NR2.color) {
+								return false;
+							}
+							return true;
+						}
+						return  false;
+					}
  				});
 
  				if(!!target && OK == tower.repair(target)) {
