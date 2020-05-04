@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 215,
+	version: 216,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -112,6 +112,9 @@ var config = {
 					{	rooms:
 						{	W56S51:
 							{ containers: {weight: 453}
+							, sites:
+								[ {pos:{x:37,y:39},type:STRUCTURE_CONTAINER}
+								]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 450, max_weight: 459}
 								, {name: '2', time: 0, min_weight: 450, max_weight: 459}
