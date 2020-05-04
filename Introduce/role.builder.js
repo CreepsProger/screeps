@@ -60,8 +60,8 @@ var roleBuilder = {
 							if(err != OK) {
 								console.log('createConstructionSite:', JSON.stringify({err:err, this_room:this_room, pos:pos, cs:cs, sites:sites}));
 							}
-						}
-					});
+						});
+					}
 				}
 
 				if(!target && (this_room_sources_are_empty || this_room_is_being_claiming || UU || B || BB )) {
