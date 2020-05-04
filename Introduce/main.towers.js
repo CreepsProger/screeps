@@ -242,19 +242,19 @@ var towers = {
 
 						if(structure.hitsMax - structure.hits > structure.hitsMax/
 							(2+98*(!!towers.prev_target[i] && structure.id == towers.prev_target[i]))) {
-							if(!!D1 && D1.pos.roomName == pos.roomName &&
+							if(!!D1 && D1.pos.roomName == structure.pos.roomName &&
 								 D1.pos.getRangeTo(structure) <= 10-D1.color) {
 								return false;
 							}
-							if(!!D2 && D2.pos.roomName == pos.roomName &&
+							if(!!D2 && D2.pos.roomName == structure.pos.roomName &&
 								 D2.pos.getRangeTo(structure) <= 10-D2.color) {
 								return false;
 							}
-							if(!!NR1 && NR1.pos.roomName == pos.roomName &&
+							if(!!NR1 && NR1.pos.roomName == structure.pos.roomName &&
 								 NR1.pos.getRangeTo(structure) <= 10-NR1.color) {
 								return false;
 							}
-							if(!!NR2 && NR2.pos.roomName == pos.roomName &&
+							if(!!NR2 && NR2.pos.roomName == structure.pos.roomName &&
 								 NR2.pos.getRangeTo(structure) <= 10-NR2.color) {
 								return false;
 							}
