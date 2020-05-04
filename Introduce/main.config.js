@@ -34,6 +34,9 @@ var config = {
 		const path_rooms_by_shard = path_rooms[Game.shard.name];
 		const path_rooms2 = !!path_rooms_by_shard?path_rooms_by_shard:path_rooms;
 		const my_path_room = path_rooms2[this_room];
+		if(!my_path_room) {
+			console.log(creep, role_name, JSON.stringify({this_room:this_room, my_path_room:my_path_room, path_rooms2:path_rooms2}));
+		}
 		const shard = my_path_room.substring(0,5);
 		if(!!shard && shard == 'shard') {
 			const dest_shard = my_path_room;
