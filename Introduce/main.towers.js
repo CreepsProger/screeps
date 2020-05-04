@@ -156,6 +156,8 @@ var towers = {
 			const NAT = towers.flags.NAT && towers.flags.NAT.pos.roomName == tower.pos.roomName;
 			const R = towers.flags.R;
 			const NR = towers.flags.NR;
+			const NR1 = towers.flags.NR1;
+			const NR2 = towers.flags.NR2;
 			const D = towers.flags.D;
 			const D1 = towers.flags.D1;
 			const D2 = towers.flags.D2;
