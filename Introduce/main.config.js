@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 211,
+	version: 212,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -107,7 +107,29 @@ var config = {
 			, shards:
 				{	shard0:
 					{	rooms:
-						{	W59S52:
+						{	W56S52:
+							{ containers: {weight: 443}
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 440, max_weight: 449}
+								, {name: '2', time: 0, min_weight: 440, max_weight: 449}
+								]
+							, claiming:
+								[ {name: '1', time: 0, min_weight: 440, max_weight: 449}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 440, max_weight: 449}
+								, {name: '2', time: 0, min_weight: 440, max_weight: 449}
+								]
+							, heal_room:
+								{ shard: 'shard0', room: 'W57S52'}
+							, path_rooms:
+								{ W57S52: 'W56S52', W57S52y:44, W56S52: 'W56S52'
+								}
+								, escape_path:
+								{ W56S52: 'W57S52', W57S52: 'W57S52'
+								}
+							},
+						  W59S52:
 							{ containers: {weight: 433}
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 430, max_weight: 439}
