@@ -56,9 +56,12 @@ var roleBuilder = {
 					const sites = my_room_config.sites;
 					if(!!sites) {
 						sites.forEach(function(cs, i) {
-							const err = creep.room.createConstructionSite(cs.pos.x,cs.pos.y,cs.type,cs.name);
-							if(err != OK) {
-								console.log('createConstructionSite:', JSON.stringify({err:err, this_room:this_room, cs:cs, sites:sites}));
+							const pos = new RoomPosition(cs.x,cs.y,this_room);
+							if(pos.findInRange(cs.type,0).length == 0) {
+								const err = pos.createConstructionSite(cs.type,cs.name);
+								if(err != OK) {
+									console.log('createConstructionSite:', JSON.stringify({err:err, pos:pos, cs:cs, sites:sites}));
+								}
 							}
 						});
 					}
