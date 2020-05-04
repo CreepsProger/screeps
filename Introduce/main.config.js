@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 212,
+	version: 213,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -101,7 +101,7 @@ var config = {
 									, W26S33: 'W26S33'
 									, W25S35: 'W25S34', W25S34: 'W25S33', W25S33: 'W25S33'
 									, W56S52: 'W57S52'
-									, W58S52: 'W57S52'
+									, W59S52: 'W58S52', W58S52: 'W57S52'
 									, W57S53: 'W57S52'
 									}
 			, shards:
