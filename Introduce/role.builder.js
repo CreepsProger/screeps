@@ -57,7 +57,7 @@ var roleBuilder = {
 					if(!!sites) {
 						sites.forEach(function(cs, i) {
 							const pos = new RoomPosition(cs.x,cs.y,this_room);
-							if(pos.findInRange(cs.type,1).length == 0) {
+							if(pos.findInRange(FIND_STRUCTURES,0,filter: (s) => s.structureType == cs.type).length == 0) {
 								const err = pos.createConstructionSite(cs.type,cs.name);
 								if(err != OK) {
 									console.log('createConstructionSite:', JSON.stringify({err:err, pos:pos, cs:cs, sites:sites}));
