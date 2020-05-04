@@ -179,6 +179,9 @@ var config = {
 							},
 							W58S52:
 							{ containers: {weight: 423}
+							, sites:
+								[ {pos:{x:34,y:8},type:STRUCTURE_CONTAINER}
+								]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 420, max_weight: 429}
 								, {name: '2', time: 0, min_weight: 420, max_weight: 429}
