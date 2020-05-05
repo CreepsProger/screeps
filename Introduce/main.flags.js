@@ -10,20 +10,23 @@ var last_game_time_created_creep = 0;
 var flags = {
 
 	time:0,
-	flags:{NAT:{}, R:{}, D:{}, D1:{}, D2:{}, NR:{}, NR1:{}, NR2:{}, MW:{}, MR:{}},
+	flags:{},
 	cashFlags: function() {
 		if(flags.time != Game.time) {
 			flags.time = Game.time;
-			flags.flags.NAT = Game.flags['NAT'];// don't attack
-			flags.flags.R = Game.flags['R'];// repair only this pos
-			flags.flags.D = Game.flags['D'];// dismanle
-			flags.flags.D1 = Game.flags['D1'];// dismanle
-			flags.flags.D2 = Game.flags['D2'];// dismanle
-			flags.flags.NR = Game.flags['NR'];// don't repair
-			flags.flags.NR1 = Game.flags['NR1'];// don't repair
-			flags.flags.NR2 = Game.flags['NR2'];// don't repair
-			flags.flags.MW = Game.flags['MW'];// multiplier to repair wall
-			flags.flags.MR = Game.flags['MR'];// multiplier to repair rampart
+			flags.flags =
+				{ NAT: Game.flags['NAT']	// don't attack
+				,		R: Game.flags['R']		// repair only this pos
+				,		D: Game.flags['D']		// dismanle
+				,	 D1: Game.flags['D1']		// dismanle
+			 	,  D2: Game.flags['D2']		// dismanle
+			 	,  NR: Game.flags['NR']		// don't repair
+			 	, NR1: Game.flags['NR1']	// don't repair
+			 	, NR2: Game.flags['NR2']	// don't repair
+			 	,  MW: Game.flags['MW']		// multiplier to repair wall
+			 	,  MR: Game.flags['MR']		// multiplier to repair rampart
+				, 404: Game.flags['404']	// start spawning 404-th creeps
+				}
 		}
 	},
 
