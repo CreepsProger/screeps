@@ -134,8 +134,7 @@ var towers = {
 			if(!tower.pos)
 				return;
 
-			towers.cashFlags();
-			const NAT = flags.flags.NAT && towers.flags.NAT.pos.roomName == tower.pos.roomName;
+			const NAT = flags.flags.NAT && flags.flags.NAT.pos.roomName == tower.pos.roomName;
 			const R = flags.flags.R;
 			const NR = flags.flags.NR;
 			const NR1 = flags.flags.NR1;
