@@ -7,8 +7,25 @@ var lastFlagRemoved;
 
 var last_game_time_created_creep = 0;
 
-var mainFlags = {
+var flags = {
 
+	time:0,
+	flags:{NAT:{}, R:{}, D:{}, D1:{}, D2:{}, NR:{}, NR1:{}, NR2:{}, MW:{}, MR:{}},
+	cashFlags: function() {
+		if(towers.time != Game.time) {
+			towers.time = Game.time;
+			towers.flags.NAT = Game.flags['NAT'];// don't attack
+			towers.flags.R = Game.flags['R'];// repair only this pos
+			towers.flags.D = Game.flags['D'];// dismanle
+			towers.flags.D1 = Game.flags['D1'];// dismanle
+			towers.flags.D2 = Game.flags['D2'];// dismanle
+			towers.flags.NR = Game.flags['NR'];// don't repair
+			towers.flags.NR1 = Game.flags['NR1'];// don't repair
+			towers.flags.NR2 = Game.flags['NR2'];// don't repair
+			towers.flags.MW = Game.flags['MW'];// multiplier to repair wall
+			towers.flags.MR = Game.flags['MR'];// multiplier to repair rampart
+		}
+	},
 
    work_efficiency: function(type,range) {
        var RAs = Math.trunc(type%10000000000/100000000);
@@ -86,9 +103,9 @@ var mainFlags = {
     Flag1: function(Flag1) {
         console.log( '🏳️‍✒️', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify(Flag1));
-        if(mainFlags[lastFlagRemoved.name]) {
+        if(flags[lastFlagRemoved.name]) {
             lastFlagRemoved.pos = Flag1.pos;
-            mainFlags[lastFlagRemoved.name](lastFlagRemoved);
+            flags[lastFlagRemoved.name](lastFlagRemoved);
         }
         Flag1.remove();
     },
@@ -135,11 +152,11 @@ var mainFlags = {
             console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
                         , type
                         , 'WE(6):'
-                        , mainFlags.work_efficiency(type,6)
+                        , flags.work_efficiency(type,6)
                         , 'WE(12):'
-                        , mainFlags.work_efficiency(type,12)
+                        , flags.work_efficiency(type,12)
                         , 'WE(24):'
-                        , mainFlags.work_efficiency(type,24)
+                        , flags.work_efficiency(type,24)
                        );
         });
         var maxtype = [0, 0, 0];
@@ -151,16 +168,16 @@ var mainFlags = {
                 for (var c = 1; c <= 11; c++) {
                     var w = Math.floor((p-m-c)/2);
                     var type = w*10000 + c*100 + m;
-                    var We = [ mainFlags.work_efficiency(type, 6)
-                             , mainFlags.work_efficiency(type,12)
-                             , mainFlags.work_efficiency(type,24)];
+                    var We = [ flags.work_efficiency(type, 6)
+                             , flags.work_efficiency(type,12)
+                             , flags.work_efficiency(type,24)];
                     if(maxWe[0] < We[0]) { maxWe[0] = We[0]; maxtype[0] = type; };
                     if(maxWe[1] < We[1]) { maxWe[1] = We[1]; maxtype[1] = type; };
                     if(maxWe[2] < We[2]) { maxWe[2] = We[2]; maxtype[2] = type; };
 
-                    var Opty = [ Math.ceil(3000/mainFlags.work_efficiency(type,  6)) * p * 50
-                               , Math.ceil(3000/mainFlags.work_efficiency(type, 12)) * p * 50
-                               , Math.ceil(3000/mainFlags.work_efficiency(type, 24)) * p * 50];
+                    var Opty = [ Math.ceil(3000/flags.work_efficiency(type,  6)) * p * 50
+                               , Math.ceil(3000/flags.work_efficiency(type, 12)) * p * 50
+                               , Math.ceil(3000/flags.work_efficiency(type, 24)) * p * 50];
                     if(OptyWe[0] > Opty[0] && Opty[0] >= 0) { OptyWe[0] = Opty[0]; OptyType[0] = type; };
                     if(OptyWe[1] > Opty[1] && Opty[1] >= 0) { OptyWe[1] = Opty[1]; OptyType[1] = type; };
                     if(OptyWe[2] > Opty[2] && Opty[2] >= 0) { OptyWe[2] = Opty[2]; OptyType[2] = type; };
@@ -189,15 +206,15 @@ var mainFlags = {
         const CL = Controller.level;
         var err = ERR_NOT_ENOUGH_ENERGY;
 
-        if(CL >= 5) mainFlags.tryCreateCreep(90909, 100, 10); // E 1800 Worker
-        if(CL >= 5) mainFlags.tryCreateCreep(80808, 100, 10); // E 1600 Worker
-        if(CL >= 5) mainFlags.tryCreateCreep(70707, 100, 10); // E 1400 Worker
-        if(CL >= 4) mainFlags.tryCreateCreep(60606, 100, 10); // E 1200 Worker
-        if(CL >= 4) mainFlags.tryCreateCreep(50505, 100, 10); // E 1000 Worker
-        if(CL >= 3) mainFlags.tryCreateCreep(40404, 100, 10); // E  800 Worker
-        if(CL >= 3) mainFlags.tryCreateCreep(30303, 100, 10); // E  600 Worker
-        if(CL >= 2) mainFlags.tryCreateCreep(20202, 100, 10); // E  400 Worker
-        if(CL >= 1) mainFlags.tryCreateCreep(10101, 100, 10); // E  200 Worker
+        if(CL >= 5) flags.tryCreateCreep(90909, 100, 10); // E 1800 Worker
+        if(CL >= 5) flags.tryCreateCreep(80808, 100, 10); // E 1600 Worker
+        if(CL >= 5) flags.tryCreateCreep(70707, 100, 10); // E 1400 Worker
+        if(CL >= 4) flags.tryCreateCreep(60606, 100, 10); // E 1200 Worker
+        if(CL >= 4) flags.tryCreateCreep(50505, 100, 10); // E 1000 Worker
+        if(CL >= 3) flags.tryCreateCreep(40404, 100, 10); // E  800 Worker
+        if(CL >= 3) flags.tryCreateCreep(30303, 100, 10); // E  600 Worker
+        if(CL >= 2) flags.tryCreateCreep(20202, 100, 10); // E  400 Worker
+        if(CL >= 1) flags.tryCreateCreep(10101, 100, 10); // E  200 Worker
 
         lastFlagRemoved = SC;
         lastFlagRemoved.remove();
@@ -306,17 +323,19 @@ var mainFlags = {
         lastFlagRemoved.remove();
     },
     run: function(ticksToLog = constants.TICKS_TO_CHECK_CREEPS_NUMBER) {
-        var flags = [];
-        for(var name in Game.flags) {
-            flags.push(Game.flags[name].name);
-            if(mainFlags[name])
-                mainFlags[name](Game.flags[name])
-        }
-        if(Game.time % ticksToLog == 0) {
-            console.log( '🏳️‍🌈', Math.trunc(Game.time/10000), Game.time%10000
-                        , flags);
-        }
+			flags.cashFlags();
+
+      var flags_view = [];
+      for(var name in Game.flags) {
+        flags_view.push(Game.flags[name].name);
+        if(flags[name])
+            flags[name](Game.flags[name])
+      }
+      if(Game.time % ticksToLog == 0) {
+        console.log( '🏳️‍🌈', Math.trunc(Game.time/10000), Game.time%10000
+                    , flags_view);
+      }
     }
 };
 
-module.exports = mainFlags;
+module.exports = flags;

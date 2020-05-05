@@ -1,26 +1,9 @@
 const constants = require('main.constants');
+const flags = require('main.flags');
 const tools = require('tools');
 const cash = require('cash');
 
 var towers = {
-
-	time:0,
-	flags:{NAT:{}, R:{}, D:{}, D1:{}, D2:{}, NR:{}, NR1:{}, NR2:{}, MW:{}, MR:{}},
-	cashFlags: function() {
-		if(towers.time != Game.time) {
-			towers.time = Game.time;
-			towers.flags.NAT = Game.flags['NAT'];// don't attack
-			towers.flags.R = Game.flags['R'];// repair only this pos
-			towers.flags.D = Game.flags['D'];// dismanle
-			towers.flags.D1 = Game.flags['D1'];// dismanle
-			towers.flags.D2 = Game.flags['D2'];// dismanle
-			towers.flags.NR = Game.flags['NR'];// don't repair
-			towers.flags.NR1 = Game.flags['NR1'];// don't repair
-			towers.flags.NR2 = Game.flags['NR2'];// don't repair
-			towers.flags.MW = Game.flags['MW'];// multiplier to repair wall
-			towers.flags.MR = Game.flags['MR'];// multiplier to repair rampart
-		}
-	},
 
 	count: 99999,
 	sleep: {},
@@ -76,12 +59,11 @@ var towers = {
 	getStructureToRepaire: function(pos, prev_target, executer, role_rerun_fn) {
 		var target;
 
-		towers.cashFlags();
-		const D = towers.flags.D;
-		const D1 = towers.flags.D1;
-		const D2 = towers.flags.D2;
-		const NR1 = towers.flags.NR1;
-		const NR2 = towers.flags.NR2;
+		const D = flags.flags.D;
+		const D1 = flags.flags.D1;
+		const D2 = flags.flags.D2;
+		const NR1 = flags.flags.NR1;
+		const NR2 = flags.flags.NR2;
 
 		var structures = cash.getStructuresToRepaire(room).filter((s) => {
 			if(!!s && s.hitsMax - s.hits > s.hitsMax/(2+98*(!!prev_target && s.id == prev_target))) {
@@ -153,15 +135,15 @@ var towers = {
 				return;
 
 			towers.cashFlags();
-			const NAT = towers.flags.NAT && towers.flags.NAT.pos.roomName == tower.pos.roomName;
-			const R = towers.flags.R;
-			const NR = towers.flags.NR;
-			const NR1 = towers.flags.NR1;
-			const NR2 = towers.flags.NR2;
-			const D = towers.flags.D;
-			const D1 = towers.flags.D1;
-			const D2 = towers.flags.D2;
-			const MW = towers.flags.MW;
+			const NAT = flags.flags.NAT && towers.flags.NAT.pos.roomName == tower.pos.roomName;
+			const R = flags.flags.R;
+			const NR = flags.flags.NR;
+			const NR1 = flags.flags.NR1;
+			const NR2 = flags.flags.NR2;
+			const D = flags.flags.D;
+			const D1 = flags.flags.D1;
+			const D2 = flags.flags.D2;
+			const MW = flags.flags.MW;
 			const mw = (MW && MW.pos.roomName == tower.pos.roomName)?(11-MW.color):1;
 			const MR = towers.flags.MR;
 			const mr = (MR && MR.pos.roomName == tower.pos.roomName)?(11-MR.color):1;
