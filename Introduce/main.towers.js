@@ -193,7 +193,7 @@ var towers = {
 			}
 
 		 	if(!target && (!NR || R)) {
- 				var rps = tower.pos.find(FIND_STRUCTURES, {
+ 				const rps = tower.pos.findInRange(FIND_STRUCTURES, 50, {
 					filter: (structure) => {
 						const r = (!!R &&
 							 				structure.pos.roomName == R.pos.roomName &&
