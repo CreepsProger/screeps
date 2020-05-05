@@ -244,7 +244,7 @@ var spawns = {
 										   	 ];
  		 		//                   TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 				const HEALER =   [ [                0,                0,                0]  // 0  000
-											 	 , [           100001,           100001,           100001]  // 1  300
+											 	 , [          1000001,          1000001,          1000001]  // 1  300
 											 	 , [           100001,           100001,           100001]  // 2  550
 											 	 , [           200002,           200004,           200006]  // 3  800
 											 	 , [           400004,           400005,           400006]  // 4 1300
