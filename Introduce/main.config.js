@@ -110,7 +110,7 @@ var config = {
 			, shards:
 				{	shard0:
 					{	rooms:
-						{	W51S59:
+						{	W52S57:
 							{ containers: {weight: 1000}
 							, sites:
 								[ {x:37, y:39, type:STRUCTURE_CONTAINER}
@@ -122,6 +122,12 @@ var config = {
 								{ shard: 'shard0', room: 'W57S52'}
 							, path_rooms:
 								{ W57S52: 'W56S52', W57S52y:24, W56S52: 'W56S53', W56S53: 'W56S54'
+								, W56S54: 'W57S54', W57S54: 'W57S55', W57S55: 'W56S55'
+								, W56S55: 'W55S55', W55S55: 'W55S56', W55S56: 'W55S57'
+								, W55S57: 'W55S58', W55S58: 'W56S58', W56S58: 'W56S59'
+								, W56S59: 'W56S60', W56S60: 'W55S60', W55S60: 'W54S60'
+								, W54S60: 'W54S59', W54S59: 'W53S59', W53S59: 'W53S58'
+								, W53S58: 'W52S58', W52S58: 'W52S57', W52S57: 'W52S57'
 								}
 								, escape_path:
 								{ W56S54: 'W56S53', W56S53: 'W56S52', W56S52: 'W57S52'
