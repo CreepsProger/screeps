@@ -110,7 +110,24 @@ var config = {
 			, shards:
 				{	shard0:
 					{	rooms:
-						{	W56S51:
+						{	W51S59:
+							{ containers: {weight: 1000}
+							, sites:
+								[ {x:37, y:39, type:STRUCTURE_CONTAINER}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 1000, max_weight: 1000}
+								]
+							, heal_room:
+								{ shard: 'shard0', room: 'W57S52'}
+							, path_rooms:
+								{ W57S52: 'W56S52', W57S52y:24, W56S52: 'W56S53', W56S53: 'W56S54'
+								}
+								, escape_path:
+								{ W56S54: 'W56S53', W56S53: 'W56S52', W56S52: 'W57S52'
+								}
+							},
+							W56S51:
 							{ containers: {weight: 453}
 							, sites:
 								[ {x:37, y:39, type:STRUCTURE_CONTAINER}
@@ -164,6 +181,7 @@ var config = {
 							{ containers: {weight: 433}
 							, sites:
 								[ {x:28, y:7, type:STRUCTURE_CONTAINER}
+								, {x:28, y:6, type:STRUCTURE_CONTAINER}
 								]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 430, max_weight: 439}
@@ -414,7 +432,6 @@ var config = {
 							, path_rooms:
 								{ W25S33: 'W26S33', W26S33: 'W27S33', W28S33: 'W27S33'
 						 		, W28S35: 'W28S34', W28S34: 'W28S33'
-								, W29S32: 'W28S32', W28S32: 'W28S33'
 								}
 							, escape_path:
 								{ W28S37: 'W28S38', W28S38: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
