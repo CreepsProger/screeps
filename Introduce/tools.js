@@ -13,9 +13,12 @@ var tools = {
 
 	getWeight: function(name) {
 		const code0 = '0'.charCodeAt(0);
-		const nnn = name.charCodeAt(7) - code0;
-		var weight = nnn >= 0 && nnn < 10? nnn:0;
-		const nn = name.charCodeAt(8) - code0;
+		const nnnn = name.charCodeAt(7) - code0;
+		var weight = nnnn >= 0 && nnnn < 10? nnnn:0;
+		const nnn = name.charCodeAt(8) - code0;
+		if(nnn >= 0 && nnn < 10)
+			weight = weight*10+nnn;
+		const nn = name.charCodeAt(9) - code0;
 		if(nn >= 0 && nn < 10)
 			weight = weight*10+nn;
 		const n = name.charCodeAt(9) - code0;
