@@ -330,7 +330,7 @@ var spawns = {
 						if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[4][L], 441, 1, 1);
 						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[4][M], 444, 1, 1);
 					}*/
-					if(Sp1) spawns.tryCreateCreep(spawn,   HEALER[1][L], 1000, 1, 1);
+					if(Sp1) spawns.tryCreateCreep(spawn,   HEALER[2][M], 1000, 1, 1);
 				}
 
 				if(Game.shard.name == 'shard3') {
