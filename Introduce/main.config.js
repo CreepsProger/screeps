@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 224,
+	version: 225,
 
 	log_flags: ['MC','MCF ','M'],
 
