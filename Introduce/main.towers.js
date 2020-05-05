@@ -245,8 +245,8 @@ var towers = {
 					}
  				});
 				if(rps.length > 0) {
-					target = rps.reduce((p,c) => tower.pos.getRangeTo(p) * (c.hits + 1) // dp*ec < dc*ep !! it is right! don't change
-																				< tower.pos.getRangeTo(c) * (p.hits + 1)
+					target = rps.reduce((p,c) => tower.pos.getRangeTo(p) * (p.hits + 1) // dp*ec < dc*ep !! it is right! don't change
+																				< tower.pos.getRangeTo(c) * (c.hits + 1)
 																				? p:c);
 				}
 
