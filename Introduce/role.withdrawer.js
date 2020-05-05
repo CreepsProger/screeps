@@ -33,10 +33,9 @@ var roleWithdrawer = {
 
 		if(creep.memory.withdrawing) {
 
-			roleWithdrawer.cashFlags();
-			const DP = roleWithdrawer.flags.DP;
-			const DP1 = roleWithdrawer.flags.DP1;
-			const DP2 = roleWithdrawer.flags.DP2;
+			const DP = flags.flags.DP;
+			const DP1 = flags.flags.DP1;
+			const DP2 = flags.flags.DP2;
 
 			var target;
 
