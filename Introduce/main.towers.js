@@ -193,7 +193,7 @@ var towers = {
 			}
 
 		 	if(!target && (!NR || R)) {
- 				target = tower.pos.findClosestByRange(FIND_STRUCTURES, {
+ 				var rps = tower.pos.find(FIND_STRUCTURES, {
 					filter: (structure) => {
 						const r = (!!R &&
 							 				structure.pos.roomName == R.pos.roomName &&
@@ -244,6 +244,11 @@ var towers = {
 						return  false;
 					}
  				});
+				if(rps.length > 0) {
+					target = rps.reduce((p,c) => tower.pos.getRangeTo(p) * (c.hits + 1) // dp*ec < dc*ep !! it is right! don't change
+																				< tower.pos.getRangeTo(c) * (p.hits + 1)
+																				? p:c);
+				}
 
  				if(!!target && OK == tower.repair(target)) {
 					towers.prev_target[i] = target.id;
