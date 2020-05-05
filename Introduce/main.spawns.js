@@ -231,7 +231,6 @@ var spawns = {
 											 , [  2323,   2613,   3015]  // 6 2300
 											 , [  2525,   3216,   3317]  // 7 5600
                        ];
-				//                   TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 				const ATTACKER = [ [                0,                0,                0]  // 0  000
 											 	 , [        200000002,        200000002,        200000002]  // 1  300
 											 	 , [        400000004,        400000004,        400000004]  // 2  550
@@ -239,10 +238,9 @@ var spawns = {
 											 	 , [       1000000010,       1000000010,       1000000010]  // 4 1300
 											 	 , [       1300000013,       1300000013,       1300000013]  // 5 1800
 											 	 , [       1700000017,       1700000017,       1700000017]  // 6 2300
-											 	 , [       2500000025,     250000000025,       1213000025, 2112000017, 190006000025]  // 7 5600
-												 , [     250008000017,     200013000017,       1213000025, 2112000017, 190006000025]
-										   	 ];
- 		 		//                   TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
+											 	 , [       2500000025,     250000000025,       1213000025,       2112000017,     190006000025]  // 7 5600
+												 , [     250008000017,     200013000017,     300010000010,       2515000010,     400000000010]
+										   	 ];//TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 				const HEALER =   [ [                0,                0,                0]  // 0   000
 											 	 , [          1000001,          1000001,          1000001]  // 1   300
 											 	 , [          1000001,          1000006,          2000001]  // 2   550
@@ -494,6 +492,9 @@ var spawns = {
 
 					if(conditions.TO_SPAWN_KEEPERS_ROOMS()) {
 						// if(Sp1)  spawns.tryCreateCreep(spawn, ATTACKER[7][S], 205, 1, 1);
+						if(conditions.TO_SPAWN_ROOM_EXTRA_DEFENDERS('W25S34')) {
+							if(Sp1)  spawns.tryCreateCreep(spawn, ATTACKER[8][H], 205, 1, 1);
+						}
 						if(Sp1)  spawns.tryCreateCreep(spawn, ATTACKER[8][L], 206, 1, 1);
 						// if(Sp12) spawns.tryCreateCreep(spawn,   HEALER[7][H], 207, 1, 1);
 						// if(conditions.TO_SPAWN_ROOM_DEFENDERS('W25S35')) {

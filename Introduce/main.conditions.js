@@ -37,6 +37,10 @@ const conditions = {
 																			const room = Game.rooms[roomName];
 																			if(!room) return false;
 																			return 	room.find(FIND_HOSTILE_CREEPS).length > 0;}
+	, TO_SPAWN_ROOM_EXTRA_DEFENDERS:function(roomName) {
+																			const room = Game.rooms[roomName];
+																			if(!room) return false;
+																			return 	room.find(FIND_HOSTILE_CREEPS, { filter: (hc) => hs.effects.length > 0 && (hs.getActiveBodyparts(ATTACK) > 0 || hs.getActiveBodyparts(RANGED_ATTACK) > 0)}).length > 0;}
 	, TO_SPAWN_ROOM_CLAIMER:				function(roomName) {
 																			const room = Game.rooms[roomName];
 																			if(!room) return false;
