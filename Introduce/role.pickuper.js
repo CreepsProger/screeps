@@ -34,10 +34,9 @@ var rolePickuper = {
 
 			if(creep.memory.pickuping) {
 
-				rolePickuper.cashFlags();
-				const DP = rolePickuper.flags.DP;
-				const DP1 = rolePickuper.flags.DP1;
-				const DP2 = rolePickuper.flags.DP2;
+				const DP = flags.flags.DP;
+				const DP1 = flags.flags.DP1;
+				const DP2 = flags.flags.DP2;
 
 				var target;
 
