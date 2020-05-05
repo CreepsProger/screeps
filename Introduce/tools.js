@@ -16,14 +16,17 @@ var tools = {
 		const nnnn = name.charCodeAt(7) - code0;
 		var weight = nnnn >= 0 && nnnn < 10? nnnn:0;
 		const nnn = name.charCodeAt(8) - code0;
-		if(nnn >= 0 && nnn < 10)
+		if(nnn >= 0 && nnn < 10) {
 			weight = weight*10+nnn;
-		const nn = name.charCodeAt(9) - code0;
-		if(nn >= 0 && nn < 10)
-			weight = weight*10+nn;
-		const n = name.charCodeAt(10) - code0;
-		if(n >= 0 && n < 10)
-			weight = weight*10+n;
+			const nn = name.charCodeAt(9) - code0;
+			if(nn >= 0 && nn < 10) {
+				weight = weight*10+nn;
+				const n = name.charCodeAt(10) - code0;
+				if(n >= 0 && n < 10)
+					weight = weight*10+n;
+				}
+			}
+		}
 		return weight;
 	},
 
