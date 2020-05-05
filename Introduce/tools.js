@@ -22,7 +22,7 @@ var tools = {
 			if(nn >= 0 && nn < 10) {
 				weight = weight*10+nn;
 				const n = name.charCodeAt(10) - code0;
-				if(n >= 0 && n < 10)
+				if(n >= 0 && n < 10) {
 					weight = weight*10+n;
 				}
 			}
