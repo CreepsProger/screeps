@@ -144,7 +144,7 @@ var towers = {
 			const D2 = flags.flags.D2;
 			const MW = flags.flags.MW;
 			const mw = (MW && MW.pos.roomName == tower.pos.roomName)?(11-MW.color):1;
-			const MR = towers.flags.MR;
+			const MR = flags.flags.MR;
 			const mr = (MR && MR.pos.roomName == tower.pos.roomName)?(11-MR.color):1;
 
 			if(!NAT) {
