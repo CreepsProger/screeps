@@ -217,7 +217,7 @@ var spawns = {
 											 , [ 10101,  10202,  20101]  // 1  300
 											 , [ 10503,  20403,  30203]  // 2  550
 											 , [ 30504,  40404,  50303]  // 3  800
-											 , [ 50907,  60606,  80604]  // 4 1300
+											 , [ 50907,  60606,  80406]  // 4 1300
 											 , [ 61410,  90909, 120606]  // 5 1800
 											 , [130911, 140711, 160608]  // 6 2300
 											 , [201020, 161616, 250817]  // 7 5600
@@ -274,8 +274,8 @@ var spawns = {
 						if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[4][M], 405, 1, 1);
 					}
 					else {
-						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[4][M], 404, 3, 3);
-						if(Sp1) spawns.tryCreateCreep(spawn, CARIER[4][H], 401, 2, 2);
+						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[4][H], 404, 4, 4);
+						if(Sp1) spawns.tryCreateCreep(spawn, CARIER[4][H], 401, 3, 3);
 						//if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[7][H], 404, 3, 3);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W57S53')) {
