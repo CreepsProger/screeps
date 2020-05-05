@@ -1,4 +1,5 @@
 const constants = require('main.constants');
+const flags = require('main.flags');
 const log = require('main.log');
 const tools = require('tools');
 
