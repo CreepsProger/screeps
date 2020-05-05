@@ -67,8 +67,8 @@ var roleUpgrader = {
 
 			const this_room_sources_are_empty = tools.areEmptySources(creep);
 			const this_room_containers_are_full = cash.areFullContainers(creep);
-			const U = !!Game.flags['U'] && (Game.flags['U'].pos.roomName == my_room);
-			const UU = !!Game.flags['UU'] && Game.flags['UU'].pos.roomName == my_room;
+			const U = !!flags.flags['U'] && flags.flags['U'].pos.roomName == my_room;
+			const UU = !!flags.flags['UU'] && flags.flags['UU'].pos.roomName == my_room;
 			const total_energy = cash.getTotalEnergy();
 			const X = conditions.TO_EXTRA_UPGRADE(total_energy);
 
@@ -109,7 +109,7 @@ var roleUpgrader = {
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜🛠');
 						err = tools.moveTo(creep,target);
-						if(Game.flags['LU '] || Game.flags['LU'] || Game.flags['L']) {
+						if(flags.flags.LU || flags.flags.L) {
 							console.log( '🔜🛠', Math.trunc(Game.time/10000), Game.time%10000
 							, creep.name
 							, err
@@ -119,7 +119,7 @@ var roleUpgrader = {
 					}
 					else if(!err) {
 						creep.say('🛠');
-						if(Game.flags['LU '] || Game.flags['LU'] || Game.flags['L']) {
+						if(flags.flags.LU || flags.flags.L) {
 							console.log( '🛠', Math.trunc(Game.time/10000), Game.time%10000
 							, creep.name
 							, 'upgrading:'
@@ -128,7 +128,7 @@ var roleUpgrader = {
 					}
 					else {
 						creep.memory.upgrading = false;
-						if(Game.flags['LU '] || Game.flags['LU'] || Game.flags['L']) {
+						if(flags.flags.LU || flags.flags.L) {
 							console.log( '🛠⚠️', Math.trunc(Game.time/10000), Game.time%10000
 							, creep.name
 							, 'upgrading:'

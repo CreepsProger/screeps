@@ -9,17 +9,6 @@ const tools = require('tools');
 
 var roleWithdrawer = {
 
-	time:0,
-	flags:{DP:{}, DP1:{}, DP2:{}},
-	cashFlags: function() {
-		if(roleWithdrawer.time != Game.time) {
-			roleWithdrawer.time = Game.time;
-			roleWithdrawer.flags.DP = Game.flags['DP'];
-			roleWithdrawer.flags.DP1 = Game.flags['DP1'];
-			roleWithdrawer.flags.DP2 = Game.flags['DP2'];
-		}
-	},
-
 	/** @param {Creep} creep **/
 	run: function(creep,executer = undefined) {
 		if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
@@ -64,7 +53,7 @@ var roleWithdrawer = {
 						}
 				});
 				if(tombstones.length > 0) {
-					var tombstone = tombstones.reduce((p,c) => tools.checkTarget(executer,p.id) &&	
+					var tombstone = tombstones.reduce((p,c) => tools.checkTarget(executer,p.id) &&
 																						creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 					if(!!tombstone && tools.checkTarget(executer,tombstone.id)) {
 						target = tools.setTarget(creep,tombstone,tombstone.id,roleWithdrawer.run);

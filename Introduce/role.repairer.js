@@ -47,10 +47,10 @@ var roleRepairer = {
 					creep.memory.target = {id:'0', pos:{}, time: 0};
 				}
 
-				const NR1 = Game.flags['NR1'];// don't repair
-				const NR2 = Game.flags['NR2'];// don't repair
-				const D1 = Game.flags['D1'];// dismanle
-				const D2 = Game.flags['D2'];// dismanle
+				const NR1 = flags.flags.NR1;
+				const NR2 = flags.flags.NR2;
+				const D1 = flags.flags.D1;
+				const D2 = flags.flags.D2;
 				if(!target) {
 					var structures = cash.getStructuresToRepaire(creep.room).filter((s) => {
 							if(!!s && s.hitsMax - s.hits > s.hitsMax/(2+98*(!!creep.memory.target && s.id == creep.memory.target.id))) {

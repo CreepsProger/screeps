@@ -16,16 +16,31 @@ var flags = {
 			flags.time = Game.time;
 			flags.flags =
 				{ NAT: Game.flags['NAT']	// don't attack
-				,		R: Game.flags['R']		// repair only this pos
-				,		D: Game.flags['D']		// dismanle
-				,	 D1: Game.flags['D1']		// dismanle
-			 	,  D2: Game.flags['D2']		// dismanle
+				,  A2: Game.flags['A2']		// attack only in range = 5*A2.color
+				, DP1: Game.flags['DP1']	// defence point 1
+				, DP2: Game.flags['DP2']	// defence point 2
+				,   R: Game.flags['R']		// repair only this pos
+				,   B: Game.flags['B']		// build in spite of energyAvailable != energyCapacityAvailable or sources are empty or MAIN_ROOM_CRISIS
+				,  BB: Game.flags['BB']		// build in spite of sources are empty or MAIN_ROOM_CRISIS
+				,   U: Game.flags['U']		// upgrade in spite of and harvest from containers
+				,  UU: Game.flags['UU']		// upgrade in spite of sources
+				,   D: Game.flags['D']		// dismanle all
+				,  D1: Game.flags['D1']		// dismanle in range 11-D1.color
+			 	,  D2: Game.flags['D2']		// dismanle in range 11-D2.color
 			 	,  NR: Game.flags['NR']		// don't repair
 			 	, NR1: Game.flags['NR1']	// don't repair
 			 	, NR2: Game.flags['NR2']	// don't repair
 			 	,  MW: Game.flags['MW']		// multiplier to repair wall
 			 	,  MR: Game.flags['MR']		// multiplier to repair rampart
 				, 404: Game.flags['404']	// start spawning 404-th creeps
+				,   L: Game.flags['L']		// log
+				,  LA: Game.flags['LA']		// log attacker
+				,  LW: Game.flags['LW']		// log main metrix
+				, LWE: Game.flags['LWE']	// log main metrix
+				,  LE: Game.flags['LE']		// log energy
+				, LET: Game.flags['LET']	// log energy transfer
+				,  LP: Game.flags['LP']		// log pickuper
+				,  LU: Game.flags['LU']		// log upgrader
 				}
 		}
 	},

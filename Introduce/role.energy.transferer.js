@@ -55,8 +55,8 @@ var roleEnergyTransferer = {
 			// const a_source_is_not_near = !creep.pos.findInRange(FIND_SOURCES, 2, {
 			// 	filter: (source) => source.energy > 0 && source.room.name == this_room
 			// });
-			const B = !!Game.flags['B'] && Game.flags['B'].pos.roomName == my_room;
-			const UU = !!Game.flags['UU'] && Game.flags['UU'].pos.roomName == my_room;
+			const B = !!flags.flags.B && flags.flags.B.pos.roomName == my_room;
+			const UU = !!flags.flags.UU && flags.flags.UU.pos.roomName == my_room;
 
 			var target;
 
@@ -182,7 +182,7 @@ var roleEnergyTransferer = {
 					}
 				});
 
-				const U = !!Game.flags['U'] && Game.flags['U'].pos.roomName == my_room;
+				const U = !!flags.flags.U && flags.flags.U.pos.roomName == my_room;
 
 				if((!targs || !targs.length || targs.length == 0) &&
 				  (this_room_config.containers.weight < tools.getWeight(creep.name) && !U && !UU)) {
@@ -396,7 +396,7 @@ var roleEnergyTransferer = {
 						console.log(creep, JSON.stringify({weight:tools.getWeight(creep.name), err:err, target:target}));
 					}
 
-					if(!!Game.flags['LET'] || !!Game.flags['LE'] || !!Game.flags['L']) {
+					if(!!flags.flags.LET || !!flags.flags.LE || !!flags.flags.L) {
 						console.log( '🔜💡', Math.trunc(Game.time/10000), Game.time%10000
 												, creep.name
 												, err
@@ -406,7 +406,7 @@ var roleEnergyTransferer = {
 				}
 				else if(!err) {
 					creep.say('💡');
-					if(!!Game.flags['LET'] || !!Game.flags['LE'] || !!Game.flags['L']) {
+					if(!!flags.flags.LET || !!flags.flags.LE || !!flags.flags.L) {
 						console.log( '💡', Math.trunc(Game.time/10000), Game.time%10000
 												, creep.name
 												, 'transfering energy to:'
@@ -415,7 +415,7 @@ var roleEnergyTransferer = {
 				}
 				else {
 					creep.memory.transfering = false;
-					if(!!Game.flags['LET'] || !!Game.flags['LE'] || !!Game.flags['L']) {
+					if(!!flags.flags.LET || !!flags.flags.LE || !!flags.flags.L) {
 						console.log( '💡⚠️', Math.trunc(Game.time/10000), Game.time%10000
 												, creep.name
 												, 'transfering energy to:'

@@ -10,16 +10,6 @@ const tools = require('tools');
 
 var rolePickuper = {
 
-	time:0,
-	flags:{DP:{}, DP1:{}, DP2:{}},
-	cashFlags: function() {
-		if(rolePickuper.time != Game.time) {
-			rolePickuper.time = Game.time;
-			rolePickuper.flags.DP = Game.flags['DP'];
-			rolePickuper.flags.DP1 = Game.flags['DP1'];
-			rolePickuper.flags.DP2 = Game.flags['DP2'];
-		}
-	},
     /** @param {Creep} creep **/
     run: function(creep,executer = undefined) {
 			if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
@@ -75,7 +65,7 @@ var rolePickuper = {
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜👊');
 						err = tools.moveTo(creep,target);
-						if(Game.flags['LP '] || Game.flags['LP'] || Game.flags['L']) {
+						if(flags.flags.LP || flags.flags.L) {
 							var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
 							console.log( '🔜👊', Math.trunc(Game.time/10000), Game.time%10000
 													, creep.name
@@ -86,7 +76,7 @@ var rolePickuper = {
 					}
 					else if(!err) {
 						creep.say('👊');
-						if(Game.flags['LP '] || Game.flags['LP'] || Game.flags['L']) {
+            if(flags.flags.LP || flags.flags.L) {
 							var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
 							console.log( '👊', Math.trunc(Game.time/10000), Game.time%10000
 													, creep.name
@@ -96,7 +86,7 @@ var rolePickuper = {
 					}
 					else {
 						creep.memory.pickuping = false;
-						if(Game.flags['LP '] || Game.flags['LP'] || Game.flags['L']) {
+            if(flags.flags.LP || flags.flags.L) {
 							var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
 							console.log( '👊⚠️', Math.trunc(Game.time/10000), Game.time%10000
 													, creep.name

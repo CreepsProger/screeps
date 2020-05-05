@@ -163,7 +163,7 @@ var metrix = {
 	output: function() {
 
 		if(Game.time % constants.TICKS_TO_CHECK_CREEPS_NUMBER == 0) {
-			if(Game.flags['LWE'] || Game.flags['LW'] || Game.flags['L']) {
+			if(flags.flags.LWE || flags.flags.LW || flags.flags.L) {
 				console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 										, creep.name
 										, 'work_efficiency(12):'

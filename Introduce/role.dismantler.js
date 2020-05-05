@@ -11,17 +11,6 @@ var roleDismantler = {
 
 	test_weight: 304,
 
-	time:0,
-	flags:{D:{}, D1:{}, D2:{}},
-	cashFlags: function() {
-		if(roleDismantler.time != Game.time) {
-			roleDismantler.time = Game.time;
-			roleDismantler.flags.D = Game.flags['D'];
-			roleDismantler.flags.D1 = Game.flags['D1'];
-			roleDismantler.flags.D2 = Game.flags['D2'];
-		}
-	},
-
 	run: function(creep,executer) {
 			if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
 				roleNext.run(creep);
@@ -50,10 +39,9 @@ var roleDismantler = {
 				if(!creep.memory.target)
 					creep.memory.target = {id:'0', pos:{}, time: 0};
 
-				roleDismantler.cashFlags();
-				const D = roleDismantler.flags.D;
-				const D1 = roleDismantler.flags.D1;
-				const D2 = roleDismantler.flags.D2;
+				const D = flags.flags.D;
+				const D1 = flags.flags.D1;
+				const D2 = flags.flags.D2;
 				if(!target &&
 					 ( (!!D && D.pos.roomName == this_room)
 						||

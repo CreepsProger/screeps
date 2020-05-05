@@ -198,7 +198,7 @@ var role = {
 
 				var range = 50;
 
-				const A2 = Game.flags['A2'];
+				const A2 = flags.flags.A2;
 				if(!target && !!A2) {
 					//console.log('A2', creep, 'this_room:', this_room, 'range', range, 'A2:', JSON.stringify(A2));
 					if(A2.pos.roomName == this_room) {
@@ -225,13 +225,13 @@ var role = {
     			// console.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room, 'target', target);
     		}
 
-				const DP1 = Game.flags['DP1'];
+				const DP1 = flags.flags.DP1;
 				if(!target && !!DP1 && DP1.pos.roomName == my_room) {
 					// console.log('DP1', 'this_room:', this_room, 'DP1:', JSON.stringify(DP1));
 					target = DP1.pos;
 				}
 
-				const DP2 = Game.flags['DP2'];
+				const DP2 = flags.flags.DP2;
 				if(!target && !!DP2 && DP2.pos.roomName == my_room) {
 					//console.log('DP2', 'this_room:', this_room, 'DP2:', JSON.stringify(DP2));
 					target = DP2.pos;
@@ -337,7 +337,7 @@ var role = {
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜🎯');
 						tools.moveTo(creep,target);
-						if(!!Game.flags['LA '] || !!Game.flags['LA'] || !!Game.flags['L']) {
+						if(!!flags.flags.LA || !!flags.flags.L) {
 							var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
 							console.log( '🔜🎯', Math.trunc(Game.time/10000), Game.time%10000
 													, creep.name
@@ -347,7 +347,7 @@ var role = {
 					}
 					else if(!err) {
 						creep.say('🎯');
-						if(!!Game.flags['LA '] || !!Game.flags['LA'] || !!Game.flags['L']) {
+						if(!!flags.flags.LA || !!flags.flags.L) {
 							var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
 							console.log( '🎯', Math.trunc(Game.time/10000), Game.time%10000
 													, creep.name
@@ -356,7 +356,7 @@ var role = {
 						}
 					}
 					else {
-						if(!!Game.flags['LA '] || !!Game.flags['LA'] || !!Game.flags['L']) {
+						if(!!flags.flags.LA || !!flags.flags.L) {
 							var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
 							console.log( '🎯⚠️', Math.trunc(Game.time/10000), Game.time%10000
 													, creep.name

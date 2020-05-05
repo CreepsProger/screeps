@@ -78,9 +78,9 @@ var role = {
 			}
 		}
 
-		const U = !!Game.flags['U'] && Game.flags['U'].pos.roomName == my_room;
-		const UU = !!Game.flags['UU'] && Game.flags['UU'].pos.roomName == my_room;
-		const BB = !!Game.flags['BB'] && Game.flags['BB'].pos.roomName == my_room;
+		const U = !!flags.flags.U && flags.flags.U.pos.roomName == my_room;
+		const UU = !!flags.flags.UU && flags.flags.UU.pos.roomName == my_room;
+		const BB = !!flags.flags.BB && flags.flags.BB.pos.roomName == my_room;
 
 		if(!target &&
 			 (!creep.getActiveBodyparts(WORK) || U) &&
@@ -100,7 +100,7 @@ var role = {
 			if(!!target) return target;
 		}
 
-		const DP2 = Game.flags['DP2'];
+		const DP2 = flags.flags.DP2;
 		const this_room_sources_are_not_empty = !tools.areEmptySources(creep);
 
 		if(!target &&
