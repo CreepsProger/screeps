@@ -190,7 +190,7 @@ var spawns = {
 				const total_energy = cash.getTotalEnergy();
 				const extra_upgrade = conditions.TO_EXTRA_UPGRADE(total_energy);
 				const All = !!rerun;
-				const Sp1 = (All || spawn.name == 'Spawn1' || spawn.name == 'Spawn4');
+				const Sp1 = (All || spawn.name == 'Spawn1' || spawn.name == 'Spawn4' || spawn.name == 'Spawn11');
 				const Sp2 = (All || spawn.name == 'Spawn2' || spawn.name == 'Spawn6');
 				const Sp3 = (All || spawn.name == 'Spawn3' || spawn.name == 'Spawn7');
 				const Sp4 = (All || spawn.name == 'Spawn5' || spawn.name == 'Spawn8');
@@ -240,6 +240,7 @@ var spawns = {
 											 	 , [       1300000013,       1300000013,       1300000013]  // 5 1800
 											 	 , [       1700000017,       1700000017,       1700000017]  // 6 2300
 											 	 , [       2500000025,     250000000025,       1213000025, 2112000017, 190006000025]  // 7 5600
+												 , [     250008000017,     200013000017,       1213000025, 2112000017, 190006000025]
 										   	 ];
  		 		//                   TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 				const HEALER =   [ [                0,                0,                0]  // 0  000
@@ -490,8 +491,8 @@ var spawns = {
 	        }
 
 					if(conditions.TO_SPAWN_KEEPERS_ROOMS()) {
-						if(Sp1)  spawns.tryCreateCreep(spawn, ATTACKER[7][S], 205, 1, 1);
-						if(Sp12)  spawns.tryCreateCreep(spawn, ATTACKER[7][S+1], 206, 1, 1);
+						// if(Sp1)  spawns.tryCreateCreep(spawn, ATTACKER[7][S], 205, 1, 1);
+						if(Sp1)  spawns.tryCreateCreep(spawn, ATTACKER[8][L], 206, 1, 1);
 						// if(Sp12) spawns.tryCreateCreep(spawn,   HEALER[7][H], 207, 1, 1);
 						// if(conditions.TO_SPAWN_ROOM_DEFENDERS('W25S35')) {
 						// 	if(Sp1) spawns.tryCreateCreep(spawn, ATTACKER[7][M], 195, 2, 2);
@@ -502,7 +503,7 @@ var spawns = {
 						// 	if(Sp12) spawns.tryCreateCreep(spawn, CARIER[7][M], 191, 3, 3);
 						// }
 						if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[7][H], 204, 3, 3);
-						if(Sp1) spawns.tryCreateCreep(spawn,   CARIER[7][M], 201, 3, 3);
+						if(Sp1) spawns.tryCreateCreep(spawn,   CARIER[7][H], 201, 2, 2);
 					}
 
 					if(conditions.TO_SPAWN_TO_ATTACK()) {
