@@ -12,18 +12,18 @@ var flags = {
 	time:0,
 	flags:{NAT:{}, R:{}, D:{}, D1:{}, D2:{}, NR:{}, NR1:{}, NR2:{}, MW:{}, MR:{}},
 	cashFlags: function() {
-		if(towers.time != Game.time) {
-			towers.time = Game.time;
-			towers.flags.NAT = Game.flags['NAT'];// don't attack
-			towers.flags.R = Game.flags['R'];// repair only this pos
-			towers.flags.D = Game.flags['D'];// dismanle
-			towers.flags.D1 = Game.flags['D1'];// dismanle
-			towers.flags.D2 = Game.flags['D2'];// dismanle
-			towers.flags.NR = Game.flags['NR'];// don't repair
-			towers.flags.NR1 = Game.flags['NR1'];// don't repair
-			towers.flags.NR2 = Game.flags['NR2'];// don't repair
-			towers.flags.MW = Game.flags['MW'];// multiplier to repair wall
-			towers.flags.MR = Game.flags['MR'];// multiplier to repair rampart
+		if(flags.time != Game.time) {
+			flags.time = Game.time;
+			flags.flags.NAT = Game.flags['NAT'];// don't attack
+			flags.flags.R = Game.flags['R'];// repair only this pos
+			flags.flags.D = Game.flags['D'];// dismanle
+			flags.flags.D1 = Game.flags['D1'];// dismanle
+			flags.flags.D2 = Game.flags['D2'];// dismanle
+			flags.flags.NR = Game.flags['NR'];// don't repair
+			flags.flags.NR1 = Game.flags['NR1'];// don't repair
+			flags.flags.NR2 = Game.flags['NR2'];// don't repair
+			flags.flags.MW = Game.flags['MW'];// multiplier to repair wall
+			flags.flags.MR = Game.flags['MR'];// multiplier to repair rampart
 		}
 	},
 
