@@ -125,7 +125,8 @@ var cash = {
 	getExtensions: function(room) {
 		return cash.getEntry(cash.extensions, STRUCTURE_EXTENSION, tools.getRoomCode(room.name), () => {
 			return room.find(FIND_STRUCTURES, {
-				filter: (structure) => structure.structureType == STRUCTURE_SPAWN ||
+				filter: (structure) => structure.structureType == STRUCTURE_POWER_SPAWN ||
+															 structure.structureType == STRUCTURE_SPAWN ||
 															 structure.structureType == STRUCTURE_EXTENSION });
 			});
 	},
