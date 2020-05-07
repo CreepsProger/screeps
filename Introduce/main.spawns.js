@@ -244,7 +244,7 @@ var spawns = {
 				const HEALER =   [ [                0,                0,                0]  // 0   000
 											 	 , [          1000001,          1000001,          1000001]  // 1   300
 											 	 , [          1000001,          1000006,          2000001]  // 2   550
-											 	 , [          2000002,          2000004,          2000006]  // 3   800
+											 	 , [  300000001000006,          2000004,          2000006]  // 3   800
 											 	 , [          4000004,          4000005,          4000006]  // 4  1300
 											 	 , [          6000006,          6000006,          6000006]  // 5  1800
 											 	 , [          7000007,          7000009,          7000011]  // 6  2300
@@ -328,7 +328,7 @@ var spawns = {
 						if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[4][L], 441, 1, 1);
 						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[4][M], 444, 1, 1);
 					}*/
-					if(Sp1 && (Game.time % 1000 < 100) ) spawns.tryCreateCreep(spawn,   HEALER[2][M], 1000, 1, 1);
+					if(Sp1 && (Game.time % 1000 < 100) ) spawns.tryCreateCreep(spawn,   HEALER[3][L], 1000, 1, 1);
 				}
 
 				if(Game.shard.name == 'shard3') {
