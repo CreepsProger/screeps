@@ -153,8 +153,7 @@ var towers = {
 							 return hostile.pos.x%48 > 1 || hostile.pos.y%48 > 1;
 						 }
 					 });
-				if(!!target) {
-					tower.attack(target);
+				if(!!target && OK == tower.attack(target)) {
 					delete towers.sleep[i];
 				}
 			}
@@ -166,8 +165,7 @@ var towers = {
 				 	}
 			 	});
 
-			 	if(!!target) {
-				 	tower.heal(target);
+			 	if(!!target && OK == tower.heal(target)) {
 				 	delete towers.sleep[i];
 			 	}
 			}
@@ -184,8 +182,7 @@ var towers = {
 				 	target = targets[0];
 			 	}
 
-			 	if(!!target) {
-				 	tower.heal(target);
+			 	if(!!target && OK == tower.heal(target)) {
 				 	target.memory.healer = tower.id;
 				 	target.memory.heal_time = Game.time;
 				 	delete towers.sleep[i];
