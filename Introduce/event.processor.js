@@ -16,10 +16,11 @@ var event_processor = {
 					console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
 										 			, JSON.stringify({room:room.name, event:event, target:target}))
 					if(target.structureType == STRUCTURE_CONTAINER) {
+						cash.onBuilt(STRUCTURE_ROAD + '&' + STRUCTURE_CONTAINER,room.name);
 						cash.onBuilt(STRUCTURE_CONTAINER,room.name);
 					}
 					if(target.structureType == STRUCTURE_ROAD) {
-						cash.onBuilt(STRUCTURE_ROAD,room.name);
+						cash.onBuilt(STRUCTURE_ROAD + '&' + STRUCTURE_CONTAINER,room.name);
 					}
 				}
 			});
