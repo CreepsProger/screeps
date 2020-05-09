@@ -198,20 +198,10 @@ var towers = {
 											structure.pos.y == R.pos.y)?(11-R.color)*(11-R.secondaryColor):1;
 						if(structure.structureType == STRUCTURE_WALL && r) {
  							const repair = structure.hits < constants.STRUCTURE_WALL_HITS*mw*r;// 8000 E = 10 * 8000 / 800 = 100
-							if(repair && (Game.time % constants.TICKS_TO_CHECK_CPU == 0)) {
-								console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
-					 											, JSON.stringify({r:r, mw:mw, R:R, structure:structure})
-					 									);
-							}
 							return repair;
  						}
  						if(structure.structureType == STRUCTURE_RAMPART && r) {
  							const repair = structure.hits < constants.STRUCTURE_RAMPART_HITS*mr*r;// 8000 E = 10 * 8000 / 800 = 100
-							if(repair && (Game.time % constants.TICKS_TO_CHECK_CPU == 0)) {
-								console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
-					 											, JSON.stringify({r:r, mr:mr, R:R, structure:structure})
-					 									);
-							}
 							return repair;
  						}
 						if(structure.structureType == STRUCTURE_WALL || structure.structureType == STRUCTURE_RAMPART) {
@@ -245,6 +235,11 @@ var towers = {
 					target = rps.reduce((p,c) => tower.pos.getRangeTo(p) * (p.hits + 1) // dp*ec < dc*ep !! it is right! don't change
 																				< tower.pos.getRangeTo(c) * (c.hits + 1)
 																				? p:c);
+					if(target && (Game.time % constants.TICKS_TO_CHECK_CPU == 0)) {
+						console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
+		 												, JSON.stringify({r:r, mw:mw, mr:mr, R:R, target:target})
+		 										);
+					}
 				}
 
  				if(!!target && OK == tower.repair(target)) {
