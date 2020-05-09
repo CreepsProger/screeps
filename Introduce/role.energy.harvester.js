@@ -360,7 +360,7 @@ var role = {
 			if(	creep.pos.findInRange(FIND_MY_SPAWNS, 1).length > 0 ||
 					(!!creep.room.storage && creep.pos.inRangeTo(creep.room.storage, 1)) ||
 					(!!creep.room.terminal && creep.pos.inRangeTo(creep.room.terminal, 1)) ) {
-				creep.move(Game.time%8+1); // TOP:1 ,..., TOP_LEFT:8
+				// creep.move(Game.time%8+1); // TOP:1 ,..., TOP_LEFT:8
 			}
 		}
 	}
