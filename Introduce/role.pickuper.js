@@ -13,8 +13,7 @@ var rolePickuper = {
     /** @param {Creep} creep **/
     run: function(creep,executer = undefined) {
 			if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
-				roleNext.run(creep);
-				return;
+				return roleNext.run(creep);
 			}
 
 			if(creep.memory.pickuping && creep.store.getFreeCapacity() == 0) {
@@ -103,7 +102,7 @@ var rolePickuper = {
 
 			metrix.cpu.role_time(creep, 'pickuping');
 			if(!creep.memory.pickuping) {
-				roleNext.run(creep);
+				return roleNext.run(creep);
 			}
 		}
 };

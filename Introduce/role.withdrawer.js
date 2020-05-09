@@ -12,8 +12,7 @@ var roleWithdrawer = {
 	/** @param {Creep} creep **/
 	run: function(creep,executer = undefined) {
 		if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
-			roleNext.run(creep);
-			return;
+			return roleNext.run(creep);
 		}
 
 		if(creep.memory.withdrawing && creep.store.getFreeCapacity() == 0) {
@@ -129,7 +128,7 @@ var roleWithdrawer = {
 
 		metrix.cpu.role_time(creep, 'withdrawing');
 		if(!creep.memory.withdrawing) {
-			roleNext.run(creep);
+			return roleNext.run(creep);
 		}
 	}
 };

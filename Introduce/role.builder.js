@@ -12,8 +12,7 @@ var roleBuilder = {
     /** @param {Creep} creep **/
     run: function(creep,executer) {
 			if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
-				roleNext.run(creep);
-				return;
+				return roleNext.run(creep);
 			}
 
 			if(creep.memory.building &&
@@ -133,7 +132,7 @@ var roleBuilder = {
 
 			metrix.cpu.role_time(creep, 'building');
 			if(!creep.memory.building) {
-				roleNext.run(creep);
+				return roleNext.run(creep);
 			}
 		}
 };

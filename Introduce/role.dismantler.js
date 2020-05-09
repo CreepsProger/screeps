@@ -13,8 +13,7 @@ var roleDismantler = {
 
 	run: function(creep,executer) {
 			if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
-				roleNext.run(creep);
-				return;
+				return roleNext.run(creep);
 			}
 
 			if(creep.memory.dismantling &&
@@ -130,7 +129,7 @@ var roleDismantler = {
 
 			metrix.cpu.role_time(creep, 'dismantling');
 			if(!creep.memory.dismantling) {
-				roleNext.run(creep);
+				return roleNext.run(creep);
 			}
 		}
 };

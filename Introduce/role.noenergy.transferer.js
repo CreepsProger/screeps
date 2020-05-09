@@ -63,7 +63,7 @@ var roleNoEnergyTransferer = {
 
 				metrix.cpu.role_time(creep, 'noenergytransfering');
         if(!creep.memory.noenergytransfering) {
-            roleNext.run(creep);
+            return roleNext.run(creep);
         }
     }
 };

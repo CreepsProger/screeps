@@ -14,8 +14,7 @@ var roleRepairer = {
     /** @param {Creep} creep **/
     run: function(creep,executer) {
 			if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
-				roleNext.run(creep);
-				return;
+				return roleNext.run(creep);
 			}
 
 			if(creep.memory.repairing &&
@@ -127,7 +126,7 @@ var roleRepairer = {
 			metrix.cpu.step_time(creep, 'repairing', '🔧🔚');
 			metrix.cpu.role_time(creep, 'repairing');
 			if(!creep.memory.repairing) {
-				roleNext.run(creep);
+				return roleNext.run(creep);
 			}
 		}
 };

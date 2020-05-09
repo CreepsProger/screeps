@@ -54,8 +54,7 @@ var roleUpgrader = {
 	/** @param {Creep} creep **/
 	run: function(creep) {
 		if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
-			roleNext.run(creep);
-			return;
+			return roleNext.run(creep);
 		}
 
 		const this_room = creep.room.name;
@@ -146,7 +145,7 @@ var roleUpgrader = {
 
 		metrix.cpu.role_time(creep, 'upgrading');
 		if(!creep.memory.upgrading) {
-			roleNext.run(creep);
+			return roleNext.run(creep);
 		}
 	}
 };

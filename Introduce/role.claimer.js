@@ -124,7 +124,7 @@ var role = {
 		metrix.cpu.step_time(creep, role.name, '🗝🔚');
 		metrix.cpu.role_time(creep, role.name);
 		if(!creep.memory[role.name].on) {
-			roleNext.run(creep);
+			return roleNext.run(creep);
 		}
 	}
 };

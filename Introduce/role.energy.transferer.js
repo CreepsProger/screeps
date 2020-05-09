@@ -17,8 +17,7 @@ var roleEnergyTransferer = {
 
 	run: function(creep, executer = undefined) {
 		if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
-				roleNext.run(creep);
-				return;
+				return roleNext.run(creep);
 		}
 
 		if(creep.memory.transfering && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
@@ -434,7 +433,7 @@ var roleEnergyTransferer = {
 
 		metrix.cpu.role_time(creep, 'transfering');
 		if(!creep.memory.transfering) {
-			roleNext.run(creep);
+			return roleNext.run(creep);
 		}
 	}
 };

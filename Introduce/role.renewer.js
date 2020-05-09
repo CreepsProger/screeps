@@ -17,8 +17,7 @@ var roleRenewer = {
 	/** @param {Creep} creep **/
 	run: function(creep) {
 		if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
-			roleNext.run(creep);
-			return;
+			return roleNext.run(creep);
 		}
 
 		const this_room = creep.room.name;
@@ -63,7 +62,7 @@ var roleRenewer = {
 
 		metrix.cpu.role_time(creep, 'renewer');
 		if(!creep.memory.renewing) {
-			roleNext.run(creep);
+			return roleNext.run(creep);
 		}
 	}
 };
