@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 233,
+	version: 234,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -61,8 +61,10 @@ var config = {
 			const special_x = path_rooms2[this_room+'x'];
 			const special_y = path_rooms2[this_room+'y'];
 			// console.log(creep, role_name, JSON.stringify({pos:pos, exit:exit, my_path_room:my_path_room}));
-			pos.x = !special_x?pos.x:special_x+Game.time%3-1;
-			pos.y = !special_y?pos.y:special_y+Game.time%3-1;
+			if(!!special_x)
+				pos.x = special_x+Game.time%3-1;
+			if(!!special_y)
+				pos.y = special_y+Game.time%3-1;
 		}
 		return pos;
 	},
@@ -77,6 +79,13 @@ var config = {
 			const my_path_room = Memory.config.main_path[creep.room.name];
 			const exit = creep.room.findExitTo(my_path_room);
 			target = creep.pos.findClosestByPath(exit);
+			const special_x = Memory.config.main_path[creep.room.name+'x'];
+			const special_y = Memory.config.main_path[creep.room.name+'y'];
+			// console.log(creep, role_name, JSON.stringify({pos:pos, exit:exit, my_path_room:my_path_room}));
+			if(!!special_x)
+				target.x = special_x+Game.time%3-1;
+			if(!!special_y)
+				target.y = special_y+Game.time%3-1;
 		}
 
 		return tools.moveTo(creep,target);
@@ -104,7 +113,7 @@ var config = {
 									, W26S33: 'W26S33'
 									, W25S35: 'W25S34', W25S34: 'W25S33', W25S33: 'W25S33'
 									, W59S52: 'W58S52', W58S52: 'W57S52'
-									, W57S53: 'W57S52'
+									, W57S53: 'W57S52', W57S53x:30
 									, W54S51: 'W55S51', W55S51: 'W56S51', W56S51: 'W56S52', W56S52: 'W57S52'
 									}
 			, shards:
