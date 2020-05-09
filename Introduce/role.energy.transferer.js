@@ -59,6 +59,8 @@ var roleEnergyTransferer = {
 
 			var target;
 
+			const weight = !this_room_config.containers? 0:this_room_config.containers.weight;
+
 			if(!target) {
 				 target = links.getTargetLinkToTransferEnergy(creep, executer, roleEnergyTransferer.run, this_room_config.containers.weight);
 				 if(!!target) {
