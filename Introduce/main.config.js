@@ -30,7 +30,7 @@ var config = {
 
 		const my_shard_config = Memory.config.shards[my_shard];
 		if(Game.shard.name == 'shard0') {
-			console.log(creep, role_name, JSON.stringify({this_room:this_room, my_shard:my_shard, my_shard_config:my_shard_config}));
+			console.log(creep, role_name, JSON.stringify({this_room:this_room, my_room:my_room, my_shard:my_shard, my_shard_config:my_shard_config}));
 		}
 		const my_room_config = my_shard_config.rooms[my_room];
 		const path_rooms = my_room_config.path_rooms;
