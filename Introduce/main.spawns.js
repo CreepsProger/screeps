@@ -329,7 +329,8 @@ var spawns = {
 						if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[4][L], 441, 1, 1);
 						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[4][M], 444, 1, 1);
 					}*/
-					if(Sp1 && (Game.time % 1000 < 100) ) spawns.tryCreateCreep(spawn,   HEALER[2][M], 1000, 1, 1);
+					if(Sp1 && (Game.time % 2000 < 100) ) spawns.tryCreateCreep(spawn,   HEALER[2][M], 1000, 1, 1);
+          if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[5][L], 461, 1, 1);
 				}
 
 				if(Game.shard.name == 'shard3') {
@@ -380,7 +381,7 @@ var spawns = {
 	            }
 							if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S35')) {
 								if(Sp4) spawns.tryCreateCreep(spawn,   CARIER[7][H], 122, 1, 1);
-								if(Sp4) spawns.tryCreateCreep(spawn, ATTACKER[7][S+1], 126, 1, 1);								
+								if(Sp4) spawns.tryCreateCreep(spawn, ATTACKER[7][S+1], 126, 1, 1);
 								if(Sp4) spawns.tryCreateCreep(spawn, ATTACKER[7][S], 125, 1, 1);
 								if(Sp4) spawns.tryCreateCreep(spawn,   HEALER[7][H], 127, 1, 1);
 							}
@@ -392,7 +393,7 @@ var spawns = {
 							// if(Sp3) spawns.tryCreateCreep(spawn, CARIER[3][L],  91, 1, 1);
 							if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S32')) {
 								if(Sp5) spawns.tryCreateCreep(spawn,   CARIER[7][H], 172, 1, 1);
-								if(Sp5) spawns.tryCreateCreep(spawn, ATTACKER[7][S+1], 176, 1, 1);								
+								if(Sp5) spawns.tryCreateCreep(spawn, ATTACKER[7][S+1], 176, 1, 1);
 								if(Sp5) spawns.tryCreateCreep(spawn, ATTACKER[7][S], 175, 1, 1);
 								if(Sp5) spawns.tryCreateCreep(spawn,   HEALER[7][H], 177, 1, 1);
 							}
