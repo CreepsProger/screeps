@@ -353,7 +353,7 @@ var role = {
 				require('role.claimer').run(creep);
 			}
 		}
-		if(creep.memory.rerun && !creep.memory[role.name].on) {
+		if(!!creep.memory.rerun && !creep.memory[role.name].on) {
 			metrix.idle(creep);
 			//cash.renewCreep(creep);
 
