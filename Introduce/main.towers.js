@@ -237,7 +237,7 @@ var towers = {
 																				? p:c);
 					if(target && (Game.time % constants.TICKS_TO_CHECK_CPU == 0)) {
 						console.log( '🗼', Math.trunc(Game.time/10000), Game.time%10000
-		 												, JSON.stringify({r:r, mw:mw, mr:mr, R:R, target:target})
+		 												, JSON.stringify({mw:mw, mr:mr, R:R, target:target})
 		 										);
 					}
 				}
