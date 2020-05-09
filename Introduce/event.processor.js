@@ -15,7 +15,7 @@ var event_processor = {
 				if(target && target.my) {
 					console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
 										 			, JSON.stringify({event_processor:'run', room:room.name, event:event, target:target}))
-					if(target.progressTotal - target.progress < 2*event.amount) { // TODO: recheck this condition
+					if(target.progressTotal - target.progress < 250) { // TODO: recheck this condition
 						if(target.structureType == STRUCTURE_CONTAINER) {
 							cash.onBuilt(STRUCTURE_ROAD + '&' + STRUCTURE_CONTAINER,room.name);
 							cash.onBuilt(STRUCTURE_CONTAINER,room.name);
