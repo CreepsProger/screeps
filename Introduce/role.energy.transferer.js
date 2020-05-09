@@ -46,6 +46,7 @@ var roleEnergyTransferer = {
 			const my_shard_config = Memory.config.shards[my_shard];
 			const this_room_config = !!my_shard_config.rooms[this_room]?my_shard_config.rooms[this_room]:my_shard_config.rooms['Default'];
 			const my_room_config = my_shard_config.rooms[my_room];
+
 			if(!this_room_config) {
 				console.log( '🚸', Math.trunc(Game.time/10000), Game.time%10000, Game.shard.name
 									, 'link:', JSON.stringify({my_shard:my_shard,this_room:this_room, this_room_config:this_room_config})
@@ -60,8 +61,6 @@ var roleEnergyTransferer = {
 			const UU = !!flags.flags.UU && flags.flags.UU.pos.roomName == my_room;
 
 			var target;
-
-			const weight = !!this_room_config.containers? this_room_config.containers.weight:0;
 
 			if(!target) {
 				 target = links.getTargetLinkToTransferEnergy(creep, executer, roleEnergyTransferer.run, this_room_config.containers.weight);
