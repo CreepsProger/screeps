@@ -23,6 +23,9 @@ var event_processor = {
 						if(target.structureType == STRUCTURE_ROAD) {
 							cash.onBuilt(STRUCTURE_ROAD + '&' + STRUCTURE_CONTAINER,room.name);
 						}
+						if(target.structureType == STRUCTURE_EXTENSION) {
+							cash.onBuilt(STRUCTURE_EXTENSION,room.name);
+						}
 					}
 				}
 			});
