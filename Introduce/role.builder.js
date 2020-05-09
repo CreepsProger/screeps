@@ -46,6 +46,7 @@ var roleBuilder = {
 
 				const this_room_sources_are_empty = tools.areEmptySources(creep);
 				const this_room_is_being_claiming = !!creep.room.controller && !creep.room.controller.my;
+				const a_room_without_controller = !creep.room.controller;
 				//console.log(JSON.stringify(Game.rooms['W29S35'].controller));
 				const UU = !!flags.flags.UU && flags.flags.UU.pos.roomName == my_room;
 
@@ -69,7 +70,11 @@ var roleBuilder = {
 					}
 				}
 
-				if(!target && (this_room_sources_are_empty || this_room_is_being_claiming || UU || B || BB )) {
+				if(!target &&
+					 (this_room_sources_are_empty ||
+					 	this_room_is_being_claiming ||
+						a_room_without_controller ||
+						UU || B || BB )) {
 					target = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES)
 				}
 
