@@ -14,7 +14,10 @@ var cash = {
 	},
 
 	haveToReset: function(type, entry_id) {
-		if(Game.shard.name == 'shard0' && entry_id == STRUCTURE_ROAD + '&' + STRUCTURE_CONTAINER) {
+		if(	Game.shard.name == 'shard0' &&
+				(	entry_id == STRUCTURE_EXTENSION ||
+					entry_id == STRUCTURE_CONTAINER ||
+					entry_id == STRUCTURE_ROAD + '&' + STRUCTURE_CONTAINER)) {
 			console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({cash:'try haveToReset', type:type, entry_id:entry_id, resetList:cash.resetList, shard:Game.shard}))
 		}
