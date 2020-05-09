@@ -3,8 +3,25 @@ const tools = require('tools');
 
 var cash = {
 
-	version: 41,
+	version: 42,
 	time: 0,
+
+	resetList:[],
+	onBuilt: function(type, roomName) {
+		resetList.push(type+roomName);
+		console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
+										, JSON.stringify({cash:'onBuilt', type:type, roomName:roomName, resetList:resetList}))
+	},
+
+	haveToReset: function(type, entry_id) {
+		if(resetList.find((item) => item == type+entry_id)) {
+			resetList = resetList.filter((item) => item == type+entry_id);
+			console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({cash:'haveToReset', type:type, entry_id:entry_id, resetList:resetList}))
+			return true;
+		}
+		return false;
+	},
 
 	initEntry: function(type, entry_id, subentry_id) {
 		if(!cash.time)
@@ -38,7 +55,8 @@ var cash = {
 			 !cash_objects[entry_id] ||
 			 !cash_objects[entry_id][subentry_id] ||
 			 cash_objects[entry_id][subentry_id].time < cash.time ||
-			 (ticksToReset > 0 && Game.time - entry.ids_time > ticksToReset)
+			 (ticksToReset > 0 && Game.time - entry.ids_time > ticksToReset) ||
+			 cash.haveToReset(type,entry_id)
 			) {
  			entry.ids = get().map((obj) => obj.id);
 			entry.ids_time = Game.time;
