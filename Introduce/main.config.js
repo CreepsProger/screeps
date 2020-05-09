@@ -29,10 +29,10 @@ var config = {
 			return null;
 
 		const my_shard_config = Memory.config.shards[my_shard];
-		if(Game.shard.name == 'shard0') {
-			creep.memory[role_name].shard = Game.shard.name;
-			console.log(creep, role_name, JSON.stringify({this_room:this_room, my_room:my_room, my_shard:my_shard, my_shard_config:my_shard_config}));
-		}
+		// if(Game.shard.name == 'shard0') {
+		// 	creep.memory[role_name].shard = Game.shard.name;
+		// 	console.log(creep, role_name, JSON.stringify({this_room:this_room, my_room:my_room, my_shard:my_shard, my_shard_config:my_shard_config}));
+		// }
 		const my_room_config = my_shard_config.rooms[my_room];
 		const path_rooms = my_room_config.path_rooms;
 		const path_rooms_by_shard = path_rooms[Game.shard.name];
