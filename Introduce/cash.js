@@ -14,7 +14,7 @@ var cash = {
 	},
 
 	haveToReset: function(type, entry_id) {
-		if(Game.shard = 'shard0') {
+		if(Game.shard.name == 'shard0') {
 			console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({cash:'try haveToReset', type:type, entry_id:entry_id, resetList:cash.resetList}))
 		}
