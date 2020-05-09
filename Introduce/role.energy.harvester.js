@@ -344,14 +344,10 @@ var role = {
 			}
 		}
 
-		for(var name in Game.spawns) {
-			var spawn = Game.spawns[name];
-			if(creep.room.name == spawn.room.name &&
-				 creep.pos.x == spawn.pos.x &&
-				 creep.pos.y == spawn.pos.y+1 &&
-				 creep.memory.rerun) {
-				creep.move(Game.time%8+1); // TOP:1 ,..., TOP_LEFT:8
-			}
+		if(	creep.pos.findInRange(FIND_MY_SPAWNS, 1).length > 0 ||
+				(!!creep.room.storage && creep.pos.inRangeTo(creep.room.storage, 1)) ||
+				(!!creep.room.terminal && creep.pos.inRangeTo(creep.room.terminal, 1)) ) {
+			creep.move(Game.time%8+1); // TOP:1 ,..., TOP_LEFT:8
 		}
 		metrix.cpu.step_time(creep, role.name, '⚡🔚');
 		metrix.cpu.role_time(creep, role.name);
