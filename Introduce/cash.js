@@ -17,7 +17,7 @@ var cash = {
 		if(Game.shard.name == 'shard0') {
 			if(!Game.shard.name) Game.shard = {name:'shard0'};
 			console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({cash:'try haveToReset', type:type, entry_id:entry_id, resetList:cash.resetList}))
+											, JSON.stringify({cash:'try haveToReset', type:type, entry_id:entry_id, resetList:cash.resetList, shard:Game.shard}))
 		}
 		if(cash.resetList.find((item) => item == type+entry_id)) {
 			cash.resetList = cash.resetList.filter((item) => item == type+entry_id);
