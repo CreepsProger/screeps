@@ -103,9 +103,9 @@ var config = {
 									, W26S32: 'W26S33'
 									, W26S33: 'W26S33'
 									, W25S35: 'W25S34', W25S34: 'W25S33', W25S33: 'W25S33'
-									, W56S51: 'W56S52', W56S52: 'W57S52'
 									, W59S52: 'W58S52', W58S52: 'W57S52'
 									, W57S53: 'W57S52'
+									, W54S51: 'W55S51', W55S51: 'W56S51', W56S51: 'W56S52', W56S52: 'W57S52'
 									}
 			, shards:
 				{	shard0:
@@ -241,7 +241,7 @@ var config = {
 							{ containers: {weight: 423}
 							, sites:
 								[ {x:39, y:5, type:STRUCTURE_CONTAINER}
-								, {x:39, y:4, type:STRUCTURE_CONTAINER}
+								// , {x:39, y:4, type:STRUCTURE_CONTAINER}
 								]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 420, max_weight: 429}

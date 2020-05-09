@@ -8,7 +8,7 @@ var cash = {
 
 	resetList:[],
 	onBuilt: function(type, roomName) {
-		resetList.push(type+roomName);
+		cash.resetList.push(type+roomName);
 		console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
 										, JSON.stringify({cash:'onBuilt', type:type, roomName:roomName, resetList:cash.resetList}))
 	},
