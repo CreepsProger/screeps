@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 240,
+	version: 241,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -389,16 +389,21 @@ var config = {
 							 	{ shard: 'shard3', room: 'W29S32'}
 							, path_rooms:
 							 	{ shard3:
-									{ W28S35: 'W28S34', W28S34: 'W28S33'
-									, W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
-									, W28S33: 'W28S32', W28S32: 'W29S32', W29S32: 'W30S32'
-									, W30S32: 'W30S31', W30S31: 'W30S30'
-									, W30S30: 'shard2'
+									{ W28S35:'W28S34', W28S34:'W28S33'
+									, W25S33:'W26S33', W26S33:'W27S33', W27S33:'W28S33'
+									, W28S33:'W28S32', W28S32:'W29S32', W29S32:'W30S32'
+									, W30S32:'W30S31', W30S31:'W30S30'
+									, W30S30:'shard2'
 									}
 								, shard2:
 									{ W30S30: 'shard1'}
 								, shard1:
-									{ W30S30: 'W30S31', W30S31: 'W29S31', W29S31: 'W29S31'
+									{ W30S30:'W30S31', W60S50:'W30S30', W30S31:'W29S31', W29S31:'W29S31'
+								 	}
+								, shard0:
+									{ W57S52:'W58S52', W57S52y:31, W58S52:'W59S52', W58S52y:37
+									, W59S52:'W59S51', W59S52x:11, W59S51:'W60S51'
+									, W60S51:'W60S50', W60S50:'shard1'
 								 	}
 								}
 								, escape_path:

@@ -269,6 +269,10 @@ var spawns = {
 					// if(Memory.totals.WORK < 25	) spawns.tryCreateCreep(spawn, 40404, 20, 3); // E  800 Worker
 					// if(Memory.totals.WORK < 25	) spawns.tryCreateCreep(spawn, 20202, 20, 3); // E  400 Worker
 					// if(Memory.totals.WORK < 25	) spawns.tryCreateCreep(spawn, 10101, 20, 3); // E  200 Worker
+					if(true) {
+						const f = 0+!!flags.flags['304'];
+						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[5][M], 304, 0+f, 0+f);
+					}
 
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W57S52')) {
 						if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 405, 1, 1);
