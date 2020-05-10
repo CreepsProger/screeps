@@ -15,7 +15,7 @@ const role = require('role.claimer');
 
 module.exports.loop = function () {
 
-	 Game.cpu.setShardLimits({shard0:57,shard1:1,shard2:1,shard3:21});
+	// Game.cpu.setShardLimits({shard0:57,shard1:1,shard2:1,shard3:21});
 
 	if(Game.shard.name != 'shard0' && Game.shard.name != 'shard3') {
 		if(Game.time % constants.TICKS_TO_CHECK_CPU == 0) {
