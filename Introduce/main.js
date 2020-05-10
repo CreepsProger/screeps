@@ -14,7 +14,7 @@ const tools = require('tools');
 const role = require('role.claimer');
 
 module.exports.loop = function () {
-
+/*
 	Game.cpu.setShardLimits({shard0:52,shard1:4,shard2:3,shard3:21});
 
 	if(Game.shard.name != 'shard0' && Game.shard.name != 'shard3') {
@@ -49,7 +49,7 @@ module.exports.loop = function () {
 		}
 
 		return;
-	}
+	}*/
 
 	if(!conditions.TO_SPAWN_MAIN_ROOMS() && Game.time % 2)
 		return;
