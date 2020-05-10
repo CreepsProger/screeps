@@ -33,7 +33,7 @@ module.exports.loop = function () {
 		}
 
 		config.run();
-		flags.run();
+		//flags.run();
 
 		for(var name in Game.creeps) {
 			var creep = Game.creeps[name];
