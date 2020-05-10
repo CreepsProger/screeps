@@ -4,6 +4,7 @@ const conditions = {
 	  MAIN_ROOM_CRISIS: 						function() {
 																			return 	Memory.totals.WORK < 25 || Memory.totals.CARRY < 75;}
 	, CLAIMING_ROOM_CRISIS: 				function() {
+		if(Game.shard.name == 'shard0') return Memory.totals.WORK < 10;
 																			return 	Memory.totals.WORK < 50;}
 	, TO_SPAWN_MAIN_ROOMS: 					function() {
 																			return 	Game.cpu.bucket > constants.CPU_BUCKET_TO_SPAWN_MAIN_ROOMS;}
