@@ -2,6 +2,7 @@ const constants = require('main.constants');
 
 const conditions = {
 	  MAIN_ROOM_CRISIS: 						function() {
+			if(Game.shard.name == 'shard0') return Memory.totals.WORK < 10 || Memory.totals.CARRY < 25;
 																			return 	Memory.totals.WORK < 25 || Memory.totals.CARRY < 75;}
 	, CLAIMING_ROOM_CRISIS: 				function() {
 		if(Game.shard.name == 'shard0') return Memory.totals.WORK < 10;
