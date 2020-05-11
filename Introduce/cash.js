@@ -3,7 +3,7 @@ const tools = require('tools');
 
 var cash = {
 
-	version: 42,
+	version: 43,
 	time: 0,
 
 	resetList:[],
@@ -22,9 +22,10 @@ var cash = {
 		 									, JSON.stringify({cash:'try haveToReset', type:type, entry_id:entry_id, resetList:cash.resetList, shard:Game.shard}))
 		}*/
 		if(!!cash.resetList.find((item) => item == type+entry_id)) {
-			cash.resetList = cash.resetList.filter((item) => item != type+entry_id);
+			const newResetList = cash.resetList.filter((item) => item != type+entry_id);
 			console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({cash:'haveToReset', type:type, entry_id:entry_id, resetList:cash.resetList}))
+											, JSON.stringify({cash:'haveToReset', type:type, entry_id:entry_id, resetList:cash.resetList, newResetList:newResetList}));
+cash.resetList = newResetList;
 			return true;
 		}
 		return false;
