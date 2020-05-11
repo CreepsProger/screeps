@@ -341,7 +341,7 @@ var role = {
 							console.log( '🔜🎯', Math.trunc(Game.time/10000), Game.time%10000
 													, creep.name
 													, 'moving for attacking to:'
-													, JSON.stringify({target:target, creep:creep}));
+													, JSON.stringify({target:target}));
 						}
 					}
 					else if(!err) {
@@ -350,7 +350,7 @@ var role = {
 							console.log( '🎯', Math.trunc(Game.time/10000), Game.time%10000
 													, creep.name
 													, 'attacking on:'
-													, JSON.stringify({target:target, creep:creep}));
+													, JSON.stringify({target:target}));
 						}
 					}
 					else {
@@ -359,7 +359,7 @@ var role = {
 													, creep.name
 													, 'attacking on:'
 													, 'with err:'
-													, err, JSON.stringify({target:target, creep:creep}));
+													, err, JSON.stringify({target:target}));
 						}
 						creep.memory.attacking = false;
 					}
