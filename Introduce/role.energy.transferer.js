@@ -59,6 +59,7 @@ var roleEnergyTransferer = {
 			// });
 			const B = !!flags.flags.B && flags.flags.B.pos.roomName == my_room;
 			const UU = !!flags.flags.UU && flags.flags.UU.pos.roomName == my_room;
+			const Infra = !!flags.flags.Infra && flags.flags.Infra.pos.roomName == my_room;
 
 			var target;
 
@@ -102,11 +103,12 @@ var roleEnergyTransferer = {
 				var use_cash_pos = false;
 				var use_cash = false;
 				if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
-					if(false) {
+					if(Infra) {
 						use_api = true;
 						var exts = creep.pos.findInRange(FIND_STRUCTURES, 1, {
 							filter: (structure) => {
 								return ( structure.structureType == STRUCTURE_SPAWN ||
+												structure.structureType == STRUCTURE_POWER_SPAWN ||
 												structure.structureType == STRUCTURE_EXTENSION)  &&
 									!!structure.store &&
 									structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
