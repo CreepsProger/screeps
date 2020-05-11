@@ -337,33 +337,29 @@ var role = {
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜🎯');
 						tools.moveTo(creep,target);
-						if(!!flags.flags.LA || !!flags.flags.L) {
-							var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
+						if(!!flags.flags.LA || !!flags.flags.L) {							
 							console.log( '🔜🎯', Math.trunc(Game.time/10000), Game.time%10000
 													, creep.name
 													, 'moving for attacking to:'
-													, targetinfo);
+													, JSON.stringify({target:target, creep:creep}));
 						}
 					}
 					else if(!err) {
 						creep.say('🎯');
 						if(!!flags.flags.LA || !!flags.flags.L) {
-							var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
 							console.log( '🎯', Math.trunc(Game.time/10000), Game.time%10000
 													, creep.name
 													, 'attacking on:'
-													, targetinfo);
+													, JSON.stringify({target:target, creep:creep}));
 						}
 					}
 					else {
 						if(!!flags.flags.LA || !!flags.flags.L) {
-							var targetinfo = target.name ? target.name:target.structureType?target.structureType:JSON.stringify(target);
 							console.log( '🎯⚠️', Math.trunc(Game.time/10000), Game.time%10000
 													, creep.name
 													, 'attacking on:'
-													, targetinfo
 													, 'with err:'
-													, err);
+													, err, JSON.stringify({target:target, creep:creep}));
 						}
 						creep.memory.attacking = false;
 					}
