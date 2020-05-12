@@ -156,6 +156,7 @@ var towers = {
 				if(!!target && OK == tower.attack(target)) {
 					delete towers.sleep[i];
 				}
+				else target = null;
 			}
 
 			if(!target) {
@@ -168,6 +169,7 @@ var towers = {
 			 	if(!!target && OK == tower.heal(target)) {
 				 	delete towers.sleep[i];
 			 	}
+				else target = null;
 			}
 
 			if(!target) {
@@ -187,6 +189,7 @@ var towers = {
 				 	target.memory.heal_time = Game.time;
 				 	delete towers.sleep[i];
 			 	}
+				else target = null;
 			}
 
 		 	if(!target && (!NR || R)) {
