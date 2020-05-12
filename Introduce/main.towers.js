@@ -246,6 +246,7 @@ var towers = {
 					towers.prev_target[i] = target.id;
 					delete towers.sleep[i];
  				}
+				else target = null;
  			}
 
 			if(!target && (!towers.sleep[i] || towers.sleep[i] < constants.TICKS_MAX_TOWERS_SLEEPING )) {
