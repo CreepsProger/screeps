@@ -279,8 +279,8 @@ var spawns = {
 					}
 					else {
 						const f = 0+!!flags.flags['401'];
-						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[5][H], 404, 3, 3);
-						if(Sp1) spawns.tryCreateCreep(spawn, CARIER[5][H], 401, 1+f, 1+f);
+						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[6][H], 404, 2, 2);
+						if(Sp1) spawns.tryCreateCreep(spawn, CARIER[4][H], 401, 2+f, 2+f);
 						//if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[7][H], 404, 3, 3);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W57S53')) {
@@ -288,7 +288,7 @@ var spawns = {
 					}
 					else {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W57S53')) {
-							if(Sp1)	spawns.tryCreateCreep(spawn, CLAIMER[5][H], 410, 1, 1);
+							if(Sp1)	spawns.tryCreateCreep(spawn, CLAIMER[6][H], 410, 1, 1);
 						}
 						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[5][H], 414, 1, 1);
 						if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[5][L], 411, 1, 1);
@@ -298,7 +298,7 @@ var spawns = {
 					}
 					else {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W58S52')) {
-							if(Sp1)	spawns.tryCreateCreep(spawn, CLAIMER[5][H], 420, 1, 1);
+							if(Sp1)	spawns.tryCreateCreep(spawn, CLAIMER[6][H], 420, 1, 1);
 						}
 						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[5][H], 424, 1, 1);
 						if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[5][L], 421, 2, 2);
@@ -308,7 +308,7 @@ var spawns = {
 					}
 					else {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W59S52')) {
-							if(Sp1)	spawns.tryCreateCreep(spawn, CLAIMER[5][H], 430, 1, 1);
+							if(Sp1)	spawns.tryCreateCreep(spawn, CLAIMER[6][H], 430, 1, 1);
 						}
 						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[5][M], 434, 1, 1);
 						if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[5][L], 431, 2, 2);
@@ -334,7 +334,7 @@ var spawns = {
 						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[4][M], 444, 1, 1);
 					}*/
 					if(Sp1 && (Game.time % 2000 < 100) ) spawns.tryCreateCreep(spawn,   HEALER[2][M], 1000, 1, 1);
-          if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[5][L], 461, 1, 1);
+          if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[6][L], 461, 1, 1);
 				}
 
 				if(Game.shard.name == 'shard3') {
