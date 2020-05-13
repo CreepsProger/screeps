@@ -237,12 +237,12 @@ var role = {
 					target = DP2.pos;
 				}
 
-				if(!target) {
+				if(!target && canAttack) {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5, {
 						filter: (structure) => {
 							return (structure.structureType != STRUCTURE_CONTROLLER &&
-											structure.structureType != STRUCTURE_KEEPER_LAIR &&
-                      structure.structureType == STRUCTURE_RAMPART);
+											structure.structureType != STRUCTURE_KEEPER_LAIR);/* &&
+                      structure.structureType == STRUCTURE_RAMPART);*/
 						}
 					});
 					if(targets.length > 0) {
@@ -254,8 +254,8 @@ var role = {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, range, {
 						filter: (structure) => {
 							return (structure.structureType != STRUCTURE_CONTROLLER &&
-											structure.structureType != STRUCTURE_KEEPER_LAIR &&
-                      structure.structureType == STRUCTURE_RAMPART);
+											structure.structureType != STRUCTURE_KEEPER_LAIR);/* &&
+                      structure.structureType == STRUCTURE_RAMPART);*/
 						}
 					});
 					if(targets.length > 0) {
@@ -337,7 +337,7 @@ var role = {
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜🎯');
 						tools.moveTo(creep,target);
-						if(!!flags.flags.LA || !!flags.flags.L) {							
+						if(!!flags.flags.LA || !!flags.flags.L) {
 							console.log( '🔜🎯', Math.trunc(Game.time/10000), Game.time%10000
 													, creep.name
 													, 'moving for attacking to:'
