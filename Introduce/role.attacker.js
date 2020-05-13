@@ -253,9 +253,10 @@ var role = {
 				if(!target && canAttack) {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, range, {
 						filter: (structure) => {
-							return (structure.structureType != STRUCTURE_CONTROLLER &&
-											structure.structureType != STRUCTURE_KEEPER_LAIR &&
-                      structure.structureType == STRUCTURE_RAMPART);
+							return structure.structureType != STRUCTURE_KEEPER_LAIR;
+								//  &&
+								// structure.structureType != STRUCTURE_CONTROLLER &&
+								// 				structure.structureType == STRUCTURE_RAMPART);
 						}
 					});
 					if(targets.length > 0) {
