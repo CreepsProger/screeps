@@ -13,8 +13,10 @@ var event_processor = {
 			buildEvents.forEach(event => {
 				const target = Game.getObjectById(event.data.targetId);
 				if(target && target.my) {
-					console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
-										 			, JSON.stringify({event_processor:'run', room:room.name, event:event, target:target}))
+					if(target.progressTotal - target.progress < 300) {
+						console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
+											 			, JSON.stringify({event_processor:'run', room:room.name, event:event, target:target}))
+					}
 					cash.onBuilt(room.name, target);
 				}
 			});
