@@ -8,7 +8,7 @@ var cash = {
 
 	resetList:[],
 	onBuilt: function(type, roomName) {
-		cash.resetList.push(type+tools.getRoomCode(roomName));
+		cash.resetList.push({entry:type+tools.getRoomCode(roomName), time:Game.time});
 		console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
 										, JSON.stringify({cash:'onBuilt', type:type, roomName:roomName, resetList:cash.resetList}))
 	},
@@ -21,11 +21,11 @@ var cash = {
 			 console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
 		 									, JSON.stringify({cash:'try haveToReset', type:type, entry_id:entry_id, resetList:cash.resetList, shard:Game.shard}))
 		}*/
-		if(!!cash.resetList.find((item) => item == type+entry_id)) {
-			const newResetList = cash.resetList.filter((item) => item != type+entry_id);
+		if(!!cash.resetList.find((item) => item.entry == type+entry_id && item.time < Game.time )) {
+			const newResetList = cash.resetList.filter((item) => item.entry != type+entry_id || item.time >= Game.time );
 			console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({cash:'haveToReset', type:type, entry_id:entry_id, resetList:cash.resetList, newResetList:newResetList}));
-cash.resetList = newResetList;
+      cash.resetList = newResetList;
 			return true;
 		}
 		return false;
