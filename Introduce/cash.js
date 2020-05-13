@@ -87,7 +87,7 @@ var cash = {
 		 									, JSON.stringify({cash:'try haveToReset', type:type, entry_id:entry_id, resetList:cash.resetList, shard:Game.shard}))
 		}*/
 		if(!!cash.resetList.find((item) => item.entry == entry && item.time < Game.time && !Game.getObjectById(item.id))) {
-			const newResetList = cash.resetList.filter((item) => !(item.entry == entry && item.time < Game.time && !Game.getObjectById(item.id))));
+			const newResetList = cash.resetList.filter((item) => !(item.entry == entry && item.time < Game.time && !Game.getObjectById(item.id)));
 			console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({cash:'haveToReset', entry:entry, resetList:cash.resetList, newResetList:newResetList}));
       cash.resetList = newResetList;
