@@ -26,6 +26,9 @@ var event_processor = {
 						if(target.structureType == STRUCTURE_EXTENSION) {
 							cash.onBuilt(STRUCTURE_EXTENSION,room.name);
 						}
+						if(target.structureType == STRUCTURE_LAB) {
+							cash.onBuilt(STRUCTURE_LAB,room.name);
+						}
 					}
 				}
 			});
