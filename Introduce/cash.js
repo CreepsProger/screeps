@@ -8,6 +8,7 @@ var cash = {
 
 	resetList:[],
 	onBuilt: function(roomName, target) {
+		const before = cash.resetList.length;
 		if(target.progressTotal - target.progress < 250) { // TODO: recheck this condition
 			if(target.structureType == STRUCTURE_CONTAINER) {
 				const entry = STRUCTURE_ROAD + '&' + STRUCTURE_CONTAINER+tools.getRoomCode(roomName) + 100;
@@ -37,8 +38,10 @@ var cash = {
 				cash.resetList.push({entry:entry, time:Game.time});
 			}
 		}
-		console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
-										, JSON.stringify({cash:'onBuilt', roomName:roomName, resetList:cash.resetList}))
+		if(before < cash.resetList.length) {
+			console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({cash:'onBuilt', roomName:roomName, resetList:cash.resetList}));
+		}
 	},
 
 	haveToReset: function(entry) {/*
