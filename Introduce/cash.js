@@ -67,7 +67,7 @@ var cash = {
 				const entry2 = STRUCTURE_TERMINAL + 0 + 100;
 				cash.resetList.push({entry:entry2, time:Game.time, id:target.id});
 			}
-			if(true) {
+			if(false) {
 				const entry = LOOK_STRUCTURES+tools.getRoomCode(roomName) + 100;
 				cash.resetList.push({entry:entry, time:Game.time, id:target.id});
 			}
