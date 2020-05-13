@@ -7,13 +7,41 @@ var cash = {
 	time: 0,
 
 	resetList:[],
-	onBuilt: function(type, roomName) {
-		cash.resetList.push({entry:type+tools.getRoomCode(roomName), time:Game.time});
+	onBuilt: function(roomName, target) {
+		if(target.progressTotal - target.progress < 250) { // TODO: recheck this condition
+			if(target.structureType == STRUCTURE_CONTAINER) {
+				const entry = STRUCTURE_ROAD + '&' + STRUCTURE_CONTAINER+tools.getRoomCode(roomName) + 100;
+				cash.resetList.push({entry:entry, time:Game.time});
+				const entry2 = STRUCTURE_CONTAINER+tools.getRoomCode(roomName) + 100;
+				cash.resetList.push({entry:entry2, time:Game.time});
+			}
+			// else {
+			// 	const entry = target.structureType+tools.getRoomCode(roomName);
+			// 	cash.resetList.push({entry:entry, time:Game.time});
+			// }
+			if(target.structureType == STRUCTURE_ROAD) {
+				const entry = STRUCTURE_ROAD + '&' + STRUCTURE_CONTAINER+tools.getRoomCode(roomName) + 100;
+				cash.resetList.push({entry:entry, time:Game.time});
+				const entry2 = STRUCTURE_ROAD+tools.getRoomCode(roomName) + 100;
+				cash.resetList.push({entry:entry2, time:Game.time});
+			}
+			if(target.structureType == STRUCTURE_EXTENSION) {
+				const entry = STRUCTURE_EXTENSION+tools.getRoomCode(roomName) + 100;
+				cash.resetList.push({entry:entry, time:Game.time});
+				const q = Math.floor(target.pos.x/5)*10 + Math. floor(target.pos.y/5);
+				const entry2 = STRUCTURE_EXTENSION+tools.getRoomCode(roomName) + q;
+				cash.resetList.push({entry:entry2, time:Game.time});
+			}
+			if(target.structureType == STRUCTURE_LAB) {
+				const entry = STRUCTURE_LAB+tools.getRoomCode(roomName) + 100;
+				cash.resetList.push({entry:entry, time:Game.time});
+			}
+		}
 		console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
-										, JSON.stringify({cash:'onBuilt', type:type, roomName:roomName, resetList:cash.resetList}))
+										, JSON.stringify({cash:'onBuilt', roomName:roomName, resetList:cash.resetList}))
 	},
 
-	haveToReset: function(type, entry_id) {/*
+	haveToReset: function(entry) {/*
 		 if(Game.shard.name == 'shard0' && entry_id == 5752 &&
 		 		(	type == STRUCTURE_EXTENSION ||
 		 			type == STRUCTURE_CONTAINER ||
@@ -21,10 +49,10 @@ var cash = {
 			 console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
 		 									, JSON.stringify({cash:'try haveToReset', type:type, entry_id:entry_id, resetList:cash.resetList, shard:Game.shard}))
 		}*/
-		if(!!cash.resetList.find((item) => item.entry == type+entry_id && item.time < Game.time )) {
-			const newResetList = cash.resetList.filter((item) => item.entry != type+entry_id || item.time >= Game.time );
+		if(!!cash.resetList.find((item) => item.entry == entry && item.time < Game.time )) {
+			const newResetList = cash.resetList.filter((item) => item.entry != entry || item.time >= Game.time );
 			console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({cash:'haveToReset', type:type, entry_id:entry_id, resetList:cash.resetList, newResetList:newResetList}));
+											, JSON.stringify({cash:'haveToReset', entry:entry, resetList:cash.resetList, newResetList:newResetList}));
       cash.resetList = newResetList;
 			return true;
 		}
@@ -64,7 +92,7 @@ var cash = {
 			 !cash_objects[entry_id][subentry_id] ||
 			 cash_objects[entry_id][subentry_id].time < cash.time ||
 			 (ticksToReset > 0 && Game.time - entry.ids_time > ticksToReset) ||
-			 cash.haveToReset(type,entry_id)
+			 cash.haveToReset(type+entry_id+subentry_id)
 			) {
  			entry.ids = get().map((obj) => obj.id);
 			entry.ids_time = Game.time;
