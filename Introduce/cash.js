@@ -14,7 +14,7 @@ var cash = {
 				const entry = STRUCTURE_ROAD + '&' + STRUCTURE_CONTAINER+tools.getRoomCode(roomName) + 100;
 				cash.resetList.push({entry:entry, time:Game.time, id:target.id});
 				const entry2 = STRUCTURE_CONTAINER+tools.getRoomCode(roomName) + 100;
-				cash.resetList.push({entry:entry2, time:Game.time});
+				cash.resetList.push({entry:entry2, time:Game.time, id:target.id});
 			}
 			// else {
 			// 	const entry = target.structureType+tools.getRoomCode(roomName);
@@ -24,14 +24,14 @@ var cash = {
 				const entry = STRUCTURE_ROAD + '&' + STRUCTURE_CONTAINER+tools.getRoomCode(roomName) + 100;
 				cash.resetList.push({entry:entry, time:Game.time, id:target.id});
 				const entry2 = STRUCTURE_ROAD+tools.getRoomCode(roomName) + 100;
-				cash.resetList.push({entry:entry2, time:Game.time});
+				cash.resetList.push({entry:entry2, time:Game.time, id:target.id});
 			}
 			if(target.structureType == STRUCTURE_EXTENSION) {
 				const entry = STRUCTURE_EXTENSION+tools.getRoomCode(roomName) + 100;
 				cash.resetList.push({entry:entry, time:Game.time, id:target.id});
 				const q = Math.floor(target.pos.x/5)*10 + Math. floor(target.pos.y/5);
 				const entry2 = STRUCTURE_EXTENSION+tools.getRoomCode(roomName) + q;
-				cash.resetList.push({entry:entry2, time:Game.time});
+				cash.resetList.push({entry:entry2, time:Game.time, id:target.id});
 			}
 			if(target.structureType == STRUCTURE_LAB) {
 				const entry = STRUCTURE_LAB+tools.getRoomCode(roomName) + 100;
@@ -53,19 +53,19 @@ var cash = {
 				const entry = STRUCTURE_STORAGE+tools.getRoomCode(roomName) + 100;
 				cash.resetList.push({entry:entry, time:Game.time, id:target.id});
 				const entry2 = STRUCTURE_STORAGE + 0 + 100;
-				cash.resetList.push({entry:entry2, time:Game.time});
+				cash.resetList.push({entry:entry2, time:Game.time, id:target.id});
 			}
 			if(target.structureType == STRUCTURE_TOWER) {
 				const entry = STRUCTURE_TOWER+tools.getRoomCode(roomName) + 100;
 				cash.resetList.push({entry:entry, time:Game.time, id:target.id});
 				const entry2 = STRUCTURE_TOWER + 0 + 100;
-				cash.resetList.push({entry:entry2, time:Game.time});
+				cash.resetList.push({entry:entry2, time:Game.time, id:target.id});
 			}
 			if(target.structureType == STRUCTURE_TERMINAL) {
 				const entry = STRUCTURE_TERMINAL+tools.getRoomCode(roomName) + 100;
 				cash.resetList.push({entry:entry, time:Game.time, id:target.id});
 				const entry2 = STRUCTURE_TERMINAL + 0 + 100;
-				cash.resetList.push({entry:entry2, time:Game.time});
+				cash.resetList.push({entry:entry2, time:Game.time, id:target.id});
 			}
 			if(true) {
 				const entry = LOOK_STRUCTURES+tools.getRoomCode(roomName) + 100;
