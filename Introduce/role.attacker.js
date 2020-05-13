@@ -254,7 +254,7 @@ var role = {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, range, {
 						filter: (structure) => {
 							return (structure.structureType != STRUCTURE_CONTROLLER &&
-											structure.structureType != STRUCTURE_KEEPER_LAIR); &&
+											structure.structureType != STRUCTURE_KEEPER_LAIR &&
                       structure.structureType == STRUCTURE_RAMPART);
 						}
 					});
