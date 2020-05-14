@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 244,
+	version: 245,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -121,7 +121,7 @@ var config = {
 									, W54S51: 'W55S51', W55S51: 'W56S51', W56S51: 'W56S52', W56S52: 'W57S52'
 									}
 			, shards:
-			{	shard0:
+			{	shard1:
 				{	rooms:
 					{	Default:
 						{ containers: {weight: 1000}
