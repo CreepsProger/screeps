@@ -24,7 +24,7 @@ var flags = {
 				,   BB: Game.flags['BB']		// build in spite of sources are empty or MAIN_ROOM_CRISIS
 				,    U: Game.flags['U']			// upgrade in spite of and harvest from containers
 				,   UU: Game.flags['UU']		// upgrade in spite of sources
-				,    T: Game.flags['T']			// transfer from workers to workers
+				,   TW: Game.flags['TW']		// transfer from workers to workers
 				,    D: Game.flags['D']			// dismanle all
 				,   D1: Game.flags['D1']		// dismanle in range 11-D1.color
 			 	,   D2: Game.flags['D2']		// dismanle in range 11-D2.color

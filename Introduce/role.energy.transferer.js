@@ -57,7 +57,7 @@ var roleEnergyTransferer = {
 			// const a_source_is_not_near = !creep.pos.findInRange(FIND_SOURCES, 2, {
 			// 	filter: (source) => source.energy > 0 && source.room.name == this_room
 			// });
-			const T = !!flags.flags.T && flags.flags.T.pos.roomName == my_room;
+			const TW = !!flags.flags.TW && flags.flags.TW.pos.roomName == my_room;
 			const B = !!flags.flags.B && flags.flags.B.pos.roomName == my_room;
 			const UU = !!flags.flags.UU && flags.flags.UU.pos.roomName == my_room;
 			const Infra = !!flags.flags.Infra && flags.flags.Infra.pos.roomName == my_room;
@@ -182,7 +182,7 @@ var roleEnergyTransferer = {
 				var targs = creep.pos.findInRange(FIND_MY_CREEPS, 1, {
 					filter: (creep2) => {
 						return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > creep2.store.getUsedCapacity(RESOURCE_ENERGY) &&
-							(!creep2.getActiveBodyparts(WORK) || T) &&
+							(!creep2.getActiveBodyparts(WORK) || TW) &&
 							tools.getWeight(creep2.name) < tools.getWeight(creep.name);
 					}
 				});
