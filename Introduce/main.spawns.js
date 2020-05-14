@@ -298,7 +298,7 @@ var spawns = {
 					}
 					else {
 						const f = 0+!!flags.flags['401'];
-						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[6][H], 404, 2, 2);
+						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[6][H], 404, 3, 3);
 						if(Sp1) spawns.tryCreateCreep(spawn, CARIER[4][H], 401, 2+f, 2+f);
 						//if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[7][H], 404, 3, 3);
 					}
@@ -351,9 +351,9 @@ var spawns = {
 						}
 						if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[4][L], 441, 1, 1);
 						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[4][M], 444, 1, 1);
-					}*/
+					}*//*
 					if(Sp1 && (Game.time % 2000 < 500) ) spawns.tryCreateCreep(spawn,   HEALER[2][M], 1000, 1, 1);
-          if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[6][L], 461, 1, 1);
+          if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[6][L], 461, 1, 1);*/
 				}
 
 				if(Game.shard.name == 'shard3') {

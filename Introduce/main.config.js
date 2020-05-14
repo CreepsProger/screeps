@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 243,
+	version: 244,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -194,6 +194,7 @@ var config = {
 								]
 							, attacker:
 								[ {name: '1', time: 0, min_weight: 1000, max_weight: 1000}
+								, {name: '2', time: 0, min_weight: 1000, max_weight: 1000}
 								]
 							, heal_room:
 								{ shard: 'shard0', room: 'W57S52'}
