@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 246,
+	version: 247,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -398,8 +398,19 @@ var config = {
 						, energy_harvesting:
 							[ {name: '1', time: 0, min_weight: 10, max_weight: 19}
 							, {name: '2', time: 0, min_weight: 10, max_weight: 19}
-							, {name: '2', time: 0, min_weight: 10, max_weight: 19}
-							, {name: '2', time: 0, min_weight: 10, max_weight: 19}
+							, {name: '3', time: 0, min_weight: 10, max_weight: 19}
+							, {name: '4', time: 0, min_weight: 10, max_weight: 19}
+							, {name: '5', time: 0, min_weight: 10, max_weight: 19}
+							, {name: '6', time: 0, min_weight: 10, max_weight: 19}
+							, {name: '7', time: 0, min_weight: 10, max_weight: 19}
+							, {name: '8', time: 0, min_weight: 10, max_weight: 19}
+							, {name: '9', time: 0, min_weight: 10, max_weight: 19}
+							, {name: 'A', time: 0, min_weight: 10, max_weight: 19}
+							, {name: 'B', time: 0, min_weight: 10, max_weight: 19}
+							, {name: 'C', time: 0, min_weight: 10, max_weight: 19}
+							, {name: 'D', time: 0, min_weight: 10, max_weight: 19}
+							, {name: 'E', time: 0, min_weight: 10, max_weight: 19}
+							, {name: 'F', time: 0, min_weight: 10, max_weight: 19}
 							]
 						, attacker:
 							[ {name: '1', time: 0, min_weight: 10, max_weight: 19}
@@ -410,7 +421,7 @@ var config = {
 						, heal_room:
 							{ shard: 'shard1', room: 'W29S29'}
 						, path_rooms:
-							{ W29S29: 'W29S29'
+							{ W29S30: 'W29S29', W29S29: 'W29S29'
 							}
 							, escape_path:
 							{ W29S29: 'W29S29'
