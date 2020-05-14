@@ -260,6 +260,25 @@ var spawns = {
 											 	 , [    3000000000003,    3000000000004,    3000000000006]  // 6 2300
 												 , [    2000000000004,    8000000000010,    8000000000014]  // 7 5600
 												];
+        if(Game.shard.name == 'shard1') {
+  				// if(Memory.totals.CARRY < 25	) spawns.tryCreateCreep(spawn,   808, 10, 3); // E  800 Carier
+  				// if(Memory.totals.CARRY < 25	) spawns.tryCreateCreep(spawn,   505, 10, 3); // E  500 Carier
+  				// if(Memory.totals.CARRY < 25	) spawns.tryCreateCreep(spawn,   303, 10, 3); // E  300 Carier
+  				// if(Memory.totals.WORK < 25	) spawns.tryCreateCreep(spawn, 80808, 20, 3); // E 1600 Worker
+  				// if(Memory.totals.WORK < 25	) spawns.tryCreateCreep(spawn, 40404, 20, 3); // E  800 Worker
+  				// if(Memory.totals.WORK < 25	) spawns.tryCreateCreep(spawn, 20202, 20, 3); // E  400 Worker
+  				// if(Memory.totals.WORK < 25	) spawns.tryCreateCreep(spawn, 10101, 20, 3); // E  200 Worker
+
+  				if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S29')) {
+  					if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[1][M], 15, 1, 1);
+  				}
+  				else {
+  					const f = 0+!!flags.flags['11'];
+  					if(Sp1) spawns.tryCreateCreep(spawn, WORKER[1][H], 14, 3, 3);
+  					if(Sp1) spawns.tryCreateCreep(spawn, CARIER[1][H], 11, 0+f, 0+f);
+  					//if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[7][H], 404, 3, 3);
+  				}
+        }
 
 				if(Game.shard.name == 'shard0') {
 					// if(Memory.totals.CARRY < 25	) spawns.tryCreateCreep(spawn,   808, 10, 3); // E  800 Carier
