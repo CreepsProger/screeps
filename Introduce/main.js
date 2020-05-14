@@ -100,6 +100,9 @@ module.exports.loop = function () {
 											, 'total_avg_pst:', total_avg_pst
 											, JSON.stringify(Memory.CreepsIdleTicksByWeight));
 				}
+				else {
+					Memory.CreepsIdleTicksByWeight = {};
+				}
 				Memory.CreepsIdleTicksByWeight[weight] = {};
 				delete Memory.creeps[name];
 			}
