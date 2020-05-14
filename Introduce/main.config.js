@@ -168,7 +168,7 @@ var config = {
 						}
 					}
 				},
-				{	shard0:
+				shard0:
 					{	rooms:
 						{	Default:
 							{ containers: {weight: 1000}
