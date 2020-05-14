@@ -260,6 +260,7 @@ var spawns = {
 											 	 , [    3000000000003,    3000000000004,    3000000000006]  // 6 2300
 												 , [    2000000000004,    8000000000010,    8000000000014]  // 7 5600
 												];
+
         if(Game.shard.name == 'shard1') {
   				// if(Memory.totals.CARRY < 25	) spawns.tryCreateCreep(spawn,   808, 10, 3); // E  800 Carier
   				// if(Memory.totals.CARRY < 25	) spawns.tryCreateCreep(spawn,   505, 10, 3); // E  500 Carier
