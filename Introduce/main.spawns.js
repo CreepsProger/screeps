@@ -302,8 +302,9 @@ var spawns = {
 						if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 405, 1, 1);
 					}
 					else {
+						const g = 0+!!flags.flags['404'];
 						const f = 0+!!flags.flags['401'];
-						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[6][H], 404, 3, 3);
+						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[6][H], 404, 3+g, 3+g);
 						if(Sp1) spawns.tryCreateCreep(spawn, CARIER[4][H], 401, 2+f, 2+f);
 						//if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[7][H], 404, 3, 3);
 					}
@@ -453,7 +454,7 @@ var spawns = {
 								// if(Sp5) spawns.tryCreateCreep(spawn, ATTACKER[7][H], 335, 1, 1);
 								// if(Sp5) spawns.tryCreateCreep(spawn, ATTACKER[7][S+1], 336, 1, 1);
 
-								if(Sp5 && !!flags.flags['404']) spawns.tryCreateCreep(spawn,   WORKER[7][H], 404, 1, 1);
+								// if(Sp5 && !!flags.flags['404']) spawns.tryCreateCreep(spawn,   WORKER[7][H], 404, 1, 1);
 							}
 						}
 
