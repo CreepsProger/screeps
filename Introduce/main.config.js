@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 247,
+	version: 248,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -935,6 +935,10 @@ var config = {
 								[ {name: '1', time: 0, min_weight: 200, max_weight: 209}
 								, {name: '2', time: 0, min_weight: 200, max_weight: 209}
 								, {name: '3', time: 0, min_weight: 200, max_weight: 209}
+								, {name: '4', time: 0, min_weight: 200, max_weight: 209}
+								, {name: '5', time: 0, min_weight: 200, max_weight: 209}
+								, {name: '6', time: 0, min_weight: 200, max_weight: 209}
+								, {name: '7', time: 0, min_weight: 200, max_weight: 209}
 								]
 						  , heal_room: 'W25S33'
 							, path_rooms:
