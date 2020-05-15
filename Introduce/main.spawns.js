@@ -562,8 +562,8 @@ var spawns = {
 						if(conditions.TO_SPAWN_ROOM_EXTRA_DEFENDERS('W25S34')) {
 							if(Sp1)  spawns.tryCreateCreep(spawn, ATTACKER[8][H], 205, 1, 1);
 						}
-						if(Sp12) spawns.tryCreateCreep(spawn,   HEALER[8][H], 207, 3, 3);
-						if(Sp12) spawns.tryCreateCreep(spawn, ATTACKER[8][H+3], 206, 2, 2);
+						if(Sp1) spawns.tryCreateCreep(spawn,   HEALER[8][M], 207, 3, 3);
+						if(Sp1) spawns.tryCreateCreep(spawn, ATTACKER[8][H+3], 206, 2, 2);
 
 						// if(conditions.TO_SPAWN_ROOM_DEFENDERS('W25S35')) {
 						// 	if(Sp1) spawns.tryCreateCreep(spawn, ATTACKER[7][M], 195, 2, 2);
