@@ -58,14 +58,10 @@ var roleWithdrawer = {
 					}
 				}
 			}
+			// console.log(JSON.stringify(Game.getObjectById('5ebd31ddf41ec2834085a90b').store));
 
 			if(!target) {
-				var ruins = creep.room.find(FIND_RUINS,  {
-					filter: (ruin) => {
-						return ruin.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-							tools.checkTarget(executer,ruin.id);
-					}
-				});
+				var ruins = creep.room.find(FIND_RUINS, {filter: (ruin) => tools.checkTarget(executer,ruin.id)});
 				if(ruins.length > 0) {
 					var ruin = ruins.reduce((p,c) => tools.checkTarget(executer,p.id) &&
 																						creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
@@ -76,16 +72,15 @@ var roleWithdrawer = {
 			}
 
 			if(target) {
-				var err = creep.withdraw(target, RESOURCE_ENERGY);
 
-				if(err == ERR_NOT_ENOUGH_RESOURCES) {
-					//
-					const found = target.pos.lookFor(LOOK_RESOURCES);
-					if(found.lenght > 0)
-					{
-						console.log('look resources:', JSON.stringify(found));
+				var err = OK;
+
+				if(!!target.store) {
+					const resources = Object.keys(target.store);//.sort((l,r) => tools.getWeight(l) - tools.getWeight(r));
+					resources.forEach(function(resource,i) {
+						if(err == OK)
+							err = creep.withdraw(target, resource);
 					}
-					err = creep.withdraw(target, RESOURCE_GHODIUM_OXIDE);
 				}
 
 				if(err == ERR_NOT_IN_RANGE) {

@@ -58,6 +58,8 @@ var flags = {
 				,    LET: Game.flags['LET']		// log energy transfer
 				,     LP: Game.flags['LP']		// log pickuper
 				,     LU: Game.flags['LU']		// log upgrader
+				,     LR: Game.flags['LR']		// log resources
+				,    LRT: Game.flags['LRT']		// log resources transfer
 				,  Infra: Game.flags['Infra']	// not use cash for infra
 				}
 		}
