@@ -83,8 +83,8 @@ var roleWithdrawer = {
 					resources.forEach(function(resource,i) {
 						if(err == OK)
 							err = creep.withdraw(target, resource);
-						if(err != OK)
-							console.log(creep, 'withdrawing ', resource, ' err:', err);
+						// if(err != OK)
+						// 	console.log(creep, 'withdrawing ', resource, ' err:', err);
 					});
 				}
 
