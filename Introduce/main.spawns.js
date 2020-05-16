@@ -276,10 +276,10 @@ var spawns = {
   					if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[1][M], 5015, 1, 1);
   				}
   				else {
-  					const f = 0+!!flags.flags['11'];
-
+						const m = 0+!!flags.flags['-5011'];
+						const p = 0+!!flags.flags['5011'];
 						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[4][H], 5014, 4, 4);
-  					if(Sp1) spawns.tryCreateCreep(spawn, CARIER[4][H], 5011, 2+f, 2+f);
+  					if(Sp1) spawns.tryCreateCreep(spawn, CARIER[4][H], 5011, 2-m+p, 2-m+p);
   					//if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[7][H], 404, 3, 3);
   				}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S29')) {
@@ -292,7 +292,7 @@ var spawns = {
 						const m = 0+!!flags.flags['-5021'];
 						const p = 0+!!flags.flags['5021'];
 						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[4][H], 5024, 1, 1);
-						if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[4][L], 5021, 1-m+p, 1-m+p);
+						if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[4][L], 5021, 2-m+p, 2-m+p);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S28')) {
 						if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[4][M], 5035, 1, 1);
@@ -304,7 +304,7 @@ var spawns = {
 						const m = 0+!!flags.flags['-5031'];
 						const p = 0+!!flags.flags['5031'];
 						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[4][M], 5034, 1, 1);
-						if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[4][L], 5031, 1-m+p, 1-m+p);
+						if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[4][L], 5031, 2-m+p, 2-m+p);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S28')) {
 						if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[4][M], 5045, 1, 1);
@@ -316,7 +316,7 @@ var spawns = {
 						const m = 0+!!flags.flags['-5041'];
 						const p = 0+!!flags.flags['5041'];
 						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[4][M], 5044, 1, 1);
-						if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[4][L], 5041, 1-m+p, 1-m+p);
+						if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[4][L], 5041, 2-m+p, 2-m+p);
 					}
         }
 
@@ -339,7 +339,7 @@ var spawns = {
 					else {
 						const g = 0+!!flags.flags['404'];
 						const f = 0+!!flags.flags['401'];
-						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[6][H], 404, 3+g, 3+g);
+						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[6][H], 404, 4+g, 3+g);
 						if(Sp1) spawns.tryCreateCreep(spawn, CARIER[4][H], 401, 2+f, 2+f);
 						//if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[7][H], 404, 3, 3);
 					}

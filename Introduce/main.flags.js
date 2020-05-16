@@ -15,48 +15,50 @@ var flags = {
 		if(flags.time != Game.time) {
 			flags.time = Game.time;
 			flags.flags =
-				{  NAT: Game.flags['NAT']		// don't attack
-				,   A2: Game.flags['A2']		// attack only in range = 5*A2.color
-				,  DP1: Game.flags['DP1']		// defence point 1
-				,  DP2: Game.flags['DP2']		// defence point 2
-				,    R: Game.flags['R']			// repair only this pos
-				,    B: Game.flags['B']			// build in spite of energyAvailable != energyCapacityAvailable or sources are empty or MAIN_ROOM_CRISIS
-				,   BB: Game.flags['BB']		// build in spite of sources are empty or MAIN_ROOM_CRISIS
-				,    U: Game.flags['U']			// upgrade in spite of and harvest from containers
-				,   UU: Game.flags['UU']		// upgrade in spite of sources
-				,   TW: Game.flags['TW']		// transfer from workers to workers
-				,    D: Game.flags['D']			// dismanle all
-				,   D1: Game.flags['D1']		// dismanle in range 11-D1.color
-			 	,   D2: Game.flags['D2']		// dismanle in range 11-D2.color
-			 	,   NR: Game.flags['NR']		// don't repair
-			 	,  NR1: Game.flags['NR1']		// don't repair
-			 	,  NR2: Game.flags['NR2']		// don't repair
-			 	,   MW: Game.flags['MW']		// multiplier to repair wall
-			 	,   MR: Game.flags['MR']		// multiplier to repair rampart
+				{    NAT: Game.flags['NAT']		// don't attack
+				,     A2: Game.flags['A2']		// attack only in range = 5*A2.color
+				,    DP1: Game.flags['DP1']		// defence point 1
+				,    DP2: Game.flags['DP2']		// defence point 2
+				,      R: Game.flags['R']			// repair only this pos
+				,      B: Game.flags['B']			// build in spite of energyAvailable != energyCapacityAvailable or sources are empty or MAIN_ROOM_CRISIS
+				,     BB: Game.flags['BB']		// build in spite of sources are empty or MAIN_ROOM_CRISIS
+				,      U: Game.flags['U']			// upgrade in spite of and harvest from containers
+				,     UU: Game.flags['UU']		// upgrade in spite of sources
+				,     TW: Game.flags['TW']		// transfer from workers to workers
+				,      D: Game.flags['D']			// dismanle all
+				,     D1: Game.flags['D1']		// dismanle in range 11-D1.color
+			 	,     D2: Game.flags['D2']		// dismanle in range 11-D2.color
+			 	,     NR: Game.flags['NR']		// don't repair
+			 	,    NR1: Game.flags['NR1']		// don't repair
+			 	,    NR2: Game.flags['NR2']		// don't repair
+			 	,     MW: Game.flags['MW']		// multiplier to repair wall
+			 	,     MR: Game.flags['MR']		// multiplier to repair rampart
+				,   5011: Game.flags['5011']		// start spawning 5011-st one more creep
+				,'-5011': Game.flags['-5011']		// start spawning 5011-st one less creep
 				,   5021: Game.flags['5021']		// start spawning 5021-st one more creep
 				,'-5021': Game.flags['-5021']		// start spawning 5021-st one less creep
 				,   5031: Game.flags['5031']		// start spawning 5031-st one more creep
 				,'-5031': Game.flags['-5031']		// start spawning 5031-st one less creep
 				,   5041: Game.flags['5041']		// start spawning 5041-st one more creep
 				,'-5041': Game.flags['-5041']		// start spawning 5041-st one less creep
-				,   11: Game.flags['11']		// start spawning 11-th one more creep
-				,   31: Game.flags['31']		// start spawning 31-st one more creep
-				,   41: Game.flags['41']		// start spawning 41-st one more creep
-				,   61: Game.flags['61']		// start spawning 61-st one more creep
-				,  121: Game.flags['121']		// start spawning 121-st one more creep
-				,  171: Game.flags['171']		// start spawning 171-st one more creep
-				,  401: Game.flags['401']		// start spawning 401-st one more creep
-				,  304: Game.flags['304']		// start spawning 304-th creeps on shard 0
-				,  404: Game.flags['404']		// start spawning 404-th one more creep
-				,    L: Game.flags['L']			// log
-				,   LA: Game.flags['LA']		// log attacker
-				,   LW: Game.flags['LW']		// log main metrix
-				,  LWE: Game.flags['LWE']		// log main metrix
-				,   LE: Game.flags['LE']		// log energy
-				,  LET: Game.flags['LET']		// log energy transfer
-				,   LP: Game.flags['LP']		// log pickuper
-				,   LU: Game.flags['LU']		// log upgrader
-				,Infra: Game.flags['Infra']	// not use cash for infra
+				,     11: Game.flags['11']		// start spawning 11-th one more creep
+				,     31: Game.flags['31']		// start spawning 31-st one more creep
+				,     41: Game.flags['41']		// start spawning 41-st one more creep
+				,     61: Game.flags['61']		// start spawning 61-st one more creep
+				,    121: Game.flags['121']		// start spawning 121-st one more creep
+				,    171: Game.flags['171']		// start spawning 171-st one more creep
+				,    401: Game.flags['401']		// start spawning 401-st one more creep
+				,    304: Game.flags['304']		// start spawning 304-th creeps on shard 0
+				,    404: Game.flags['404']		// start spawning 404-th one more creep
+				,      L: Game.flags['L']			// log
+				,     LA: Game.flags['LA']		// log attacker
+				,     LW: Game.flags['LW']		// log main metrix
+				,    LWE: Game.flags['LWE']		// log main metrix
+				,     LE: Game.flags['LE']		// log energy
+				,    LET: Game.flags['LET']		// log energy transfer
+				,     LP: Game.flags['LP']		// log pickuper
+				,     LU: Game.flags['LU']		// log upgrader
+				,  Infra: Game.flags['Infra']	// not use cash for infra
 				}
 		}
 	},
