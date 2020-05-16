@@ -34,7 +34,7 @@ var flags = {
 			 	,   MW: Game.flags['MW']		// multiplier to repair wall
 			 	,   MR: Game.flags['MR']		// multiplier to repair rampart
 				,   21: Game.flags['21']		// start spawning 21-st one more creep
-				,  -21: Game.flags['-21']		// start spawning 21-st one less creep
+				,(-21): Game.flags['-21']		// start spawning 21-st one less creep
 				,   11: Game.flags['11']		// start spawning 11-th one more creep
 				,   31: Game.flags['31']		// start spawning 31-st one more creep
 				,   41: Game.flags['41']		// start spawning 41-st one more creep
