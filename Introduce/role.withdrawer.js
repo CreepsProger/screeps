@@ -61,7 +61,9 @@ var roleWithdrawer = {
 			// console.log(JSON.stringify(Game.getObjectById('5ebd31ddf41ec2834085a90b').store));
 
 			if(!target) {
-				var ruins = creep.room.find(FIND_RUINS, {filter: (ruin) => tools.checkTarget(executer,ruin.id)});
+				var ruins = creep.room.find(FIND_RUINS, {filter: (ruin) => !!ruin.store &&
+					 Object.keys(ruin.store).length > 0 &&
+					 tools.checkTarget(executer,ruin.id)});
 				if(ruins.length > 0) {
 					var ruin = ruins.reduce((p,c) => tools.checkTarget(executer,p.id) &&
 																						creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
