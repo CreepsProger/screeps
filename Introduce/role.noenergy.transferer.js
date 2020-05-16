@@ -24,6 +24,13 @@ var role = {
 	},
 
 	init: function(creep) {
+		if(creep.memory[role.name] === undefined ||
+			 creep.memory[role.name].v === undefined ||
+			 creep.memory[role.name].v != config.version) {
+			creep.memory[role.name] = { v: config.version
+																, on: false
+																};
+		}
 	},
 	// Game.creeps['creep-<5011/8>-16c8m-348'].store.getCapacity();
 	// Game.creeps['creep-<5011/8>-16c8m-348'].store.getFreeCapacity();
