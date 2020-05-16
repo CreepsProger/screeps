@@ -79,7 +79,7 @@ var roleWithdrawer = {
 				var err = OK;
 
 				if(!!target.store) {
-					const resources = Object.keys(target.store).sort((l,r) => (l.length - r.length)*(-1));
+					const resources = Object.keys(target.store).sort((l,r) => l.length - r.length);
 					resources.forEach(function(resource,i) {
 						if(err == OK)
 							err = creep.withdraw(target, resource);
