@@ -88,7 +88,7 @@ var role = {
 					resources.forEach(function(resource,i) {
 						if(err == OK)
 							err = creep.transfer(target, resource);
-					}
+					});
 				}
 
 				if(err == ERR_NOT_IN_RANGE) {
