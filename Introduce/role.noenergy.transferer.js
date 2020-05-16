@@ -1,11 +1,12 @@
 var roleNext = require('role.pickuper');
-// const constants = require('main.constants');
-// const config = require('main.config');
+const constants = require('main.constants');
+const config = require('main.config');
 const metrix = require('main.metrix');
-// const flags = require('main.flags');
+const flags = require('main.flags');
 // const links = require('main.links');
-// const log = require('main.log');
-// const tools = require('tools');
+const log = require('main.log');
+const tools = require('tools');
+
 var role = {
 
 	name: 'r-transferer',
