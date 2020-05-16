@@ -282,6 +282,18 @@ var spawns = {
   					if(Sp1) spawns.tryCreateCreep(spawn, CARIER[4][H], 11, 2+f, 2+f);
   					//if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[7][H], 404, 3, 3);
   				}
+					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S29')) {
+						if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[4][M], 25, 1, 1);
+					}
+					else {
+						if(conditions.TO_SPAWN_ROOM_CLAIMER('W28S29')) {
+							if(Sp1)	spawns.tryCreateCreep(spawn, CLAIMER[4][H], 20, 1, 1);
+						}
+						const m = 0+!!flags.flags['-21'];
+						const p = 0+!!flags.flags['21'];
+						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[4][H], 24, 1, 1);
+						if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[4][L], 21, 1-m+p, 1-m+p);
+					}
         }
 
 				if(Game.shard.name == 'shard0') {
