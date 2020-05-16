@@ -448,7 +448,7 @@ var config = {
 						, heal_room:
 							{ shard: 'shard1', room: 'W29S29'}
 						, path_rooms:
-							{ W29S30: 'W29S29', W29S29: 'W29S29', W29S29: 'W28S29'
+							{ W29S30: 'W29S29', W29S29: 'W28S29'
 							}
 							, escape_path:
 							{ W28S29: 'W29S29', W29S29: 'W29S29'
