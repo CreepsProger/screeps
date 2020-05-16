@@ -460,8 +460,8 @@ var config = {
 						W29S28:
 						{ containers: {weight: 5033}
 						, sites:
-						 	[ {x:13, y:30, type:STRUCTURE_CONTAINER}
-							, {x:22, y:19, type:STRUCTURE_CONTAINER}
+						 	[ {x:27, y:17, type:STRUCTURE_CONTAINER}
+							, {x:28, y:17, type:STRUCTURE_CONTAINER}
 						 	]
 						, energy_harvesting:
 							[ {name: '1', time: 0, min_weight: 5030, max_weight: 5039}
@@ -489,8 +489,8 @@ var config = {
 						W28S28:
 						{ containers: {weight: 5043}
 						, sites:
-						 	[ {x:13, y:30, type:STRUCTURE_CONTAINER}
-							, {x:22, y:19, type:STRUCTURE_CONTAINER}
+						 	[ {x:19, y:19, type:STRUCTURE_CONTAINER}
+							, {x:20, y:19, type:STRUCTURE_CONTAINER}
 						 	]
 						, energy_harvesting:
 							[ {name: '1', time: 0, min_weight: 5040, max_weight: 5049}
