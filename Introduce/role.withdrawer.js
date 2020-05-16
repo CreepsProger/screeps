@@ -41,7 +41,8 @@ var roleWithdrawer = {
 			if(!target) {
 				var tombstones = creep.room.find(FIND_TOMBSTONES,  {
 					filter: (tombstone) => {
-						return tombstone.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
+						return !!tombstone.store &&
+						 				Object.keys(tombstone.store).length > 0 &&
 							 		 (	!tombstone.pos.findInRange(FIND_HOSTILE_CREEPS, 5).length > 0 ||
 										 	(!!DP && DP.pos.roomName == creep.room.name) ||
 										 	(!!DP1 && DP1.pos.roomName == creep.room.name && DP1.pos.findPathTo(tombstone).length < 5) ||
