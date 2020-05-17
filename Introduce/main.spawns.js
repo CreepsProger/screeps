@@ -219,7 +219,7 @@ var spawns = {
 											 , [ 30504,  40404,  50303]  // 3  800
 											 , [ 50907,  60606,  80406]  // 4 1300
 											 , [ 61410,  90909, 120408]  // 5 1800
-											 , [130911, 140711, 160410]  // 6 2300
+											 , [130713, 140711, 160410]  // 6 2300
 											 , [201020, 161616, 250817]  // 7 5600
                        ];
         const CARIER = [ [     0,      0,      0]  // 0  000
@@ -380,7 +380,7 @@ var spawns = {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W57S51')) {
 							if(Sp1)	spawns.tryCreateCreep(spawn, CLAIMER[4][H], 450, 1, 1);
 						}
-						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[6][M], 454, 1, 1);
+						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[6][L], 454, 1, 1);
 						//if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[4][L], 451, 2, 2);
 					}
 					/*
