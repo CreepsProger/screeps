@@ -278,7 +278,7 @@ var spawns = {
   				else {
 						const m = 0+!!flags.flags['-5011'];
 						const p = 0+!!flags.flags['5011'];
-						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[4][H], 5014, 4, 4);
+						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[4][H], 5014, 5, 5);
   					if(Sp1) spawns.tryCreateCreep(spawn, CARIER[4][H], 5011, 2-m+p, 2-m+p);
   					//if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[7][H], 404, 3, 3);
   				}
