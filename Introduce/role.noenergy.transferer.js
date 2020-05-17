@@ -62,12 +62,14 @@ var role = {
 		const this_room_config = my_shard_config.rooms[this_room];
 		const my_room_config = my_shard_config.rooms[my_room];
 
+		var target;
 
-		var target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
+		if(!!creep.room.storage && !!creep.room.storage.my)
+		target = creep.room.storage;
 		if(!!target) return target;
 
-		if(!!creep.room.storage)
-			target = creep.room.storage;
+		target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
+		if(!!target) return target;
 
 		return target;
 	},
