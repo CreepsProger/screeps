@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 252,
+	version: 253,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -116,9 +116,9 @@ var config = {
 									, W26S32: 'W26S33'
 									, W26S33: 'W26S33'
 									, W25S35: 'W25S34', W25S34: 'W25S33', W25S33: 'W25S33'
-									, W59S52: 'W58S52', W58S52: 'W57S52'
+									, W59S52: 'W58S52', W58S52: 'W57S52', W56S52: 'W57S52'
 									, W57S53: 'W57S52', W57S53x:30
-									, W54S51: 'W55S51', W55S51: 'W56S51', W56S51: 'W56S52', W56S52: 'W57S52'
+									, W54S51: 'W55S51', W55S51: 'W56S51', W56S51: 'W57S51'
 									, W29S29: 'W29S29', W28S29: 'W29S29', W29S28: 'W29S29', W28S28: 'W29S28'
 
 									}
@@ -167,13 +167,41 @@ var config = {
 								}
 							},
 							W54S51:
-							{ containers: {weight: 463}
+							{ containers: {weight: 503}
 							// , sites:
 							// 	[ {x:37, y:39, type:STRUCTURE_CONTAINER}
 							// 	]
 							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 500, max_weight: 509}
+								, {name: '2', time: 0, min_weight: 500, max_weight: 509}
+								]
+							, claiming:
+								[ {name: '1', time: 0, min_weight: 500, max_weight: 509}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 500, max_weight: 509}
+								, {name: '2', time: 0, min_weight: 500, max_weight: 509}
+								]
+							, heal_room:
+								{ shard: 'shard0', room: 'W57S51'}
+							, path_rooms:
+								{ W57S52: 'W56S52', W57S52y:24, W56S52: 'W56S51', W56S51: 'W55S51'
+								, W55S51: 'W54S51', W54S51: 'W54S51'
+								, W57S51: 'W56S51'
+								}
+								, escape_path:
+								{ W54S51: 'W55S51', W55S51: 'W56S51', W56S51: 'W57S51'
+								}
+							},
+							W56S51:
+							{ containers: {weight: 463}
+							, sites:
+								[ {x:37, y:39, type:STRUCTURE_CONTAINER}
+								]
+							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 460, max_weight: 469}
 								, {name: '2', time: 0, min_weight: 460, max_weight: 469}
+								, {name: '3', time: 0, min_weight: 460, max_weight: 469}
 								]
 							, claiming:
 								[ {name: '1', time: 0, min_weight: 460, max_weight: 469}
@@ -183,25 +211,32 @@ var config = {
 								, {name: '2', time: 0, min_weight: 460, max_weight: 469}
 								]
 							, heal_room:
-								{ shard: 'shard0', room: 'W57S52'}
+								{ shard: 'shard0', room: 'W57S51'}
 							, path_rooms:
-								{ W57S52: 'W56S52', W57S52y:24, W56S52: 'W56S51', W56S51: 'W55S51'
-								, W55S51: 'W54S51', W54S51: 'W54S51'
+								{ W57S52: 'W56S52', W57S52y:24, W56S52: 'W56S51', W56S51: 'W56S51'
+								, W57S51: 'W56S51'
 								}
 								, escape_path:
-								{ W54S51: 'W55S51', W55S51: 'W56S51', W56S51: 'W56S52'
-								, W56S52: 'W57S52', W57S52: 'W57S52'
+								{ W56S51: 'W57S51'
 								}
 							},
-							W56S51:
+						  W57S51:
 							{ containers: {weight: 453}
 							, sites:
-								[ {x:37, y:39, type:STRUCTURE_CONTAINER}
+								[ {x:10, y:35, type:STRUCTURE_ROAD}
+								, {x:11, y:34, type:STRUCTURE_ROAD}
+								, {x:12, y:33, type:STRUCTURE_ROAD}
+								//, {x:10, y:35, type:STRUCTURE_CONTAINER}
 								]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 450, max_weight: 459}
 								, {name: '2', time: 0, min_weight: 450, max_weight: 459}
 								, {name: '3', time: 0, min_weight: 450, max_weight: 459}
+								, {name: '4', time: 0, min_weight: 450, max_weight: 459}
+								, {name: '5', time: 0, min_weight: 450, max_weight: 459}
+								, {name: '6', time: 0, min_weight: 450, max_weight: 459}
+								, {name: '7', time: 0, min_weight: 450, max_weight: 459}
+								, {name: '8', time: 0, min_weight: 450, max_weight: 459}
 								]
 							, claiming:
 								[ {name: '1', time: 0, min_weight: 450, max_weight: 459}
@@ -213,10 +248,10 @@ var config = {
 							, heal_room:
 								{ shard: 'shard0', room: 'W57S52'}
 							, path_rooms:
-								{ W57S52: 'W56S52', W57S52y:24, W56S52: 'W56S51', W56S51: 'W56S51'
+								{ W57S52: 'W56S52', W57S52y:24, W56S52: 'W56S51', W56S51: 'W57S51'
 								}
 								, escape_path:
-								{ W56S51: 'W56S52', W56S52: 'W57S52', W57S52: 'W57S52'
+								{ W57S51: 'W56S51', W56S51: 'W56S52', W56S52: 'W57S52', W57S52: 'W57S52'
 								}
 							},
 						  W56S52:
