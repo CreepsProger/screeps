@@ -377,11 +377,8 @@ var spawns = {
 						if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[4][M], 455, 1, 1);
 					}
 					else {
-						if(conditions.TO_SPAWN_ROOM_CLAIMER('W57S51')) {
-							if(Sp1)	spawns.tryCreateCreep(spawn, CLAIMER[6][M], 450, 1, 1);
-						}
-						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[6][L], 454, 2, 2);
-						//if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[4][L], 451, 2, 2);
+						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[6][L], 454, 3, 3);
+						if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[4][L], 451, 1, 1);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W58S51')) {
 						if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[4][M], 475, 1, 1);
