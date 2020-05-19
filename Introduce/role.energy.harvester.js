@@ -160,7 +160,7 @@ var role = {
 						if(path2.length == 0) return false;
 						return (path.length > 0 && path.length < path2.length)? p:c;
 					});
-          if(!!source2) {
+          if(!!source2 && creep.pos.findPathTo(source2).length > 0) {
 						target = source2;
 					} 
 				}
