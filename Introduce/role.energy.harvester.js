@@ -165,7 +165,8 @@ var role = {
           if(!!source2) {
 						target = creep.pos.findClosestByPath(FIND_SOURCES, {
 							filter: function(s) { return s.id == source2.id;}});
-						console.log(creep, JSON.stringify({source2:source2, target:target.id}));
+						console.log(creep, JSON.stringify({source2:source2, target:target}));
+						console.log(creep, JSON.stringify({target:target}));
 					} 
 				}
 			}
