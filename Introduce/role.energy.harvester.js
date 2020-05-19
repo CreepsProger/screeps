@@ -145,7 +145,9 @@ var role = {
 				if(!!source && creep.pos.getRangeTo(source) == 1) {
 					target = source;
 				}
-				else {/*
+				else {target = creep.pos.findClosestByPath(FIND_SOURCES, { 
+							filter: function(source) { return source.energy > 0;}}); 
+							/*
               let path = creep.pos.findPathTo(target, {maxOps: 200});
               if( !path.length || !target.equalsTo(path[path.length - 1]) ) {
                  path = creep.pos.findPathTo(target,
@@ -154,6 +156,8 @@ var role = {
               if( path.length ) {
                 creep.move(path[0].direction);
               }*/
+					/*
+					
 					var source2 = sources.reduce((p,c) => {
 						const path = creep.pos.findPathTo(p);
 						const path2 = creep.pos.findPathTo(c);
@@ -167,7 +171,7 @@ var role = {
 							filter: function(s) { return s.id == source2.id;}});
 						console.log(creep, JSON.stringify({source2:source2, target:target}));
 						console.log(creep, JSON.stringify({target:target}));
-					} 
+					} */
 				}
 			}
 			if(!!target) return target;
