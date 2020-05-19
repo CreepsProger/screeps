@@ -157,11 +157,13 @@ var role = {
 					var source2 = sources.reduce((p,c) => {
 						const path = creep.pos.findPathTo(p);
 						const path2 = creep.pos.findPathTo(c);
+						console.log(creep, JSON.stringify({path_length:path.length, path2_length:path2.length, sources:sources}));
 						if(path2.length == 0) return false;
 						return (path.length > 0 && path.length < path2.length)? p:c;
 					});
           if(!!source2 && creep.pos.findPathTo(source2).length > 0) {
 						target = source2;
+						console.log(creep, JSON.stringify({source2:source2}));
 					} 
 				}
 			}
