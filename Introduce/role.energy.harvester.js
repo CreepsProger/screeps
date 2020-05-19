@@ -142,8 +142,27 @@ var role = {
 			});
 			if(sources.length > 0) {
 				var source = sources.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-				if(!!source) {
+				if(!!source && creep.pos.getRangeTo(source) == 1) {
 					target = source;
+				}
+				else {/*
+              let path = creep.pos.findPathTo(target, {maxOps: 200});
+              if( !path.length || !target.equalsTo(path[path.length - 1]) ) {
+                 path = creep.pos.findPathTo(target,
+                     {maxOps: 1000, ignoreDestructibleStructures: true});
+              }
+              if( path.length ) {
+                creep.move(path[0].direction);
+              }*/
+					var source2 = sources.reduce((p,c) => {
+						const path = creep.pos.findPathTo(p);
+						const path2 = creep.pos.findPathTo(c);
+						if(path2.length == 0) return false;
+						return path.length > 0 && path.length < path2.length? p:c);
+					});
+          if(!!source2) {
+						target = source2;
+					} 
 				}
 			}
 			if(!!target) return target;
