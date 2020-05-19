@@ -161,9 +161,11 @@ var role = {
 						if(path2.length == 0) return false;
 						return (path.length > 0 && path.length < path2.length)? p:c;
 					});
-          if(!!source2 && creep.pos.findPathTo(source2).length > 0) {
-						target = source2;
-						console.log(creep, JSON.stringify({source2:source2}));
+
+          if(!!source2) {
+						target = creep.pos.findClosestByPath(FIND_SOURCES, {
+							filter: function(s) { return s.id == source2.id;}});
+						console.log(creep, JSON.stringify({source2:source2, target:target.id}));
 					} 
 				}
 			}
