@@ -263,6 +263,12 @@ var cash = {
 			return room.find(FIND_STRUCTURES);});
  	},
 
+	sources: {},
+	getSources: function(room) {
+		return cash.getEntry(cash.sources, FIND_SOURCES, tools.getRoomCode(room.name), () => {
+			return room.find(FIND_SOURCES);});
+ 	},
+
 	all_my_terminals: {},
 	getAllMyTerminals: function() {
 		return cash.getEntry(cash.all_my_terminals, STRUCTURE_TERMINAL, 0, () => {
