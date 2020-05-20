@@ -81,11 +81,11 @@ var roleDismantler = {
 						}
 					});
 					if(structures.length > 0) {
-						var structure = structures.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-					}
+						target = structures.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+					}/*
 					if(!!structure) {
 						target = tools.setTarget(creep,structure,structure.id,roleDismantler.run);
-					}
+					}*/
 				}
 
 				if(!!target) {
