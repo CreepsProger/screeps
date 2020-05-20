@@ -142,8 +142,36 @@ var role = {
 			});
 			if(sources.length > 0) {
 				var source = sources.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-				if(!!source) {
+				if(!!source && creep.pos.getRangeTo(source) == 1) {
 					target = source;
+				}
+				else {target = creep.pos.findClosestByPath(FIND_SOURCES, { 
+							filter: function(source) { return source.energy > 0;}}); 
+							/*
+              let path = creep.pos.findPathTo(target, {maxOps: 200});
+              if( !path.length || !target.equalsTo(path[path.length - 1]) ) {
+                 path = creep.pos.findPathTo(target,
+                     {maxOps: 1000, ignoreDestructibleStructures: true});
+              }
+              if( path.length ) {
+                creep.move(path[0].direction);
+              }*/
+					/*
+					
+					var source2 = sources.reduce((p,c) => {
+						const path = creep.pos.findPathTo(p);
+						const path2 = creep.pos.findPathTo(c);
+						console.log(creep, JSON.stringify({path_length:path.length, path2_length:path2.length, sources:sources}));
+						if(path2.length == 0) return false;
+						return (path.length > 0 && path.length < path2.length)? p:c;
+					});
+
+          if(!!source2) {
+						target = creep.pos.findClosestByPath(FIND_SOURCES, {
+							filter: function(s) { return s.id == source2.id;}});
+						console.log(creep, JSON.stringify({source2:source2, target:target}));
+						console.log(creep, JSON.stringify({target:target}));
+					} */
 				}
 			}
 			if(!!target) return target;

@@ -68,13 +68,31 @@ var roleBuilder = {
 						});
 					}
 				}
+				const NB = flags.flags.NB;
+				const NB1 = flags.flags.NB1;
+				const NB2 = flags.flags.NB2;
 
 				if(!target &&
 					 (this_room_sources_are_empty ||
 					 	this_room_is_being_claiming ||
 						a_room_without_controller ||
 						UU || B || BB )) {
-					target = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES)
+					target = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES, {
+						filter: function(cs) {
+							if(!NB || NB.pos.roomName != my_room) {
+								 if(!!NB1 && NB1.pos.roomName == this_room &&
+ 									NB1.pos.getRangeTo(cs) < 11-NB1.color) {
+ 									return false;
+ 								}
+ 								if(!!NB2 && NB2.pos.roomName == this_room &&
+ 									NB2.pos.getRangeTo(cs) < 11-NB2.color) {
+ 									return false;
+ 								}
+								return true;
+							}
+							return false;
+						}
+					});
 				}
 
 				if(!target) {
