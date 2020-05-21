@@ -108,7 +108,7 @@ var role = {
 			 creep.getActiveBodyparts(WORK) && !UU && !BB
 			 //creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0
 			) {
-			var sources = cash.getSources().filter((source) => {
+			var sources = cash.getSources(creep.room).filter((source) => {
 					return source.energy == source.energyCapacity &&
 						(!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0 ||
 						  (!!DP2 && DP2.pos.roomName == this_room && DP2.pos.getRangeTo(source) <= 5)) &&
@@ -317,7 +317,7 @@ var role = {
 		}
 
 		if(!target && creep.getActiveBodyparts(WORK) && creep.memory.rerun && !BB) {
-			var emptysources = cash.getSources().filter((source) => {
+			var emptysources = cash.getSources(creep.room).filter((source) => {
 					return source.energy == 0 && source.ticksToRegeneration < 100 &&
 						(!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0 ||
 						  (!!DP2 && DP2.pos.roomName == this_room && DP2.pos.findPathTo(source).length <= 5))
