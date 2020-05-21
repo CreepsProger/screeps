@@ -12,6 +12,8 @@ var event_processor = {
 			const buildEvents = _.filter(eventLog, {event:EVENT_BUILD});
 			buildEvents.forEach(event => {
 				const target = Game.getObjectById(event.data.targetId);
+				console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
+												, JSON.stringify({event_processor:'run', room:room.name, event:event, target:target}))
 				if(!!target) {
 					if((!!target.my && (target.progressTotal - target.progress < 300)) ||
 						 target.structureType == STRUCTURE_RAMPART ||
