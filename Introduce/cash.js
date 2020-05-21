@@ -271,6 +271,19 @@ var cash = {
 			}, 500);
 	},
 
+	my_buildings: {},
+	getMyBuildings: function(room) {
+		return cash.getEntry(cash.my_buildings, 'buildings', tools.getRoomCode(room.name), () => {
+			return room.find(FIND_STRUCTURES, {
+				filter: (structure) => structure.structureType == STRUCTURE_WALL ||
+				 											 structure.structureType == STRUCTURE_RAMPART ||
+														   ((!!structure.my ||
+																  structure.structureType == STRUCTURE_ROAD ||
+																	structure.structureType == STRUCTURE_CONTAINER) &&
+																structure.hitsMax - structure.hits > structure.hitsMax/2) });
+			}, 500);
+	},
+
 	structures: {},
 	getStructures: function(room) {
 		return cash.getEntry(cash.structures, LOOK_STRUCTURES, tools.getRoomCode(room.name), () => {

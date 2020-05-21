@@ -193,8 +193,8 @@ var towers = {
 			}
 
 		 	if(!target && (!NR || R)) {
- 				const rps = tower.pos.findInRange(FIND_STRUCTURES, 50, {
-					filter: (structure) => {
+				// const rps = tower.pos.findInRange(FIND_STRUCTURES, 50, {
+				const rps = cash.getMyBuildings(tower.room).filter((structure) => {
 						const r = (!!R &&
 							 				structure.pos.roomName == R.pos.roomName &&
 							 				structure.pos.x == R.pos.x &&
@@ -232,8 +232,7 @@ var towers = {
 							return true;
 						}
 						return  false;
-					}
- 				});
+					});
 				if(rps.length > 0) {
 					target = rps.reduce((p,c) => tower.pos.getRangeTo(p) * (p.hits + 1) // dp*ec < dc*ep !! it is right! don't change
 																				< tower.pos.getRangeTo(c) * (c.hits + 1)
