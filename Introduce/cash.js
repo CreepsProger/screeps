@@ -9,9 +9,7 @@ var cash = {
 	resetList:[],
 	onBuilt: function(roomName, target, data) {
 		const before = cash.resetList.length;
-		if((!!target && target.progressTotal - target.progress < 300) ||
-			 data.structureType == STRUCTURE_RAMPART ||
-			 data.structureType == STRUCTURE_WALL) {
+		if(!!target && target.progressTotal - target.progress < 300) {
 			if(target.structureType == STRUCTURE_CONTAINER) {
 				const entry = STRUCTURE_ROAD + '&' + STRUCTURE_CONTAINER+tools.getRoomCode(roomName) + 100;
 				cash.resetList.push({entry:entry, time:Game.time, id:target.id});
@@ -83,15 +81,15 @@ var cash = {
 				const entry2 = STRUCTURE_TERMINAL + 0 + 100;
 				cash.resetList.push({entry:entry2, time:Game.time, id:target.id});
 			}
-			if(data.structureType == STRUCTURE_RAMPART ||
-				 data.structureType == STRUCTURE_WALL) {
-				const entry = 'buildings'+tools.getRoomCode(roomName) + 100;
-				cash.resetList.push({entry:entry, time:Game.time, id:target.id});
-			}
 			if(false) {
 				const entry = LOOK_STRUCTURES+tools.getRoomCode(roomName) + 100;
 				cash.resetList.push({entry:entry, time:Game.time, id:target.id});
 			}
+		}
+		if(data.structureType == STRUCTURE_RAMPART ||
+			data.structureType == STRUCTURE_WALL) {
+				const entry = 'buildings'+tools.getRoomCode(roomName) + 100;
+				cash.resetList.push({entry:entry, time:Game.time, id:target.id});
 		}
 		if(before < cash.resetList.length) {
 			console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
