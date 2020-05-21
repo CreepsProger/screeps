@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 256,
+	version: 257,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -468,19 +468,22 @@ var config = {
 							, {name: '4', time: 0, min_weight: 5010, max_weight: 5019}
 							, {name: '5', time: 0, min_weight: 5010, max_weight: 5019}
 							, {name: '6', time: 0, min_weight: 5010, max_weight: 5019}
-							, {name: '7', time: 0, min_weight: 10, max_weight: 19}
-							, {name: '8', time: 0, min_weight: 10, max_weight: 19}
+							, {name: '7', time: 0, min_weight: 5010, max_weight: 5019}
+							, {name: '8', time: 0, min_weight: 5010, max_weight: 5019}
 							]
 						, attacker:
 							[ {name: '1', time: 0, min_weight: 5010, max_weight: 5019}
 							, {name: '1', time: 0, min_weight: 5010, max_weight: 5019}
-							, {name: '1', time: 0, min_weight: 10, max_weight: 19}
-							, {name: '1', time: 0, min_weight: 10, max_weight: 19}
+							, {name: '1', time: 0, min_weight: 5010, max_weight: 5019}
+							, {name: '1', time: 0, min_weight: 5010, max_weight: 5019}
 							]
 						, heal_room:
 							{ shard: 'shard1', room: 'W29S29'}
 						, path_rooms:
-							{ W29S30: 'W29S29', W29S29: 'W29S29'
+							{ W29S29: 'W29S29'
+							, W27S29: 'W28S29', W28S29: 'W29S29'
+							, W29S31: 'W30S31', W30S31: 'W30S30'
+							, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:25
 							}
 							, escape_path:
 							{ W29S29: 'W29S29'
@@ -497,10 +500,10 @@ var config = {
 							, {name: '2', time: 0, min_weight: 5020, max_weight: 5029}
 							, {name: '3', time: 0, min_weight: 5020, max_weight: 5029}
 							, {name: '4', time: 0, min_weight: 5020, max_weight: 5029}
-							, {name: '5', time: 0, min_weight: 20, max_weight: 29}
-							, {name: '6', time: 0, min_weight: 20, max_weight: 29}
-							, {name: '7', time: 0, min_weight: 20, max_weight: 29}
-							, {name: '8', time: 0, min_weight: 20, max_weight: 29}
+							, {name: '5', time: 0, min_weight: 5020, max_weight: 5029}
+							, {name: '6', time: 0, min_weight: 5020, max_weight: 5029}
+							, {name: '7', time: 0, min_weight: 5020, max_weight: 5029}
+							, {name: '8', time: 0, min_weight: 5020, max_weight: 5029}
 							]
 							, claiming:
 							 	[ {name: '1', time: 0, min_weight:20, max_weight:29}
@@ -509,13 +512,16 @@ var config = {
 						, attacker:
 							[ {name: '1', time: 0, min_weight: 5020, max_weight: 5029}
 							, {name: '1', time: 0, min_weight: 5020, max_weight: 5029}
-							, {name: '1', time: 0, min_weight: 20, max_weight: 29}
-							, {name: '1', time: 0, min_weight: 20, max_weight: 29}
+							, {name: '1', time: 0, min_weight: 5020, max_weight: 5029}
+							, {name: '1', time: 0, min_weight: 5020, max_weight: 5029}
 							]
 						, heal_room:
 							{ shard: 'shard1', room: 'W29S29'}
 						, path_rooms:
-							{ W29S30: 'W29S29', W29S29: 'W28S29'
+							{ W29S29: 'W28S29'
+							, W27S29: 'W28S29'
+							, W29S31: 'W30S31', W30S31: 'W30S30'
+							, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:25
 							}
 							, escape_path:
 							{ W28S29: 'W29S29', W29S29: 'W29S29'
@@ -544,7 +550,10 @@ var config = {
 						, heal_room:
 							{ shard: 'shard1', room: 'W29S29'}
 						, path_rooms:
-							{ W29S30: 'W29S29', W29S29: 'W29S28'
+							{ W29S29: 'W29S28'
+							, W27S29: 'W28S29', W28S29: 'W29S29'
+							, W29S31: 'W30S31', W30S31: 'W30S30'
+							, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:25
 							}
 							, escape_path:
 							{ W29S28: 'W29S29', W29S29: 'W29S29'
@@ -573,7 +582,10 @@ var config = {
 						, heal_room:
 							{ shard: 'shard1', room: 'W29S29'}
 						, path_rooms:
-							{ W29S30: 'W29S29', W29S29: 'W29S28', W29S28: 'W28S28'
+							{ W29S29: 'W29S28', W29S28: 'W28S28'
+							, W27S29: 'W28S29', W28S29: 'W29S29'
+							, W29S31: 'W30S31', W30S31: 'W30S30'
+							, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:25
 							}
 							, escape_path:
 							{ W28S28: 'W29S28', W29S28: 'W29S29', W29S29: 'W29S29'

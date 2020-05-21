@@ -108,14 +108,12 @@ var role = {
 			 creep.getActiveBodyparts(WORK) && !UU && !BB
 			 //creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0
 			) {
-			var sources = creep.room.find(FIND_SOURCES, {
-				filter: (source) => {
+			var sources = cash.getSources().filter((source) => {
 					return source.energy == source.energyCapacity &&
 						(!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0 ||
 						  (!!DP2 && DP2.pos.roomName == this_room && DP2.pos.getRangeTo(source) <= 5)) &&
 						 tools.checkTarget(executer,source.id);
-				 }
-			 });
+				 });
 			 if(sources.length > 0) {
 				 var source = sources.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				 if(!!source) {
@@ -145,8 +143,8 @@ var role = {
 				if(!!source && creep.pos.getRangeTo(source) == 1) {
 					target = source;
 				}
-				else {target = creep.pos.findClosestByPath(FIND_SOURCES, { 
-							filter: function(source) { return source.energy > 0;}}); 
+				else {target = creep.pos.findClosestByPath(FIND_SOURCES, {
+							filter: function(source) { return source.energy > 0;}});
 							/*
               let path = creep.pos.findPathTo(target, {maxOps: 200});
               if( !path.length || !target.equalsTo(path[path.length - 1]) ) {
@@ -157,7 +155,7 @@ var role = {
                 creep.move(path[0].direction);
               }*/
 					/*
-					
+
 					var source2 = sources.reduce((p,c) => {
 						const path = creep.pos.findPathTo(p);
 						const path2 = creep.pos.findPathTo(c);
@@ -319,8 +317,7 @@ var role = {
 		}
 
 		if(!target && creep.getActiveBodyparts(WORK) && creep.memory.rerun && !BB) {
-			var emptysources = creep.room.find(FIND_SOURCES, {
-				filter: (source) => {
+			var emptysources = cash.getSources().filter((source) => {
 					return source.energy == 0 && source.ticksToRegeneration < 100 &&
 						(!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0 ||
 						  (!!DP2 && DP2.pos.roomName == this_room && DP2.pos.findPathTo(source).length <= 5))
