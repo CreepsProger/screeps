@@ -49,7 +49,7 @@ const conditions = {
 																			var rc = room.controller;
 																			const to_spawn = !!rc && !rc.upgradeBlocked && !rc.reservation || rc.reservation.ticksToEnd < 1000;
 																			// if(!to_spawn)
-																		  	console.log('TO_SPAWN_ROOM_CLAIMER('+ roomName +') =' , to_spawn, JSON.stringify(rc));
+																		  	// console.log('TO_SPAWN_ROOM_CLAIMER('+ roomName +') =' , to_spawn, JSON.stringify(rc));
 																		  return to_spawn;}
 	, TO_EXTRA_UPGRADE:			function(total_energy) {
 																			return Game.cpu.bucket > constants.CPU_BUCKET_TO_EXTRA_UPGRADE &&
