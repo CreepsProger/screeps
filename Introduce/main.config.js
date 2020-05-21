@@ -505,10 +505,10 @@ var config = {
 							, {name: '7', time: 0, min_weight: 5020, max_weight: 5029}
 							, {name: '8', time: 0, min_weight: 5020, max_weight: 5029}
 							]
-							, claiming:
-							 	[ {name: '1', time: 0, min_weight:20, max_weight:29}
-								, {name: '2', time: 0, min_weight:5020, max_weight:5029}
-								]
+						, claiming:
+						 	[ {name: '1', time: 0, min_weight:20, max_weight:29}
+							, {name: '2', time: 0, min_weight:5020, max_weight:5029}
+							]
 						, attacker:
 							[ {name: '1', time: 0, min_weight: 5020, max_weight: 5029}
 							, {name: '1', time: 0, min_weight: 5020, max_weight: 5029}
@@ -539,10 +539,10 @@ var config = {
 							, {name: '3', time: 0, min_weight: 5030, max_weight: 5039}
 							, {name: '4', time: 0, min_weight: 5030, max_weight: 5039}
 							]
-							, claiming:
-							 	[ {name: '1', time: 0, min_weight:5030, max_weight:5039}
-								, {name: '2', time: 0, min_weight:5030, max_weight:5039}
-								]
+						, claiming:
+						 	[ {name: '1', time: 0, min_weight:5030, max_weight:5039}
+							, {name: '2', time: 0, min_weight:5030, max_weight:5039}
+							]
 						, attacker:
 							[ {name: '1', time: 0, min_weight: 5030, max_weight: 5039}
 							, {name: '1', time: 0, min_weight: 5030, max_weight: 5039}
@@ -571,10 +571,10 @@ var config = {
 							, {name: '3', time: 0, min_weight: 5040, max_weight: 5049}
 							, {name: '4', time: 0, min_weight: 5040, max_weight: 5049}
 							]
-							, claiming:
-							 	[ {name: '1', time: 0, min_weight:5040, max_weight:5049}
-								, {name: '2', time: 0, min_weight:5040, max_weight:5049}
-								]
+						, claiming:
+						 	[ {name: '1', time: 0, min_weight:5040, max_weight:5049}
+							, {name: '2', time: 0, min_weight:5040, max_weight:5049}
+							]
 						, attacker:
 							[ {name: '1', time: 0, min_weight: 5040, max_weight: 5049}
 							, {name: '1', time: 0, min_weight: 5040, max_weight: 5049}
@@ -614,10 +614,10 @@ var config = {
 							, {name: '7', time: 0, min_weight: 5050, max_weight: 5059}
 							, {name: '8', time: 0, min_weight: 5050, max_weight: 5059}
 							]
-							, claiming:
-							 	[ {name: '1', time: 0, min_weight:5050, max_weight:5059}
-								, {name: '2', time: 0, min_weight:5050, max_weight:5059}
-								]
+						, claiming:
+						 	[ {name: '1', time: 0, min_weight:5050, max_weight:5059}
+							, {name: '2', time: 0, min_weight:5050, max_weight:5059}
+							]
 						, attacker:
 							[ {name: '1', time: 0, min_weight: 5050, max_weight: 5059}
 							, {name: '1', time: 0, min_weight: 5050, max_weight: 5059}
