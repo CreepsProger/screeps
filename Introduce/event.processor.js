@@ -14,14 +14,19 @@ var event_processor = {
 				const target = Game.getObjectById(event.data.targetId);
 				console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
 												, JSON.stringify({event_processor:'run', room:room.name, event:event, target:target}))
-				if(!!target) {
-					if((!!target.my && (target.progressTotal - target.progress < 300)) ||
-						 target.structureType == STRUCTURE_RAMPART ||
-						 target.structureType == STRUCTURE_WALL) {
+				if(!!target ||
+					 event.data.structureType == STRUCTURE_RAMPART ||
+					 event.data.structureType == STRUCTURE_WALL) {
+					if((!!target.my && (target.progressTotal - target.progress < 300)) ) {
+	 					console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
+	 										 			, JSON.stringify({event_processor:'run', room:room.name, event:event, target:target}))
+	 				}
+					if(event.data.structureType == STRUCTURE_RAMPART ||
+						 event.data.structureType == STRUCTURE_WALL) {
 						console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
-											 			, JSON.stringify({event_processor:'run', room:room.name, event:event, target:target}))
+											 			, JSON.stringify({event_processor:'run', room:room.name, data:event.data, target:target}))
 					}
-					cash.onBuilt(room.name, target);
+					cash.onBuilt(room.name, target, data);
 				}
 			});
 		});

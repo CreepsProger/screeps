@@ -7,11 +7,11 @@ var cash = {
 	time: 0,
 
 	resetList:[],
-	onBuilt: function(roomName, target) {
+	onBuilt: function(roomName, target, data) {
 		const before = cash.resetList.length;
-		if((target.progressTotal - target.progress < 300) ||
-			 target.structureType == STRUCTURE_RAMPART ||
-			 target.structureType == STRUCTURE_WALL) {
+		if((!!target && target.progressTotal - target.progress < 300) ||
+			 data.structureType == STRUCTURE_RAMPART ||
+			 data.structureType == STRUCTURE_WALL) {
 			if(target.structureType == STRUCTURE_CONTAINER) {
 				const entry = STRUCTURE_ROAD + '&' + STRUCTURE_CONTAINER+tools.getRoomCode(roomName) + 100;
 				cash.resetList.push({entry:entry, time:Game.time, id:target.id});
@@ -83,8 +83,8 @@ var cash = {
 				const entry2 = STRUCTURE_TERMINAL + 0 + 100;
 				cash.resetList.push({entry:entry2, time:Game.time, id:target.id});
 			}
-			if(target.structureType == STRUCTURE_RAMPART ||
-				 target.structureType == STRUCTURE_WALL) {
+			if(data.structureType == STRUCTURE_RAMPART ||
+				 data.structureType == STRUCTURE_WALL) {
 				const entry = 'buildings'+tools.getRoomCode(roomName) + 100;
 				cash.resetList.push({entry:entry, time:Game.time, id:target.id});
 			}
