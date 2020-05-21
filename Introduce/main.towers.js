@@ -195,6 +195,9 @@ var towers = {
 		 	if(!target && (!NR || R)) {
 				// const rps = tower.pos.findInRange(FIND_STRUCTURES, 50, {
 				const rps = cash.getMyBuildings(tower.room).filter((structure) => {
+						if(!structure || !structure.structureType)
+							return false;
+
 						const r = (!!R &&
 							 				structure.pos.roomName == R.pos.roomName &&
 							 				structure.pos.x == R.pos.x &&
