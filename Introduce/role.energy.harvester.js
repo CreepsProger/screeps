@@ -321,8 +321,7 @@ var role = {
 					return source.energy == 0 && source.ticksToRegeneration < 100 &&
 						(!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0 ||
 						  (!!DP2 && DP2.pos.roomName == this_room && DP2.pos.findPathTo(source).length <= 5))
-				}
-			});
+				});
 			if(emptysources.length > 0) {
 				target = emptysources.reduce((p,c) => (p.ticksToRegeneration < c.ticksToRegeneration ||
 				 																			creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c))? p:c);
