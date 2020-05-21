@@ -89,7 +89,7 @@ var cash = {
 		if(data.structureType == STRUCTURE_RAMPART ||
 			data.structureType == STRUCTURE_WALL) {
 				const entry = 'buildings'+tools.getRoomCode(roomName) + 100;
-				cash.resetList.push({entry:entry, time:Game.time, id:target.id});
+				cash.resetList.push({entry:entry, time:Game.time, id:data.targetId});
 		}
 		if(before < cash.resetList.length) {
 			console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
