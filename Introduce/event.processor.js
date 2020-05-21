@@ -26,7 +26,7 @@ var event_processor = {
 						console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
 											 			, JSON.stringify({event_processor:'run', room:room.name, data:event.data, target:target}))
 					}
-					cash.onBuilt(room.name, target, data);
+					cash.onBuilt(room.name, target, event.data);
 				}
 			});
 		});
