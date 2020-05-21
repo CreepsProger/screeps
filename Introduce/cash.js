@@ -44,6 +44,20 @@ var cash = {
 			if(target.structureType == STRUCTURE_SPAWN) {
 				const entry = STRUCTURE_SPAWN+tools.getRoomCode(roomName) + 100;
 				cash.resetList.push({entry:entry, time:Game.time, id:target.id});
+				const entry2 = STRUCTURE_EXTENSION+tools.getRoomCode(roomName) + 100;
+				cash.resetList.push({entry:entry2, time:Game.time, id:target.id});
+				const q = Math.floor(target.pos.x/5)*10 + Math. floor(target.pos.y/5);
+				const entry3 = STRUCTURE_EXTENSION+tools.getRoomCode(roomName) + q;
+				cash.resetList.push({entry:entry3, time:Game.time, id:target.id});
+			}
+			if(target.structureType == STRUCTURE_POWER_SPAWN) {
+				// const entry = STRUCTURE_SPAWN+tools.getRoomCode(roomName) + 100;
+				// cash.resetList.push({entry:entry, time:Game.time, id:target.id});
+				const entry2 = STRUCTURE_EXTENSION+tools.getRoomCode(roomName) + 100;
+				cash.resetList.push({entry:entry2, time:Game.time, id:target.id});
+				const q = Math.floor(target.pos.x/5)*10 + Math. floor(target.pos.y/5);
+				const entry3 = STRUCTURE_EXTENSION+tools.getRoomCode(roomName) + q;
+				cash.resetList.push({entry:entry3, time:Game.time, id:target.id});
 			}
 			if(target.structureType == STRUCTURE_LINK) {
 				const entry = STRUCTURE_LINK+tools.getRoomCode(roomName) + 100;
