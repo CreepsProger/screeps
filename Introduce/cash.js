@@ -9,7 +9,9 @@ var cash = {
 	resetList:[],
 	onBuilt: function(roomName, target) {
 		const before = cash.resetList.length;
-		if(target.progressTotal - target.progress < 300) {
+		if(target.progressTotal - target.progress < 300  ||
+			 target.structureType == STRUCTURE_RAMPART ||
+			 target.structureType == STRUCTURE_WALL) {
 			if(target.structureType == STRUCTURE_CONTAINER) {
 				const entry = STRUCTURE_ROAD + '&' + STRUCTURE_CONTAINER+tools.getRoomCode(roomName) + 100;
 				cash.resetList.push({entry:entry, time:Game.time, id:target.id});
