@@ -143,8 +143,8 @@ var towers = {
 			const D = flags.flags.D;
 			const D1 = flags.flags.D1;
 			const D2 = flags.flags.D2;
-			const mw = config.getMW();
-			const mr = config.getMR();
+			const mw = config.getMW(tower.pos.roomName);
+			const mr = config.getMR(tower.pos.roomName);
 
 			if(!NAT) {
 				target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
