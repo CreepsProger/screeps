@@ -44,7 +44,7 @@ var roleEnergyTransferer = {
 			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
 			const my_shard = creep.memory[constants.ROLE_ENERGY_HARVESTING].shard;
 			const my_shard_config = Memory.config.shards[my_shard];
-			const this_room_config = !!my_shard_config.rooms[this_room]?my_shard_config.rooms[this_room]:my_shard_config.rooms['Default'];
+			const this_room_config = !!my_shard_config.rooms[this_room]?my_shard_config.rooms[this_room]:my_shard_config.rooms['defaults'];
 			const my_room_config = my_shard_config.rooms[my_room];
 
 			if(!this_room_config) {

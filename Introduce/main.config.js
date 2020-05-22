@@ -19,6 +19,52 @@ var config = {
 			}
 	},
 
+	getMW: function(roomName) {
+		const MW = flags.flags.MW;
+
+		const my_main_defaults = Memory.config.defaults;
+		const my_shard_config = Memory.config.shards[Game.shard.name];
+		const my_shard_defaults = my_shard_config.defaults;
+		const my_room_config = my_shard_config.rooms[roomName];
+
+		if(MW && MW.pos.roomName == roomName) {
+			return Math.pow(10,11-MW.color)*(11-MW.secondaryColor);
+		}
+		else if(!!my_room_config && !!my_room_config.towers && !!my_room_config.towers.mw) {
+			return my_room_config.towers.mw;
+		}
+		else if(!!my_shard_defaults && !!my_shard_defaults.towers && !!my_shard_defaults.towers.mw) {
+			return my_shard_defaults.towers.mw;
+		}
+		else if(!!my_main_defaults && !!my_main_defaults.towers && !!my_main_defaults.towers.mw) {
+			return my_main_defaults.towers.mw;
+		}
+		return 10000;
+	},
+
+	getMR: function(roomName) {
+		const MR = flags.flags.MR;
+
+		const my_main_defaults = Memory.config.defaults;
+		const my_shard_config = Memory.config.shards[Game.shard.name];
+		const my_shard_defaults = my_shard_config.defaults;
+		const my_room_config = my_shard_config.rooms[roomName];
+
+		if(MR && MR.pos.roomName == roomName) {
+			return Math.pow(10,11-MR.color)*(11-MR.secondaryColor);
+		}
+		else if(!!my_room_config && !!my_room_config.towers && !!my_room_config.towers.mr) {
+			return my_room_config.towers.mr;
+		}
+		else if(!!my_shard_defaults && !!my_shard_defaults.towers && !!my_shard_defaults.towers.mr) {
+			return my_shard_defaults.towers.mr;
+		}
+		else if(!!my_main_defaults && !!my_main_defaults.towers && !!my_main_defaults.towers.mr) {
+			return my_main_defaults.towers.mr;
+		}
+		return 10000;
+	},
+
 	findPathToMyRoom: function(creep,role_name) {
 
 		// console.log(creep, JSON.stringify({role_name:role_name, creep:creep}));
@@ -123,10 +169,11 @@ var config = {
 									, W29S29: 'W29S29', W28S29: 'W29S29', W29S28: 'W29S29', W28S28: 'W29S28'
                   , W27S29: 'W28S29'
 									}
+			, defaults: {towers: {mw:10000,mr:10000}}
 			, shards:
 			{	shard0:
 					{	rooms:
-						{	Default:
+						{	defaults:
 							{ containers: {weight: 1000}
 							, heal_room:
 								{ shard: 'shard0', room: 'W57S52'}
@@ -439,8 +486,9 @@ var config = {
 					}
 				,	shard1:
 				 	{	rooms: {
-					 	Default:
+					 	defaults:
 						{ containers: {weight: 5000}
+						, towers: {mw:110000,mr:200000}
 						, heal_room:
 							{ shard: 'shard0', room: 'W57S52'}
 						, path_rooms:
