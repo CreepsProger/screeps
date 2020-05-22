@@ -202,39 +202,38 @@ var towers = {
 							 				structure.pos.roomName == R.pos.roomName &&
 							 				structure.pos.x == R.pos.x &&
 											structure.pos.y == R.pos.y)?(11-R.color)*(11-R.secondaryColor):1;
-						if(structure.structureType == STRUCTURE_WALL && r) {
- 							const repair = structure.hits < constants.STRUCTURE_WALL_HITS*mw*r;// 8000 E = 10 * 8000 / 800 = 100
-							return repair;
+						var repair = false;
+						if(!repair && structure.structureType == STRUCTURE_WALL && r) {
+ 							repair = structure.hits < constants.STRUCTURE_WALL_HITS*mw*r;// 8000 E = 10 * 8000 / 800 = 100
  						}
- 						if(structure.structureType == STRUCTURE_RAMPART && r) {
- 							const repair = structure.hits < constants.STRUCTURE_RAMPART_HITS*mr*r;// 8000 E = 10 * 8000 / 800 = 100
-							return repair;
+ 						if(!repair && structure.structureType == STRUCTURE_RAMPART && r) {
+ 							repair = structure.hits < constants.STRUCTURE_RAMPART_HITS*mr*r;// 8000 E = 10 * 8000 / 800 = 100
  						}
-						if(structure.structureType == STRUCTURE_WALL || structure.structureType == STRUCTURE_RAMPART) {
+						if(structure.structureType != STRUCTURE_WALL &&
+							 structure.structureType != STRUCTURE_RAMPART &&
+							 (structure.hitsMax - structure.hits > structure.hitsMax/
+								 (2+98*(!!towers.prev_target[i] && structure.id == towers.prev_target[i])))) {
+							repair = true;
+						}
+						if(!repair)
+						 	return false;
+						if(	!!D1 && D1.pos.roomName == structure.pos.roomName &&
+							   D1.pos.getRangeTo(structure) <= 10-D1.color) {
 							return false;
 						}
-
-						if(structure.hitsMax - structure.hits > structure.hitsMax/
-							(2+98*(!!towers.prev_target[i] && structure.id == towers.prev_target[i]))) {
-							if(!!D1 && D1.pos.roomName == structure.pos.roomName &&
-								 D1.pos.getRangeTo(structure) <= 10-D1.color) {
-								return false;
-							}
-							if(!!D2 && D2.pos.roomName == structure.pos.roomName &&
-								 D2.pos.getRangeTo(structure) <= 10-D2.color) {
-								return false;
-							}
-							if(!!NR1 && NR1.pos.roomName == structure.pos.roomName &&
-								 NR1.pos.getRangeTo(structure) <= 10-NR1.color) {
-								return false;
-							}
-							if(!!NR2 && NR2.pos.roomName == structure.pos.roomName &&
-								 NR2.pos.getRangeTo(structure) <= 10-NR2.color) {
-								return false;
-							}
-							return true;
+						if(	!!D2 && D2.pos.roomName == structure.pos.roomName &&
+								D2.pos.getRangeTo(structure) <= 10-D2.color) {
+							return false;
 						}
-						return  false;
+						if(	!!NR1 && NR1.pos.roomName == structure.pos.roomName &&
+								NR1.pos.getRangeTo(structure) <= 10-NR1.color) {
+							return false;
+						}
+						if(	!!NR2 && NR2.pos.roomName == structure.pos.roomName &&
+								NR2.pos.getRangeTo(structure) <= 10-NR2.color) {
+							return false;
+						}
+						return  true;
 					});
 				if(rps.length > 0) {
 					target = rps.reduce((p,c) => tower.pos.getRangeTo(p) * (p.hits + 1) // dp*ec < dc*ep !! it is right! don't change
