@@ -28,23 +28,23 @@ var config = {
 		const my_room_config = my_shard_config.rooms[roomName];
 
 		if(MW && MW.pos.roomName == roomName) {
-			console.log(JSON.stringify({ getMW:roomName
-																 , MW:MW}));
+			// console.log(JSON.stringify({ getMW:roomName
+			// 													 , MW:MW}));
 			return Math.pow(10,11-MW.color)*(11-MW.secondaryColor);
 		}
 		else if(!!my_room_config && !!my_room_config.towers && !!my_room_config.towers.mw) {
-			console.log(JSON.stringify({ getMW:roomName
-																 , my_room_config:my_room_config}));
+			// console.log(JSON.stringify({ getMW:roomName
+			// 													 , my_room_config:my_room_config}));
 			return my_room_config.towers.mw;
 		}
 		else if(!!my_shard_defaults && !!my_shard_defaults.towers && !!my_shard_defaults.towers.mw) {
-			console.log(JSON.stringify({ getMW:roomName
-																 , my_shard_defaults:my_shard_defaults}));
+			// console.log(JSON.stringify({ getMW:roomName
+			// 													 , my_shard_defaults:my_shard_defaults}));
 			return my_shard_defaults.towers.mw;
 		}
 		else if(!!my_main_defaults && !!my_main_defaults.towers && !!my_main_defaults.towers.mw) {
-			console.log(JSON.stringify({ getMW:roomName
-																 , my_main_defaults:my_main_defaults}));
+			// console.log(JSON.stringify({ getMW:roomName
+			// 													 , my_main_defaults:my_main_defaults}));
 			return my_main_defaults.towers.mw;
 		}
 		return 98765;
