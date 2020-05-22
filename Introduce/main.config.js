@@ -27,6 +27,11 @@ var config = {
 		const my_shard_defaults = my_shard_config.defaults;
 		const my_room_config = my_shard_config.rooms[roomName];
 
+		console.log(JSON.stringify({ getMW:roomName
+															 , my_room_config:my_room_config
+															 , my_shard_defaults:my_shard_defaults
+															 , my_main_defaults:my_main_defaults}));
+
 		if(MW && MW.pos.roomName == roomName) {
 			return Math.pow(10,11-MW.color)*(11-MW.secondaryColor);
 		}
@@ -39,7 +44,7 @@ var config = {
 		else if(!!my_main_defaults && !!my_main_defaults.towers && !!my_main_defaults.towers.mw) {
 			return my_main_defaults.towers.mw;
 		}
-		return 10000;
+		return 98765;
 	},
 
 	getMR: function(roomName) {
@@ -62,7 +67,7 @@ var config = {
 		else if(!!my_main_defaults && !!my_main_defaults.towers && !!my_main_defaults.towers.mr) {
 			return my_main_defaults.towers.mr;
 		}
-		return 10000;
+		return 98765;
 	},
 
 	findPathToMyRoom: function(creep,role_name) {
