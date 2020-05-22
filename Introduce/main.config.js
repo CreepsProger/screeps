@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 260,
+	version: 261,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -180,24 +180,25 @@ var config = {
 			, defaults: {towers: {mw:10000,mr:10000}}
 			, shards:
 			{	shard0:
-					{	rooms:
-						{	defaults:
-							{ containers: {weight: 1000}
-							, heal_room:
-								{ shard: 'shard0', room: 'W57S52'}
-							, path_rooms:
-								{ W57S52: 'W56S52', W57S52y:24, W56S52: 'W56S53', W56S53: 'W56S54'
-								, W56S54: 'W57S54', W57S54: 'W57S55', W57S55: 'W56S55'
-								, W56S55: 'W55S55', W55S55: 'W55S56', W55S56: 'W55S57'
-								, W55S57: 'W55S58', W55S58: 'W56S58', W56S58: 'W56S59'
-								, W56S59: 'W56S60', W56S60: 'W55S60', W55S60: 'W54S60'
-								, W54S60: 'W54S59', W54S59: 'W53S59', W53S59: 'W53S58'
-								, W53S58: 'W52S58', W52S58: 'W52S57', W52S57: 'W52S57'
-								}
-								, escape_path:
-								{ W56S54: 'W56S53', W56S53: 'W56S52', W56S52: 'W57S52'
-								}
-							},
+					{	defaults:
+						{ containers: {weight: 1000}
+						, heal_room:
+							{ shard: 'shard0', room: 'W57S52'}
+						, path_rooms:
+							{ W57S52: 'W56S52', W57S52y:24, W56S52: 'W56S53', W56S53: 'W56S54'
+							, W56S54: 'W57S54', W57S54: 'W57S55', W57S55: 'W56S55'
+							, W56S55: 'W55S55', W55S55: 'W55S56', W55S56: 'W55S57'
+							, W55S57: 'W55S58', W55S58: 'W56S58', W56S58: 'W56S59'
+							, W56S59: 'W56S60', W56S60: 'W55S60', W55S60: 'W54S60'
+							, W54S60: 'W54S59', W54S59: 'W53S59', W53S59: 'W53S58'
+							, W53S58: 'W52S58', W52S58: 'W52S57', W52S57: 'W52S57'
+							}
+							, escape_path:
+							{ W56S54: 'W56S53', W56S53: 'W56S52', W56S52: 'W57S52'
+							}
+						},
+						rooms:
+						{
 							W52S57:
 							{ containers: {weight: 1000}
 							, sites:
@@ -493,8 +494,7 @@ var config = {
 						}
 					}
 				,	shard1:
-				 	{	rooms: {
-					 	defaults:
+				 	{	defaults:
 						{ containers: {weight: 5000}
 						, towers: {mw:110000,mr:200000}
 						, heal_room:
@@ -512,187 +512,189 @@ var config = {
 							{ W56S54: 'W56S53', W56S53: 'W56S52', W56S52: 'W57S52'
 							}
 						},
-						W29S29:
-						{ containers: {weight: 5013}
-						// , sites:
-						// 	[ {x:37, y:39, type:STRUCTURE_CONTAINER}
-						// 	]
-						, energy_harvesting:
-							[ {name: '1', time: 0, min_weight: 5010, max_weight: 5019}
-							, {name: '2', time: 0, min_weight: 5010, max_weight: 5019}
-							, {name: '3', time: 0, min_weight: 5010, max_weight: 5019}
-							, {name: '4', time: 0, min_weight: 5010, max_weight: 5019}
-							, {name: '5', time: 0, min_weight: 5010, max_weight: 5019}
-							, {name: '6', time: 0, min_weight: 5010, max_weight: 5019}
-							, {name: '7', time: 0, min_weight: 5010, max_weight: 5019}
-							, {name: '8', time: 0, min_weight: 5010, max_weight: 5019}
-							]
-						, attacker:
-							[ {name: '1', time: 0, min_weight: 5010, max_weight: 5019}
-							, {name: '1', time: 0, min_weight: 5010, max_weight: 5019}
-							, {name: '1', time: 0, min_weight: 5010, max_weight: 5019}
-							, {name: '1', time: 0, min_weight: 5010, max_weight: 5019}
-							]
-						, heal_room:
-							{ shard: 'shard1', room: 'W29S29'}
-						, path_rooms:
-							{ W29S29: 'W29S29'
-							, W27S29: 'W28S29', W28S29: 'W29S29'
-							, W29S31: 'W30S31', W30S31: 'W30S30'
-							, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:25
-							}
-							, escape_path:
-							{ W29S29: 'W29S29'
-							}
-						},
-						W28S29:
-						{ containers: {weight: 5023}
-						, sites:
-						 	[ /*{x:13, y:30, type:STRUCTURE_CONTAINER}
-							, {x:22, y:19, type:STRUCTURE_CONTAINER}*/
-						 	]
-						, energy_harvesting:
-							[ {name: '1', time: 0, min_weight: 5020, max_weight: 5029}
-							, {name: '2', time: 0, min_weight: 5020, max_weight: 5029}
-							, {name: '3', time: 0, min_weight: 5020, max_weight: 5029}
-							, {name: '4', time: 0, min_weight: 5020, max_weight: 5029}
-							, {name: '5', time: 0, min_weight: 5020, max_weight: 5029}
-							, {name: '6', time: 0, min_weight: 5020, max_weight: 5029}
-							, {name: '7', time: 0, min_weight: 5020, max_weight: 5029}
-							, {name: '8', time: 0, min_weight: 5020, max_weight: 5029}
-							]
-						, claiming:
-						 	[ {name: '1', time: 0, min_weight:20, max_weight:29}
-							, {name: '2', time: 0, min_weight:5020, max_weight:5029}
-							]
-						, attacker:
-							[ {name: '1', time: 0, min_weight: 5020, max_weight: 5029}
-							, {name: '1', time: 0, min_weight: 5020, max_weight: 5029}
-							, {name: '1', time: 0, min_weight: 5020, max_weight: 5029}
-							, {name: '1', time: 0, min_weight: 5020, max_weight: 5029}
-							]
-						, heal_room:
-							{ shard: 'shard1', room: 'W29S29'}
-						, path_rooms:
-							{ W29S29: 'W28S29'
-							, W27S29: 'W28S29'
-							, W29S31: 'W30S31', W30S31: 'W30S30'
-							, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:25
-							}
-							, escape_path:
-							{ W28S29: 'W29S29', W29S29: 'W29S29'
-							}
-						},
-						W29S28:
-						{ containers: {weight: 5033}
-						, sites:
-						 	[ {x:27, y:17, type:STRUCTURE_CONTAINER}
-							, {x:28, y:17, type:STRUCTURE_CONTAINER}
-						 	]
-						, energy_harvesting:
-							[ {name: '1', time: 0, min_weight: 5030, max_weight: 5039}
-							, {name: '2', time: 0, min_weight: 5030, max_weight: 5039}
-							, {name: '3', time: 0, min_weight: 5030, max_weight: 5039}
-							, {name: '4', time: 0, min_weight: 5030, max_weight: 5039}
-							]
-						, claiming:
-						 	[ {name: '1', time: 0, min_weight:5030, max_weight:5039}
-							, {name: '2', time: 0, min_weight:5030, max_weight:5039}
-							]
-						, attacker:
-							[ {name: '1', time: 0, min_weight: 5030, max_weight: 5039}
-							, {name: '1', time: 0, min_weight: 5030, max_weight: 5039}
-							]
-						, heal_room:
-							{ shard: 'shard1', room: 'W29S29'}
-						, path_rooms:
-							{ W29S29: 'W29S28'
-							, W27S29: 'W28S29', W28S29: 'W29S29'
-							, W29S31: 'W30S31', W30S31: 'W30S30'
-							, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:25
-							}
-							, escape_path:
-							{ W29S28: 'W29S29', W29S29: 'W29S29'
-							}
-						},
-						W28S28:
-						{ containers: {weight: 5043}
-						, sites:
-						 	[ {x:19, y:19, type:STRUCTURE_CONTAINER}
-							// , {x:20, y:19, type:STRUCTURE_CONTAINER}
-						 	]
-						, energy_harvesting:
-							[ {name: '1', time: 0, min_weight: 5040, max_weight: 5049}
-							, {name: '2', time: 0, min_weight: 5040, max_weight: 5049}
-							, {name: '3', time: 0, min_weight: 5040, max_weight: 5049}
-							, {name: '4', time: 0, min_weight: 5040, max_weight: 5049}
-							]
-						, claiming:
-						 	[ {name: '1', time: 0, min_weight:5040, max_weight:5049}
-							, {name: '2', time: 0, min_weight:5040, max_weight:5049}
-							]
-						, attacker:
-							[ {name: '1', time: 0, min_weight: 5040, max_weight: 5049}
-							, {name: '1', time: 0, min_weight: 5040, max_weight: 5049}
-							]
-						, heal_room:
-							{ shard: 'shard1', room: 'W29S29'}
-						, path_rooms:
-							{ W29S29: 'W29S28', W29S28: 'W28S28'
-							, W27S29: 'W28S29', W28S29: 'W29S29'
-							, W29S31: 'W30S31', W30S31: 'W30S30'
-							, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:25
-							}
-							, escape_path:
-							{ W28S28: 'W29S28', W29S28: 'W29S29', W29S29: 'W29S29'
-							}
-						},
-						W27S29:
-						{ containers: {weight: 5053}
-						, sites:
-						 	[ {x:42, y:10, type:STRUCTURE_CONTAINER}
-							, {x:43, y:17, type:STRUCTURE_CONTAINER}
-							, {x:41, y:10, type:STRUCTURE_ROAD}
-							, {x:42, y:11, type:STRUCTURE_ROAD}
-							, {x:43, y:12, type:STRUCTURE_ROAD}
-							, {x:43, y:13, type:STRUCTURE_ROAD}
-							, {x:43, y:14, type:STRUCTURE_ROAD}
-							, {x:43, y:15, type:STRUCTURE_ROAD}
-							, {x:44, y:16, type:STRUCTURE_ROAD}
-						 	]
-						, energy_harvesting:
-							[ {name: '1', time: 0, min_weight: 5050, max_weight: 5059}
-							, {name: '2', time: 0, min_weight: 5050, max_weight: 5059}
-							, {name: '3', time: 0, min_weight: 5050, max_weight: 5059}
-							, {name: '4', time: 0, min_weight: 5050, max_weight: 5059}
-							, {name: '5', time: 0, min_weight: 5050, max_weight: 5059}
-							, {name: '6', time: 0, min_weight: 5050, max_weight: 5059}
-							, {name: '7', time: 0, min_weight: 5050, max_weight: 5059}
-							, {name: '8', time: 0, min_weight: 5050, max_weight: 5059}
-							]
-						, claiming:
-						 	[ {name: '1', time: 0, min_weight: 5050, max_weight: 5059}
-							, {name: '2', time: 0, min_weight: 5050, max_weight: 5059}
-							]
-						, attacker:
-							[ {name: '1', time: 0, min_weight: 5050, max_weight: 5059}
-							, {name: '2', time: 0, min_weight: 5050, max_weight: 5059}
-							, {name: '3', time: 0, min_weight: 5050, max_weight: 5059}
-							, {name: '4', time: 0, min_weight: 5050, max_weight: 5059}
-							]
-						, heal_room:
-							{ shard: 'shard1', room: 'W28S29'}
-						, path_rooms:
-							{ W29S29: 'W28S29'
-							, W28S29: 'W27S29'
-							, W29S31: 'W30S31', W30S31: 'W30S30'
-							, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:25
-							}
-							, escape_path:
-							{ W27S29: 'W28S29', W28S29: 'W29S29'
-							}
-						},
-						W29S31:
+						rooms:
+						{
+							W29S29:
+							{ containers: {weight: 5013}
+							// , sites:
+							// 	[ {x:37, y:39, type:STRUCTURE_CONTAINER}
+							// 	]
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 5010, max_weight: 5019}
+								, {name: '2', time: 0, min_weight: 5010, max_weight: 5019}
+								, {name: '3', time: 0, min_weight: 5010, max_weight: 5019}
+								, {name: '4', time: 0, min_weight: 5010, max_weight: 5019}
+								, {name: '5', time: 0, min_weight: 5010, max_weight: 5019}
+								, {name: '6', time: 0, min_weight: 5010, max_weight: 5019}
+								, {name: '7', time: 0, min_weight: 5010, max_weight: 5019}
+								, {name: '8', time: 0, min_weight: 5010, max_weight: 5019}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 5010, max_weight: 5019}
+								, {name: '1', time: 0, min_weight: 5010, max_weight: 5019}
+								, {name: '1', time: 0, min_weight: 5010, max_weight: 5019}
+								, {name: '1', time: 0, min_weight: 5010, max_weight: 5019}
+								]
+							, heal_room:
+								{ shard: 'shard1', room: 'W29S29'}
+							, path_rooms:
+								{ W29S29: 'W29S29'
+								, W27S29: 'W28S29', W28S29: 'W29S29'
+								, W29S31: 'W30S31', W30S31: 'W30S30'
+								, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:25
+								}
+								, escape_path:
+								{ W29S29: 'W29S29'
+								}
+							},
+							W28S29:
+							{ containers: {weight: 5023}
+							, sites:
+							 	[ /*{x:13, y:30, type:STRUCTURE_CONTAINER}
+								, {x:22, y:19, type:STRUCTURE_CONTAINER}*/
+							 	]
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 5020, max_weight: 5029}
+								, {name: '2', time: 0, min_weight: 5020, max_weight: 5029}
+								, {name: '3', time: 0, min_weight: 5020, max_weight: 5029}
+								, {name: '4', time: 0, min_weight: 5020, max_weight: 5029}
+								, {name: '5', time: 0, min_weight: 5020, max_weight: 5029}
+								, {name: '6', time: 0, min_weight: 5020, max_weight: 5029}
+								, {name: '7', time: 0, min_weight: 5020, max_weight: 5029}
+								, {name: '8', time: 0, min_weight: 5020, max_weight: 5029}
+								]
+							, claiming:
+							 	[ {name: '1', time: 0, min_weight:20, max_weight:29}
+								, {name: '2', time: 0, min_weight:5020, max_weight:5029}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 5020, max_weight: 5029}
+								, {name: '1', time: 0, min_weight: 5020, max_weight: 5029}
+								, {name: '1', time: 0, min_weight: 5020, max_weight: 5029}
+								, {name: '1', time: 0, min_weight: 5020, max_weight: 5029}
+								]
+							, heal_room:
+								{ shard: 'shard1', room: 'W29S29'}
+							, path_rooms:
+								{ W29S29: 'W28S29'
+								, W27S29: 'W28S29'
+								, W29S31: 'W30S31', W30S31: 'W30S30'
+								, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:25
+								}
+								, escape_path:
+								{ W28S29: 'W29S29', W29S29: 'W29S29'
+								}
+							},
+							W29S28:
+							{ containers: {weight: 5033}
+							, sites:
+							 	[ {x:27, y:17, type:STRUCTURE_CONTAINER}
+								, {x:28, y:17, type:STRUCTURE_CONTAINER}
+							 	]
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 5030, max_weight: 5039}
+								, {name: '2', time: 0, min_weight: 5030, max_weight: 5039}
+								, {name: '3', time: 0, min_weight: 5030, max_weight: 5039}
+								, {name: '4', time: 0, min_weight: 5030, max_weight: 5039}
+								]
+							, claiming:
+							 	[ {name: '1', time: 0, min_weight:5030, max_weight:5039}
+								, {name: '2', time: 0, min_weight:5030, max_weight:5039}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 5030, max_weight: 5039}
+								, {name: '1', time: 0, min_weight: 5030, max_weight: 5039}
+								]
+							, heal_room:
+								{ shard: 'shard1', room: 'W29S29'}
+							, path_rooms:
+								{ W29S29: 'W29S28'
+								, W27S29: 'W28S29', W28S29: 'W29S29'
+								, W29S31: 'W30S31', W30S31: 'W30S30'
+								, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:25
+								}
+								, escape_path:
+								{ W29S28: 'W29S29', W29S29: 'W29S29'
+								}
+							},
+							W28S28:
+							{ containers: {weight: 5043}
+							, sites:
+							 	[ {x:19, y:19, type:STRUCTURE_CONTAINER}
+								// , {x:20, y:19, type:STRUCTURE_CONTAINER}
+							 	]
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 5040, max_weight: 5049}
+								, {name: '2', time: 0, min_weight: 5040, max_weight: 5049}
+								, {name: '3', time: 0, min_weight: 5040, max_weight: 5049}
+								, {name: '4', time: 0, min_weight: 5040, max_weight: 5049}
+								]
+							, claiming:
+							 	[ {name: '1', time: 0, min_weight:5040, max_weight:5049}
+								, {name: '2', time: 0, min_weight:5040, max_weight:5049}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 5040, max_weight: 5049}
+								, {name: '1', time: 0, min_weight: 5040, max_weight: 5049}
+								]
+							, heal_room:
+								{ shard: 'shard1', room: 'W29S29'}
+							, path_rooms:
+								{ W29S29: 'W29S28', W29S28: 'W28S28'
+								, W27S29: 'W28S29', W28S29: 'W29S29'
+								, W29S31: 'W30S31', W30S31: 'W30S30'
+								, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:25
+								}
+								, escape_path:
+								{ W28S28: 'W29S28', W29S28: 'W29S29', W29S29: 'W29S29'
+								}
+							},
+							W27S29:
+							{ containers: {weight: 5053}
+							, sites:
+							 	[ {x:42, y:10, type:STRUCTURE_CONTAINER}
+								, {x:43, y:17, type:STRUCTURE_CONTAINER}
+								, {x:41, y:10, type:STRUCTURE_ROAD}
+								, {x:42, y:11, type:STRUCTURE_ROAD}
+								, {x:43, y:12, type:STRUCTURE_ROAD}
+								, {x:43, y:13, type:STRUCTURE_ROAD}
+								, {x:43, y:14, type:STRUCTURE_ROAD}
+								, {x:43, y:15, type:STRUCTURE_ROAD}
+								, {x:44, y:16, type:STRUCTURE_ROAD}
+							 	]
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 5050, max_weight: 5059}
+								, {name: '2', time: 0, min_weight: 5050, max_weight: 5059}
+								, {name: '3', time: 0, min_weight: 5050, max_weight: 5059}
+								, {name: '4', time: 0, min_weight: 5050, max_weight: 5059}
+								, {name: '5', time: 0, min_weight: 5050, max_weight: 5059}
+								, {name: '6', time: 0, min_weight: 5050, max_weight: 5059}
+								, {name: '7', time: 0, min_weight: 5050, max_weight: 5059}
+								, {name: '8', time: 0, min_weight: 5050, max_weight: 5059}
+								]
+							, claiming:
+							 	[ {name: '1', time: 0, min_weight: 5050, max_weight: 5059}
+								, {name: '2', time: 0, min_weight: 5050, max_weight: 5059}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 5050, max_weight: 5059}
+								, {name: '2', time: 0, min_weight: 5050, max_weight: 5059}
+								, {name: '3', time: 0, min_weight: 5050, max_weight: 5059}
+								, {name: '4', time: 0, min_weight: 5050, max_weight: 5059}
+								]
+							, heal_room:
+								{ shard: 'shard1', room: 'W28S29'}
+							, path_rooms:
+								{ W29S29: 'W28S29'
+								, W28S29: 'W27S29'
+								, W29S31: 'W30S31', W30S31: 'W30S30'
+								, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:25
+								}
+								, escape_path:
+								{ W27S29: 'W28S29', W28S29: 'W29S29'
+								}
+							},
+							W29S31:
 							{ containers: {weight: 303}
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 300, max_weight: 309}
