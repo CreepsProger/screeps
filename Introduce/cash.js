@@ -349,7 +349,7 @@ var cash = {
 	},
 
 	areEmptySourcesByPath: function(creep) {
-		if(cash.areEmptySources())
+		if(cash.areEmptySources(creep))
 			 return true;
 
 		const source = creep.pos.findClosestByPath(FIND_SOURCES, {
