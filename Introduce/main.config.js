@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 266,
+	version: 267,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -450,6 +450,7 @@ var config = {
 							},
 							W57S52:
 							{ containers: {weight: 403}
+							, towers: {mw:300000, mr:2000000}
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 400, max_weight: 409}
 								, {name: '2', time: 0, min_weight: 400, max_weight: 409}
@@ -805,6 +806,7 @@ var config = {
 							},
 							W25S33:
 							{ containers: {weight: 33}
+							, towers: {mw:250000, mr:250000}
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 30, max_weight: 39}
 								, {name: '2', time: 0, min_weight: 30, max_weight: 39}
@@ -822,10 +824,12 @@ var config = {
 							},
 			 				W26S33:
 							{ containers: {weight: 43}
+							, towers: {mw:64000, mr:64000}
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 40, max_weight: 49}
 								, {name: '2', time: 0, min_weight: 40, max_weight: 49}
 								, {name: '3', time: 0, min_weight: 40, max_weight: 49}
+								, {name: '4', time: 0, min_weight: 40, max_weight: 49}
 								]
 							, heal_room: 'W26S33'
 							, path_rooms:
@@ -870,6 +874,7 @@ var config = {
 							},
 							W28S33:
 							{ containers: {weight: 63}
+							, towers: {mw:1000000, mr:1000000}
 							, energy_harvesting:
 							 	[ {name: '1', time: 0, min_weight: 60, max_weight: 69}
 							 	, {name: '2', time: 0, min_weight: 60, max_weight: 69}
@@ -1029,7 +1034,9 @@ var config = {
 								}
 							, escape_path:{ W28S34: 'W28S33'}
 							},
-							W28S35: { containers: {weight:123}
+							W28S35:
+							{ containers: {weight:123}
+							, towers: {mw:280000, mr:290000}
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight:120, max_weight:129}
 								, {name: '2', time: 0, min_weight:120, max_weight:129}
@@ -1157,6 +1164,7 @@ var config = {
 							},
 							W29S32:
 							{ containers: {weight: 173}
+							, towers: {mw:110000, mr:6000000}
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 170, max_weight: 179}
 								, {name: '2', time: 0, min_weight: 170, max_weight: 179}
