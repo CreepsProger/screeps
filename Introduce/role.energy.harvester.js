@@ -132,10 +132,9 @@ var role = {
 			 //creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0
 			) {
 			var sources = cash.getSources(creep.room).filter((source) => {
-					return source.energy > 0 &&
-						(!source.pos.findInRange(FIND_HOSTILE_CREEPS, 5).length > 0 ||
-						  (!!DP2 && DP2.pos.roomName == this_room && DP2.pos.getRangeTo(source) <= 5))
-						}
+				return source.energy > 0 &&
+					(!source.pos.findInRange(FIND_HOSTILE_CREEPS, 5).length > 0 ||
+					  (!!DP2 && DP2.pos.roomName == this_room && DP2.pos.getRangeTo(source) <= 5))
 			});
 			if(sources.length > 0) {
 				var source = sources.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
