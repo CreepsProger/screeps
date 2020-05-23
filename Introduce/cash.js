@@ -272,7 +272,7 @@ var cash = {
 			return room.find(FIND_STRUCTURES, {
 				filter: (structure) => (structure.structureType == STRUCTURE_ROAD ||
 				 											structure.structureType == STRUCTURE_CONTAINER) &&
-														 structure.hitsMax - structure.hits > structure.hitsMax/2 });
+														 structure.hitsMax - structure.hits - 1 > structure.hitsMax/2 });
 			}, 500);
 	},
 
@@ -285,7 +285,7 @@ var cash = {
 														   ((!!structure.my ||
 																  structure.structureType == STRUCTURE_ROAD ||
 																	structure.structureType == STRUCTURE_CONTAINER) &&
-																structure.hitsMax - structure.hits >= structure.hitsMax/2) });
+																structure.hitsMax - structure.hits > structure.hitsMax/2) });
 			}, 500);
 	},
 

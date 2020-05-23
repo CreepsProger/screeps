@@ -210,7 +210,7 @@ var towers = {
  						}
 						if(structure.structureType != STRUCTURE_WALL &&
 							 structure.structureType != STRUCTURE_RAMPART &&
-							 (structure.hitsMax - structure.hits >= structure.hitsMax/
+							 (structure.hitsMax - structure.hits > structure.hitsMax/
 								 (2+98*(!!towers.prev_target[i] && structure.id == towers.prev_target[i])))) {
 							repair = true;
 						}
