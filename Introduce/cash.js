@@ -3,7 +3,7 @@ const tools = require('tools');
 
 var cash = {
 
-	version: 44,
+	version: 45,
 	time: 0,
 
 	resetList:[],
@@ -297,7 +297,7 @@ var cash = {
 
 	sources: {},
 	getSources: function(room) {
-		return cash.getEntry(cash.sources, FIND_SOURCES, tools.getRoomCode(room.name), () => {
+		return cash.getEntry(cash.sources, 'source', tools.getRoomCode(room.name), () => {
 			return room.find(FIND_SOURCES);});
  	},
 
