@@ -487,6 +487,7 @@ var config = {
 									, W60S52: 'W59S52', W59S52: 'W58S52', W58S52: 'W57S52'
 									// , W57S52: 'W57S52'
 									, W50S60: 'shard1'
+								, W57S51: 'W56S51', W56S51: 'W56S52', W56S52: 'W57S52'
 									}
 								}
 								, escape_path:
