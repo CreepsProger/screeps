@@ -39,6 +39,7 @@ const constants = {
 	, ERR_NO_PATH_2 : -22
 	, STRUCTURE_WALL_HITS: 1
 	, STRUCTURE_RAMPART_HITS: 1
+	, TOWER_NO_ENERGY_TO_FILL: 600
 };
 
 module.exports = constants;
