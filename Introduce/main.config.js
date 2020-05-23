@@ -1089,6 +1089,10 @@ var config = {
 							},
 							W28S36:
 							{ containers: {weight:143}
+							, sites:
+								[ {x:10, y:28, type:STRUCTURE_CONTAINER}
+								, {x:10, y:27, type:STRUCTURE_CONTAINER}
+								]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight:140, max_weight:149}
 								, {name: '2', time: 0, min_weight:140, max_weight:149}
