@@ -43,7 +43,7 @@ var roleBuilder = {
 
 				var target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
 
-				const this_room_sources_are_empty = tools.areEmptySources(creep);
+				const this_room_sources_are_empty = cash.areEmptySourcesByPath(creep);
 				const this_room_is_being_claiming = !!creep.room.controller && !creep.room.controller.my;
 				const a_room_without_controller = !creep.room.controller;
 				//console.log(JSON.stringify(Game.rooms['W29S35'].controller));

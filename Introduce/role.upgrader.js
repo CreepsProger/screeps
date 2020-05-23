@@ -64,7 +64,7 @@ var roleUpgrader = {
 			if(Game.time%constants.TICKS_TO_CHECK_STOP_UPGRADING == 0)
 				roleUpgrader.updateStopUpgradingCondition(creep);
 
-			const this_room_sources_are_empty = tools.areEmptySources(creep);
+			const this_room_sources_are_empty = cash.areEmptySourcesByPath(creep);
 			const this_room_containers_are_full = cash.areFullContainers(creep);
 			const U = !!flags.flags['U'] && flags.flags['U'].pos.roomName == my_room;
 			const UU = !!flags.flags['UU'] && flags.flags['UU'].pos.roomName == my_room;

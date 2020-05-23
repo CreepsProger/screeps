@@ -102,10 +102,6 @@ var tools = {
 		// return constants.ERR_NO_PATH_2;
 	},
 
-	areEmptySources: function(creep) {
-		return creep.room.find(FIND_SOURCES, {filter: (source) => source.energy > 0}).length == 0;
-	},
-
 	checkTarget: function(executer,id) {
 		return (executer === undefined)? true:tools.targets[id] === undefined;
 	},

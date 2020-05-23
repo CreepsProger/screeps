@@ -101,7 +101,7 @@ var role = {
 		}
 
 		const DP2 = flags.flags.DP2;
-		const this_room_sources_are_not_empty = !tools.areEmptySources(creep);
+		// const this_room_sources_are_not_empty = !cash.areEmptySources(creep);
 
 		if(!target &&
 			 //this_room_sources_are_not_empty &&
@@ -131,9 +131,8 @@ var role = {
 			 // && (!conditions.MAIN_ROOM_CRISIS() || creep.memory.rerun)
 			 //creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0
 			) {
-			var sources = creep.room.find(FIND_SOURCES, {
-				filter: (source) => {
-					return source.energy > 0 && // TODO: LOOK_TERRAIN
+			var sources = cash.getSources(creep.room).filter((source) => {
+					return source.energy > 0 &&
 						(!source.pos.findInRange(FIND_HOSTILE_CREEPS, 5).length > 0 ||
 						  (!!DP2 && DP2.pos.roomName == this_room && DP2.pos.getRangeTo(source) <= 5))
 						}

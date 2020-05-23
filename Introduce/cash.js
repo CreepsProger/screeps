@@ -339,6 +339,25 @@ var cash = {
 		return cash.getContainers(creep.room).filter( (cont) => !!cont && cont.store.getFreeCapacity() > 0).length == 0;
 	},
 
+	areEmptySources: function(creep) {
+		const sources = cash.getSources(creep.room).filter((source) => {
+				return source.energy > 0  &&
+					(!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0 ||
+						(!!DP2 && DP2.pos.roomName == this_room && DP2.pos.getRangeTo(source) <= 5));
+			 });
+		return sources.length == 0;
+	},
+
+	areEmptySourcesByPath: function(creep) {
+		if(cash.areEmptySources())
+			 return true;
+		}
+		const source = creep.pos.findClosestByPath(FIND_SOURCES, {
+					 filter: function(source) { return source.energy > 0;}});
+
+		return !source;
+	},
+
 	renewCreep: function(creep) {
 		var spawns = cash.getSpawns(creep.room);
 		if(spawns.length > 0 && (creep.ticksToLive < 1000 || (creep.memory.renewing && creep.ticksToLive < 1400))) {

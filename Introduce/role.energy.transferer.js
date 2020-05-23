@@ -79,7 +79,7 @@ var roleEnergyTransferer = {
 				 }
 			}
 
-			const this_room_sources_are_empty = tools.areEmptySources(creep);
+			const this_room_sources_are_empty = cash.areEmptySources(creep);
 			const this_room_sources_are_not_empty = !this_room_sources_are_empty;
 
 			metrix.cpu.step_time(creep, 'transfering', '🚸');
