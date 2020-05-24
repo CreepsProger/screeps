@@ -77,7 +77,7 @@ var roleBuilder = {
 					 ((this_room_sources_are_empty || creep.memory.rerun) ||
 					 	(this_room_is_being_claiming && creep.memory.rerun) ||
 						(a_room_without_controller && creep.memory.rerun) ||
-						UU || B || BB) {
+						UU || B || BB)) {
 					target = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES, {
 						filter: function(cs) {
 							if(!NB || NB.pos.roomName != my_room) {
