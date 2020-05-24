@@ -354,7 +354,7 @@ var cash = {
 		return sources.length == 0;
 	},
 
-	areEmptySourcesByPath: function(creep, DP2 = {}) {
+	areEmptySourcesByPath: function(creep, DP2 = undefined) {
 		if(cash.areEmptySources(creep, DP2))
 			 return true;
 
