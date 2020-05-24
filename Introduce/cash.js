@@ -345,7 +345,7 @@ var cash = {
 		return cash.getContainers(creep.room).filter( (cont) => !!cont && cont.store.getFreeCapacity() > 0).length == 0;
 	},
 
-	areEmptySources: function(creep, DP2 = {}) {
+	areEmptySources: function(creep, DP2 = undefined) {
 		const sources = cash.getSources(creep.room).filter((source) => {
 				return source.energy > 0  &&
 					(!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0 ||
