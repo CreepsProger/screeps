@@ -267,7 +267,13 @@ var cash = {
 	},
 
 	structers_to_repaire: {},
-	getStructuresToRepaire: function(room) {
+	getStructuresToRepaire: function(room, dont_use_cash = false) {
+		if(dont_use_cash) {
+			return room.find(FIND_STRUCTURES, {
+				filter: (structure) => (structure.structureType == STRUCTURE_ROAD ||
+				 											structure.structureType == STRUCTURE_CONTAINER) &&
+														 structure.hits < structure.hitsMax });
+		}
 		return cash.getEntry(cash.structers_to_repaire, STRUCTURE_ROAD + '&' + STRUCTURE_CONTAINER, tools.getRoomCode(room.name), () => {
 			return room.find(FIND_STRUCTURES, {
 				filter: (structure) => (structure.structureType == STRUCTURE_ROAD ||
