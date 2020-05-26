@@ -347,7 +347,7 @@ var role = {
 			// 	console.log(creep, JSON.stringify({this_room:creep.room.name, target:target}));
 			// }
 			if(target) {
-				var err = !!target.isTask? target.harvestedBy(creep):
+				var err = !!target.isTask? target.harvestingBy(creep):
 				(target.name || !target.id)? // a creep || exit
 						ERR_NOT_IN_RANGE:
 				target.structureType?
