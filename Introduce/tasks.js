@@ -9,6 +9,9 @@ var tasks = {
 	isToFillBoostingLab: function(creep) {
     return undefined;
 
+	}, 
+	needToHarvest: function(creep) {
+		return false;
 	}
 };
 
