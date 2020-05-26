@@ -18,6 +18,17 @@ var tasks = {
 	isToFillBoostingLab: function(creep) {
 		if(Game.shard.name != 'shard1')
 			return undefined;
+		
+		const pos = new RoomPosition(11, 25, creep.room.name);
+		
+		const found = pos.lookFor(LOOK_STRUCTURES, (s) => s.structureType == STRUCTURE_LAB );
+		if(found.length == 0)
+			return undefined;
+		const lab = found[0];
+		if(true) {//✅ ☑️ ✔️ ✖️ ❌ ❎ 
+			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({tasks:'isToFillBoostingLab', creep:creep, lab:lab}));
+		}
     return undefined;
 	}, 
 	needToHarvest: function(creep) {
