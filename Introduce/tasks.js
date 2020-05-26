@@ -21,7 +21,7 @@ var tasks = {
 		
 		const pos = new RoomPosition(11, 25, creep.room.name);
 		
-		const found = pos.lookFor(LOOK_STRUCTURES, (s) => s.structureType == STRUCTURE_LAB );
+		const found = pos.lookFor(LOOK_STRUCTURES, {(s) => s.structureType == STRUCTURE_LAB});
 		if(found.length == 0)
 			return undefined;
 		const lab = found[0];
