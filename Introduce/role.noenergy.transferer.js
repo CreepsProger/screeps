@@ -95,7 +95,7 @@ var role = {
 				var err = OK;
 
 				if(target.isTask){
-					err = target.transfer(creep);
+					err = target.transferingBy(creep);
 				}
 				else if(!!target.id) {
 					const resources = Object.keys(creep.store);//.sort((l,r) => tools.getWeight(l) - tools.getWeight(r));
