@@ -29,6 +29,8 @@ var tasks = {
 			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({tasks:'isToFillBoostingLab', creep:creep.name, lab:lab}));
 		}
+		if(lab.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID) == 100)
+			return undefined;
     return undefined;
 	}, 
 	needToHarvest: function(creep) {
