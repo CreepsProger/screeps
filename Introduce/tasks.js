@@ -24,6 +24,11 @@ var tasks = {
 		if(Game.shard.name != 'shard1')
 			return false;
 		return false;
+	}, 
+	needToTransfer: function(creep) {
+		if(Game.shard.name != 'shard1')
+			return false;
+		return false;
 	}
 };
 
