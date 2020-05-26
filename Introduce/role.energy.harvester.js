@@ -5,6 +5,7 @@ const metrix = require('main.metrix');
 const flags = require('main.flags');
 const links = require('main.links');
 const log = require('main.log');
+const tasks = require('tasks');
 const tools = require('tools');
 const cash = require('cash');
 
@@ -51,7 +52,8 @@ var role = {
 				 creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0) ||
 				(creep.memory.rerun &&
 				 creep.store.getUsedCapacity(RESOURCE_ENERGY) >= 0 &&
-				 creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0))) {
+				 creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0) ||
+			  tasks.needToHarvest(creep))) {
 			creep.memory[role.name].on = true;
 			config.setRoom(creep, role.name);
 		}
@@ -327,6 +329,10 @@ var role = {
 			}
 			if(!!target) return target;
 		}
+		const task01 = tasks.isToFillBoostingLab(creep);
+		if(task01){
+			return task01;
+		} 
 		return target;
 	},
 
@@ -341,7 +347,8 @@ var role = {
 			// 	console.log(creep, JSON.stringify({this_room:creep.room.name, target:target}));
 			// }
 			if(target) {
-				var err = (target.name || !target.id)? // a creep || exit
+				var err = !!target.isTask? target.harvestedBy(creep):
+				(target.name || !target.id)? // a creep || exit
 						ERR_NOT_IN_RANGE:
 				target.structureType?
 						creep.withdraw(target, RESOURCE_ENERGY): // a structure
