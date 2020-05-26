@@ -5,10 +5,18 @@ const cash = require('cash');
 
 var tasks = {
 
-  taskToFillBoostingLab: {},
+  taskToFillBoostingLab: {
+		pos:{}, 
+		isTask:false,
+		harvestingBy: function(creep) {
+			return ERR_NOT_IN_RANGE;
+		},
+		transferingBy: function(creep) {
+			return ERR_NOT_IN_RANGE;
+		}
+	},
 	isToFillBoostingLab: function(creep) {
     return undefined;
-
 	}, 
 	needToHarvest: function(creep) {
 		return false;
