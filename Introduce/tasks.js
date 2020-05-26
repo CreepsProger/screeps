@@ -27,7 +27,7 @@ var tasks = {
 		const lab = found.reduce((p,c) => p.structureType == STRUCTURE_LAB);
 		if(true) {//✅ ☑️ ✔️ ✖️ ❌ ❎ 
 			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({tasks:'isToFillBoostingLab', creep:creep, lab:lab}));
+											, JSON.stringify({tasks:'isToFillBoostingLab', creep:creep.name, lab:lab}));
 		}
     return undefined;
 	}, 
