@@ -5,6 +5,7 @@ const metrix = require('main.metrix');
 const flags = require('main.flags');
 // const links = require('main.links');
 const log = require('main.log');
+const tasks = require('tasks');
 const tools = require('tools');
 
 var role = {
@@ -62,16 +63,16 @@ var role = {
 		const this_room_config = my_shard_config.rooms[this_room];
 		const my_room_config = my_shard_config.rooms[my_room];
 
-		var target;
+		const task01 = tasks.isToFillBoostingLab(creep);
+		if(task01){
+			return task01;
+		} 
 
-		if(!!creep.room.storage && !!creep.room.storage.my)
-		target = creep.room.storage;
-		if(!!target) return target;
+		if(!!creep.room.storage && !!creep.room.storage.my){
+			return creep.room.storage;
+		}
 
-		target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
-		if(!!target) return target;
-
-		return target;
+		return config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
 	},
 
 	run: function(creep,executer = undefined) {
@@ -93,7 +94,10 @@ var role = {
 
 				var err = OK;
 
-				if(!!target.id) {
+				if(target.isTask){
+					err = target.transfer(creep);
+				}
+				else if(!!target.id) {
 					const resources = Object.keys(creep.store);//.sort((l,r) => tools.getWeight(l) - tools.getWeight(r));
 					resources.forEach(function(resource,i) {
 						if(err == OK)
