@@ -47,8 +47,9 @@ var role = {
 
 	checkOn: function(creep) {
 		if(!creep.memory[role.name].on &&
-			 creep.store.getFreeCapacity() < creep.store.getCapacity() - creep.store.getUsedCapacity(RESOURCE_ENERGY) &&
-			 (creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0 || creep.memory.rerun)) {
+			 (creep.store.getFreeCapacity() < creep.store.getCapacity() - creep.store.getUsedCapacity(RESOURCE_ENERGY) &&
+			  (creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0 || creep.memory.rerun)) ||
+			 tasks.needToTransfer(creep) ) {
 			creep.memory[role.name].on = true;
 			config.setRoom(creep, constants.ROLE_ENERGY_HARVESTING);
 		}
