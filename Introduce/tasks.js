@@ -11,14 +11,14 @@ var tasks = {
 		storage:{},
 		isTask:false,
 		harvestingBy: function(creep) {
-			if(!taskToFillBoostingLab.pos.inRangeTo(creep,1))
+			if(!tasks.taskToFillBoostingLab.pos.inRangeTo(creep,1))
 				return ERR_NOT_IN_RANGE;
-			return creep.withdraw(taskToFillBoostingLab.storage, RESOURCE_CATALYZED_UTRIUM_ACID,100);
+			return creep.withdraw(tasks.taskToFillBoostingLab.storage, RESOURCE_CATALYZED_UTRIUM_ACID,100);
 		},
 		transferingBy: function(creep) {
-			if(!taskToFillBoostingLab.pos.inRangeTo(creep,1))
+			if(!tasks.taskToFillBoostingLab.pos.inRangeTo(creep,1))
 				return ERR_NOT_IN_RANGE;
-			return creep.transfer(taskToFillBoostingLab.lab, RESOURCE_CATALYZED_UTRIUM_ACID);
+			return creep.transfer(tasks.taskToFillBoostingLab.lab, RESOURCE_CATALYZED_UTRIUM_ACID);
 		}
 	},
 	isToFillBoostingLab: function(creep) {
