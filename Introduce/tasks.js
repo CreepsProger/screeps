@@ -11,14 +11,14 @@ var tasks = {
 		storage:{},
 		isTask:false,
 		harvestingBy: function(creep) {
-			if(!tasks.taskToFillBoostingLab.pos.inRangeTo(creep,1))
+			if(!creep.memory.task.pos.inRangeTo(creep,1))
 				return ERR_NOT_IN_RANGE;
-			return creep.withdraw(tasks.taskToFillBoostingLab.storage, RESOURCE_CATALYZED_UTRIUM_ACID,100);
+			return creep.withdraw(creep.memory.task.storage, RESOURCE_CATALYZED_UTRIUM_ACID,100);
 		},
 		transferingBy: function(creep) {
-			if(!tasks.taskToFillBoostingLab.pos.inRangeTo(creep,1))
+			if(!creep.memory.task.pos.inRangeTo(creep,1))
 				return ERR_NOT_IN_RANGE;
-			return creep.transfer(tasks.taskToFillBoostingLab.lab, RESOURCE_CATALYZED_UTRIUM_ACID);
+			return creep.transfer(creep.memory.task.lab, RESOURCE_CATALYZED_UTRIUM_ACID);
 		}
 	},
 	isToFillBoostingLab: function(creep) {
@@ -53,18 +53,21 @@ var tasks = {
 		tasks.taskToFillBoostingLab.storage = creep.room.storage;
 		tasks.taskToFillBoostingLab.lab = lab;
 		tasks.taskToFillBoostingLab.pos = pos;
-    return tasks.taskToFillBoostingLab;
+		creep.memory.task = tasks.taskToFillBoostingLab;
+    return creep.memory.task;
 	}, 
 	needToHarvest: function(creep) {
 		if(Game.shard.name != 'shard1')
 			return false;
-		if(!tasks.taskToFillBoostingLab.isTask)
+		if(!creep.memory.task)
+			return false;
+		if(!creep.memory.task.isTask)
 			return false;
 		
-		const lab = tasks.taskToFillBoostingLab.lab;
+		const lab = creep.memory.task.lab;
 		if(lab.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID) +
 			 creep.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID)  < 100) {
-			tasks.taskToFillBoostingLab.pos = creep.room.storage.pos;
+			creep.memory.task.pos = creep.room.storage.pos;
 			return true;
 		}
 		
@@ -73,10 +76,13 @@ var tasks = {
 	needToTransfer: function(creep) {
 		if(Game.shard.name != 'shard1')
 			return false;
-		if(!tasks.taskToFillBoostingLab.isTask)
+		if(!creep.memory.task)
 			return false;
+		if(!creep.memory.task.isTask)
+			return false;
+
 		if(creep.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID) > 0) {
-			tasks.taskToFillBoostingLab.pos = tasks.taskToFillBoostingLab.lab.pos;
+			creep.memory.task.pos = creep.memory.task.lab.pos;
 			return true;
 		}
 
