@@ -207,7 +207,7 @@ var spawns = {
 				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn9'  || spawn.name == 'Spawn10' || spawn.name == 'Spawn--'):All;
 				const Sp6 = (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
-				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):All; 
+				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):All;
 				const Sp12 = (Sp1 || Sp2);
 				const Sp23 = (Sp2 || Sp3);
 				const Sp34 = (Sp3 || Sp4);
@@ -418,7 +418,7 @@ var spawns = {
 						if(Sp12)	spawns.tryCreateCreep(spawn, ATTACKER[4][M], 455, 1, 1);
 					}
 					else {
-						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[7][H], 454, 2, 2);
+						// if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[7][H], 454, 2, 2);
 						if(Sp2)	spawns.tryCreateCreep(spawn, WORKER[5][H], 454, 2, 2);
 						if(Sp2)	spawns.tryCreateCreep(spawn, CARIER[4][H], 451, 2, 2);
 					}
