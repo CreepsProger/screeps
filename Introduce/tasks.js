@@ -11,12 +11,12 @@ var tasks = {
 		storage:{},
 		isTask:false,
 		harvestingBy: function(creep) {
-			if(!pos.inRangeTo(creep,1))
+			if(!taskToFillBoostingLab.pos.inRangeTo(creep,1))
 				return ERR_NOT_IN_RANGE;
 			return creep.withdraw(taskToFillBoostingLab.storage, RESOURCE_CATALYZED_UTRIUM_ACID,100);
 		},
 		transferingBy: function(creep) {
-			if(!pos.inRangeTo(creep,1))
+			if(!taskToFillBoostingLab.pos.inRangeTo(creep,1))
 				return ERR_NOT_IN_RANGE;
 			return creep.transfer(taskToFillBoostingLab.lab, RESOURCE_CATALYZED_UTRIUM_ACID);
 		}
