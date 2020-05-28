@@ -333,10 +333,6 @@ var spawns = {
 						if(Sp2)	spawns.tryCreateCreep(spawn, ATTACKER[4][M], 5055, 1, 1);
 					}
 					else {
-						if(conditions.TO_SPAWN_ROOM_CLAIMER('W27S29')) {
-							//if(Sp1)	spawns.tryCreateCreep(spawn, CLAIMER[6][H], 5050, 1, 1);
-							if(Sp2)	spawns.tryCreateCreep(spawn, CLAIMER[4][H], 5050, 1, 1);
-						}
 						const n = 0+!!flags.flags['-5054'];
 						const r = 0+!!flags.flags['5054'];
 						if(Sp2)	spawns.tryCreateCreep(spawn, WORKER[6][M], 5054, 3-n+r, 3-n+r);
