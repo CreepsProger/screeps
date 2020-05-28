@@ -123,6 +123,9 @@ var towers = {
 
 		allMyTowers.forEach(function(tower,i) {
 
+			if(!tower)
+				return;
+			
 			var target;
 
 			if(!!towers.sleep[i] && towers.sleep[i] > 0 && Game.time % towers.sleep[i]) {
