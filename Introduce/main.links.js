@@ -30,12 +30,16 @@ var links = {
 		 , { from: '5e907d35346c517957d236f0', to: '5e8c18b345cd496629f60413'}
 		 , { from: '5e8c2759c2f2cccfed24f937', to: '5e97e3b51ddfadb9843d28cc'}
 		 , { from: '5e907d35346c517957d236f0', to: '5e97e3b51ddfadb9843d28cc'}
-		 , { from: '5ea806187e4c0781d6d8c6c3', to: '5ead142d34cf58108260b4fc'}
-		 , { from: '5e9b91270a28a6137925c1e9', to: '5ead142d34cf58108260b4fc'}
-		 , { from: '5ea806187e4c0781d6d8c6c3', to: '5ead90415ed8e6655882a2c3'}
-		 , { from: '5e9b91270a28a6137925c1e9', to: '5ead90415ed8e6655882a2c3'}
 		 , { from: '5ec2330dce2f77348cbbc2ae', to: '5ec1fb20a882200050a21624'}
 		 , { from: '5ec7eef883db9c68a817960e', to: '5ec1fb20a882200050a21624'}
+		 //shard3
+		 // W29S32
+		 , { from: '5ea806187e4c0781d6d8c6c3', to: '5ead90415ed8e6655882a2c3'}
+		 , { from: '5e9b91270a28a6137925c1e9', to: '5ead90415ed8e6655882a2c3'}
+		 , { from: '5ece9bffe2933a85f35ecb44', to: '5ead90415ed8e6655882a2c3'}
+		 , { from: '5ece9bffe2933a85f35ecb44', to: '5ead142d34cf58108260b4fc'}
+		 , { from: '5ea806187e4c0781d6d8c6c3', to: '5ead142d34cf58108260b4fc'}
+		 , { from: '5e9b91270a28a6137925c1e9', to: '5ead142d34cf58108260b4fc'}
 		 //shard0
 		 , { from: '5eca412f8c3107ebdeefb9e6', to: '5eca180c92ba7d5000134e55'}
 		 // W57S52
