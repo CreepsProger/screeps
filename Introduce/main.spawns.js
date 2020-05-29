@@ -353,7 +353,7 @@ var spawns = {
 						if(Sp3)	spawns.tryCreateCreep(spawn, WORKER[4][H], 5064, 1-n+r, 1-n+r);
 						const m = 0+!!flags.flags['-5061'];
 						const p = 0+!!flags.flags['5061'];
-						if(Sp3)	spawns.tryCreateCreep(spawn, CARIER[4][L], 5061, 1-m+p, 1-m+p);
+						if(Sp3)	spawns.tryCreateCreep(spawn, CARIER[4][H], 5061, 1-m+p, 1-m+p);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W25S29')) {
 						if(Sp3)	spawns.tryCreateCreep(spawn, ATTACKER[4][M], 5075, 1, 1);
