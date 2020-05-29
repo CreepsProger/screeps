@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 290,
+	version: 291,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -832,7 +832,7 @@ var config = {
 								]
 							, claiming:
 							 	[ {name: '1', time: 0, min_weight: 5120, max_weight: 5129}
-								, {name: '2', time: 0, min_weight: 5120, max_weight: 5089}
+								, {name: '2', time: 0, min_weight: 5120, max_weight: 5129}
 								]
 							, attacker:
 								[ {name: '1', time: 0, min_weight: 5120, max_weight: 5129}
@@ -867,10 +867,10 @@ var config = {
 								, {name: '2', time: 0, min_weight: 5110, max_weight: 5119}
 								]
 							, attacker:
-								[ {name: '1', time: 0, min_weight: 5119, max_weight: 5119}
-								, {name: '2', time: 0, min_weight: 5119, max_weight: 5119}
-								, {name: '3', time: 0, min_weight: 5119, max_weight: 5119}
-								, {name: '4', time: 0, min_weight: 5119, max_weight: 5119}
+								[ {name: '1', time: 0, min_weight: 5110, max_weight: 5119}
+								, {name: '2', time: 0, min_weight: 5110, max_weight: 5119}
+								, {name: '3', time: 0, min_weight: 5110, max_weight: 5119}
+								, {name: '4', time: 0, min_weight: 5110, max_weight: 5119}
 								]
 							, heal_room:
 								{ shard: 'shard1', room: 'W29S29'}
