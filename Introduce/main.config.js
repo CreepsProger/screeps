@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 289,
+	version: 290,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -739,6 +739,9 @@ var config = {
 								, {name: '2', time: 0, min_weight: 5050, max_weight: 5059}
 								, {name: '3', time: 0, min_weight: 5050, max_weight: 5059}
 								, {name: '4', time: 0, min_weight: 5050, max_weight: 5059}
+								, {name: '5', time: 0, min_weight: 5050, max_weight: 5059}
+								, {name: '6', time: 0, min_weight: 5050, max_weight: 5059}
+								, {name: '7', time: 0, min_weight: 5050, max_weight: 5059}
 								]
 							, heal_room:
 								{ shard: 'shard1', room: 'W28S29'}
@@ -825,11 +828,11 @@ var config = {
 								[ {name: '1', time: 0, min_weight: 5120, max_weight: 5129}
 								, {name: '2', time: 0, min_weight: 5120, max_weight: 5129}
 								, {name: '3', time: 0, min_weight: 5120, max_weight: 5129}
-								, {name: '4', time: 0, min_weight: 5080, max_weight: 5129}
+								, {name: '4', time: 0, min_weight: 5120, max_weight: 5129}
 								]
 							, claiming:
 							 	[ {name: '1', time: 0, min_weight: 5120, max_weight: 5129}
-								, {name: '2', time: 0, min_weight: 5080, max_weight: 5089}
+								, {name: '2', time: 0, min_weight: 5120, max_weight: 5089}
 								]
 							, attacker:
 								[ {name: '1', time: 0, min_weight: 5120, max_weight: 5129}
@@ -857,11 +860,11 @@ var config = {
 								[ {name: '1', time: 0, min_weight: 5110, max_weight: 5119}
 								, {name: '2', time: 0, min_weight: 5110, max_weight: 5119}
 								, {name: '3', time: 0, min_weight: 5110, max_weight: 5119}
-								, {name: '4', time: 0, min_weight: 5090, max_weight: 5099}
+								, {name: '4', time: 0, min_weight: 5110, max_weight: 5119}
 								]
 							, claiming:
 							 	[ {name: '1', time: 0, min_weight: 5110, max_weight: 5119}
-								, {name: '2', time: 0, min_weight: 5090, max_weight: 5099}
+								, {name: '2', time: 0, min_weight: 5110, max_weight: 5119}
 								]
 							, attacker:
 								[ {name: '1', time: 0, min_weight: 5119, max_weight: 5119}
