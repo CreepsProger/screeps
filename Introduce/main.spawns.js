@@ -273,7 +273,8 @@ var spawns = {
 											 	 , [    2000000000002,    2000000000002,    2000000000002]  // 4 1300
 											 	 , [    2000000000002,    2000000000003,    2000000000004]  // 5 1800
 											 	 , [    3000000000003,    3000000000004,    3000000000006]  // 6 2300
-												 , [    2000000000004,    8000000000010,    8000000000014]  // 7 5600
+												 , [    4000000000004,    8000000000010,    8000000000014]  // 7 5600
+												, [   10000000000010,   10000000000020,   19000000000019]  // 8 12900
 												];
 
         if(Game.shard.name == 'shard1') {
@@ -589,7 +590,7 @@ var spawns = {
 	            }
 	            else {
 	              if(conditions.TO_SPAWN_ROOM_CLAIMER('W27S33')) {
-	                if(Sp23)	spawns.tryCreateCreep(spawn, CLAIMER[7][M], 50, 1, 1);
+	                if(Sp23)	spawns.tryCreateCreep(spawn, CLAIMER[8][L], 50, 1, 1);
 	              }
 	              if(Sp23)	spawns.tryCreateCreep(spawn, WORKER[7][H], 54, 1, 1);
 	              if(Sp23)	spawns.tryCreateCreep(spawn, CARIER[7][M], 51, 1, 1);
@@ -644,20 +645,20 @@ var spawns = {
 							}
 							else {
 								if(conditions.TO_SPAWN_ROOM_CLAIMER('W28S34')) {
-									if(Sp34) spawns.tryCreateCreep(spawn, CLAIMER[7][M], 110, 1, 1);
+									if(Sp34) spawns.tryCreateCreep(spawn, CLAIMER[8][L], 110, 1, 1);
 	              }
 								if(Sp34) spawns.tryCreateCreep(spawn, WORKER[6][L], 114, 1, 1);
 								if(Sp34) spawns.tryCreateCreep(spawn, CARIER[4][H], 111, 1, 1);
 							}
-							if(conditions.TO_SPAWN_ROOM_DEFENDERS('W27S34')) {
+							if(false && conditions.TO_SPAWN_ROOM_DEFENDERS('W27S34')) {
 								if(Sp4) spawns.tryCreateCreep(spawn, ATTACKER[4][L], 86, 1, 1);
 								// if(Sp4) spawns.tryCreateCreep(spawn,   HEALER[7][H], 87, 1, 1);
 							}
 							else {
 								if(conditions.TO_SPAWN_ROOM_CLAIMER('W27S34')) {
-									if(Sp34) spawns.tryCreateCreep(spawn, CLAIMER[7][H], 80, 1, 1);
+									if(Sp34) spawns.tryCreateCreep(spawn, CLAIMER[8][L], 80, 1, 1);
 								}
-								//if(Sp34) spawns.tryCreateCreep(spawn,   WORKER[7][H], 84, 1, 1);
+								if(Sp34) spawns.tryCreateCreep(spawn,   WORKER[7][H], 84, 1, 1);
 								//if(Sp34) spawns.tryCreateCreep(spawn,   CARIER[7][H], 81, 1, 1);
 							}
 							/*
