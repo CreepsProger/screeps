@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 291,
+	version: 292,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -115,7 +115,7 @@ var config = {
 		const exit = creep.room.findExitTo(my_path_room);
 		var pos = creep.pos.findClosestByPath(exit);
 		// if(tools.getWeight(creep.name) >= 424)
-		{
+		if(!!pos) {
 			const special_x = path_rooms2[this_room+'x'];
 			const special_y = path_rooms2[this_room+'y'];
 			// console.log(creep, role_name, JSON.stringify({pos:pos, exit:exit, my_path_room:my_path_room}));
