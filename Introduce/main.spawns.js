@@ -659,7 +659,7 @@ var spawns = {
 									if(Sp34) spawns.tryCreateCreep(spawn, CLAIMER[8][L], 80, 1, 1);
 								}
 								if(Sp34) spawns.tryCreateCreep(spawn,   WORKER[7][H], 84, 1, 1);
-								//if(Sp34) spawns.tryCreateCreep(spawn,   CARIER[7][H], 81, 1, 1);
+								if(Sp34) spawns.tryCreateCreep(spawn,   CARIER[7][H], 81, 1, 1);
 							}
 							/*
 	            if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S35')) {
