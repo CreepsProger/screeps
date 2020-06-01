@@ -201,10 +201,10 @@ var spawns = {
 				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn3'  || spawn.name == 'Spawn7'  || spawn.name == 'Spawn12'):All;
 				const Sp4 = (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
-				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn5'  || spawn.name == 'Spawn8'  || spawn.name == 'Spawn13'):All;
+				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn5'  || spawn.name == 'Spawn8'  || spawn.name == 'Spawn14'):All;
 				const Sp5 = (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
-				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn9'  || spawn.name == 'Spawn10' || spawn.name == 'Spawn--'):All;
+				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn9'  || spawn.name == 'Spawn10' || spawn.name == 'Spawn13'):All;
 				const Sp6 = (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
 				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):All;
@@ -610,11 +610,11 @@ var spawns = {
 							}
 							// if(Sp3) spawns.tryCreateCreep(spawn, CARIER[3][L],  91, 1, 1);
 							if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S32')) {
-								if(spawn.name == 'Spawn5') spawns.tryCreateCreep(spawn, ATTACKER[3][L], 175, 1, 1);
-								if(spawn.name == 'Spawn5') spawns.tryCreateCreep(spawn,   CARIER[7][H], 172, 1, 1);
-								if(spawn.name == 'Spawn5') spawns.tryCreateCreep(spawn, ATTACKER[7][S+1], 175, 2, 2);
-								if(spawn.name == 'Spawn5') spawns.tryCreateCreep(spawn, ATTACKER[7][S], 175, 3, 3);
-								if(spawn.name == 'Spawn5') spawns.tryCreateCreep(spawn,   HEALER[7][H], 177, 1, 1);
+								if(spawn.name == 'Spawn13') spawns.tryCreateCreep(spawn, ATTACKER[3][L], 175, 1, 1);
+								if(spawn.name == 'Spawn13') spawns.tryCreateCreep(spawn,   CARIER[7][H], 172, 1, 1);
+								if(spawn.name == 'Spawn13') spawns.tryCreateCreep(spawn, ATTACKER[7][S+1], 175, 2, 2);
+								if(spawn.name == 'Spawn13') spawns.tryCreateCreep(spawn, ATTACKER[7][S], 175, 3, 3);
+								if(spawn.name == 'Spawn13') spawns.tryCreateCreep(spawn,   HEALER[7][H], 177, 1, 1);
 							}
 							else {
 								// if(Sp5) spawns.tryCreateCreep(spawn, ATTACKER[7][S], 175, 1, 1);
