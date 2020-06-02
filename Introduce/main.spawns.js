@@ -385,7 +385,7 @@ var spawns = {
 						const m = 0+!!flags.flags['-5101'];
 						const p = 0+!!flags.flags['5101'];
 						if(Sp3)	spawns.tryCreateCreep(spawn, CARIER[5][M], 5101, 1-m+p, 1-m+p);
-					}
+					}/*
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W27S28')) {
 						if(Sp3)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5115, 1, 1);
 					}
@@ -400,7 +400,7 @@ var spawns = {
 						const m = 0+!!flags.flags['-5111'];
 						const p = 0+!!flags.flags['5111'];
 						if(Sp3)	spawns.tryCreateCreep(spawn, CARIER[5][M], 5111, 1-m+p, 1-m+p);
-					}
+					}*/
         }
 
 				if(Game.shard.name == 'shard0') {
