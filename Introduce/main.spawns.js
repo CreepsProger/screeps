@@ -361,8 +361,7 @@ var spawns = {
 					}
 					else {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W25S29')) {
-							if(Sp2)	spawns.tryCreateCreep(spawn, CLAIMER[6][H], 5070, 2, 2);
-							if(Sp3)	spawns.tryCreateCreep(spawn, CLAIMER[6][H], 5070, 2, 2);
+							if(Sp3)	spawns.tryCreateCreep(spawn, CLAIMER[6][H], 5070, 1, 1);
 						}
 						const n = 0+!!flags.flags['-5074'];
 						const r = 0+!!flags.flags['5074'];
