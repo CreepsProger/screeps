@@ -347,7 +347,7 @@ var spawns = {
 					else {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W26S29')) {
 							if(Sp2)	spawns.tryCreateCreep(spawn, CLAIMER[6][H], 5060, 2, 2);
-							if(Sp3)	spawns.tryCreateCreep(spawn, CLAIMER[5][H], 5060, 2, 2);
+							if(Sp3)	spawns.tryCreateCreep(spawn, CLAIMER[6][H], 5060, 2, 2);
 						}
 						const n = 0+!!flags.flags['-5064'];
 						const r = 0+!!flags.flags['5064'];
@@ -362,7 +362,7 @@ var spawns = {
 					else {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W25S29')) {
 							if(Sp2)	spawns.tryCreateCreep(spawn, CLAIMER[6][H], 5070, 2, 2);
-							if(Sp3)	spawns.tryCreateCreep(spawn, CLAIMER[5][H], 5070, 2, 2);
+							if(Sp3)	spawns.tryCreateCreep(spawn, CLAIMER[6][H], 5070, 2, 2);
 						}
 						const n = 0+!!flags.flags['-5074'];
 						const r = 0+!!flags.flags['5074'];
@@ -376,8 +376,7 @@ var spawns = {
 					}
 					else {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W27S27')) {
-							if(Sp2)	spawns.tryCreateCreep(spawn, CLAIMER[6][H], 5100, 2, 2);
-							if(Sp3)	spawns.tryCreateCreep(spawn, CLAIMER[5][H], 5100, 2, 2);
+							if(Sp23)	spawns.tryCreateCreep(spawn, CLAIMER[6][H], 5100, 2, 2);
 						}
 						const n = 0+!!flags.flags['-5104'];
 						const r = 0+!!flags.flags['5104'];
@@ -391,8 +390,7 @@ var spawns = {
 					}
 					else {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W27S28')) {
-							if(Sp2)	spawns.tryCreateCreep(spawn, CLAIMER[6][H], 5110, 2, 2);
-							if(Sp3)	spawns.tryCreateCreep(spawn, CLAIMER[5][H], 5110, 2, 2);
+							if(Sp23)	spawns.tryCreateCreep(spawn, CLAIMER[6][H], 5110, 2, 2);
 						}
 						const n = 0+!!flags.flags['-5114'];
 						const r = 0+!!flags.flags['5114'];
