@@ -330,7 +330,7 @@ var role = {
 			if(!!target) return target;
 		}
 		const task01 = tasks.isToFillBoostingLab(creep);
-		if(task01){
+		if(!!task01){
 			return task01;
 		} 
 		return target;
