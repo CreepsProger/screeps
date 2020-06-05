@@ -6,7 +6,7 @@ const cash = require('cash');
 var tasks = {
 
   taskToFillBoostingLab: {
-		isToFillBoostingLab:true, 
+		isToFillBoostingLab:true, isTask:true, 
 		pos:{},
 		lab:{},
 		storage:{},
@@ -52,6 +52,7 @@ var tasks = {
 			return undefined;
 
 		tasks.taskToFillBoostingLab.isToFillBoostingLab = true;
+		tasks.taskToFillBoostingLab.isTask = true;
 		tasks.taskToFillBoostingLab.storage = creep.room.storage;
 		tasks.taskToFillBoostingLab.lab = lab;
 		tasks.taskToFillBoostingLab.pos = pos;
