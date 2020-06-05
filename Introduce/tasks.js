@@ -8,17 +8,19 @@ var tasks = {
   taskToFillBoostingLab: {
 		isToFillBoostingLab:true, isTask:true, 
 		pos:{},
-		lab:{},
-		storage:{},
+		lab_id:{},
+		storage_id:{},
 		harvestingBy: function(creep) {
 			if(!creep.memory.task.pos.inRangeTo(creep,1))
 				return ERR_NOT_IN_RANGE;
-			return creep.withdraw(creep.memory.task.storage, RESOURCE_CATALYZED_UTRIUM_ACID,100);
+			const storage = Game.getObjectById(creep.memory.task.storage_id);
+			return creep.withdraw(storage, RESOURCE_CATALYZED_UTRIUM_ACID,100);
 		},
 		transferingBy: function(creep) {
 			if(!creep.memory.task.pos.inRangeTo(creep,1))
 				return ERR_NOT_IN_RANGE;
-			return creep.transfer(creep.memory.task.lab, RESOURCE_CATALYZED_UTRIUM_ACID);
+			const lab = Game.getObjectById(creep.memory.task.lab_id);
+			return creep.transfer(lab, RESOURCE_CATALYZED_UTRIUM_ACID);
 		}
 	},
 	isToFillBoostingLab: function(creep) {
@@ -27,7 +29,7 @@ var tasks = {
 		if(!creep.room.storage)
 			return undefined;
 		
-		creep.memory.task = undefined;
+		//creep.memory.task = undefined;
 		
 		//return undefined;// TODO: TypeError: creep.memory.task.pos.inRangeTo is not a function
     //at Object.harvestingBy (tasks:14:30)
@@ -55,8 +57,8 @@ var tasks = {
 
 		tasks.taskToFillBoostingLab.isToFillBoostingLab = true;
 		tasks.taskToFillBoostingLab.isTask = true;
-		tasks.taskToFillBoostingLab.storage = creep.room.storage;
-		tasks.taskToFillBoostingLab.lab = lab;
+		tasks.taskToFillBoostingLab.storage_id = creep.room.storage.id;
+		tasks.taskToFillBoostingLab.lab_id = lab.id;
 		tasks.taskToFillBoostingLab.pos = pos;
 		creep.memory.task = tasks.taskToFillBoostingLab;
     return creep.memory.task;
