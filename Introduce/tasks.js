@@ -6,7 +6,7 @@ const cash = require('cash');
 var tasks = {
 
   taskToFillBoostingLab: {
-		isToFillBoostingLab:true, isTask:true, 
+		isToFillBoostingLab:true, isTask:false, 
 		pos:{},
 		lab_id:{},
 		storage_id:{},
@@ -31,12 +31,14 @@ var tasks = {
 		if(!creep.room.storage)
 			return undefined;
 		
-		creep.memory.task = null;
+		//creep.memory.task = null;
 		
 		//return undefined;// TODO: TypeError: creep.memory.task.pos.inRangeTo is not a function
     //at Object.harvestingBy (tasks:14:30)
 		if(!!creep.memory.task && !!creep.memory.task.isToFillBoostingLab)
 			return creep.memory.task;
+		if(tasks.taskToFillBoostingLab.isTask)
+			return undefined;
 		
 		const pos = new RoomPosition(11, 25, creep.room.name);
 		
