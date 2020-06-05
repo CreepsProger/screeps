@@ -6,10 +6,10 @@ const cash = require('cash');
 var tasks = {
 
   taskToFillBoostingLab: {
+		isToFillBoostingLab:true, 
 		pos:{},
 		lab:{},
 		storage:{},
-		isTask:false,
 		harvestingBy: function(creep) {
 			if(!creep.memory.task.pos.inRangeTo(creep,1))
 				return ERR_NOT_IN_RANGE;
@@ -26,13 +26,14 @@ var tasks = {
 			return undefined;
 		if(!creep.room.storage)
 			return undefined;
-		
-		return undefined;// TODO: TypeError: creep.memory.task.pos.inRangeTo is not a function
+		if(!creep.memory.task)
+			return undefined;
+		if(!creep.memory.task.isToFillBoostingLab)
+			return undefined;
+		//return undefined;// TODO: TypeError: creep.memory.task.pos.inRangeTo is not a function
     //at Object.harvestingBy (tasks:14:30)
-		
-		
-		if(tasks.taskToFillBoostingLab.isTask)
-			return tasks.taskToFillBoostingLab;
+		if(creep.memory.task.isToFillBoostingLab)
+			return creep.memory.task;
 		
 		const pos = new RoomPosition(11, 25, creep.room.name);
 		
@@ -53,7 +54,7 @@ var tasks = {
 			 creep.room.storage.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID) < 100)
 			return undefined;
 
-		tasks.taskToFillBoostingLab.isTask = true;
+		tasks.taskToFillBoostingLab.isToFillBoostingLab = true;
 		tasks.taskToFillBoostingLab.storage = creep.room.storage;
 		tasks.taskToFillBoostingLab.lab = lab;
 		tasks.taskToFillBoostingLab.pos = pos;
