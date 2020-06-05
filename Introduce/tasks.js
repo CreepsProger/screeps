@@ -31,7 +31,7 @@ var tasks = {
 		if(!creep.room.storage)
 			return undefined;
 		
-		//creep.memory.task = undefined;
+		creep.memory.task = null;
 		
 		//return undefined;// TODO: TypeError: creep.memory.task.pos.inRangeTo is not a function
     //at Object.harvestingBy (tasks:14:30)
@@ -73,7 +73,7 @@ var tasks = {
 		if(!creep.memory.task.isTask)
 			return false;
 		
-		const lab = creep.memory.task.lab;
+		const lab = Game.getObjectById(creep.memory.task.lab_id);
 		if(lab.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID) +
 			 creep.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID)  < 100) {
 			creep.memory.task.pos = creep.room.storage.pos;
@@ -90,8 +90,9 @@ var tasks = {
 		if(!creep.memory.task.isTask)
 			return false;
 
+		const lab = Game.getObjectById(creep.memory.task.lab_id);
 		if(creep.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID) > 0) {
-			creep.memory.task.pos = creep.memory.task.lab.pos;
+			creep.memory.task.pos = lab.pos;
 			return true;
 		}
 
