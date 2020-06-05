@@ -606,11 +606,11 @@ var spawns = {
 	              if(Sp23)	spawns.tryCreateCreep(spawn, CARIER[7][M], 51, 1, 1);
 	            }
 							if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S35')) {
-								if(spawn.name == 'Spawn4') spawns.tryCreateCreep(spawn, ATTACKER[3][L], 125, 1, 1);
-								if(spawn.name == 'Spawn4') spawns.tryCreateCreep(spawn,   CARIER[7][H], 122, 1, 1);
-								if(spawn.name == 'Spawn4') spawns.tryCreateCreep(spawn, ATTACKER[7][S+1], 125, 2, 2);
-								if(spawn.name == 'Spawn4') spawns.tryCreateCreep(spawn, ATTACKER[7][S], 125, 3, 3);
-								if(spawn.name == 'Spawn4') spawns.tryCreateCreep(spawn,   HEALER[7][H], 127, 1, 1);
+								if(spawn.name == 'Spawn5') spawns.tryCreateCreep(spawn, ATTACKER[3][L], 125, 1, 1);
+								if(spawn.name == 'Spawn5') spawns.tryCreateCreep(spawn,   CARIER[7][H], 122, 1, 1);
+								if(spawn.name == 'Spawn5') spawns.tryCreateCreep(spawn, ATTACKER[7][S+1], 125, 2, 2);
+								if(spawn.name == 'Spawn5') spawns.tryCreateCreep(spawn, ATTACKER[7][S], 125, 3, 3);
+								if(spawn.name == 'Spawn5') spawns.tryCreateCreep(spawn,   HEALER[7][H], 127, 1, 1);
 							}
 							else {
 								const f = 0+!!flags.flags['121'];
