@@ -216,6 +216,14 @@ var cash = {
 			});
 	},
 
+	nukers: {},
+	getNukers: function(room) {
+		return cash.getEntry(cash.nukers, STRUCTURE_NUKER, tools.getRoomCode(room.name), () => {
+			return room.find(FIND_STRUCTURES, {
+				filter: (structure) => structure.structureType == STRUCTURE_NUKER });
+			});
+	},
+
 	pos_extensions: {},
 	getPosExtensions: function(creep) {
 		var q = Math.floor(creep.pos.x/5)*10 + Math. floor(creep.pos.y/5);
