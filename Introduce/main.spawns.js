@@ -470,7 +470,7 @@ var spawns = {
 					}
 					if(true) {
 						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[7][M], 454, 1, 1);
-						if(Sp2)	spawns.tryCreateCreep(spawn, WORKER[6][H], 454, 4, 4);
+						if(Sp2)	spawns.tryCreateCreep(spawn, WORKER[6][H], 454, 3, 3);
 						if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[7][L], 451, 1, 1);
 						if(Sp2)	spawns.tryCreateCreep(spawn, CARIER[5][H], 451, 2, 2);
 					}
