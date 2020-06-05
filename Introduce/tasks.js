@@ -27,6 +27,8 @@ var tasks = {
 		if(!creep.room.storage)
 			return undefined;
 		
+		creep.memory.task = undefined;
+		
 		//return undefined;// TODO: TypeError: creep.memory.task.pos.inRangeTo is not a function
     //at Object.harvestingBy (tasks:14:30)
 		if(!!creep.memory.task && !!creep.memory.task.isToFillBoostingLab)
