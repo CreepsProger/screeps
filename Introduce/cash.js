@@ -314,6 +314,14 @@ var cash = {
 				 (structure) => !!structure.my && structure.structureType == STRUCTURE_TERMINAL);
 			 });
  	},
+	
+	all_my_nukers: {},
+	getAllMyNukers: function() {
+		return cash.getEntry(cash.all_my_nukers, STRUCTURE_NUKER, 0, () => {
+			return _.filter(Game.structures,
+				 (structure) => !!structure.my && structure.structureType == STRUCTURE_NUKER);
+			 });
+ 	},
 
 	getTotalEnergy: function() {
 		var all = cash.getAllMyTerminals();
