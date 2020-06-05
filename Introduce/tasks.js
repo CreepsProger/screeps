@@ -13,6 +13,8 @@ var tasks = {
 		harvestingBy: function(creep) {
 			if(!creep.memory.task.pos.inRangeTo(creep,1))
 				return ERR_NOT_IN_RANGE;
+			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({tasks:'isToFillBoostingLab.harvestingBy', creep:creep.name, task:creep.memory.task}));
 			const storage = Game.getObjectById(creep.memory.task.storage_id);
 			return creep.withdraw(storage, RESOURCE_CATALYZED_UTRIUM_ACID,100);
 		},
