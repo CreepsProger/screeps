@@ -241,6 +241,14 @@ var roleEnergyTransferer = {
 					target = labs.reduce((p,c) => !!p && !!c && creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				}
 			}
+			
+			if(!target && creep.memory.rerun) {
+				var nukers = cash.getAllMyNukers(creep.room).filter((n) =>
+						!!n && !!n.store && n.store.getFreeCapacity(RESOURCE_ENERGY) > 0);
+				if(nukers.length > 0) {
+					target = nukers.reduce((p,c) => !!p && !!c && creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+				}
+			}
 
 			metrix.cpu.step_time(creep, 'transfering', new Error().stack.split('\n')[1]);
 
