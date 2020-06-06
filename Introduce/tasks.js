@@ -10,6 +10,15 @@ var tasks = {
 		pos:{},
 		lab_id:{},
 		storage_id:{},
+		needToHarvest: function(creep) {
+			const lab = Game.getObjectById(creep.memory.task.lab_id);
+			if(lab.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID) +
+				 creep.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID)  < 100) {
+				creep.memory.task.pos = creep.room.storage.pos;
+				return creep.memory.task;
+			}
+			return null;
+		},
 		harvestingBy: function(creep) {
 			if(!creep.memory.task.pos.inRangeTo(creep,1))
 				return ERR_NOT_IN_RANGE;
@@ -17,6 +26,14 @@ var tasks = {
 											, JSON.stringify({tasks:'isToFillBoostingLab.harvestingBy', creep:creep.name, task:creep.memory.task}));
 			const storage = Game.getObjectById(creep.memory.task.storage_id);
 			return creep.withdraw(storage, RESOURCE_CATALYZED_UTRIUM_ACID,100);
+		},
+		needToTransfer: function(creep) {
+			const lab = Game.getObjectById(creep.memory.task.lab_id);
+			if(creep.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID) > 0) {
+				creep.memory.task.pos = lab.pos;
+				return creep.memory.task;
+			}
+			return null;
 		},
 		transferingBy: function(creep) {
 			if(!creep.memory.task.pos.inRangeTo(creep,1))
@@ -70,35 +87,24 @@ var tasks = {
 	needToHarvest: function(creep) {
 		if(Game.shard.name != 'shard1')
 			return false;
-		if(!creep.memory.task)
+		if(creep.memory.task === undefined)
+			return false;
+		if(creep.memory.task.isTask === undefined)
 			return false;
 		if(!creep.memory.task.isTask)
 			return false;
-		
-		const lab = Game.getObjectById(creep.memory.task.lab_id);
-		if(lab.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID) +
-			 creep.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID)  < 100) {
-			creep.memory.task.pos = creep.room.storage.pos;
-			return true;
-		}
-		
-		return false;
+		return creep.memory.task.needToHarvest();
 	}, 
 	needToTransfer: function(creep) {
 		if(Game.shard.name != 'shard1')
 			return false;
-		if(!creep.memory.task)
+		if(creep.memory.task === undefined)
+			return false;
+		if(creep.memory.task.isTask === undefined)
 			return false;
 		if(!creep.memory.task.isTask)
 			return false;
-
-		const lab = Game.getObjectById(creep.memory.task.lab_id);
-		if(creep.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID) > 0) {
-			creep.memory.task.pos = lab.pos;
-			return true;
-		}
-
-		return false;
+		return creep.memory.task.needToTransfer();
 	}
 };
 
