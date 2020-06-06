@@ -328,11 +328,11 @@ var role = {
 				// target = tools.setTarget(creep,emptysources[0],emptysources[0].id,role.run);
 			}
 			if(!!target) return target;
-		}/*
-		const task01 = tasks.isToFillBoostingLab(creep);
-		if(!!task01 && !!task01.isTask && tasks.needToHarvest(creep)){
+		}
+		const task01 = tasks.needToHarvest(creep);
+		if(!!task01){
 			return task01;
-		} */
+		}
 		return target;
 	},
 
