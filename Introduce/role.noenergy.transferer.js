@@ -64,9 +64,9 @@ var role = {
 		const this_room_config = my_shard_config.rooms[this_room];
 		const my_room_config = my_shard_config.rooms[my_room];
 
-		const task01 = tasks.isToFillBoostingLab(creep);
-		if(task01){
-			return task01;
+		const task = tasks.needToTransfer(creep);
+		if(!!task){
+			return task;
 		} 
 
 		if(!!creep.room.storage && !!creep.room.storage.my){
