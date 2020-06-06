@@ -40,8 +40,8 @@ const conditions = {
 																			if(!room) return false;
 																			const to_spawn_rd = (room.find(FIND_HOSTILE_CREEPS).length > 0) ||
 																						(room.find(FIND_HOSTILE_STRUCTURES, { filter: (hs) => hs.level !== undefined && hs.level == 0} ).length > 0);
-		                                  if(true || !to_spawn_rd)
-																				console.log('TO_SPAWN_ROOM_DEFENDERS('+ roomName +') =' , to_spawn_rd, JSON.stringify(room.find(FIND_HOSTILE_STRUCTURES)));
+		                                  if(to_spawn_rd)
+																				console.log('TO_SPAWN_ROOM_DEFENDERS('+ roomName +') =' , to_spawn_rd, JSON.stringify({hs:room.find(FIND_HOSTILE_STRUCTURES), hc:room.find(FIND_HOSTILE_CREEPS)}));
 																		  return to_spawn_rd;}
 	, TO_SPAWN_ROOM_EXTRA_DEFENDERS:function(roomName) {
 																			const room = Game.rooms[roomName];
