@@ -111,7 +111,7 @@ var tasks = {
 			return false;
 		return tasks.taskToFillBoostingLab.needToHarvest(creep);
 	}, 
-	needToTransfer: function(creep) {
+	needToTransfer: function(creep) { return null;
 		if(Game.shard.name != 'shard1')
 			return false;
 		if(creep.memory.task === undefined)
