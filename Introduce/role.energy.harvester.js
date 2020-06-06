@@ -329,7 +329,7 @@ var role = {
 			}
 			if(!!target) return target;
 		}
-		const task = tasks.needToHarvest(creep);
+		const task = tasks.needToHarvest(creep, false);
 		if(!!task){
 			return task;
 		}
