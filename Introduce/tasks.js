@@ -98,7 +98,7 @@ var tasks = {
 		}
     return creep.memory.task;
 	}, 
-	needToHarvest: function(creep, onlyCheck = true) {
+	needToHarvest: function(creep, onlyCheck = true) {return null;
 		if(!onlyCheck) {
 			tasks.isToFillBoostingLab(creep);
 		} 
