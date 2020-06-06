@@ -98,9 +98,11 @@ var tasks = {
 		}
     return creep.memory.task;
 	}, 
-	needToHarvest: function(creep) {
-		if(Game.shard.name != 'shard1')
-			return false;
+	needToHarvest: function(creep, onlyCheck = true) {
+		if(!onlyCheck) {
+			tasks.isToFillBoostingLab(creep);
+		} 
+
 		if(creep.memory.task === undefined)
 			return false;
 		if(creep.memory.task.isTask === undefined)
