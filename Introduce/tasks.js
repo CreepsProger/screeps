@@ -109,7 +109,7 @@ var tasks = {
 			return false;
 		if(!creep.memory.task.isTask)
 			return false;
-		return creep.memory.task.needToHarvest();
+		return creep.memory.task.needToHarvest(creep);
 	}, 
 	needToTransfer: function(creep) {
 		if(Game.shard.name != 'shard1')
@@ -120,7 +120,7 @@ var tasks = {
 			return false;
 		if(!creep.memory.task.isTask)
 			return false;
-		return creep.memory.task.needToTransfer();
+		return creep.memory.task.needToTransfer(creep);
 	}
 };
 
