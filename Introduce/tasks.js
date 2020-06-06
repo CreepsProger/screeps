@@ -17,7 +17,7 @@ var tasks = {
 			if(lab.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID) +
 				 creep.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID)  < 100) {
 				creep.memory.task.pos = creep.room.storage.pos;
-				return creep.memory.task;
+				return tasks.taskToFillBoostingLab;
 			}
 			creep.memory.task.done = true;
 			creep.memory.task.isTask = false;
@@ -40,7 +40,7 @@ var tasks = {
 			const lab = Game.getObjectById(creep.memory.task.lab_id);
 			if(creep.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID) > 0) {
 				creep.memory.task.pos = lab.pos;
-				return creep.memory.task;
+				return tasks.taskToFillBoostingLab;
 			}
 			return null;
 		},
