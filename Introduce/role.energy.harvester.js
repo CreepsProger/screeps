@@ -80,7 +80,8 @@ var role = {
 			}
 		}
 
-		const U = !!flags.flags.U && flags.flags.U.pos.roomName == my_room;
+		const XU = !!flags.flags.XU;
+		const U = XU || !!flags.flags.U && flags.flags.U.pos.roomName == my_room;
 		const UU = !!flags.flags.UU && flags.flags.UU.pos.roomName == my_room;
 		const BB = !!flags.flags.BB && flags.flags.BB.pos.roomName == my_room;
 
