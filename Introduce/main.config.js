@@ -992,7 +992,6 @@ var config = {
 									, W59S52:'W59S51', W59S52x:11, W59S51:'W60S51'
 									, W60S51:'W60S50', W60S50:'shard1'
 								 	}
-								}
 								, escape_path:
 									{ W29S31:'W29S31'} 
 								}
