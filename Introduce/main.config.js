@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 292,
+	version: 293,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -952,24 +952,27 @@ var config = {
 								}
 							},
 							W29S31:
-							{ containers: {weight: 303}
+							{ containers: {weight: 5083}
 							, energy_harvesting:
-								[ {name: '1', time: 0, min_weight: 300, max_weight: 309}
-								, {name: '2', time: 0, min_weight: 300, max_weight: 309}
-								, {name: '3', time: 0, min_weight: 300, max_weight: 309}
-								, {name: '4', time: 0, min_weight: 300, max_weight: 309}
+								[ {name: '1', time: 0, min_weight: 5080, max_weight: 5089}
+								, {name: '2', time: 0, min_weight: 5080, max_weight: 5089}
+								, {name: '3', time: 0, min_weight: 5080, max_weight: 5089}
+								, {name: '4', time: 0, min_weight: 5080, max_weight: 5089}
+								, {name: '5', time: 0, min_weight: 5080, max_weight: 5089}
+								, {name: '6', time: 0, min_weight: 5080, max_weight: 5089}
+								, {name: '7', time: 0, min_weight: 5080, max_weight: 5089}
 								]
 							, claiming:
-								[ {name: '1', time: 0, min_weight: 300, max_weight: 309}
-								, {name: '2', time: 0, min_weight: 300, max_weight: 309}
+								[ {name: '1', time: 0, min_weight: 5080, max_weight: 5089}
+								, {name: '2', time: 0, min_weight: 5080, max_weight: 5089}
 								]
 							, attacker:
-								[ {name: '1', time: 0, min_weight: 300, max_weight: 309}
-								, {name: '2', time: 0, min_weight: 300, max_weight: 309}
-								, {name: '3', time: 0, min_weight: 300, max_weight: 309}
+								[ {name: '1', time: 0, min_weight: 5080, max_weight: 5089}
+								, {name: '2', time: 0, min_weight: 5080, max_weight: 5089}
+								, {name: '3', time: 0, min_weight: 5080, max_weight: 5089}
 								]
 							, heal_room:
-							 	{ shard: 'shard3', room: 'W29S32'}
+							 	{ shard: 'shard1', room: 'W29S31'}
 							, path_rooms:
 							 	{ shard3:
 									{ W28S35:'W28S34', W28S34:'W28S33'
@@ -982,6 +985,7 @@ var config = {
 									{ W30S30: 'shard1'}
 								, shard1:
 									{ W30S30:'W30S31', W60S50:'W30S30', W30S31:'W29S31', W29S31:'W29S31'
+									, W27S29: 'W28S29', W28S29: 'W29S29', W29S29:'W29S30', W29S30:'W30S30', W29S30x:25
 								 	}
 								, shard0:
 									{ W57S52:'W58S52', W57S52y:31, W58S52:'W59S52', W58S52y:37
@@ -990,8 +994,7 @@ var config = {
 								 	}
 								}
 								, escape_path:
-									{ W29S32: 'W30S32', W30S32: 'W30S33', W30S33: 'W29S33'
-									, W29S33: 'W28S33'
+									{ W29S31:'W29S31'} 
 								}
 							}
 						}
