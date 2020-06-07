@@ -1154,6 +1154,8 @@ var config = {
 								[ {name: '1', time: 0, min_weight: 80, max_weight: 89}
 								, {name: '2', time: 0, min_weight: 80, max_weight: 89}
 							  , {name: '3', time: 0, min_weight: 80, max_weight: 89}
+							  , {name: '4', time: 0, min_weight: 80, max_weight: 89}
+							  , {name: '5', time: 0, min_weight: 80, max_weight: 89}
 								]
 							, claiming:
 							 	[ {name: '1', time: 0, min_weight: 80, max_weight: 89}
@@ -1161,6 +1163,9 @@ var config = {
 							, attacker:
 								[ {name: '1', time: 0, min_weight: 80, max_weight:89}
 								, {name: '2', time: 0, min_weight: 80, max_weight:89}
+								, {name: '3', time: 0, min_weight: 80, max_weight:89}
+								, {name: '4', time: 0, min_weight: 80, max_weight:89}
+								, {name: '5', time: 0, min_weight: 80, max_weight:89}
 							]
 						  , heal_room: 'W28S35'
 							, path_rooms:
