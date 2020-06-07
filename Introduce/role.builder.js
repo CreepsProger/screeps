@@ -26,8 +26,8 @@ var roleBuilder = {
 			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
 
 			const XU = !!flags.flags.XU;
-      const B = XU || !!flags.flags.B && flags.flags.B.pos.roomName == my_room;
-      const BB = !!flags.flags.BB && flags.flags.BB.pos.roomName == my_room;
+      const B  = XU || !!flags.flags.B && flags.flags.B.pos.roomName == my_room;
+      const BB = XU || !!flags.flags.BB && flags.flags.BB.pos.roomName == my_room;
 
 			if(!creep.memory.building &&
 				 this_room == my_room &&
@@ -49,7 +49,7 @@ var roleBuilder = {
 				const this_room_is_being_claiming = !!creep.room.controller && !creep.room.controller.my;
 				const a_room_without_controller = !creep.room.controller;
 				//console.log(JSON.stringify(Game.rooms['W29S35'].controller));
-				const UU = !!flags.flags.UU && flags.flags.UU.pos.roomName == my_room;
+				const UU = XU || !!flags.flags.UU && flags.flags.UU.pos.roomName == my_room;
 
 				if(!target && this_room == my_room) {
 					const my_shard = creep.memory[constants.ROLE_ENERGY_HARVESTING].shard;
