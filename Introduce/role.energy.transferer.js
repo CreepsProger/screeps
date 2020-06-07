@@ -65,7 +65,7 @@ var roleEnergyTransferer = {
 
 			var target;
 
-			if(!target) {
+			if(!target && (!creep.getActiveBodyparts(WORK) || !XU) ) {
 				 target = links.getTargetLinkToTransferEnergy(creep, executer, roleEnergyTransferer.run, this_room_config.containers.weight);
 				 if(!!target) {
 					 if(!creep.memory.target ||
