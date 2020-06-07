@@ -5,12 +5,7 @@ const cash = require('cash');
 var links = {
 
    links: [
-		   { from: '5e62c05bf15a4888dff60e26', to: '5e5ab4f1142d6b46f3c86280'}
-		 , { from: '5e61d337f15a48007bf5b603', to: '5e8b58f3932a5a2a414fe7d5'}
-		 , { from: '5e6778dfcfa64f5485786f84', to: '5e8b58f3932a5a2a414fe7d5'}
-		 , { from: '5e61d337f15a48007bf5b603', to: '5e5ab4f1142d6b46f3c86280'}
-		 , { from: '5e6778dfcfa64f5485786f84', to: '5e5ab4f1142d6b46f3c86280'}
-		 , { from: '5ea6d04fc5c2a5244a596e7f', to: '5e84c3a416b8c6668c29708e'}
+		   { from: '5ea6d04fc5c2a5244a596e7f', to: '5e84c3a416b8c6668c29708e'}
 		 , { from: '5e5f8ed0124b9b1087db5d47', to: '5e84c3a416b8c6668c29708e'}
 		 , { from: '5e985ee1e6906313d1940db1', to: '5e84c3a416b8c6668c29708e'}
 		 , { from: '5eb204d7b82d51137751bc96', to: '5e84c3a416b8c6668c29708e'}
@@ -27,6 +22,15 @@ var links = {
 		 , { from: '5e7dd868b4377d741d9d7465', to: '5ec53bba22f7dfb9523ee365'}
 		 , { from: '5ec581c69c43ed5323c83b91', to: '5ec53bba22f7dfb9523ee365'}
 		 //shard3
+		 // W26S33
+		 , { from: '5e61d337f15a48007bf5b603', to: '5e8b58f3932a5a2a414fe7d5'}
+		 , { from: '5e6778dfcfa64f5485786f84', to: '5e8b58f3932a5a2a414fe7d5'}
+		 , { from: '5edc83cadad212d9040c80c4', to: '5e8b58f3932a5a2a414fe7d5'}
+		 , { from: '5eda0e80b44c3e2348c66db0', to: '5e8b58f3932a5a2a414fe7d5'}
+		 , { from: '5eda0e80b44c3e2348c66db0', to: '5e5ab4f1142d6b46f3c86280'}
+		 , { from: '5edc83cadad212d9040c80c4', to: '5e5ab4f1142d6b46f3c86280'}
+		 , { from: '5e61d337f15a48007bf5b603', to: '5e5ab4f1142d6b46f3c86280'}
+		 , { from: '5e6778dfcfa64f5485786f84', to: '5e5ab4f1142d6b46f3c86280'}
 		 // W28S35
 		 , { from: '5e8c2759c2f2cccfed24f937', to: '5e8c18b345cd496629f60413'}
 		 , { from: '5e907d35346c517957d236f0', to: '5e8c18b345cd496629f60413'}
