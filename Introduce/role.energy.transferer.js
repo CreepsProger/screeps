@@ -57,8 +57,9 @@ var roleEnergyTransferer = {
 			// const a_source_is_not_near = !creep.pos.findInRange(FIND_SOURCES, 2, {
 			// 	filter: (source) => source.energy > 0 && source.room.name == this_room
 			// });
+			const XU = !!flags.flags.XU;
 			const TW = !!flags.flags.TW && flags.flags.TW.pos.roomName == my_room;
-			const B = !!flags.flags.B && flags.flags.B.pos.roomName == my_room;
+			const B = XU || !!flags.flags.B && flags.flags.B.pos.roomName == my_room;
 			const UU = !!flags.flags.UU && flags.flags.UU.pos.roomName == my_room;
 			const Infra = !!flags.flags.Infra && flags.flags.Infra.pos.roomName == my_room;
 
