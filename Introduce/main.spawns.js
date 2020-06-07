@@ -662,7 +662,7 @@ var spawns = {
 							}
 							else {
 								const f = 0+!!flags.flags['81'];
-								if(Sp34) spawns.tryCreateCreep(spawn, WORKER[7][M], 84, 2, 2);
+								if(Sp34) spawns.tryCreateCreep(spawn, WORKER[7][M], 84, 3, 3);
 								//if(Sp34) spawns.tryCreateCreep(spawn, CARIER[7][M], 81, 1+f, 1+f);
 							}
 						}
