@@ -15,7 +15,8 @@ var flags = {
 		if(flags.time != Game.time) {
 			flags.time = Game.time;
 			flags.flags =
-				{      C: Game.flags['C']			// Claim the room
+				{     XU: Game.flags['XU']			// eXtraUpgrade
+				,      C: Game.flags['C']			// Claim the room
 				,     A2: Game.flags['A2']		// attack only in range = 5*A2.color
 				,    DP1: Game.flags['DP1']		// defence point 1
 				,    DP2: Game.flags['DP2']		// defence point 2
