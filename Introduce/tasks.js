@@ -9,7 +9,7 @@ var tasks = {
 
   taskToFillBoostingLab: {
 		isToFillBoostingLab:true, isTask:false,
-		resource:RESOURCE_ZYNTHIUM_HYDRIDE, resource2:RESOURCE_ZYNTHIUM_HYDRIDE, 
+		resource:RESOURCE_ZYNTHIUM_HYDRIDE, resource2:RESOURCE_CATALYZED_UTRIUM_ACID, 
 		pos:{},
 		lab_id:{},
 		storage_id:{},
