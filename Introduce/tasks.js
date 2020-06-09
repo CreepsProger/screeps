@@ -20,7 +20,6 @@ var tasks = {
 				return tasks.taskToFillBoostingLab;
 			}
 			creep.memory.task.done = true;
-			creep.memory.task.isTask = false;
 			tasks.taskToFillBoostingLab.isTask = false;
 			if(true) {
 				console.log('✔️', Math.trunc(Game.time/10000), Game.time%10000
@@ -59,14 +58,9 @@ var tasks = {
 			return undefined;
 		if(!creep.room.storage)
 			return undefined;
-		
-		//creep.memory.task = null;
-		
-		//return undefined;// TODO: TypeError: creep.memory.task.pos.inRangeTo is not a function
-    //at Object.harvestingBy (tasks:14:30)
 		if(creep.memory.task !== undefined &&
 			 creep.memory.task.isToFillBoostingLab !== undefined &&
-			 creep.memory.task.isTask)
+			 creep.memory.task.done === undefined)
 			return creep.memory.task;
 		if(tasks.taskToFillBoostingLab.isTask)
 			return undefined;
@@ -98,29 +92,27 @@ var tasks = {
 		}
     return creep.memory.task;
 	}, 
-	needToHarvest: function(creep, onlyCheck = true) {return null;
+	needToHarvest: function(creep, onlyCheck = true) {//return null;
 		if(!onlyCheck) {
 			tasks.isToFillBoostingLab(creep);
 		} 
 
 		if(creep.memory.task === undefined)
-			return false;
-		if(creep.memory.task.isTask === undefined)
-			return false;
-		if(!creep.memory.task.isTask)
-			return false;
-		return tasks.taskToFillBoostingLab.needToHarvest(creep);
+			return null;
+		if(creep.memory.task.done !== undefined)
+			return null;
+		if(creep.memory.task.isToFillBoostingLab !== undefined)
+			return tasks.taskToFillBoostingLab.needToHarvest(creep);
+    return null;
 	}, 
-	needToTransfer: function(creep) { return null;
-		if(Game.shard.name != 'shard1')
-			return false;
+	needToTransfer: function(creep) {//return null;
 		if(creep.memory.task === undefined)
-			return false;
-		if(creep.memory.task.isTask === undefined)
-			return false;
-		if(!creep.memory.task.isTask)
-			return false;
-		return tasks.taskToFillBoostingLab.needToTransfer(creep);
+			return null;
+		if(creep.memory.task.done !== undefined)
+			return null;
+		if(creep.memory.task.isToFillBoostingLab !== undefined)
+			return tasks.taskToFillBoostingLab.needToTransfer(creep);
+    return null;
 	}
 };
 
