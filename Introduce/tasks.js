@@ -46,13 +46,16 @@ var tasks = {
 			return null;
 		},
 		transferingBy: function(creep) {
+			var err = OK;
 			if(!creep.pos.inRangeTo(creep.memory.task.pos,1))
-				return ERR_NOT_IN_RANGE;
+				err = ERR_NOT_IN_RANGE;
+			if(err == OK) {
+				const storage = Game.getObjectById(creep.memory.task.storage_id);
+				const lab = Game.getObjectById(creep.memory.task.lab_id);
+			  err = creep.transfer(lab, RESOURCE_CATALYZED_UTRIUM_ACID);
+			}
 			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({do:'transferingBy', creep:creep.name, task:creep.memory.task}));
-			const storage = Game.getObjectById(creep.memory.task.storage_id);
-			const lab = Game.getObjectById(creep.memory.task.lab_id);
-			return creep.transfer(lab, RESOURCE_CATALYZED_UTRIUM_ACID);
+											, JSON.stringify({do:'transferingBy', creep:creep.name, err:err, task:creep.memory.task}));
 		}
 	},
 	isToFillBoostingLab: function(creep) {
