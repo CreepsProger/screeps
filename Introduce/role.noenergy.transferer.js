@@ -95,7 +95,7 @@ var role = {
 
 				var err = OK;
 
-				if(target.isTask){
+				if(!!target.isTask){
 					err = target.transferingBy(creep);
 				}
 				else if(!!target.id) {
