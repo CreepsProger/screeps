@@ -77,6 +77,10 @@ var tasks = {
 			return creep.memory.task;
 		if(tasks.taskToFillBoostingLab.isTask)
 			return undefined;
+		if(creep.getActiveBodyparts(WORK) > 0)
+			return undefined;
+		if(tools.getWeight(creep.name)%10 > 3)
+			return undefined;
 		
 		const pos = new RoomPosition(11, 25, creep.room.name);
 		
