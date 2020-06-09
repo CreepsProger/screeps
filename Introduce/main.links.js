@@ -22,6 +22,8 @@ var links = {
 		 , { from: '5e7dd868b4377d741d9d7465', to: '5ec53bba22f7dfb9523ee365'}
 		 , { from: '5ec581c69c43ed5323c83b91', to: '5ec53bba22f7dfb9523ee365'}
 		 //shard3
+		 // W27S34
+		 , { from: '5e61d337f15a48007bf5b603', to: '5edf42a953cb0e5bc901492c'}
 		 // W26S33
 		 , { from: '5e61d337f15a48007bf5b603', to: '5e8b58f3932a5a2a414fe7d5'}
 		 , { from: '5e6778dfcfa64f5485786f84', to: '5e8b58f3932a5a2a414fe7d5'}
