@@ -15,7 +15,7 @@ var tasks = {
 		storage_id:{},
 		needToHarvest: function(creep) {
 			const lab = Game.getObjectById(creep.memory.task.lab_id);
-				if(lab.store.getUsedCapacity(creep.memory.task.resource) +
+			if(lab.store.getUsedCapacity(creep.memory.task.resource) +
 				 creep.store.getUsedCapacity(creep.memory.task.resource)  < 100) {
 				creep.memory.task.pos = creep.room.storage.pos;
 				tasks.taskToFillBoostingLab.isTask = true;
@@ -31,16 +31,16 @@ var tasks = {
 			return null;
 		},
 		harvestingBy: function(creep) {
-			var err = OK;
+			creep.memory.task.err = OK;
 			if(!creep.pos.inRangeTo(creep.memory.task.pos,1))
-				err = ERR_NOT_IN_RANGE;
-			if(err == OK) {
+				creep.memory.task.err = ERR_NOT_IN_RANGE;
+			if(creep.memory.task.err == OK) {
 				const storage = Game.getObjectById(creep.memory.task.storage_id);
-				err = creep.withdraw(storage, creep.memory.task.resource,100);
+				creep.memory.task.err = creep.withdraw(storage, creep.memory.task.resource,100);
 			}
 			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({do:'harvestingBy', creep:creep.name, err:err, task:creep.memory.task}));
-			return err;
+											, JSON.stringify({do:'harvestingBy', creep:creep.name, err:creep.memory.task.err, task:creep.memory.task}));
+			return creep.memory.task.err;
 		},
 		needToTransfer: function(creep) {
 			const lab = Game.getObjectById(creep.memory.task.lab_id);
@@ -53,17 +53,17 @@ var tasks = {
 			return null;
 		},
 		transferingBy: function(creep) {
-			var err = OK;
+			creep.memory.task.err = OK;
 			if(!creep.pos.inRangeTo(creep.memory.task.pos,1))
-				err = ERR_NOT_IN_RANGE;
-			if(err == OK) {
+				creep.memory.task.err = ERR_NOT_IN_RANGE;
+			if(creep.memory.task.err == OK) {
 				const storage = Game.getObjectById(creep.memory.task.storage_id);
 				const lab = Game.getObjectById(creep.memory.task.lab_id);
-			  err = creep.transfer(lab, creep.memory.task.resource);
+			  creep.memory.task.err = creep.transfer(lab, creep.memory.task.resource);
 			}
 			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({do:'transferingBy', creep:creep.name, err:err, task:creep.memory.task}));
-			return err;
+											, JSON.stringify({do:'transferingBy', creep:creep.name, err:creep.memory.task.err, task:creep.memory.task}));
+			return creep.memory.task.err;
 		}
 	},
 	isToFillBoostingLab: function(creep) {
