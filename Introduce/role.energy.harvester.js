@@ -330,7 +330,7 @@ var role = {
 			}
 			if(!!target) return target;
 		}
-		const task = tasks.needToHarvest(creep, false);
+		const task = tasks.needToHarvest(creep,!creep.memory.rerun);
 		if(!!task){
 			return task;
 		}
