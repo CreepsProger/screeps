@@ -8,13 +8,15 @@ const cash = require('cash');
 var tasks = {
 
   taskToFillBoostingLab: {
-		isToFillBoostingLab:true, isTask:false, resource:RESOURCE_ZYNTHIUM_HYDRIDE, resource2:RESOURCE_ZYNTHIUM_HYDRIDE, 
+		isToFillBoostingLab:true, isTask:false,
+		resource:RESOURCE_ZYNTHIUM_HYDRIDE, resource2:RESOURCE_ZYNTHIUM_HYDRIDE, 
 		pos:{},
 		lab_id:{},
 		storage_id:{},
 		needToHarvest: function(creep) {
 			const lab = Game.getObjectById(creep.memory.task.lab_id);
-				creep.memory.task.pos = creep.room.storage.pos;
+				if(lab.store.getUsedCapacity(creep.memory.task.resource) +
+				 creep.store.getUsedCapacity(creep.memory.task.resource)  < 100) {
 				creep.memory.task.pos = creep.room.storage.pos;
 				tasks.taskToFillBoostingLab.isTask = true;
 				tasks.taskToFillBoostingLab.pos = creep.memory.task.pos;
@@ -34,7 +36,7 @@ var tasks = {
 				err = ERR_NOT_IN_RANGE;
 			if(err == OK) {
 				const storage = Game.getObjectById(creep.memory.task.storage_id);
-				err = creep.withdraw(storage, RESOURCE_CATALYZED_UTRIUM_ACID,100);
+				err = creep.withdraw(storage, creep.memory.task.resource,100);
 			}
 			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({do:'harvestingBy', creep:creep.name, err:err, task:creep.memory.task}));
@@ -42,7 +44,7 @@ var tasks = {
 		},
 		needToTransfer: function(creep) {
 			const lab = Game.getObjectById(creep.memory.task.lab_id);
-			if(creep.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID) > 0) {
+			if(creep.store.getUsedCapacity(creep.memory.task.resource) > 0) {
 				creep.memory.task.pos = lab.pos;
 				tasks.taskToFillBoostingLab.isTask = true;
 				tasks.taskToFillBoostingLab.pos = creep.memory.task.pos;
@@ -57,7 +59,7 @@ var tasks = {
 			if(err == OK) {
 				const storage = Game.getObjectById(creep.memory.task.storage_id);
 				const lab = Game.getObjectById(creep.memory.task.lab_id);
-			  err = creep.transfer(lab, RESOURCE_CATALYZED_UTRIUM_ACID);
+			  err = creep.transfer(lab, creep.memory.task.resource);
 			}
 			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({do:'transferingBy', creep:creep.name, err:err, task:creep.memory.task}));
@@ -84,11 +86,11 @@ var tasks = {
 		const lab = found.reduce((p,c) => p.structureType == STRUCTURE_LAB);
 		if(!lab)
 			return undefined;
-		if(lab.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID) == 100)
+		if(lab.store.getUsedCapacity(creep.memory.task.resource) == 100)
 			return undefined;
-		if(lab.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID) +
-			 creep.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID) +
-			 creep.room.storage.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID) < 100)
+		if(lab.store.getUsedCapacity(creep.memory.task.resource) +
+			 creep.store.getUsedCapacity(creep.memory.task.resource) +
+			 creep.room.storage.store.getUsedCapacity(creep.memory.task.resource) < 100)
 			return undefined;
 
 		tasks.taskToFillBoostingLab.isToFillBoostingLab = true;
