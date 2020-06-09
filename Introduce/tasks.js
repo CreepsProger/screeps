@@ -86,11 +86,11 @@ var tasks = {
 		const lab = found.reduce((p,c) => p.structureType == STRUCTURE_LAB);
 		if(!lab)
 			return undefined;
-		if(lab.store.getUsedCapacity(creep.memory.task.resource) == 100)
+		if(lab.store.getUsedCapacity(tasks.taskToFillBoostingLab.resource) == 100)
 			return undefined;
-		if(lab.store.getUsedCapacity(creep.memory.task.resource) +
-			 creep.store.getUsedCapacity(creep.memory.task.resource) +
-			 creep.room.storage.store.getUsedCapacity(creep.memory.task.resource) < 100)
+		if(lab.store.getUsedCapacity(tasks.taskToFillBoostingLab.resource) +
+			 creep.store.getUsedCapacity(tasks.taskToFillBoostingLab.resource) +
+			 creep.room.storage.store.getUsedCapacity(tasks.taskToFillBoostingLab.resource) < 100)
 			return undefined;
 
 		tasks.taskToFillBoostingLab.isToFillBoostingLab = true;
