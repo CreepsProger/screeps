@@ -8,14 +8,13 @@ const cash = require('cash');
 var tasks = {
 
   taskToFillBoostingLab: {
-		isToFillBoostingLab:true, isTask:false, 
+		isToFillBoostingLab:true, isTask:false, resource:RESOURCE_ZYNTHIUM_HYDRIDE, resource2:RESOURCE_ZYNTHIUM_HYDRIDE, 
 		pos:{},
 		lab_id:{},
 		storage_id:{},
 		needToHarvest: function(creep) {
 			const lab = Game.getObjectById(creep.memory.task.lab_id);
-			if(lab.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID) +
-				 creep.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID)  < 100) {
+				creep.memory.task.pos = creep.room.storage.pos;
 				creep.memory.task.pos = creep.room.storage.pos;
 				tasks.taskToFillBoostingLab.isTask = true;
 				tasks.taskToFillBoostingLab.pos = creep.memory.task.pos;
