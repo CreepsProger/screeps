@@ -17,6 +17,7 @@ var tasks = {
 			if(lab.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID) +
 				 creep.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID)  < 100) {
 				creep.memory.task.pos = creep.room.storage.pos;
+				tasks.taskToFillBoostingLab.isTask = true;
 				return tasks.taskToFillBoostingLab;
 			}
 			creep.memory.task.done = true;
@@ -28,7 +29,7 @@ var tasks = {
 			return null;
 		},
 		harvestingBy: function(creep) {
-			if(!creep.memory.task.pos.inRangeTo(creep,1))
+			if(!creep.pos.inRangeTo(creep.memory.task.pos,1))
 				return ERR_NOT_IN_RANGE;
 			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({do:'harvestingBy', creep:creep.name, task:creep.memory.task}));
@@ -39,12 +40,13 @@ var tasks = {
 			const lab = Game.getObjectById(creep.memory.task.lab_id);
 			if(creep.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID) > 0) {
 				creep.memory.task.pos = lab.pos;
+				tasks.taskToFillBoostingLab.isTask = true;
 				return tasks.taskToFillBoostingLab;
 			}
 			return null;
 		},
 		transferingBy: function(creep) {
-			if(!creep.memory.task.pos.inRangeTo(creep,1))
+			if(!creep.pos.inRangeTo(creep.memory.task.pos,1))
 				return ERR_NOT_IN_RANGE;
 			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({do:'transferingBy', creep:creep.name, task:creep.memory.task}));
