@@ -18,6 +18,7 @@ var tasks = {
 				 creep.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID)  < 100) {
 				creep.memory.task.pos = creep.room.storage.pos;
 				tasks.taskToFillBoostingLab.isTask = true;
+				tasks.taskToFillBoostingLab.pos = creep.memory.task.pos;
 				return tasks.taskToFillBoostingLab;
 			}
 			creep.memory.task.done = true;
@@ -41,6 +42,7 @@ var tasks = {
 			if(creep.store.getUsedCapacity(RESOURCE_CATALYZED_UTRIUM_ACID) > 0) {
 				creep.memory.task.pos = lab.pos;
 				tasks.taskToFillBoostingLab.isTask = true;
+				tasks.taskToFillBoostingLab.pos = creep.memory.task.pos;
 				return tasks.taskToFillBoostingLab;
 			}
 			return null;
