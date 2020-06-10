@@ -219,7 +219,10 @@ var tasks = {
 			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { do:'assignTask', creep:creep.name
 																				, taskName:'isToFillBoostingLab', resource:resource, amount:amount
-																				, task:tasks.taskToFillBoostingLab, lab:lab}));
+																				, task:tasks.taskToFillBoostingLab, lab:lab
+																				, getUsedCapacity:lab.store.getUsedCapacity()
+																				, getUsedCapacity_resource:lab.store.getUsedCapacity(resource)
+																				, getUsedCapacity_RESOURCE_ENERGY:lab.store.getUsedCapacity(RESOURCE_ENERGY)}));
 			if(lab.store.getUsedCapacity(resource) == amount)
 				return undefined;
 			if(lab.store.getUsedCapacity() != lab.store.getUsedCapacity(RESOURCE_ENERGY))
