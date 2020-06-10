@@ -220,16 +220,10 @@ var tasks = {
 											, JSON.stringify( { do:'assignTask', creep:creep.name
 																				, taskName:'isToFillBoostingLab', resource:resource, amount:amount
 																				, task:tasks.taskToFillBoostingLab, lab:lab
-																				, getUsedCapacity:lab.store.getUsedCapacity()
-																				, getUsedCapacity_resource:lab.store.getUsedCapacity(resource)
-																				, getUsedCapacity_RESOURCE_ENERGY:lab.store.getUsedCapacity(RESOURCE_ENERGY)
-																				, getFreeCapacity:lab.store.getFreeCapacity()
-																				, getFreeCapacity_resource:lab.store.getFreeCapacity(resource)
-																				, getCapacity_resource:lab.store.getCapacity(resource)
-																				, getFreeCapacity_RESOURCE_ENERGY:lab.store.getFreeCapacity(RESOURCE_ENERGY)}));
+																				, lab_mineralType:lab.mineralType}));
 			if(lab.store.getUsedCapacity(resource) == amount)
 				return undefined;
-			if(lab.store.getUsedCapacity() != lab.store.getUsedCapacity(RESOURCE_ENERGY))
+			if(!!lab.mineralType && lab.mineralType != resource)
 				return tasks.taskToEmptyBoostingLab.assignTask(creep);
 			if(lab.store.getUsedCapacity(resource) +
 				 creep.store.getUsedCapacity(resource) +
