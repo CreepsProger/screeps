@@ -15,7 +15,7 @@ var tasks = {
 		isTask:false,
 		needToHarvest: function(creep) {
 			const lab = Game.getObjectById(creep.memory.task.lab_id);
-			if(lab.store.getUsedCapacity() > 0) {
+			if(!!lab.mineralType && lab.store.getUsedCapacity(lab.mineralType) > 0) {
 				creep.memory.task.pos = lab.pos;
 				tasks.taskToEmptyBoostingLab.isTask = true;
 				tasks.taskToEmptyBoostingLab.pos = creep.memory.task.pos;
