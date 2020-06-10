@@ -216,7 +216,7 @@ var tasks = {
 			const lab = found.reduce((p,c) => p.structureType == STRUCTURE_LAB);
 			if(!lab)
 				return undefined;
-			const isFilledEnough = !!lab.store.getUsedCapacity(resource) && (lab.store.getUsedCapacity(resource) == amount);
+			const isFilledEnough = !!lab.store.getUsedCapacity(resource) && (lab.store.getUsedCapacity(resource) >= amount);
 			const isNoEnoughAmount = (lab.store.getUsedCapacity(resource)
 																+ creep.store.getUsedCapacity(resource)
 																+ creep.room.storage.store.getUsedCapacity(resource)) < amount;
@@ -230,8 +230,10 @@ var tasks = {
 																				, isAnotherMineralType:isAnotherMineralType, isNoEnoughAmount:isNoEnoughAmount}));
 			if(isFilledEnough)
 				return undefined;
-			if(isAnotherMineralType)
+			if(isAnotherMineralType) {
+				console.log('✅', 'return tasks.taskToEmptyBoostingLab.assignTask') ;
 				return tasks.taskToEmptyBoostingLab.assignTask(creep);
+			}
 			if(isNoEnoughAmount) {
 				console.log('❎', Math.trunc(Game.time/10000), Game.time%10000
 												, JSON.stringify( { creep:creep.name, isToFillBoostingLab:'not enough amount'
