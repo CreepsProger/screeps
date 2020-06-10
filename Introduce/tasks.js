@@ -222,7 +222,9 @@ var tasks = {
 																				, task:tasks.taskToFillBoostingLab, lab:lab
 																				, getUsedCapacity:lab.store.getUsedCapacity()
 																				, getUsedCapacity_resource:lab.store.getUsedCapacity(resource)
-																				, getUsedCapacity_RESOURCE_ENERGY:lab.store.getUsedCapacity(RESOURCE_ENERGY)}));
+																				, getUsedCapacity_RESOURCE_ENERGY:lab.store.getUsedCapacity(RESOURCE_ENERGY)
+																				, getFreeCapacity:lab.store.getFreeCapacity()
+																				, getFreeCapacity_RESOURCE_ENERGY:lab.store.getFreeCapacity(RESOURCE_ENERGY)}));
 			if(lab.store.getUsedCapacity(resource) == amount)
 				return undefined;
 			if(lab.store.getUsedCapacity() != lab.store.getUsedCapacity(RESOURCE_ENERGY))
