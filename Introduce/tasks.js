@@ -221,7 +221,7 @@ var tasks = {
 																				, taskName:'isToFillBoostingLab', resource:resource, amount:amount
 																				, task:tasks.taskToFillBoostingLab, lab:lab
 																				, lab_mineralType:lab.mineralType}));
-			if(lab.store.getUsedCapacity(resource) == amount)
+			if(!!lab.store.getUsedCapacity(resource) && lab.store.getUsedCapacity(resource) == amount)
 				return undefined;
 			if(!!lab.mineralType && lab.mineralType != resource)
 				return tasks.taskToEmptyBoostingLab.assignTask(creep);
