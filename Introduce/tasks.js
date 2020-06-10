@@ -216,18 +216,23 @@ var tasks = {
 			const lab = found.reduce((p,c) => p.structureType == STRUCTURE_LAB);
 			if(!lab)
 				return undefined;
+			const isFilledEnough = !!lab.store.getUsedCapacity(resource) && (lab.store.getUsedCapacity(resource) == amount);
+			const isNoEnoughAmount = (lab.store.getUsedCapacity(resource)
+																+ creep.store.getUsedCapacity(resource)
+																+ creep.room.storage.store.getUsedCapacity(resource)) < amount;
+			const isAnotherMineralType = !!lab.mineralType && lab.mineralType != resource;
 			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { do:'assignTask', creep:creep.name
 																				, taskName:'isToFillBoostingLab', resource:resource, amount:amount
 																				, task:tasks.taskToFillBoostingLab, lab:lab
-																				, lab_mineralType:lab.mineralType}));
-			if(!!lab.store.getUsedCapacity(resource) && lab.store.getUsedCapacity(resource) == amount)
+																				, lab_mineralType:lab.mineralType
+																				, isFilledEnough:isFilledEnough
+																				, isAnotherMineralType:isAnotherMineralType, isNoEnoughAmount:isNoEnoughAmount}));
+			if(isFilledEnough)
 				return undefined;
-			if(!!lab.mineralType && lab.mineralType != resource)
+			if(isAnotherMineralType)
 				return tasks.taskToEmptyBoostingLab.assignTask(creep);
-			if(lab.store.getUsedCapacity(resource) +
-				 creep.store.getUsedCapacity(resource) +
-				 creep.room.storage.store.getUsedCapacity(resource) < amount) {
+			if(isNoEnoughAmount) {
 				console.log('❎', Math.trunc(Game.time/10000), Game.time%10000
 												, JSON.stringify( { creep:creep.name, isToFillBoostingLab:'not enough amount'
 																					, resource:resource, amount:amount
