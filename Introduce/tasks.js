@@ -112,7 +112,7 @@ var tasks = {
 																				, taskName:'isToEmptyBoostingLab'
 																				, task:tasks.taskToEmptyBoostingLab, lab:lab}));
 
-			if(lab.store.getUsedCapacity() == lab.store.getUsedCapacity(RESOURCE_ENERGY)) {
+			if(!lab.mineralType || lab.store.getUsedCapacity(lab.mineralType) == 0) {
 				console.log('❎', Math.trunc(Game.time/10000), Game.time%10000
 												, JSON.stringify({ creep:creep.name, isToEmptyBoostingLab:'lab is empty'
 																					, lab:lab}));
