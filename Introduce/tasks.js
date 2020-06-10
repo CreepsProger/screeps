@@ -213,7 +213,7 @@ var tasks = {
 				return undefined;
 			if(lab.store.getUsedCapacity(resource) == amount)
 				return undefined;
-			if(lab.store.getUsedCapacity() != lab.store.getUsedCapacity(RESOURCE_ENERGY)) {
+			if(lab.store.getUsedCapacity() != lab.store.getUsedCapacity(RESOURCE_ENERGY))
 				return tasks.taskToEmptyBoostingLab.assignTask(creep);
 			if(lab.store.getUsedCapacity(resource) +
 				 creep.store.getUsedCapacity(resource) +
