@@ -107,6 +107,11 @@ var tasks = {
 			const lab = found.reduce((p,c) => p.structureType == STRUCTURE_LAB);
 			if(!lab)
 				return undefined;
+			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify( { do:'assignTask', creep:creep.name
+																				, taskName:'isToEmptyBoostingLab'
+																				, task:tasks.taskToEmptyBoostingLab, lab:lab}));
+
 			if(lab.store.getUsedCapacity() == lab.store.getUsedCapacity(RESOURCE_ENERGY)) {
 				console.log('❎', Math.trunc(Game.time/10000), Game.time%10000
 												, JSON.stringify({ creep:creep.name, isToEmptyBoostingLab:'lab is empty'
@@ -211,6 +216,10 @@ var tasks = {
 			const lab = found.reduce((p,c) => p.structureType == STRUCTURE_LAB);
 			if(!lab)
 				return undefined;
+			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify( { do:'assignTask', creep:creep.name
+																				, taskName:'isToFillBoostingLab', resource:resource, amount:amount
+																				, task:tasks.taskToFillBoostingLab, lab:lab}));
 			if(lab.store.getUsedCapacity(resource) == amount)
 				return undefined;
 			if(lab.store.getUsedCapacity() != lab.store.getUsedCapacity(RESOURCE_ENERGY))
