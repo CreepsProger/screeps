@@ -414,13 +414,13 @@ var spawns = {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W26S28')) {
 							if(Sp23)	spawns.tryCreateCreep(spawn, CLAIMER[6][H], 5120, 2, 2);
 						}
-						const n = 0+!!flags.flags['-5114'];
-						const r = 0+!!flags.flags['5114'];
+						const n = 0+!!flags.flags['-5124'];
+						const r = 0+!!flags.flags['5124'];
 						if(Sp3)	spawns.tryCreateCreep(spawn, WORKER[5][M], 5124, 1-n+r, 1-n+r);
-						const m = 0+!!flags.flags['-5111'];
-						const p = 0+!!flags.flags['5111'];
+						const m = 0+!!flags.flags['-5121'];
+						const p = 0+!!flags.flags['5121'];
 						if(Sp3)	spawns.tryCreateCreep(spawn, CARIER[5][M], 5121, 2-m+p, 2-m+p);
-					}/*
+					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W26S27')) {
 						if(Sp3)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5095, 1, 1);
 					}
@@ -428,13 +428,13 @@ var spawns = {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W26S27')) {
 							if(Sp23)	spawns.tryCreateCreep(spawn, CLAIMER[6][H], 5090, 2, 2);
 						}
-						const n = 0+!!flags.flags['-5114'];
-						const r = 0+!!flags.flags['5114'];
+						const n = 0+!!flags.flags['-5094'];
+						const r = 0+!!flags.flags['5094'];
 						if(Sp3)	spawns.tryCreateCreep(spawn, WORKER[5][M], 5094, 1-n+r, 1-n+r);
-						const m = 0+!!flags.flags['-5111'];
-						const p = 0+!!flags.flags['5111'];
+						const m = 0+!!flags.flags['-5091'];
+						const p = 0+!!flags.flags['5091'];
 						if(Sp3)	spawns.tryCreateCreep(spawn, CARIER[5][M], 5091, 2-m+p, 2-m+p);
-					}*/
+					}
         }
 
 				if(Game.shard.name == 'shard0') {
