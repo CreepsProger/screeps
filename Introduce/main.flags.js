@@ -40,15 +40,23 @@ var flags = {
 
 				,   5011: Game.flags['5011']		// start spawning 5011-st one more creep
 				,'-5011': Game.flags['-5011']		// start spawning 5011-st one less creep
+				,   5014: Game.flags['5014']		// start spawning 5014-th one more creep
+				,'-5014': Game.flags['-5014']		// start spawning 5014-th one less creep
 				
 				,   5021: Game.flags['5021']		// start spawning 5021-st one more creep
 				,'-5021': Game.flags['-5021']		// start spawning 5021-st one less creep
+				,   5024: Game.flags['5024']		// start spawning 5024-th one more creep
+				,'-5024': Game.flags['-5024']		// start spawning 5024-th one less creep
 				
 				,   5031: Game.flags['5031']		// start spawning 5031-st one more creep
 				,'-5031': Game.flags['-5031']		// start spawning 5031-st one less creep
+				,   5034: Game.flags['5034']		// start spawning 5034-th one more creep
+				,'-5034': Game.flags['-5034']		// start spawning 5034-th one less creep
 				
 				,   5041: Game.flags['5041']		// start spawning 5041-st one more creep
 				,'-5041': Game.flags['-5041']		// start spawning 5041-st one less creep
+				,   5044: Game.flags['5044']		// start spawning 5044-th one more creep
+				,'-5044': Game.flags['-5044']		// start spawning 5044-th one less creep
 				
 				,   5051: Game.flags['5051']		// start spawning 5051-st one more creep
 				,'-5051': Game.flags['-5051']		// start spawning 5051-st one less creep
