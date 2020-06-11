@@ -190,7 +190,7 @@ var roleEnergyTransferer = {
 
 				const U = !!flags.flags.U && flags.flags.U.pos.roomName == my_room;
 
-				if((!targs || !targs.length || targs.length == 0) &&
+				if((!targs || !targs.length || targs.length == 0 || tools.getWeight(creep.name) == 5124 ) &&
 				  (this_room_config.containers.weight < tools.getWeight(creep.name) && !U && !UU)) {
 					targs = cash.getContainers(creep.room).filter((cont) =>
 						!!cont && !!cont.store && cont.store.getFreeCapacity(RESOURCE_ENERGY) > 0);
