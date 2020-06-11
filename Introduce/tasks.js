@@ -35,7 +35,7 @@ var tasks = {
 				creep.memory.task.err = ERR_NOT_IN_RANGE;
 			if(creep.memory.task.err == OK) {
 				const lab = Game.getObjectById(creep.memory.task.lab_id);
-				const resources = Object.keys(target.store).sort((l,r) => l.length - r.length);
+				const resources = Object.keys(lab.store).sort((l,r) => l.length - r.length);
 				resources.forEach(function(resource,i) {
 					if(creep.memory.task.err == OK && resource != RESOURCE_ENERGY)
 							creep.memory.task.err = creep.withdraw(lab, resource);
