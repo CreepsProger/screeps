@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 301,
+	version: 302,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -1085,7 +1085,9 @@ var config = {
 							, path_rooms:
 								{ W28S33: 'W27S33', W27S33: 'W26S33', W26S33: 'W25S33'
 							 	, W28S35: 'W28S34', W28S34: 'W28S33'
-								, W29S32: 'W28S32', W28S32: 'W28S33'}
+								, W29S32: 'W28S32', W28S32: 'W28S33'
+								, W27S34: 'W27S33'
+								}
 							, escape_path:
 								{ W28S37: 'W28S38', W28S38: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
 								, W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
@@ -1104,7 +1106,9 @@ var config = {
 							, path_rooms:
 							 	{ W25S33: 'W26S33', W28S33: 'W27S33', W27S33: 'W26S33'
 						 		, W28S35: 'W28S34', W28S34: 'W28S33'
-								, W29S32: 'W28S32', W28S32: 'W28S33'}
+								, W29S32: 'W28S32', W28S32: 'W28S33'
+								, W27S34: 'W27S33'
+								}
 							, escape_path:
 								{ W28S37: 'W28S38', W28S38: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
 								, W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
@@ -1129,11 +1133,12 @@ var config = {
 							 	[ {name: '1', time: 0, min_weight: 50, max_weight: 59}
 							 	, {name: '2', time: 0, min_weight: 50, max_weight: 59}
 							 	]
-							, heal_room: 'W26S33'
+							, heal_room: 'W25S33'
 							, path_rooms:
 								{ W25S33: 'W26S33', W26S33: 'W27S33', W28S33: 'W27S33'
 						 		, W28S35: 'W28S34', W28S34: 'W28S33'
 								, W29S32: 'W28S32', W28S32: 'W28S33'
+								, W27S34: 'W27S33'
 								}
 							, escape_path:
 								{ W28S37: 'W28S38', W28S38: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
@@ -1162,6 +1167,7 @@ var config = {
 								{ W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
 								, W28S35: 'W28S34', W28S34: 'W28S33'
 								, W29S32: 'W28S32', W28S32: 'W28S33'
+								, W27S34: 'W27S33'
 								}
 						 	, escape_path:
 								{ W28S37: 'W28S38', W28S38: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
@@ -1186,6 +1192,7 @@ var config = {
 							 	{ W25S33: 'W26S33', W26S33: 'W26S34', W25S34: 'W26S34'
 								, W27S33: 'W26S33', W28S33: 'W27S33', W28S34: 'W28S33'
 								, W29S32: 'W28S32', W28S32: 'W28S33'
+								, W27S34: 'W26S34'
 								}
 							, escape_path:
 								{ W26S34: 'W26S33'
@@ -1212,10 +1219,9 @@ var config = {
 							]
 						  , heal_room: 'W28S35'
 							, path_rooms:
-								{ W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
-								, W28S33: 'W28S34', W28S34: 'W27S34'
+								{ W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W27S34'
+								, W29S32: 'W28S32', W28S32: 'W28S33', W28S33: 'W28S34', W28S34: 'W27S34'
 								, W28S35: 'W28S34', W28S34: 'W27S34'
-								, W29S32: 'W28S32', W28S32: 'W28S33'
 								}
 							, escape_path:
 								{ W27S34: 'W28S34', W28S34: 'W28S35'
@@ -1239,18 +1245,19 @@ var config = {
 								, {name: '4', time: 0, min_weight: 90, max_weight:99}
 								, {name: '5', time: 0, min_weight: 90, max_weight:99}
 								]
-						  , heal_room: 'W28S33'
+						  , heal_room: 'W25S33'
 							, path_rooms:
 							 	{ W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
 						 		, W28S33: 'W28S32'
 								, W29S33: 'W28S33'
 								, W29S32: 'W28S32'
+								, W27S34: 'W27S33'
 								}
 							, escape_path:
 								{ W28S37: 'W28S38', W28S38: 'W29S38', W29S38: 'W30S38'
 							  , W30S38: 'W30S37', W30S37: 'W30S36', W30S36: 'W30S35'
 								, W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33'
-								, W29S33: 'W28S33', W28S33: 'W27S33', W27S33: 'W26S33'
+								, W29S33: 'W28S33', W28S33: 'W27S33', W27S33: 'W26S33', W26S33: 'W25S33'
 								, W28S32: 'W28S33'
 								}
 							},
@@ -1277,6 +1284,7 @@ var config = {
 								, W28S35: 'W28S34', W28S34: 'W28S33', W28S33: 'W29S33'
 								, W28S32: 'W28S33'
 								, W29S32: 'W28S32', W28S32: 'W28S33'
+								, W27S34: 'W27S33'
 								}
 							, escape_path:{ W29S33: 'W28S33'}
 						 	},
@@ -1305,6 +1313,7 @@ var config = {
 							 	, W28S33: 'W28S34'
 								, W28S35: 'W28S34'
 								, W29S32: 'W28S32', W28S32: 'W28S33'
+								, W27S34: 'W28S34'
 								}
 							, escape_path:{ W28S34: 'W28S33'}
 							},
@@ -1328,6 +1337,7 @@ var config = {
 								{ W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
 								, W28S33: 'W28S34', W28S34: 'W28S35'
 								, W29S32: 'W28S32', W28S32: 'W28S33'
+								, W27S34: 'W28S34'
 								}
 							, escape_path:{ W28S35: 'W28S34', W28S34: 'W28S33'}
 							},
@@ -1356,6 +1366,7 @@ var config = {
 							 	{ W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
 								, W29S32: 'W28S32', W28S32: 'W28S32'
 								, W28S33: 'W28S34', W28S34: 'W28S35', W28S35: 'W29S35'
+								, W27S34: 'W28S34'
 								}
 							, escape_path:
 								{ W29S35: 'W28S35', W28S35: 'W28S34', W28S34: 'W28S33'
@@ -1386,6 +1397,7 @@ var config = {
 							 	{ W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
 								, W28S33: 'W28S34', W28S34: 'W28S35', W28S35: 'W28S36'
 								, W29S32: 'W28S32', W28S32: 'W28S33'
+								, W27S34: 'W28S34'
 								}
 							, escape_path:
 								{ W28S36: 'W28S35', W28S35: 'W28S34', W28S34: 'W28S33'
@@ -1411,6 +1423,7 @@ var config = {
 								, W28S33: 'W28S34', W28S34: 'W28S35', W28S35: 'W28S36'
 								, W28S36: 'W28S37'
 								, W29S32: 'W28S32', W28S32: 'W28S33'
+								, W27S34: 'W28S34'
 								}
 							, escape_path:
 								{ W28S37: 'W28S36', W28S36: 'W28S35', W28S35: 'W28S34'
@@ -1436,6 +1449,7 @@ var config = {
 							 	{ W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
 								, W28S33: 'W28S34', W28S34: 'W28S35', W28S35: 'W28S36'
 								, W28S36: 'W28S37', W28S37: 'W29S37'
+								, W27S34: 'W28S34'
 								}
 							, escape_path:
 								{ W29S37: 'W28S37', W28S37: 'W28S36', W28S36: 'W28S35'
@@ -1463,6 +1477,7 @@ var config = {
 								, W28S33: 'W28S32', W28S32: 'W29S32'
 								, W29S33: 'W30S33', W30S33: 'W30S32', W30S32: 'W29S32'
 								, W28S35: 'W28S34', W28S34: 'W28S33'
+								, W27S34: 'W27S33'
 							 	}
 							, escape_path:
 								{ W29S32: 'W30S32', W30S32: 'W30S33', W30S33: 'W29S33'
@@ -1494,6 +1509,7 @@ var config = {
 								, W28S35: 'W28S34', W28S34: 'W28S33'
 							 	, W27S33: 'W26S33', W26S33: 'W25S33', W25S33: 'W25S34'
 								, W25S34: 'W24S34', W24S34: 'W23S34'
+								, W27S34: 'W27S33'
 								}
 							, escape_path:
 								{ W23S34: 'W24S34', W24S34: 'W25S34', W25S34: 'W25S33'
@@ -1530,6 +1546,7 @@ var config = {
 							 	{ W29S32: 'W28S32', W28S32: 'W28S33', W28S33: 'W27S33'
 							 	, W27S33: 'W26S33', W26S33: 'W25S33', W25S33: 'W25S34'
 							 	, W28S35: 'W28S34', W28S34: 'W28S33'
+								, W27S34: 'W27S33'
 								}
 							, escape_path:
 								{ W25S34: 'W25S33'
@@ -1555,6 +1572,7 @@ var config = {
 							 	{ W28S33: 'W27S33', W27S33: 'W26S33', W26S33: 'W25S33'
 						    , W25S33: 'W25S34', W25S34: 'W25S35'
 								, W28S35: 'W28S34', W28S34: 'W28S33'
+								, W27S34: 'W27S33'
 								}
 						 	, escape_path:
 								{ W25S35: 'W25S34', W25S34: 'W25S33'
