@@ -557,7 +557,7 @@ var spawns = {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W56S52')) {
 							if(spawn.name == 'Spawn1')	spawns.tryCreateCreep(spawn, CLAIMER[7][H], 440, 1, 1);
 						}
-						//if(spawn.name == 'Spawn1')	spawns.tryCreateCreep(spawn, WORKER[1][L], 444, 1, 1);
+						if(spawn.name == 'Spawn1')	spawns.tryCreateCreep(spawn, WORKER[1][L], 444, 1, 1);
 						if(spawn.name == 'Spawn1')	spawns.tryCreateCreep(spawn, WORKER[4][M], 444, 2, 2);
 						if(spawn.name == 'Spawn1')	spawns.tryCreateCreep(spawn, CARIER[6][L], 441, 1, 1);
 					}
