@@ -178,6 +178,10 @@ var roleEnergyTransferer = {
 
 			metrix.cpu.step_time(creep, 'transfering', '🌕');
 
+			if(tools.getWeight(creep.name) == 5124)
+					console.log(JSON.stringify( { check:tools.getWeight(creep.name), targs:targs, length:targs.length
+																			, room_weight:this_room_config.containers.weight, room:creep.room
+																			, cash_conts:cash.getContainers(creep.room)}));
 			//if(!target) {
 			//if(!target && (this_room != my_room || this_room_sources_are_not_empty)) {
 			if(!target && (this_room_sources_are_not_empty || !creep.getActiveBodyparts(WORK))) {
@@ -196,10 +200,6 @@ var roleEnergyTransferer = {
 					targs = cash.getContainers(creep.room).filter((cont) =>
 						!!cont && !!cont.store && cont.store.getFreeCapacity(RESOURCE_ENERGY) > 0);
 				}
-				if(tools.getWeight(creep.name) == 5124)
-					console.log(JSON.stringify( { check:tools.getWeight(creep.name), targs:targs, length:targs.length
-																			, room_weight:this_room_config.containers.weight, room:creep.room
-																			, cash_conts:cash.getContainers(creep.room)}));
 
 				if((!targs || !targs.length) && !!creep.room.storage &&
 						creep.getActiveBodyparts(WORK)  && !U && !UU &&
