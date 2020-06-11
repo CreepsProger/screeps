@@ -193,13 +193,13 @@ var roleEnergyTransferer = {
 				if((!targs || !targs.length || targs.length == 0) &&
 				  (this_room_config.containers.weight < tools.getWeight(creep.name) && !U && !UU)) {
 					targs = cash.getContainers(creep.room).filter((cont) =>
-						!!cont && !!cont.store && cont.store.getFreeCapacity() > 0);
+						!!cont && !!cont.store && cont.store.getFreeCapacity(RESOURCE_ENERGY) > 0);
 				}
 
 				if((!targs || !targs.length) && !!creep.room.storage &&
 						creep.getActiveBodyparts(WORK)  && !U && !UU &&
 						this_room_config.containers.weight < tools.getWeight(creep.name) &&
-						creep.room.storage.store.getFreeCapacity() > 0) {
+						creep.room.storage.store.getFreeCapacity(RESOURCE_ENERGY) > 0) {
 					targs = [creep.room.storage];
 				}
 				// var containers = creep.room.find(FIND_STRUCTURES, {
