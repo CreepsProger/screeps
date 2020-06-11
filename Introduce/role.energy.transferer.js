@@ -179,7 +179,9 @@ var roleEnergyTransferer = {
 			metrix.cpu.step_time(creep, 'transfering', '🌕');
 
 			if(tools.getWeight(creep.name) == 5124)
-					console.log(JSON.stringify( { check:tools.getWeight(creep.name), target:target
+					console.log(JSON.stringify( { check:tools.getWeight(creep.name)
+																			, this_room_sources_are_not_empty:this_room_sources_are_not_empty
+																			, target:target
 																			, room_weight:this_room_config.containers.weight, room:creep.room
 																			, cash_conts:cash.getContainers(creep.room)}));
 			//if(!target) {
