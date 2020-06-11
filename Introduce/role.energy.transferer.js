@@ -80,7 +80,7 @@ var roleEnergyTransferer = {
 				 }
 			}
 
-			const DSOURCE = flags.flags.DSOURCE && flags.flags.DSOURCE.pos.roomName == my_room;
+			const DSOURCE = !!flags.flags.DSOURCE && flags.flags.DSOURCE.pos.roomName == my_room;
 			const this_room_sources_are_empty = cash.areEmptySourcesByPath(creep) && !DSOURCE;
 			const this_room_sources_are_not_empty = !this_room_sources_are_empty;
 
