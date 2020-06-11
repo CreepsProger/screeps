@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 299,
+	version: 300,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -823,7 +823,7 @@ var config = {
 							W25S28:
 							{ containers: {weight: 5123}
 							, sites:
-							 	[ {x:10, y:17, type:STRUCTURE_CONTAINER}
+							 	[ {x:4, y:42, type:STRUCTURE_CONTAINER}
 								//, {x:7, y:11, type:STRUCTURE_CONTAINER}
 							 	]
 							, energy_harvesting:
@@ -846,7 +846,7 @@ var config = {
 								{ shard: 'shard1', room: 'W27S29'}
 							, path_rooms:
 								{ W29S29: 'W28S29', W28S29: 'W27S29', W27S29: 'W26S29', W27S29y:9
-								, W26S29: 'W26S28', W26S27: 'W26S28', W26S28: 'W25S28'
+								, W26S29: 'W26S28', W26S27: 'W26S28', W26S28: 'W25S28', W26S28y:42
 								, W29S31: 'W30S31', W30S31: 'W30S30'
 								, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:32
 								}
