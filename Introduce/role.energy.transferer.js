@@ -104,7 +104,8 @@ var roleEnergyTransferer = {
 				var use_api = false; var sz = 0;
 				var use_cash_pos = false;
 				var use_cash = false;
-				if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable) {
+				if(!target && creep.room.energyAvailable != creep.room.energyCapacityAvailable &&
+					 !!creep.room.controller && !!creep.room.controller.my) {
 					if(Infra) {
 						use_api = true;
 						var exts = creep.pos.findInRange(FIND_STRUCTURES, 1, {
