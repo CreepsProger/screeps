@@ -186,7 +186,7 @@ var roleEnergyTransferer = {
 																			, cash_conts:cash.getContainers(creep.room)}));*/
 			//if(!target) {
 			//if(!target && (this_room != my_room || this_room_sources_are_not_empty)) {
-			if(!target && (/*this_room_sources_are_not_empty || */!creep.getActiveBodyparts(WORK))) {
+			if(!target /*&& (this_room_sources_are_not_empty || !creep.getActiveBodyparts(WORK))*/) {
 				var targs = creep.pos.findInRange(FIND_MY_CREEPS, 1, {
 					filter: (creep2) => {
 						return creep2.store.getFreeCapacity(RESOURCE_ENERGY) > creep2.store.getUsedCapacity(RESOURCE_ENERGY) &&
