@@ -196,7 +196,9 @@ var roleEnergyTransferer = {
 						!!cont && !!cont.store && cont.store.getFreeCapacity(RESOURCE_ENERGY) > 0);
 				}
 				if(tools.getWeight(creep.name) == 5124)
-					console.log(JSON.stringify({check:tools.getWeight(creep.name), targs:targs}));
+					console.log(JSON.stringify( { check:tools.getWeight(creep.name), targs:targs, length:targs.length
+																			, room_weight:this_room_config.containers.weight, room:creep.room
+																			, cash_conts:cash.getContainers(creep.room)}));
 
 				if((!targs || !targs.length) && !!creep.room.storage &&
 						creep.getActiveBodyparts(WORK)  && !U && !UU &&
