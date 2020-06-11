@@ -570,7 +570,7 @@ var spawns = {
             if(Sp2)	spawns.tryCreateCreep(spawn, CARIER[6][L], 491, 2, 2);
 					}
 					if(Sp2)	spawns.tryCreateCreep(spawn, CARIER[7][L], 501, 1, 1);
-					if(Sp1 && (Game.time % 2000 < 500) ) spawns.tryCreateCreep(spawn,   HEALER[5][M], 1000, 1, 1);
+					if(Sp12 && (Game.time % 2000 < 500) ) spawns.tryCreateCreep(spawn,   HEALER[7][L], 1000, 1, 1);
 				}
 
 				if(Game.shard.name == 'shard3') {
