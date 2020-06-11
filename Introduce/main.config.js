@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 305,
+	version: 306,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -296,6 +296,8 @@ var config = {
 								, {name: '2', time: 0, min_weight: 480, max_weight: 489}
 								, {name: '3', time: 0, min_weight: 480, max_weight: 489}
 								, {name: '4', time: 0, min_weight: 480, max_weight: 489}
+								, {name: '5', time: 0, min_weight: 480, max_weight: 489}
+								, {name: '6', time: 0, min_weight: 480, max_weight: 489}
 								]
 							, claiming:
 								[ {name: '1', time: 0, min_weight: 480, max_weight: 489}
@@ -328,6 +330,8 @@ var config = {
 								, {name: '2', time: 0, min_weight: 470, max_weight: 479}
 								, {name: '3', time: 0, min_weight: 470, max_weight: 479}
 								, {name: '4', time: 0, min_weight: 470, max_weight: 479}
+								, {name: '5', time: 0, min_weight: 470, max_weight: 479}
+								, {name: '6', time: 0, min_weight: 470, max_weight: 479}
 								]
 							, claiming:
 								[ {name: '1', time: 0, min_weight: 470, max_weight: 479}
@@ -358,6 +362,8 @@ var config = {
 								[ {name: '1', time: 0, min_weight: 460, max_weight: 469}
 								, {name: '2', time: 0, min_weight: 460, max_weight: 469}
 								, {name: '3', time: 0, min_weight: 460, max_weight: 469}
+								, {name: '4', time: 0, min_weight: 460, max_weight: 469}
+								, {name: '5', time: 0, min_weight: 460, max_weight: 469}
 								]
 							, claiming:
 								[ {name: '1', time: 0, min_weight: 460, max_weight: 469}
@@ -419,6 +425,8 @@ var config = {
 								[ {name: '1', time: 0, min_weight: 440, max_weight: 449}
 								, {name: '2', time: 0, min_weight: 440, max_weight: 449}
 								, {name: '3', time: 0, min_weight: 440, max_weight: 449}
+								, {name: '4', time: 0, min_weight: 440, max_weight: 449}
+								, {name: '5', time: 0, min_weight: 440, max_weight: 449}
 								]
 							, claiming:
 								[ {name: '1', time: 0, min_weight: 440, max_weight: 449}
@@ -446,6 +454,8 @@ var config = {
 								[ {name: '1', time: 0, min_weight: 430, max_weight: 439}
 								, {name: '2', time: 0, min_weight: 430, max_weight: 439}
 								, {name: '3', time: 0, min_weight: 430, max_weight: 439}
+								, {name: '4', time: 0, min_weight: 430, max_weight: 439}
+								, {name: '5', time: 0, min_weight: 430, max_weight: 439}
 								]
 							, claiming:
 								[ {name: '1', time: 0, min_weight: 430, max_weight: 439}
@@ -475,6 +485,8 @@ var config = {
 								[ {name: '1', time: 0, min_weight: 420, max_weight: 429}
 								, {name: '2', time: 0, min_weight: 420, max_weight: 429}
 								, {name: '3', time: 0, min_weight: 420, max_weight: 429}
+								, {name: '4', time: 0, min_weight: 420, max_weight: 429}
+								, {name: '5', time: 0, min_weight: 420, max_weight: 429}
 								]
 							, claiming:
 								[ {name: '1', time: 0, min_weight: 420, max_weight: 429}
@@ -502,6 +514,8 @@ var config = {
 								[ {name: '1', time: 0, min_weight: 410, max_weight: 419}
 								, {name: '2', time: 0, min_weight: 410, max_weight: 419}
 								, {name: '3', time: 0, min_weight: 410, max_weight: 419}
+								, {name: '4', time: 0, min_weight: 410, max_weight: 419}
+								, {name: '5', time: 0, min_weight: 410, max_weight: 419}
 								]
 							, claiming:
 								[ {name: '1', time: 0, min_weight: 410, max_weight: 419}
