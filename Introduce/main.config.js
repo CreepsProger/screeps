@@ -978,26 +978,28 @@ var config = {
 								}
 							},
 							W26S27:
-							{ containers: {weight: 5093}
+							{ containers: {weight: 5143}
 							, sites:
 							 	[ {x:9, y:45, type:STRUCTURE_CONTAINER}
 								, {x:10, y:45, type:STRUCTURE_CONTAINER}
 							 	]
 							, energy_harvesting:
-								[ {name: '1', time: 0, min_weight: 5090, max_weight: 5099}
-								, {name: '2', time: 0, min_weight: 5090, max_weight: 5099}
-								, {name: '3', time: 0, min_weight: 5090, max_weight: 5099}
-								, {name: '4', time: 0, min_weight: 5090, max_weight: 5099}
+								[ {name: '1', time: 0, min_weight: 5140, max_weight: 5149}
+								, {name: '2', time: 0, min_weight: 5140, max_weight: 5149}
+								, {name: '3', time: 0, min_weight: 5140, max_weight: 5149}
+								, {name: '4', time: 0, min_weight: 5140, max_weight: 5149}
+								, {name: '5', time: 0, min_weight: 5140, max_weight: 5149}
+								, {name: '6', time: 0, min_weight: 5140, max_weight: 5149}
 								]
 							, claiming:
-							 	[ {name: '1', time: 0, min_weight: 5090, max_weight: 5099}
-								, {name: '2', time: 0, min_weight: 5090, max_weight: 5099}
+							 	[ {name: '1', time: 0, min_weight: 5140, max_weight: 5149}
+								, {name: '2', time: 0, min_weight: 5140, max_weight: 5149}
 								]
 							, attacker:
-								[ {name: '1', time: 0, min_weight: 5090, max_weight: 5099}
-								, {name: '2', time: 0, min_weight: 5090, max_weight: 5099}
-								, {name: '3', time: 0, min_weight: 5090, max_weight: 5099}
-								, {name: '4', time: 0, min_weight: 5090, max_weight: 5099}
+								[ {name: '1', time: 0, min_weight: 5140, max_weight: 5149}
+								, {name: '2', time: 0, min_weight: 5140, max_weight: 5149}
+								, {name: '3', time: 0, min_weight: 5140, max_weight: 5149}
+								, {name: '4', time: 0, min_weight: 5140, max_weight: 5149}
 								]
 							, heal_room:
 								{ shard: 'shard1', room: 'W29S29'}
