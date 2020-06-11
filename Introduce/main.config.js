@@ -429,7 +429,7 @@ var config = {
 								{ W57S52: 'W56S52', W57S52y:45, W56S52: 'W56S52'
 								}
 								, escape_path:
-								{ W56S52: 'W57S52', W57S52: 'W57S52'
+								{ W56S52: 'W57S52'
 								}
 							},
 						  W59S52:
