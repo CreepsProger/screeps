@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 297,
+	version: 298,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -790,7 +790,8 @@ var config = {
 							W25S29:
 							{ containers: {weight: 5073}
 							, sites:
-							 	[ {x:9, y:20, type:STRUCTURE_CONTAINER}
+							 	[ {x:8, y:20, type:STRUCTURE_CONTAINER}
+								, {x:9, y:20, type:STRUCTURE_CONTAINER}
 							 	]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 5070, max_weight: 5079}
@@ -822,7 +823,8 @@ var config = {
 							W26S28:
 							{ containers: {weight: 5123}
 							, sites:
-							 	[ {x:7, y:11, type:STRUCTURE_CONTAINER}
+							 	[ {x:6, y:11, type:STRUCTURE_CONTAINER}
+								, {x:7, y:11, type:STRUCTURE_CONTAINER}
 							 	]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 5120, max_weight: 5129}
@@ -854,7 +856,8 @@ var config = {
 							W27S28:
 							{ containers: {weight: 5113}
 							, sites:
-							 	[ {x:5, y:38, type:STRUCTURE_CONTAINER}
+							 	[ {x:4, y:38, type:STRUCTURE_CONTAINER}
+								, {x:5, y:38, type:STRUCTURE_CONTAINER}
 							 	]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 5110, max_weight: 5119}
@@ -886,7 +889,8 @@ var config = {
 							W27S27:
 							{ containers: {weight: 5103}
 							, sites:
-							 	[ {x:29, y:45, type:STRUCTURE_CONTAINER}
+							 	[ {x:28, y:45, type:STRUCTURE_CONTAINER}
+								, {x:29, y:45, type:STRUCTURE_CONTAINER}
 							 	]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 5100, max_weight: 5109}
@@ -921,6 +925,7 @@ var config = {
 							{ containers: {weight: 5093}
 							, sites:
 							 	[ {x:9, y:45, type:STRUCTURE_CONTAINER}
+								, {x:10, y:45, type:STRUCTURE_CONTAINER}
 							 	]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 5090, max_weight: 5099}
