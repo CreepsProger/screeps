@@ -103,6 +103,11 @@ var flags = {
 				,   5134: Game.flags['5134']		// start spawning 5134-th one more creep
 				,'-5134': Game.flags['-5134']		// start spawning 5134-th one less creep
 				 
+				,   5141: Game.flags['5141']		// start spawning 5141-st one more creep
+				,'-5141': Game.flags['-5141']		// start spawning 5141-st one less creep
+				,   5144: Game.flags['5144']		// start spawning 5144-th one more creep
+				,'-5144': Game.flags['-5144']		// start spawning 5144-th one less creep
+				 
 				,     11: Game.flags['11']		// start spawning 11-th one more creep
 				,     31: Game.flags['31']		// start spawning 31-st one more creep
 				,     34: Game.flags['34']		// start spawning 34-th one more creep
