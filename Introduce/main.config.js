@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 300,
+	version: 301,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -252,11 +252,10 @@ var config = {
 								{ W54S51: 'W55S51', W55S51: 'W56S51', W56S51: 'W57S51'
 								}
 							},
-							W55S51:
+							W56S51:
 							{ containers: {weight: 493}
 							, sites:
-								[ {x:20, y:39, type:STRUCTURE_CONTAINER}
-								, {x:20, y:40, type:STRUCTURE_CONTAINER}
+								[ {x:37, y:39, type:STRUCTURE_CONTAINER}
 								]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 490, max_weight: 499}
@@ -276,17 +275,17 @@ var config = {
 								{ shard: 'shard0', room: 'W57S51'}
 							, path_rooms:
 								{ W57S52: 'W56S52', W57S52y:24, W56S52: 'W56S51'
-								, W57S51: 'W56S51', W56S51: 'W55S51'
+								, W57S51: 'W56S51'
+								, W55S51: 'W56S51'
 								}
 								, escape_path:
 								{ W55S51: 'W56S51', W56S51: 'W57S51'
 								}
 							},
-							W59S51:
+							W58S51:
 							{ containers: {weight: 483}
 							, sites:
-								[ {x:19, y:30, type:STRUCTURE_CONTAINER}
-								, {x:20, y:30, type:STRUCTURE_CONTAINER}
+								[ {x:31, y:30, type:STRUCTURE_CONTAINER}
 								]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 480, max_weight: 489}
@@ -307,16 +306,18 @@ var config = {
 							, path_rooms:
 								{ W57S52: 'W58S52', W57S52y:20, W58S52: 'W59S52', W58S52y:15
 								, W59S52: 'W59S51'
-								, W57S51: 'W58S51', W58S51: 'W59S51'
+								, W57S51: 'W58S51'
+								, W59S51: 'W58S51'
 								}
 								, escape_path:
 								{ W59S51: 'W58S51', W58S51: 'W57S51'
 								}
 							},
-						  W58S51:
+						  W59S51:
 							{ containers: {weight: 473}
 							, sites:
-								[ {x:31, y:30, type:STRUCTURE_CONTAINER}
+								[ {x:19, y:30, type:STRUCTURE_CONTAINER}
+								, {x:20, y:30, type:STRUCTURE_CONTAINER}
 								]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 470, max_weight: 479}
@@ -336,17 +337,18 @@ var config = {
 								{ shard: 'shard0', room: 'W57S51'}
 							, path_rooms:
 								{ W57S52: 'W58S52', W57S52y:20, W58S52: 'W59S52', W58S52y:15
-								, W59S52: 'W59S51', W59S51: 'W58S51'
-								, W57S51: 'W58S51'
+								, W59S52: 'W59S51'
+								, W57S51: 'W58S51', W58S51: 'W59S51'
 								}
 								, escape_path:
-								{ W58S51: 'W57S51'
+								{ W59S51: 'W58S51', W58S51: 'W57S51'
 								}
 							},
-							W56S51:
+							W55S51:
 							{ containers: {weight: 463}
 							, sites:
-								[ {x:37, y:39, type:STRUCTURE_CONTAINER}
+								[ {x:20, y:39, type:STRUCTURE_CONTAINER}
+								, {x:20, y:40, type:STRUCTURE_CONTAINER}
 								]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 460, max_weight: 469}
@@ -363,11 +365,11 @@ var config = {
 							, heal_room:
 								{ shard: 'shard0', room: 'W57S51'}
 							, path_rooms:
-								{ W57S52: 'W56S52', W57S52y:24, W56S52: 'W56S51', W56S51: 'W56S51'
-								, W57S51: 'W56S51'
+								{ W57S52: 'W56S52', W57S52y:24, W56S52: 'W56S51'
+								, W57S51: 'W56S51', W56S51: 'W55S51'
 								}
 								, escape_path:
-								{ W56S51: 'W57S51'
+								{ W55S51: 'W56S51', W56S51: 'W57S51'
 								}
 							},
 						  W57S51:
