@@ -224,21 +224,9 @@ var role = {
 						target.x += Game.time%3 - 1;
     			// console.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room, 'target', target);
     		}
-
-				const DP1 = flags.flags.DP1;
-				if(!target && !!DP1 && DP1.pos.roomName == my_room) {
-					// console.log('DP1', 'this_room:', this_room, 'DP1:', JSON.stringify(DP1));
-					target = DP1.pos;
-				}
-
-				const DP2 = flags.flags.DP2;
-				if(!target && !!DP2 && DP2.pos.roomName == my_room) {
-					//console.log('DP2', 'this_room:', this_room, 'DP2:', JSON.stringify(DP2));
-					target = DP2.pos;
-				}
 				
 				if(!target && canAttack) {
-					const targets = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, 50, {
+					const targets = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, range, {
 						filter: (structure) => {
 							return (structure.structureType == STRUCTURE_INVADER_CORE) &&
 								structure.level !== undefined && structure.level == 0;
@@ -275,7 +263,18 @@ var role = {
 						target = targets[0];
 					}
 				}
-// TODO
+
+				const DP1 = flags.flags.DP1;
+				if(!target && !!DP1 && DP1.pos.roomName == my_room) {
+					// console.log('DP1', 'this_room:', this_room, 'DP1:', JSON.stringify(DP1));
+					target = DP1.pos;
+				}
+
+				const DP2 = flags.flags.DP2;
+				if(!target && !!DP2 && DP2.pos.roomName == my_room) {
+					//console.log('DP2', 'this_room:', this_room, 'DP2:', JSON.stringify(DP2));
+					target = DP2.pos;
+				}
 				if(!target && canAttack) {
 					// const room = Game.rooms[this_room];
 					const keeperlairs = creep.room.find(FIND_HOSTILE_STRUCTURES, {
@@ -283,6 +282,7 @@ var role = {
 							return (structure.structureType == STRUCTURE_KEEPER_LAIR);
 						}
 					});
+
 					if(keeperlairs.length > 0) {
 						var lair = keeperlairs.reduce((p,c) => {
 							const left = ((creep.pos.getRangeTo(p) + 250) * ((!p.ticksToSpawn)?0:p.ticksToSpawn));
