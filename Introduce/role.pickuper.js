@@ -36,6 +36,7 @@ var rolePickuper = {
 				const DP = flags.flags.DP;
 				const DP1 = flags.flags.DP1;
 				const DP2 = flags.flags.DP2;
+				const NP1 = flags.flags.NP1;
 
 				var target;
 
@@ -47,6 +48,7 @@ var rolePickuper = {
 										 (!!DP && DP.pos.roomName == creep.room.name) ||
 										 (!!DP1 && DP1.pos.roomName == creep.room.name && DP1.pos.findPathTo(dropped).length < 5) ||
 										 (!!DP2 && DP2.pos.roomName == creep.room.name && DP2.pos.findPathTo(dropped).length < 5)) &&
+								!(!!NP1 && NP1.pos.roomName == my_room && NP1.pos.getRangeTo(dropped) < 11-NP1.color) &&
 								tools.checkTarget(executer,dropped.id);
 						}
 					});
