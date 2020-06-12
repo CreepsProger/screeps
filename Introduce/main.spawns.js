@@ -433,7 +433,7 @@ var spawns = {
 						if(Sp3)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5145, 1, 1);
 					}
 					else {
-						if(conditions.TO_SPAWN_ROOM_CLAIMER('W26S27')) {
+						if(true || conditions.TO_SPAWN_ROOM_CLAIMER('W26S27')) {
 							if(Sp3)	spawns.tryCreateCreep(spawn, CLAIMER[7][H], 5140, 1, 1);
 						}
 						const n = 0+!!flags.flags['-5144'];
