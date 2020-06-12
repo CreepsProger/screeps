@@ -15,7 +15,7 @@ var flags = {
 		if(flags.time != Game.time) {
 			flags.time = Game.time;
 			flags.flags =
-				{     NW: Game.flags['NW']			// don't withdraw
+				{    NW1: Game.flags['NW1']			// don't withdraw in range 11-NW1.color
 				,DSOURCE: Game.flags['DSOURCE']			// DISMATLING SOURCE
 				,     XU: Game.flags['XU']			// eXtraUpgrade
 				,      C: Game.flags['C']			// Claim the room
