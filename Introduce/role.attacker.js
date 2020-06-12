@@ -236,6 +236,18 @@ var role = {
 					//console.log('DP2', 'this_room:', this_room, 'DP2:', JSON.stringify(DP2));
 					target = DP2.pos;
 				}
+				
+				if(!target && canAttack) {
+					const targets = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, 50, {
+						filter: (structure) => {
+							return (structure.structureType == STRUCTURE_INVADER_CORE) &&
+								structure.level !== undefined && structure.level == 0;
+						}
+					});
+					if(targets.length > 0) {
+						target = targets[0];
+					}
+				}
 
 				if(!target && canAttack) {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5, {
