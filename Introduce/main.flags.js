@@ -388,7 +388,6 @@ var flags = {
                 filter: (structure) => {
                     return (structure.structureType == STRUCTURE_TERMINAL);
                 }
-                }
             });
             if(!!terminal) {
 							var err = OK;
