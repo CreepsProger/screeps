@@ -379,6 +379,37 @@ var flags = {
         lastFlagRemoved = CWEFC;
         lastFlagRemoved.remove();
     },
+	// Creep Withdraw Mineral From Storage
+    CWMFS: function(CWMFS) {
+        const found = CWMFS.pos.lookFor(LOOK_CREEPS);
+        if(found.length) {
+            var creep = found[0];
+            var storage = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                filter: (structure) => {
+                    return (structure.structureType == STRUCTURE_STORAGE);
+                }
+            });
+            if(!!storage) {
+							var err = OK;
+							const resources = Object.keys(storage.store).sort((l,r) => l.length - r.length);
+							resources.forEach(function(resource,i) {
+								if(err == OK && resource != RESOURCE_ENERGY)
+									err = creep.withdraw(storage, resource);
+								if(err != OK)
+									console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify( { CWMFS:'Creep Withdraw Mineral From Storage', creep:creep.name, action:'withdraw'
+																				, resource:resource, err:err
+																				, storage:storage}));
+							});
+							if(err == ERR_NOT_IN_RANGE)
+								tools.moveTo(creep,storage);
+							creep.say('CWMFS ' + err);
+            }
+        }
+
+        lastFlagRemoved = CWMFS;
+        lastFlagRemoved.remove();
+    },
     // Destroy Rampart
     DR: function(DR) {
         var rampart = DR.pos.findClosestByPath(FIND_STRUCTURES, {
