@@ -15,7 +15,8 @@ var flags = {
 		if(flags.time != Game.time) {
 			flags.time = Game.time;
 			flags.flags =
-				{DSOURCE: Game.flags['DSOURCE']			// DISMATLING SOURCE
+				{     NW: Game.flags['NW']			// don't withdraw
+				,DSOURCE: Game.flags['DSOURCE']			// DISMATLING SOURCE
 				,     XU: Game.flags['XU']			// eXtraUpgrade
 				,      C: Game.flags['C']			// Claim the room
 				,     A2: Game.flags['A2']		// attack only in range = 5*A2.color
