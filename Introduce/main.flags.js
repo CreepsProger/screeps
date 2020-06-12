@@ -402,7 +402,7 @@ var flags = {
 																				, resource:resource, err:err
 																				, terminal:terminal}));
 							});
-							if(err == ERR_NOT_IN_RANGE)
+							if(err != OK)
 								tools.moveTo(creep,terminal);
 							creep.say('CWMFT ' + err);
             }
