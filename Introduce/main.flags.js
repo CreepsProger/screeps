@@ -379,35 +379,36 @@ var flags = {
         lastFlagRemoved = CWEFC;
         lastFlagRemoved.remove();
     },
-	// Creep Withdraw Mineral From Storage
-    CWMFS: function(CWMFS) {
-        const found = CWMFS.pos.lookFor(LOOK_CREEPS);
+	// Creep Withdraw Mineral From Terminal
+    CWMFT: function(CWMFT) {
+        const found = CWMFT.pos.lookFor(LOOK_CREEPS);
         if(found.length) {
             var creep = found[0];
-            var storage = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+            var terminal = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                 filter: (structure) => {
-                    return (structure.structureType == STRUCTURE_STORAGE);
+                    return (structure.structureType == STRUCTURE_TERMINAL);
+                }
                 }
             });
-            if(!!storage) {
+            if(!!terminal) {
 							var err = OK;
-							const resources = Object.keys(storage.store).sort((l,r) => l.length - r.length);
+							const resources = Object.keys(terminal.store).sort((l,r) => l.length - r.length);
 							resources.forEach(function(resource,i) {
 								if(err == OK && resource != RESOURCE_ENERGY)
-									err = creep.withdraw(storage, resource);
+									err = creep.withdraw(terminal, resource);
 								if(err != OK)
 									console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify( { CWMFS:'Creep Withdraw Mineral From Storage', creep:creep.name, action:'withdraw'
+											, JSON.stringify( { CWMFT:'Creep Withdraw Mineral From Terminal', creep:creep.name, action:'withdraw'
 																				, resource:resource, err:err
-																				, storage:storage}));
+																				, terminal:terminal}));
 							});
 							if(err == ERR_NOT_IN_RANGE)
-								tools.moveTo(creep,storage);
-							creep.say('CWMFS ' + err);
+								tools.moveTo(creep,terminal);
+							creep.say('CWMFT ' + err);
             }
         }
 
-        lastFlagRemoved = CWMFS;
+        lastFlagRemoved = CWMFT;
         lastFlagRemoved.remove();
     },
     // Destroy Rampart
