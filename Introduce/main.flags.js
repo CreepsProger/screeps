@@ -410,7 +410,26 @@ var flags = {
         lastFlagRemoved = CWMFT;
         lastFlagRemoved.remove();
     },
-    // Destroy Rampart
+    // Destroy Container  
+    DC: function(DC) {
+        var container = DR.pos.findClosestByPath(FIND_STRUCTURES, {
+            filter: (structure) => {
+                return structure.structureType == STRUCTURE_CONTAINER;
+            }
+        });
+        if(container) {
+            var err = container.destroy();
+            console.log( '❌🌕', Math.trunc(Game.time/10000), Game.time%10000
+                        , 'Destroy Container:'
+                        , container
+                        , 'err:'
+                        , err
+                        , JSON.stringify(container)
+                        , JSON.stringify(DC));
+        }
+        lastFlagRemoved = DC;
+        lastFlagRemoved.remove();
+    },    // Destroy Rampart
     DR: function(DR) {
         var rampart = DR.pos.findClosestByPath(FIND_STRUCTURES, {
             filter: (structure) => {
