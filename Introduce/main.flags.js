@@ -466,6 +466,19 @@ var flags = {
         lastFlagRemoved = RACS;
         lastFlagRemoved.remove();
     },
+    // Remove construction site'; 
+    RCS: function(RCS) {
+			const found = RCS.pos.lookFor(LOOK_CONSTRUCTION_SITES); 
+			if(found.length == 0) 
+				return;
+			const cs = found.reduce((p,c) => p.structureType == STRUCTURE_CONSTRUCTION_SITE);
+      console.log( '❌⚪️', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify(RCS)
+                    , JSON.stringify(cs));		
+			cs.remove(); 
+        lastFlagRemoved = RCS;
+        lastFlagRemoved.remove();
+    },   
     run: function(ticksToLog = constants.TICKS_TO_CHECK_CREEPS_NUMBER) {
 			flags.cashFlags();
 
