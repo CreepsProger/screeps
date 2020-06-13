@@ -412,7 +412,7 @@ var flags = {
     },
     // Destroy Container  
     DC: function(DC) {
-        var container = DR.pos.findClosestByPath(FIND_STRUCTURES, {
+        var container = DC.pos.findClosestByPath(FIND_STRUCTURES, {
             filter: (structure) => {
                 return structure.structureType == STRUCTURE_CONTAINER;
             }
