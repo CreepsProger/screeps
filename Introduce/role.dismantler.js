@@ -41,7 +41,7 @@ var roleDismantler = {
 				const D = flags.flags.D;
 				const D1 = flags.flags.D1;
 				const D2 = flags.flags.D2;
-				const DSOURCE = !!flags.flags.DSOURCE && flags.flags.DSOURCE.pos.roomName == my_room;
+				const DSOURCE = !!flags.flags.DSOURCE && flags.flags.DSOURCE.pos.roomName == this_room;
 				const this_room_sources_are_empty = cash.areEmptySourcesByPath(creep);
 
 				if(!target && (!DSOURCE || this_room_sources_are_empty) && 
