@@ -516,9 +516,20 @@ var flags = {
                     , JSON.stringify(RCS)
                     , JSON.stringify(cs));		
 			cs.remove(); 
-        lastFlagRemoved = RCS;
-        lastFlagRemoved.remove();
-    },   
+      lastFlagRemoved = RCS;
+      lastFlagRemoved.remove();
+    }, 
+    // Look'; 
+    Look: function(Look) {
+			const found = Look.pos.look(); 
+			if(found.length == 0) 
+				return;
+      console.log( '❌⚪️', Math.trunc(Game.time/10000), Game.time%10000 
+                    , JSON.stringify(Look) 
+                    , JSON.stringify(found));    		
+      lastFlagRemoved = Look; 
+      lastFlagRemoved.remove(); 
+    },
     run: function(ticksToLog = constants.TICKS_TO_CHECK_CREEPS_NUMBER) {
 			flags.cashFlags();
 
