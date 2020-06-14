@@ -429,7 +429,8 @@ var flags = {
         }
         lastFlagRemoved = DC;
         lastFlagRemoved.remove();
-    },    // Destroy Rampart
+    },
+	// Destroy Rampart
     DR: function(DR) {
         var rampart = DR.pos.findClosestByPath(FIND_STRUCTURES, {
             filter: (structure) => {
@@ -447,6 +448,26 @@ var flags = {
                         , JSON.stringify(DR));
         }
         lastFlagRemoved = DR;
+        lastFlagRemoved.remove();
+    },
+	// Destroy Road
+    DRo: function(DRo) {
+        var road = DRo.pos.findClosestByPath(FIND_STRUCTURES, {
+            filter: (structure) => {
+                return structure.structureType == STRUCTURE_ROAD;
+            }
+        });
+        if(road) {
+            var err = road.destroy();
+            console.log( '❌🌕', Math.trunc(Game.time/10000), Game.time%10000
+                        , 'Destroy Road:'
+                        , road
+                        , 'err:'
+                        , err
+                        , JSON.stringify(road)
+                        , JSON.stringify(DRo));
+        }
+        lastFlagRemoved = DRo;
         lastFlagRemoved.remove();
     },
     // Destroy Extention
