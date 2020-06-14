@@ -87,7 +87,7 @@ var tasks = {
 																				, isFilledEnough:isFilledEnough}));
 			if(!isFilledEnough) {
 				console.log('✅', 'return tasks.taskToFillBoostingLab.assignTask') ;
-				return tasks.taskToFillBoostingLab.assignTask(creep, resource, amount);
+				return tasks.taskToFillBoostingLab.addTask(creep, resource, amount);
 			}
 
 			tasks.taskToBoostCreeps.isToBoostCreeps = true; 
@@ -292,6 +292,15 @@ var tasks = {
 											, JSON.stringify({do:'transferingBy', creep:creep.name, err:creep.memory.task.err, task:creep.memory.task}));
 			return creep.memory.task.err;
 		},
+		addTask: function(creep, resource = RESOURCE_ZYNTHIUM_HYDRIDE, amount = 100) {
+			if(Game.shard.name != 'shard1')
+				return undefined;
+			const task = {name:'taskToFillBoostingLab', adder:creep, resource:RESOURCE_ZYNTHIUM_HYDRIDE, amount:100};
+			tasks.addTask(task);
+			if(!Memory.todo)
+				Memory.todo = {};
+			Memory.todo.push({task:'taskToFillBoostingLab'});
+		}, 
 		assignTask: function(creep, resource = RESOURCE_ZYNTHIUM_HYDRIDE, amount = 100) {
 			if(Game.shard.name != 'shard1')
 				return undefined;
@@ -357,9 +366,18 @@ var tasks = {
 			return creep.memory.task;
 		}
 	}, 
-	needToHarvest: function(creep, onlyCheck = true) {//return null;
-		if(!onlyCheck) {
-			tasks.taskToFillBoostingLab.assignTask(creep);
+	needToHarvest: function(creep, checkTodo = false) {//return null;
+		if(checkTodo) {
+			if(!Memory.todo)
+				Memory.todo = {};
+			const roomTodo = Memory.todo[creep.room.name];
+			if(!!roomTodo) { 
+				roomTodo.some(function(todo,i) {
+					if(!! tasks[todo.name].assignTask(creep) )
+						return true; 
+					return false;
+				});
+			} 
 		} 
 
 		if(creep.memory.task === undefined)
@@ -382,6 +400,37 @@ var tasks = {
 		if(creep.memory.task.isToEmptyBoostingLab !== undefined)
 			return tasks.taskToEmptyBoostingLab.needToTransfer(creep);
     return null;
+	}, 
+	addTask: function(creep, task) {
+		if(Game.shard.name != 'shard1')
+			return undefined;
+		if(!Memory.todo)
+				Memory.todo = {};
+		if(!Memory.todo[task.room])
+				Memory.todo[task.room] = [];
+		Memory.todo[task.room].push(task); 
+	}, 
+	doneTask: function(creep, task) {
+		if(Game.shard.name != 'shard1')
+			return undefined;
+		if(!Memory.todo)
+				Memory.todo = {};
+		if(!Memory.todo[task.room])
+				Memory.todo[task.room] = [];
+		
+		var roomTodo = Memory.todo[task.room];
+		
+		if(!!roomTodo.find((todo) =>
+																		 todo.name == task.name &&
+																		 todo.addingTime == task.addingTime &&
+																		 todo.adder.name = task.adder.name)) {
+			const newRoomTodo = roomTodo.filter((todo) => !(todo.name == task.name &&
+																		 todo.addingTime == task.addingTime &&
+																		 todo.adder.name = task.adder.name));
+			console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({tasks:'doneTask', task:task, roomTodo:roomTodo, newRoomTodo:newRoomTodo}));
+      Memory.todo[task.room] = newRoomTodo;
+		}
 	}
 };
 
