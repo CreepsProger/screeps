@@ -11,7 +11,6 @@ var tasks = {
 		isToBoostCreeps:true, 
 		pos:{},
 		lab_id:{},
-		storage_id:{},
 		isTask:false,
 		needToHarvest: function(creep) {
 			const lab = Game.getObjectById(creep.memory.task.lab_id);
@@ -47,7 +46,7 @@ var tasks = {
 																				, err:creep.memory.task.err, task:creep.memory.task}));
 			return creep.memory.task.err;
 		},
-		assignTask: function(creep) {
+		assignTask: function(creep, resource = RESOURCE_ZYNTHIUM_HYDRIDE, amount = 100) {
 			if(Game.shard.name != 'shard1')
 				return undefined;
 			if(!creep.room.storage)
@@ -79,12 +78,24 @@ var tasks = {
 																					, lab:lab}));
 				return undefined;
 			}
+			const isFilledEnough = !!lab.store.getUsedCapacity(resource) && (lab.store.getUsedCapacity(resource) >= amount);
+			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify( { do:'assignTask', creep:creep.name
+																				, taskName:'isToBoostCreeps', resource:resource, amount:amount
+																				, task:tasks.taskToBoostCreeps, lab:lab
+																				, lab_mineralType:lab.mineralType
+																				, isFilledEnough:isFilledEnough}));
+			if(!isFilledEnough) {
+				console.log('✅', 'return tasks.taskToFillBoostingLab.assignTask') ;
+				return tasks.taskToFillBoostingLab.assignTask(creep, resource, amount);
+			}
 
 			tasks.taskToBoostCreeps.isToBoostCreeps = true; 
 			tasks.taskToBoostCreeps.pos = pos; 
 			tasks.taskToBoostCreeps.lab_id = lab.id; 
-			tasks.taskToBoostCreeps.storage_id = creep.room.storage.id;
-			tasks.ttaskToBoostCreeps.isTask = true; 
+			tasks.taskToBoostCreeps.resource = resource;
+			tasks.taskToBoostCreeps.amount = amount;
+			tasks.taskToBoostCreeps.isTask = true; 
 			creep.memory.task = tasks.taskToBoostCreeps;
 
 			if(true) {
