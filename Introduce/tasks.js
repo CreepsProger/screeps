@@ -17,12 +17,12 @@ var tasks = {
 			const lab = Game.getObjectById(creep.memory.task.lab_id);
 			if(!!lab.mineralType && lab.store.getUsedCapacity(lab.mineralType) > 0) {
 				creep.memory.task.pos = lab.pos;
-				tasks.taskToEmptyBoostingLab.isTask = true;
-				tasks.taskToEmptyBoostingLab.pos = creep.memory.task.pos;
-				return tasks.taskToEmptyBoostingLab;
+				tasks.taskToBoostCreeps.isTask = true;
+				tasks.taskToBoostCreeps.pos = creep.memory.task.pos;
+				return tasks.taskToBoostCreeps;
 			}
 			creep.memory.task.done = true;
-			tasks.taskToEmptyBoostingLab.isTask = false;
+			tasks.taskToBoostCreeps.isTask = false;
 			if(true) {
 				console.log('✔️', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({creep:creep.name, task:creep.memory.task}));
@@ -35,51 +35,15 @@ var tasks = {
 				creep.memory.task.err = ERR_NOT_IN_RANGE;
 			if(creep.memory.task.err == OK) {
 				const lab = Game.getObjectById(creep.memory.task.lab_id);
-				const resources = Object.keys(lab.store).sort((l,r) => l.length - r.length);
-				resources.forEach(function(resource,i) {
-					if(creep.memory.task.err == OK && resource != RESOURCE_ENERGY)
-							creep.memory.task.err = creep.withdraw(lab, resource);
-					if(creep.memory.task.err != OK)
-						console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
+				creep.memory.task.err = lab.boostCreep(creep);
+				if(creep.memory.task.err != OK)
+					console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { do:'harvestingBy', creep:creep.name, action:'withdrawing'
 																				, resource:resource, err:creep.memory.task.err
 																				, from_lab:lab}));
-				});
 			}
 			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { do:'harvestingBy', creep:creep.name
-																				, err:creep.memory.task.err, task:creep.memory.task}));
-			return creep.memory.task.err;
-		},
-		needToTransfer: function(creep) {
-			if(creep.store.getUsedCapacity() > 0) {
-				const storage = Game.getObjectById(creep.memory.task.storage_id);
-				creep.memory.task.pos = storage.pos;
-				tasks.taskToEmptyBoostingLab.isTask = true;
-				tasks.taskToEmptyBoostingLab.pos = creep.memory.task.pos;
-				return tasks.taskToEmptyBoostingLab;
-			}
-			return null;
-		},
-		transferingBy: function(creep) {
-			creep.memory.task.err = OK;
-			if(!creep.pos.inRangeTo(creep.memory.task.pos,1))
-				creep.memory.task.err = ERR_NOT_IN_RANGE;
-			if(creep.memory.task.err == OK) {
-				const storage = Game.getObjectById(creep.memory.task.storage_id);
-				const resources = Object.keys(creep.store).sort((l,r) => l.length - r.length);
-				resources.forEach(function(resource,i) {
-					if(creep.memory.task.err == OK)
-							creep.memory.task.err = creep.transfer(storage, resource);
-					if(creep.memory.task.err != OK)
-						console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify( { do:'transferingBy', creep:creep.name, action:'transfer'
-																				, resource:resource, err:creep.memory.task.err
-																				, to_storage:storage, from_creep:creep}));
-				});
-			}
-			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify( { do:'transferingBy', creep:creep.name
 																				, err:creep.memory.task.err, task:creep.memory.task}));
 			return creep.memory.task.err;
 		},
@@ -89,72 +53,47 @@ var tasks = {
 			if(!creep.room.storage)
 				return undefined;
 			if(creep.memory.task !== undefined &&
-				 creep.memory.task.isToEmptyBoostingLab !== undefined &&
+				 creep.memory.task.isToBoostCreeps !== undefined &&
 				 creep.memory.task.done === undefined)
 				return creep.memory.task;
-			if(tasks.taskToEmptyBoostingLab.isTask)
+			if(tasks.taskToBoostCreeps.isTask)
 				return undefined;
-			if(creep.getActiveBodyparts(WORK) > 0)
-				return undefined;
-			if(tools.getWeight(creep.name)%10 > 3)
-				return undefined;
-
+			
 			const pos = new RoomPosition(11, 25, creep.room.name);
 
 			const found = pos.lookFor(LOOK_STRUCTURES);
-
-			if(found.length == 0)				return undefined;
+			if(found.length == 0)
+				return undefined;
 
 			const lab = found.reduce((p,c) => p.structureType == STRUCTURE_LAB);
-
 			if(!lab)
-
 				return undefined;
 
 			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
-
 											, JSON.stringify( { do:'assignTask', creep:creep.name
-
-																				, taskName:'isToEmptyBoostingLab'
-
-																				, task:tasks.taskToEmptyBoostingLab, lab:lab}));
-
+																				, taskName:'isToBoostCreeps'
+																				, task:tasks.taskToBoostCreeps, lab:lab}));
 			if(!lab.mineralType || lab.store.getUsedCapacity(lab.mineralType) == 0) {
-
 				console.log('❎', Math.trunc(Game.time/10000), Game.time%10000
-
-												, JSON.stringify({ creep:creep.name, isToEmptyBoostingLab:'lab is empty'
-
+												, JSON.stringify({ creep:creep.name, isToBoostCreeps:'lab is empty'
 																					, lab:lab}));
-
 				return undefined;
-
 			}
 
-			tasks.taskToEmptyBoostingLab.isToEmptyBoostingLab = true;
-
-			tasks.taskToEmptyBoostingLab.pos = pos;
-
-			tasks.taskToEmptyBoostingLab.lab_id = lab.id;
-
-			tasks.taskToEmptyBoostingLab.storage_id = creep.room.storage.id;
-
-			tasks.taskToEmptyBoostingLab.isTask = true;
-
-			creep.memory.task = tasks.taskToEmptyBoostingLab;
+			tasks.taskToBoostCreeps.isToBoostCreeps = true; 
+			tasks.taskToBoostCreeps.pos = pos; 
+			tasks.taskToBoostCreeps.lab_id = lab.id; 
+			tasks.taskToBoostCreeps.storage_id = creep.room.storage.id;
+			tasks.ttaskToBoostCreeps.isTask = true; 
+			creep.memory.task = tasks.taskToBoostCreeps;
 
 			if(true) {
-
 				console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
-
 												, JSON.stringify({creep:creep.name, task:creep.memory.task}));
-
 			}
 
 			return creep.memory.task;
-
 		}
-
 	},
 
 	taskToEmptyBoostingLab: {
