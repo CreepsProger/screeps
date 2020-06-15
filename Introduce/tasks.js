@@ -420,13 +420,12 @@ var tasks = {
 		
 		var roomTodo = Memory.todo[task.room];
 		
-		if(!!roomTodo.find((todo) =>
-																		 todo.name == task.name &&
+		if(!!roomTodo.find((todo) =>     todo.name == task.name &&
 																		 todo.addingTime == task.addingTime &&
-																		 todo.adder.name = task.adder.name)) {
+																		 todo.adder.name == task.adder.name)) {
 			const newRoomTodo = roomTodo.filter((todo) => !(todo.name == task.name &&
 																		 todo.addingTime == task.addingTime &&
-																		 todo.adder.name = task.adder.name));
+																		 todo.adder.name == task.adder.name));
 			console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({tasks:'doneTask', task:task, roomTodo:roomTodo, newRoomTodo:newRoomTodo}));
       Memory.todo[task.room] = newRoomTodo;
