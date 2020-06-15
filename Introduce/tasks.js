@@ -366,7 +366,7 @@ var tasks = {
 			return creep.memory.task;
 		}
 	}, 
-	needToHarvest: function(creep, checkTodo = false) {//return null;
+	needToHarvest: function(creep, checkTodo = false) {return null;
 		if(checkTodo) {
 			if(!Memory.todo)
 				Memory.todo = {};
@@ -390,7 +390,7 @@ var tasks = {
 			return tasks.taskToEmptyBoostingLab.needToHarvest(creep);
     return null;
 	}, 
-	needToTransfer: function(creep) {//return null;
+	needToTransfer: function(creep) {return null;
 		if(creep.memory.task === undefined)
 			return null;
 		if(creep.memory.task.done !== undefined)
