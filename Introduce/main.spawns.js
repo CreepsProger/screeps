@@ -25,7 +25,7 @@ var spawns = {
       return Math.floor(300 * Cs * 50 / (harvest_ticks + move_to_rc_ticks + upgrade_ticks + move_from_rc_ticks));
    },
 
-    tryCreateCreep: function(spawn, type, weight, needed = 0, max_needed = 100) {
+    tryCreateCreep: function(spawn, type, weight, needed = 0, max_needed = 100, boost = {on:false} ) {
 			var body = [];
 			const  Ts = Math.trunc(type%10000000000000000/100000000000000);
 			const CLs = Math.trunc(type%100000000000000  /1000000000000);
@@ -127,8 +127,13 @@ var spawns = {
 											, 'sum_to_plus/sum_idle_pct:'
 											, '' + target_idle_sum_pst + '/' + sum_pst
 											, 'mittl/to_spawn:'
-											, '' + mittl + '/' + mittl_to_spawn
+											, '' + mittl + '/' + mittl_to_spawn, 'boost', boost
 										 );
+
+					if(boost.on) {
+						console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({creep:newName, boost:boost}));
+					}
 
           Memory.CreepsCounter++;
           Memory.totals.SpawningCreeps++;
