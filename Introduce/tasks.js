@@ -12,7 +12,7 @@ var tasks = {
 		pos:{},
 		lab_id:{},
 		isTask:false,
-		needToHarvest: function(creep) {
+		needToRun: function(creep) {
 			const lab = Game.getObjectById(creep.memory.task.lab_id);
 			if(!!lab.mineralType && lab.store.getUsedCapacity(lab.mineralType) > 0) {
 				creep.memory.task.pos = lab.pos;
@@ -28,7 +28,7 @@ var tasks = {
 			}
 			return null;
 		},
-		harvestingBy: function(creep) {
+		run: function(creep) {
 			creep.memory.task.err = OK;
 			if(!creep.pos.inRangeTo(creep.memory.task.pos,1))
 				creep.memory.task.err = ERR_NOT_IN_RANGE;
@@ -404,6 +404,17 @@ var tasks = {
 				});
 			}
 		}
+		const task = tasks.getTask(creep);
+
+		if(task.isToBoostCreeps !== undefined &&
+			 tasks.taskToBoostCreeps.needToRun(creep)) {
+			return tasks.taskToBoostCreeps.run(creep);
+		}
+
+		
+
+    return false;
+		
 	},
 
 	needToHarvest: function(creep, checkTodo = false) {
