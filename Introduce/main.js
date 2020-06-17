@@ -156,25 +156,28 @@ module.exports.loop = function () {
 	creeps.forEach(function(name,i) {
 		var creep = Game.creeps[name];
 		if(!!creep && !creep.spawning) {
+			var needToRun = true;
 			const livedTicks = (creep.getActiveBodyparts(CLAIM) > 0 ? 600:1500)-creep.ticksToLive;
 			if(livedTicks <= 1) {
 				console.log( '🎬', Math.trunc(Game.time/10000), Game.time%10000
 							 , JSON.stringify( { trigger:'onBirth', creep:creep.name
 																 , livedTicks:livedTicks, ticksToLive:creep.ticksToLive, detail:creep}));
-				tasks.onBirth(creep);
+				needToRun = tasks.onBirth(creep);
 			}
 			else {
-				tasks.onRun(creep);
+				needToRun = tasks.onRun(creep);
 			}
-			creep.memory.rerun = 0;
-			if(Memory.cpu.creep.t < 0.5*Game.cpu.tickLimit || tools.getWeight(creep.name) < 70)
-				role.run(creep);
-			metrix.cpu.creep_time(creep);
-			if(Memory.cpu.creep.t > 0.9*Game.cpu.tickLimit) {
-				console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
+			if(needToRun) {
+				creep.memory.rerun = 0;
+				if(Memory.cpu.creep.t < 0.5*Game.cpu.tickLimit || tools.getWeight(creep.name) < 70)
+					role.run(creep);
+				metrix.cpu.creep_time(creep);
+				if(Memory.cpu.creep.t > 0.9*Game.cpu.tickLimit) {
+					console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 										, 'tickLimit:'
 										, Game.cpu.tickLimit
 										, JSON.stringify(Memory.cpu));
+				}
 			}
 		}
 	});
