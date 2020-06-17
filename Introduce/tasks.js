@@ -411,10 +411,7 @@ var tasks = {
 			return tasks.taskToBoostCreeps.run(creep);
 		}
 
-		
-
-    return false;
-		
+		return false;
 	},
 
 	needToHarvest: function(creep, checkTodo = false) {
