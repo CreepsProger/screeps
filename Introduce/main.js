@@ -11,6 +11,7 @@ const spawns = require('main.spawns');
 const log = require('main.log');
 const cash = require('cash');
 const tools = require('tools');
+const tasks = require('tasks');
 const role = require('role.claimer');
 
 module.exports.loop = function () {
@@ -160,6 +161,10 @@ module.exports.loop = function () {
 				console.log( '🎬', Math.trunc(Game.time/10000), Game.time%10000
 							 , JSON.stringify( { trigger:'onBirth', creep:creep.name
 																 , livedTicks:livedTicks, ticksToLive:creep.ticksToLive, detail:creep}));
+				tasks.onBirth(creep);
+			}
+			else {
+				tasks.onRun(creep);
 			}
 			creep.memory.rerun = 0;
 			if(Memory.cpu.creep.t < 0.5*Game.cpu.tickLimit || tools.getWeight(creep.name) < 70)
