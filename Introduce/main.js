@@ -156,8 +156,8 @@ module.exports.loop = function () {
 		var creep = Game.creeps[name];
 		if(!!creep && !creep.spawning) {
 			const livedTicks = (creep.getActiveBodyparts(CLAIM) > 0 ? 600:1500)-creep.ticksToLive;
-			if(livedTicks < 3) {
-				console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
+			if(livedTicks <= 1) {
+				console.log( '🎬', Math.trunc(Game.time/10000), Game.time%10000
 							 , JSON.stringify( { trigger:'onBirth', creep:creep.name
 																 , livedTicks:livedTicks, ticksToLive:creep.ticksToLive, detail:creep}));
 			}
