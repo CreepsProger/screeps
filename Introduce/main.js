@@ -155,6 +155,12 @@ module.exports.loop = function () {
 	creeps.forEach(function(name,i) {
 		var creep = Game.creeps[name];
 		if(!!creep && !creep.spawning) {
+			const livedTicks = (creep.getActiveBodyparts(CLAIM) > 0 ? 600:1500)-creep.ticksToLive;
+			if(livedTicks == 1) {
+				console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
+							 , JSON.stringify( { triger:'onBirth', creep:creep.name
+																 , livedTicks:livedTicks, ticksToLive:creep.ticksToLive, detail:creep});
+			}
 			creep.memory.rerun = 0;
 			if(Memory.cpu.creep.t < 0.5*Game.cpu.tickLimit || tools.getWeight(creep.name) < 70)
 				role.run(creep);
