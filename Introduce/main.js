@@ -162,10 +162,10 @@ module.exports.loop = function () {
 				console.log( '🎬', Math.trunc(Game.time/10000), Game.time%10000
 							 , JSON.stringify( { trigger:'onBirth', creep:creep.name
 																 , livedTicks:livedTicks, ticksToLive:creep.ticksToLive, detail:creep}));
-				needToRun = tasks.onBirth(creep);
+				needToRun = !tasks.onBirth(creep);
 			}
 			else {
-				needToRun = tasks.onRun(creep);
+				needToRun = !tasks.onRun(creep);
 			}
 			if(needToRun) {
 				creep.memory.rerun = 0;
