@@ -406,8 +406,8 @@ var tasks = {
 		}
 		const task = tasks.getTask(creep);
 
-		if(task !== undefined &&
-			 task.isToBoostCreeps !== undefined &&
+		if(!!task &&
+			!!task.isToBoostCreeps &&
 			 tasks.taskToBoostCreeps.needToRun(creep)) {
 			return tasks.taskToBoostCreeps.run(creep);
 		}
