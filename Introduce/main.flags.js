@@ -118,6 +118,8 @@ var flags = {
 				,     44: Game.flags['44']		// start spawning 44-th one more creep
 				,     61: Game.flags['61']		// start spawning 61-st one more creep
 				,     64: Game.flags['64']		// start spawning 64-th one more creep
+				,     81: Game.flags['81']		// start spawning 81-st one more creep
+				,     84: Game.flags['84']		// start spawning 84-th one more creep
 				,    121: Game.flags['121']		// start spawning 121-st one more creep
 				,    124: Game.flags['124']		// start spawning 124-th one more creep
 				,    171: Game.flags['171']		// start spawning 171-st one more creep
