@@ -428,18 +428,18 @@ var tasks = {
 		} 
 
 		const task = tasks.getTask(creep);
-		if(task.isToFillBoostingLab !== undefined)
+		if(!!task && task.isToFillBoostingLab !== undefined)
 			return tasks.taskToFillBoostingLab.needToHarvest(creep);
-		if(task.isToEmptyBoostingLab !== undefined)
+		if(!!task && task.isToEmptyBoostingLab !== undefined)
 			return tasks.taskToEmptyBoostingLab.needToHarvest(creep);
     return null;
 	}, 
 	
 	needToTransfer: function(creep) {
 		const task = tasks.getTask(creep);
-		if(task.isToFillBoostingLab !== undefined)
+		if(!!task && task.isToFillBoostingLab !== undefined)
 			return tasks.taskToFillBoostingLab.needToTransfer(creep);
-		if(task.isToEmptyBoostingLab !== undefined)
+		if(!!task && task.isToEmptyBoostingLab !== undefined)
 			return tasks.taskToEmptyBoostingLab.needToTransfer(creep);
 		return null;
 	}, 
