@@ -212,7 +212,7 @@ var spawns = {
 				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn9'  || spawn.name == 'Spawn10' || spawn.name == 'Spawn13'):All;
 				const Sp6 = (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
-				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn16' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):All;
+				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn16' || spawn.name == 'Spawn17' || spawn.name == 'Spawn--'):All;
 				const Sp12 = (Sp1 || Sp2);
 				const Sp23 = (Sp2 || Sp3);
 				const Sp34 = (Sp3 || Sp4);
@@ -679,9 +679,10 @@ var spawns = {
 								if(spawn.name == 'Spawn16') spawns.tryCreateCreep(spawn,   HEALER[7][H], 87, 1, 1);
 							}
 							else {
-								const f = 0+!!flags.flags['81'];
-								if(Sp34) spawns.tryCreateCreep(spawn, WORKER[7][H], 84, 2+XU+XU+X+X+X, 2+XU+XU+X+X+X);
-								if(Sp34) spawns.tryCreateCreep(spawn, CARIER[7][M], 81, 1+f-XU, 1+f-XU);
+								const W = flags.flags['84'];
+								if(Sp6) spawns.tryCreateCreep(spawn, WORKER[7][H], 84, !W?1:11-W.color, !W?1:11-W.secondaryColor);
+								const C = flags.flags['81'];
+								if(Sp6) spawns.tryCreateCreep(spawn, CARIER[7][M], 81, !C?1:11-C.color, !C?1:11-C.secondaryColor);
 							}
 						}
 
