@@ -589,7 +589,7 @@ var spawns = {
 
 				if(Game.shard.name == 'shard3') {
 					
-					const XU = 0+!!flags.flags['XU'];
+					const XU = 0+(!!flags.flags['XU']+!!flags.flags['XB']);
 
 					if(Memory.totals.CARRY < 75	) spawns.tryCreateCreep(spawn,   808, 10, 3); // E  800 Carier
 					if(Memory.totals.CARRY < 75	) spawns.tryCreateCreep(spawn,   505, 10, 3); // E  500 Carier
