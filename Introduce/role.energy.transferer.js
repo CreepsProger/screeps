@@ -58,8 +58,9 @@ var roleEnergyTransferer = {
 			// 	filter: (source) => source.energy > 0 && source.room.name == this_room
 			// });
 			const XU = !!flags.flags.XU;
+			const XB = !!flags.flags.XB;
 			const TW = !!flags.flags.TW && flags.flags.TW.pos.roomName == my_room;
-			const B  = XU || !!flags.flags.B && flags.flags.B.pos.roomName == my_room;
+			const B  = XU || XB || !!flags.flags.B && flags.flags.B.pos.roomName == my_room;
 			const UU = XU || !!flags.flags.UU && flags.flags.UU.pos.roomName == my_room;
 			const Infra = !!flags.flags.Infra && flags.flags.Infra.pos.roomName == my_room;
 
