@@ -420,7 +420,7 @@ var flags = {
     },
     // Creep Suicide  
     CS: function(CS) {
-			const found = CS.pos.lookFor(LOOK_CREEPS);
+			const found = CS.pos.findInRange(FIND_MY_CREEPS, 10-CS.color);
       if(found.length > 0) {
 				const creep = found[0];
         if(creep) {
