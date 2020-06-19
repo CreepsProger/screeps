@@ -25,7 +25,7 @@ var spawns = {
       return Math.floor(300 * Cs * 50 / (harvest_ticks + move_to_rc_ticks + upgrade_ticks + move_from_rc_ticks));
    },
 
-    tryCreateCreep: function(spawn, type, weight, needed = 0, max_needed = 100, boost = {on:false} ) {
+    tryCreateCreep: function(spawn, type, weight, needed = 0, max_needed = 100, boost = undefined ) {
 			var body = [];
 			const  Ts = Math.trunc(type%10000000000000000/100000000000000);
 			const CLs = Math.trunc(type%100000000000000  /1000000000000);
@@ -130,7 +130,7 @@ var spawns = {
 											, '' + mittl + '/' + mittl_to_spawn, 'boost', boost
 										 );
 
-					if(boost.on) {
+					if(!!boost) {
 						console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({creep:newName, boost:boost}));
 					}
@@ -323,8 +323,8 @@ var spawns = {
 						const p = 0+!!flags.flags['5021'];
 						if(Sp2)	spawns.tryCreateCreep(spawn, CARIER[7][M], 5021, 2-m+p, 2-m+p);
 					}
-					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S28')) {
-						if(Sp12)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5035, 1, 1);
+					if(true || conditions.TO_SPAWN_ROOM_DEFENDERS('W29S28')) {
+						if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5035, 1, 1, {XUH2O:300});
 					}
 					else {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W29S28')) {
