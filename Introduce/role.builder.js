@@ -26,7 +26,8 @@ var roleBuilder = {
 			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
 
 			const XU = !!flags.flags.XU;
-      const B  = XU || !!flags.flags.B && flags.flags.B.pos.roomName == my_room;
+			const XB = !!flags.flags.XB;
+      const B  = XU || XB || !!flags.flags.B && flags.flags.B.pos.roomName == my_room;
       const BB = XU || !!flags.flags.BB && flags.flags.BB.pos.roomName == my_room;
 
 			if(!creep.memory.building &&
