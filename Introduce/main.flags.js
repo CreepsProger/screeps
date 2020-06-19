@@ -418,6 +418,25 @@ var flags = {
         lastFlagRemoved = CWMFT;
         lastFlagRemoved.remove();
     },
+    // Creep Suicide  
+    CS: function(CS) {
+			const found = CS.pos.lookFor(LOOK_CREEPS);
+      if(found.length > 0) {
+				const creep = found[0];
+        if(creep) {
+            var err = creep.suicide();
+            console.log( '❌🤖', Math.trunc(Game.time/10000), Game.time%10000
+                        , 'Creep Suicide:'
+                        , creep
+                        , 'err:'
+                        , err
+                        , JSON.stringify(creep)
+                        , JSON.stringify(CS));
+        }
+			}
+      lastFlagRemoved = CS;
+      lastFlagRemoved.remove();
+    },
     // Destroy Container  
     DC: function(DC) {
         var container = DC.pos.findClosestByPath(FIND_STRUCTURES, {
