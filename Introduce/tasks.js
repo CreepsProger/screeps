@@ -411,6 +411,9 @@ var tasks = {
 			 tasks.taskToBoostCreeps.needToRun(creep)) {
 			return tasks.taskToBoostCreeps.run(creep);
 		}
+		if(tools.getWeight(creep.name) == 5035 && creep.ticksToLive < 1485) {
+			return creep.suicide() == OK;
+		}
 
 		return false;
 	},
