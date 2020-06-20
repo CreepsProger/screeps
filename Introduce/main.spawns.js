@@ -471,9 +471,9 @@ var spawns = {
 							if(Sp23)	spawns.tryCreateCreep(spawn, CLAIMER[3][H], 5150, 1, 1);
 						}
 						const W = flags.flags['5154'];
-						if(Sp23)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5154, !W?1:11-W.color, !W?1:11-W.secondaryColor);
+						if(Sp23)	spawns.tryCreateCreep(spawn, WORKER[7][L], 5154, !W?1:11-W.color, !W?1:11-W.secondaryColor);
 						const C = flags.flags['5151'];
-						if(Sp23)	spawns.tryCreateCreep(spawn, CARIER[7][M], 5151, !C?1:11-C.color, !C?1:11-C.secondaryColor);
+						if(Sp23)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5151, !C?1:11-C.color, !C?1:11-C.secondaryColor);
 					}
         }
 
