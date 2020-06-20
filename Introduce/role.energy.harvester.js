@@ -313,7 +313,7 @@ var role = {
 		if(!target && (!creep.getActiveBodyparts(WORK) || UU) && (creep.memory.rerun || UU) &&
 			!!creep.room.storage &&
 			 !creep.room.storage.my &&
-			  (cont.store.getFreeCapacity() < cont.store.getCapacity() - cont.store.getUsedCapacity(RESOURCE_ENERGY) ||
+			  (creep.room.storage.store.getFreeCapacity() < creep.room.storage.store.getCapacity() - creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) ||
 				 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 0)) {
 					target = creep.room.storage;
 			if(!!target) return target;
@@ -351,7 +351,7 @@ var role = {
 			// }
 			if(target) {
 				var err = OK;
-				if(!!target.structureType && target.structureType == STRUCTURE_CONTAINER) {
+				if(!!target.structureType && (target.structureType == STRUCTURE_CONTAINER || target.structureType == STRUCTURE_STORAGE)) {
 					const resources = Object.keys(target.store); 
 					resources.forEach(function(resource,i) {
 						if(err == OK)
