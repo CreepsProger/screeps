@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 319,
+	version: 320,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -847,48 +847,10 @@ var config = {
 								}
 							},
 							W24S28:
-							{ containers: {weight: 5113}
+							{ containers: {weight: 5123}
 							, sites:
 							 	[ //{x:16, y:20, type:STRUCTURE_CONTAINER}
 								//, {x:12, y:34, type:STRUCTURE_CONTAINER}
-							 	]
-							, energy_harvesting:
-								[ {name: '1', time: 0, min_weight: 5150, max_weight: 5159}
-								, {name: '2', time: 0, min_weight: 5150, max_weight: 5159}
-								, {name: '3', time: 0, min_weight: 5150, max_weight: 5159}
-								, {name: '4', time: 0, min_weight: 5150, max_weight: 5159}
-								, {name: '5', time: 0, min_weight: 5150, max_weight: 5159}
-								, {name: '6', time: 0, min_weight: 5150, max_weight: 5159}
-								]
-							, claiming:
-							 	[ {name: '1', time: 0, min_weight: 5150, max_weight: 5159}
-								, {name: '2', time: 0, min_weight: 5150, max_weight: 5159}
-								]
-							, attacker:
-								[ {name: '1', time: 0, min_weight: 5150, max_weight: 5159}
-								, {name: '2', time: 0, min_weight: 5150, max_weight: 5159}
-								, {name: '3', time: 0, min_weight: 5150, max_weight: 5159}
-								, {name: '4', time: 0, min_weight: 5150, max_weight: 5159}
-								]
-							, heal_room:
-								{ shard: 'shard1', room: 'W24S28'}
-							, path_rooms:
-								{ W29S29: 'W28S29', W28S29: 'W27S29', W28S29y:30
-								, W27S29: 'W26S29', W27S29y:9
-								, W26S29: 'W26S28', W26S27: 'W26S28', W26S28: 'W25S28', W26S28y:42, W25S28: 'W24S28', W25S28y:16
-								, W29S31: 'W30S31', W30S31: 'W30S30'
-								, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:32
-								}
-								, escape_path:
-								{ W26S28: 'W25S28', W25S28: 'W24S28'
-								, W26S27: 'W26S28', W26S28: 'W26S29', W26S29: 'W27S29', W27S29: 'W28S29', W28S29: 'W29S29'
-								}
-							},
-							W25S28:
-							{ containers: {weight: 5123}
-							, sites:
-							 	[ {x:32, y:29, type:STRUCTURE_CONTAINER}
-								, {x:46, y:19, type:STRUCTURE_CONTAINER}
 							 	]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 5120, max_weight: 5129}
@@ -907,6 +869,44 @@ var config = {
 								, {name: '2', time: 0, min_weight: 5120, max_weight: 5129}
 								, {name: '3', time: 0, min_weight: 5120, max_weight: 5129}
 								, {name: '4', time: 0, min_weight: 5120, max_weight: 5129}
+								]
+							, heal_room:
+								{ shard: 'shard1', room: 'W24S28'}
+							, path_rooms:
+								{ W29S29: 'W28S29', W28S29: 'W27S29', W28S29y:30
+								, W27S29: 'W26S29', W27S29y:9
+								, W26S29: 'W26S28', W26S27: 'W26S28', W26S28: 'W25S28', W26S28y:42, W25S28: 'W24S28', W25S28y:16
+								, W29S31: 'W30S31', W30S31: 'W30S30'
+								, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:32
+								}
+								, escape_path:
+								{ W26S28: 'W25S28', W25S28: 'W24S28'
+								, W26S27: 'W26S28', W26S28: 'W26S29', W26S29: 'W27S29', W27S29: 'W28S29', W28S29: 'W29S29'
+								}
+							},
+							W25S28:
+							{ containers: {weight: 5153}
+							, sites:
+							 	[ {x:32, y:29, type:STRUCTURE_CONTAINER}
+								, {x:46, y:19, type:STRUCTURE_CONTAINER}
+							 	]
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 5150, max_weight: 5159}
+								, {name: '2', time: 0, min_weight: 5150, max_weight: 5159}
+								, {name: '3', time: 0, min_weight: 5150, max_weight: 5159}
+								, {name: '4', time: 0, min_weight: 5150, max_weight: 5159}
+								, {name: '5', time: 0, min_weight: 5150, max_weight: 5159}
+								, {name: '6', time: 0, min_weight: 5150, max_weight: 5159}
+								]
+							, claiming:
+							 	[ {name: '1', time: 0, min_weight: 5150, max_weight: 5159}
+								, {name: '2', time: 0, min_weight: 5150, max_weight: 5159}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 5150, max_weight: 5159}
+								, {name: '2', time: 0, min_weight: 5150, max_weight: 5159}
+								, {name: '3', time: 0, min_weight: 5150, max_weight: 5159}
+								, {name: '4', time: 0, min_weight: 5150, max_weight: 5159}
 								]
 							, heal_room:
 								{ shard: 'shard1', room: 'W29S29'}
