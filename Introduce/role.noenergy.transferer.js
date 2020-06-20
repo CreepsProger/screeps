@@ -7,6 +7,7 @@ const flags = require('main.flags');
 const log = require('main.log');
 const tasks = require('tasks');
 const tools = require('tools');
+const cash = require('cash');
 
 var role = {
 
