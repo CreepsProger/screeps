@@ -358,7 +358,7 @@ var role = {
 							err = creep.withdraw(target, resource);
 					});
 				}
-				err = !!target.isTask? target.harvestingBy(creep):
+				err = (err != OK) ? err:!!target.isTask? target.harvestingBy(creep):
 				(target.name || !target.id)? // a creep || exit
 						ERR_NOT_IN_RANGE:
 				target.structureType?
