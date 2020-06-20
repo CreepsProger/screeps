@@ -72,7 +72,16 @@ var role = {
 		if(!!creep.room.storage && !!creep.room.storage.my){
 			return creep.room.storage;
 		}
-
+		
+		if(creep.memory.rerun) {
+			const storages = cash.getStorages();
+			if(storages.length > 0) {
+				const target = storages.reduce((p,c) => tools.getRangeTo(creep.pos,p.pos)
+																	 				< tools.getRangeTo(creep.pos,c.pos)
+																					? p:c);
+				return target;
+			}
+		}
 		return config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
 	},
 
