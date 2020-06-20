@@ -465,7 +465,7 @@ var spawns = {
 					}
 					else {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W24S28')) {
-							if(Sp23)	spawns.tryCreateCreep(spawn, CLAIMER[7][H], 5150, 1, 1);
+							if(Sp23)	spawns.tryCreateCreep(spawn, CLAIMER[3][H], 5150, 1, 1);
 						}
 						const W = flags.flags['5154'];
 						if(Sp23)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5154, !W?1:11-W.color, !W?1:11-W.secondaryColor);
