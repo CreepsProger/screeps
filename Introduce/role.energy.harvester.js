@@ -348,7 +348,15 @@ var role = {
 			// 	console.log(creep, JSON.stringify({this_room:creep.room.name, target:target}));
 			// }
 			if(target) {
-				var err = !!target.isTask? target.harvestingBy(creep):
+				var err = OK;
+				if(!!target.structureType && target.structureType == STRUCTURE_CONTAINER) {
+					const resources = Object.keys(target.store); 
+					resources.forEach(function(resource,i) {
+						if(err == OK)
+							err = creep.withdraw(target, resource);
+					});
+				}
+				err = !!target.isTask? target.harvestingBy(creep):
 				(target.name || !target.id)? // a creep || exit
 						ERR_NOT_IN_RANGE:
 				target.structureType?
