@@ -43,7 +43,7 @@ var rolePickuper = {
 				if(!target) {
 					var droppeds = creep.room.find(FIND_DROPPED_RESOURCES, {
 						filter: (dropped) => {
-							return dropped.resourceType == RESOURCE_ENERGY &&
+							return /*dropped.resourceType == RESOURCE_ENERGY &&*/
 							 			(!dropped.pos.findInRange(FIND_HOSTILE_CREEPS, 5).length > 0 ||
 										 (!!DP && DP.pos.roomName == creep.room.name) ||
 										 (!!DP1 && DP1.pos.roomName == creep.room.name && DP1.pos.findPathTo(dropped).length < 5) ||
