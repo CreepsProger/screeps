@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 316,
+	version: 317,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -176,7 +176,8 @@ var config = {
 									, W59S51: 'W58S51', W58S51: 'W57S51'
 									, W29S29: 'W29S29', W28S29: 'W29S29', W29S28: 'W29S29', W28S28: 'W29S28'
 									, W25S29: 'W26S29', W26S29: 'W27S29', W27S29: 'W28S29'
-									, W24S28: 'W25S28', W25S28: 'W26S28', W26S27: 'W26S28', W26S28: 'W26S29'
+									, W25S28: 'W24S28'
+									, W26S27: 'W26S28', W26S28: 'W26S29'
 									, W27S27: 'W27S28', W27S28: 'W26S28'
 									}
 			, defaults: {towers: {mw:10000,mr:10000}}
@@ -848,8 +849,8 @@ var config = {
 							W24S28:
 							{ containers: {weight: 5153}
 							, sites:
-							 	[ {x:16, y:20, type:STRUCTURE_CONTAINER}
-								, {x:12, y:34, type:STRUCTURE_CONTAINER}
+							 	[ //{x:16, y:20, type:STRUCTURE_CONTAINER}
+								//, {x:12, y:34, type:STRUCTURE_CONTAINER}
 							 	]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 5150, max_weight: 5159}
@@ -870,7 +871,7 @@ var config = {
 								, {name: '4', time: 0, min_weight: 5150, max_weight: 5159}
 								]
 							, heal_room:
-								{ shard: 'shard1', room: 'W29S29'}
+								{ shard: 'shard1', room: 'W24S28'}
 							, path_rooms:
 								{ W29S29: 'W28S29', W28S29: 'W27S29', W28S29y:30
 								, W27S29: 'W26S29', W27S29y:9
@@ -879,7 +880,8 @@ var config = {
 								, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:32
 								}
 								, escape_path:
-								{ W24S28: 'W25S28', W25S28: 'W26S28', W26S27: 'W26S28', W26S28: 'W26S29', W26S29: 'W27S29', W27S29: 'W28S29', W28S29: 'W29S29'
+								{ W26S28: 'W25S28', W25S28: 'W24S28'
+								, W26S27: 'W26S28', W26S28: 'W26S29', W26S29: 'W27S29', W27S29: 'W28S29', W28S29: 'W29S29'
 								}
 							},
 							W25S28:
