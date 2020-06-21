@@ -128,7 +128,7 @@ var spawns = {
 											, 'sum_to_plus/sum_idle_pct:'
 											, '' + target_idle_sum_pst + '/' + sum_pst
 											, 'mittl/to_spawn:'
-											, '' + mittl + '/' + mittl_to_spawn, 'boost', boost
+											, '' + mittl + '/' + mittl_to_spawn, 'boosts', boosts
 										 );
 
 					if(!!boosts) {
