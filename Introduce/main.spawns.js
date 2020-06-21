@@ -5,6 +5,7 @@ const config = require('main.config');
 const flags = require('main.flags');
 const cash = require('cash');
 const tools = require('tools');
+const tasks = require('tasks');
 
 var last_game_time_created_creep = {};
 
@@ -133,7 +134,7 @@ var spawns = {
 					if(!!boost) {
 						console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({creep:newName, boost:boost}));
-						//tasks.taskToFillBoostingLab.addTask(creep, resource, amount); //TODO
+						tasks.addTasksToFillBoostingLab(newName, boost);
 					}
 
           Memory.CreepsCounter++;
@@ -335,7 +336,7 @@ var spawns = {
 						}
 						const k = 0+!!flags.flags['-5036'];
 						const o = 0+!!flags.flags['5036'];
-						if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[1][L], 5036, 1-k+o, 1-k+o, {XUH2O:30});
+						if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[1][L], 5036, 1-k+o, 1-k+o, [{XUH2O:30}, {ZH:0}]);
 						const n = 0+!!flags.flags['-5034'];
 						const r = 0+!!flags.flags['5034'];
 						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[5][M], 5034, 1-n+r, 1-n+r);
