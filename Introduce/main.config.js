@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 323,
+	version: 324,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -1066,6 +1066,45 @@ var config = {
 								, escape_path:
 								{ W26S27: 'W26S28', W26S28: 'W26S29'
 								, W26S29: 'W27S29', W27S29: 'W28S29', W28S29: 'W29S29'
+								}
+							},
+							W24S29:
+							{ containers: {weight: 5163}
+							, sites:
+							 	[ {x:34, y:12, type:STRUCTURE_CONTAINER}
+							 	]
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 5160, max_weight: 5169}
+								, {name: '2', time: 0, min_weight: 5160, max_weight: 5169}
+								, {name: '3', time: 0, min_weight: 5160, max_weight: 5169}
+								, {name: '4', time: 0, min_weight: 5160, max_weight: 5169}
+								, {name: '5', time: 0, min_weight: 5160, max_weight: 5169}
+								, {name: '6', time: 0, min_weight: 5160, max_weight: 5169}
+								]
+							, claiming:
+							 	[ {name: '1', time: 0, min_weight: 5160, max_weight: 5169}
+								, {name: '2', time: 0, min_weight: 5160, max_weight: 5169}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 5160, max_weight: 5169}
+								, {name: '2', time: 0, min_weight: 5160, max_weight: 5169}
+								, {name: '3', time: 0, min_weight: 5160, max_weight: 5169}
+								, {name: '4', time: 0, min_weight: 5160, max_weight: 5169}
+								]
+							, heal_room:
+								{ shard: 'shard1', room: 'W24S28'}
+							, path_rooms:
+								{ W29S31: 'W30S31', W30S31: 'W30S30', W30S30: 'W29S30'
+								, W29S30: 'W29S29', W29S30x:32, W29S29: 'W28S29'
+								, W28S29: 'W27S29', W28S29y:30, W27S29: 'W26S29', W27S29y:9
+								, W26S29: 'W27S29', W27S29: 'W28S29', W28S29: 'W27S29'
+								, W27S29: 'W26S29', W26S29: 'W25S29', W25S29: 'W24S29'
+								, W24S28: 'W24S29'
+								}
+								, escape_path:
+								{ W26S28: 'W25S28', W25S28: 'W24S28'
+								, W24S29: 'W24S28'
+								, W26S27: 'W26S28', W26S28: 'W26S29', W26S29: 'W27S29', W27S29: 'W28S29', W28S29: 'W29S29'
 								}
 							},
 							W29S31:
