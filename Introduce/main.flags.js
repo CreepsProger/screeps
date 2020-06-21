@@ -237,8 +237,17 @@ var flags = {
 			const found = T99.pos.lookFor(LOOK_STRUCTURES); 
 			if(found.length == 0) 
 				return;
-      console.log( 'Ｔ99', Math.trunc(Game.time/10000), Game.time%10000 
-                    , JSON.stringify({T99:T99, found:found}));    		
+			const store = found.store;
+			console.log('Ｔ99', Math.trunc(Game.time/10000), Game.time%10000 
+                    , JSON.stringify({T99:T99, store:store, found:found}));		
+			const getFreeCapacity = store.getFreeCapacity();
+			const getCapacity = store.getCapacity();
+			const getUsedCapacity_RESOURCE_ENERGY = store.getUsedCapacity(RESOURCE_ENERGY);
+      console.log('Ｔ99', Math.trunc(Game.time/10000), Game.time%10000 
+                    , JSON.stringify( { T99:T99
+																			, getFreeCapacity:getFreeCapacity
+																			, getCapacity:getCapacity
+																			, getUsedCapacity_RESOURCE_ENERGY:getUsedCapacity_RESOURCE_ENERGY}));
       lastFlagRemoved = T99; 
       lastFlagRemoved.remove(); 
     },
