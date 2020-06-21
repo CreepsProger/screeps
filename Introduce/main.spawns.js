@@ -740,7 +740,7 @@ var spawns = {
 								if(Sp6) spawns.tryCreateCreep(spawn, CARIER[7][M], 81, !C?1:11-C.color, !C?1:11-C.secondaryColor);
 								if(Sp2) spawns.tryCreateCreep(spawn, ATTACKER[8][L2], 75, 1, 1);
 								if(Sp6) spawns.tryCreateCreep(spawn, CARIER[7][L], 71, 1, 1);
-								if(Sp6) spawns.tryCreateCreep(spawn, WORKER[7][H], 74, 1, 1);
+								if(Sp6) spawns.tryCreateCreep(spawn, WORKER[7][L], 74, 1, 1);
 							}
 						}
 
