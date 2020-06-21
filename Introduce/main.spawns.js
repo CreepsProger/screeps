@@ -133,8 +133,8 @@ var spawns = {
 
 					if(!!boost) {
 						console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({creep:newName, boost:boost}));
-						tasks.addTasksToFillBoostingLab(newName, boost);
+											, JSON.stringify({spawn:spawn, creep:newName, boost:boost}));
+						tasks.addTasksToFillBoostingLab(spawn, newName, boost);
 					}
 
           Memory.CreepsCounter++;
