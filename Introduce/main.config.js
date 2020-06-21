@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 320,
+	version: 321,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -1253,17 +1253,24 @@ var config = {
 							},
 			 				W26S34:
 							{ containers: {weight: 73}
+							, sites:
+								[ {x:2, y:3, type:STRUCTURE_CONTAINER}
+								, {x:15, y:30, type:STRUCTURE_CONTAINER}
+								, {x:41, y:29, type:STRUCTURE_CONTAINER}
+								]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 70, max_weight: 79}
 							  , {name: '2', time: 0, min_weight: 70, max_weight: 79}
 							  , {name: '3', time: 0, min_weight: 70, max_weight: 79}
+								, {name: '4', time: 0, min_weight: 70, max_weight: 79}
+							  , {name: '5', time: 0, min_weight: 70, max_weight: 79}
 								]
 							, attacker:
 								[ {name: '1', time: 0, min_weight: 70, max_weight:79}
 								, {name: '2', time: 0, min_weight: 70, max_weight:79}
 								, {name: '3', time: 0, min_weight: 70, max_weight:79}
 								]
-						  , heal_room: 'W26S33'
+						  , heal_room: 'W27S34'
 							, path_rooms:
 							 	{ W25S33: 'W26S33', W26S33: 'W26S34', W25S34: 'W26S34'
 								, W27S33: 'W26S33', W28S33: 'W27S33', W28S34: 'W28S33'
@@ -1271,7 +1278,7 @@ var config = {
 								, W27S34: 'W26S34'
 								}
 							, escape_path:
-								{ W26S34: 'W26S33'
+								{ W26S34: 'W27S34'
 								}
 							},
 							W27S34:
