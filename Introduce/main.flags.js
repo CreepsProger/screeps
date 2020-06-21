@@ -232,6 +232,16 @@ var flags = {
         }
         Flag1.remove();
     },
+	// T99'; 
+    T99: function(T99) {
+			const found = T99.pos.lookFor(LOOK_STRUCTURES); 
+			if(found.length == 0) 
+				return;
+      console.log( 'Ｔ99', Math.trunc(Game.time/10000), Game.time%10000 
+                    , JSON.stringify({T99:T99, found:found}));    		
+      lastFlagRemoved = T99; 
+      lastFlagRemoved.remove(); 
+    },
 	// BR: Build Rampart
     BR: function(BR) {
 			const err = Game.rooms[BR.pos.roomName].createConstructionSite(BR.pos,STRUCTURE_RAMPART);
@@ -245,12 +255,12 @@ var flags = {
 			lastFlagRemoved = BR;
 			lastFlagRemoved.remove();
     },
-    // T: Test
-    T: function(T) {
+    // T100: Test 100
+    T100: function(T100) {
         var N = 1234;
         var id = '$Id$';
-        console.log( 'Ｔ', Math.trunc(Game.time/10000), Game.time%10000
-                    , T
+        console.log( 'Ｔ100', Math.trunc(Game.time/10000), Game.time%10000
+                    , T100
                     , 'String.fromCharCode(65):'
                     , String.fromCharCode(65)
                     , 'N:'
@@ -319,7 +329,7 @@ var flags = {
                         , 'maxtype'
                         , maxtype
                        );
-        lastFlagRemoved = T;
+        lastFlagRemoved = T100;
         lastFlagRemoved.remove();
     },
     // Spawn Creep
