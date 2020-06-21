@@ -223,6 +223,7 @@ var spawns = {
 
 
  				const L = 0; const M = 1; const H = 2; const S = 3; const X = extra_upgrade; const U = !Memory.stop_upgrading;
+				const L2 = 6; const M2 = 7; const H2 = 8;
 
 				if(false) {
 					console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
@@ -260,7 +261,8 @@ var spawns = {
 											 	 , [       2005000025,     250000000025,       1213000025
 													 ,       2112000017,     190006000025]  // 7 5600
 												 , [     250008000017,     200013000017,     300010000010 // 8 12900
-												   ,       2515000010,     400000000010,       4400000006]
+												   ,       2515000010,     400000000010,       4400000006
+												   ,     170008000025,     170008000025,     170008000025]
 										   	 ];//TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 				const HEALER =   [ [                0,                0,                0]  // 0   000
 											 	 , [          1000001,          1000001,          1000001]  // 1   300
@@ -280,7 +282,7 @@ var spawns = {
 											 	 , [    2000000000002,    2000000000003,    2000000000004]  // 5 1800
 											 	 , [    3000000000003,    3000000000004,    3000000000006]  // 6 2300
 												 , [    4000000000004,    8000000000010,    8000000000014]  // 7 5600
-												, [   10000000000010,   10000000000020,   19000000000019]  // 8 12900
+												 , [   10000000000010,   10000000000020,   19000000000019]  // 8 12900
 												];
 
         if(Game.shard.name == 'shard1') {
@@ -703,6 +705,7 @@ var spawns = {
 								if(Sp6) spawns.tryCreateCreep(spawn, WORKER[7][H], 84, !W?1:11-W.color, !W?1:11-W.secondaryColor);
 								const C = flags.flags['81'];
 								if(Sp6) spawns.tryCreateCreep(spawn, CARIER[7][M], 81, !C?1:11-C.color, !C?1:11-C.secondaryColor);
+								if(Sp2) spawns.tryCreateCreep(spawn, ATTACKER[7][L2], 75, 1, 1);
 							}
 						}
 
