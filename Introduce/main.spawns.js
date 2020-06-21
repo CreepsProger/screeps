@@ -705,7 +705,7 @@ var spawns = {
 								if(Sp6) spawns.tryCreateCreep(spawn, WORKER[7][H], 84, !W?1:11-W.color, !W?1:11-W.secondaryColor);
 								const C = flags.flags['81'];
 								if(Sp6) spawns.tryCreateCreep(spawn, CARIER[7][M], 81, !C?1:11-C.color, !C?1:11-C.secondaryColor);
-								if(Sp2) spawns.tryCreateCreep(spawn, ATTACKER[7][L2], 75, 1, 1);
+								if(Sp2) spawns.tryCreateCreep(spawn, ATTACKER[8][L2], 75, 1, 1);
 							}
 						}
 
