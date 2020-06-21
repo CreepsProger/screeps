@@ -372,14 +372,16 @@ var tasks = {
 			return creep.memory.task;
 		}
 	},
-	addTasksToFillBoostingLab: function(spawn, creepName, boosts) {
+
+	addTasksToFillBoostingLab: function(creepName, roomName, boosts) {
 		const resources = Object.keys(boosts).sort((l,r) => l.length - r.length);
 		console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { tasks:'addTasksToFillBoostingLab'
-																				, creep:creepName, boosts:boosts, resources:resources}));
-		resources.forEach(function(resource,i) {
+																				, creepName:creepName, roomName:roomName, boosts:boosts, resources:resources}));
+		resources.forEach(function(resource,labN) {
 			const amount = boosts[resource];
-			tasks.taskToFillBoostingLab.addTask(creepName, spawn.room.roomName, resource, amount, i);
+			if(amount > 0)
+				tasks.taskToFillBoostingLab.addTask(creepName, roomName, resource, amount, labN);
 		});
 	},
 
@@ -467,7 +469,16 @@ var tasks = {
 				Memory.todo = {};
 		if(!Memory.todo[task.room])
 				Memory.todo[task.room] = [];
-		Memory.todo[task.room].push(task); 
+		if(!Memory.totals)
+				Memory.totals = {};
+		if(!Memory.totals.TasksCounter)
+			Memory.totals.TasksCounter = 0;
+		task.addTime = Game.time;
+		task.n = ++Memory.totals.TasksCounter;
+		var roomTodo = Memory.todo[task.room];
+		roomTodo.push(task);
+		console.log('☑️', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({tasks:'addTask', task:task, roomTodo:roomTodo}));
 	}, 
 	
 	doneTask: function(creep, task) {
@@ -480,13 +491,9 @@ var tasks = {
 		
 		var roomTodo = Memory.todo[task.room];
 		
-		if(!!roomTodo.find((todo) =>     todo.name == task.name &&
-																		 todo.addingTime == task.addingTime &&
-																		 todo.adder.name == task.adder.name)) {
-			const newRoomTodo = roomTodo.filter((todo) => !(todo.name == task.name &&
-																		 todo.addingTime == task.addingTime &&
-																		 todo.adder.name == task.adder.name));
-			console.log('🎉', Math.trunc(Game.time/10000), Game.time%10000
+		if(!!roomTodo.find((todo) => todo.addTime == task.addTime && todo.n == task.n)) {
+			const newRoomTodo = roomTodo.filter((todo) => !(todo.addTime == task.addTime && todo.n == task.n));
+			console.log('☑️', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({tasks:'doneTask', task:task, roomTodo:roomTodo, newRoomTodo:newRoomTodo}));
       Memory.todo[task.room] = newRoomTodo;
 		}
