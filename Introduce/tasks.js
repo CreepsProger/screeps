@@ -298,13 +298,16 @@ var tasks = {
 											, JSON.stringify({do:'transferingBy', creep:creep.name, err:creep.memory.task.err, task:creep.memory.task}));
 			return creep.memory.task.err;
 		},
-		addTask: function(creep, resource = RESOURCE_ZYNTHIUM_HYDRIDE, amount = 100) {
+		addTask: function(creep, room, resource = RESOURCE_ZYNTHIUM_HYDRIDE, amount = 100, labN = 0) {
 			if(Game.shard.name != 'shard1')
 				return undefined;
-			const task = {name:'taskToFillBoostingLab', adder:creep, resource:RESOURCE_ZYNTHIUM_HYDRIDE, amount:100};
+			const task = {name:'taskToFillBoostingLab', adder:creep, room:room, resource:resource, amount:amount, labN:labN};
+			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify( { tasks:'taskToFillBoostingLab.addTask'
+																				, task:task}));
 			tasks.addTask(task);
 		}, 
-		assignTask: function(creep, resource = RESOURCE_ZYNTHIUM_HYDRIDE, amount = 100) {
+		assignTask: function(creep, resource = RESOURCE_ZYNTHIUM_HYDRIDE, amount = 100, labN = 1) {
 			if(Game.shard.name != 'shard1')
 				return undefined;
 			if(!creep.room.storage)
@@ -368,6 +371,16 @@ var tasks = {
 			}
 			return creep.memory.task;
 		}
+	},
+	addTasksToFillBoostingLab: function(creepName, spawn, boosts) {
+		const resources = Object.keys(boosts).sort((l,r) => l.length - r.length);
+		console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify( { tasks:'addTasksToFillBoostingLab'
+																				, creep:creepName, boosts:boosts, resources:resources}));
+		resources.forEach(function(resource,i) {
+			const amount = boosts[resource];
+			tasks.taskToFillBoostingLab.addTask(creepName, spawn.room.roomName, resource, amount, i);
+		});
 	},
 
 	getTask: function(creep) {
