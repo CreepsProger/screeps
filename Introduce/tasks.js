@@ -307,7 +307,7 @@ var tasks = {
 																				, task:task}));
 			tasks.addTask(task);
 		}, 
-		assignTask: function(creep, resource = RESOURCE_ZYNTHIUM_HYDRIDE, amount = 100, labN = 1) {
+		assignTask: function(creep, task = {room:creep.room.roomName, resource:RESOURCE_ZYNTHIUM_HYDRIDE, amount:100, labN:1} ) {
 			if(Game.shard.name != 'shard1')
 				return undefined;
 			if(!creep.room.storage)
@@ -358,8 +358,8 @@ var tasks = {
 			}
 
 			tasks.taskToFillBoostingLab.isToFillBoostingLab = true;
-			tasks.taskToFillBoostingLab.resource = resource;
-			tasks.taskToFillBoostingLab.amount = amount;
+			tasks.taskToFillBoostingLab.resource = task.resource;
+			tasks.taskToFillBoostingLab.amount = task.amount;
 			tasks.taskToFillBoostingLab.pos = pos;
 			tasks.taskToFillBoostingLab.lab_id = lab.id;
 			tasks.taskToFillBoostingLab.storage_id = creep.room.storage.id;
@@ -372,7 +372,7 @@ var tasks = {
 			return creep.memory.task;
 		}
 	},
-	addTasksToFillBoostingLab: function(creepName, spawn, boosts) {
+	addTasksToFillBoostingLab: function(spawn, creepName, boosts) {
 		const resources = Object.keys(boosts).sort((l,r) => l.length - r.length);
 		console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { tasks:'addTasksToFillBoostingLab'
@@ -411,7 +411,7 @@ var tasks = {
 			const roomTodo = tasks.getRoomTodo(creep.room.name);
 			if(!!roomTodo) {
 				roomTodo.some(function(todo,i) {
-					if(!!todo.boost && todo.creep == creep.name && !!tasks[todo.name].assignTask(creep) )
+					if(!!todo.boost && todo.creep == creep.name && !!tasks[todo.name].assignTask(creep, todo) )
 						return true; 
 					return false;
 				});
@@ -436,7 +436,7 @@ var tasks = {
 			const roomTodo = tasks.getRoomTodo(creep.room.name);
 			if(!!roomTodo) {
 				roomTodo.some(function(todo,i) {
-					if(!! tasks[todo.name].assignTask(creep) )
+					if(!! tasks[todo.name].assignTask(creep, todo) )
 						return true; 
 					return false;
 				});
