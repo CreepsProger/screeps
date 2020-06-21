@@ -461,8 +461,7 @@ var spawns = {
 						const W = flags.flags['5124'];
 						if(Sp23)	spawns.tryCreateCreep(spawn, WORKER[7][L], 5124, !W?1:11-W.color, !W?1:11-W.secondaryColor);
 						const C = flags.flags['5121'];
-						if(Sp23)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5121, !C?1:11-C.color, !C?1:11-C.secondaryColor);
-						if(Sp5)	spawns.tryCreateCreep(spawn, CARIER[4][H], 5121, !C?1:11-C.color, !C?1:11-C.secondaryColor);
+						if(Sp5)	spawns.tryCreateCreep(spawn, CARIER[5][H], 5121, !C?1:11-C.color, !C?1:11-C.secondaryColor);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W25S28')) {
 						if(Sp23)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5155, 1, 1);
