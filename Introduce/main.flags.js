@@ -237,7 +237,7 @@ var flags = {
 			const found = T99.pos.lookFor(LOOK_STRUCTURES); 
 			if(found.length == 0) 
 				return;
-			const store = found.store;
+			const store = found[0].store;
 			console.log('Ｔ99', Math.trunc(Game.time/10000), Game.time%10000 
                     , JSON.stringify({T99:T99, store:store, found:found}));		
 			const getFreeCapacity = store.getFreeCapacity();
