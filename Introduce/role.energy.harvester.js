@@ -313,7 +313,7 @@ var role = {
 		if(!target && (!creep.getActiveBodyparts(WORK) || UU) && (creep.memory.rerun || UU) &&
 			!!creep.room.storage &&
 			 !creep.room.storage.my &&
-			  (creep.room.storage.store.getFreeCapacity() < creep.room.storage.store.getCapacity() - creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) ||
+			  (Object.keys(creep.room.storage.store).length > 0 ||
 				 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 0)) {
 					target = creep.room.storage;
 			if(!!target) return target;
