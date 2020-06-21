@@ -26,7 +26,7 @@ var spawns = {
       return Math.floor(300 * Cs * 50 / (harvest_ticks + move_to_rc_ticks + upgrade_ticks + move_from_rc_ticks));
    },
 
-    tryCreateCreep: function(spawn, type, weight, needed = 0, max_needed = 100, boost = undefined ) {
+    tryCreateCreep: function(spawn, type, weight, needed = 0, max_needed = 100, boosts = undefined ) {
 			var body = [];
 			const  Ts = Math.trunc(type%10000000000000000/100000000000000);
 			const CLs = Math.trunc(type%100000000000000  /1000000000000);
@@ -105,7 +105,7 @@ var spawns = {
 	//                   );
 				var err = spawn.spawnCreep( body
 																	, newName
-																	, {memory: {n: Memory.CreepsCounter, cost: cost, weight: weight, type: type, role: 'creep', transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
+																	, {memory: {n: Memory.CreepsCounter, cost: cost, weight: weight, type: type, role: 'creep', boosts:boosts, transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
 				if(err) {
 					console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 											, spawn.name
@@ -131,10 +131,10 @@ var spawns = {
 											, '' + mittl + '/' + mittl_to_spawn, 'boost', boost
 										 );
 
-					if(!!boost) {
+					if(!!boosts) {
 						console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({spawn:spawn, creep:newName, boost:boost}));
-						tasks.addTasksToFillBoostingLab(spawn, newName, boost);
+											, JSON.stringify({spawn:spawn, creep:newName, boosts:boosts}));
+						tasks.addTasksToFillBoostingLab(spawn, newName, boosts);
 					}
 
           Memory.CreepsCounter++;
