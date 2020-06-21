@@ -43,8 +43,8 @@ var rolePickuper = {
 				if(!target) {
 					var droppeds = creep.room.find(FIND_DROPPED_RESOURCES, {
 						filter: (dropped) => {
-							console.log('👊', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({creep:creep.name, dropped:dropped}));
+							/*console.log('👊', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({creep:creep.name, dropped:dropped}));*/
 							return dropped.amount > 5 &&/*dropped.resourceType == RESOURCE_ENERGY &&*/
 							 			(!dropped.pos.findInRange(FIND_HOSTILE_CREEPS, 5).length > 0 ||
 										 (!!DP && DP.pos.roomName == creep.room.name) ||
@@ -58,8 +58,8 @@ var rolePickuper = {
 						var dropped = droppeds.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 						if(!!dropped) {
 							target = tools.setTarget(creep,dropped,dropped.id,rolePickuper.run);
-							console.log('👊', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({creep:creep.name, target:target}));
+							/*console.log('👊', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({creep:creep.name, target:target}));*/
 						}
 					}
 				}
