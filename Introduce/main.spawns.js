@@ -475,6 +475,20 @@ var spawns = {
 						const C = flags.flags['5151'];
 						if(Sp23)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5151, !C?1:11-C.color, !C?1:11-C.secondaryColor);
 					}
+					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W24S29')) {
+						if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5165, 1, 1);
+					}
+					else {
+						if(conditions.TO_SPAWN_ROOM_CLAIMER('W26S27')) {
+							if(Sp5)	spawns.tryCreateCreep(spawn, CLAIMER[5][H], 5160, 1, 1);
+						}
+						const n = 0+!!flags.flags['-5164'];
+						const r = 0+!!flags.flags['5164'];
+						if(Sp5)	spawns.tryCreateCreep(spawn, WORKER[5][M], 5164, 1-n+r, 1-n+r);
+						const m = 0+!!flags.flags['-5161'];
+						const p = 0+!!flags.flags['5161'];
+						if(Sp5)	spawns.tryCreateCreep(spawn, CARIER[5][L], 5161, 1-m+p, 1-m+p);
+					}
         }
 
 				if(Game.shard.name == 'shard0') {
