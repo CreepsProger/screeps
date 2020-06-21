@@ -239,12 +239,16 @@ var flags = {
 				return;
 			const store = found[0].store;
 			console.log('Ｔ99', Math.trunc(Game.time/10000), Game.time%10000 
-                    , JSON.stringify({T99:T99, store:store, found:found}));		
+                    , JSON.stringify({T99:T99, store:store, found:found}));
+			const keys = Object.keys(store);
+			const keysLength = keys.length;
 			const getFreeCapacity = store.getFreeCapacity();
 			const getCapacity = store.getCapacity();
 			const getUsedCapacity_RESOURCE_ENERGY = store.getUsedCapacity(RESOURCE_ENERGY);
       console.log('Ｔ99', Math.trunc(Game.time/10000), Game.time%10000 
                     , JSON.stringify( { T99:T99
+																			, keys:keys
+																			, keysLength:keysLength
 																			, getFreeCapacity:getFreeCapacity
 																			, getCapacity:getCapacity
 																			, getUsedCapacity_RESOURCE_ENERGY:getUsedCapacity_RESOURCE_ENERGY}));
