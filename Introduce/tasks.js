@@ -46,13 +46,13 @@ var tasks = {
 																				, err:creep.memory.task.err, task:creep.memory.task}));
 			return creep.memory.task.err;
 		},
-		addTask: function(creep, boost) {
+		addTask: function(creep, room, resource = RESOURCE_ZYNTHIUM_HYDRIDE, amount = 100, labN = 0) {
 			if(Game.shard.name != 'shard1')
 				return undefined;
-			const task = {name:'taskToBoostCreeps', adder:creep, boost:boost};
+			const task = {name:'taskToBoostCreeps', adder:creep, room:room, resource:resource, amount:amount, labN:labN};
 			tasks.addTask(task);
 		}, 
-		assignTask: function(creep, resource = RESOURCE_ZYNTHIUM_HYDRIDE, amount = 100) {
+		assignTask: function(creep, room, task = {room:room, resource:RESOURCE_ZYNTHIUM_HYDRIDE, amount:100, labN:1} ) {
 			if(Game.shard.name != 'shard1')
 				return undefined;
 			if(!creep.room.storage)
@@ -84,23 +84,23 @@ var tasks = {
 																					, lab:lab}));
 				return undefined;
 			}
-			const isFilledEnough = !!lab.store.getUsedCapacity(resource) && (lab.store.getUsedCapacity(resource) >= amount);
+			const isFilledEnough = !!lab.store.getUsedCapacity(task.resource) && (lab.store.getUsedCapacity(task.resource) >= task.amount);
 			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { do:'assignTask', creep:creep.name
-																				, taskName:'isToBoostCreeps', resource:resource, amount:amount
+																				, taskName:'isToBoostCreeps', resource:task.resource, amount:task.amount
 																				, task:tasks.taskToBoostCreeps, lab:lab
 																				, lab_mineralType:lab.mineralType
 																				, isFilledEnough:isFilledEnough}));
 			if(!isFilledEnough) {
 				console.log('✅', 'return tasks.taskToFillBoostingLab.assignTask') ;
-				return tasks.taskToFillBoostingLab.addTask(creep, resource, amount);
+				return tasks.taskToFillBoostingLab.addTask(creep, task.resource, task.amount, task.labN);
 			}
 
 			tasks.taskToBoostCreeps.isToBoostCreeps = true; 
 			tasks.taskToBoostCreeps.pos = pos; 
 			tasks.taskToBoostCreeps.lab_id = lab.id; 
-			tasks.taskToBoostCreeps.resource = resource;
-			tasks.taskToBoostCreeps.amount = amount;
+			tasks.taskToBoostCreeps.resource = task.resource;
+			tasks.taskToBoostCreeps.amount = task.amount;
 			tasks.taskToBoostCreeps.isTask = true; 
 			creep.memory.task = tasks.taskToBoostCreeps;
 
@@ -402,8 +402,18 @@ var tasks = {
 	
 	onBirth: function(creep) {
 		if(creep.memory.boosts !== undefined) {
-			creep.memory.boosts.forEach(function(boost, i) {
-				tasks.taskToBoostCreeps.addTask(creep, boost);
+			const creepName = creep.name;
+			const roomName = creep.room.roomName;
+			const boosts = creep.memory.boosts;
+			const resources = Object.keys(creep.memory.boosts).sort((l,r) => l.length - r.length);
+			console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify( { tasks:'onBirth'
+																				, creepName:creepName, roomName:roomName
+																				, boosts:boosts, resources:resources}));
+			resources.forEach(function(resource,labN) {
+				const amount = boosts[resource];
+				if(amount > 0)
+					tasks.taskToBoostCreeps.addTask(creepName, roomName, resource, amount, labN);
 			});
 		}
 	},
@@ -493,7 +503,7 @@ var tasks = {
 		
 		if(!!roomTodo.find((todo) => todo.addTime == task.addTime && todo.n == task.n)) {
 			const newRoomTodo = roomTodo.filter((todo) => !(todo.addTime == task.addTime && todo.n == task.n));
-			console.log('☑️', Math.trunc(Game.time/10000), Game.time%10000
+			console.log('☑️☑️', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({tasks:'doneTask', task:task, roomTodo:roomTodo, newRoomTodo:newRoomTodo}));
       Memory.todo[task.room] = newRoomTodo;
 		}
