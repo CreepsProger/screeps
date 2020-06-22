@@ -181,9 +181,12 @@ var role = {
 							filter: function(s) { return s.structureType == STRUCTURE_EXTRACTOR;}});
 		
 		if(!!extractor) {
-			const mineral = extractor.pos.lookFor(LOOK_MINERALS);
-			if(!!mineral && mineral.mineralAmount > 0)
-				return mineral;
+			const minerals = extractor.pos.lookFor(LOOK_MINERALS);
+			if(!!minerals && minerals.length > 0) {
+				const mineral = const minerals[0];
+				if(!!mineral && mineral.mineralAmount > 0)
+					return mineral;
+			}
 		}
 
 		var energy = (!!creep.room.terminal && !!creep.room.terminal.my)? creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY):0;
