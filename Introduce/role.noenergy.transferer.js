@@ -82,7 +82,7 @@ var role = {
 			return creep.room.storage;
 		}
 		
-		if(creep.memory.rerun) {
+		if(creep.store.getFreeCapacity() == 0 || creep.memory.rerun) {
 			const storages = cash.getStorages();
 			if(storages.length > 0) {
 				const target = storages.reduce((p,c) => tools.getRangeTo(creep.pos,p.pos)
