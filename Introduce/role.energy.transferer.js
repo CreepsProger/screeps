@@ -197,12 +197,20 @@ var roleEnergyTransferer = {
 					}
 				});
 
-				const U = !!flags.flags.U && flags.flags.U.pos.roomName == my_room;
+				const U = !!flags.flags.U && flags.flags.U.pos.roomName == my_room; 
 
-				if((!targs || !targs.length || targs.length == 0 || tools.getWeight(creep.name) == 5124 ) &&
+				if(tools.getWeight(creep.name) == 74) {
+					console.log('TRANSFER TO CONTAINER 1', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({creep:creep.name, targs:targs}));
+				}
+				if((!targs || !targs.length || targs.length == 0 ) &&
 				  (this_room_config.containers.weight < tools.getWeight(creep.name) && !U && !UU)) {
 					targs = cash.getContainers(creep.room).filter((cont) =>
 						!!cont && !!cont.store && cont.store.getFreeCapacity(RESOURCE_ENERGY) > 0);
+				}
+				if(tools.getWeight(creep.name) == 74) {
+					console.log('TRANSFER TO CONTAINER 2', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({creep:creep.name, targs:targs}));
 				}
 
 				if((!targs || !targs.length) && !!creep.room.storage &&
