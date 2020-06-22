@@ -24,7 +24,7 @@ var roleEnergyTransferer = {
 			creep.memory.transfering = false;
 		}
 		if(tools.getWeight(creep.name) > 70 && tools.getWeight(creep.name) < 75) {
-			console.log('TRANSFER TO CONTAINER 0', Math.trunc(Game.time/10000), Game.time%10000
+			console.log('TRANSFER TO CONTAINER -', Math.trunc(Game.time/10000), Game.time%10000
 									, JSON.stringify( { creep:creep.name, transfering:creep.memory.transfering
 																		, getActiveBodyparts:creep.getActiveBodyparts(WORK)
 																		, getFreeCapacity:creep.store.getFreeCapacity(RESOURCE_ENERGY)
@@ -47,6 +47,11 @@ var roleEnergyTransferer = {
 
 		if(creep.memory.transfering) {
 			var t = Game.cpu.getUsed();
+			if(tools.getWeight(creep.name) > 70 && tools.getWeight(creep.name) < 75) {
+				console.log('TRANSFER TO CONTAINER 0', Math.trunc(Game.time/10000), Game.time%10000
+										, JSON.stringify( { creep:creep.name, transfering:creep.memory.transfering
+																			, rerun:creep.memory.rerun}));
+			}
 
 			const this_room = creep.room.name;
 			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
