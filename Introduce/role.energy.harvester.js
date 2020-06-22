@@ -177,15 +177,16 @@ var role = {
 			if(!!target) return target;
 		}
 		
-		const extractor = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+		if(creep.getActiveBodyparts(WORK) && !UU) {
+			const extractor = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 							filter: function(s) { return s.structureType == STRUCTURE_EXTRACTOR;}});
-		
-		if(!!extractor) {
-			const minerals = extractor.pos.lookFor(LOOK_MINERALS);
-			if(!!minerals && minerals.length > 0) {
-				const mineral = minerals[0];
-				if(!!mineral && mineral.mineralAmount > 0)
-					return mineral;
+			if(!!extractor) {
+				const minerals = extractor.pos.lookFor(LOOK_MINERALS);
+				if(!!minerals && minerals.length > 0) {
+					const mineral = minerals[0];
+					if(!!mineral && mineral.mineralAmount > 0)
+						return mineral;
+				}
 			}
 		}
 
