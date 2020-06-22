@@ -183,7 +183,7 @@ var role = {
 		if(!!extractor) {
 			const minerals = extractor.pos.lookFor(LOOK_MINERALS);
 			if(!!minerals && minerals.length > 0) {
-				const mineral = const minerals[0];
+				const mineral = minerals[0];
 				if(!!mineral && mineral.mineralAmount > 0)
 					return mineral;
 			}
