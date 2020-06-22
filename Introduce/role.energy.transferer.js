@@ -199,7 +199,7 @@ var roleEnergyTransferer = {
 
 				const U = !!flags.flags.U && flags.flags.U.pos.roomName == my_room; 
 
-				if(Game.shard.name == 'shard3' && tools.getWeight(creep.name) < 74) {
+				if(Game.shard.name == 'shard3' && tools.getWeight(creep.name) < 75) {
 					console.log('TRANSFER TO CONTAINER 1', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({creep:creep.name, weight:tools.getWeight(creep.name), targs:targs}));
 				}
