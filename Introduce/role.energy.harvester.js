@@ -81,6 +81,7 @@ var role = {
 		}
 
 		const XU = !!flags.flags.XU;
+		const B  = !!flags.flags.B && flags.flags.B.pos.roomName == my_room;
 		const U  = XU || !!flags.flags.U && flags.flags.U.pos.roomName == my_room;
 		const UU = XU || !!flags.flags.UU && flags.flags.UU.pos.roomName == my_room;
 		const BB = XU || !!flags.flags.BB && flags.flags.BB.pos.roomName == my_room;
@@ -177,7 +178,7 @@ var role = {
 			if(!!target) return target;
 		}
 		
-		if(creep.getActiveBodyparts(WORK) && !UU) {
+		if(creep.getActiveBodyparts(WORK) && !UU && !B) {
 			const extractor = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 							filter: function(s) { return s.structureType == STRUCTURE_EXTRACTOR;}});
 			if(!!extractor) {
