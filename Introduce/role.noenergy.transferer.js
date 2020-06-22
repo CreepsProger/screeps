@@ -41,7 +41,8 @@ var role = {
 
 	checkOff: function(creep) {
 		if(	creep.memory[role.name].on &&
-				creep.store.getFreeCapacity() == creep.store.getCapacity() - creep.store.getUsedCapacity(RESOURCE_ENERGY)) {
+			 Object.keys(creep.store).length == 0+(creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0)) {
+				//creep.store.getFreeCapacity() == creep.store.getCapacity() - creep.store.getUsedCapacity(RESOURCE_ENERGY)) {
 			creep.memory[role.name].on = false;
 		}
 	},
