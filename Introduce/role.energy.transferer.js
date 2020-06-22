@@ -23,6 +23,14 @@ var roleEnergyTransferer = {
 		if(creep.memory.transfering && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
 			creep.memory.transfering = false;
 		}
+		if(tools.getWeight(creep.name) > 70 && tools.getWeight(creep.name) < 75) {
+			console.log('TRANSFER TO CONTAINER 0', Math.trunc(Game.time/10000), Game.time%10000
+									, JSON.stringify( { creep:creep.name, transfering:creep.memory.transfering
+																		, getActiveBodyparts:creep.getActiveBodyparts(WORK)
+																		, getFreeCapacity:creep.store.getFreeCapacity(RESOURCE_ENERGY)
+																		, getUsedCapacity:creep.store.getUsedCapacity(RESOURCE_ENERGY)
+																		, rerun:creep.memory.rerun}));
+		}
 
 		if(	!creep.memory.transfering
 			 	&&
