@@ -68,7 +68,14 @@ var role = {
 		const task = tasks.needToTransfer(creep);
 		if(!!task){
 			return task;
-		} 
+		}
+		
+		if(creep.getActiveBodyparts(WORK)) {
+			const conts = cash.getContainers(creep.room).filter((cont) =>
+						!!cont && !!cont.store && cont.store.getFreeCapacity(RESOURCE_ENERGY) > 0	&& creep.pos.getRangeTo(cont) <= 3);
+			if(conts && conts.length > 0)
+				return conts[0];
+		}
 
 		if(!!creep.room.storage && !!creep.room.storage.my){
 			return creep.room.storage;
