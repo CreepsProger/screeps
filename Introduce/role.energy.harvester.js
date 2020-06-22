@@ -176,6 +176,15 @@ var role = {
 			}
 			if(!!target) return target;
 		}
+		
+		target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+							filter: function(s) { return s.structureType == STRUCTURE_EXTRACTOR;}});
+		
+		if(!!target) {
+			const mineral = target.pos.lookFor(LOOK_MINERALS);
+			if(!!mineral && mineral.mineralAmount > 0)
+				return target;
+		}
 
 		var energy = (!!creep.room.terminal && !!creep.room.terminal.my)? creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY):0;
 			  energy +=  (!!creep.room.storage && !!creep.room.storage.my)? creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0;
@@ -367,7 +376,9 @@ var role = {
 				err = (err != OK) ? err:!!target.isTask? target.harvestingBy(creep):
 				(target.name || !target.id)? // a creep || exit
 						ERR_NOT_IN_RANGE:
-				target.structureType?
+				(!!target.structureType && target.structureType == STRUCTURE_EXTRACTOR)?
+				    creep.harvest(target):
+				!!target.structureType?
 						creep.withdraw(target, RESOURCE_ENERGY): // a structure
 				(target.energy == 0 && creep.pos.getRangeTo(target) > 1 )? // a source
 						ERR_NOT_IN_RANGE:
