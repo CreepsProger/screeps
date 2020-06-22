@@ -517,7 +517,7 @@ var spawns = {
 						if(Sp5)	spawns.tryCreateCreep(spawn, WORKER[5][M], 5164, 4-n+r, 4-n+r);
 						const m = 0+!!flags.flags['-5161'];
 						const p = 0+!!flags.flags['5161'];
-						if(Sp5)	spawns.tryCreateCreep(spawn, CARIER[5][L], 5161, 2-m+p, 2-m+p);
+						if(Sp5)	spawns.tryCreateCreep(spawn, CARIER[5][L], 5161, 4-m+p, 4-m+p);
 					}
         }
 
