@@ -1,4 +1,4 @@
-const roleNext = require('role.energy.harvester');
+const roleNext = require('role.harvester');
 const constants = require('main.constants');
 const terminals = require('main.terminals');
 const conditions = require('main.conditions');
