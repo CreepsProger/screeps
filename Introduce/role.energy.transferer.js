@@ -23,14 +23,14 @@ var roleEnergyTransferer = {
 		if(creep.memory.transfering && creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
 			creep.memory.transfering = false;
 		}
-		if(tools.getWeight(creep.name) > 70 && tools.getWeight(creep.name) < 75) {
-			console.log('TRANSFER TO CONTAINER -', Math.trunc(Game.time/10000), Game.time%10000
-									, JSON.stringify( { creep:creep.name, transfering:creep.memory.transfering
-																		, getActiveBodyparts:creep.getActiveBodyparts(WORK)
-																		, getFreeCapacity:creep.store.getFreeCapacity(RESOURCE_ENERGY)
-																		, getUsedCapacity:creep.store.getUsedCapacity(RESOURCE_ENERGY)
-																		, rerun:creep.memory.rerun}));
-		}
+// 		if(tools.getWeight(creep.name) > 70 && tools.getWeight(creep.name) < 75) {
+// 			console.log('TRANSFER TO CONTAINER -', Math.trunc(Game.time/10000), Game.time%10000
+// 									, JSON.stringify( { creep:creep.name, transfering:creep.memory.transfering
+// 																		, getActiveBodyparts:creep.getActiveBodyparts(WORK)
+// 																		, getFreeCapacity:creep.store.getFreeCapacity(RESOURCE_ENERGY)
+// 																		, getUsedCapacity:creep.store.getUsedCapacity(RESOURCE_ENERGY)
+// 																		, rerun:creep.memory.rerun}));
+// 		}
 
 		if(	!creep.memory.transfering
 			 	&&
@@ -47,11 +47,11 @@ var roleEnergyTransferer = {
 
 		if(creep.memory.transfering) {
 			var t = Game.cpu.getUsed();
-			if(tools.getWeight(creep.name) > 70 && tools.getWeight(creep.name) < 75) {
-				console.log('TRANSFER TO CONTAINER 0', Math.trunc(Game.time/10000), Game.time%10000
-										, JSON.stringify( { creep:creep.name, transfering:creep.memory.transfering
-																			, rerun:creep.memory.rerun}));
-			}
+// 			if(tools.getWeight(creep.name) > 70 && tools.getWeight(creep.name) < 75) {
+// 				console.log('TRANSFER TO CONTAINER 0', Math.trunc(Game.time/10000), Game.time%10000
+// 										, JSON.stringify( { creep:creep.name, transfering:creep.memory.transfering
+// 																			, rerun:creep.memory.rerun}));
+// 			}
 
 			const this_room = creep.room.name;
 			const my_room = creep.memory[constants.ROLE_ENERGY_HARVESTING].room;
@@ -212,19 +212,19 @@ var roleEnergyTransferer = {
 
 				const U = !!flags.flags.U && flags.flags.U.pos.roomName == my_room; 
 
-				if(tools.getWeight(creep.name) > 70 && tools.getWeight(creep.name) < 75) {
-					console.log('TRANSFER TO CONTAINER 1', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({creep:creep.name, weight:tools.getWeight(creep.name), targs:targs}));
-				}
+// 				if(tools.getWeight(creep.name) > 70 && tools.getWeight(creep.name) < 75) {
+// 					console.log('TRANSFER TO CONTAINER 1', Math.trunc(Game.time/10000), Game.time%10000
+// 											, JSON.stringify({creep:creep.name, weight:tools.getWeight(creep.name), targs:targs}));
+// 				}
 				if((!targs || !targs.length || targs.length == 0 ) &&
 				  (this_room_config.containers.weight < tools.getWeight(creep.name) && !U && !UU)) {
 					targs = cash.getContainers(creep.room).filter((cont) =>
 						!!cont && !!cont.store && cont.store.getFreeCapacity(RESOURCE_ENERGY) > 0);
 				}
-				if(tools.getWeight(creep.name) > 70 && tools.getWeight(creep.name) < 75) {
-					console.log('TRANSFER TO CONTAINER 2', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({creep:creep.name, targs:targs}));
-				}
+// 				if(tools.getWeight(creep.name) > 70 && tools.getWeight(creep.name) < 75) {
+// 					console.log('TRANSFER TO CONTAINER 2', Math.trunc(Game.time/10000), Game.time%10000
+// 											, JSON.stringify({creep:creep.name, targs:targs}));
+// 				}
 
 				if((!targs || !targs.length) && !!creep.room.storage &&
 						creep.getActiveBodyparts(WORK)  && !U && !UU &&
