@@ -159,7 +159,7 @@ var role = {
 		
 		if(creep.getActiveBodyparts(WORK) && !UU && !B) {
 			const extractor = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-							filter: function(s) { return s.structureType == STRUCTURE_EXTRACTOR;}});
+							filter: function(s) { return s.structureType == STRUCTURE_EXTRACTOR && (s.my === undefined || s.my);}});
 			if(!!extractor) {
 				const minerals = extractor.pos.lookFor(LOOK_MINERALS);
 				if(!!minerals && minerals.length > 0) {
