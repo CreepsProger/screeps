@@ -149,12 +149,18 @@ var role = {
 				if(!!source && creep.pos.getRangeTo(source) == 1) {
 					target = source;
 				}
-				else {target = creep.pos.findClosestByPath(FIND_SOURCES, {
+				else {
+					target = creep.pos.findClosestByPath(FIND_SOURCES, {
 							filter: function(source) { return source.energy > 0;}});
 				}
 			}
 			if(!!target)
 				return target;
+		}
+		const LL  = !!flags.flags.LL && flags.flags.LL.pos.roomName == my_room;
+		if(LL) {
+				console.log('✔️', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({LL:LL, creep:creep.name, target:target}));
 		}
 		
 		if(creep.getActiveBodyparts(WORK) && !UU && !B) {
@@ -349,6 +355,11 @@ var role = {
 			// 	console.log(creep, JSON.stringify({this_room:creep.room.name, target:target}));
 			// }
 			if(target) {
+				const LL  = !!flags.flags.LL && flags.flags.LL.pos.roomName == creep.room.name;
+				if(LL) {
+					console.log('✔️', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({LL:LL, creep:creep.name, target:target}));
+				}
 				var err = OK;
 				if(!!target.structureType && (target.structureType == STRUCTURE_CONTAINER || target.structureType == STRUCTURE_STORAGE)) {
 					const resources = Object.keys(target.store); 
