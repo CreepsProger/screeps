@@ -136,6 +136,7 @@ var flags = {
 				,    304: Game.flags['304']		// start spawning 304-th creeps on shard 0
 				,    404: Game.flags['404']		// start spawning 404-th one more creep
 				,      L: Game.flags['L']			// log
+				,     LL: Game.flags['LL']			// special log
 				,     LA: Game.flags['LA']		// log attacker
 				,     LW: Game.flags['LW']		// log main metrix
 				,    LWE: Game.flags['LWE']		// log main metrix
