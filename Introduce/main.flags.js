@@ -19,13 +19,13 @@ var flags = {
 		const C = flags.flags[name];
 		return !C?0:11-C.color;
 	},
-	getMaxNeeded: function(weight) {
+	getMaxNeeded: function(weight, needed) {
 		const name = '' + weight;
 		if(flags.flags[name] === undefined) {
 			flags.flags[name] = Game.flags[name];
 		}
 		const C = flags.flags[name];
-		return !C?0:11-C.secondaryColor;
+		return !C?needed:11-C.secondaryColor;
 	},
 	cashFlags: function() {
 		if(flags.time != Game.time) {
