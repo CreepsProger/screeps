@@ -165,6 +165,13 @@ var flags = {
         }
         Flag1.remove();
     },
+	//Totals: refactor totals
+    Totals: function(Totals) {
+			console.log( '🏳️‍', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify(Totals));
+			Memory.CreepsNumberByWeight = {};
+			Totals.remove();
+    },
 	// T99'; 
     T99: function(T99) {
 			const found = T99.pos.lookFor(LOOK_STRUCTURES); 
