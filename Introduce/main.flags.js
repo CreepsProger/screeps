@@ -12,7 +12,7 @@ var flags = {
 	time:0,
 	flags:{},
 	getNeeded: function(weight) {
-		conct plus = '' + weight;
+		const plus = '' + weight;
 		if(flags.flags[plus] === undefined) {
 			flags.flags[plus] = Game.flags[plus];
 		}
@@ -25,7 +25,7 @@ var flags = {
 		return !Plus?(!Minus?1:0):11-Plus.color;
 	},
 	getMaxNeeded: function(weight, needed) {
-		conct plus = '' + weight;
+		const plus = '' + weight;
 		if(flags.flags[plus] === undefined) {
 			flags.flags[plus] = Game.flags[plus];
 		}
