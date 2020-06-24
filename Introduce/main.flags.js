@@ -12,20 +12,25 @@ var flags = {
 	time:0,
 	flags:{},
 	getNeeded: function(weight) {
-		const name = '' + weight;
-		if(flags.flags[name] === undefined) {
-			flags.flags[name] = Game.flags[name];
+		conct plus = '' + weight;
+		if(flags.flags[plus] === undefined) {
+			flags.flags[plus] = Game.flags[plus];
 		}
-		const C = flags.flags[name];
-		return !C?0:11-C.color;
+		const minus = '' + (-1)*weight;
+		if(flags.flags[minus] === undefined) {
+			flags.flags[minus] = Game.flags[minus];
+		}
+		const Plus = !!flags.flags[plus];
+		const Minus = !!flags.flags[minus];
+		return !Plus?(!Minus?1:0):11-Plus.color;
 	},
 	getMaxNeeded: function(weight, needed) {
-		const name = '' + weight;
-		if(flags.flags[name] === undefined) {
-			flags.flags[name] = Game.flags[name];
+		conct plus = '' + weight;
+		if(flags.flags[plus] === undefined) {
+			flags.flags[plus] = Game.flags[plus];
 		}
-		const C = flags.flags[name];
-		return !C?needed:11-C.secondaryColor;
+		const Plus = !!flags.flags[plus];
+		return !Plus?needed:11-Plus.secondaryColor;
 	},
 	cashFlags: function() {
 		if(flags.time != Game.time) {
