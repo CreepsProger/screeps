@@ -11,6 +11,22 @@ var flags = {
 
 	time:0,
 	flags:{},
+	getNeeded: function(weight) {
+		const name = '' + weight;
+		if(flags.flags[name] === undefined) {
+			flags.flags[name] = Game.flags[name];
+		}
+		const C = flags.flags[name];
+		return !C?0:11-C.color;
+	},
+	getMaxNeeded: function(weight) {
+		const name = '' + weight;
+		if(flags.flags[name] === undefined) {
+			flags.flags[name] = Game.flags[name];
+		}
+		const C = flags.flags[name];
+		return !C?0:11-C.secondaryColor;
+	},
 	cashFlags: function() {
 		if(flags.time != Game.time) {
 			flags.time = Game.time;
