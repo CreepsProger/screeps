@@ -63,19 +63,7 @@ var flags = {
 			 	,     MW: Game.flags['MW']		// multiplier to repair wall
 			 	,     MR: Game.flags['MR']		// multiplier to repair rampart
 				 
-				,     11: Game.flags['11']		// start spawning 11-th one more creep
-				,     31: Game.flags['31']		// start spawning 31-st one more creep
-				,     34: Game.flags['34']		// start spawning 34-th one more creep
-				,     41: Game.flags['41']		// start spawning 41-st one more creep
-				,     44: Game.flags['44']		// start spawning 44-th one more creep
-				,     61: Game.flags['61']		// start spawning 61-st one more creep
-				,     64: Game.flags['64']		// start spawning 64-th one more creep
-				,     81: Game.flags['81']		// start spawning 81-st one more creep
-				,     84: Game.flags['84']		// start spawning 84-th one more creep
-				,    121: Game.flags['121']		// start spawning 121-st one more creep
-				,    124: Game.flags['124']		// start spawning 124-th one more creep
-				,    171: Game.flags['171']		// start spawning 171-st one more creep
-				,    174: Game.flags['174']		// start spawning 174-th one more creep
+				
 				,    401: Game.flags['401']		// start spawning 401-st one more creep
 				,    304: Game.flags['304']		// start spawning 304-th creeps on shard 0
 				,    404: Game.flags['404']		// start spawning 404-th one more creep
