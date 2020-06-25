@@ -439,10 +439,16 @@ var tasks = {
 		if(tools.getWeight(creep.name) == 5035 && creep.ticksToLive < 1485) {
 			return creep.suicide() == OK;
 		}
-		if(tools.getWeight(creep.name) == 173 && creep.ticksToLive > 1400){
-			if(creep.withdraw(creep.room.storage,'X') == ERR_NOT_IN_RANGE) {
+		if(tools.getWeight(creep.name) == 173 && creep.ticksToLive > 1000){
+			if(!creep.store.X) {
+				if(creep.withdraw(creep.room.storage,'X') == ERR_NOT_IN_RANGE) {
 					creep.say('🔜');
-					return OK == tools.moveTo(creep, creep.room.storage);
+					tools.moveTo(creep, creep.room.storage);
+				}
+			}
+			else {
+				const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
+				return OK == tools.moveTo(creep, target);
 			}
 		}
 
