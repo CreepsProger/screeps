@@ -44,6 +44,7 @@ var roleWithdrawer = {
 					filter: (tombstone) => {
 						return !!tombstone.store &&
 						 				Object.keys(tombstone.store).length > 0 &&
+							Object.keys(tombstone.store).reduce((p,c) => p + tombstone.store[c], 0) > creep.pos.getRangeTo(tombstone) &&
 							 		 (	!tombstone.pos.findInRange(FIND_HOSTILE_CREEPS, 5).length > 0 ||
 										 	(!!DP && DP.pos.roomName == creep.room.name) ||
 										 	(!!DP1 && DP1.pos.roomName == creep.room.name && DP1.pos.findPathTo(tombstone).length < 5) ||
