@@ -439,6 +439,12 @@ var tasks = {
 		if(tools.getWeight(creep.name) == 5035 && creep.ticksToLive < 1485) {
 			return creep.suicide() == OK;
 		}
+		if(tools.getWeight(creep.name) == 173 && creep.ticksToLive > 1400){
+			if(creep.withdraw(creep.room.storage,'X') == ERR_NOT_IN_RANGE) {
+					creep.say('🔜');
+					return OK == tools.moveTo(creep, creep.room.storage);
+			}
+		}
 
 		return false;
 	},
