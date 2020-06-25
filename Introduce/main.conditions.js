@@ -53,7 +53,7 @@ const conditions = {
 																					Memory.defence={};
 																				if(!Memory.defence[roomName])
 																					Memory.defence[roomName] = {};
-																				delete Memory.defence[roomName].attacked;
+																				Memory.defence[roomName].attacked = false;
 																			}
 																		  return to_spawn_rd;}
 	, TO_SPAWN_ROOM_EXTRA_DEFENDERS:function(roomName) {
