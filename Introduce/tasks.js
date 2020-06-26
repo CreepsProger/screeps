@@ -1,4 +1,5 @@
 const constants = require('main.constants');
+const harvester = require('role.harvester');
 const config = require('main.config');
 const flags = require('main.flags');
 const tools = require('tools');
@@ -450,6 +451,9 @@ var tasks = {
 				}
 			}
 			else {
+				if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
+				return harvester.run(creep);
+			}
 				const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
 				return OK == tools.moveTo(creep, target);
 			}
