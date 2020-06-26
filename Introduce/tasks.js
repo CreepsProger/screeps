@@ -458,13 +458,13 @@ var tasks = {
 					creep.memory[role.name] = { v: config.version
 																, on: false
 																, room: creep.room.name
-																, shard: Game.shard.name
+																, shard: 'shard3'
 																};
 				}			
 				const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
 				const err = tools.moveTo(creep, target);
 							console.log('✔️', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({creep:creep.name, target:target, err:err}));
+											, JSON.stringify({creep:creep.name, target:target, err:err, memory:creep.memory}));
 				return OK == err;
 			}
 		}
