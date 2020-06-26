@@ -458,7 +458,7 @@ var tasks = {
 					creep.memory[role.name] = { v: config.version
 																, on: false
 																, room: creep.room.name
-																, shard: 'shard3'
+																, shard: Game.shard.name
 																};
 				}			
 				const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
