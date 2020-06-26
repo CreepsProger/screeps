@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 340,
+	version: 341,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -1748,6 +1748,12 @@ var config = {
 							, towers: {mw:110000, mr:6000000}
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 170, max_weight: 179}
+								, {name: '2', time: 0, min_weight: 170, max_weight: 179}
+								, {name: '3', time: 0, min_weight: 170, max_weight: 179}
+								, {name: '1', time: 0, min_weight: 170, max_weight: 179}
+								, {name: '2', time: 0, min_weight: 170, max_weight: 179}
+								, {name: '3', time: 0, min_weight: 170, max_weight: 179}
+								, {name: '1', time: 0, min_weight: 170, max_weight: 179}
 								, {name: '2', time: 0, min_weight: 170, max_weight: 179}
 								, {name: '3', time: 0, min_weight: 170, max_weight: 179}
 								]
