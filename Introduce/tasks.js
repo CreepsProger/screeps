@@ -1,4 +1,5 @@
 const constants = require('main.constants');
+const config = require('config');
 const flags = require('main.flags');
 const tools = require('tools');
 const cash = require('cash');
