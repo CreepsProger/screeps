@@ -441,6 +441,8 @@ var tasks = {
 			return creep.suicide() == OK;
 		}
 		if(tools.getWeight(creep.name) == 173 && creep.ticksToLive > 1000){
+			if(creep.room.name == 'W29S32')
+				creep.suicide();
 			if(!creep.store.X) {
 				if(creep.withdraw(creep.room.storage,'X') == ERR_NOT_IN_RANGE) {
 					creep.say('🔜');
