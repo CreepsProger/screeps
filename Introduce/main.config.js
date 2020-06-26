@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 338,
+	version: 339,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -101,7 +101,7 @@ var config = {
 			var dest_room = path_rooms[dest_shard][this_room];
 			const shard2 = dest_room.substring(0,5);
 			dest_room = (!!shard2 && shard2 == 'shard')?this_room:dest_room;
-			if(tools.getWeight(creep.name) >= 404) {
+			if(tools.getWeight(creep.name) == 173) {
 				console.log(creep, role_name, JSON.stringify({dest_shard:dest_shard, dest_room:dest_room}));
 			}
 			var portals = creep.room.find(FIND_STRUCTURES, {
@@ -1769,10 +1769,10 @@ var config = {
 								, shard2:
 									{ W30S30: 'shard3'}
 								, shard3:
-									{ W30S30: 'W30S31', W30S32: 'W29S32' }
+									{ W30S30: 'W30S31', W30S31: 'W30S32', W30S32: 'W29S32' }
 							 	}
 							, escape_path:
-								{ W30S30: 'W30S31', W30S32: 'W29S32', W29S32: 'W30S32', W30S32: 'W30S33', W30S33: 'W29S33'
+								{ W30S30: 'W30S31', W30S31: 'W30S32', W30S32: 'W29S32', W29S32: 'W30S32', W30S32: 'W30S33', W30S33: 'W29S33'
 						 		, W29S33: 'W28S33'
 								}
 							},
