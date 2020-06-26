@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 337,
+	version: 338,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -1762,7 +1762,7 @@ var config = {
 							, path_rooms:
 							 	{ shard0:
 									{ W57S52: 'W58S52', W58S52: 'W59S52', W59S52: 'W59S51'
-								  , W57S51: 'W58S51', W58S51: 'W59S51', W59S50: 'W60S50', W60S50: 'shard1'
+								  , W57S51: 'W58S51', W58S51: 'W59S51', W59S51: 'W59S50', W59S50: 'W60S50', W60S50: 'shard1'
 									}
 								, shard1:
 									{ W60S50: 'W30S30', W30S30: 'shard2' }
