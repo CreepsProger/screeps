@@ -441,7 +441,7 @@ var tasks = {
 		if(tools.getWeight(creep.name) == 5035 && creep.ticksToLive < 1485) {
 			return creep.suicide() == OK;
 		}
-		if(tools.getWeight(creep.name) == 173 && creep.ticksToLive > 100){
+		if(false && tools.getWeight(creep.name) == 173 && creep.ticksToLive > 100){
 			if(creep.room.name == 'W29S32')
 				creep.suicide();
 			if(!creep.store.X) {
