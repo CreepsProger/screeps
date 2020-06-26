@@ -462,7 +462,10 @@ var tasks = {
 																};
 				}			
 				const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
-				return OK == tools.moveTo(creep, target);
+				const err = tools.moveTo(creep, target);
+							console.log('✔️', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({creep:creep.name, target:target, err:err}));
+				return OK == err;
 			}
 		}
 
