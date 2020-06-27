@@ -442,8 +442,12 @@ var tasks = {
 			return creep.suicide() == OK;
 		}
 		if(tools.getWeight(creep.name) == 173){
-			if(creep.room.name == 'W29S32' && (OK != tools.moveTo(creep, creep.room.storage)))
-				creep.suicide();
+			if(creep.room.name == 'W29S32') { 
+				if (OK != tools.moveTo(creep, creep.room.storage)) {
+					creep.suicide();
+				}
+				return true;
+			}
 			if(!creep.store.X) {
 				if(creep.withdraw(creep.room.storage,'X') == ERR_NOT_IN_RANGE) {
 					creep.say('🔜');
@@ -468,6 +472,7 @@ var tasks = {
 											, JSON.stringify({creep:creep.name, target:target, err:err, memory:creep.memory}));
 				return OK == err;
 			}
+			return true;
 		}
 
 		return false;
