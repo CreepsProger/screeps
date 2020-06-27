@@ -441,8 +441,8 @@ var tasks = {
 		if(tools.getWeight(creep.name) == 5035 && creep.ticksToLive < 1485) {
 			return creep.suicide() == OK;
 		}
-		if(false && tools.getWeight(creep.name) == 173 && creep.ticksToLive > 500){
-			if(creep.room.name == 'W29S32')
+		if(tools.getWeight(creep.name) == 173){
+			if(creep.room.name == 'W29S32' && OK != tools.moveTo(creep, creep.room.storage))
 				creep.suicide();
 			if(!creep.store.X) {
 				if(creep.withdraw(creep.room.storage,'X') == ERR_NOT_IN_RANGE) {
