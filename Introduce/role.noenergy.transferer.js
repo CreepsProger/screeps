@@ -4,6 +4,7 @@ const config = require('main.config');
 const metrix = require('main.metrix');
 const flags = require('main.flags');
 // const links = require('main.links');
+const terminals = require('main.terminals');
 const log = require('main.log');
 const tasks = require('tasks');
 const tools = require('tools');
@@ -79,6 +80,15 @@ var role = {
 		}
 
 		if(!!creep.room.storage && !!creep.room.storage.my){
+			if(!!creep.room.terminal && !!creep.room.terminal.my) {
+				const resources = Object.keys(creep.store);
+				const resource = resources[0];
+				if(resources.length == 1 &&
+					 resource != RESOURCE_ENERGY &&
+					 terminals.getShardAvgAmount(resource) + constants.MIN_RESOURCE_TO_TERMINAL_SEND < terminals.getRoomAmount(creep,resource) ) {
+					return creep.room.terminal;
+				} 
+			}
 			return creep.room.storage;
 		}
 		
