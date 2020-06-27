@@ -443,9 +443,12 @@ var tasks = {
 		}
 		if(tools.getWeight(creep.name) == 173){
 			if(creep.room.name == 'W29S32') { 
-				if (OK != tools.moveTo(creep, creep.room.storage)) {
-					creep.suicide();
+				if(creep.transfer(creep.room.storage,'X') == ERR_NOT_IN_RANGE) {
+					creep.say('🔜');
+					tools.moveTo(creep, creep.room.storage);
 				}
+				else 
+					creep.suicide(); 
 				return true;
 			}
 			if(!creep.store.X) {
