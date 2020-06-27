@@ -3,7 +3,15 @@ const tools = require('tools');
 const cash = require('cash');
 
 var terminals = {
-
+//getShardAvgAmount(resource) + constants.MIN_RESOURCE_TO_TERMINAL_SEND < terminals.getRoomAmount(creep,resource
+	getRoomAmount: function(creep,resource) {
+		return 0;
+	},
+	
+	getShardAvgAmount: function(resource) {
+		return 0;
+	},
+	
 	run: function() {
 		// console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000);
 		 	if(Game.time % constants.TICKS_TO_TERMINAL_SEND)
