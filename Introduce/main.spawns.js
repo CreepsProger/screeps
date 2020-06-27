@@ -489,6 +489,7 @@ var spawns = {
 
 				if(Game.shard.name == 'shard0') {
 					if(true) {
+						if(Sp1) spawns.tryCreateCreep(spawn, CARIER[3][H], 301);
 						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[5][M], 304);
 					}
 
