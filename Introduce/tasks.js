@@ -460,6 +460,7 @@ var tasks = {
 																, room: creep.room.name
 																, shard: Game.shard.name
 																};
+					config.setRoom(creep, role.name);
 				}			
 				const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
 				const err = tools.moveTo(creep, target);
