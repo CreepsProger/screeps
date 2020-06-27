@@ -442,7 +442,7 @@ var tasks = {
 			return creep.suicide() == OK;
 		}
 		if(tools.getWeight(creep.name) == 173){
-			if(creep.room.name == 'W29S32' && OK != tools.moveTo(creep, creep.room.storage))
+			if(creep.room.name == 'W29S32' && (OK != tools.moveTo(creep, creep.room.storage)))
 				creep.suicide();
 			if(!creep.store.X) {
 				if(creep.withdraw(creep.room.storage,'X') == ERR_NOT_IN_RANGE) {
