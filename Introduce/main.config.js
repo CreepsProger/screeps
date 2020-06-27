@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 342,
+	version: 343,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -98,9 +98,9 @@ var config = {
 		const shard = my_path_room.substring(0,5);
 		if(!!shard && shard == 'shard') {
 			const dest_shard = my_path_room;
-			var dest_room = path_rooms[dest_shard][this_room];
+			var dest_room = path_rooms[dest_shard][Game.shard.name + '_' + this_room];/*
 			const shard2 = dest_room.substring(0,5);
-			dest_room = (!!shard2 && shard2 == 'shard')?this_room:dest_room;
+			dest_room = (!!shard2 && shard2 == 'shard')?this_room:dest_room;*/
 			if(tools.getWeight(creep.name) == 173) {
 				console.log(creep, role_name, JSON.stringify({dest_shard:dest_shard, dest_room:dest_room}));
 			}
@@ -567,16 +567,15 @@ var config = {
 									, W30S30: 'shard2'
 									}
 								, shard2:
-									{ W30S30: 'shard1'}
+									{ shard3_W30S30:'W30S30', W30S30: 'shard1'}
 								, shard1:
-									{ W29S31: 'W30S31', W30S31: 'W30S30', W30S30: 'shard0'
-									, W50S60: 'W30S30'}
+									{ shard2_W30S30:'W30S30', W30S30: 'shard0'
+									, W29S31: 'W30S31', W30S31: 'W30S30'
+									}
 								, shard0:
-									{ W30S30: 'W60S50', W60S50: 'W60S51', W60S51: 'W60S52'
+									{ shard1_W30S30: 'W60S50', W60S50: 'W60S51', W60S51: 'W60S52'
 									, W60S52: 'W59S52', W59S52: 'W58S52', W58S52: 'W57S52'
-									// , W57S52: 'W57S52'
-									, W50S60: 'shard1'
-								  , W57S51: 'W56S51', W56S51: 'W56S52', W56S52: 'W57S52'
+									, W57S51: 'W56S51', W56S51: 'W56S52', W56S52: 'W57S52'
 									}
 								}
 								, escape_path:
@@ -1771,11 +1770,12 @@ var config = {
 								  , W57S51: 'W58S51', W58S51: 'W59S51', W59S51: 'W59S50', W59S50: 'W60S50', W60S50: 'shard1'
 									}
 								, shard1:
-									{ W60S50: 'W30S30', W30S30: 'shard2' }
+									{ shard0_W60S50: 'W30S30', W30S30: 'shard2' }
 								, shard2:
-									{ W30S30: 'shard3'}
+									{ shard1_W30S30: 'W30S30', W30S30: 'shard3'}
 								, shard3:
-									{ W30S30: 'W30S31', W30S31: 'W30S32', W30S32: 'W29S32'
+									{ shard2_W30S30: 'W30S30'
+									, W30S30: 'W30S31', W30S31: 'W30S32', W30S32: 'W29S32'
 									, W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
 									, W28S33: 'W28S32', W28S32: 'W29S32', W28S35: 'W28S34'
 									, W28S34: 'W28S33', W27S34: 'W28S34'
