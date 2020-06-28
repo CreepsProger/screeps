@@ -95,7 +95,7 @@ var terminals = {
 		.reduce((l,r) => {
 			const l_amount = ((!!l.store[resource])? l.store[resource]:0) + ((!!l.room.storage.store[resource])? l.room.storage.store[resource]:0);
 			const r_amount = ((!!r.store[resource])? r.store[resource]:0) + ((!!r.room.storage.store[resource])? r.room.storage.store[resource]:0);
-			return (l_amount > r_amount)? l.pos.room.roomName:r.pos.room.roomName;
+			return (l_amount > r_amount)? l.pos.roomName:r.pos.roomName;
 		});
 	}, 
 	
