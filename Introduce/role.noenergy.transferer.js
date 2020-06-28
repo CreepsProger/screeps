@@ -85,7 +85,7 @@ var role = {
 				const resource = resources[0];
 				if(resources.length == 1 &&
 					 resource != RESOURCE_ENERGY &&
-					 terminals.getShardAvgAmount(resource) + constants.MIN_RESOURCE_TO_TERMINAL_SEND < terminals.getRoomAmount(creep,resource) ) {
+					 terminals.getShardAvgAmount(resource) + constants.MIN_TO_TERMINAL_SEND < terminals.getRoomAmount(creep,resource) ) {
 					return creep.room.terminal;
 				} 
 			}
