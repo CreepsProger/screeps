@@ -22,7 +22,7 @@ var terminals = {
 		return Math.floor(amount/terminals.length);
 	},
 	
-	getResourceToSend: function(creep) {
+	getResourceToRecieve: function(creep) {
 		if(!creep.room.terminal ||
 			 !creep.room.terminal.my ||
 			 !creep.room.storage ||
@@ -30,15 +30,50 @@ var terminals = {
 			return null;
 		
 		const all = cash.getAllMyTerminals();
-		const resources = RESOURCES_ALL.map((resource) => {
-			const amount = all.reduce((amount,t) => amount
-																+ ((!!t && !!t.store && !!t.store[resource])? t.store[resource]:0)
-																+ ((!!t && !!t.room && !!t.room.storage && !!t.room.storage.store && !!t.room.storage.store[resource])? t.room.storage.store[resource]:0)
+		const resources = Object.keys(creep.room.terminal.store).filter((k) => k != RESOURCE_ENERGY).map((resource) => {
+			const amount = all.filter((t) => !!t && !!t.store && !!t.room && !!t.room.storage && !!t.room.storage.store)
+												.reduce((amount,t) => amount
+																+ ((!!t.store[resource])? t.store[resource]:0)
+																+ ((!!t.room.storage.store[resource])? t.room.storage.store[resource]:0)
+																, 0);
+			const my_amount = creep.room.terminal.store[resource] + creep.room.storage.store[resource];
+			return {resource:resource, amount:amount, my_amount:my_amount};
+		}).filter((r) => r.my_amount < Math.floor(r.amount/all.length)).sort((l,r) => l.my_amount - r.my_amount);
+		if(resources.length == 0)
+			return null;
+		const min_res = resources[0];
+		const ret = {resource:min_res.resource, amount:min_res.my_amount};
+		
+		if(!!ret) {
+			console.log( '✒️'
+									, Math.trunc(Game.time/10000), Game.time%10000
+									, JSON.stringify( { terminals:'getResourceToRecieve', creep:creep.name, room:creep.room.name
+																		, ret:ret, min_res:min_res
+																		, resources:resources} ));
+		}
+		return ret;
+	},
+	
+	getResourceToSend: function(creep) {
+		if(!creep.room.terminal ||
+			 !creep.room.terminal.my ||
+			 !creep.room.terminal.store ||
+			 !creep.room.storage ||
+			 !creep.room.storage.my ||
+			 !creep.room.storage.store)
+			return null;
+		
+		const all = cash.getAllMyTerminals();
+		const resources = Object.keys(creep.room.terminal.store).filter((k) => k != RESOURCE_ENERGY).map((resource) => {
+			const amount = all.filter((t) => !!t && !!t.store && !!t.room && !!t.room.storage && !!t.room.storage.store)
+												.reduce((amount,t) => amount
+																+ ((!!t.store[resource])? t.store[resource]:0)
+																+ ((!!t.room.storage.store[resource])? t.room.storage.store[resource]:0)
 																, 0);
 			return {resource:resource, amount:amount};
 		}).sort((l,r) => l.amount - r.amount).filter((res) => res.amount > 0);
-		const max_res = resources.reduce((l,r) => (r.resource != RESOURCE_ENERGY)?r:l);
-		const avg_max_res = Math.floor(max_res.amount/terminals.length);
+		const max_res = resources.slice(-1)[0];
+		const avg_max_res = Math.floor(max_res.amount/all.length);
 		const room_amount = creep.room.terminal.store[max_res.resource]+creep.room.storage.store[max_res.resource];
 		const amount_to_send = room_amount - avg_max_res - constants.MIN_TO_TERMINAL_SEND;
 		const ret = (amount_to_send > constants.MIN_TO_TERMINAL_SEND)? {resource:max_res.resource, amount:amount_to_send}:null;
