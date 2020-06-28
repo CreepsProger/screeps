@@ -103,12 +103,13 @@ var terminals = {
 		const all = cash.getAllMyTerminals();
 		all.forEach((terminal,i) => {
 			if(!!terminal && !!terminal.store) {
-				const res = Object.keys(terminal.store)
-				.filter((i) => i != RESOURCE_ENERGY)
-				.reduce((l,r) => (terminal.store[l] > terminal.store[r])? {resource:l, amount:terminal.store[l]}:{resource:r, amount:terminal.store[r]});
-				const minResourceRoom = terminals.getMinResourceRoom(res.resource);
+				const resources = Object.keys(terminal.store).filter((i) => i != RESOURCE_ENERGY);
+				if(resources.length == 0)
+					return;
+				const res = resources.sort((l,r) => terminal.store[r] - terminal.store[l])[0];
+				const minResourceRoom = terminals.getMinResourceRoom(res);
 				if(!!minResourceRoom) {
-					const sending = {from:terminal.pos.room.roomName, to:minResourceRoom, resource:res.resource, amount:res.amount};
+					const sending = {from:terminal.pos.room.roomName, to:minResourceRoom, resource:res, amount:terminal.store[res]};
 					const err = terminal.send(sending.resource, sending.amount, sending.to);
 					if(true || OK == err) {
 						console.log( '📲'
