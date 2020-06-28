@@ -26,7 +26,7 @@ var terminals = {
 		const resources = RESOURCES_ALL.map((resource) => {
 			const amount = terminals.reduce((amount,t) => amount
 																			+ ((!!t && !!t.store && !!t.store[resource])? t.store[resource]:0)
-																			+ ((!!t && !!t.room && !!t.room.storage && !!t.room.storage.store && !!t.room.storage.store[resource])? t.room.storage.store[resource]:0))
+																			+ ((!!t && !!t.room && !!t.room.storage && !!t.room.storage.store && !!t.room.storage.store[resource])? t.room.storage.store[resource]:0);
 			);
 			return {resource:resource, amount:amount};
 		}).sort((l,r) => l.amount - r.amount);
