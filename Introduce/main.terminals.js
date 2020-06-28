@@ -19,7 +19,7 @@ var terminals = {
 															+ ((!!t && !!t.store && !!t.store[resource])? t.store[resource]:0)
 															+ ((!!t && !!t.room && !!t.room.storage && !!t.room.storage.store && !!t.room.storage.store[resource])? t.room.storage.store[resource]:0)
 															, 0);
-		return Math.floor(amount/terminals.length);
+		return Math.floor(amount/all.length);
 	},
 	
 	getResourceToRecieve: function(creep) {
