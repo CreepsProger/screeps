@@ -13,6 +13,10 @@ var terminals = {
 	},
 	
 	getResourceToSend: function(creep) {
+		if(Game.time % (constants.TICKS_TO_CHECK_CREEPS_NUMBER) == 0) {
+			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+									, JSON.stringify({RESOURCES_ALL:RESOURCES_ALL} ));
+		}
 		return {resource:'H', amount:10000};
 	},
 	
