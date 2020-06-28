@@ -14,11 +14,11 @@ var terminals = {
 	},
 	
 	getShardAvgAmount: function(resource) {
-		const terminals = cash.getAllMyTerminals();
-		const amount = terminals.reduce((amount,t) => amount
-																		+ ((!!t && !!t.store && !!t.store[resource])? t.store[resource]:0)
-																		+ ((!!t && !!t.room && !!t.room.storage && !!t.room.storage.store && !!t.room.storage.store[resource])? t.room.storage.store[resource]:0)   
-																		, 0);
+		const all = cash.getAllMyTerminals();
+		const amount = all.reduce((amount,t) => amount
+															+ ((!!t && !!t.store && !!t.store[resource])? t.store[resource]:0)
+															+ ((!!t && !!t.room && !!t.room.storage && !!t.room.storage.store && !!t.room.storage.store[resource])? t.room.storage.store[resource]:0)
+															, 0);
 		return Math.floor(amount/terminals.length);
 	},
 	
@@ -29,12 +29,12 @@ var terminals = {
 			 !creep.room.storage.my)
 			return null;
 		
-		const terminals = cash.getAllMyTerminals();
+		const all = cash.getAllMyTerminals();
 		const resources = RESOURCES_ALL.map((resource) => {
-			const amount = terminals.reduce((amount,t) => amount
-																			+ ((!!t && !!t.store && !!t.store[resource])? t.store[resource]:0)
-																			+ ((!!t && !!t.room && !!t.room.storage && !!t.room.storage.store && !!t.room.storage.store[resource])? t.room.storage.store[resource]:0)
-																			, 0);
+			const amount = all.reduce((amount,t) => amount
+																+ ((!!t && !!t.store && !!t.store[resource])? t.store[resource]:0)
+																+ ((!!t && !!t.room && !!t.room.storage && !!t.room.storage.store && !!t.room.storage.store[resource])? t.room.storage.store[resource]:0)
+																, 0);
 			return {resource:resource, amount:amount};
 		}).sort((l,r) => l.amount - r.amount).filter((res) => res.amount > 0);
 		const max_res = resources.reduce((l,r) => (r.resource != RESOURCE_ENERGY)?r:l);
@@ -54,10 +54,36 @@ var terminals = {
 		return ret;
 	},
 	
+	getMinResourceRoom: function(resource) {return null;
+	}, 
+	
+	spreadResources: function(resource) {return;
+		const all = cash.getAllMyTerminals();
+		all.forEach((terminal,i) => {
+			if(!!terminal && !!terminal.store) {
+				const res = Object.keys(terminal.store)
+				.filter((i) i != RESOURCE_ENERGY)
+				.reduce((l,r) => (terminal.store[l] > terminal.store[r])? {resource:l, amount:terminal.store[l]}:{resource:r, amount:terminal.store[r]});
+				const minResourceRoom = terminals.getMinResourceRoom(res.resource);
+				if(!!minResourceRoom) {
+					const sending = {from:terminal.pos.room.roomName, to:minResourceRoom, resource:res.resource, amount:res.amount};
+					const err = terminal.send(sending.resource, sending.amount, sending.to);
+					if(true || OK == err) {
+						console.log( '📲'
+												, Math.trunc(Game.time/10000), Game.time%10000
+												, JSON.stringify( { terminals:'getResourceToSend', err:err, sending:sending} ));
+					}
+				}
+			}
+		});
+	},
+	
 	run: function() {
 		// console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000);
-		 	if(Game.time % constants.TICKS_TO_TERMINAL_SEND)
-		 		return;
+		if(Game.time % constants.TICKS_TO_TERMINAL_SEND == 1)
+			return terminals.spreadResources;
+		if(Game.time % constants.TICKS_TO_TERMINAL_SEND != 0) 
+			return;
 
 		// console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000);
 
