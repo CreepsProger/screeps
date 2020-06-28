@@ -64,7 +64,7 @@ var terminals = {
 			return null;
 		
 		const all = cash.getAllMyTerminals();
-		const resources = RESOURCE_ALL.filter((k) => k != RESOURCE_ENERGY).map((resource) => {
+		const resources = RESOURCES_ALL.filter((k) => k != RESOURCE_ENERGY).map((resource) => {
 			const amount = all.filter((t) => !!t && !!t.store && !!t.room && !!t.room.storage && !!t.room.storage.store)
 												.reduce((amount,t) => amount
 																+ ((!!t.store[resource])? t.store[resource]:0)
