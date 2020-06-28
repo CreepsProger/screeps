@@ -265,7 +265,7 @@ var role = {
 			 (!creep.getActiveBodyparts(WORK)) &&
 			 !!creep.room.storage &&
 			 !!creep.room.storage.my) {
-			target = {target:creep.room.storage, resource:res_to_send.resource, amount:res_to_send.amount};
+			target = {target:creep.room.storage, id:creep.room.storage.id, resource:res_to_send.resource, amount:res_to_send.amount};
 			console.log('✔️', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({creep:creep.name, res_to_send:res_to_send, target:target}));
 			if(!!target)
@@ -385,7 +385,7 @@ var role = {
 					});
 				}
 				err = (err != OK) ? err:!!target.isTask? target.harvestingBy(creep):
-				(target.name || !target.id)? // a creep || exit
+				(!!target.name || !target.id)? // a creep || exit
 						ERR_NOT_IN_RANGE:
 				(!!target.mineralAmount)?
 				    creep.harvest(target):
