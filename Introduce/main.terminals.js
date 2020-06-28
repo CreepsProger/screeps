@@ -113,7 +113,7 @@ var terminals = {
 				const res = resources.sort((l,r) => terminal.store[r] - terminal.store[l])[0];
 				const minResourceRoom = terminals.getMinResourceRoom(res);
 				if(!!minResourceRoom) {
-					const amount_to_send = terminal.store[res]+terminal.room.storage.store[res]-terminals.getShardAvgAmount(res);
+					const amount_to_send = Math.min(terminal.store[res], terminal.store[res]+terminal.room.storage.store[res]-terminals.getShardAvgAmount(res));
 					const sending = {from:terminal.pos.roomName, to:minResourceRoom, resource:res, amount:amount_to_send};
 					const err = terminal.send(sending.resource, sending.amount, sending.to);
 					if(true || OK == err) {
