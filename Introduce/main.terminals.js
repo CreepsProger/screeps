@@ -62,7 +62,7 @@ var terminals = {
 		all.forEach((terminal,i) => {
 			if(!!terminal && !!terminal.store) {
 				const res = Object.keys(terminal.store)
-				.filter((i) i != RESOURCE_ENERGY)
+				.filter((i) => i != RESOURCE_ENERGY)
 				.reduce((l,r) => (terminal.store[l] > terminal.store[r])? {resource:l, amount:terminal.store[l]}:{resource:r, amount:terminal.store[r]});
 				const minResourceRoom = terminals.getMinResourceRoom(res.resource);
 				if(!!minResourceRoom) {
