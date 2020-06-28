@@ -54,7 +54,14 @@ var terminals = {
 		return ret;
 	},
 	
-	getMinResourceRoom: function(resource) {return null;
+	getMinResourceRoom: function(resource) {
+		const all = cash.getAllMyTerminals();
+		return all.filter((t) => !!t && !!t.store && !!t.room && !!t.room.storage && !!t.room.storage.store)
+		.reduce((l,r) => {
+			const l_amount = ((!!l.store[resource])? l.store[resource]:0) + ((!!l.room.storage.store[resource])? l.room.storage.store[resource]:0);
+			const r_amount = ((!!r.store[resource])? r.store[resource]:0) + ((!!r.room.storage.store[resource])? r.room.storage.store[resource]:0);
+			return (l_amount > r_amount)? l.pos.room.roomName:r.pos.room.roomName;
+		});
 	}, 
 	
 	spreadResources: function(resource) {return;
