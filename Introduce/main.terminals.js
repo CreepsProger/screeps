@@ -99,7 +99,7 @@ var terminals = {
 		});
 	}, 
 	
-	spreadResources: function(resource) {return;
+	spreadResources: function() {
 		const all = cash.getAllMyTerminals();
 		all.forEach((terminal,i) => {
 			if(!!terminal && !!terminal.store) {
@@ -113,7 +113,7 @@ var terminals = {
 					if(true || OK == err) {
 						console.log( '📲'
 												, Math.trunc(Game.time/10000), Game.time%10000
-												, JSON.stringify( { terminals:'getResourceToSend', err:err, sending:sending} ));
+												, JSON.stringify( { terminals:'spreadResources', err:err, sending:sending} ));
 					}
 				}
 			}
@@ -123,7 +123,7 @@ var terminals = {
 	run: function() {
 		// console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000);
 		if(Game.time % constants.TICKS_TO_TERMINAL_SEND == 1)
-			return terminals.spreadResources;
+			return terminals.spreadResources();
 		if(Game.time % constants.TICKS_TO_TERMINAL_SEND != 0) 
 			return;
 
