@@ -5,11 +5,21 @@ const cash = require('cash');
 var terminals = {
 //getShardAvgAmount(resource) + constants.MIN_RESOURCE_TO_TERMINAL_SEND < terminals.getRoomAmount(creep,resource
 	getRoomAmount: function(creep,resource) {
-		return 0;
+		if(!creep.room.terminal ||
+			 !creep.room.terminal.my ||
+			 !creep.room.storage ||
+			 !creep.room.storage.my)
+			return 0;
+		return creep.room.terminal.store[resource]+creep.room.storage.store[resource];
 	},
 	
 	getShardAvgAmount: function(resource) {
-		return 0;
+		const terminals = cash.getAllMyTerminals();
+		const amount = terminals.reduce((amount,t) => amount
+																		+ ((!!t && !!t.store && !!t.store[resource])? t.store[resource]:0)
+																		+ ((!!t && !!t.room && !!t.room.storage && !!t.room.storage.store && !!t.room.storage.store[resource])? t.room.storage.store[resource]:0)   
+																		, 0);
+		return Math.floor(amount/terminals.length);
 	},
 	
 	getResourceToSend: function(creep) {
@@ -18,10 +28,7 @@ var terminals = {
 			 !creep.room.storage ||
 			 !creep.room.storage.my)
 			return null;
-		if(Game.time % (constants.TICKS_TO_CHECK_CREEPS_NUMBER) == 0) {
-			console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-									, JSON.stringify({RESOURCES_ALL:RESOURCES_ALL} ));
-		}
+		
 		const terminals = cash.getAllMyTerminals();
 		const resources = RESOURCES_ALL.map((resource) => {
 			const amount = terminals.reduce((amount,t) => amount
@@ -30,7 +37,6 @@ var terminals = {
 																			, 0);
 			return {resource:resource, amount:amount};
 		}).sort((l,r) => l.amount - r.amount).filter((res) => res.amount > 0);
-		const min_res = resources.reduce((l,r) => (l.amount > 0 && l.resource != RESOURCE_ENERGY)?l:r);
 		const max_res = resources.reduce((l,r) => (r.resource != RESOURCE_ENERGY)?r:l);
 		const avg_max_res = Math.floor(max_res.amount/terminals.length);
 		const room_amount = creep.room.terminal.store[max_res.resource]+creep.room.storage.store[max_res.resource];
@@ -41,7 +47,7 @@ var terminals = {
 			console.log( '✒️'
 									, Math.trunc(Game.time/10000), Game.time%10000
 									, JSON.stringify( { terminals:'getResourceToSend', creep:creep.name, room:creep.room.name
-																		, ret:ret, min_res:min_res, max_res:max_res
+																		, ret:ret, max_res:max_res
 																		, avg_max_res:avg_max_res, amount_to_send:amount_to_send
 																		, resources:resources} ));
 		}
