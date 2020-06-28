@@ -272,6 +272,19 @@ var role = {
 			if(!!target)
 				return target;
 		}
+		const res_to_recieve = terminals.getResourceToRecieve(creep);
+		if(!target &&
+			 !!res_to_recieve &&
+			 creep.memory.rerun &&
+			 (!creep.getActiveBodyparts(WORK)) &&
+			 !!creep.room.terminal &&
+			 !!creep.room.terminal.my) {
+			target = {target:creep.room.terminal, resource:res_to_recieve.resource, amount:res_to_recieve.amount};
+			console.log('✔️', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({creep:creep.name, res_to_recieve:res_to_recieve, target:target}));
+			if(!!target)
+				return target;
+		}
 
 
 		// const this_room_containers_are_empty = cash.areEmptyContainers(creep);
