@@ -12,6 +12,10 @@ var terminals = {
 		return 0;
 	},
 	
+	getResourceToSend: function(creep) {
+		return {resource:'H', amount:10000};
+	},
+	
 	run: function() {
 		// console.log( '📲', Math.trunc(Game.time/10000), Game.time%10000);
 		 	if(Game.time % constants.TICKS_TO_TERMINAL_SEND)
