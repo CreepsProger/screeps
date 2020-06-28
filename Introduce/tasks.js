@@ -447,8 +447,11 @@ var tasks = {
 					creep.say('🔜');
 					tools.moveTo(creep, creep.room.storage);
 				}
-				else 
-					creep.suicide(); 
+				else {
+					console.log('✔️', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({tasks:'onRun', creep:creep.name, room:creep.room.name, X:creep.room.storage.store.X}));
+					creep.suicide();
+				}
 				return true;
 			}
 			if(!creep.store.X) {
@@ -471,8 +474,6 @@ var tasks = {
 				}			
 				const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
 				const err = tools.moveTo(creep, target);
-							console.log('✔️', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({creep:creep.name, target:target, err:err, memory:creep.memory}));
 				return OK == err;
 			}
 			return true;
