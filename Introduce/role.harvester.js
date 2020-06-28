@@ -264,8 +264,11 @@ var role = {
 			 (!creep.getActiveBodyparts(WORK)) &&
 			 !!creep.room.storage &&
 			 !!creep.room.storage.my) {
-			target = creep.room.storage;
-			if(!!target) return {target:target, resource:res_to_send.resource, amount:res_to_send.amount};
+			target = {target:creep.room.storage, resource:res_to_send.resource, amount:res_to_send.amount};
+			console.log('✔️', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({creep:creep.name, res_to_send:res_to_send, target:target}));
+			if(!!target)
+				return target;
 		}
 
 
@@ -387,6 +390,8 @@ var role = {
 				    creep.harvest(target):
 				!!target.structureType?
 						creep.withdraw(target, RESOURCE_ENERGY): // a structure
+					!!target.target?
+						creep.withdraw(target.target, target.resource): 
 				(target.energy == 0 && creep.pos.getRangeTo(target) > 1 )? // a source
 						ERR_NOT_IN_RANGE:
 				creep.harvest(target);
