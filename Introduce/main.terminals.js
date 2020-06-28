@@ -29,7 +29,7 @@ var terminals = {
 																			+ ((!!t && !!t.room && !!t.room.storage && !!t.room.storage.store && !!t.room.storage.store[resource])? t.room.storage.store[resource]:0)
 																			, 0);
 			return {resource:resource, amount:amount};
-		}).sort((l,r) => l.amount - r.amount);
+		}).sort((l,r) => l.amount - r.amount).filter((res) => res.amount > 0);
 		const min_res = resources.reduce((l,r) => (l.amount > 0 && l.resource != RESOURCE_ENERGY)?l:r);
 		const max_res = resources.reduce((l,r) => (r.resource != RESOURCE_ENERGY)?r:l);
 		const avg_max_res = Math.floor(max_res.amount/terminals.length);
@@ -37,7 +37,7 @@ var terminals = {
 		const amount_to_send = room_amount - avg_max_res - constants.MIN_TO_TERMINAL_SEND;
 		const ret = (amount_to_send > constants.MIN_TO_TERMINAL_SEND)? {resource:max_res.resource, amount:amount_to_send}:null;
 		
-		if(Game.time % (constants.TICKS_TO_CHECK_CREEPS_NUMBER) == 0) {
+		if(!!ret) {
 			console.log( '✒️'
 									, Math.trunc(Game.time/10000), Game.time%10000
 									, JSON.stringify( { terminals:'getResourceToSend', creep:creep.name, room:creep.room.name
