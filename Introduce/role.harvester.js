@@ -256,6 +256,18 @@ var role = {
 			target = creep.room.storage;
 			if(!!target) return target;
 		}
+		
+		const res_to_send = terminals.getResourceToSend();
+		if(!target &&
+			 !!res_to_send &&
+			 creep.memory.rerun &&
+			 (!creep.getActiveBodyparts(WORK)) &&
+			 !!creep.room.storage &&
+			 !!creep.room.storage.my) {
+			target = creep.room.storage;
+			if(!!target) return {target:target, resource:res_to_send.resource, amount:res_to_send.amount};
+		}
+
 
 		// const this_room_containers_are_empty = cash.areEmptyContainers(creep);
 		//
