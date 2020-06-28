@@ -102,14 +102,19 @@ var terminals = {
 	spreadResources: function() {
 		const all = cash.getAllMyTerminals();
 		all.forEach((terminal,i) => {
-			if(!!terminal && !!terminal.store) {
+			if(!!terminal &&
+				 !!terminal.store &&
+				 !!terminal.room &&
+				 !!terminal.room.storage &&
+				 !!terminal.room.storage.store ) {
 				const resources = Object.keys(terminal.store).filter((i) => i != RESOURCE_ENERGY);
 				if(resources.length == 0)
 					return;
 				const res = resources.sort((l,r) => terminal.store[r] - terminal.store[l])[0];
 				const minResourceRoom = terminals.getMinResourceRoom(res);
 				if(!!minResourceRoom) {
-					const sending = {from:terminal.pos.roomName, to:minResourceRoom, resource:res, amount:terminal.store[res]};
+					const amount_to_send = terminal.store[res]+terminal.room.storage.store[res]-terminals.getShardAvgAmount(res);
+					const sending = {from:terminal.pos.roomName, to:minResourceRoom, resource:res, amount:amount_to_send};
 					const err = terminal.send(sending.resource, sending.amount, sending.to);
 					if(true || OK == err) {
 						console.log( '📲'
