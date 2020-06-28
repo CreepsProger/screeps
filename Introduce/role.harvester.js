@@ -259,7 +259,7 @@ var role = {
 			if(!!target) return target;
 		}
 		
-		const res_to_send = terminals.getResourceToSend();
+		const res_to_send = terminals.getResourceToSend(creep);
 		if(!target &&
 			 !!res_to_send &&
 			 creep.memory.rerun &&
