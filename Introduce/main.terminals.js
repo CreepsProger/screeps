@@ -109,7 +109,7 @@ var terminals = {
 				const res = resources.sort((l,r) => terminal.store[r] - terminal.store[l])[0];
 				const minResourceRoom = terminals.getMinResourceRoom(res);
 				if(!!minResourceRoom) {
-					const sending = {from:terminal.pos.room.roomName, to:minResourceRoom, resource:res, amount:terminal.store[res]};
+					const sending = {from:terminal.pos.roomName, to:minResourceRoom, resource:res, amount:terminal.store[res]};
 					const err = terminal.send(sending.resource, sending.amount, sending.to);
 					if(true || OK == err) {
 						console.log( '📲'
