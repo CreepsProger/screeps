@@ -83,7 +83,7 @@ var role = {
 			if(!!creep.room.terminal && !!creep.room.terminal.my) {
 				const resources = Object.keys(creep.store).filter((k) => k != RESOURCE_ENERGY);
 				if(resources.length == 1 &&
-					 terminals.getRoomAmount(creep,resources[0]) > terminals.getShardAvgAmount(resources[0])) {
+					 terminals.getAmountAvgDiff(creep.room.terminal,resources[0]) + creep.store[resources[0]] > 0) {
 					return creep.room.terminal;
 				} 
 			}
