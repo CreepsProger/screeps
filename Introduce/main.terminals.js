@@ -72,7 +72,7 @@ var terminals = {
 																, 0);
 			const my_amount = creep.room.terminal.store[resource] + creep.room.storage.store[resource];
 			return {resource:resource, amount:amount, my_amount:my_amount};
-		}).filter((r) => r.my_amount > Math.floor(r.amount/all.length) - constants.MIN_TO_TERMINAL_SEND).sort((l,r) => r.my_amount - l.my_amount);
+		}).filter((r) => r.my_amount > Math.floor(r.amount/all.length) + constants.MIN_TO_TERMINAL_SEND).sort((l,r) => r.my_amount - l.my_amount);
 		if(resources.length == 0)
 			return null;
 		const max_res = resources[0];
@@ -83,7 +83,6 @@ var terminals = {
 									, Math.trunc(Game.time/10000), Game.time%10000
 									, JSON.stringify( { terminals:'getResourceToSend', creep:creep.name, room:creep.room.name
 																		, ret:ret, max_res:max_res
-																		, avg_max_res:avg_max_res, amount_to_send:amount_to_send
 																		, resources:resources} ));
 		}
 		return ret;
