@@ -268,7 +268,7 @@ var role = {
 			 !!creep.room.storage.my) {
 			target = {target:creep.room.storage, resource:res_to_send.resource, amount:res_to_send.amount};
 			console.log('✔️', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({creep:creep.name, res_to_send:res_to_send, target:target}));
+											, JSON.stringify({creep:creep.name, res_to_send:res_to_send, storage:target}));
 			if(!!target)
 				return target;
 		}
@@ -281,7 +281,7 @@ var role = {
 			 !!creep.room.terminal.my) {
 			target = {target:creep.room.terminal, resource:res_to_recieve.resource, amount:res_to_recieve.amount};
 			console.log('✔️', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({creep:creep.name, res_to_recieve:res_to_recieve, target:target}));
+											, JSON.stringify({creep:creep.name, res_to_recieve:res_to_recieve, terminal:target}));
 			if(!!target)
 				return target;
 		}
