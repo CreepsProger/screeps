@@ -84,10 +84,12 @@ var role = {
 				const resources = Object.keys(creep.store).filter((k) => k != RESOURCE_ENERGY);
 				if(resources.length == 1 &&
 					 terminals.getStorageAmountAvgDiff(creep.room.terminal,resources[0]) + creep.store[resources[0]] > 100) {
-					return creep.room.terminal;
+					const target = creep.room.terminal;
+					return target;
 				} 
 			}
-			return creep.room.storage;
+			const target = creep.room.storage;
+			return target;
 		}
 		
 		if(creep.store.getFreeCapacity() == 0 || creep.memory.rerun) {
