@@ -3,7 +3,15 @@ const tools = require('tools');
 const cash = require('cash');
 
 var terminals = {
-//getShardAvgAmount(resource) + constants.MIN_RESOURCE_TO_TERMINAL_SEND < terminals.getRoomAmount(creep,resource
+	getAllMyTerminalsToSpread: function() {
+		return cash.getAllMyTerminals().filter((t) => !!t && !!t.store && !!t.room && !!t.room.storage && !!t.room.storage.store);
+	},
+
+	getAmount: function(terminal,resource) {
+		return ((!!terminal.store[resource])? terminal.store[resource]:0)
+			+ ((!!terminal.room.storage.store[resource])? terminal.room.storage.store[resource]:0);
+	},
+
 	getRoomAmount: function(creep,resource) {
 		if(!creep.room.terminal ||
 			 !creep.room.terminal.my ||
@@ -14,11 +22,8 @@ var terminals = {
 	},
 	
 	getShardAvgAmount: function(resource) {
-		const all = cash.getAllMyTerminals();
-		const amount = all.reduce((amount,t) => amount
-															+ ((!!t && !!t.store && !!t.store[resource])? t.store[resource]:0)
-															+ ((!!t && !!t.room && !!t.room.storage && !!t.room.storage.store && !!t.room.storage.store[resource])? t.room.storage.store[resource]:0)
-															, 0);
+		const all = terminals.getAllMyTerminalsToSpread();
+		const amount = all.reduce((amount,t) => amount + terminals.GetAmount(t,resource), 0);
 		return Math.floor(amount/all.length);
 	},
 	
@@ -26,30 +31,26 @@ var terminals = {
 		if(!creep.room.terminal ||
 			 !creep.room.terminal.my ||
 			 !creep.room.storage ||
-			 !creep.room.storage.my)
+			 !creep.room.storage.my ||
+			 !creep.room.storage.store)
 			return null;
 		
-		const all = cash.getAllMyTerminals();
-		const resources = Object.keys(creep.room.terminal.store).filter((k) => k != RESOURCE_ENERGY).map((resource) => {
-			const amount = all.filter((t) => !!t && !!t.store && !!t.room && !!t.room.storage && !!t.room.storage.store)
-												.reduce((amount,t) => amount
-																+ ((!!t.store[resource])? t.store[resource]:0)
-																+ ((!!t.room.storage.store[resource])? t.room.storage.store[resource]:0)
-																, 0);
-			const my_amount = creep.room.terminal.store[resource] + creep.room.storage.store[resource];
-			return {resource:resource, amount:amount, my_amount:my_amount};
-		}).filter((r) => r.my_amount < Math.floor(r.amount/all.length)).sort((l,r) => l.my_amount - r.my_amount);
+			const all = terminals.getAllMyTerminalsToSpread();
+		const t = creep.room.terminal;
+		const resources = Object.keys(creep.room.storage.store).filter((k) => k != RESOURCE_ENERGY);
 		if(resources.length == 0)
 			return null;
-		const min_res = resources[0];
-		const ret = {resource:min_res.resource, amount:min_res.my_amount};
+		const deficit = resources.filter((r) => terminals.GetAmount(t,r) - terminals.getShardAvgAmount(r) > 100);
+		if(deficit.length == 0)
+			return null;
+		const mr = deficit.sort((l,r) => terminals.GetAmount(t,l) - terminals.GetAmount(t,r))[0];
+		const ret = {resource:mr, amount:(terminals.getShardAvgAmount(mr) - terminals.GetAmount(t,mr))};
 		
 // 		if(!!ret) {
 // 			console.log( '✒️'
 // 									, Math.trunc(Game.time/10000), Game.time%10000
-// 									, JSON.stringify( { terminals:'getResourceToRecieve', creep:creep.name, room:creep.room.name
-// 																		, ret:ret, min_res:min_res
-// 																		, resources:resources} ));
+// 									, JSON.stringify( { terminals:'getResourceToRecieve', creep:creep.name
+// 																		, room:creep.room.name, ret:ret, surplus:surplus} ));
 // 		}
 		return ret;
 	},
@@ -63,63 +64,52 @@ var terminals = {
 			 !creep.room.storage.store)
 			return null;
 		
-		const all = cash.getAllMyTerminals();
-		const resources = Object.keys(creep.room.storage.store).filter((k) => k != RESOURCE_ENERGY).map((resource) => {
-			const amount = all.filter((t) => !!t && !!t.store && !!t.room && !!t.room.storage && !!t.room.storage.store)
-												.reduce((amount,t) => amount
-																+ ((!!t.store[resource])? t.store[resource]:0)
-																+ ((!!t.room.storage.store[resource])? t.room.storage.store[resource]:0)
-																, 0);
-			const my_amount = creep.room.terminal.store[resource] + creep.room.storage.store[resource];
-			return {resource:resource, amount:amount, my_amount:my_amount};
-		}).filter((r) => r.my_amount > Math.floor(r.amount/all.length) + constants.MIN_TO_TERMINAL_SEND).sort((l,r) => r.my_amount - l.my_amount);
+		const all = terminals.getAllMyTerminalsToSpread();
+		const t = creep.room.terminal;
+		const resources = Object.keys(creep.room.storage.store).filter((k) => k != RESOURCE_ENERGY);
 		if(resources.length == 0)
 			return null;
-		const max_res = resources[0];
-		const ret = {resource:max_res.resource, amount:max_res.my_amount};
+		const surplus = resources.filter((r) => terminals.GetAmount(t,r) - terminals.getShardAvgAmount(r) < 100);
+		if(surplus.length == 0)
+			return null;
+		const mr = surplus.sort((l,r) => terminals.GetAmount(t,r) - terminals.GetAmount(t,l))[0];
+		const ret = {resource:mr, amount:(terminals.GetAmount(t,mr) - terminals.getShardAvgAmount(mr))};
 		
 // 		if(!!ret) {
 // 			console.log( '✒️'
 // 									, Math.trunc(Game.time/10000), Game.time%10000
-// 									, JSON.stringify( { terminals:'getResourceToSend', creep:creep.name, room:creep.room.name
-// 																		, ret:ret, max_res:max_res
-// 																		, resources:resources} ));
+// 									, JSON.stringify( { terminals:'getResourceToSend', creep:creep.name
+// 																		, room:creep.room.name, ret:ret, surplus:surplus} ));
 // 		}
 		return ret;
 	},
 	
 	getMinResourceRoom: function(resource, skipRoom = '-') {
-		const all = cash.getAllMyTerminals();
-		return all.filter((t) => !!t && !!t.store && !!t.room && !!t.room.storage && !!t.room.storage.store && t.pos.roomName != skipRoom)
-		.sort((l,r) => {
-			const l_amount = ((!!l.store[resource])? l.store[resource]:0) + ((!!l.room.storage.store[resource])? l.room.storage.store[resource]:0);
-			const r_amount = ((!!r.store[resource])? r.store[resource]:0) + ((!!r.room.storage.store[resource])? r.room.storage.store[resource]:0);
-			return l_amount - r_amount;
-		})[0].pos.roomName;
+		const all = terminals.getAllMyTerminalsToSpread();
+		const ts = all.filter((t) => t.pos.roomName != skipRoom)
+							.sort((l,r) => terminals.GetAmount(l,resource) - terminals.GetAmount(r,resource));
+		return (ts.length > 0)? ts[0].pos.roomName:null;
 	}, 
 	
 	spreadResources: function() {
-		const all = cash.getAllMyTerminals();
+		const all = terminals.getAllMyTerminalsToSpread();
 		all.forEach((terminal,i) => {
-			if(!!terminal &&
-				 !!terminal.store &&
-				 !!terminal.room &&
-				 !!terminal.room.storage &&
-				 !!terminal.room.storage.store ) {
-				const resources = Object.keys(terminal.store).filter((i) => i != RESOURCE_ENERGY);
-				if(resources.length == 0)
-					return;
-				const res = resources.sort((l,r) => terminal.store[r]+terminal.room.storage.store[r] - terminal.store[l] - terminal.room.storage.store[l])[0];
-				const minResourceRoom = terminals.getMinResourceRoom(res,terminal.pos.roomName);
-				if(!!minResourceRoom) {
-					const amount_to_send = Math.min(terminal.store[res], terminal.store[res]+terminal.room.storage.store[res]-terminals.getShardAvgAmount(res));
-					const sending = {from:terminal.pos.roomName, to:minResourceRoom, resource:res, amount:amount_to_send};
-					const err = terminal.send(sending.resource, sending.amount, sending.to);
-					if(true || OK == err) {
-						console.log( '📲'
-												, Math.trunc(Game.time/10000), Game.time%10000
-												, JSON.stringify( { terminals:'spreadResources', err:err, sending:sending} ));
-					}
+			const resources = Object.keys(terminal.store).filter((i) => i != RESOURCE_ENERGY);
+			if(resources.length == 0)
+				return;
+			const surplus = resources.filter((r) => terminals.GetAmount(terminal,r) - terminals.getShardAvgAmount(r) > 100);
+			if(surplus.length == 0)
+				return;
+			const res = surplus.sort((l,r) => terminals.GetAmount(terminal,r) - terminals.GetAmount(terminal,l))[0];
+			const minResourceRoom = terminals.getMinResourceRoom(res,terminal.pos.roomName);
+			if(!!minResourceRoom) {
+				const amount_to_send = Math.min(terminal.store[res], terminals.GetAmount(terminal,res) - terminals.getShardAvgAmount(res) - 100);
+				const sending = {from:terminal.pos.roomName, to:minResourceRoom, resource:res, amount:amount_to_send};
+				const err = terminal.send(sending.resource, sending.amount, sending.to);
+				if(true || OK == err) {
+					console.log( '📲'
+											, Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify( { terminals:'spreadResources', err:err, sending:sending} ));
 				}
 			}
 		});
