@@ -44,13 +44,13 @@ var terminals = {
 		const min_res = resources[0];
 		const ret = {resource:min_res.resource, amount:min_res.my_amount};
 		
-		if(!!ret) {
-			console.log( '✒️'
-									, Math.trunc(Game.time/10000), Game.time%10000
-									, JSON.stringify( { terminals:'getResourceToRecieve', creep:creep.name, room:creep.room.name
-																		, ret:ret, min_res:min_res
-																		, resources:resources} ));
-		}
+// 		if(!!ret) {
+// 			console.log( '✒️'
+// 									, Math.trunc(Game.time/10000), Game.time%10000
+// 									, JSON.stringify( { terminals:'getResourceToRecieve', creep:creep.name, room:creep.room.name
+// 																		, ret:ret, min_res:min_res
+// 																		, resources:resources} ));
+// 		}
 		return ret;
 	},
 	
