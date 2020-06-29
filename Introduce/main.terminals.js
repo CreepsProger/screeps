@@ -52,7 +52,7 @@ var terminals = {
 		if(deficit.length == 0)
 			return null;
 		const mr = deficit.sort((l,r) => terminals.getStorageAmountAvgDiff(t,r) - terminals.getStorageAmountAvgDiff(t,l) )[0];
-		const ret = {resource:mr, amount: 50-terminals.getStorageAmountAvgDiff(t,mr), avg:terminals.getShardAvgAmount(mr)};
+		const ret = {resource:mr, amount: 100-terminals.getStorageAmountAvgDiff(t,mr), avg:terminals.getShardAvgAmount(mr)};
 		
 // 		if(!!ret) {
 // 			console.log( '✒️'
