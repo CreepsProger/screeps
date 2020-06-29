@@ -78,13 +78,13 @@ var terminals = {
 		const max_res = resources[0];
 		const ret = {resource:max_res.resource, amount:max_res.my_amount};
 		
-		if(!!ret) {
-			console.log( '✒️'
-									, Math.trunc(Game.time/10000), Game.time%10000
-									, JSON.stringify( { terminals:'getResourceToSend', creep:creep.name, room:creep.room.name
-																		, ret:ret, max_res:max_res
-																		, resources:resources} ));
-		}
+// 		if(!!ret) {
+// 			console.log( '✒️'
+// 									, Math.trunc(Game.time/10000), Game.time%10000
+// 									, JSON.stringify( { terminals:'getResourceToSend', creep:creep.name, room:creep.room.name
+// 																		, ret:ret, max_res:max_res
+// 																		, resources:resources} ));
+// 		}
 		return ret;
 	},
 	
@@ -109,7 +109,7 @@ var terminals = {
 				const resources = Object.keys(terminal.store).filter((i) => i != RESOURCE_ENERGY);
 				if(resources.length == 0)
 					return;
-				const res = resources.sort((l,r) => terminal.store[r] - terminal.store[l])[0];
+				const res = resources.sort((l,r) => terminal.store[r]+terminal.room.storage.store[r] - terminal.store[l] - terminal.room.storage.store[l])[0];
 				const minResourceRoom = terminals.getMinResourceRoom(res,terminal.pos.roomName);
 				if(!!minResourceRoom) {
 					const amount_to_send = Math.min(terminal.store[res], terminal.store[res]+terminal.room.storage.store[res]-terminals.getShardAvgAmount(res));
