@@ -89,9 +89,9 @@ var terminals = {
 		return ret;
 	},
 	
-	getMinResourceRoom: function(resource) {
+	getMinResourceRoom: function(resource, skipRoom = '-') {
 		const all = cash.getAllMyTerminals();
-		return all.filter((t) => !!t && !!t.store && !!t.room && !!t.room.storage && !!t.room.storage.store)
+		return all.filter((t) => !!t && !!t.store && !!t.room && !!t.room.storage && !!t.room.storage.store && t.pos.roomName != skipRoom)
 		.sort((l,r) => {
 			const l_amount = ((!!l.store[resource])? l.store[resource]:0) + ((!!l.room.storage.store[resource])? l.room.storage.store[resource]:0);
 			const r_amount = ((!!r.store[resource])? r.store[resource]:0) + ((!!r.room.storage.store[resource])? r.room.storage.store[resource]:0);
@@ -111,8 +111,8 @@ var terminals = {
 				if(resources.length == 0)
 					return;
 				const res = resources.sort((l,r) => terminal.store[r] - terminal.store[l])[0];
-				const minResourceRoom = terminals.getMinResourceRoom(res);
-				if(!!minResourceRoom && minResourceRoom != terminal.pos.roomName) {
+				const minResourceRoom = terminals.getMinResourceRoom(res,terminal.pos.roomName);
+				if(!!minResourceRoom) {
 					const amount_to_send = Math.min(terminal.store[res], terminal.store[res]+terminal.room.storage.store[res]-terminals.getShardAvgAmount(res));
 					const sending = {from:terminal.pos.roomName, to:minResourceRoom, resource:res, amount:amount_to_send};
 					const err = terminal.send(sending.resource, sending.amount, sending.to);
