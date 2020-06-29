@@ -69,7 +69,7 @@ var terminals = {
 		const resources = Object.keys(creep.room.storage.store).filter((k) => k != RESOURCE_ENERGY);
 		if(resources.length == 0)
 			return null;
-		const surplus = resources.filter((r) => terminals.getAmount(t,r) - terminals.getShardAvgAmount(r) > 100);
+		const surplus = resources.filter((r) => terminals.getAmount(t,r) - terminals.getShardAvgAmount(r) > 1000);
 		if(surplus.length == 0)
 			return null;
 		const mr = surplus.sort((l,r) => terminals.getAmount(t,r) - terminals.getAmount(t,l))[0];
