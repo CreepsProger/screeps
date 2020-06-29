@@ -21,9 +21,9 @@ var terminals = {
 		return 0+creep.store[resource]+creep.room.terminal.store[resource]+creep.room.storage.store[resource];
 	},
 	
-	getShardAvgAmount: function(resource) {
+	getShardAvgAmount: function(resource, creepAmount = 0) {
 		const all = terminals.getAllMyTerminalsToSpread();
-		const amount = all.reduce((amount,t) => amount + terminals.getAmount(t,resource), 0);
+		const amount = all.reduce((amount,t) => amount + terminals.getAmount(t,resource), creepAmount);
 		return Math.floor(amount/all.length);
 	},
 
@@ -31,8 +31,8 @@ var terminals = {
 		return terminals.getAmount(terminal,resource) - terminals.getShardAvgAmount(resource);
 	},
 
-	getStorageAmountAvgDiff: function(terminal,resource) {
-		return terminal.room.storage.store[resource] - terminals.getShardAvgAmount(resource);
+	getStorageAmountAvgDiff: function(terminal, resource, creepAmount = 0) {
+		return terminal.room.storage.store[resource] - terminals.getShardAvgAmount(resource, creepAmount);
 	},
 	
 	getResourceToRecieve: function(creep) {
