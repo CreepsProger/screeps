@@ -30,6 +30,10 @@ var terminals = {
 	getAmountAvgDiff: function(terminal,resource) {
 		return terminals.getAmount(terminal,resource) - terminals.getShardAvgAmount(resource);
 	},
+
+	getStorageAmountAvgDiff: function(terminal,resource) {
+		return terminal.room.storage.store[resource] - terminals.getShardAvgAmount(resource);
+	},
 	
 	getResourceToRecieve: function(creep) {
 		if(!creep.room.terminal ||
@@ -44,11 +48,11 @@ var terminals = {
 		const resources = Object.keys(t.store).filter((k) => k != RESOURCE_ENERGY);
 		if(resources.length == 0)
 			return null;
-		const deficit = resources.filter((r) => terminals.getAmountAvgDiff(t,r) < 0);
+		const deficit = resources.filter((r) => terminals.getStorageAmountAvgDiff(t,r) < 0);
 		if(deficit.length == 0)
 			return null;
-		const mr = deficit.sort((l,r) => terminals.getAmountAvgDiff(t,l) - terminals.getAmountAvgDiff(t,r) )[0];
-		const ret = {resource:mr, amount: 0-terminals.getAmountAvgDiff(t,mr)};
+		const mr = deficit.sort((l,r) => terminals.getStorageAmountAvgDiff(t,r) - terminals.getStorageAmountAvgDiff(t,l) )[0];
+		const ret = {resource:mr, amount: 0-terminals.getStorageAmountAvgDiff(t,mr)};
 		
 // 		if(!!ret) {
 // 			console.log( '✒️'
