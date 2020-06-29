@@ -95,7 +95,7 @@ var role = {
 			 (tools.getWeight(creep.name) < my_room_config.containers.weight || U) &&
 			 creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0) {
 			var conts = cash.getContainers(creep.room).filter((cont) => !!cont && !!cont.store &&
-                   (cont.store.getFreeCapacity() < cont.store.getCapacity() - cont.store.getUsedCapacity(RESOURCE_ENERGY) ||
+                   (creep.memory.rerun && cont.store.getFreeCapacity() < cont.store.getCapacity() - cont.store.getUsedCapacity(RESOURCE_ENERGY) ||
 			 																								cont.store.getUsedCapacity(RESOURCE_ENERGY) > 0));
 
 			if(conts.length > 0) {
