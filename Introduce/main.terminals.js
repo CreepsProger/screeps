@@ -40,7 +40,7 @@ var terminals = {
 		const resources = Object.keys(creep.room.storage.store).filter((k) => k != RESOURCE_ENERGY);
 		if(resources.length == 0)
 			return null;
-		const deficit = resources.filter((r) => terminals.getAmount(t,r) - terminals.getShardAvgAmount(r) < 100);
+		const deficit = resources.filter((r) => terminals.getAmount(t,r) - terminals.getShardAvgAmount(r) < 0);
 		if(deficit.length == 0)
 			return null;
 		const mr = deficit.sort((l,r) => terminals.getAmount(t,l) - terminals.getAmount(t,r))[0];
@@ -97,13 +97,13 @@ var terminals = {
 			const resources = Object.keys(terminal.store).filter((i) => i != RESOURCE_ENERGY);
 			if(resources.length == 0)
 				return;
-			const surplus = resources.filter((r) => terminals.getAmount(terminal,r) - terminals.getShardAvgAmount(r) > 100);
+			const surplus = resources.filter((r) => terminals.getAmount(terminal,r) - terminals.getShardAvgAmount(r) > 0);
 			if(surplus.length == 0)
 				return;
 			const res = surplus.sort((l,r) => terminals.getAmount(terminal,r) - terminals.getAmount(terminal,l))[0];
 			const minResourceRoom = terminals.getMinResourceRoom(res,terminal.pos.roomName);
 			if(!!minResourceRoom) {
-				const amount_to_send = Math.min(terminal.store[res], terminals.getAmount(terminal,res) - terminals.getShardAvgAmount(res) - 100);
+				const amount_to_send = Math.min(terminal.store[res], terminals.getAmount(terminal,res) - terminals.getShardAvgAmount(res));
 				const sending = {from:terminal.pos.roomName, to:minResourceRoom, resource:res, amount:amount_to_send};
 				const err = terminal.send(sending.resource, sending.amount, sending.to);
 				if(true || OK == err) {
