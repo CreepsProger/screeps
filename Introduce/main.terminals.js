@@ -26,6 +26,10 @@ var terminals = {
 		const amount = all.reduce((amount,t) => amount + terminals.getAmount(t,resource), 0);
 		return Math.floor(amount/all.length);
 	},
+
+	getAmountAvgDiff: function(terminal,resource) {
+		return terminals.getAmount(terminal,resource) - terminals.getShardAvgAmount(resource);
+	},
 	
 	getResourceToRecieve: function(creep) {
 		if(!creep.room.terminal ||
@@ -37,14 +41,14 @@ var terminals = {
 		
 			const all = terminals.getAllMyTerminalsToSpread();
 		const t = creep.room.terminal;
-		const resources = Object.keys(creep.room.storage.store).filter((k) => k != RESOURCE_ENERGY);
+		const resources = Object.keys(t.store).filter((k) => k != RESOURCE_ENERGY);
 		if(resources.length == 0)
 			return null;
-		const deficit = resources.filter((r) => terminals.getAmount(t,r) - terminals.getShardAvgAmount(r) < 0);
+		const deficit = resources.filter((r) => terminals.getAmountAvgDiff(t,r) < 0);
 		if(deficit.length == 0)
 			return null;
-		const mr = deficit.sort((l,r) => terminals.getAmount(t,l) - terminals.getAmount(t,r))[0];
-		const ret = {resource:mr, amount:(terminals.getShardAvgAmount(mr) - terminals.getAmount(t,mr))};
+		const mr = deficit.sort((l,r) => terminals.getAmountAvgDiff(t,l) - terminals.getAmountAvgDiff(t,r) )[0];
+		const ret = {resource:mr, amount: 0-terminals.getAmountAvgDiff(t,mr)};
 		
 // 		if(!!ret) {
 // 			console.log( '✒️'
@@ -69,11 +73,11 @@ var terminals = {
 		const resources = Object.keys(creep.room.storage.store).filter((k) => k != RESOURCE_ENERGY);
 		if(resources.length == 0)
 			return null;
-		const surplus = resources.filter((r) => terminals.getAmount(t,r) - terminals.getShardAvgAmount(r) > 1000);
+		const surplus = resources.filter((r) => terminals.getAmountAvgDiff(t,r) > 100);
 		if(surplus.length == 0)
 			return null;
-		const mr = surplus.sort((l,r) => terminals.getAmount(t,r) - terminals.getAmount(t,l))[0];
-		const ret = {resource:mr, amount:Math.floor((terminals.getAmount(t,mr) - terminals.getShardAvgAmount(mr))/2)};
+		const mr = surplus.sort((l,r) => terminals.getAmountAvgDiff(t,r) - terminals.getAmountAvgDiff(t,l))[0];
+		const ret = {resource:mr, amount:Math.floor(terminals.getAmountAvgDiff(t,mr)/2)};
 		
 // 		if(!!ret) {
 // 			console.log( '✒️'
@@ -97,13 +101,13 @@ var terminals = {
 			const resources = Object.keys(terminal.store).filter((i) => i != RESOURCE_ENERGY);
 			if(resources.length == 0)
 				return;
-			const surplus = resources.filter((r) => terminals.getAmount(terminal,r) - terminals.getShardAvgAmount(r) > 0);
+			const surplus = resources.filter((r) => terminals.getAmountAvgDiff(terminal,r) > 0);
 			if(surplus.length == 0)
 				return;
-			const res = surplus.sort((l,r) => terminals.getAmount(terminal,r) - terminals.getAmount(terminal,l))[0];
+			const res = surplus.sort((l,r) => terminals.getAmountAvgDiff(terminal,r) - terminals.getAmountAvgDiff(terminal,l))[0];
 			const minResourceRoom = terminals.getMinResourceRoom(res,terminal.pos.roomName);
 			if(!!minResourceRoom) {
-				const amount_to_send = Math.min(terminal.store[res], terminals.getAmount(terminal,res) - terminals.getShardAvgAmount(res));
+				const amount_to_send = Math.min(terminal.store[res], terminals.getAmountAvgDiff(terminal,res));
 				const sending = {from:terminal.pos.roomName, to:minResourceRoom, resource:res, amount:amount_to_send};
 				const err = terminal.send(sending.resource, sending.amount, sending.to);
 				if(true || OK == err) {
