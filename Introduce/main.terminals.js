@@ -78,14 +78,14 @@ var terminals = {
 		const max_res = resources[0];
 		const ret = {resource:max_res.resource, amount:max_res.my_amount};
 		
-// 		if(!!ret) {
-// 			console.log( '✒️'
-// 									, Math.trunc(Game.time/10000), Game.time%10000
-// 									, JSON.stringify( { terminals:'getResourceToSend', creep:creep.name, room:creep.room.name
-// 																		, ret:ret, max_res:max_res
-// 																		, avg_max_res:avg_max_res, amount_to_send:amount_to_send
-// 																		, resources:resources} ));
-// 		}
+		if(!!ret) {
+			console.log( '✒️'
+									, Math.trunc(Game.time/10000), Game.time%10000
+									, JSON.stringify( { terminals:'getResourceToSend', creep:creep.name, room:creep.room.name
+																		, ret:ret, max_res:max_res
+																		, avg_max_res:avg_max_res, amount_to_send:amount_to_send
+																		, resources:resources} ));
+		}
 		return ret;
 	},
 	
