@@ -456,7 +456,7 @@ var tasks = {
 				}
 				return true;
 			}
-			if(!creep.store.getFreeCapacity() > 0 ) {
+			if(!!creep.room.storage && !!creep.room.storage.store && creep.store.getFreeCapacity() > 0 ) {
 				const resources = Object.keys(creep.room.storage.store).filter((k) => k != RESOURCE_ENERGY)
 				.sort((l,r) => creep.room.storage.store[r] - creep.room.storage.store[l]); 
 				if(resources.length > 0 && creep.withdraw(creep.room.storage,resources[0]) == ERR_NOT_IN_RANGE) {
