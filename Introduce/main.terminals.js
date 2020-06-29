@@ -10,7 +10,7 @@ var terminals = {
 			 !creep.room.storage ||
 			 !creep.room.storage.my)
 			return 0;
-		return creep.room.terminal.store[resource]+creep.room.storage.store[resource];
+		return 0+creep.store[resource]+creep.room.terminal.store[resource]+creep.room.storage.store[resource];
 	},
 	
 	getShardAvgAmount: function(resource) {
