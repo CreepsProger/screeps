@@ -414,7 +414,7 @@ var role = {
 
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.say('🔜⚡');
-					err = tools.moveTo(creep, target);
+					err = (!!target.target)? tools.moveTo(creep, target.target):tools.moveTo(creep, target);
 					role.log('🔜⚡', creep, err, 'moving from', JSON.stringify(creep.pos), 'to', JSON.stringify(target));
 				}
 				if(err) {
