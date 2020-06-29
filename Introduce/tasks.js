@@ -442,20 +442,24 @@ var tasks = {
 			return creep.suicide() == OK;
 		}
 		if(tools.getWeight(creep.name) == 173){
-			if(creep.room.name == 'W29S32') { 
-				if(creep.transfer(creep.room.storage,'X') == ERR_NOT_IN_RANGE) {
+			if(creep.room.name == 'W29S32') {
+				const resource = Object.keys(creep.store).filter((k) => k != RESOURCE_ENERGY)[0];
+				if(creep.transfer(creep.room.storage, resource) == ERR_NOT_IN_RANGE) {
 					creep.say('🔜');
 					tools.moveTo(creep, creep.room.storage);
 				}
 				else {
 					console.log('✔️', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({tasks:'onRun', creep:creep.name, room:creep.room.name, X:creep.room.storage.store.X}));
+											, JSON.stringify( { tasks:'onRun', creep:creep.name
+																				, room:creep.room.name, resource:creep.room.storage.store[resource]}));
 					creep.suicide();
 				}
 				return true;
 			}
-			if(!creep.store.X) {
-				if(creep.withdraw(creep.room.storage,'X') == ERR_NOT_IN_RANGE) {
+			if(!creep.store.getFreeCapacity() > 0 ) {
+				const resources = Object.keys(creep.room.storage.store).filter((k) => k != RESOURCE_ENERGY)
+				.sort((l,r) => creep.room.storage.store[r] - creep.room.storage.store[l]); 
+				if(resources.length > 0 && creep.withdraw(creep.room.storage,resources[0]) == ERR_NOT_IN_RANGE) {
 					creep.say('🔜');
 					tools.moveTo(creep, creep.room.storage);
 				}
