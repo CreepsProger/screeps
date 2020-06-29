@@ -189,13 +189,13 @@ var role = {
 			var st = [];
 			if(!!creep.room.terminal &&
 				 !!creep.room.terminal.my &&
-				   creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_TERMINAL_ENERGY) {
+				   creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_TERMINAL_ENERGY + constants.MAX_TERMINAL_ENERGY) {
 				st.push(creep.room.terminal);
 			}
 			if(!!creep.room.storage &&
 				 !!creep.room.storage.my &&
 				 	 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_STORAGE_ENERGY &&
-				 (!creep.room.terminal || creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) <= constants.MAX_TERMINAL_ENERGY)) {
+				 (!creep.room.terminal || creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) < constants.MIN_TERMINAL_ENERGY + constants.MAX_TERMINAL_ENERGY)) {
 				st.push(creep.room.storage);
 			}
 			if(st.length > 0) {
