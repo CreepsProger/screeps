@@ -73,7 +73,7 @@ var terminals = {
 		if(surplus.length == 0)
 			return null;
 		const mr = surplus.sort((l,r) => terminals.getAmount(t,r) - terminals.getAmount(t,l))[0];
-		const ret = {resource:mr, amount:(terminals.getAmount(t,mr) - terminals.getShardAvgAmount(mr))};
+		const ret = {resource:mr, amount:Math.floor((terminals.getAmount(t,mr) - terminals.getShardAvgAmount(mr))/2)};
 		
 // 		if(!!ret) {
 // 			console.log( '✒️'
