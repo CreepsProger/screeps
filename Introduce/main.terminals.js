@@ -80,8 +80,8 @@ var terminals = {
 		const surplus = resources.filter((r) => terminals.getAmountAvgDiff(t,r) > 100);
 		if(surplus.length == 0)
 			return null;
-		const mr = surplus.sort((l,r) => terminals.getAmountAvgDiff(t,r) - terminals.getAmountAvgDiff(t,l))[0];
-		const ret = {resource:mr, amount:Math.floor(terminals.getAmountAvgDiff(t,mr)/2)};
+		const mr = surplus.sort((l,r) => terminals.getAmountAvgDiff(t,r)-t.store[r] - (terminals.getAmountAvgDiff(t,l)-t.store[l]))[0];
+		const ret = {resource:mr, amount:Math.floor(terminals.getAmountAvgDiff(t,mr)/2 - t.store[mr])};
 		
 // 		if(!!ret) {
 // 			console.log( '✒️'
