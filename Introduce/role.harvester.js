@@ -406,7 +406,7 @@ var role = {
 				!!target.structureType?
 						creep.withdraw(target, RESOURCE_ENERGY): // a structure
 					!!target.target?
-						creep.withdraw(target.target, target.resource, Math.min(target.store[target.resource],Math.min(target.amount,creep.store.getFreeCapacity(target.resource)))): 
+						creep.withdraw(target.target, target.resource, Math.min(target.target.store[target.resource],Math.min(target.amount,creep.store.getFreeCapacity(target.resource)))): 
 				(target.energy == 0 && creep.pos.getRangeTo(target) > 1 )? // a source
 						ERR_NOT_IN_RANGE:
 				creep.harvest(target);
