@@ -300,7 +300,7 @@ var spawns = {
   					if(Sp12)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5015);
   				}
   				else {
-						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[7][L], 5014);
+						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[7][H], 5014);
   					if(Sp1) spawns.tryCreateCreep(spawn, CARIER[7][M], 5011);
   					//if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[7][H], 404, undefined, 3, 3);
   				}
