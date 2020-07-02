@@ -13,9 +13,9 @@ const labs = {
 		console.log('⚗️', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { labs:'getLabsToInOut', roomName:roomName, conf:conf})); 
     return  cash.getLabs(roomName)
-								.map((lab,i) => {return { lab:lab, resource:tools.nvl(lab.mineralType,conf[i][0])
+								.map((lab,i) => {return { i:i, resource:tools.nvl(lab.mineralType,conf[i][0])
 																				, toEmpty:(tools.nvl(lab.mineralType,conf[i][0]) != conf[i][0])
-																				, toRun:conf[i][1]}}) 
+																				, toRun:conf[i][1], lab:lab}}) 
   },
 	
 	getLabsToOut: function(roomName, res = '-') {
@@ -43,14 +43,35 @@ const labs = {
                     .reduce((a, b) => a.concat(b), []) //.flat()
                     .filter((l) => !!l.toRun);
   },
-  
+	
+	toRun: function(e) {
+		const labs = cash.getLabs(e.lab.pos.roomName);
+		const reverse = (e.toRun < 0);
+		var toRun = Math.floor(Math.abs(e.toRun));
+		var err = ERR_NOT_IN_RANGE;
+		var result =[];
+		while(toRun > 0 && err != OK) {
+			const l = labs[toRun/10%10];
+			const r = labs[toRun%10];
+			err = (reverse)? e.lab.reverseReaction(l,r):e.lab.runReaction(l,r);
+			toRun = Math.floor(toRun/100);
+			result.push({ilr:e.i*100+l*10+r, err:err, reverse:reverse});
+		}
+		return result;
+	},
+	
   run: function() { 
     if(Game.time % constants.TICKS_TO_LAB_RUN != 0)
       return;
       
     const labsToRun = labs.getLabsToRun();
     console.log('⚗️🧫', Math.trunc(Game.time/10000), Game.time%10000
-                    , JSON.stringify( { "labs":'run', length:labsToRun.length, labsToRun:labsToRun})); 
+                    , JSON.stringify( { "labs":'run', labs:labsToRun.length, labsToRun:labsToRun}));
+		const results = labsToRun.map((e) => labs.toRun(e))
+		                         .filter((arr) => Array.isArray(arr) && arr.length > 0)
+		                         .reduce((a, b) => a.concat(b), [])
+		console.log('⚗️🧫✳️', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify( { "labs":'run', results:results.length, results:results}));
 	 }
 };
 
