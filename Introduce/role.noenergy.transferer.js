@@ -78,6 +78,17 @@ var role = {
 			if(conts && conts.length > 0)
 				return conts[0];
 		}
+		
+		if(!creep.getActiveBodyparts(WORK)) {
+			const resources = Object.keys(creep.store).filter((k) => k != RESOURCE_ENERGY);
+			if(resources.length == 1) {
+				const res = resources[0];
+				const labToIn = labs.getLabToIn(creep,res);
+				if(!!labToIn) {
+					return labToIn;
+				}
+			}
+		}
 
 		if(!!creep.room.storage && !!creep.room.storage.my){
 			if(!!creep.room.terminal && !!creep.room.terminal.my) {
