@@ -17,10 +17,10 @@ const labs = {
   },
 
   getLabsToRun: function() {
-		return = terminals.getAllMyTerminalsToSpread()
-                      .map((t) => cash.getLabs(t.pos.roomName))
-                      .flat()
-                      .filter((l) => !!l && !!l);
+		return terminals.getAllMyTerminalsToSpread()
+                    .map((t) => cash.getLabs(t.pos.roomName))
+                    .flat()
+                    .filter((l) => !!l && !!l);
   },
   
   run: function() { 
