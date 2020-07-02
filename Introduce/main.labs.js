@@ -9,7 +9,7 @@ const labs = {
 	getLabsToInOut: function(roomName) {
 		const conf = config.getLabsConfig(roomName);
     return  cash.getLabs(roomName)
-								.map((lab,i) => new {lab:lab, resource:'XGH2O'}) 
+								.map((lab,i) => {return {lab:lab, resource:'XGH2O'}}) 
   },
 
 	getLabsToIn: function(roomName, res) {
