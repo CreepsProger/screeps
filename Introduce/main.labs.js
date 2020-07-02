@@ -31,7 +31,7 @@ const labs = {
       
     const labsToRun = labs.getLabsToRun();
     console.log('⚗️', Math.trunc(Game.time/10000), Game.time%10000
-                    , JSON.stringify( { 'labs':'run', length:labsToRun.length, labs:labsToRun})); 
+                    , JSON.stringify( { "labs":'run', length:labsToRun.length, labs:labsToRun})); 
 	 }
 };
 
