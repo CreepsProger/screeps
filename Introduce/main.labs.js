@@ -2,7 +2,7 @@ const constants = require('main.constants');
 const tools = require('tools');
 const cash = require('cash');
 
-var labs = {
+const labs = {
 
 	getLabsToInOut: function() {
     return cash.getLabs(creep.room).filter((l) => !!l && !!l.my && !!l.store);
@@ -13,7 +13,7 @@ var labs = {
   },
   
   run: function() { 
-    if(Game.time % constants.TICKS_TO_TERMINAL_SEND != 0)
+    if(Game.time % constants.TICKS_TO_LAB_RUN != 0)
       return;
       
     const labs = labs.getLabsToRun();
