@@ -5,7 +5,15 @@ const tools = require('tools');
 const cash = require('cash');
 
 const labs = {
-
+	
+	getConfLabRes: function(conf, i) {
+		return (!conf)? null:(!conf[i])? null:(!conf[i][0])?null:conf[i][0];
+	},
+	
+	getConfLabAgs: function(conf, i) {
+		return (!conf)? null:(!conf[i])? null:(!conf[i][1])?null:conf[i][1];
+	},
+	
 	getLabsToInOut: function(roomName) {
 		const conf = config.getLabsConfig(roomName);
 		if(!conf)
@@ -13,9 +21,9 @@ const labs = {
 		console.log('⚗️', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { labs:'getLabsToInOut', roomName:roomName, conf:conf}));*/
     return  cash.getLabs(roomName)
-								.map((lab,i) => {return { i:i, resource:tools.nvl(lab.mineralType,conf[i][0])
-																				, toEmpty:(tools.nvl(lab.mineralType,conf[i][0]) != conf[i][0])
-																				, toRun:conf[i][1], lab:lab}}) 
+								.map((lab,i) => {return { i:i, resource:tools.nvl(lab.mineralType,labs.getConfLabRes(conf,i))
+																				, toEmpty:(tools.nvl(lab.mineralType,labs.getConfLabRes(conf,i)) != labs.getConfLabRes(conf,i))
+																				, toRun:labs.getConfLabAgs(conf,i), lab:lab}}) 
   },
 	
 	getLabsToOut: function(roomName, res = '-') {
