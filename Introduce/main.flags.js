@@ -12,9 +12,9 @@ var flags = {
 	time:0,
 	flags:{},
 	getLabsConfig: function(roomName) {
-		const prefix = roomName + '.labs';
+		const prefix = roomName + '.labs:';
 		if(flags.flags[prefix] === undefined) {
-			flags.flags[prefix] =  Object.keys(Game.flags).filter((name)=>name.substring(0,5) == prefix)
+			flags.flags[prefix] =  Object.keys(Game.flags).filter((name)=>name.substring(0,prefix.length) == prefix)
 																										.map((name) => Game.flags[name])
 																										.shift();
 		}
