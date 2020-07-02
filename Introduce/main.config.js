@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 347,
+	version: 348,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -17,6 +17,16 @@ var config = {
 										, JSON.stringify(config.version)
 									  , args);
 			}
+	},
+
+	getLabsConfig: function(roomName) {
+		const flagLabsConfig = flags.getLabsConfig(roomName);
+		if(!!flagLabsConfig)
+			return flagLabsConfig;
+		const my_shard_config = Memory.config.shards[Game.shard.name];
+		const my_room_config = my_shard_config.rooms[roomName];
+		const my_labs_config = my_room_config['labs'];
+		return my_labs_config;
 	},
 
 	getMW: function(roomName) {
