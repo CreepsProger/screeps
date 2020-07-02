@@ -1,12 +1,13 @@
 const constants = require('main.constants');
 const terminals = require('main.terminals');
+const config = require('main.config');
 const tools = require('tools');
 const cash = require('cash');
 
 const labs = {
 
 	getLabsToInOut: function(roomName) {
-		const config = cash.getLabsConfig(roomName);
+		const conf = config.getLabsConfig(roomName);
     return  cash.getLabs(roomName)
 								.map((lab,i) => new {lab:lab, resource:'XGH2O'}) 
   },
