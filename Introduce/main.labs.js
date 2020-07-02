@@ -17,7 +17,7 @@ const labs = {
 		return = terminals.getAllMyTerminalsToSpread()
                       .map((t) => cash.getLabs(t.pos.roomName))
                       .flat()
-                      .filter((l) => !!l && !!l.my && !!l.store);
+                      .filter((l) => !!l && !!l);
   },
   
   run: function() { 
