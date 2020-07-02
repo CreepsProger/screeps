@@ -21,7 +21,7 @@ var flags = {
 																					.sort((l,r) => l.localeCompare(r))
 																					.map((s,i,arr) => s.substring(s.indexOf('[')) + (i!=arr.length-1)?',':']')
 																					.reduce((p,c) => p+c, '[');
-			if(!!json)
+			if(json != '[')
 				flags.flags[prefix] = JSON.parse(json);
 		}
 		return flags.flags[prefix];
