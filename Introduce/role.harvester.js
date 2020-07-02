@@ -264,14 +264,14 @@ var role = {
 			const labToOut = labs.getLabsToOut(creep.room.name)
 													.filter((e) => tools.checkTarget(executer,e.lab.id))
 													.shift();		
-			if(!!labToOut) {
+			if(!!labToOut) {/*
 				console.log('⚗️↪️', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({creep:creep.name, roomName:creep.room.name, labToOut:labToOut}));
+											, JSON.stringify({creep:creep.name, roomName:creep.room.name, labToOut:labToOut}));*/
 				const lab = tools.setTarget(creep,labToOut.lab,labToOut.lab.id,role.run);
 				if(!!lab) {
-					const target = {resource:labToOut.resource, amount:labToOut.amount, target:lab};
+					const target = {resource:labToOut.resource, amount:labToOut.amount, target:lab};/*
 					console.log('⚗️🎯↪️', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({creep:creep.name, roomName:creep.room.name, target:target}));
+											, JSON.stringify({creep:creep.name, roomName:creep.room.name, target:target}));*/
 					return target;
 				}
 			}
@@ -279,14 +279,14 @@ var role = {
 													.filter((e) => tools.nvl(creep.room.storage.store[e.resource],0) > 0 &&
 																					tools.checkTarget(executer,e.lab.id))
 													.shift();
-			if(!!labToIn) {
+			if(!!labToIn) {/*
 			console.log('⚗️↩️', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({creep:creep.name, roomName:creep.room.name, labToIn:labToIn}));
+											, JSON.stringify({creep:creep.name, roomName:creep.room.name, labToIn:labToIn}));*/
 				const lab = tools.setTarget(creep,labToIn.lab,labToIn.lab.id,role.run);
 				if(!!lab) {
-					const target = {resource:labToIn.resource, amount:labToIn.amount, target:creep.room.storage};
+					const target = {resource:labToIn.resource, amount:labToIn.amount, target:creep.room.storage};/*
 					console.log('⚗️🎯↩️', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({creep:creep.name, roomName:creep.room.name, target:target}));
+											, JSON.stringify({creep:creep.name, roomName:creep.room.name, target:target}));*/
 					return target;
 				}
 			}
