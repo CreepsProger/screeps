@@ -263,10 +263,10 @@ var role = {
 		if(!creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
 			const labToOut = labs.getLabsToOut(creep.room.name)
 													.filter((e) => tools.checkTarget(executer,e.lab.id))
-													.shift();
-			console.log('⚗️↪️', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({creep:creep.name, roomName:creep.room.name, labToOut:labToOut}));
+													.shift();		
 			if(!!labToOut) {
+				console.log('⚗️↪️', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({creep:creep.name, roomName:creep.room.name, labToOut:labToOut}));
 				const lab = tools.setTarget(creep,labToOut.lab,labToOut.lab.id,role.run);
 				if(!!lab) {
 					const target = {resource:labToOut.resource, amount:labToOut.amount, target:target};
@@ -279,9 +279,9 @@ var role = {
 													.filter((e) => tools.nvl(creep.room.storage.store[e.resource],0) > 0 &&
 																					tools.checkTarget(executer,e.lab.id))
 													.shift();
+			if(!!labToIn) {
 			console.log('⚗️↩️', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({creep:creep.name, roomName:creep.room.name, labToIn:labToIn}));
-			if(!!labToIn) {
 				const lab = tools.setTarget(creep,labToIn.lab,labToIn.lab.id,role.run);
 				if(!!lab) {
 					const target = {resource:labToIn.resource, amount:labToIn.amount, target:creep.room.storage};
