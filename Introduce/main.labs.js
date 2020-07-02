@@ -13,8 +13,12 @@ const labs = {
   },
 
 	getLabsToIn: function(roomName, res) {
-    return  labs.getLabsToInOut(creep.room.name)
-								.filter((l) =>  (!l.mineralType || (l.mineralType == res && l.store.getUsedCapacity(res) < 500)))[0];
+    return  labs.getLabsToInOut(roomName)
+								.filter((e) =>  e.resource == res &&
+																tools.nvl(e.lab.mineralType,'') == res &&
+																tools.nvl(e.lab.store.getUsedCapacity(res),0) < 500
+											 )
+								.shift();
   },
 
   getLabsToRun: function() {
