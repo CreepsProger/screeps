@@ -261,8 +261,8 @@ var role = {
 		}
 		
 		if(!creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
-			const labToIn = labs.getLabsToIn(creep)
-													.filter((l)=> tools.checkTarget(executer,l.lab.id))
+			const labToIn = labs.getLabsToIn(creep.room.name)
+													.filter((e) => tools.checkTarget(executer,e.lab.id))
 													.shift();
 			if(!!labToIn) {
 				const target = tools.setTarget(creep,labToIn.lab,labToIn.lab.id,role.run);
