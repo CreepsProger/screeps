@@ -36,7 +36,7 @@ const labs = {
 
   getLabsToRun: function() {
 		return terminals.getAllMyTerminalsToSpread()
-                    .map((t) => cash.getLabs(t.pos.roomName))
+                    .map((t) => labs.getLabsToInOut(t.pos.roomName))
                     .filter((arr) => Array.isArray(arr) && arr.length > 0)/*
                     .flat()*/
                     .reduce((a, b) => a.concat(b), [])
@@ -48,7 +48,7 @@ const labs = {
       return;
       
     const labsToRun = labs.getLabsToRun();
-    console.log('⚗️', Math.trunc(Game.time/10000), Game.time%10000
+    console.log('⚗️🧫', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { "labs":'run', length:labsToRun.length, labsToRun:labsToRun})); 
 	 }
 };
