@@ -267,7 +267,7 @@ var roleEnergyTransferer = {
 			metrix.cpu.step_time(creep, 'transfering', '🔜💡🛢️');
 
 			if(!target && creep.memory.rerun) {
-				const labs = cash.getLabs(creep.room.name).filter((l) => l.store.getFreeCapacity(RESOURCE_ENERGY) > 0);
+				const labs = cash.getLabs(creep.room.name).filter((l) => !!l && !!l.store && l.store.getFreeCapacity(RESOURCE_ENERGY) > 0);
 				if(labs.length > 0) {
 					target = labs.reduce((p,c) => !!p && !!c && creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 				}
