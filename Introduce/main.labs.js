@@ -14,7 +14,8 @@ const labs = {
                     , JSON.stringify( { labs:'getLabsToInOut', roomName:roomName, conf:conf})); 
     return  cash.getLabs(roomName)
 								.map((lab,i) => {return { lab:lab, resource:tools.nvl(lab.mineralType,conf[i][0])
-																				, toEmpty:(tools.nvl(lab.mineralType,conf[i][0]) != conf[i][0])}}) 
+																				, toEmpty:(tools.nvl(lab.mineralType,conf[i][0]) != conf[i][0])
+																				, toRun:conf[i][1]}}) 
   },
 	
 	getLabsToOut: function(roomName, res = '-') {
@@ -38,10 +39,9 @@ const labs = {
   getLabsToRun: function() {
 		return terminals.getAllMyTerminalsToSpread()
                     .map((t) => labs.getLabsToInOut(t.pos.roomName))
-                    .filter((arr) => Array.isArray(arr) && arr.length > 0)/*
-                    .flat()*/
-                    .reduce((a, b) => a.concat(b), [])
-                    .filter((l) => !!l && !!l);
+                    .filter((arr) => Array.isArray(arr) && arr.length > 0)
+                    .reduce((a, b) => a.concat(b), []) //.flat()
+                    .filter((l) => !!l.toRun);
   },
   
   run: function() { 
