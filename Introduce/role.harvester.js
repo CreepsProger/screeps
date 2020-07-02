@@ -259,10 +259,21 @@ var role = {
 			if(!!target) return target;
 		}
 		
+		if(!creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
+			const labToIn = labs.getLabsToIn(creep)
+													.filter((l)=> tools.checkTarget(executer,l.lab.id))
+													.shift();
+			if(!!labToIn) {
+				const target = tools.setTarget(creep,labToIn.lab,labToIn.lab.id,role.run);
+				if(!!target)
+					return {target:target, resource:labToIn.resource, amount:labToIn.amount};
+			}
+		}
+		
 		const res_to_send = terminals.getResourceToSend(creep);
 		if(!target &&
 			 !!res_to_send &&
-			 creep.memory.rerun &&
+			 creep.memory.rerun && 
 			 (!creep.getActiveBodyparts(WORK)) &&
 			 !!creep.room.storage &&
 			 !!creep.room.storage.my) {
