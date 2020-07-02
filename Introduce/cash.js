@@ -213,7 +213,8 @@ var cash = {
 		return cash.getEntry(cash.labs, STRUCTURE_LAB, tools.getRoomCode(roomName), () => {
 			return Game.rooms[roomName].find(FIND_STRUCTURES, {filter: (structure) => structure.structureType == STRUCTURE_LAB}
 											).filter((l) => !!l && !!l.my && !!l.store)
-											.sort((l,r) => {const dx=l.pos.x-r.pos.x; const dy=l.pos.y-r.pos.y; return (dy!=0)?dy:dx;})});
+											.sort((l,r) => {const dx=l.pos.x-r.pos.x; const dy=l.pos.y-r.pos.y; return (dy!=0)?dy:dx;})})
+			.filter((l) => !!l && !!l.my && !!l.store);
 	},
 
 	nukers: {},
