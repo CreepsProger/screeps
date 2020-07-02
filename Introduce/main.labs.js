@@ -8,12 +8,10 @@ const labs = {
 	getLabsToInOut: function(roomName) {
     return cash.getLabs(roomName);
   },
-	
-	getLabToIn: function(creep, res) {
+
+	getLabsToIn: function(roomName, res) {
     return  labs.getLabsToInOut(creep.room.name)
-								.filter((l) =>  !!l.mineralType &&
-																l.mineralType == res &&
-																l.store.getUsedCapacity(l.mineralType) < 500)[0];
+								.filter((l) =>  (!l.mineralType || (l.mineralType == res && l.store.getUsedCapacity(res) < 500)))[0];
   },
 
   getLabsToRun: function() {
