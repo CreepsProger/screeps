@@ -267,9 +267,13 @@ var role = {
 			console.log('⚗️↪️', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({creep:creep.name, roomName:creep.room.name, labToOut:labToOut}));
 			if(!!labToOut) {
-				const target = tools.setTarget(creep,labToOut.lab,labToOut.lab.id,role.run);
-				if(!!target)
-					return {target:target, resource:labToOut.resource, amount:labToOut.amount};
+				const lab = tools.setTarget(creep,labToOut.lab,labToOut.lab.id,role.run);
+				if(!!lab) {
+					const target = {resource:labToOut.resource, amount:labToOut.amount, target:target};
+					console.log('⚗️🎯↪️', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({creep:creep.name, roomName:creep.room.name, target:target}));
+					return target;
+				}
 			}
 			const labToIn = labs.getLabsToIn(creep.room.name)
 													.filter((e) => tools.nvl(creep.room.storage.store[e.resource],0) > 0 &&
@@ -278,9 +282,13 @@ var role = {
 			console.log('⚗️↩️', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({creep:creep.name, roomName:creep.room.name, labToIn:labToIn}));
 			if(!!labToIn) {
-				const target = tools.setTarget(creep,labToIn.lab,labToIn.lab.id,role.run);
-				if(!!target)
-					return {target:creep.room.storage, resource:labToIn.resource, amount:labToIn.amount};
+				const lab = tools.setTarget(creep,labToIn.lab,labToIn.lab.id,role.run);
+				if(!!lab) {
+					const target = {resource:labToIn.resource, amount:labToIn.amount, target:creep.room.storage};
+					console.log('⚗️🎯↩️', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({creep:creep.name, roomName:creep.room.name, target:target}));
+					return target;
+				}
 			}
 		}
 		
