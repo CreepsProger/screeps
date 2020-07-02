@@ -83,13 +83,11 @@ var role = {
 			const resources = Object.keys(creep.store).filter((k) => k != RESOURCE_ENERGY);
 			if(resources.length == 1) {
 				const res = resources[0];
-				const labToIn = labs.getLabsToInOut(creep.room.name)
-														.filter((l)=> (!l.mineralType || (l.mineralType == res && l.store.getUsedCapacity(res) < 500)) &&
-																					tools.checkTarget(executer,l.lab.id)
-																	 )
+				const labToIn = labs.getLabsToIn(creep.room.name)
+														.filter((lti)=> tools.checkTarget(executer,lti.lab.id))
 														.shift();
 				if(!!labToIn) {
-					const target = tools.setTarget(creep,labToIn,labToIn.id,role.run);
+					const target = tools.setTarget(creep,labToIn.lab,labToIn.lab.id,role.run);
 					if(!!target)
 						return {target:target, resource:res, amount:2500-target.store.getUsedCapacity(res)};
 				}
