@@ -14,7 +14,7 @@ const labs = {
                     , JSON.stringify( { labs:'getLabsToInOut', roomName:roomName, conf:conf})); 
     return  cash.getLabs(roomName)
 								.map((lab,i) => {return { lab:lab, resource:tools.nvl(lab.mineralType,conf[i][0])
-																				, toEmpty:(tools.nvl(lab.mineralType,'-') != conf[i][0])}}) 
+																				, toEmpty:(tools.nvl(lab.mineralType,conf[i][0]) != conf[i][0])}}) 
   },
 	
 	getLabsToOut: function(roomName, res = '-') {
@@ -28,8 +28,8 @@ const labs = {
 
 	getLabsToIn: function(roomName, res = '-') {
     return  labs.getLabsToInOut(roomName)
-								.filter((e) =>  e.resource == res &&
-																tools.nvl(e.lab.mineralType,'-') == res &&
+								.filter((e) =>  !e.toEmpty &&
+																(e.resource == res || res == '-') &&
 																tools.nvl(e.lab.store.getUsedCapacity(res),0) < 500
 											 )
 								.map((e) => {return {lab:e.lab, resource:e.resource, amount:1500-tools.nvl(e.lab.store.getUsedCapacity(e.resource),0)}}) 
