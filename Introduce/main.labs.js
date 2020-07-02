@@ -6,7 +6,9 @@ const cash = require('cash');
 const labs = {
 
 	getLabsToInOut: function(roomName) {
-    return cash.getLabs(roomName);
+		const config = cash.getLabsConfig(roomName);
+    return  cash.getLabs(roomName)
+								.map((lab,i) => new {lab:lab, resource:'XGH2O'}) 
   },
 
 	getLabsToIn: function(roomName, res) {
