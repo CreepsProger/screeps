@@ -11,18 +11,20 @@ var flags = {
 
 	time:0,
 	flags:{},
-	getLabsConfig: function(roomName) {// W29S29.labs: [["ZHO2",23],["Z"],["ZO",14],["OH",45],["O"],["H"]]
-		const prefix = roomName + '.labs:';
+	getLabsConfig: function(roomName) {
+		// W29S29.labs:0-1 ["ZHO2",23],["Z"]
+		// W29S29.labs:2-3 ["ZO",14],["OH",45]
+		// W29S29.labs:4-5 ["O"],["H"]
+		// config == [["ZHO2",23],["Z"],["ZO",14],["OH",45],["O"],["H"]]
+		const prefix = roomName + '.labs';
 		if(flags.flags[prefix] === undefined) {
-			flags.flags[prefix] =  Object.keys(Game.flags).filter((name)=>name.substring(0,prefix.length) == prefix)
+			const json =  Object.keys(Game.flags).filter((name)=>name.substring(0,prefix.length) == prefix)
 																										.map((name) => Game.flags[name])
 																										.shift();
+			if(!!json)
+				flags.flags[prefix] = JSON.parse(json);
 		}
-		const flag = flags.flags[prefix];
-		if(!!flag) {
-			return JSON.parse(flag.name.substring(prefix.length));
-		}
-		return undefined;
+		return flags.flags[prefix];
 	},
 	getNeeded: function(weight) {
 		const plus = '' + weight;
