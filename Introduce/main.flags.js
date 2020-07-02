@@ -11,7 +11,7 @@ var flags = {
 
 	time:0,
 	flags:{},
-	getLabsConfig: function(roomName) {// W29S29.labs: [["ZHO2"],["Z"],["ZO"],["OH"],["O"],["H"]]
+	getLabsConfig: function(roomName) {// W29S29.labs: [["ZHO2",23],["Z"],["ZO",14],["OH",45],["O"],["H"]]
 		const prefix = roomName + '.labs:';
 		if(flags.flags[prefix] === undefined) {
 			flags.flags[prefix] =  Object.keys(Game.flags).filter((name)=>name.substring(0,prefix.length) == prefix)
