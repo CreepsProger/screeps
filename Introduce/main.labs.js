@@ -17,8 +17,7 @@ const labs = {
 								.filter((e) =>  e.resource == res &&
 																tools.nvl(e.lab.mineralType,'-') == res &&
 																tools.nvl(e.lab.store.getUsedCapacity(res),0) < 500
-											 )
-								.shift();
+											 );
   },
 
   getLabsToRun: function() {
