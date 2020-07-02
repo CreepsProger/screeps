@@ -41,7 +41,7 @@ const labs = {
                     .map((t) => labs.getLabsToInOut(t.pos.roomName))
                     .filter((arr) => Array.isArray(arr) && arr.length > 0)
                     .reduce((a, b) => a.concat(b), []) //.flat()
-                    .filter((l) => !!l.toRun);
+                    .filter((l) => !!l.toRun && !l.lab.cooldown);
   },
 	
 	toRun: function(e) {
