@@ -3,7 +3,7 @@ const tools = require('tools');
 
 var cash = {
 
-	version: 48,
+	version: 49,
 	time: 0,
 
 	resetList:[],
@@ -211,9 +211,9 @@ var cash = {
 	labs: {},
 	getLabs: function(roomName) {
 		return cash.getEntry(cash.labs, STRUCTURE_LAB, tools.getRoomCode(roomName), () => {
-			return room.find(FIND_STRUCTURES, {filter: (structure) => structure.structureType == STRUCTURE_LAB })
-				.filter((l) => !!l && !!l.my && !!l.store)
-				.sort((l,r) => {const dx=l.pos.x-r.pos.x; const dy=l.pos.y-r.pos.y; return (dy!=0)?dy:dx;})});
+			return room.find(FIND_STRUCTURES, {filter: (structure) => structure.structureType == STRUCTURE_LAB}
+											).filter((l) => !!l && !!l.my && !!l.store)
+											.sort((l,r) => {const dx=l.pos.x-r.pos.x; const dy=l.pos.y-r.pos.y; return (dy!=0)?dy:dx;})});
 	},
 
 	nukers: {},
