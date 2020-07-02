@@ -261,6 +261,14 @@ var role = {
 		}
 		
 		if(!creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
+			const labToOut = labs.getLabsToOut(creep.room.name)
+													.filter((e) => tools.checkTarget(executer,e.lab.id))
+													.shift();
+			if(!!labToOut) {
+				const target = tools.setTarget(creep,labToOut.lab,labToOut.lab.id,role.run);
+				if(!!target)
+					return {target:target, resource:labToOut.resource, amount:labToOut.amount};
+			}
 			const labToIn = labs.getLabsToIn(creep.room.name)
 													.filter((e) => tools.checkTarget(executer,e.lab.id))
 													.shift();
