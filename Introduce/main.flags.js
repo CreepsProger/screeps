@@ -21,8 +21,13 @@ var flags = {
 																					.sort((l,r) => l.localeCompare(r))
 																					.map((s,i,arr) => s.substring(s.indexOf('[')) + (i!=arr.length-1)?',':']')
 																					.reduce((p,c) => p+c, '[');
-			if(json != '[')
+			try {
 				flags.flags[prefix] = JSON.parse(json);
+			}
+			catch (exception) {
+				console.log( '🏳️‍✒️⛔⚠️', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify({flags:'getLabsConfig', json:json, exception:exception}));
+			}
 		}
 		return flags.flags[prefix];
 	},
