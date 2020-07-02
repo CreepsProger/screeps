@@ -10,7 +10,7 @@ const labs = {
   },
 	
 	getLabToIn: function(creep, res) {
-    return  labs.getLabsToInOut(creep.room)
+    return  labs.getLabsToInOut(creep.room.name)
 								.filter((l) =>  !!l.mineralType &&
 																l.mineralType == res &&
 																l.store.getUsedCapacity(l.mineralType) < 500)[0];
