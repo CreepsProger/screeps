@@ -1,15 +1,23 @@
 const constants = require('main.constants');
+const terminals = require('main.terminals');
 const tools = require('tools');
 const cash = require('cash');
 
 const labs = {
 
-	getLabsToInOut: function() {
-    return cash.getLabs(creep.room).filter((l) => !!l && !!l.my && !!l.store);
+	getLabsToInOut: function(roomName) {
+    return cash.getLabs(roomName).filter((l) => !!l && !!l.my && !!l.store);
+  },
+	
+	getLabToIn: function(creep, res) {
+    return labs.getLabsToInOut(creep.room).filter((l) => !!l);
   },
 
   getLabsToRun: function() {
-    return cash.getLabs(creep.room).filter((l) => !!l && !!l.my && !!l.store); 
+		return = terminals.getAllMyTerminalsToSpread()
+                      .map((t) => cash.getLabs(t.pos.roomName))
+                      .flat()
+                      .filter((l) => !!l && !!l.my && !!l.store);
   },
   
   run: function() { 
@@ -18,7 +26,7 @@ const labs = {
       
     const labs = labs.getLabsToRun();
     console.log('⚗️🧪🔬🧬🧫', Math.trunc(Game.time/10000), Game.time%10000
-                            , JSON.stringify( { labs:'run', labs:labs}); 
+                            , JSON.stringify( { labs:'run', length:labs.length, labs:labs}); 
 	 }
 };
 
