@@ -13,13 +13,13 @@ var flags = {
 	flags:{},
 	getLabsConfig: function(roomName) {
 		// W29S29.labs:0-2 ["ZHO2",23],["Z"],["ZO",14]
-		// W29S29.labs:3-5 ["OH",45],["O"],["H"]
+		// W29S29.labs:3-5 ['OH',45], ['O'], ['H']
 		// config == [["ZHO2",23],["Z"],["ZO",14],["OH",45],["O"],["H"]]
 		const prefix = roomName + '.labs';
 		if(flags.flags[prefix] === undefined) {
 			const json = Object.keys(Game.flags).filter((name)=>name.substring(0,prefix.length) == prefix)
 																					.sort((l,r) => l.localeCompare(r))
-																					.map((s,i,arr) => s.substring(s.indexOf('[')) + (i!=arr.length-1)?',':']')
+																					.map((s,i,arr) => s.substring(s.indexOf('[')) + ((i!=arr.length-1)?',':']') )
 																					.reduce((p,c) => p+c, '[');
 			try {
 				if(json != '[')
