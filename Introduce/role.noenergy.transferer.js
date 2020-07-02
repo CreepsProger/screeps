@@ -83,9 +83,15 @@ var role = {
 			const resources = Object.keys(creep.store).filter((k) => k != RESOURCE_ENERGY);
 			if(resources.length == 1) {
 				const res = resources[0];
-				const labToIn = labs.getLabToIn(creep,res);
+				const labToIn = labs.getLabsToInOut(creep.room.name)
+														.filter((l)=> (!l.mineralType || (l.mineralType == res && l.store.getUsedCapacity(res) < 500)) &&
+																					tools.checkTarget(executer,l.lab.id)
+																	 )
+														.shift();
 				if(!!labToIn) {
-					return labToIn;
+					const target = tools.setTarget(creep,labToIn,labToIn.id,role.run);
+					if(!!target)
+						return {target:target, resource:res, amount:2500-target.store.getUsedCapacity(res)};
 				}
 			}
 		}
@@ -136,6 +142,9 @@ var role = {
 
 				if(!!target.isTask){
 					err = target.transferingBy(creep);
+				}
+				else if(!!target.target) {
+					err = creep.transfer(target.target, target.resource, target.amount);
 				}
 				else if(!!target.id) {
 					const resources = Object.keys(creep.store);//.sort((l,r) => tools.getWeight(l) - tools.getWeight(r));
