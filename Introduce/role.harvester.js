@@ -270,12 +270,13 @@ var role = {
 					return {target:target, resource:labToOut.resource, amount:labToOut.amount};
 			}
 			const labToIn = labs.getLabsToIn(creep.room.name)
-													.filter((e) => tools.checkTarget(executer,e.lab.id))
+													.filter((e) => tools.nvl(creep.room.storage.store[e.resource],0) > 0 &&
+																					tools.checkTarget(executer,e.lab.id))
 													.shift();
 			if(!!labToIn) {
 				const target = tools.setTarget(creep,labToIn.lab,labToIn.lab.id,role.run);
 				if(!!target)
-					return {target:target, resource:labToIn.resource, amount:labToIn.amount};
+					return {target:creep.room.storage, resource:labToIn.resource, amount:labToIn.amount};
 			}
 		}
 		
