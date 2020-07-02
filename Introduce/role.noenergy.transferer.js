@@ -83,7 +83,7 @@ var role = {
 			const resources = Object.keys(creep.store).filter((k) => k != RESOURCE_ENERGY);
 			if(resources.length == 1) {
 				const res = resources[0];
-				const labToIn = labs.getLabsToIn(creep.room.name)
+				const labToIn = labs.getLabsToIn(creep.room.name, res)
 														.filter((e)=> tools.checkTarget(executer,e.lab.id))
 														.shift();
 				if(!!labToIn) { 
