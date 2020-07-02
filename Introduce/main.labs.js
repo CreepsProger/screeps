@@ -6,11 +6,11 @@ const cash = require('cash');
 const labs = {
 
 	getLabsToInOut: function(roomName) {
-    return cash.getLabs(roomName).filter((l) => !!l && !!l.my && !!l.store);
+    return cash.getLabs(roomName);
   },
 	
 	getLabToIn: function(creep, res) {
-    return labs.getLabsToInOut(creep.room).filter((l) => !!l);
+    return labs.getLabsToInOut(creep.room).filter((l) => !!l)[0];
   },
 
   getLabsToRun: function() {
