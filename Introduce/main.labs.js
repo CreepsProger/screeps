@@ -20,9 +20,9 @@ const labs = {
 	
 	getLabsToOut: function(roomName, res = '-') {
     return  labs.getLabsToInOut(roomName)
-								.filter((e) =>  e.resource == res &&
-																tools.nvl(e.lab.mineralType,'-') == res &&
-																tools.nvl(e.lab.store.getUsedCapacity(res),0) > (!!e.toEmpty?0:2500)
+								.filter((e) =>  !!e.toEmpty &&
+																(e.resource == res || res == '-') &&
+																tools.nvl(e.lab.store.getUsedCapacity(e.resource),0) > (!!e.toEmpty?0:2500)
 											 )
 								.map((e) => {return {lab:e.lab, resource:e.resource, amount:tools.nvl(e.lab.store.getUsedCapacity(e.resource),0)-(!!e.toEmpty?0:1500) }}) 
   },
