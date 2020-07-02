@@ -10,6 +10,10 @@ const constants = require('main.constants');
 var last_tick = 0;
 
 var tools = {
+	
+	nvl: function(a,b) {
+		return (!a)? b:a;
+	},
 
 	getWeight: function(name) {
 		const code0 = '0'.charCodeAt(0);
