@@ -8,6 +8,8 @@ const labs = {
 
 	getLabsToInOut: function(roomName) {
 		const conf = config.getLabsConfig(roomName);
+		if(!conf)
+			return [];
 		console.log('⚗️', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { labs:'getLabsToInOut', roomName:roomName, conf:conf})); 
     return  cash.getLabs(roomName)
