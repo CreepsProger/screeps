@@ -12,10 +12,10 @@ const labs = {
 								.map((lab,i) => {return {lab:lab, resource:'XGH2O'}}) 
   },
 
-	getLabsToIn: function(roomName, res) {
+	getLabsToIn: function(roomName, res = '-') {
     return  labs.getLabsToInOut(roomName)
 								.filter((e) =>  e.resource == res &&
-																tools.nvl(e.lab.mineralType,'') == res &&
+																tools.nvl(e.lab.mineralType,'-') == res &&
 																tools.nvl(e.lab.store.getUsedCapacity(res),0) < 500
 											 )
 								.shift();
