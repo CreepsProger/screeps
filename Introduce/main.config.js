@@ -25,6 +25,8 @@ var config = {
 			return flagLabsConfig;
 		const my_shard_config = Memory.config.shards[Game.shard.name];
 		const my_room_config = my_shard_config.rooms[roomName];
+		if(!my_room_config)
+			return undefined;
 		const my_labs_config = my_room_config['labs'];
 		return my_labs_config;
 	},
