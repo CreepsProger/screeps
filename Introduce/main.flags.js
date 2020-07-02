@@ -24,9 +24,9 @@ var flags = {
 			try {
 				flags.flags[prefix] = JSON.parse(json);
 			}
-			catch (exception) {
+			catch (e) {
 				console.log( '🏳️‍✒️⛔⚠️', Math.trunc(Game.time/10000), Game.time%10000
-                    , JSON.stringify({flags:'getLabsConfig', json:json, exception:exception}));
+                    , JSON.stringify({flags:'getLabsConfig', json:json, e_name:e.name, e_message:e.message }));
 			}
 		}
 		return flags.flags[prefix];
