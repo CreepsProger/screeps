@@ -86,14 +86,14 @@ var role = {
 				const labToIn = labs.getLabsToIn(creep.room.name, res)
 														.filter((e)=> tools.checkTarget(executer,e.lab.id))
 														.shift();
-				if(!!labToIn) { 
+				if(!!labToIn) {/*
 					console.log('⚗️⬅️', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({creep:creep.name, roomName:creep.room.name, labToIn:labToIn}));
+											, JSON.stringify({creep:creep.name, roomName:creep.room.name, labToIn:labToIn}));*/
 					const lab = tools.setTarget(creep,labToIn.lab,labToIn.lab.id,role.run);
 					if(!!lab) {
-						const target = {resource:labToIn.resource, amount:labToIn.amount, target:lab};
+						const target = {resource:labToIn.resource, amount:labToIn.amount, target:lab};/*
 						console.log('⚗️🎯⬅️', Math.trunc(Game.time/10000), Game.time%10000
-												, JSON.stringify({creep:creep.name, roomName:creep.room.name, target:target}));
+												, JSON.stringify({creep:creep.name, roomName:creep.room.name, target:target}));*/
 						return target;
 					}
 				}
