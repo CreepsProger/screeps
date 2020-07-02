@@ -13,7 +13,8 @@ const labs = {
 		console.log('⚗️', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { labs:'getLabsToInOut', roomName:roomName, conf:conf})); 
     return  cash.getLabs(roomName)
-								.map((lab,i) => {return {lab:lab, resource:conf[i][0], toEmpty:(tools.nvl(lab.mineralType,'-') != conf[i][0]) }}) 
+								.map((lab,i) => {return { lab:lab, resource:tools.nvl(lab.mineralType,conf[i][0])
+																				, toEmpty:(tools.nvl(lab.mineralType,'-') != conf[i][0])}}) 
   },
 	
 	getLabsToOut: function(roomName, res = '-') {
