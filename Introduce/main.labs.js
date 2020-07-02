@@ -19,7 +19,9 @@ const labs = {
   getLabsToRun: function() {
 		return terminals.getAllMyTerminalsToSpread()
                     .map((t) => cash.getLabs(t.pos.roomName))
-                    .flat()
+                    .filter((arr) => Array.isArray(arr) && arr.length > 0)/*
+                    .flat()*/
+                    .reduce((a, b) => a.concat(b), [])
                     .filter((l) => !!l && !!l);
   },
   
