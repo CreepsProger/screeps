@@ -149,7 +149,7 @@ var role = {
 				}
 				else if(!!target.target) {
 					err = creep.transfer(target.target, target.resource, Math.min(target.amount,creep.store.getUsedCapacity(target.resource)));
-					console.log(creep, JSON.stringify({weight:tools.getWeight(creep.name), err:err, target:target}));
+					//console.log(creep, JSON.stringify({weight:tools.getWeight(creep.name), err:err, target:target}));
 				}
 				else if(!!target.id) {
 					const resources = Object.keys(creep.store);//.sort((l,r) => tools.getWeight(l) - tools.getWeight(r));
