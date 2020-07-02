@@ -47,15 +47,15 @@ const labs = {
 	toRun: function(e) {
 		const labs = cash.getLabs(e.lab.pos.roomName);
 		const reverse = (e.toRun < 0);
-		var toRun = Math.floor(Math.abs(e.toRun));
+		var to_run = Math.floor(Math.abs(e.toRun));
 		var err = ERR_NOT_IN_RANGE;
 		var result =[];
-		while(toRun > 0 && err != OK) {
-			const l = labs[toRun/10%10];
-			const r = labs[toRun%10];
+		while(to_run > 0 && err != OK) {
+			const l = labs[Math.floor(to_run/10%10)];
+			const r = labs[Math.floor(to_run%10)];
 			err = (reverse)? e.lab.reverseReaction(l,r):e.lab.runReaction(l,r);
-			toRun = Math.floor(toRun/100);
-			result.push({ilr:e.i*100+l*10+r, err:err, reverse:reverse});
+			to_run = Math.floor(to_run/100);
+			result.push({ilr:(e.i*100+l*10+r), err:err, reverse:reverse});
 		}
 		return result;
 	},
