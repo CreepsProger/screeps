@@ -160,7 +160,7 @@ var role = {
 
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.say('🔜💦');
-					err = config.moveTo(creep, target);
+					err = (!!target.target)? config.moveTo(creep, target.target):config.moveTo(creep, target);
 					if(tools.getWeight(creep.name) == 5011 && err != OK) {
 						console.log(creep, JSON.stringify({weight:tools.getWeight(creep.name), err:err, target:target}));
 					}
