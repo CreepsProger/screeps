@@ -12,8 +12,8 @@ var flags = {
 	time:0,
 	flags:{},
 	getLabsConfig: function(roomName) {
-		// W29S29.labs:0-2 ["ZHO2",23],["Z"],["ZO",14]
-		// W29S29.labs:3-5 ['OH',45], ['O'], ['H']
+		// W29S29.labs:0-2 ["ZHO2",23], ["Z"], ["ZO",14]
+		// W29S29.labs:3-5 ["OH",45], ["O"], ["H"]
 		// config == [["ZHO2",23],["Z"],["ZO",14],["OH",45],["O"],["H"]]
 		const prefix = roomName + '.labs';
 		if(flags.flags[prefix] === undefined) {
