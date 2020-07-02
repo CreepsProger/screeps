@@ -79,7 +79,7 @@ var role = {
 				return conts[0];
 		}
 		
-		if(!creep.getActiveBodyparts(WORK)) {
+		if(!creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
 			const resources = Object.keys(creep.store).filter((k) => k != RESOURCE_ENERGY);
 			if(resources.length == 1) {
 				const res = resources[0];
@@ -100,7 +100,7 @@ var role = {
 			}
 		}
 
-		if(!!creep.room.storage && !!creep.room.storage.my){
+		if(!!creep.room.storage && !!creep.room.storage.my && creep.memory.rerun){
 			if(!!creep.room.terminal && !!creep.room.terminal.my) {
 				const resources = Object.keys(creep.store).filter((k) => k != RESOURCE_ENERGY);
 				if(resources.length == 1 &&
@@ -113,7 +113,7 @@ var role = {
 			return target;
 		}
 		
-		if(creep.store.getFreeCapacity() == 0 || creep.memory.rerun) {
+		if((creep.store.getFreeCapacity() == 0 && !creep.room.storage) || creep.memory.rerun) {
 			const storages = cash.getStorages();
 			if(storages.length > 0) {
 				const target = storages.reduce((p,c) => tools.getRangeTo(creep.pos,p.pos)
