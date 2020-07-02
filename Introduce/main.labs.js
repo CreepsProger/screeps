@@ -55,7 +55,8 @@ const labs = {
 			const r = labs[Math.floor(to_run%10)];
 			err = (reverse)? e.lab.reverseReaction(l,r):e.lab.runReaction(l,r);
 			to_run = Math.floor(to_run/100);
-			result.push({ilr:(e.i*100+l*10+r), err:err, reverse:reverse});
+			const ilr = e.i*100+l*10+r;
+			result.push({i:e.i, l:l, r:r, ilr:ilr, err:err, reverse:reverse});
 		}
 		return result;
 	},
