@@ -9,9 +9,9 @@ const labs = {
 	getLabsToInOut: function(roomName) {
 		const conf = config.getLabsConfig(roomName);
 		if(!conf)
-			return [];
+			return [];/*
 		console.log('⚗️', Math.trunc(Game.time/10000), Game.time%10000
-                    , JSON.stringify( { labs:'getLabsToInOut', roomName:roomName, conf:conf})); 
+                    , JSON.stringify( { labs:'getLabsToInOut', roomName:roomName, conf:conf}));*/
     return  cash.getLabs(roomName)
 								.map((lab,i) => {return { i:i, resource:tools.nvl(lab.mineralType,conf[i][0])
 																				, toEmpty:(tools.nvl(lab.mineralType,conf[i][0]) != conf[i][0])
