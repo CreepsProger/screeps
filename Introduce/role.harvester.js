@@ -90,6 +90,7 @@ var role = {
 		const U  = XU || !!flags.flags.U && flags.flags.U.pos.roomName == my_room;
 		const UU = XU || !!flags.flags.UU && flags.flags.UU.pos.roomName == my_room;
 		const BB = XU || !!flags.flags.BB && flags.flags.BB.pos.roomName == my_room;
+		const CONT = !!flags.flags.CONT;
 
 		if(!target &&
 			 (!creep.getActiveBodyparts(WORK) || U) &&
@@ -100,14 +101,14 @@ var role = {
 			 																								cont.store.getUsedCapacity(RESOURCE_ENERGY) > 0));
 
 			if(conts.length > 0) {
-				// var cont = conts.reduce((p,c) => tools.checkTarget(executer,p.id) && creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-				var cont = conts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-				if(!!cont) {
-					// target = tools.setTarget(creep,cont,cont.id,role.run);
-					target = cont;
+				var cont = conts.reduce((p,c) => (!CONT || tools.checkTarget(executer,p.id)) && creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+				// var cont = conts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+				if(!!cont)
+					target = (CONT)? tools.setTarget(creep,cont,cont.id,role.run):cont;
 				}
 			}
-			if(!!target) return target;
+			if(!!target)
+				return target;
 		}
 
 		const DP2 = flags.flags.DP2;
