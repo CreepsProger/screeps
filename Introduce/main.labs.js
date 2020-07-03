@@ -26,10 +26,9 @@ const labs = {
 																				, toRun:labs.getConfLabAgs(conf,i), lab:lab}}) 
   },
 	
-	getLabsToOut: function(roomName, res = '-') {
+	getLabsToOut: function(roomName) {
     return  labs.getLabsToInOut(roomName)
-								.filter((e) =>  !!e.toEmpty &&
-																(e.resource == res || res == '-') &&
+								.filter((e) =>  !!e.toEmpty ||
 																tools.nvl(e.lab.store.getUsedCapacity(e.resource),0) > (!!e.toEmpty?0:2500)
 											 )
 								.map((e) => {return {lab:e.lab, resource:e.resource, amount:tools.nvl(e.lab.store.getUsedCapacity(e.resource),0)-(!!e.toEmpty?0:1500) }}) 
