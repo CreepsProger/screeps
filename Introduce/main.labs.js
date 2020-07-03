@@ -63,7 +63,7 @@ const labs = {
 			const r = Math.floor(to_run%10);
 			err = (!!reverse)? e.lab.reverseReaction(labs[l],labs[r]):e.lab.runReaction(labs[l],labs[r]);
 			to_run = Math.floor(to_run/100);
-			const ilr = (e.i*100+l*10+r)/1000;
+			const ilr = (e.i*100+l*10+r)/100;
 			result.push({[e.lab.pos.roomName]:ilr, err:err, reverse:reverse});
 		}
 		return result;
