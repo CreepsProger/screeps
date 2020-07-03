@@ -101,9 +101,9 @@ var role = {
 			 																								cont.store.getUsedCapacity(RESOURCE_ENERGY) > 0));
 
 			if(conts.length > 0) {
-				var cont = conts.reduce((p,c) => (!CONT || tools.checkTarget(executer,p.id)) && creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+				var cont = conts.reduce((p,c) => ((!CONT || tools.checkTarget(executer,p.id)) && (creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)))? p:c);
 				// var cont = conts.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-				if(!!cont)
+				if(!!cont) {
 					target = (CONT)? tools.setTarget(creep,cont,cont.id,role.run):cont;
 				}
 			}
