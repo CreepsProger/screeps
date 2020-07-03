@@ -90,7 +90,7 @@ var role = {
 		const U  = XU || !!flags.flags.U && flags.flags.U.pos.roomName == my_room;
 		const UU = XU || !!flags.flags.UU && flags.flags.UU.pos.roomName == my_room;
 		const BB = XU || !!flags.flags.BB && flags.flags.BB.pos.roomName == my_room;
-		const CONT = !!flags.flags.CONT;
+		const CONT = !!flags.flags.CONT && flags.flags.CONT.pos.roomName == my_room; 
 
 		if(!target &&
 			 (!creep.getActiveBodyparts(WORK) || U) &&
