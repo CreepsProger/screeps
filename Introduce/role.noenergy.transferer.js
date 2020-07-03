@@ -79,6 +79,16 @@ var role = {
 				return conts[0];
 		}
 		
+		if(!creep.getActiveBodyparts(WORK)) {
+			const resources = Object.keys(creep.store).filter((k) => k != RESOURCE_ENERGY);
+			if(resources.length == 1 && resources[0] == 'G') {
+				const nuker = cash.getNukers(creep.room).filter((n) =>
+						!!n && !!n.store && n.store.getFreeCapacity('G') > 0).shift();
+				if(!!nuker)
+					return nuker;
+			}
+		}
+		
 		if(!creep.getActiveBodyparts(WORK) /*&& creep.memory.rerun*/) {
 			const resources = Object.keys(creep.store).filter((k) => k != RESOURCE_ENERGY);
 			if(resources.length == 1) {
