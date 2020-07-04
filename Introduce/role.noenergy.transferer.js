@@ -184,7 +184,7 @@ var role = {
 					}
 				}
 				else if(!err) {
-					creep.say('💦');
+					creep.say('💦'+tools.nvl(target.resource,''));
 					if(!!flags.flags.LRT || !!flags.flags.LR || !!flags.flags.L) {
 						console.log( '💦', Math.trunc(Game.time/10000), Game.time%10000
 												, creep.name
