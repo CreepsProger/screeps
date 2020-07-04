@@ -114,7 +114,7 @@ var role = {
 			if(!!creep.room.terminal && !!creep.room.terminal.my) {
 				const resources = Object.keys(creep.store).filter((k) => k != RESOURCE_ENERGY);
 				if(resources.length == 1 &&
-					 terminals.getAmountToSend(creep, creep.store[resources[0]]) > 0) {
+					 terminals.getAmountToSend(creep, resources[0]) > 0) {
 					const target = creep.room.terminal;
 					return target;
 				} 
