@@ -164,8 +164,10 @@ var role = {
 				else if(!!target.id) {
 					const resources = Object.keys(creep.store);//.sort((l,r) => tools.getWeight(l) - tools.getWeight(r));
 					resources.forEach(function(resource,i) {
-						if(err == OK)
+						if(err == OK) {
 							err = creep.transfer(target, resource);
+							target[resource] = resource;
+						} 
 					});
 				}
 
