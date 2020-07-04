@@ -8,8 +8,9 @@ var terminals = {
 	},
 
 	getAmount: function(terminal,resource) {
-		return ((!!terminal.store[resource])? terminal.store[resource]:0)
-			+ ((!!terminal.room.storage.store[resource])? terminal.room.storage.store[resource]:0);
+		return 0
+			+ tools.nvl(terminal.store[resource],0)
+			+ tools.nvl(terminal.room.storage.store[resource],0);
 	},
 
 	getRoomAmount: function(creep,resource) {
@@ -40,7 +41,7 @@ var terminals = {
 	},
 
 	getStorageAmountAvgDiff: function(terminal, resource, creepAmount = 0) {
-		return tools.nvl(terminal.store[resource],0) - terminals.getShardAvgAmount(resource, creepAmount);
+		return tools.nvl(terminal.room.storage.store[resource],0) - terminals.getShardAvgAmount(resource, creepAmount);
 	},
 	
 	getAmountToSend: function(creep,resource) {
