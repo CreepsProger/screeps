@@ -10,7 +10,12 @@ var last_game_time_created_creep = 0;
 var flags = {
 
 	time:0,
-	flags:{},
+	flags:{},getFlag: function(flagName) {
+		if(flags.flags[flagName] === undefined) {
+			flags.flags[flagName] = Game.flags[flagName];
+		}
+		return flags.flags[flagName];
+	},
 	getLabsConfig: function(roomName) {
 		// W29S29.labs:0-2 ["ZHO2",23], ["Z"], ["ZO",14]
 		// W29S29.labs:3-5 ["OH",45], ["O"], ["H"]
