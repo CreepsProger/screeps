@@ -18,7 +18,10 @@ var terminals = {
 			 !creep.room.storage ||
 			 !creep.room.storage.my)
 			return 0;
-		return 0+creep.store[resource]+creep.room.terminal.store[resource]+creep.room.storage.store[resource];
+		return 0
+			+ tools.nvl(creep.store[resource],0)
+			+ tools.nvl(creep.room.terminal.store[resource],0)
+			+ tools.nvl(creep.room.storage.store[resource],0);
 	},
 	
 	getShardAvgAmount: function(resource, creepAmount = 0) {
@@ -37,7 +40,7 @@ var terminals = {
 	},
 
 	getStorageAmountAvgDiff: function(terminal, resource, creepAmount = 0) {
-		return tools.nvl(creep.room.terminal.store[resource],0) - terminals.getShardAvgAmount(resource, creepAmount);
+		return tools.nvl(terminal.store[resource],0) - terminals.getShardAvgAmount(resource, creepAmount);
 	},
 	
 	getAmountToSend: function(creep,resource) {
