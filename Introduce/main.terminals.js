@@ -57,7 +57,7 @@ var terminals = {
 		const resources = Object.keys(t.store).filter((k) => k != RESOURCE_ENERGY);
 		if(resources.length == 0)
 			return null;
-		const deficit = resources.filter((r) => terminals.getAmountToSend(creep,r) == 0);
+		const deficit = resources.filter((r) => terminals.getAmountToSend(creep,r) < 10);
 		if(deficit.length == 0)
 			return null;
 		const mr = deficit.sort((l,r) => terminals.getStorageAmountAvgDiff(t,r) - terminals.getStorageAmountAvgDiff(t,l) )[0];
@@ -86,7 +86,7 @@ var terminals = {
 		const resources = Object.keys(creep.room.storage.store).filter((k) => k != RESOURCE_ENERGY);
 		if(resources.length == 0)
 			return null;
-		const surplus = resources.filter((r) => terminals.getAmountToSend(creep,r) > 0);
+		const surplus = resources.filter((r) => terminals.getAmountToSend(creep,r) > 10);
 		if(surplus.length == 0)
 			return null;
 		const mr = surplus.sort((l,r) => terminals.getStorageAmountAvgDiff(t,r) - terminals.getStorageAmountAvgDiff(t,l))[0];
@@ -114,7 +114,7 @@ var terminals = {
 			const resources = Object.keys(terminal.store).filter((i) => i != RESOURCE_ENERGY);
 			if(resources.length == 0)
 				return;
-			const surplus = resources.filter((r) => terminals.getAmountAvgDiff(terminal,r) > 1);
+			const surplus = resources.filter((r) => terminals.getAmountAvgDiff(terminal,r) > 0);
 			if(surplus.length == 0)
 				return;
 			const res = surplus.sort((l,r) => terminals.getAmountAvgDiff(terminal,r) - terminals.getAmountAvgDiff(terminal,l))[0];
