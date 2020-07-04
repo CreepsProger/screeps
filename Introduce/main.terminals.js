@@ -26,6 +26,11 @@ var terminals = {
 		const amount = all.reduce((amount,t) => amount + terminals.getAmount(t,resource), creepAmount);
 		return Math.floor(amount/all.length);
 	},
+	
+	getShardMinAmount: function(resource) {
+		const all = terminals.getAllMyTerminalsToSpread();
+		return all.reduce((minAmount,t) => Math.min(minAmount,terminals.getAmount(t,resource)), Infinity);
+	},
 
 	getAmountAvgDiff: function(terminal,resource) {
 		return terminals.getAmount(terminal,resource) - terminals.getShardAvgAmount(resource);
@@ -81,7 +86,8 @@ var terminals = {
 		if(surplus.length == 0)
 			return null;
 		const mr = surplus.sort((l,r) => terminals.getStorageAmountAvgDiff(t,r) - terminals.getStorageAmountAvgDiff(t,l))[0];
-		const ret = {resource:mr, amount:Math.floor(terminals.getStorageAmountAvgDiff(t,mr)/2), avg:terminals.getShardAvgAmount(mr)};
+		const amountToSend = Math.floor((terminals.getRoomAmount(creep,mr) - terminals.getShardMinAmount(mr))/2);
+		const ret = {resource:mr, amount:amountToSend, avg:terminals.getShardAvgAmount(mr)};
 		
 // 		if(!!ret) {
 // 			console.log( '✒️'
