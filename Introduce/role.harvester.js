@@ -444,7 +444,7 @@ var role = {
 				(target.energy == 0 && creep.pos.getRangeTo(target) > 1 )? // a source
 						ERR_NOT_IN_RANGE:
 				creep.harvest(target);
-				creep.say((!target.target)?'⚡':('💦'+tools.nvl(target.resource,''))ji);
+				creep.say((!target.target)?'⚡':('💦'+tools.nvl(target.resource,'')));
 				if(err == ERR_TIRED)
 					creep.memory.noidle = {time:Game.time, role:role.name, err:err, before:Game.time+5};
 
