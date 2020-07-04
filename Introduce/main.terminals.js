@@ -37,7 +37,7 @@ var terminals = {
 	},
 
 	getStorageAmountAvgDiff: function(terminal, resource, creepAmount = 0) {
-		return terminal.room.storage.store[resource] - terminals.getShardAvgAmount(resource, creepAmount);
+		return tools.nvl(creep.room.terminal.store[resource],0) - terminals.getShardAvgAmount(resource, creepAmount);
 	},
 	
 	getAmountToSend: function(creep,resource) {
