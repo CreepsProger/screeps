@@ -477,7 +477,7 @@ var role = {
 			metrix.idle(creep);
 			//cash.renewCreep(creep);
 
-			if((!!creep.memory.noidle && creep.memory.noidle.before > Game.time) && 
+			if((!creep.memory.noidle || !!creep.memory.noidle && creep.memory.noidle.before > Game.time) && 
 				(creep.pos.findInRange(FIND_MY_SPAWNS, 1).length > 0 ||
 				  creep.pos.findInRange(FIND_MY_CREEPS, 1).length > 1 ||
 					(!!creep.room.storage && creep.pos.inRangeTo(creep.room.storage, 1)) ||
