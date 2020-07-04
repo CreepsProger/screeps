@@ -117,7 +117,8 @@ var terminals = {
 			const res = surplus.sort((l,r) => terminals.getAmountAvgDiff(terminal,r) - terminals.getAmountAvgDiff(terminal,l))[0];
 			const minResourceRoom = terminals.getMinResourceRoom(res,terminal.pos.roomName);
 			if(!!minResourceRoom) {
-				const amount_to_send = Math.min(terminal.store[res], terminals.getAmountAvgDiff(terminal,res));
+				const amountToSend = Math.floor((terminals.getAmount(terminal,res) - terminals.getShardMinAmount(res))/2);
+				const amount_to_send = Math.min(terminal.store[res], amountToSend);
 				const sending = {from:terminal.pos.roomName, to:minResourceRoom, resource:res, amount:amount_to_send};
 				const err = terminal.send(sending.resource, sending.amount, sending.to);
 				if(true || OK == err) {
