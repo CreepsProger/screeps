@@ -41,7 +41,8 @@ var terminals = {
 	},
 	
 	getAmountToSend: function(creep,resource) {
-		return Math.max(0, Math.floor((terminals.getRoomAmount(creep,resource) - terminals.getShardMinAmount(resource))/2));
+		return Math.max(0, Math.floor((terminals.getRoomAmount(creep,resource) - terminals.getShardMinAmount(resource))/2))
+			- tools.nvl(creep.room.terminal.store[resource],0) ;
 	}, 
 	
 	getResourceToRecieve: function(creep) {
