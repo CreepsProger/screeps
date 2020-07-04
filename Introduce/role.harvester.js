@@ -445,6 +445,8 @@ var role = {
 						ERR_NOT_IN_RANGE:
 				creep.harvest(target);
 				creep.say('⚡');
+				if(err == ERR_TIRED)
+					creep.memory.noidle = {time:Game.time, role:role.name, err:err, before:Game.time+5};
 
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.say((!target.target)?'🔜⚡':'🔜💦');
@@ -475,10 +477,11 @@ var role = {
 			metrix.idle(creep);
 			//cash.renewCreep(creep);
 
-			if(	creep.pos.findInRange(FIND_MY_SPAWNS, 1).length > 0 ||
+			if((!creep.memory.noidle && creep.memory.noidle.before > Game.time) && 
+				(creep.pos.findInRange(FIND_MY_SPAWNS, 1).length > 0 ||
 				  creep.pos.findInRange(FIND_MY_CREEPS, 1).length > 1 ||
 					(!!creep.room.storage && creep.pos.inRangeTo(creep.room.storage, 1)) ||
-					(!!creep.room.terminal && creep.pos.inRangeTo(creep.room.terminal, 1)) ) {
+					(!!creep.room.terminal && creep.pos.inRangeTo(creep.room.terminal, 1))) ) {
 				const random = Math.floor(Math.random()*8+Game.time)%8+1;
 				creep.move(random); // TOP:1 ,..., TOP_LEFT:8
 			}
