@@ -166,7 +166,7 @@ var role = {
 					resources.forEach(function(resource,i) {
 						if(err == OK) {
 							err = creep.transfer(target, resource);
-							target[resource] = resource;
+							target.resource = resource;
 						} 
 					});
 				}
