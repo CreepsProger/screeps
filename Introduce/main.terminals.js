@@ -58,7 +58,7 @@ var terminals = {
 		const resources = Object.keys(t.store).filter((k) => k != RESOURCE_ENERGY);
 		if(resources.length == 0)
 			return null;
-		const deficit = resources.filter((r) => terminals.getAmountToSend(creep,r) == 0);
+		const deficit = resources.filter((r) => terminals.getStorageAmountAvgDiff(t,r,creep) < 0);
 		if(deficit.length == 0)
 			return null;
 		const mr = deficit.sort((l,r) => terminals.getStorageAmountAvgDiff(t,r) - terminals.getStorageAmountAvgDiff(t,l) )[0];
