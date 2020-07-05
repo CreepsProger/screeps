@@ -19,15 +19,18 @@ var terminals = {
 			 !creep.room.storage ||
 			 !creep.room.storage.my)
 			return 0;
-		return 0
-			+ tools.nvl(creep.store[resource],0)
-			+ tools.nvl(creep.room.terminal.store[resource],0)
-			+ tools.nvl(creep.room.storage.store[resource],0);
+		const creepRoomId = Math.floor(tools.getWeight(creep.name)/10);
+		const inCreeps =  Object.keys(Game.creeps).filter((n) => Math.floor(tools.getWeight(n)/10) == creepRoomId)
+																							.map((n) => tools.nvl(Game.creeps[n].store[resource],0))
+																							.reduce((amount,a) => amount+a,0);
+		return inCreeps + terminals.getAmount(creep.room.terminal, resource);
 	},
 	
-	getShardAvgAmount: function(resource, creepAmount = 0) {
+	getShardAvgAmount: function(resource) {
 		const all = terminals.getAllMyTerminalsToSpread();
-		const amount = all.reduce((amount,t) => amount + terminals.getAmount(t,resource), creepAmount);
+		const inCreeps =  Object.keys(Game.creeps).map((n) => tools.nvl(Game.creeps[n].store[resource],0))
+																							.reduce((amount,a) => amount+a,0);
+		const amount = all.reduce((amount,t) => amount + terminals.getAmount(t,resource), inCreeps);
 		return Math.floor(amount/all.length);
 	},
 	
@@ -40,8 +43,8 @@ var terminals = {
 		return terminals.getAmount(terminal,resource) - terminals.getShardAvgAmount(resource);
 	},
 
-	getStorageAmountAvgDiff: function(terminal, resource, creepAmount = 0) {
-		return tools.nvl(terminal.room.storage.store[resource],0) - terminals.getShardAvgAmount(resource, creepAmount);
+	getStorageAmountAvgDiff: function(terminal, resource) {
+		return tools.nvl(terminal.room.storage.store[resource],0) - terminals.getShardAvgAmount(resource);
 	},
 	
 	getAmountToSend: function(creep,resource) {
@@ -62,7 +65,7 @@ var terminals = {
 		const resources = Object.keys(t.store).filter((k) => k != RESOURCE_ENERGY);
 		if(resources.length == 0)
 			return null;
-		const deficit = resources.filter((r) => terminals.getStorageAmountAvgDiff(t,r,tools.nvl(creep.store[r],0)) < 0);
+		const deficit = resources.filter((r) => terminals.getStorageAmountAvgDiff(t,r) < 0);
 		if(deficit.length == 0)
 			return null;
 		const mr = deficit.sort((l,r) => terminals.getStorageAmountAvgDiff(t,l) - terminals.getStorageAmountAvgDiff(t,r) )[0];
@@ -91,7 +94,7 @@ var terminals = {
 		const resources = Object.keys(creep.room.storage.store).filter((k) => k != RESOURCE_ENERGY);
 		if(resources.length == 0)
 			return null;
-		const surplus = resources.filter((r) => terminals.getStorageAmountAvgDiff(t,r,tools.nvl(creep.store[r],0)) > 10);
+		const surplus = resources.filter((r) => terminals.getStorageAmountAvgDiff(t,r) > 10);
 		if(surplus.length == 0)
 			return null;
 		const mr = surplus.sort((l,r) => terminals.getStorageAmountAvgDiff(t,r) - terminals.getStorageAmountAvgDiff(t,l))[0];
