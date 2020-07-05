@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 349,
+	version: 350,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -152,9 +152,9 @@ var config = {
 			const special_x = Memory.config.main_path[creep.room.name+'x'];
 			const special_y = Memory.config.main_path[creep.room.name+'y'];
 			// console.log(creep, role_name, JSON.stringify({pos:pos, exit:exit, my_path_room:my_path_room}));
-			if(!!special_x)
+			if(!!special_x && !!target)
 				target.x = special_x+Game.time%3-1;
-			if(!!special_y)
+			if(!!special_y && !!target)
 				target.y = special_y+Game.time%3-1;
 		}
 
