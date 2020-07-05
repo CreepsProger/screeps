@@ -98,7 +98,7 @@ var terminals = {
 		if(surplus.length == 0)
 			return null;
 		const mr = surplus.sort((l,r) => terminals.getStorageAmountAvgDiff(t,r) - terminals.getStorageAmountAvgDiff(t,l))[0];
-		const ret = {resource:mr, amount:terminals.getAmountToSend(creep,mr), avg:terminals.getShardAvgAmount(mr)};
+		const ret = {resource:mr, amount:terminals.getStorageAmountAvgDiff(creep,mr)-10, avg:terminals.getShardAvgAmount(mr)};
 		
 // 		if(!!ret) {
 // 			console.log( '✒️'
