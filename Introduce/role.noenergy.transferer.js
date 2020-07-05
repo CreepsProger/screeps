@@ -123,7 +123,7 @@ var role = {
 			return target;
 		}
 		
-		if((creep.store.getFreeCapacity() < creep.store.getCapacity()/2 /*&& !creep.room.storage*/) || creep.memory.rerun) {
+		if((creep.store.getFreeCapacity() < creep.store.getCapacity() /*&& !creep.room.storage*/) || creep.memory.rerun) {
 			const storages = cash.getStorages();
 			if(storages.length > 0) {
 				const target = storages.reduce((p,c) => tools.getRangeTo(creep.pos,p.pos)
