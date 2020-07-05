@@ -132,9 +132,11 @@ var role = {
 				return target;
 			}
 		}
+
 		if(creep.getActiveBodyparts(WORK) && !!creep.room.storage) {
 			return creep.room.storage;
 		}
+
 		return config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
 	},
 
