@@ -455,7 +455,7 @@ var tasks = {
 				console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
 							, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
 																, room:creep.room.name, resToBoost:resToBoost}));
-				const labsToBoost = labs.getLabsToInOut(creep.room.name).filter((lab) => lab.mineralType == resToBoost);
+				const labsToBoost = labs.getLabsToInOut(creep.room.name).filter((lab) => !!lab.mineralType && lab.mineralType == resToBoost);
 				if(labsToBoost.length > 0) { 
 					console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
 								, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
