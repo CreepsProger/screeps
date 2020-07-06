@@ -448,9 +448,12 @@ var tasks = {
 											, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
 																				, room:creep.room.name, boostConfig:boostConfig}));
 		}
-		if(!!boostConfig) {
+		if(boostConfig.length > 0) {
 			const resToBoost = boostConfig.filter((res) => !creep.body.some((b,i) => tools.nvl(b.boost,'-') == res)); 
 			if(!!resToBoost) {
+				console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
+							, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
+																, room:creep.room.name, resToBoost:resToBoost}));
 				const labsToBoost = labs.getLabsToInOut(creep.room.name).filter((lab) => lab.mineralType == resToBoost);
 				if(labsToBoost.length > 0) { 
 					console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
