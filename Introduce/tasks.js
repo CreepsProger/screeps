@@ -443,19 +443,29 @@ var tasks = {
 			return creep.suicide() == OK;
 		}
 		const boostConfig = flags.getBoostConfig(creep);
+		if(tools.getWeight(creep.name) == 5084) {
+			console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
+																				, room:creep.room.name, boostConfig:boostConfig}));
+		}
 		if(!!boostConfig) {
 			const resToBoost = boostConfig.filter((res) => !creep.body.some((b,i) => tools.nvl(b.boost,'-') == res)); 
 			if(!!resToBoost) {
 				const labsToBoost = labs.getLabsToInOut(creep.room.name).filter((lab) => lab.mineralType == resToBoost);
 				if(labsToBoost.length > 0) { 
-					if(labsToBoost[0].boostCreep(creep) == ERR_NOT_IN_RANGE) {
+					console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
+								, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
+																	, room:creep.room.name, resToBoost:resToBoost, labsToBoost:labsToBoost}));
+					const labToBoost = labsToBoost[0];
+					const err = labToBoost.boostCreep(creep);
+					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜💉');
 						tools.moveTo(creep, labToBoost);
 					}
 					else {
 						console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
 														, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
-																							, room:creep.room.name, resToBoost:resToBoost}));
+																							, room:creep.room.name, err:err, labToBoost:labToBoost}));
 					}
 					return true;
 				}
