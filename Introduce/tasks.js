@@ -444,7 +444,7 @@ var tasks = {
 		}
 		const boostConfig = flags.getBoostConfig(creep);
 		if(!!boostConfig) {
-			const resToBoost = boostConfig.resources.filter((res) => !creep.body.some((b,i) => tools.nvl(b.boost,'-') == res)); 
+			const resToBoost = boostConfig.filter((res) => !creep.body.some((b,i) => tools.nvl(b.boost,'-') == res)); 
 			if(!!resToBoost) {
 				const labToBoost = labs.getLabsToInOut(creep.room.name).filter((lab) => meneral = res).slice();
 				if(!!labToBoost) { 
