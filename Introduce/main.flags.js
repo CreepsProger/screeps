@@ -24,7 +24,7 @@ var flags = {
 		if(flags.flags[prefix] === undefined) {
 			const json = Object.keys(Game.flags).filter((name)=>name.substring(0,prefix.length) == prefix)
 																					.sort((l,r) => l.localeCompare(r))
-																					.map((s,i,arr) => s.substring(s.indexOf(':')) + ((i!=arr.length-1)?',':'}') )
+																					.map((s,i,arr) => s.substring(s.indexOf(':')+1) + ((i!=arr.length-1)?',':'}') )
 																					.reduce((p,c) => p+c, '{');
 			try {
 				if(json != '{')
