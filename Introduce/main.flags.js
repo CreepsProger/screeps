@@ -43,6 +43,8 @@ var flags = {
 	},
 	getBoostConfig: function(creep) {
 		const roomBoostConf = flags.getRoomBoostConfig(creep.room.name);
+		if(!roomBoostConf)
+			return roomBoostConf;
 		return roomBoostConf[tools.getWeight(creep.name)];
 	},
 	getBoostLabsConfig: function(roomName) {
