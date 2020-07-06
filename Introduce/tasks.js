@@ -446,7 +446,7 @@ var tasks = {
 		if(!!boostConfig) {
 			const resToBoost = boostConfig.filter((res) => !creep.body.some((b,i) => tools.nvl(b.boost,'-') == res)); 
 			if(!!resToBoost) {
-				const labToBoost = labs.getLabsToInOut(creep.room.name).filter((lab) => meneral = res).slice();
+				const labToBoost = labs.getLabsToInOut(creep.room.name).filter((lab) => lab.mineralType == resToBoost).slice();
 				if(!!labToBoost) { 
 					if(labToBoost.boostCreep(creep) == ERR_NOT_IN_RANGE) {
 						creep.say('🔜💉');
