@@ -2,6 +2,7 @@ const constants = require('main.constants');
 //const harvester = require('role.harvester');
 const config = require('main.config');
 const flags = require('main.flags');
+const labs = require('main.labs');
 const tools = require('tools');
 const cash = require('cash');
 
@@ -440,6 +441,25 @@ var tasks = {
 		}
 		if(tools.getWeight(creep.name) == 5035 && creep.ticksToLive < 1485) {
 			return creep.suicide() == OK;
+		}
+		const boostConfig = flags.getBoostConfig(creep);
+		if(!!boostConfig) {
+			const resToBoost = boostConfig.resources.filter((res) => !creep.body.some((b,i) => tools.nvl(b.boost,'-') == res)); 
+			if(!!resToBoost) {
+				const labToBoost = labs.getLabsToInOut(creep.room.name).filter((lab) => meneral = res).slice();
+				if(!!labToBoost) { 
+					if(labToBoost.boostCreep(creep) == ERR_NOT_IN_RANGE) {
+						creep.say('🔜💉');
+						tools.moveTo(creep, labToBoost);
+					}
+					else {
+						console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
+														, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
+																							, room:creep.room.name, resToBoost:resToBoost}));
+					}
+					return true;
+				}
+			}
 		}
 		if(tools.getWeight(creep.name) == 173){
 			if(creep.room.name == 'W29S32') {
