@@ -16,11 +16,11 @@ var flags = {
 		}
 		return flags.flags[flagName];
 	},
-	getBoostsConfig: function(roomName) {
+	getBoostLabsConfig: function(roomName) {
 		// W29S29.boosts:0-2 ["XGH2O"], ["XKH2O"], ["XZHO2"]
 		// W29S29.boosts:3-5 ["XGHO2"], ["XLHO2"], ["XUH2O"]
 		// config == ["XGH2O"], ["XKH2O"], ["XZHO2"], ["XGHO2"], ["XLHO2"], ["XUH2O"]
-		const prefix = roomName + '.boosts';
+		const prefix = roomName + '.boostLabs';
 		if(flags.flags[prefix] === undefined) {
 			const json = Object.keys(Game.flags).filter((name)=>name.substring(0,prefix.length) == prefix)
 																					.sort((l,r) => l.localeCompare(r))
@@ -45,7 +45,7 @@ var flags = {
 		// W29S29.labs:0-2 ["ZHO2",23], ["Z"], ["ZO",14]
 		// W29S29.labs:3-5 ["OH",45], ["O"], ["H"]
 		// config == [["ZHO2",23],["Z"],["ZO",14],["OH",45],["O"],["H"]]
-		const boosts = flags.getBoostsConfig(roomName);
+		const boosts = flags.getBoostLabsConfig(roomName);
 		if (!!boosts)
 			return boosts;
 		const prefix = roomName + '.labs';
