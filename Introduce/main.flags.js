@@ -20,7 +20,7 @@ var flags = {
 		// W29S29.boosts:"5084":["XGH2O","XKH2O","XZHO2"]
 		// W29S29.boosts:"5081":["XGHO2","XLHO2","XUH2O"]
 		// config == {"5084":["XGH2O","XKH2O","XZHO2"], "5081":["XGHO2","XLHO2","XUH2O"]}
-		const prefix = roomName + '.boost';
+		const prefix = roomName + '.boosts:';
 		if(flags.flags[prefix] === undefined) {
 			const json = Object.keys(Game.flags).filter((name)=>name.substring(0,prefix.length) == prefix)
 																					.sort((l,r) => l.localeCompare(r))
@@ -51,7 +51,7 @@ var flags = {
 		// W29S29.boostLabs:0-2 ["XGH2O"], ["XKH2O"], ["XZHO2"]
 		// W29S29.boostLabs:3-5 ["XGHO2"], ["XLHO2"], ["XUH2O"]
 		// config == ["XGH2O"], ["XKH2O"], ["XZHO2"], ["XGHO2"], ["XLHO2"], ["XUH2O"]
-		const prefix = roomName + '.boostLabs';
+		const prefix = roomName + '.boostLabs:';
 		if(flags.flags[prefix] === undefined) {
 			const json = Object.keys(Game.flags).filter((name)=>name.substring(0,prefix.length) == prefix)
 																					.sort((l,r) => l.localeCompare(r))
@@ -79,7 +79,7 @@ var flags = {
 		const boosts = flags.getBoostLabsConfig(roomName);
 		if (!!boosts)
 			return boosts;
-		const prefix = roomName + '.labs';
+		const prefix = roomName + '.labs:';
 		if(flags.flags[prefix] === undefined) {
 			const json = Object.keys(Game.flags).filter((name)=>name.substring(0,prefix.length) == prefix)
 																					.sort((l,r) => l.localeCompare(r))
