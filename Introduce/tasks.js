@@ -448,7 +448,7 @@ var tasks = {
 											, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
 																				, room:creep.room.name, boostConfig:boostConfig}));
 		}
-		if(boostConfig.length > 0) {
+		if(!!boostConfig && boostConfig.length > 0) {
 			const resToBoost = boostConfig.filter((res) => !creep.body.some((b,i) => tools.nvl(b.boost,'-') == res)); 
 			if(!!resToBoost) {
 				console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
