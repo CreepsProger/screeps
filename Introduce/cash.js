@@ -382,7 +382,8 @@ var cash = {
 	},
 
 	needToRenew: function(creep) {
-		return (creep.ticksToLive < 1000 || (creep.memory.renewing && creep.ticksToLive < 1400));
+		const boosted = creep.body.some((b,i) => tools.nvl(b.boost,'-') != '-');
+		return !boosted && (creep.ticksToLive < 1000 || (creep.memory.renewing && creep.ticksToLive < 1400));
 	}, 
 
 	renewCreep: function(creep) {
