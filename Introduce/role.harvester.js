@@ -166,7 +166,7 @@ var role = {
 											, JSON.stringify({LL:LL, creep:creep.name, target:target}));
 		}
 		
-		if(creep.getActiveBodyparts(WORK) && !UU && !B) {
+		if(creep.getActiveBodyparts(WORK) && !UU && !B && !cash.needToRenew(creep)) {
 			const extractor = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 							filter: function(s) { return s.structureType == STRUCTURE_EXTRACTOR && (s.my === undefined || s.my);}});
 			if(!!extractor) {
