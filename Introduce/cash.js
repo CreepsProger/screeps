@@ -387,9 +387,9 @@ var cash = {
 	}, 
 
 	renewCreep: function(creep) {
-		var spawns = cash.getSpawns(creep.room);
+		const spawns = cash.getSpawns(creep.room);
 		if(spawns.length > 0 && cash.needToRenew(creep)) {
-			var spawn = spawns.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+			const spawn = spawns.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 			if(creep.pos.getRangeTo(spawn) == 1) {
 				spawn.renewCreep(creep);
 				creep.memory.renewing = true;
@@ -398,7 +398,20 @@ var cash = {
 		else {
 			creep.memory.renewing = false;
 		}
+	},
+
+	recycleCreep: function(creep) {
+		const spawns = cash.getSpawns(creep.room);
+		if(spawns.length > 0) {
+			const spawn = spawns.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+			const err = spawn.recycleCreep(creep);
+			if(err == ERR_NOT_IN_RANGE) {
+				creep.say('🔜⚰️');
+				tools.moveTo(creep, spawn);
+			}
+		}
 	}
+	
 };
 
 module.exports = cash;
