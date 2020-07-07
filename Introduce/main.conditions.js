@@ -73,6 +73,7 @@ const conditions = {
 	, TO_EXTRA_UPGRADE:			function(total_energy) {
 																			return Game.cpu.bucket > constants.CPU_BUCKET_TO_EXTRA_UPGRADE &&
 															total_energy > constants.TOTAL_ENERGY_TO_EXTRA_UPGRADE;}
+	, TO_RENEW_CREEP:			function(creep) { return (creep.ticksToLive < 1000 || (creep.memory.renewing && creep.ticksToLive < 1400));}
 };
 
 
