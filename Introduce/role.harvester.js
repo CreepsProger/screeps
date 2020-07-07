@@ -475,7 +475,6 @@ var role = {
 		}
 		if(!!creep.memory.rerun && !creep.memory[role.name].on) {
 			metrix.idle(creep);
-			//cash.renewCreep(creep);
 
 			if((!creep.memory.noidle || !!creep.memory.noidle && creep.memory.noidle.before > Game.time) && 
 				(creep.pos.findInRange(FIND_MY_SPAWNS, 1).length > 0 ||
@@ -485,6 +484,11 @@ var role = {
 				const random = Math.floor(Math.random()*8+Game.time)%8+1;
 				creep.move(random); // TOP:1 ,..., TOP_LEFT:8
 			}
+
+			if(creep.getActiveBodyparts(ATTACK) > 0) {
+				cash.recycleCreep(creep);
+			}
+
 		}
 	}
 };
