@@ -251,7 +251,7 @@ var spawns = {
 											 , [ 50907,  60606,  80406]  // 4 1300
 											 , [ 70707,  90909, 120408]  // 5 1800
 											 , [130911, 140711, 160410, 111111]  // 6 2300
-											 , [201020, 161616, 250817]  // 7 5600
+											 , [201020, 161616, 250817, 400206]  // 7 5600
                        ];
 				const ATTACKER = [ [                0,                0,                0]  // 0  000
 											 	 , [        200000002,        200000002,        200000002]  // 1  300
@@ -700,7 +700,7 @@ var spawns = {
 							else {
 								const f = 0+!!flags.flags['171'];
 								if(Sp5) spawns.tryCreateCreep(spawn,   CARIER[7][H], 171);
-								if(Sp5) spawns.tryCreateCreep(spawn,   WORKER[7][H], 174);
+								if(Sp5) spawns.tryCreateCreep(spawn,   WORKER[7][S], 174);
 							}
 							if(conditions.TO_SPAWN_ROOM_DEFENDERS('W27S34')) {
 								if(spawn.name == 'Spawn16') spawns.tryCreateCreep(spawn, ATTACKER[3][L], 85);
