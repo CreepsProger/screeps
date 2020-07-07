@@ -381,14 +381,13 @@ var cash = {
 		return !source;
 	},
 
-	, needToRenew: function(creep)
-
-	{ return (creep.ticksToLive < 1000 || (creep.memory.renewing && creep.ticksToLive < 1400));
-																				}, 
+	, needToRenew: function(creep) {
+		return (creep.ticksToLive < 1000 || (creep.memory.renewing && creep.ticksToLive < 1400));
+	}, 
 
 	renewCreep: function(creep) {
 		var spawns = cash.getSpawns(creep.room);
-		if(spawns.length > 0 && (creep.ticksToLive < 1000 || (creep.memory.renewing && creep.ticksToLive < 1400))) {
+		if(spawns.length > 0 && cash.needToRenew(creep)) {
 			var spawn = spawns.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 			if(creep.pos.getRangeTo(spawn) == 1) {
 				spawn.renewCreep(creep);
