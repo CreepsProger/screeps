@@ -381,7 +381,7 @@ var cash = {
 		return !source;
 	},
 
-	, needToRenew: function(creep) {
+	needToRenew: function(creep) {
 		return (creep.ticksToLive < 1000 || (creep.memory.renewing && creep.ticksToLive < 1400));
 	}, 
 
