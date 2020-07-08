@@ -443,11 +443,6 @@ var tasks = {
 			return creep.suicide() == OK;
 		}
 		const boostConfig = flags.getBoostConfig(creep);
-		if(tools.getWeight(creep.name) == 5084) {
-			console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
-																				, room:creep.room.name, boostConfig:boostConfig}));
-		}
 		if(!!boostConfig && boostConfig.length > 0) {
 			const ressToBoost = boostConfig.filter((res) => !creep.body.some((b,i) => tools.nvl(b.boost,'-') == res)); 
 			if(!!ressToBoost && ressToBoost.length > 0) {
@@ -476,49 +471,27 @@ var tasks = {
 				}
 			}
 		}
-		if(tools.getWeight(creep.name) == 173){
-			if(creep.room.name == 'W29S32') {
-				const resource = Object.keys(creep.store).filter((k) => k != RESOURCE_ENERGY)[0];
-				if(creep.transfer(creep.room.storage, resource) == ERR_NOT_IN_RANGE) {
-					creep.say('🔜');
-					tools.moveTo(creep, creep.room.storage);
-				}
-				else {
-					console.log('✔️', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify( { tasks:'onRun', creep:creep.name
-																				, room:creep.room.name, resource:creep.room.storage.store[resource]}));
-					creep.suicide();
-				}
-				return true;
-			}
+		//W29S32.transfer: "5011":["U","K"] 
+		//W57S51.transfer: "5011":["X"]
+		const transferConfig = flags.getTransferConfig(creep);
+		const transferCreepConfig = transferConfig[tools.getWeight(creep.name)];
+		if(!!transferCreepConfig){
+			console.log('🚚', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify( { tasks:'onRun.transfer', creep:creep.name
+																				, room:creep.room.name, transferCreepConfig:transferCreepConfig}));
 			if(!!creep.room.storage && !!creep.room.storage.store && creep.store.getFreeCapacity() > 0 ) {
-				const resources = Object.keys(creep.room.storage.store).filter((k) => k != RESOURCE_ENERGY)
-				.sort((l,r) => creep.room.storage.store[r] - creep.room.storage.store[l]); 
-				if(resources.length > 0 && creep.withdraw(creep.room.storage,resources[0]) == ERR_NOT_IN_RANGE) {
-					creep.say('🔜');
+				const resource = Object.keys(creep.room.storage.store)
+																.filter((k) => transferCreepConfig.includes(k))
+																.sort((l,r) => creep.room.storage.store[r] - creep.room.storage.store[l])
+																.shift();
+				if(!!resource && creep.withdraw(creep.room.storage,resource) == ERR_NOT_IN_RANGE) {
+					creep.say('🔜🚚');
 					tools.moveTo(creep, creep.room.storage);
+					return true;
 				}
 			}
-			else {
-				const role = {name:constants.ROLE_ENERGY_HARVESTING};
-				if(creep.memory[role.name] === undefined ||
-					 creep.memory[role.name].v === undefined ||
-					 creep.memory[role.name].v != config.version) {
-					creep.memory[role.name] = { v: config.version
-																, on: false
-																, room: creep.room.name
-																, shard: Game.shard.name
-																};
-					config.setRoom(creep, role.name);
-				}			
-				const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
-				const err = tools.moveTo(creep, target);
-				return OK == err;
-			}
-			return true;
+			return false;
 		}
-
-		return false;
 	},
 
 	needToHarvest: function(creep, checkTodo = false) {
