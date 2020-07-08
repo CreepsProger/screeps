@@ -504,7 +504,7 @@ var tasks = {
 				const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
 				const err = tools.moveTo(creep, target);
 				creep.say((OK == err)?'🚚':'🚚'+err);
-				return OK == err;
+				return true;
 			}
 			return false;
 		}
