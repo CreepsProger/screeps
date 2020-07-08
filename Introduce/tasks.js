@@ -488,10 +488,12 @@ var tasks = {
 					tools.moveTo(creep, creep.room.storage);
 					return true;
 				}
+				creep.memory.transfer = true;
 			}
-			else {
-				const role = {name:constants.ROLE_ENERGY_HARVESTING};
-				if(creep.memory[role.name] === undefined ||
+		}
+		if(!!creep.memory.transfer) {
+			const role = {name:constants.ROLE_ENERGY_HARVESTING}; 
+			if(creep.memory[role.name] === undefined ||
 					 creep.memory[role.name].v === undefined ||
 					 creep.memory[role.name].v != config.version) {
 					creep.memory[role.name] = { v: config.version
@@ -499,14 +501,12 @@ var tasks = {
 																, room: creep.room.name
 																, shard: Game.shard.name
 																};
-					config.setRoom(creep, role.name);
-				}			
-				const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
-				const err = tools.moveTo(creep, target);
-				creep.say((OK == err)?'🚚':'🚚'+err);
-				return true;
+				config.setRoom(creep, role.name);
 			}
-			return false;
+			const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
+			const err = tools.moveTo(creep, target);
+			creep.say((OK == err)?'🚚':'🚚'+err);
+			return true;
 		}
 	},
 
