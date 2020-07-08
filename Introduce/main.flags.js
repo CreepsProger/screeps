@@ -16,6 +16,27 @@ var flags = {
 		}
 		return flags.flags[flagName];
 	},
+	getTransferConfig: function(roomName) {
+		// W29S32.transfer: "5011":["U","K"]
+		// W57S51.transfer: "5012":["X"] 
+		// config == {"5011":["U","K"], "5012":["X"]}
+		const prefix = roomName + '.transfer:';
+		if(flags.flags[prefix] === undefined) {
+			const json = Object.keys(Game.flags).filter((name)=>name.substring(0,prefix.length) == prefix)
+																					.sort((l,r) => l.localeCompare(r))
+																					.map((s,i,arr) => s.substring(s.indexOf(':')+1) + ((i!=arr.length-1)?',':'}') )
+																					.reduce((p,c) => p+c, '{');
+			try {
+				if(json != '{')
+					flags.flags[prefix] = JSON.parse(json);
+			}
+			catch (e) {
+				console.log( '🏳️‍🚚⛔', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify({flags:'getTransferConfig', json:json, e_name:e.name, e_message:e.message }));
+			}
+		}
+		return flags.flags[prefix];
+	},
 	getRoomBoostConfig: function(roomName) {
 		// W29S29.boosts:"5084":["XGH2O","XKH2O","XZHO2"]
 		// W29S29.boosts:"5081":["XGHO2","XLHO2","XUH2O"]
