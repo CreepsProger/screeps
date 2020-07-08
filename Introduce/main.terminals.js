@@ -132,7 +132,7 @@ var terminals = {
 				const amount_to_send = Math.min(terminal.store[res], amountToSend);
 				const sending = {from:terminal.pos.roomName, to:minResourceRoom, resource:res, amount:amount_to_send};
 				const err = terminal.send(sending.resource, sending.amount, sending.to);
-				if(true || OK == err) {
+				if(OK != err) {
 					console.log( '📲'
 											, Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { terminals:'spreadResources', err:err, sending:sending} ));
