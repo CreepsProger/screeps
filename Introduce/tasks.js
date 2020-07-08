@@ -473,8 +473,7 @@ var tasks = {
 		}
 		//W29S32.transfer: "5011":["U","K"] 
 		//W57S51.transfer: "5011":["X"]
-		const transferConfig = flags.getTransferConfig(creep);
-		const transferCreepConfig = transferConfig[tools.getWeight(creep.name)];
+		const transferCreepConfig = flags.getTransferCreepConfig(creep);
 		if(!!transferCreepConfig){
 			console.log('🚚', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { tasks:'onRun.transfer', creep:creep.name
