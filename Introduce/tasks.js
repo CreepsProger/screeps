@@ -509,8 +509,14 @@ var tasks = {
 			const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
 			const err = tools.moveTo(creep, target);
 			creep.say((OK == err)?'🚚':'🚚'+err);
+			
 			if(creep.getActiveBodyparts(HEAL) > 0)
 				creep.heal(creep);
+			
+			if(creep.memory[role.name].room == creep.pos.roomName &&
+				 creep.memory[role.name].shard == Game.shard.name)
+				creep.suicide();
+
 			return true;
 		}
 	},
