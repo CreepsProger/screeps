@@ -484,8 +484,8 @@ var tasks = {
 																.sort((l,r) => creep.room.storage.store[r] - creep.room.storage.store[l])
 																.shift();
 				if(!!resource && creep.withdraw(creep.room.storage,resource) == ERR_NOT_IN_RANGE) {
-					creep.say('🔜🚚');
-					tools.moveTo(creep, creep.room.storage);
+					const err = tools.moveTo(creep, creep.room.storage);
+					creep.say((OK == err)?'🔜🚚':'🔜🚚'+err);
 					return true;
 				}
 				creep.memory.transfer = true;
