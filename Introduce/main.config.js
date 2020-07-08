@@ -641,13 +641,20 @@ var config = {
 							, heal_room:
 								{ shard: 'shard1', room: 'W29S29'}
 							, path_rooms:
-								{ W29S28: 'W29S29', W29S29: 'W29S29'
-								, W27S29: 'W28S29', W28S29: 'W29S29'
-								, W29S31: 'W30S31', W30S31: 'W30S30'
-								, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:32
-								, W24S28: 'W25S28', W25S28: 'W26S28', W26S28: 'W26S29', W26S29: 'W27S29'
+							  { shard0:
+									{ W57S52: 'W58S52', W58S52: 'W59S52', W59S52: 'W59S51'
+								  , W57S51: 'W58S51', W58S51: 'W59S51', W59S51: 'W59S50', W59S50: 'W60S50', W60S50: 'shard1'
+									}
+								, shard1:
+									{ shard0_W60S50: 'W30S30'
+									, W28S28: 'W29S28', W29S28: 'W29S29', W27S29: 'W28S29'
+									, W28S29: 'W29S29', W29S29: 'W29S29', W29S31: 'W30S31', W30S31: 'W30S30'
+									, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:32
+									, W24S28: 'W25S28', W25S28: 'W26S28', W26S28: 'W26S29'
+									, W26S29: 'W27S29'
+									}
 								}
-								, escape_path:
+							 , escape_path:
 								{ W29S29: 'W29S29'
 								}
 							},
@@ -714,20 +721,20 @@ var config = {
 							, heal_room:
 								{ shard: 'shard1', room: 'W29S29'}
 							, path_rooms:
-							 { shard0:
+							  { shard0:
 									{ W57S52: 'W58S52', W58S52: 'W59S52', W59S52: 'W59S51'
 								  , W57S51: 'W58S51', W58S51: 'W59S51', W59S51: 'W59S50', W59S50: 'W60S50', W60S50: 'shard1'
 									}
 								, shard1:
 									{ shard0_W60S50: 'W30S30'
-									, W28S28 :'W29S28', W29S28 :'W29S29', W27S29: 'W28S29'
-									, W28S29: 'W29S29', W29S31: 'W30S31', W30S31: 'W30S30'
+									, W29S29: 'W29S28', W29S28: 'W28S28', W27S29: 'W28S29'
+									, W28S29: 'W29S29', W29S29: 'W29S29', W29S31: 'W30S31', W30S31: 'W30S30'
 									, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:32
 									, W24S28: 'W25S28', W25S28: 'W26S28', W26S28: 'W26S29'
 									, W26S29: 'W27S29'
 									}
 								}
-								, escape_path:
+							 , escape_path:
 								{ W29S28: 'W29S29', W29S29: 'W29S29'
 								}
 							},
@@ -2014,7 +2021,8 @@ var config = {
 								  , W57S51: 'W58S51', W58S51: 'W59S51', W59S51: 'W59S50', W59S50: 'W60S50', W60S50: 'shard1'
 									}
 								, shard1:
-									{ shard0_W60S50: 'W30S30', W30S30: 'shard2' }
+									{ shard0_W60S50: 'W30S30', W30S30: 'shard2'
+									, W29S29: 'W29S30', W29S30: 'W30S30'} 
 								, shard2:
 									{ shard1_W30S30: 'W30S30', W30S30: 'shard3'}
 								, shard3:
