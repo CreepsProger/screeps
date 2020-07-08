@@ -242,7 +242,7 @@ var spawns = {
 											 , [  1313,   1407,   1608]  // 4 1300
 											 , [  1616,   1818,   2412]  // 5 1800
 											 , [  2323,   2613,   3015]  // 6 2300
-											 , [  2525,   3216,   3317]  // 7 5600
+											 , [  2525,   3216,   3317, 6003410]  // 7 5600
 											];
 				const WORKER = [ [     0,      0,      0]  // 0  000
 											 , [ 10101,  10202,  20101]  // 1  300
@@ -618,8 +618,8 @@ var spawns = {
 						if(Sp2)	spawns.tryCreateCreep(spawn, WORKER[7][L], 504);
             if(Sp2)	spawns.tryCreateCreep(spawn, CARIER[7][L], 501);
 					}
-					if(Sp2 && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[7][L], 173);
-					if(Sp2 && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[7][L], 5013);
+					if(spawn.name == 'Spawn4' && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[7][L], 173);
+					if(spawn.name == 'Spawn4' && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[7][L], 5013);
 					if(Sp12 && (Game.time % 50000 < 250) ) spawns.tryCreateCreep(spawn, HEALER[7][L], 1000);
 					if(Sp12 && (Game.time % 50000 > 250) ) spawns.tryCreateCreep(spawn, CARIER[1][L], 1000);
 				}
@@ -718,6 +718,7 @@ var spawns = {
 								if(Sp6) spawns.tryCreateCreep(spawn, CARIER[7][H], 71);
 								if(Sp6) spawns.tryCreateCreep(spawn, WORKER[7][H], 74);
 							}
+							if(spawn.name == 'Spawn9' && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[7][S], 5013);
 						}
 
 						if(conditions.TO_SPAWN_CLAIMING_ROOMS()) {
