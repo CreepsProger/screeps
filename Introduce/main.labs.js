@@ -72,15 +72,17 @@ const labs = {
     if(Game.time % constants.TICKS_TO_LAB_RUN != 0)
       return;
       
-    const labsToRun = labs.getLabsToRun();
+    const labsToRun = labs.getLabsToRun();/*
     console.log('⚗️🧫', Math.trunc(Game.time/10000), Game.time%10000
-                    , JSON.stringify( { "labs":'run', labs:labsToRun.length, labsToRun:labsToRun}));
+                    , JSON.stringify( { "labs":'run', labs:labsToRun.length, labsToRun:labsToRun}));*/
 		const results = labsToRun.map((e) => labs.toRun(e))
 		                         .filter((arr) => Array.isArray(arr) && arr.length > 0)
 		                         .reduce((a, b) => a.concat(b), [])
-		console.log('⚗️🧫✳️', Math.trunc(Game.time/10000), Game.time%10000
+		if(results.some((r) => r.err != OK)) {
+			console.log('⚗️🧫✳️', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { "labs":'run', results:results.length, results:results}));
-	 }
+		}
+	}
 };
 
 module.exports = labs
