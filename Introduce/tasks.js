@@ -491,7 +491,7 @@ var tasks = {
 				creep.memory.transfer = true;
 			}
 		}
-		if(tools.getWeight(creep.name) == 172) {
+		if(tools.getWeight(creep.name) % 3 == 0) {
 			const role = {name:constants.ROLE_ENERGY_HARVESTING}; 
 			if(creep.memory[role.name] === undefined ||
 					 creep.memory[role.name].v === undefined ||
