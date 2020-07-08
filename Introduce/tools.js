@@ -169,7 +169,7 @@ var tools = {
 			}
 		}
 		var dt = Math.round((Game.cpu.getUsed() - t)*100)/100;
-		if((rerun_creep2 && dt > 0.5) || (!rerun_creep2 && dt > 0.05))
+		if((rerun_creep2 && dt > 0.95) || (!rerun_creep2 && dt > 0.25))
 			console.log( '🧿', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 									, 'setTarget', rerun_creep2, creep2
 								 );
