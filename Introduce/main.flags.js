@@ -36,6 +36,10 @@ var flags = {
 			}
 		}
 		return flags.flags[prefix];
+	}, 
+	getTransferCreepConfig: function(creep) {
+		const transferConfig = flags.getTransferConfig(creep.room.name);
+		return (!!transferConfig)?transferConfig[tools.getWeight(creep.name)]:null;
 	},
 	getRoomBoostConfig: function(roomName) {
 		// W29S29.boosts:"5084":["XGH2O","XKH2O","XZHO2"]
