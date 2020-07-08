@@ -447,24 +447,25 @@ var tasks = {
 			const ressToBoost = boostConfig.filter((res) => !creep.body.some((b,i) => tools.nvl(b.boost,'-') == res)); 
 			if(!!ressToBoost && ressToBoost.length > 0) {
 				const resToBoost = ressToBoost[0];
-				console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
-							, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
-																, room:creep.room.name, resToBoost:resToBoost, getLabsToInOut:labs.getLabsToInOut(creep.room.name)}));
+// 				console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
+// 							, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
+// 																, room:creep.room.name, resToBoost:resToBoost, getLabsToInOut:labs.getLabsToInOut(creep.room.name)}));
 				const labsToBoost = labs.getLabsToInOut(creep.room.name).filter((lab) => !!lab.lab.mineralType &&
 																																				lab.lab.store[lab.lab.mineralType] > 30 &&
 																																				ressToBoost.includes(lab.lab.mineralType) );
 				if(labsToBoost.length > 0) { 
 					const resToBoost = labsToBoost[0].lab.mineralType;
-					console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
-								, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
-																	, room:creep.room.name, resToBoost:resToBoost, labsToBoost:labsToBoost}));
+// 					console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
+// 								, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
+// 																	, room:creep.room.name, resToBoost:resToBoost, labsToBoost:labsToBoost}));
 					const labToBoost = labsToBoost[0].lab;
 					const err = labToBoost.boostCreep(creep);
 					if(err == ERR_NOT_IN_RANGE) {
-						creep.say('🔜💉');
-						tools.moveTo(creep, labToBoost);
+						const err2 tools.moveTo(creep, labToBoost);
+						creep.say((OK == err2)?'🔜💉':'🔜💉'+err2);
 					}
 					else {
+						creep.say((OK == err)?'💉':'💉'+err);
 						console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
 														, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
 																							, room:creep.room.name, err:err, labToBoost:labToBoost}));
