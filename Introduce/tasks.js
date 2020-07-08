@@ -461,7 +461,7 @@ var tasks = {
 					const labToBoost = labsToBoost[0].lab;
 					const err = labToBoost.boostCreep(creep);
 					if(err == ERR_NOT_IN_RANGE) {
-						const err2 tools.moveTo(creep, labToBoost);
+						const err2 = tools.moveTo(creep, labToBoost);
 						creep.say((OK == err2)?'🔜💉':'🔜💉'+err2);
 					}
 					else {
