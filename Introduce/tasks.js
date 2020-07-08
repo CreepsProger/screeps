@@ -512,6 +512,9 @@ var tasks = {
 				config.setRoom(creep, role.name);
 			}
 			const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
+			if(creep.pos == target) {
+				creep.move(BOTTOM);
+			}
 			const err = tools.moveTo(creep, target);
 			console.log('🚚', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { tasks:'onRun.transfer', creep:creep.name
