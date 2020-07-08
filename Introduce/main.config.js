@@ -647,12 +647,22 @@ var config = {
 									}
 								, shard1:
 									{ shard0_W60S50: 'W30S30'
+									, shard2_W30S30: 'W30S30'
 									, W28S28: 'W29S28', W29S28: 'W29S29', W27S29: 'W28S29'
 									, W28S29: 'W29S29', W29S29: 'W29S29', W29S31: 'W30S31', W30S31: 'W30S30'
 									, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:32
 									, W24S28: 'W25S28', W25S28: 'W26S28', W26S28: 'W26S29'
 									, W26S29: 'W27S29'
+									},
+								 shard3:
+									{ W28S35: 'W28S34', W28S34: 'W28S33'
+									, W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
+									, W28S33: 'W28S32', W28S32: 'W29S32', W29S32: 'W30S32'
+									, W30S32: 'W30S31', W30S31: 'W30S30'
+									, W30S30: 'shard2'
 									}
+								, shard2:
+									{ shard3_W30S30:'W30S30', W30S30: 'shard1'}
 								}
 							 , escape_path:
 								{ W29S29: 'W29S29'
