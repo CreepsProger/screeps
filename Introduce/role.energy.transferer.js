@@ -256,7 +256,7 @@ var roleEnergyTransferer = {
 						 !creep.memory.target.id ||
 							creep.memory.target.id != target.id || true) {
 							var dt = Math.round((Game.cpu.getUsed() - t)*100)/100; t = Game.cpu.getUsed();
-							if(dt > 0.2)
+							if(dt > 0.5)
 								console.log( '🔜💡🛢️', Math.trunc(Game.time/10000), Game.time%10000, 'dt=' + dt, creep
 													, 'target:', (!!target.name)? target.name:target.id + '(' + target.store.getUsedCapacity(RESOURCE_ENERGY) + ')'
 												 );
