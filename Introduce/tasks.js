@@ -511,7 +511,7 @@ var tasks = {
 			console.log('🚚', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { tasks:'onRun.transfer', creep:creep.name
 																				, room:creep.room.name, target:target
-																				, err:err));
+																				, err:err }));
 
 			creep.say((OK == err)?'🚚':'🚚'+err);
 			
