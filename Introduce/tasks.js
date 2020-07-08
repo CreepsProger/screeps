@@ -512,14 +512,14 @@ var tasks = {
 				config.setRoom(creep, role.name);
 			}
 			const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
-			const err = config.moveTo(creep, target);
+			const err = tools.moveTo(creep, target);
 // 			if(creep.pos == target) {
 // 				creep.move(BOTTOM);
 // 			}
 			console.log('🚚', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { tasks:'onRun.transfer', creep:creep.name
 																				, room:creep.room.name, target:target
-																				, err:err }));
+																				, err:err, role:creep.memory[role.name] }));
 
 			creep.say((OK == err)?'🚚':'🚚'+err);
 			
