@@ -112,7 +112,7 @@ var role = {
 			if(resources.length == 1) {
 				const res = resources[0];
 				const factoryToIn = factory.getFactoryToIn(creep.room.name, res);
-				if(!!factoryToIn && tools.checkTarget(executer,factoryToIn.id)) {
+				if(!!factoryToIn && !!factoryToIn && tools.checkTarget(executer,factoryToIn.id)) {
 					console.log('🏭⬅️', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({creep:creep.name, roomName:creep.room.name, factoryToIn:factoryToIn}));
 					const factory = tools.setTarget(creep,factoryToIn,factoryToIn.id,role.run);
