@@ -324,6 +324,14 @@ var cash = {
 			 });
  	},
 	
+	all_my_factories: {},
+	getAllMyFactories: function() {
+		return cash.getEntry(cash.all_my_factories, STRUCTURE_FACTORY, 0, () => {
+			return _.filter(Game.structures,
+				 (structure) => !!structure.my && structure.structureType == STRUCTURE_FACTORY);
+			 });
+ 	},
+	
 	all_my_nukers: {},
 	getAllMyNukers: function() {
 		return cash.getEntry(cash.all_my_nukers, STRUCTURE_NUKER, 0, () => {
