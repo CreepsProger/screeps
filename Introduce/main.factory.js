@@ -32,7 +32,8 @@ const factory = {
 											.filter((c) => c.in.exist < c[1])
 											.sort((l,r) => r.in.amount - l.in.amount)
 											.shift();
-		f.in = line.in;
+		if(!!line)
+			f.in = line.in;
 		return f;
 	},
 
