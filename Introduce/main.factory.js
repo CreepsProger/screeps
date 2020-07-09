@@ -51,8 +51,8 @@ const factory = {
 			return f;
 		const line = conf.slice(1)
 											.map((c,i) => ( c.out = {}
-																		, c.out.resource = f.story[c[0]]
-																		, c.out.exist = tools.nvl(f.story[c[0]],0)
+																		, c.out.resource = c[0]
+																		, c.out.exist = tools.nvl(f.story[c.out.resource],0)
 																		, c.out.line = i+1
 																		, c.out.amount = c.out.exist - c[2]
 																		, c) )
