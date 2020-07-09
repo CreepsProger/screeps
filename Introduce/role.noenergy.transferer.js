@@ -5,6 +5,7 @@ const metrix = require('main.metrix');
 const flags = require('main.flags');
 const terminals = require('main.terminals');
 const labs = require('main.labs');
+const factory = require('main.factory');
 const log = require('main.log');
 const tasks = require('tasks');
 const tools = require('tools');
@@ -96,18 +97,34 @@ var role = {
 				const labToIn = labs.getLabsToIn(creep.room.name, res)
 														.filter((e)=> tools.checkTarget(executer,e.lab.id))
 														.shift();
-				if(!!labToIn) {/*
-					console.log('⚗️⬅️', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({creep:creep.name, roomName:creep.room.name, labToIn:labToIn}));*/
+				if(!!labToIn) {
 					const lab = tools.setTarget(creep,labToIn.lab,labToIn.lab.id,role.run);
 					if(!!lab) {
-						const target = {resource:labToIn.resource, amount:labToIn.amount, target:lab};/*
-						console.log('⚗️🎯⬅️', Math.trunc(Game.time/10000), Game.time%10000
-												, JSON.stringify({creep:creep.name, roomName:creep.room.name, target:target}));*/
+						const target = {resource:labToIn.resource, amount:labToIn.amount, target:lab};
 						return target;
 					}
 				}
 			}
+		}
+		
+		if(!creep.getActiveBodyparts(WORK)) {
+			const resources = Object.keys(creep.store);
+			if(resources.length == 1) {
+				const res = resources[0];
+				const factoryToIn = labs.getFactoryToIn(creep.room.name, res);
+				if(!!factoryToIn && tools.checkTarget(executer,factoryToIn.id)) {
+					console.log('🏭⬅️', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({creep:creep.name, roomName:creep.room.name, factoryToIn:factoryToIn}));
+					const factory = tools.setTarget(creep,factoryToIn,factoryToIn.id,role.run);
+					if(!!factory) {
+						const target = {resource:factoryToIn.in.resource, amount:factoryToIn.in.amount, target:factoryToIn};
+						console.log('🏭🎯⬅️', Math.trunc(Game.time/10000), Game.time%10000
+															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
+																								, target:target}));
+						return target;
+					}
+				}
+			} 
 		}
 
 		if(!!creep.room.storage && !!creep.room.storage.my /*&& creep.memory.rerun*/){
