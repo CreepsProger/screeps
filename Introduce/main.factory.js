@@ -17,8 +17,59 @@ const factory = {
 								.filter((f) => !!f.config && !!f.config[0]);
 	},
 	
+	getToIn: function(f) {
+		const conf = config.getFactoryConfig(f.pos.roomName);
+		if(!conf || conf.length < 2)
+			return f;
+		const line = conf.slice(1)
+											.map((c,i) => ( c.in = {}
+																		, c.in.resource = f.story[c[0]]
+																		, c.in.exist = tools.nvl(f.story[c[0]],0)
+																		, c.in.line = i+1
+																		, c.in.amount = c[2] - c.in.exist
+																		, c) )
+											.filter((c) => c.in.exist < c[1])
+											.sort((l,r) => r.in.amount - l.in.amount)
+											.shift();
+		f.in = line.in;
+		return f;
+	},
+
+	getFactoryToIn: function(roomName, res = '-') {
+    return cash.getFactories(roomName)
+								.filter((f) => !!f && !!f.my && !!f.store)
+								.map((f) => factory.getToIn(f,res))
+								.filter((f) => !!f.in)
+								.reduce((l,r) => (l.in.amount > r.in.amount)?l:r);
+  },
+	
+	getToOut: function(f) {
+		const conf = config.getFactoryConfig(f.pos.roomName);
+		if(!conf || conf.length < 2)
+			return f;
+		const line = conf.slice(1)
+											.map((c,i) => ( c.out = {}
+																		, c.out.resource = f.story[c[0]]
+																		, c.out.exist = tools.nvl(f.story[c[0]],0)
+																		, c.out.line = i+1
+																		, c.out.amount = c.out.exist - c[2]
+																		, c) )
+											.filter((c) => c.out.exist > c[3])
+											.sort((l,r) => r.out.amount - l.out.amount)
+											.shift();
+		f.out = line.out;
+		return f;
+	},
+
+  getFactoryToOut: function(roomName) {
+    return cash.getFactories(roomName)
+								.filter((f) => !!f && !!f.my && !!f.store)
+								.map((f) => factory.getToOut(f))
+								.reduce((l,r) => (l.in.amount > r.in.amount)?l:r);
+  },
+	
 	toRun: function(f) {
-		var to_run = f.config[0];
+		var to_run = f.config[0][0];
 		var err = ERR_NOT_IN_RANGE;
 		var result =[];
 		while(to_run > 0 && err != OK) {
