@@ -11,19 +11,22 @@ const factory = {
 	},
   
   getFactoriesToRun: function() {
-		return cash.getAllMyFactories();
+		return cash.getAllMyFactories()
+								.filter((f) => !!f && !f.cooldown)
+								.map((f) => (f.config = config.getFactoryConfig(f.pos.roomName), f) )
+								.filter((f) => !!f.config && !!f.config[0]);
 	},
 	
 	toRun: function(f) {
-		var to_run = Math.floor(Math.abs(f.toRun));
+		var to_run = f.config[0];
 		var err = ERR_NOT_IN_RANGE;
 		var result =[];
 		while(to_run > 0 && err != OK) {
-			const resourceToProduce = "battery"
-			err = f.produce(resourceToProduce);
-			to_run = Math.floor(to_run/100);
-			const ilr = (e.i*100+l*10+r)/100;
-			result.push({[e.lab.pos.roomName]:ilr, err:err, resourceToProduce:resourceToProduce});
+			const line = Math.floor(to_run%10);
+			const product = f.config[line][0]
+			err = f.produce(product);
+			to_run = Math.floor(to_run/10);
+			result.push({[f.pos.roomName]:line, err:err, product:product});
 		}
 		return result;
 	},
