@@ -108,7 +108,7 @@ var role = {
 		}
 		
 		if(!creep.getActiveBodyparts(WORK)) {
-			const resources = Object.keys(creep.store);
+			const resources = Object.keys(creep.store).filter((k) => k != RESOURCE_ENERGY);
 			if(resources.length == 1) {
 				const res = resources[0];
 				const factoryToIn = factory.getFactoryToIn(creep.room.name, res);
