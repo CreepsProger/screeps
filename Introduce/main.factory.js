@@ -17,11 +17,12 @@ const factory = {
 								.filter((f) => !!f.config && !!f.config[0]);
 	},
 	
-	getToIn: function(f) {
+	getToIn: function(f,res) {
 		const conf = config.getFactoryConfig(f.pos.roomName);
 		if(!conf || conf.length < 2)
 			return f;
 		const line = conf.slice(1)
+											.filter((c) => res == '-' || res == c[0])
 											.map((c,i) => ( c.in = {}
 																		, c.in.resource = f.story[c[0]]
 																		, c.in.exist = tools.nvl(f.story[c[0]],0)
