@@ -274,7 +274,7 @@ var role = {
 				}
 			}
 			const factoryToOut = factory.getFactoryToOut(creep.room.name);
-			if(!!factoryToOut && tools.checkTarget(executer,factoryToOut.id)) {
+			if(!!factoryToOut && !!factoryToOut.out && tools.checkTarget(executer,factoryToOut.id)) {
 				console.log('🏭↪️', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { creep:creep.name, roomName:creep.room.name
 																						, out:factoryToOut.out, factoryToOut:factoryToOut}));
@@ -299,7 +299,7 @@ var role = {
 				}
 			}
 			const factoryToIn = factory.getFactoryToIn(creep.room.name);
-			if(!!factoryToIn && tools.checkTarget(executer,factoryToIn.id)) {
+			if(!!factoryToIn && !!factoryToIn.in && tools.checkTarget(executer,factoryToIn.id)) {
 				console.log('🏭↩️', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { creep:creep.name, roomName:creep.room.name
 																						, in:factoryToIn.in, factoryToIn:factoryToIn}));
