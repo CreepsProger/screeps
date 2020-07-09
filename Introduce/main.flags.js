@@ -22,16 +22,17 @@ var flags = {
 		// config == {"5011":["U","K"], "5012":["X"]}
 		const prefix = roomName + '.transfer:';
 		if(flags.flags[prefix] === undefined) {
-			const json = Object.keys(Game.flags).filter((name)=>name.substring(0,prefix.length) == prefix)
-																					.sort((l,r) => l.localeCompare(r))
-																					.map((s,i,arr) => s.substring(s.indexOf(':')+1) + ((i!=arr.length-1)?',':'}') )
-																					.reduce((p,c) => p+c, '{');
+			const json = Object.keys(Game.flags)
+													.filter((name)=>name.substring(0,prefix.length) == prefix)
+													.sort((l,r) => l.localeCompare(r))
+													.map((s,i,arr) => s.substring(s.indexOf(':')+1) + ((i!=arr.length-1)?',':'}') )
+													.reduce((p,c) => p+c, '{');
 			try {
 				if(json != '{')
 					flags.flags[prefix] = JSON.parse(json);
 			}
 			catch (e) {
-				console.log( '🏳️‍🚚⛔', Math.trunc(Game.time/10000), Game.time%10000
+				console.log( '🚚📜⛔', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify({flags:'getTransferConfig', json:json, e_name:e.name, e_message:e.message }));
 			}
 		}
@@ -47,16 +48,17 @@ var flags = {
 		// config == {"5084":["XGH2O","XKH2O","XZHO2"], "5081":["XGHO2","XLHO2","XUH2O"]}
 		const prefix = roomName + '.boosts:';
 		if(flags.flags[prefix] === undefined) {
-			const json = Object.keys(Game.flags).filter((name)=>name.substring(0,prefix.length) == prefix)
-																					.sort((l,r) => l.localeCompare(r))
-																					.map((s,i,arr) => s.substring(s.indexOf(':')+1) + ((i!=arr.length-1)?',':'}') )
-																					.reduce((p,c) => p+c, '{');
+			const json = Object.keys(Game.flags)
+													.filter((name)=>name.substring(0,prefix.length) == prefix)
+													.sort((l,r) => l.localeCompare(r))
+													.map((s,i,arr) => s.substring(s.indexOf(':')+1) + ((i!=arr.length-1)?',':'}') )
+													.reduce((p,c) => p+c, '{');
 			try {
 				if(json != '{')
 					flags.flags[prefix] = JSON.parse(json);
 			}
 			catch (e) {
-				console.log( '🏳️‍✒️⛔', Math.trunc(Game.time/10000), Game.time%10000
+				console.log( '💉📜⛔', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify({flags:'getRoomBoostConfig', json:json, e_name:e.name, e_message:e.message }));
 			}
 		}
@@ -78,16 +80,17 @@ var flags = {
 		// config == ["XGH2O"], ["XKH2O"], ["XZHO2"], ["XGHO2"], ["XLHO2"], ["XUH2O"]
 		const prefix = roomName + '.boostLabs:';
 		if(flags.flags[prefix] === undefined) {
-			const json = Object.keys(Game.flags).filter((name)=>name.substring(0,prefix.length) == prefix)
-																					.sort((l,r) => l.localeCompare(r))
-																					.map((s,i,arr) => s.substring(s.indexOf('[')) + ((i!=arr.length-1)?',':']') )
-																					.reduce((p,c) => p+c, '[');
+			const json = Object.keys(Game.flags)
+													.filter((name)=>name.substring(0,prefix.length) == prefix)
+													.sort((l,r) => l.localeCompare(r))
+													.map((s,i,arr) => s.substring(s.indexOf('[')) + ((i!=arr.length-1)?',':']') )
+													.reduce((p,c) => p+c, '[');
 			try {
 				if(json != '[')
 					flags.flags[prefix] = JSON.parse(json);
 			}
 			catch (e) {
-				console.log( '🏳️‍✒️⛔', Math.trunc(Game.time/10000), Game.time%10000
+				console.log( '⚗️💉📜⛔', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify({flags:'getBoostLabsConfig', json:json, e_name:e.name, e_message:e.message }));
 			}
 		}
@@ -97,6 +100,30 @@ var flags = {
 		}
 		return flags.flags[prefix];
 	},
+	
+	getFactoryConfig: function(roomName) {
+		// W29S29.factory:0 [654321]
+		// W29S29.factory:1-2 ["energy",0,10000,10000], ["battery",0,0,20000]
+		// config == [[654321], ["energy",0,10000,10000], ["battery",0,0,20000]]
+		const prefix = roomName + '.factory:';
+		if(flags.flags[prefix] === undefined) {
+			const json = Object.keys(Game.flags)
+													.filter((name)=>name.substring(0,prefix.length) == prefix)
+													.sort((l,r) => l.localeCompare(r))
+													.map((s,i,arr) => s.substring(s.indexOf('[')) + ((i!=arr.length-1)?',':']') )
+													.reduce((p,c) => p+c, '[');
+			try {
+				if(json != '[')
+					flags.flags[prefix] = JSON.parse(json);
+			}
+			catch (e) {
+				console.log( '🏭📜⛔', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify({flags:'getFactoryConfig', json:json, e_name:e.name, e_message:e.message }));
+			}
+		}
+		return flags.flags[prefix];
+	},
+
 	getLabsConfig: function(roomName) {
 		// W29S29.labs:0-2 ["ZHO2",23], ["Z"], ["ZO",14]
 		// W29S29.labs:3-5 ["OH",45], ["O"], ["H"]
@@ -106,16 +133,17 @@ var flags = {
 			return boosts;
 		const prefix = roomName + '.labs:';
 		if(flags.flags[prefix] === undefined) {
-			const json = Object.keys(Game.flags).filter((name)=>name.substring(0,prefix.length) == prefix)
-																					.sort((l,r) => l.localeCompare(r))
-																					.map((s,i,arr) => s.substring(s.indexOf('[')) + ((i!=arr.length-1)?',':']') )
-																					.reduce((p,c) => p+c, '[');
+			const json = Object.keys(Game.flags)
+													.filter((name)=>name.substring(0,prefix.length) == prefix)
+													.sort((l,r) => l.localeCompare(r))
+													.map((s,i,arr) => s.substring(s.indexOf('[')) + ((i!=arr.length-1)?',':']') )
+													.reduce((p,c) => p+c, '[');
 			try {
 				if(json != '[')
 					flags.flags[prefix] = JSON.parse(json);
 			}
 			catch (e) {
-				console.log( '🏳️‍✒️⛔⚠️', Math.trunc(Game.time/10000), Game.time%10000
+				console.log( '⚗️📜⛔', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify({flags:'getLabsConfig', json:json, e_name:e.name, e_message:e.message }));
 			}
 		}
