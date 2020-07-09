@@ -285,6 +285,8 @@ var roleEnergyTransferer = {
 																								, target:target}));
 						return target;
 					}
+				}
+			}
 			
 			if(!target && creep.memory.rerun) {
 				var nukers = cash.getNukers(creep.room).filter((n) =>
