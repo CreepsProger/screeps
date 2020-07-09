@@ -284,7 +284,6 @@ var roleEnergyTransferer = {
 						console.log('🏭🎯⚡', Math.trunc(Game.time/10000), Game.time%10000
 															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
 																								, target:target}));
-						return target;
 					}
 				}
 			}
