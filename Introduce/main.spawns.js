@@ -654,7 +654,7 @@ var spawns = {
 							}
 							else {
 								const f = 0+!!flags.flags['31'];
-								if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[7][S], 34);
+								if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[7][H], 34);
 								if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[7][M], 31);
 							}
 							if(conditions.TO_SPAWN_ROOM_DEFENDERS('W26S33')) {
