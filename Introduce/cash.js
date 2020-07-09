@@ -211,12 +211,22 @@ var cash = {
 	labs: {},
 	getLabs: function(roomName) {
 		return cash.getEntry(cash.labs, STRUCTURE_LAB, tools.getRoomCode(roomName), () => {
-			return Game.rooms[roomName].find(FIND_STRUCTURES, {filter: (structure) => structure.structureType == STRUCTURE_LAB}
-											).filter((l) => !!l && !!l.my && !!l.store)
-											.sort((l,r) => {const dx=l.pos.x-r.pos.x; const dy=l.pos.y-r.pos.y; return (dy!=0)?dy:dx;})})
-			.filter((l) => !!l && !!l.my && !!l.store);
+			return Game.rooms[roomName]
+				.find(FIND_STRUCTURES, {filter: (structure) => structure.structureType == STRUCTURE_LAB})
+				.filter((l) => !!l && !!l.my && !!l.store)
+				.sort((l,r) => {const dx=l.pos.x-r.pos.x; const dy=l.pos.y-r.pos.y; return (dy!=0)?dy:dx;})
+		});
 	},
 
+	factories: {},
+	getFactories: function(roomName) {
+		return cash.getEntry(cash.factories, STRUCTURE_FACTORY, tools.getRoomCode(roomName), () => {
+			return Game.rooms[roomName]
+				.find(FIND_STRUCTURES, {filter: (structure) => structure.structureType == STRUCTURE_FACTORY })
+				.filter((f) => !!f && !!f.my && !!f.store);
+			});
+	},
+	
 	nukers: {},
 	getNukers: function(room) {
 		return cash.getEntry(cash.nukers, STRUCTURE_NUKER, tools.getRoomCode(room.name), () => {
