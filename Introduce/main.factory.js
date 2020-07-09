@@ -42,7 +42,8 @@ const factory = {
 								.filter((f) => !!f && !!f.my && !!f.store)
 								.map((f) => factory.getToIn(f,res))
 								.filter((f) => !!f.in)
-								.reduce((l,r) => (l.in.amount > r.in.amount)?l:r);
+								.sort((l,r) => r.in.amount - l.in.amount)
+								.shift();
   },
 	
 	getToOut: function(f) {
@@ -59,7 +60,8 @@ const factory = {
 											.filter((c) => c.out.exist > c[3])
 											.sort((l,r) => r.out.amount - l.out.amount)
 											.shift();
-		f.out = line.out;
+		if(!!line)
+			f.out = line.out;
 		return f;
 	},
 
@@ -67,7 +69,8 @@ const factory = {
     return cash.getFactories(roomName)
 								.filter((f) => !!f && !!f.my && !!f.store)
 								.map((f) => factory.getToOut(f))
-								.reduce((l,r) => (l.in.amount > r.in.amount)?l:r);
+								.sort((l,r) => r.out.amount - l.out.amount)
+								.shift();
   },
 	
 	toRun: function(f) {
