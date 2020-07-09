@@ -25,7 +25,7 @@ const factory = {
 											.filter((c) => res == '-' || res == c[0])
 											.map((c,i) => ( c.in = {}
 																		, c.in.resource = f.story[c[0]]
-																		, c.in.exist = tools.nvl(f.story[c[0]],0)
+																		, c.in.exist = tools.nvl(f.store[c[0]],0)
 																		, c.in.line = i+1
 																		, c.in.amount = c[2] - c.in.exist
 																		, c) )
@@ -53,7 +53,7 @@ const factory = {
 		const line = conf.slice(1)
 											.map((c,i) => ( c.out = {}
 																		, c.out.resource = c[0]
-																		, c.out.exist = tools.nvl(f.story[c.out.resource],0)
+																		, c.out.exist = tools.nvl(f.store[c.out.resource],0)
 																		, c.out.line = i+1
 																		, c.out.amount = c.out.exist - c[2]
 																		, c) )
