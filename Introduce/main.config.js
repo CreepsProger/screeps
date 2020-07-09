@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 365,
+	version: 366,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -17,6 +17,18 @@ var config = {
 										, JSON.stringify(config.version)
 									  , args);
 			}
+	},
+	
+	getFactoryConfig: function(roomName) {
+		const flagsFactoryConfig = flags.getFactoryConfig(roomName);
+		if(!!flagsFactoryConfig)
+			return flagsFactoryConfig;
+		const my_shard_config = Memory.config.shards[Game.shard.name];
+		const my_room_config = my_shard_config.rooms[roomName];
+		if(!my_room_config)
+			return undefined;
+		const my_factory_config = my_room_config['factory'];
+		return my_factory_config;
 	},
 
 	getLabsConfig: function(roomName) {
