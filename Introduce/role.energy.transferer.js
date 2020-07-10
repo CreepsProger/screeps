@@ -280,10 +280,10 @@ var roleEnergyTransferer = {
 											, JSON.stringify({creep:creep.name, roomName:creep.room.name, factoryToIn:factoryToIn}));*/
 					const factory = tools.setTarget(creep,factoryToIn,factoryToIn.id,roleEnergyTransferer.run);
 					if(!!factory) {
-						target = factory;
+						target = factory;/*
 						console.log('🏭🎯⚡', Math.trunc(Game.time/10000), Game.time%10000
 															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
-																								, target:target}));
+																								, target:target}));*/
 					}
 				}
 			}
