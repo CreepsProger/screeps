@@ -92,8 +92,6 @@ const factory = {
       return;
       
     const factoriesToRun = factory.getFactoriesToRun();
-    console.log('🏭🌀', Math.trunc(Game.time/10000), Game.time%10000
-                    , JSON.stringify( { "factory":'run', factories:factoriesToRun.length, factoriesToRun:factoriesToRun}));
 		const results = factoriesToRun.map((f) => factory.toRun(f))
 		                         .filter((arr) => Array.isArray(arr) && arr.length > 0)
 		                         .reduce((a, b) => a.concat(b), [])
