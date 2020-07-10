@@ -277,10 +277,10 @@ var role = {
 			if(!!factoryToOut && !!factoryToOut.out && tools.checkTarget(executer,factoryToOut.id)) {
 				const factory = tools.setTarget(creep,factoryToOut,factoryToOut.id,role.run);
 				if(!!factory) {
-					const target = {resource:factoryToOut.out.resource, amount:factoryToOut.out.amount, target:factoryToOut};
+					const target = {resource:factoryToOut.out.resource, amount:factoryToOut.out.amount, target:factoryToOut};/*
 					console.log('🏭🎯↪️', Math.trunc(Game.time/10000), Game.time%10000
 															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
-																								, target:target}));
+																								, target:target}));*/
 					return target;
 				}
 			}
