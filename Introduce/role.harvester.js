@@ -299,10 +299,12 @@ var role = {
 				}
 			}
 			const factoryToIn = factory.getFactoryToIn(creep.room.name);
-			if(!!factoryToIn && !!factoryToIn.in && tools.checkTarget(executer,factoryToIn.id)) {
+			if(!!factoryToIn && !!factoryToIn.in &&
+				 tools.checkTarget(executer,factoryToIn.id) &&
+				 tools.nvl(creep.room.storage.store[factoryToIn.in.resource],0) > 0) {/*
 				console.log('🏭↩️', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { creep:creep.name, roomName:creep.room.name
-																						, in:factoryToIn.in, factoryToIn:factoryToIn}));
+																						, in:factoryToIn.in, factoryToIn:factoryToIn}));*/
 				const factory = tools.setTarget(creep,factoryToIn,factoryToIn.id,role.run);
 				if(!!factory) {
 					const target = {resource:factoryToIn.in.resource, amount:factoryToIn.in.amount, target:creep.room.storage};
