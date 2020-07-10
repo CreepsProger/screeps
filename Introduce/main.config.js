@@ -616,7 +616,7 @@ var config = {
 				,	shard1:
 				 	{	defaults:
 						{ containers: {weight: 5000}
-						, towers: {mw:10000,mr:10000}
+						, towers: {mw:1000000,mr:1000000}
 						, heal_room:
 							{ shard: 'shard0', room: 'W29S29'}
 						, path_rooms:
