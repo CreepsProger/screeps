@@ -275,12 +275,12 @@ var roleEnergyTransferer = {
 			}
 			if(!target && creep.memory.rerun) {
 				const factoryToIn = factory.getFactoryToIn(creep.room.name, RESOURCE_ENERGY);
-				if(!!factoryToIn && !!factoryToIn && tools.checkTarget(executer,factoryToIn.id)) {
+				if(!!factoryToIn && !!factoryToIn && tools.checkTarget(executer,factoryToIn.id)) {/*
 					console.log('🏭⚡', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({creep:creep.name, roomName:creep.room.name, factoryToIn:factoryToIn}));
+											, JSON.stringify({creep:creep.name, roomName:creep.room.name, factoryToIn:factoryToIn}));*/
 					const factory = tools.setTarget(creep,factoryToIn,factoryToIn.id,roleEnergyTransferer.run);
 					if(!!factory) {
-						const target = factory;
+						target = factory;
 						console.log('🏭🎯⚡', Math.trunc(Game.time/10000), Game.time%10000
 															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
 																								, target:target}));
