@@ -401,7 +401,7 @@ var cash = {
 
 	needToRenew: function(creep) {
 		const boosted = creep.body.some((b,i) => tools.nvl(b.boost,'-') != '-');
-		return !boosted && (creep.ticksToLive < 400 || (creep.memory.renewing && creep.ticksToLive < 1400));
+		return !boosted && (creep.ticksToLive < 200 || (creep.memory.renewing && creep.ticksToLive < 1400));
 	}, 
 
 	renewCreep: function(creep) {
@@ -412,7 +412,7 @@ var cash = {
 				spawn.renewCreep(creep);
 				creep.memory.renewing = true;
 			}
-		}
+		}p
 		else {
 			creep.memory.renewing = false;
 		}
