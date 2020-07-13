@@ -152,7 +152,7 @@ var role = {
 			}
 		}
 
-		if(creep.getActiveBodyparts(WORK) && !!creep.room.storage) {
+		if((creep.getActiveBodyparts(WORK) || !!creep.room.storage.my) && !!creep.room.storage) {
 			return creep.room.storage;
 		}
 
