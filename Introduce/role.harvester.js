@@ -51,7 +51,7 @@ var role = {
 
 	checkOn: function(creep) {
 		if(!creep.memory[role.name].on &&
-			 creep.store.getFreeCapacity() > 0 &&
+			 creep.store.getFreeCapacity() > creep.memory.rerun * creep.store.getCapacity() * 0.50  &&
 			 (creep.store.getFreeCapacity() == creep.store.getCapacity() || creep.memory.rerun || tasks.needToHarvest(creep))) {
 			/*
 			 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0 &&
