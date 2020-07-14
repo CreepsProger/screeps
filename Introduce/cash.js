@@ -412,7 +412,7 @@ var cash = {
 				spawn.renewCreep(creep);
 				creep.memory.renewing = true;
 			}
-		}p
+		}
 		else {
 			creep.memory.renewing = false;
 		}
