@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 372,
+	version: 373,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -1615,7 +1615,48 @@ var config = {
 								, escape_path:
 									{ W29S31:'W29S31'} 
 								}
-							}
+							},
+							W25S26:
+							{ containers: {weight: 5253}
+							, sites:
+							 	[ //{x:42, y:43, type:STRUCTURE_CONTAINER}
+							 	]
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 5250, max_weight: 5259}
+								, {name: '2', time: 0, min_weight: 5250, max_weight: 5259}
+								, {name: '3', time: 0, min_weight: 5250, max_weight: 5259}
+								, {name: '4', time: 0, min_weight: 5250, max_weight: 5259}
+								, {name: '5', time: 0, min_weight: 5250, max_weight: 5259}
+								, {name: '6', time: 0, min_weight: 5250, max_weight: 5259}
+								]
+							, claiming:
+							 	[ {name: '1', time: 0, min_weight: 5250, max_weight: 5259}
+								, {name: '2', time: 0, min_weight: 5250, max_weight: 5259}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 5250, max_weight: 5259}
+								, {name: '2', time: 0, min_weight: 5250, max_weight: 5259}
+								, {name: '3', time: 0, min_weight: 5250, max_weight: 5259}
+								, {name: '4', time: 0, min_weight: 5250, max_weight: 5259}
+								]
+							, heal_room:
+								{ shard: 'shard1', room: 'W26S28'}
+							, path_rooms:
+								{ W29S29: 'W28S29', W28S29: 'W27S29', W28S29y:30
+								, W27S29: 'W26S29', W27S29y:9
+								, W26S29: 'W26S28', W26S27: 'W26S28', W26S28: 'W25S28', W26S28y:42
+								, W24S28: 'W25S28', W24S28y:16
+								, W26S28: 'W25S28'
+								, W25S28: 'W25S27', W25S27: 'W25S26', W25S27x:39
+								, W29S31: 'W30S31', W30S31: 'W30S30'
+								, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:35
+								, W21S28: 'W22S28', W22S28: 'W23S28', W23S28: 'W23S29'
+								, W23S29: 'W24S29', W24S29: 'W24S28'
+								}
+								, escape_path:
+								{ W25S26: 'W25S27', W25S27: 'W25S28', W25S28: 'W26S28', W26S27: 'W26S28', W26S28: 'W26S29', W26S29: 'W27S29', W27S29: 'W28S29', W28S29: 'W29S29'
+								}
+							}//, 
 						}
 					}
 				,	shard2:
