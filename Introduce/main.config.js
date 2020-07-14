@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 376,
+	version: 377,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -1647,10 +1647,11 @@ var config = {
 							, heal_room:
 								{ shard: 'shard1', room: 'W24S28'}
 							, path_rooms:
-								{ W29S29: 'W28S29', W28S29: 'W27S29', W28S29y:30
-								/* W27S29: 'W26S29', W27S29y:9
-								, W26S29: 'W26S28', W26S27: 'W26S28', W26S28: 'W25S28', W26S28y:42*/
-								, W24S28: 'W25S28', W24S28y:16, W25S28: 'W25S27', W25S27: 'W25S26', W25S27x:39
+								{ /*W29S29: 'W28S29', W28S29: 'W27S29', W28S29y:30
+								, W27S29: 'W26S29', W27S29y:9
+								, W26S29: 'W26S28', W26S27: 'W26S28', W26S28: 'W25S28', W26S28y:42
+								,*/
+									W24S28: 'W25S28', W24S28y:16, W25S28: 'W25S27', W25S27: 'W25S26', W25S27x:39
 								, W26S27: 'W25S27'
 								/* W29S31: 'W30S31', W30S31: 'W30S30'
 								, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:35
