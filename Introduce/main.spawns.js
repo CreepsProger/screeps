@@ -509,10 +509,10 @@ var spawns = {
 						if(Sp6)	spawns.tryCreateCreep(spawn, WORKER[5][M], 5244);
 						if(Sp6)	spawns.tryCreateCreep(spawn, CARIER[6][L], 5241);
 					}
-					if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[1][L], 5255);
-					if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5256);
-					if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5257);
-					if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 5258);
+					if(spawn.name == 'Spawn10') spawns.tryCreateCreep(spawn, ATTACKER[1][L], 5255);
+					if(spawn.name == 'Spawn10') spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5256);
+					if(spawn.name == 'Spawn10') spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5257);
+					if(spawn.name == 'Spawn10')	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 5258);
         }
 
 				if(Game.shard.name == 'shard0') {
