@@ -267,7 +267,7 @@ var spawns = {
 												 , [     250008000017,     200013000017,     300010000010 // 8 12900
 												   ,       2515000010,     400000000010,       4400000006
 												   ,     170008000025,     170008000025,     170008000025]
-													, [ 2700000100160006, 2700001700000006, 1100000029000010]
+													, [ 2700000100160006, 2700001700000006, 1100000029000010,        100101111]
 										   	 ]; //TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 				const HEALER =   [ [                0,                0,                0]  // 0   000
 											 	 , [          1000001,          1000001,          1000001]  // 1   300
@@ -509,8 +509,9 @@ var spawns = {
 						if(Sp6)	spawns.tryCreateCreep(spawn, WORKER[5][M], 5244);
 						if(Sp6)	spawns.tryCreateCreep(spawn, CARIER[6][L], 5241);
 					}
-					if(spawn.name == 'Spawn10') spawns.tryCreateCreep(spawn, ATTACKER[1][L], 5253);
+					if(spawn.name == 'Spawn10') spawns.tryCreateCreep(spawn, ATTACKER[1][L], 5254);
 					if(spawn.name == 'Spawn10') spawns.tryCreateCreep(spawn,   HEALER[1][L], 5255);
+					if(spawn.name == 'Spawn10')	spawns.tryCreateCreep(spawn, ATTACKER[9][S], 5166);
 					if(spawn.name == 'Spawn10') spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5256);
 					if(spawn.name == 'Spawn10') spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5257);
 					if(spawn.name == 'Spawn10')	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 5258);
