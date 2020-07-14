@@ -267,7 +267,7 @@ var spawns = {
 												 , [     250008000017,     200013000017,     300010000010 // 8 12900
 												   ,       2515000010,     400000000010,       4400000006
 												   ,     170008000025,     170008000025,     170008000025]
-													, [     250008000017,     200013000017,     300010000010,     170008000025]
+													, [ 2700000000170006, 2700001700000006, 1000000030000010]
 										   	 ]; //TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 				const HEALER =   [ [                0,                0,                0]  // 0   000
 											 	 , [          1000001,          1000001,          1000001]  // 1   300
@@ -510,6 +510,9 @@ var spawns = {
 						if(Sp6)	spawns.tryCreateCreep(spawn, CARIER[6][L], 5241);
 					}
 					if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[1][L], 5255);
+					if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5256);
+					if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5257);
+					if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 5258);
         }
 
 				if(Game.shard.name == 'shard0') {
