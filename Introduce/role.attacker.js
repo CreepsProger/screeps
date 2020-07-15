@@ -351,7 +351,7 @@ var role = {
 
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜🎯');
-						tools.moveTo(creep,target);
+						config.moveTo(creep,target);
 						if(!!flags.flags.LA || !!flags.flags.L) {
 							console.log( '🔜🎯', Math.trunc(Game.time/10000), Game.time%10000
 													, creep.name
