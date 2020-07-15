@@ -11,9 +11,22 @@ var roleDismantler = {
 
 	test_weight: 5256,
 
+	init: function(creep) {
+		if(creep.memory[role.name] === undefined ||
+			 creep.memory[role.name].v === undefined ||
+			 creep.memory[role.name].v != config.version) {
+			creep.memory[role.name] = { v: config.version
+																, on: false
+																, room: creep.room.name
+																, shard: Game.shard.name
+																};
+		}
+	},
+
 	run: function(creep,executer) {
 			if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
 				if(creep.getActiveBodyparts(TOUGH) > 0){
+					roleDismantler.init(creep);
 					config.setRoom(creep, constants.ROLE_ENERGY_HARVESTING);
 				}
 				else
