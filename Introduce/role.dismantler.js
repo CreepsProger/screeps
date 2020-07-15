@@ -13,7 +13,11 @@ var roleDismantler = {
 
 	run: function(creep,executer) {
 			if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
-				return roleNext.run(creep);
+				if(creep.getActiveBodyparts(TOUGH) > 0 && creep.store.getCapacity() == 0){
+					config.setRoom(creep, constants.ROLE_ENERGY_HARVESTING);
+				}
+				else
+					return roleNext.run(creep);
 			}
 
 			if(creep.memory.dismantling &&
@@ -28,9 +32,6 @@ var roleDismantler = {
 					creep.getActiveBodyparts(TOUGH) > 0 ||
 					(creep.store.getFreeCapacity() > 0 && creep.memory.rerun))) {
 				creep.memory.dismantling = true;
-				if(creep.getActiveBodyparts(TOUGH) > 0 && creep.store.getCapacity() == 0){
-					config.setRoom(creep, constants.ROLE_ENERGY_HARVESTING);
-				}
 			}
 
 			if(creep.memory.dismantling) {
