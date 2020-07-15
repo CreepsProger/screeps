@@ -12,10 +12,10 @@ var roleDismantler = {
 	test_weight: 5256,
 
 	init: function(creep) {
-		if(creep.memory[role.name] === undefined ||
-			 creep.memory[role.name].v === undefined ||
-			 creep.memory[role.name].v != config.version) {
-			creep.memory[role.name] = { v: config.version
+		if(creep.memory[constants.ROLE_ENERGY_HARVESTING] === undefined ||
+			 creep.memory[constants.ROLE_ENERGY_HARVESTING].v === undefined ||
+			 creep.memory[constants.ROLE_ENERGY_HARVESTING].v != config.version) {
+			creep.memory[constants.ROLE_ENERGY_HARVESTING] = { v: config.version
 																, on: false
 																, room: creep.room.name
 																, shard: Game.shard.name
