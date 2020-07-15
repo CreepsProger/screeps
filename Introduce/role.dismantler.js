@@ -9,7 +9,7 @@ const cash = require('cash');
 
 var roleDismantler = {
 
-	test_weight: 304,
+	test_weight: 5256,
 
 	run: function(creep,executer) {
 			if(!creep.memory[constants.ROLE_ENERGY_HARVESTING]) {
@@ -18,14 +18,14 @@ var roleDismantler = {
 
 			if(creep.memory.dismantling &&
 				 (creep.getActiveBodyparts(WORK) == 0 ||
-					(creep.store.getFreeCapacity() == 0 && !creep.getActiveBodyparts(TOUGH)))) {
+					(creep.store.getFreeCapacity() == 0 && creep.getActiveBodyparts(TOUGH) == 0))) {
 				creep.memory.dismantling = false;
 			}
 
 			if(!creep.memory.dismantling &&
 				 creep.getActiveBodyparts(WORK) > 0 &&
 				 ((creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) ||
-					creep.getActiveBodyparts(TOUGH) ||
+					creep.getActiveBodyparts(TOUGH) > 0 ||
 					(creep.store.getFreeCapacity() > 0 && creep.memory.rerun))) {
 				creep.memory.dismantling = true;
 			}
