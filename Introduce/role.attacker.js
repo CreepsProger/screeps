@@ -70,10 +70,10 @@ var role = {
 					const mayHeal = healler.getActiveBodyparts(HEAL) > heal_count/2;
 					return mayHeal && !attacker;}});
 				const shouldBeHealled = creep.hitsMax - creep.hits;
-				const attack_count = creep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK),0);
+				const attack_count = creep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK || c.type == TOUGH),0);
 				const Attacker = attack_count > 0;
-				const canAttack = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK) > attack_count/2;
-				const canAttack2 = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK);
+				const canAttack = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK) + creep.getActiveBodyparts(TOUGH) > attack_count/2;
+				const canAttack2 = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK) + creep.getActiveBodyparts(TOUGH);
 				const heal_count = creep.body.reduce((p,c) => p += (c.type == HEAL),0);
 				const Healler = !Attacker && heal_count > 0;
 				const canHeal = creep.getActiveBodyparts(HEAL) > heal_count/2;
