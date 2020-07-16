@@ -113,7 +113,7 @@ var role = {
 							return mayHeal && !attacker;
 						}
 					});
-					var path = creep.pos.findPathTo(target);
+					var path = creep.pos.findPathTo(creep2);
 					if(path.length > 1) {
 						target = creep2;
 					}
@@ -139,6 +139,10 @@ var role = {
 					if(creep.memory.n == role.test_n) {
 						console.log('Go to my heal room:', JSON.stringify({n:creep.memory.n, my_pos:creep.pos, my_heal_room: my_heal_room, shouldBeHealled: shouldBeHealled, canAttack: canAttack, canAttack2: canAttack2}));
 					}
+				}
+
+				if(!target && this_room != my_room && (canAttack || canHeal)) {
+					target = config.findPathToMyRoom(creep,role.name);
 				}
 
 				if(!target && canAttack) {
