@@ -518,7 +518,7 @@ var spawns = {
 					if(spawn.name == 'Spawn10')	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 5258);
 					if(spawn.name == 'Spawn10') spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5257);
 					if(spawn.name == 'Spawn10') spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5256);
-					if(spawn.name == 'Spawn10')	spawns.tryCreateCreep(spawn,   CARIER[7][L], 5251);
+					if(Sp5)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 5251);
         }
 
 				if(Game.shard.name == 'shard0') {
