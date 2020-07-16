@@ -39,7 +39,7 @@ const factory = {
 
 	getFactoryToIn: function(roomName, res = '-') {
     return cash.getFactories(roomName)
-								.filter((f) => !!f && !!f.my && !!f.store)
+								.filter((f) => !!f && !!f.my && !!f.store && f.store.getFreeCapacity(RESOURCE_ENERGY) > 5000)
 								.map((f) => factory.getToIn(f,res))
 								.filter((f) => !!f.in)
 								.sort((l,r) => r.in.amount - l.in.amount)
