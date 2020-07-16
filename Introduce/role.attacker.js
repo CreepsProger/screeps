@@ -189,7 +189,7 @@ var role = {
 				if(!target && Healler && canHeal) {
 					target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (mycreep) => {
-							const attack_count = mycreep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK /* || c.type == TOUGH*/),0);
+							const attack_count = mycreep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK || (c.type == WORK && c.boost == 'XZH2O'),0);
 							return  mycreep.hitsMax - mycreep.hits == 0 &&
 											attack_count &&
                       creep.pos.getRangeTo(mycreep) > 0 &&
