@@ -132,7 +132,7 @@ var role = {
 				}
 */
 				if(!target && this_room != my_heal_room &&
-					 ((Attacker && !canAttack2) || (Healler && !canHeal) || (!Attacker && !Healler && shouldBeHealled) )
+					 ((Attacker && !canAttack) || (Healler && !canHeal) || (!Attacker && !Healler && shouldBeHealled) )
 					) {
 					const exit = creep.room.findExitTo(my_next_escape_room);
 					target = creep.pos.findClosestByPath(exit);
