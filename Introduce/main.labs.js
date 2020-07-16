@@ -31,16 +31,16 @@ const labs = {
 								.filter((e) =>  !!e.toEmpty ||
 																tools.nvl(e.lab.store.getUsedCapacity(e.resource),0) > (!!e.toEmpty?0:2500)
 											 )
-								.map((e) => {return {lab:e.lab, resource:e.resource, amount:tools.nvl(e.lab.store.getUsedCapacity(e.resource),0)-(!!e.toEmpty?0:1500) }}) 
+								.map((e) => {return {lab:e.lab, resource:e.resource, amount:tools.nvl(e.lab.store.getUsedCapacity(e.resource),0)-(!!e.toEmpty?0:2000) }}) 
   },
 
 	getLabsToIn: function(roomName, res = '-') {
     return  labs.getLabsToInOut(roomName)
 								.filter((e) =>  !e.toEmpty &&
 																(e.resource == res || res == '-') &&
-																tools.nvl(e.lab.store.getUsedCapacity(e.resource),0) < 500
+																tools.nvl(e.lab.store.getUsedCapacity(e.resource),0) < 1500
 											 )
-								.map((e) => {return {lab:e.lab, resource:e.resource, amount:1500-tools.nvl(e.lab.store.getUsedCapacity(e.resource),0)}}) 
+								.map((e) => {return {lab:e.lab, resource:e.resource, amount:2000-tools.nvl(e.lab.store.getUsedCapacity(e.resource),0)}}) 
   },
 
   getLabsToRun: function() {
