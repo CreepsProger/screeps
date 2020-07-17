@@ -28,7 +28,7 @@ const labs = {
 	
 	getLabsToEmpty: function(roomName) {
     return  labs.getLabsToInOut(roomName)
-								.filter((e) =>  !!e.toEmpty)
+								.filter((e) =>  !!e.toEmpty && e.resource != '-')
 								.map((e) => {return {lab:e.lab, resource:e.resource, amount:tools.nvl(e.lab.store.getUsedCapacity(e.resource),0)}}) 
 								.sort((l,r) => r.amount - l.amount)
   },
