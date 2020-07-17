@@ -30,6 +30,7 @@ const labs = {
     return  labs.getLabsToInOut(roomName)
 								.filter((e) =>  !!e.toEmpty && !!e.lab.mineralType)
 								.map((e) => {return {lab:e.lab, resource:e.resource, amount:tools.nvl(e.lab.store.getUsedCapacity(e.resource),0)}}) 
+								.sort((l,r) => r.amount - l.amount)
   },
 	
 	getLabsToOut: function(roomName) {
@@ -37,7 +38,8 @@ const labs = {
 								.filter((e) =>  !!e.toEmpty ||
 																tools.nvl(e.lab.store.getUsedCapacity(e.resource),0) > (!!e.toEmpty?0:2500)
 											 )
-								.map((e) => {return {lab:e.lab, resource:e.resource, amount:tools.nvl(e.lab.store.getUsedCapacity(e.resource),0)-(!!e.toEmpty?0:2000) }}) 
+								.map((e) => {return {lab:e.lab, resource:e.resource, amount:tools.nvl(e.lab.store.getUsedCapacity(e.resource),0)-(!!e.toEmpty?0:2000)}})
+								.sort((l,r) => r.amount - l.amount)
   },
 
 	getLabsToIn: function(roomName, res = '-') {
