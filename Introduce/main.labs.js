@@ -23,12 +23,12 @@ const labs = {
     return  cash.getLabs(roomName)
 								.map((lab,i) => {return { i:i, resource:tools.nvl(lab.mineralType,labs.getConfLabRes(conf,i))
 																				, toEmpty:(tools.nvl(lab.mineralType,labs.getConfLabRes(conf,i)) != labs.getConfLabRes(conf,i))
-																				, toRun:labs.getConfLabAgs(conf,i), lab:lab}}) 
+																				, toRun:labs.getConfLabAgs(conf,i), configRes:labs.getConfLabRes(conf,i), lab:lab}}) 
   },
 	
 	getLabsToEmpty: function(roomName) {
     return  labs.getLabsToInOut(roomName)
-								.filter((e) =>  !!e.toEmpty && e.resource != '-')
+								.filter((e) =>  !!e.toEmpty && e.configRes != '-')
 								.map((e) => {return {lab:e.lab, resource:e.resource, amount:tools.nvl(e.lab.store.getUsedCapacity(e.resource),0)}}) 
 								.sort((l,r) => r.amount - l.amount)
   },
