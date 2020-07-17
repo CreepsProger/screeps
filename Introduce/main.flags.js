@@ -306,11 +306,11 @@ var flags = {
     },
 	//Deal: market deal 
 	Deal: function(Deal) {
-		const amount = 150;
+		const amount = 2000;
 		const roomName = 'W29S29';
 
 		if(Deal.color <= 5) {
-			const orderId = '5f0efbeac87569614b9ee7c9';
+			const orderId = '5f118c69c8756910821581fd';
 			const err = Game.market.deal(orderId, amount, roomName);
 			console.log('🤝💠', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { Deal:'Deal-buy'
