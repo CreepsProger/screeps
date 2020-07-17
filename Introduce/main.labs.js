@@ -26,6 +26,12 @@ const labs = {
 																				, toRun:labs.getConfLabAgs(conf,i), lab:lab}}) 
   },
 	
+	getLabsToEmpty: function(roomName) {
+    return  labs.getLabsToInOut(roomName)
+								.filter((e) =>  !!e.toEmpty && !!e.lab.mineralType)
+								.map((e) => {return {lab:e.lab, resource:e.resource, amount:tools.nvl(e.lab.store.getUsedCapacity(e.resource),0)}}) 
+  },
+	
 	getLabsToOut: function(roomName) {
     return  labs.getLabsToInOut(roomName)
 								.filter((e) =>  !!e.toEmpty ||
