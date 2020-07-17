@@ -306,7 +306,15 @@ var flags = {
     },
 	//Deal: market deal 
 	Deal: function(Deal) {
-		Game.market.deal('5f07aadeb7b8e43e13cffc8d', 1, "W29S29");
+		const orderId = '5f07aadeb7b8e43e13cffc8d';
+		const amount = 1;
+		const roomName = 'W29S29';
+		const err = Game.market.deal(orderId, amount, roomName);
+		console.log('🤝💠', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify( { Deal:'Deal'
+																				, orderId:orderId , amount:amount
+																				, roomName:roomName, err:err}));
+		Deal.remove();
 	}, 
 	//Totals: refactor totals
     Totals: function(Totals) {
