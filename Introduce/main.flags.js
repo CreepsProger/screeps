@@ -304,6 +304,10 @@ var flags = {
         }
         Flag1.remove();
     },
+	//Deal: market deal 
+	Deal: function(Deal) {
+		Game.market.deal('5f07aadeb7b8e43e13cffc8d', 1, "W29S29");
+	}, 
 	//Totals: refactor totals
     Totals: function(Totals) {
 			console.log( '🏳️‍', Math.trunc(Game.time/10000), Game.time%10000
