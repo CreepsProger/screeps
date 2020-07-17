@@ -306,11 +306,11 @@ var flags = {
     },
 	//Deal: market deal 
 	Deal: function(Deal) {
-		const amount = 2000;
-		const roomName = 'W29S29';
+		const roomName = Deal.pos.roomName;
+		const amount = Game.rooms[roomName].terminal.store['XLHO2'];
 
 		if(Deal.color <= 5) {
-			const orderId = '5f118c69c8756910821581fd';
+			const orderId = '5f07f6a4d0906d6d8115c710';
 			const err = Game.market.deal(orderId, amount, roomName);
 			console.log('🤝💠', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { Deal:'Deal-buy'
@@ -318,14 +318,15 @@ var flags = {
 																				, roomName:roomName, err:err}));
 		}
 		else {
-			const orderId = '5ef39249e4d4eca4462d51c4';
+			const orderId = '5f07f6a4d0906d6d8115c710';
 			const err = Game.market.deal(orderId, amount, roomName);
 			console.log('🤝💲', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { Deal:'Deal-sell'
 																				, orderId:orderId , amount:amount
 																				, roomName:roomName, err:err}));
 		}
-		Deal.remove();
+		lastFlagRemoved = Deal; 
+    lastFlagRemoved.remove()
 	}, 
 	//Totals: refactor totals
     Totals: function(Totals) {
