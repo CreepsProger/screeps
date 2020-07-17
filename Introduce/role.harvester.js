@@ -263,7 +263,19 @@ var role = {
 			if(!!target) return target;
 		}
 		
+
 		if(!creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
+			
+			const labToEmpty = labs.getLabsToEmpty(creep.room.name)
+													.filter((e) => tools.checkTarget(executer,e.lab.id))
+													.shift();		
+			if(!!labToEmpty) {
+				const lab = tools.setTarget(creep,labToEmpty.lab,labToEmpty.lab.id,role.run);
+				if(!!lab) {
+					return {resource:labToEmpty.resource, amount:labToEmpty.amount, target:lab};
+				}
+			}
+			
 			const res_to_recieve = terminals.getResourceToRecieve(creep);
 			if(!!res_to_recieve) {
 				return {target:creep.room.terminal, resource:res_to_recieve.resource, amount:res_to_recieve.amount};
