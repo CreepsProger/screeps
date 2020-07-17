@@ -306,14 +306,25 @@ var flags = {
     },
 	//Deal: market deal 
 	Deal: function(Deal) {
-		const orderId = '5f07aadeb7b8e43e13cffc8d';
-		const amount = 1;
+		const amount = 150;
 		const roomName = 'W29S29';
-		const err = Game.market.deal(orderId, amount, roomName);
-		console.log('🤝💠', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify( { Deal:'Deal'
+
+		if(Deal.color <= 5) {
+			const orderId = '5f0efbeac87569614b9ee7c9';
+			const err = Game.market.deal(orderId, amount, roomName);
+			console.log('🤝💠', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify( { Deal:'Deal-buy'
 																				, orderId:orderId , amount:amount
 																				, roomName:roomName, err:err}));
+		}
+		else {
+			const orderId = '5ef39249e4d4eca4462d51c4';
+			const err = Game.market.deal(orderId, amount, roomName);
+			console.log('🤝💲', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify( { Deal:'Deal-sell'
+																				, orderId:orderId , amount:amount
+																				, roomName:roomName, err:err}));
+		}
 		Deal.remove();
 	}, 
 	//Totals: refactor totals
