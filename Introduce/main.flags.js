@@ -320,7 +320,7 @@ var flags = {
 	//Deal: market deal 
 	Deal: function(Deal) {
 		const roomName = Deal.pos.roomName;
-		const amount = 5000;// amount = Game.rooms[roomName].terminal.store['XLHO2'];
+		const amount = 965;// amount = Game.rooms[roomName].terminal.store['XLHO2'];
 
 		if(Deal.color <= 5) {
 			const orderId = '5f1007a491be5a184a9a1d5c';
@@ -331,9 +331,8 @@ var flags = {
 																				, roomName:roomName, err:err}));
 		}
 		else {
-			const amount2 = 1930;
 			const orderId = '5f1338a85ba3d68d9bcd203c';
-			const err = Game.market.deal(orderId, amount2, roomName);
+			const err = Game.market.deal(orderId, amount, roomName);
 			console.log('🤝💲', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { Deal:'Deal-sell'
 																				, orderId:orderId , amount:amount
