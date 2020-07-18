@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 388,
+	version: 389,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -263,23 +263,23 @@ var config = {
 							// 	[ {x:37, y:39, type:STRUCTURE_CONTAINER}
 							// 	]
 							, energy_harvesting:
-								[ {name: '1', time: 0, min_weight: 500, max_weight: 509}
-								, {name: '2', time: 0, min_weight: 500, max_weight: 509}
-								, {name: '3', time: 0, min_weight: 500, max_weight: 509}
-								, {name: '4', time: 0, min_weight: 500, max_weight: 509}
-								, {name: '5', time: 0, min_weight: 500, max_weight: 509}
-								, {name: '6', time: 0, min_weight: 500, max_weight: 509}
-								, {name: '7', time: 0, min_weight: 500, max_weight: 509}
+								[ {name: '1', time: 0, min_weight: 500, max_weight: 529}
+								, {name: '2', time: 0, min_weight: 500, max_weight: 529}
+								, {name: '3', time: 0, min_weight: 500, max_weight: 529}
+								, {name: '4', time: 0, min_weight: 500, max_weight: 529}
+								, {name: '5', time: 0, min_weight: 500, max_weight: 529}
+								, {name: '6', time: 0, min_weight: 500, max_weight: 529}
+								, {name: '7', time: 0, min_weight: 500, max_weight: 529}
 								]
 							, claiming:
-								[ {name: '1', time: 0, min_weight: 500, max_weight: 509}
+								[ {name: '1', time: 0, min_weight: 500, max_weight: 529}
 								]
 							, attacker:
-								[ {name: '1', time: 0, min_weight: 500, max_weight: 509}
-								, {name: '2', time: 0, min_weight: 500, max_weight: 509}
-								, {name: '3', time: 0, min_weight: 500, max_weight: 509}
-								, {name: '4', time: 0, min_weight: 500, max_weight: 509}
-								, {name: '5', time: 0, min_weight: 500, max_weight: 509}
+								[ {name: '1', time: 0, min_weight: 500, max_weight: 529}
+								, {name: '2', time: 0, min_weight: 500, max_weight: 529}
+								, {name: '3', time: 0, min_weight: 500, max_weight: 529}
+								, {name: '4', time: 0, min_weight: 500, max_weight: 529}
+								, {name: '5', time: 0, min_weight: 500, max_weight: 529}
 								]
 							, heal_room:
 								{ shard: 'shard0', room: 'W57S51'}
