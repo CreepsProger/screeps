@@ -17,45 +17,7 @@ const tasks = require('tasks');
 const role = require('role.claimer');
 
 module.exports.loop = function () {
-
-	//Game.cpu.setShardLimits({shard0:60,shard1:4,shard2:4,shard3:22});
-	//Game.cpu.setShardLimits({shard0:2,shard1:74,shard2:2,shard3:2});
-	/*
-
-	if(Game.shard.name != 'shard0' && Game.shard.name != 'shard3') {
-		if(Game.time % constants.TICKS_TO_CHECK_CPU == 0) {
-		console.log( '📙⏳', Math.trunc(Game.time/10000), Game.time%10000, Game.shard.name
-								, '📟 CPU:'
-								, JSON.stringify({ '🛐':Game.cpu.limit * constants.TICKS_TO_CHECK_CPU
-																 , "🛒":Game.cpu.bucket
-																 , "🧀": Game.cpu.bucket - Memory.cpu_prev_bucket})
-								);
-			// const err = Game.cpu.setShardLimits({shard0:50,shard1:5,shard2:5,shard3:20});
-			// console.log( '📙⏳', Math.trunc(Game.time/10000), Game.time%10000, Game.shard.name
-			//  						, '📟 setShardLimits err:'
-			//  						, err
-			//  						);
-		}
-
-		config.run();
-		//flags.run();
-
-		for(var name in Game.creeps) {
-			var creep = Game.creeps[name];
-			if(Game.time % constants.TICKS_TO_CHECK_CPU == 0) {
-				console.log( '📙', Math.trunc(Game.time/10000), Game.time%10000, Game.shard.name
-											 	, JSON.stringify({name:name})
-										 );
-			}
-			if(!creep.spawning) {
-				creep.memory.rerun = 0;
-				role.run(creep);
-			}
-		}
-
-		return;
-	}*/
-
+	
 	if(!conditions.TO_SPAWN_MAIN_ROOMS() && Game.time % 2)
 		return;
 
