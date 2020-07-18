@@ -18,7 +18,7 @@ const role = require('role.claimer');
 
 module.exports.loop = function () {
 	
-	if(!conditions.TO_SPAWN_MAIN_ROOMS() && Game.time % 2)
+	if(!conditions.TO_SPAWN_MAIN_ROOMS() && Game.time % 4 > 1)
 		return;
 
 	var t = 0;
