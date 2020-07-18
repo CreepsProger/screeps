@@ -300,10 +300,23 @@ var flags = {
                     , JSON.stringify(Flag1));
         if(flags[lastFlagRemoved.name]) {
             lastFlagRemoved.pos = Flag1.pos;
+            lastFlagRemoved.color = Flag1.color;
             flags[lastFlagRemoved.name](lastFlagRemoved);
         }
         Flag1.remove();
     },
+	//Limits: set CPU limits on shards
+	Limits: function(Limits) {
+
+		if(Game.shard.name == 'shard1' && Limits.color == 9) {
+			Game.cpu.setShardLimits({shard0:3,shard1:71,shard2:3,shard3:3});
+		}
+		if(Game.shard.name == 'shard3' && Limits.color == 4) {
+			Game.cpu.setShardLimits({shard0:60,shard1:5,shard2:5,shard3:20});;
+		}
+		lastFlagRemoved = Limits; 
+    lastFlagRemoved.remove()
+	},
 	//Deal: market deal 
 	Deal: function(Deal) {
 		const roomName = Deal.pos.roomName;
