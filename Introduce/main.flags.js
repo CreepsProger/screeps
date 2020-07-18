@@ -324,7 +324,7 @@ var flags = {
 
 		if(Deal.color <= 5) {
 			const orderId = '5f1007a491be5a184a9a1d5c';
-			const err = Game.market.deal(orderId, amount, roomName);
+			const err = Game.market.deal(orderId, 400, roomName);
 			console.log('🤝💠', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { Deal:'Deal-buy'
 																				, orderId:orderId , amount:amount
