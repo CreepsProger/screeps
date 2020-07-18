@@ -332,7 +332,7 @@ var flags = {
 		}
 		else {
 			const orderId = '5f1338a85ba3d68d9bcd203c';
-			const err = Game.market.deal(orderId, amount, roomName);
+			const err = Game.market.deal(orderId, 200, roomName);
 			console.log('🤝💲', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { Deal:'Deal-sell'
 																				, orderId:orderId , amount:amount
