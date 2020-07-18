@@ -269,8 +269,7 @@ var spawns = {
 												   ,       2515000010,     400000000010,       4400000006
 												   ,     170008000025,     170008000025,     170008000025]
 													, [  500000000200025, 1000002010000010, 2100000019000010]
-													, [  800000000160003,  800000804000005,  800000008000004]
-													, [ 2700000000170006, 2700001700000006, 1100000029000010,  100000000101111]
+													, [ 1100002110000006, 1100001021000006, 1500000025000010,  100000000101111]
 										   	 ]; //TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 				const HEALER =   [ [                0,                0,                0]  // 0   000
 											 	 , [          1000001,          1000001,          1000001]  // 1   300
@@ -687,7 +686,6 @@ var spawns = {
 								if(spawn.name == 'Spawn2') spawns.tryCreateCreep(spawn,   HEALER[7][H], 48);
 							}
 							else {
-								const f = 0+!!flags.flags['41'];
 								if(Sp12)	spawns.tryCreateCreep(spawn, WORKER[8][L], 44);
 								if(Sp12)	spawns.tryCreateCreep(spawn, CARIER[7][M], 41);
 							}
@@ -740,6 +738,9 @@ var spawns = {
 								if(Sp6) spawns.tryCreateCreep(spawn, WORKER[7][H], 74);
 							}
 							if(spawn.name == 'Spawn9' && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[8][M], 5013);
+							if(Sp1) spawns.tryCreateCreep(spawn, ATTACKER[10][H], 207);
+							if(Sp1) spawns.tryCreateCreep(spawn, ATTACKER[10][M], 206);
+							if(Sp1) spawns.tryCreateCreep(spawn, ATTACKER[10][L], 205);
 						}
 
 						if(conditions.TO_SPAWN_CLAIMING_ROOMS()) {
