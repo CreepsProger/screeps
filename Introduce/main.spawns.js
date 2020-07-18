@@ -634,16 +634,16 @@ var spawns = {
             if(Sp2)	spawns.tryCreateCreep(spawn, CARIER[7][L], 491); // 2
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W54S51')) {
-						if(Sp2)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 505);
+						if(Sp2)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 525);
 					}
 					else {
-						if(Sp2)	spawns.tryCreateCreep(spawn, WORKER[7][L], 504);
-            if(Sp3)	spawns.tryCreateCreep(spawn, CARIER[4][H], 501);
+						if(Sp2)	spawns.tryCreateCreep(spawn, WORKER[7][L], 524);
+            if(Sp3)	spawns.tryCreateCreep(spawn, CARIER[4][H], 521);
 					}
 					if(spawn.name == 'Spawn4' && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[7][L], 173);
 					if(spawn.name == 'Spawn4' && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[7][L], 5013);
-					if(Sp12 && (Game.time % 50000 < 250) ) spawns.tryCreateCreep(spawn, HEALER[7][L], 1000);
-					if(Sp12 && (Game.time % 50000 > 250) ) spawns.tryCreateCreep(spawn, CARIER[1][L], 1000);
+					if(Sp12 && (Game.time % 500000 < 250) ) spawns.tryCreateCreep(spawn, HEALER[7][L], 1000);
+					if(Sp12 && (Game.time % 500000 > 250) ) spawns.tryCreateCreep(spawn, CARIER[1][L], 1000);
 				}
 
 				if(Game.shard.name == 'shard3') {
