@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 387,
+	version: 388,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -209,7 +209,7 @@ var config = {
 									, W23S28: 'W22S28', W22S28: 'W21S28', W21S27: 'W21S28'
 									, W22S29: 'W22S28'
 									}
-			, defaults: {towers: {mw:10000,mr:10000}}
+			, defaults: {towers: {mw:20000,mr:20000}}
 			, shards:
 			{	shard0:
 					{	defaults:
@@ -258,6 +258,7 @@ var config = {
 							},
 							W54S51:
 							{ containers: {weight: 503}
+							, towers: {mw:80000, mr:80000}
 							// , sites:
 							// 	[ {x:37, y:39, type:STRUCTURE_CONTAINER}
 							// 	]
@@ -425,6 +426,7 @@ var config = {
 							},
 						  W57S51:
 							{ containers: {weight: 453}
+							, towers: {mw:200000, mr:200000}
 							, sites:
 								[ {x:7, y:41, type:STRUCTURE_LINK}
 								, {x:11, y:34, type:STRUCTURE_ROAD}
@@ -576,7 +578,7 @@ var config = {
 							},
 							W57S52:
 							{ containers: {weight: 403}
-							, towers: {mw:300000, mr:2000000}
+							, towers: {mw:400000, mr:2000000}
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 400, max_weight: 409}
 								, {name: '2', time: 0, min_weight: 400, max_weight: 409}
