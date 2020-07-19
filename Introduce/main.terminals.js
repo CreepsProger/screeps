@@ -13,10 +13,11 @@ var terminals = {
 	},
 	
 	getAmount: function(terminal,resource) {
+		const terminalAmount = tools.nvl(terminal.store[resource],0);
+		const dealAmount = terminals.getAmountToDeal(terminal,resource);
 		return 0
-			+ tools.nvl(terminal.store[resource],0)
+			+ ((terminalAmount <= dealAmount)?0:terminalAmount-dealAmount) 
 			+ tools.nvl(terminal.room.storage.store[resource],0)
-			- terminals.getAmountToDeal(terminal,resource);
 	},
 
 	getRoomAmount: function(creep,resource) {
