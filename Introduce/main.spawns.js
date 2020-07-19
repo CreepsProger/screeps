@@ -738,6 +738,7 @@ var spawns = {
 								if(Sp6) spawns.tryCreateCreep(spawn, WORKER[7][H], 74);
 							}
 							if(spawn.name == 'Spawn9' && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[8][M], 5013);
+							if(spawn.name == 'Spawn1')	spawns.tryCreateCreep(spawn,    CARIER[7][L], 201);
 							if(spawn.name == 'Spawn1')	spawns.tryCreateCreep(spawn, ATTACKER[10][H], 207);
 							if(spawn.name == 'Spawn1')	spawns.tryCreateCreep(spawn, ATTACKER[10][M], 206);
 							if(spawn.name == 'Spawn1')	spawns.tryCreateCreep(spawn, ATTACKER[10][L], 205);
