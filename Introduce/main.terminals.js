@@ -1,4 +1,5 @@
 const constants = require('main.constants');
+const config = require('main.config');
 const tools = require('tools');
 const cash = require('cash');
 
@@ -7,10 +8,15 @@ var terminals = {
 		return cash.getAllMyTerminals().filter((t) => !!t && !!t.store && !!t.room && !!t.room.storage && !!t.room.storage.store);
 	},
 
+	getAmountToDeal: function(terminal,resource) {
+		return config.getAmountToDeal(terminal.pos.roomName,resource);
+	},
+	
 	getAmount: function(terminal,resource) {
 		return 0
 			+ tools.nvl(terminal.store[resource],0)
-			+ tools.nvl(terminal.room.storage.store[resource],0);
+			+ tools.nvl(terminal.room.storage.store[resource],0)
+			- terminals.getAmountToDeal(terminal,resource);
 	},
 
 	getRoomAmount: function(creep,resource) {
@@ -49,7 +55,7 @@ var terminals = {
 	
 	getAmountToSend: function(creep,resource) {
 		return Math.max(0, Math.floor((terminals.getRoomAmount(creep,resource) - terminals.getShardMinAmount(resource))/2))
-			- tools.nvl(creep.room.terminal.store[resource],0);
+			- tools.nvl(creep.room.terminal.store[resource],0) - terminals.getAmountToDeal(creep.room.terminal,resource);
 	}, 
 	
 	getResourceToRecieve: function(creep) {
