@@ -21,9 +21,9 @@ var terminals = {
 	getAmount: function(terminal,resource) {
 		const terminalAmount = tools.nvl(terminal.store[resource],0);
 		const dealAmount = terminals.getAmountToDeal(terminal,resource);
-		return 0
-			+ ((terminalAmount <= dealAmount)?0:terminalAmount-dealAmount) 
-			+ tools.nvl(terminal.room.storage.store[resource],0)
+		return (terminalAmount <= dealAmount)?
+				 0:
+				 terminalAmount-dealAmount + tools.nvl(terminal.room.storage.store[resource],0)
 	},
 
 	getRoomAmount: function(creep,resource) {
