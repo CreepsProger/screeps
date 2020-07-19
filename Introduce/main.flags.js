@@ -29,7 +29,7 @@ var flags = {
 													.map((s,i,arr) => s.substring(s.indexOf('\"')) + ((i!=arr.length-1)?',':'}') )
 													.reduce((p,c) => p+c, '{');
 			try {
-				if(json != '[')
+				if(json != '{')
 					flags.flags[prefix] = JSON.parse(json);
 			}
 			catch (e) {
