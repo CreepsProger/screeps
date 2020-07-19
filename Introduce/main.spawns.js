@@ -741,6 +741,7 @@ var spawns = {
 							if(spawn.name == 'Spawn1')	spawns.tryCreateCreep(spawn,    CARIER[7][L], 201);
 							if(spawn.name == 'Spawn1')	spawns.tryCreateCreep(spawn, ATTACKER[10][H], 207);
 							if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[8][H+4], 206);
+							if(Sp1)	spawns.tryCreateCreep(spawn,     WORKER[7][L], 204);
 							if(spawn.name == 'Spawn1')	spawns.tryCreateCreep(spawn, ATTACKER[10][L], 205);
 						}
 
