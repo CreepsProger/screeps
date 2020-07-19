@@ -21,8 +21,12 @@ var config = {
 	
 	getAmountToDeal: function(roomName,resource) {
 		const flagDealConfigAmount = flags.getDealConfigAmount(roomName,resource);
-		if(!!flagDealConfigAmount)
+		if(!!flagDealConfigAmount) {
+			console.log( '🤝💲💠📜', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify( { config:'getAmountToDeal', roomName:roomName
+																			, resource:resource, flagDealConfigAmount:flagDealConfigAmount }));
 			return flagDealConfigAmount;
+		}
 		const my_shard_config = Memory.config.shards[Game.shard.name];
 		const my_room_config = my_shard_config.rooms[roomName];
 		if(!my_room_config)
