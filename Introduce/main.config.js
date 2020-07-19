@@ -19,6 +19,21 @@ var config = {
 			}
 	},
 	
+	getAmountToDeal: function(roomName,resource) {
+		const flagDealConfigAmount = flags.getDealConfigAmount(roomName,resource);
+		if(!!flagDealConfigAmount)
+			return flagDealConfigAmount;
+		const my_shard_config = Memory.config.shards[Game.shard.name];
+		const my_room_config = my_shard_config.rooms[roomName];
+		if(!my_room_config)
+			return undefined;
+		const my_deals_config = my_room_config['deals'];
+		if(!my_deals_config)
+			return undefined;
+		const my_deal_amount = my_deals_config[resource];
+		return tools.nvl(my_deal_amount,0);
+	},
+	
 	getFactoryConfig: function(roomName) {
 		const flagsFactoryConfig = flags.getFactoryConfig(roomName);
 		if(!!flagsFactoryConfig)
