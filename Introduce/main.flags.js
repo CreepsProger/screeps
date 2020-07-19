@@ -320,23 +320,24 @@ var flags = {
 	//Deal: market deal 
 	Deal: function(Deal) {
 		const roomName = Deal.pos.roomName;
-		const amount = 965;// amount = Game.rooms[roomName].terminal.store['XLHO2'];
+		const prefix = 'Deal.';
 
-		if(Deal.color <= 5) {
-			const orderId = '5f1007a491be5a184a9a1d5c';
-			const err = Game.market.deal(orderId, 400, roomName);
-			console.log('🤝💠', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify( { Deal:'Deal-buy'
-																				, orderId:orderId , amount:amount
-																				, roomName:roomName, err:err}));
-		}
-		else {
-			const orderId = '5f1338a85ba3d68d9bcd203c';
-			const err = Game.market.deal(orderId, 200, roomName);
-			console.log('🤝💲', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify( { Deal:'Deal-sell'
-																				, orderId:orderId , amount:amount
-																				, roomName:roomName, err:err}));
+		if(flags.flags[prefix+roomName] === undefined) {
+			const fDeal = Object.keys(Game.flags)
+													.filter((name)=>name.substring(0,prefix.length) == prefix && Game.flags[name].pos.roomName == Deal.pos.roomName)
+													.sort((l,r) => l.localeCompare(r))
+													.map((name) => Game.flags[name])
+													.map((f,i,arr) => ( f.orderId = f.name.substring(f.name.indexOf('.'),f.name.indexOf(':')-f.name.indexOf('.')-1)
+																						, f.amount = 0 + f.name.substring(f.name.indexOf(':'))
+																						, f))
+													.shift();
+			if(!!fDeal) {
+				const err = Game.market.deal(fDeal.orderId, fDeal.amount, roomName);
+				console.log('🤝💲/💠', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify( { Deal:'Deal', roomName:roomName
+																						, orderId:fDeal.orderId , amount:fDeal.amount
+																						, err:err, fDeal:fDeal}));
+			}
 		}
 		lastFlagRemoved = Deal; 
     lastFlagRemoved.remove()
