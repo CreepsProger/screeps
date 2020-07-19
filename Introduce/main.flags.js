@@ -327,8 +327,8 @@ var flags = {
 													.filter((name)=>name.substring(0,prefix.length) == prefix && Game.flags[name].pos.roomName == Deal.pos.roomName)
 													.sort((l,r) => l.localeCompare(r))
 													.map((name) => Game.flags[name])
-													.map((f,i,arr) => ( f.orderId = f.name.substring(f.name.indexOf('.')+1,f.name.indexOf(':')-f.name.indexOf('.'))
-																						, f.amount = 0 + f.name.substring(f.name.indexOf(':')+1)
+													.map((f,i,arr) => ( f.orderId = f.name.substring(f.name.indexOf('.')+1,f.name.indexOf(':'))
+																						, f.amount = +f.name.substring(f.name.indexOf(':')+1)
 																						, f))
 													.shift();
 			if(!!fDeal) {
