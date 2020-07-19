@@ -9,7 +9,13 @@ var terminals = {
 	},
 
 	getAmountToDeal: function(terminal,resource) {
-		return config.getAmountToDeal(terminal.pos.roomName,resource);
+		const amountToDeal = tools.nvl(config.getAmountToDeal(terminal.pos.roomName,resource),0);
+		if(amountToDeal > 0) {
+			console.log( '🤝💲💠📜', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify( { terminals:'getAmountToDeal', roomName:terminal.pos.roomName
+																			, resource:resource, amountToDeal:amountToDeal }));
+		}
+		return amountToDeal;
 	},
 	
 	getAmount: function(terminal,resource) {
