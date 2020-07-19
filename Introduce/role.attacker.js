@@ -197,7 +197,7 @@ var role = {
 							return  mycreep.hitsMax - mycreep.hits == 0 &&
 											attack_count &&
                       creep.pos.getRangeTo(mycreep) > 0 &&
-                      creep.pos.getRangeTo(mycreep) <= 10;
+                      creep.pos.getRangeTo(mycreep) <= 2;
 						}
 					});
 				}
