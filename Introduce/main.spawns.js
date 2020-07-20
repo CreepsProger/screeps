@@ -242,7 +242,7 @@ var spawns = {
 											 , [  1313,   1407,   1608]  // 4 1300
 											 , [  1616,   1818,   2412]  // 5 1800
 											 , [  2323,   2613,   3015]  // 6 2300
-											 , [  2525,   3216,   3317, 400000006003010]  // 7 5600
+											 , [  2525,   3216,   3317, 4010]  // 7 5600
 												, [ 300000006001625,  200000003003510]  // 8 12900
 												// TTClRrAaHhWwCcMm  TTClRrAaHhWwCcMm
 											];
@@ -746,7 +746,7 @@ var spawns = {
 
 							if(Sp4) spawns.tryCreateCreep(spawn, HEALER[8][L], 217);
 							if(Sp4)	spawns.tryCreateCreep(spawn, WORKER[8][S], 214);
-							if(Sp4) spawns.tryCreateCreep(spawn, CARIER[7][L], 211);
+							if(Sp4) spawns.tryCreateCreep(spawn, CARIER[7][S], 211);
 						}
 
 						if(conditions.TO_SPAWN_CLAIMING_ROOMS()) {
