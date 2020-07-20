@@ -743,6 +743,9 @@ var spawns = {
 							if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[8][H+4], 206);
 							if(Sp1)	spawns.tryCreateCreep(spawn,     WORKER[7][L], 204);
 							if(spawn.name == 'Spawn1')	spawns.tryCreateCreep(spawn, ATTACKER[10][L], 205);
+
+							if(Sp4 && (Game.time % 10000 < 100) ) spawns.tryCreateCreep(spawn, HEALER[8][L], 217);
+							if(Sp4 && (Game.time % 1000 < 100) ) spawns.tryCreateCreep(spawn, CARIER[1][L], 211);
 						}
 
 						if(conditions.TO_SPAWN_CLAIMING_ROOMS()) {
