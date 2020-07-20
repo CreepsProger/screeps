@@ -425,13 +425,13 @@ var role = {
 	sortRes: function(l,r) {
 		const codeX = 'X'.charCodeAt(0);
 		if(l.charCodeAt(0) == codeX)
-			return -1;
+			return 1;
 		if(r.charCodeAt(0) == codeX)
-			return 1;
-		if(l == 'power')
 			return -1;
-		if(r == 'power')
+		if(l == 'power')
 			return 1;
+		if(r == 'power')
+			return -1;
 		return r.length - l.length;
 	}, 
 
