@@ -254,7 +254,7 @@ var spawns = {
 											 , [ 70707,  90909, 120408]  // 5 1800
 											 , [130911, 140711, 160410, 111111]  // 6 2300
 											 , [201020, 161616, 250817, 400206]  // 7 5600
-											 , [201216, 151515 ]  // 8
+											 , [201216, 151515, 250025 ]  // 8
                        ];
 				const ATTACKER = [ [                0,                0,                0]  // 0  000
 											 	 , [        200000002,        200000002,        200000002]  // 1  300
@@ -744,8 +744,9 @@ var spawns = {
 							if(Sp1)	spawns.tryCreateCreep(spawn,     WORKER[7][L], 204);
 							if(spawn.name == 'Spawn1')	spawns.tryCreateCreep(spawn, ATTACKER[10][L], 205);
 
-							if(Sp4 && (Game.time % 10000 < 100) ) spawns.tryCreateCreep(spawn, HEALER[8][L], 217);
-							if(Sp4 && (Game.time % 1000 < 100) ) spawns.tryCreateCreep(spawn, CARIER[1][L], 211);
+							if(Sp4) spawns.tryCreateCreep(spawn, HEALER[8][L], 217);
+							if(Sp4)	spawns.tryCreateCreep(spawn, WORKER[8][H], 214);
+							if(Sp4) spawns.tryCreateCreep(spawn, CARIER[7][L], 211);
 						}
 
 						if(conditions.TO_SPAWN_CLAIMING_ROOMS()) {
