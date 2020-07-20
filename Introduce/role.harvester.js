@@ -388,17 +388,17 @@ var role = {
 		}
 
 		if(!target && (!creep.getActiveBodyparts(WORK) || UU) && (creep.memory.rerun || UU) &&
-			!!creep.room.storage &&
-			 !creep.room.storage.my &&
-			 Object.keys(creep.room.storage.store).length > 0 ) {
-					target = creep.room.storage;
-			if(!!target) return target;
-		}
-		if(!target && (!creep.getActiveBodyparts(WORK) || UU) && (creep.memory.rerun || UU) &&
 			!!creep.room.terminal &&
 			 !creep.room.terminal.my &&
 			 Object.keys(creep.room.terminal.store).length > 0 ) {
 					target = creep.room.terminal;
+			if(!!target) return target;
+		}
+		if(!target && (!creep.getActiveBodyparts(WORK) || UU) && (creep.memory.rerun || UU) &&
+			!!creep.room.storage &&
+			 !creep.room.storage.my &&
+			 Object.keys(creep.room.storage.store).length > 0 ) {
+					target = creep.room.storage;
 			if(!!target) return target;
 		}
 
