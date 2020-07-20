@@ -264,7 +264,7 @@ var role = {
 		}
 		
 
-		if(!creep.getActiveBodyparts(WORK) && creep.memory.rerun && (Game.time % 200 > 100)) {
+		if(!creep.getActiveBodyparts(WORK) && creep.memory.rerun && (Game.time % 1000 > 700)) {
 			
 			const labToEmpty = labs.getLabsToEmpty(creep.room.name)
 													.filter((e) => tools.checkTarget(executer,e.lab.id))
