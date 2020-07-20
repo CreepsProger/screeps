@@ -421,6 +421,19 @@ var role = {
 		}
 		return target;
 	},
+	
+	sortRes: function(l,r) {
+		const codeX = 'X'.charCodeAt(0);
+		if(l.charCodeAt(0) == codeX)
+			return -1;
+		if(r.charCodeAt(0) == codeX)
+			return 1;
+		if(l == 'power')
+			return -1;
+		if(r == 'power')
+			return 1;
+		return r.length - l.length;
+	}, 
 
 	run: function(creep,executer = undefined) {
 		role.init(creep);																metrix.cpu.step_time(creep, role.name, 'init');
@@ -440,7 +453,7 @@ var role = {
 				}
 				var err = OK;
 				if(!!target.structureType && (target.structureType == STRUCTURE_CONTAINER || target.structureType == STRUCTURE_STORAGE || target.structureType == STRUCTURE_TERMINAL)) {
-					const resources = Object.keys(target.store).sort((l,r) => r.length - l.length); 
+					const resources = Object.keys(target.store).sort((l,r) => role.sortRes(l,r) ); 
 					resources.forEach(function(resource,i) {
 						if(err == OK)
 							err = creep.withdraw(target, resource);
