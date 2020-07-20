@@ -39,7 +39,7 @@ var role = {
           creep.getActiveBodyparts(ATTACK) > 0 ||
           creep.getActiveBodyparts(HEAL) > 0 ||
           creep.hits < creep.hitsMax ||
-				  (creep.getActiveBodyparts(WORK) == 0 && creep.getActiveBodyparts(CARRY) == 0 && creep.getActiveBodyparts(CLAIM) == 0))) {
+				  (creep.getActiveBodyparts(CARRY) == 0 && creep.getActiveBodyparts(CLAIM) == 0))) {
 
 				creep.memory.attacking = true;
 				config.setRoom(creep, role.name);
