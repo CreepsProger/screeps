@@ -451,7 +451,7 @@ var role = {
 						ERR_NOT_IN_RANGE:
 				(!!target.mineralAmount)?
 				    creep.harvest(target):
-				!!target.structureType?
+				(!!target.structureType? && !!target.my)
 						creep.withdraw(target, RESOURCE_ENERGY): // a structure
 					!!target.target?
 						creep.withdraw(target.target, target.resource, Math.min(target.target.store[target.resource],Math.min(target.amount,creep.store.getFreeCapacity(target.resource)))): 
