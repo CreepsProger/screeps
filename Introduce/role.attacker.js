@@ -72,7 +72,7 @@ var role = {
 				
 				const tough_count = creep.body.reduce((p,c) => p += (c.type == TOUGH),0);
 				const shouldBeHealled = creep.hitsMax - creep.hits > tough_count/2;
-				const attack_count = creep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK),0);
+				const attack_count = creep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK ),0);
 				const Attacker = attack_count > 0;
 				const canAttack = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK) > attack_count/2;
 				const canAttack2 = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK);
@@ -80,6 +80,10 @@ var role = {
 				const Healler = !Attacker && heal_count > 0;
 				const canHeal = creep.getActiveBodyparts(HEAL) > heal_count/2;
 				const canHeal2 = creep.getActiveBodyparts(HEAL);
+				const dism_count = creep.body.reduce((p,c) => p += (c.type == WORK ),0);
+				const Dismantler = dism_count > 0;
+				const canDismantle = creep.getActiveBodyparts(WORK) > dism_count/2;
+				const canDismantle2 = creep.getActiveBodyparts(WORK);
 
 				if(creep.memory.n == role.test_n) {
 					console.log(JSON.stringify({Attacker: Attacker, canAttack: canAttack, Healler: Healler, canHeal: canHeal, shouldBeHealled: shouldBeHealled}));
@@ -132,7 +136,10 @@ var role = {
 				}
 */
 				if(!target && this_room != my_heal_room &&
-					 ((Attacker && !canAttack) || (Healler && !canHeal) || (!Attacker && !Healler && shouldBeHealled) )
+					 ((Attacker && !canAttack) ||
+						(Dismantler && !canDismantle) ||
+						(Healler && !canHeal) ||
+						(!Attacker && !Healler && shouldBeHealled) )
 					) {
 					const exit = creep.room.findExitTo(my_next_escape_room);
 					target = creep.pos.findClosestByPath(exit);
@@ -141,8 +148,50 @@ var role = {
 					}
 				}
 
-				if(!target && this_room != my_room && (canAttack || canHeal)) {
+				if(!target && this_room != my_room && (canAttack || canHeal || canDismantle)) {
 					target = config.findPathToMyRoom(creep,role.name);
+				}
+
+				const D1 = flags.flags.D1;
+				const D2 = flags.flags.D2;
+				const DSOURCE = !!flags.flags.DSOURCE && flags.flags.DSOURCE.pos.roomName == this_room;
+				const this_room_sources_are_empty = cash.areEmptySourcesByPath(creep);
+
+				if(!target && (Dismantler && canDismantle) && 
+					 ((!!D1 && D1.pos.roomName == this_room)
+						||
+						(!!D2 && D2.pos.roomName == this_room)
+					 )) {
+					const structures = creep.room.find(FIND_STRUCTURES, {
+						filter: (structure) => {
+							if((structure.structureType == STRUCTURE_SPAWN ||
+                  structure.structureType == STRUCTURE_EXTENSION ||
+									structure.structureType == STRUCTURE_ROAD ||
+									structure.structureType == STRUCTURE_WALL ||
+									structure.structureType == STRUCTURE_RAMPART ||
+									structure.structureType == STRUCTURE_LINK ||
+									structure.structureType == STRUCTURE_STORAGE ||
+									structure.structureType == STRUCTURE_TOWER ||
+									structure.structureType == STRUCTURE_LAB ||
+									structure.structureType == STRUCTURE_TERMINAL ||
+									structure.structureType == STRUCTURE_CONTAINER ||
+									structure.structureType == STRUCTURE_NUKER ||
+								  structure.structureType == STRUCTURE_FACTORY ||
+								  structure.structureType == STRUCTURE_OBSERVER ||
+								  structure.structureType == STRUCTURE_POWER_SPAWN)) {
+								if(!!D1 && D1.pos.roomName == this_room && D1.pos.getRangeTo(structure) < 11-D1.color) {
+									return true;
+								}
+								if(!!D2 && D2.pos.roomName == this_room && D2.pos.getRangeTo(structure) < 11-D2.color) {
+									return true;
+								}
+							}
+							return false;
+						}
+					});
+					if(structures.length > 0) {
+						target = structures.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+					}
 				}
 
 				if(!target && canAttack) {
@@ -339,6 +388,9 @@ var role = {
 								if(creep.getActiveBodyparts(ATTACK)) {
 									err = range==1?creep.attack(target):ERR_NOT_IN_RANGE;
 								}
+							}
+							if(Dismantler && canDismantle2) {
+								err = range==1?creep.dismantle(target):ERR_NOT_IN_RANGE;
 							}
 						}
 						else {
