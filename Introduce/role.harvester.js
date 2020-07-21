@@ -267,7 +267,7 @@ var role = {
 			 !!creep.room.storage.store &&
 			 creep.room.storage.store.getUsedCapacity('power') > 0) {
 			const spawnToIn = cash.getPowerSpawns(creep.room.name)
-															.filter((s) => !!s && !!s.store && !!s.store.getFreeCapacity('power') > 50)
+															.filter((s) => !!s && !!s.store && s.store.getFreeCapacity('power') > 75)
 															.shift();
 			if(!!spawnToIn && tools.checkTarget(executer,spawnToIn.id)) {
 				const spawn = tools.setTarget(creep,spawnToIn,spawnToIn.id,role.run);
@@ -286,8 +286,8 @@ var role = {
 			 creep.room.storage.store.getUsedCapacity('power') > 0) {
 			const spawnToIn = cash.getPowerSpawns(creep.room.name)
 															.filter((s) => !!s && !!s.store &&
-																			!!s.store.getUsedCapacity('power') > 50 &&
-																			!!s.store.getFreeCapacity('energy') < 2500)
+																			s.store.getUsedCapacity('power') > 0 &&
+																			s.store.getFreeCapacity('energy') < 2500)
 															.shift();
 			if(!!spawnToIn && tools.checkTarget(executer,spawnToIn.id)) {
 				const spawn = tools.setTarget(creep,spawnToIn,spawnToIn.id,role.run);
