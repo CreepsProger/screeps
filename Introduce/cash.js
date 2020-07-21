@@ -339,7 +339,7 @@ var cash = {
 	getAllMyPowerSpawns: function() {
 		return cash.getEntry(cash.all_my_power_spawns, STRUCTURE_POWER_SPAWN, 0, () => {
 			return _.filter(Game.structures,
-				 (structure) => !!structure && !!structure.my && !!structure.store
+				 (structure) => !!structure && !!structure.my && !!structure.store &&
 											structure.structureType == STRUCTURE_POWER_SPAWN);
 			 });
  	},
