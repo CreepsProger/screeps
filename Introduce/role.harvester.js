@@ -287,7 +287,7 @@ var role = {
 			const spawnToIn = cash.getPowerSpawns(creep.room.name)
 															.filter((s) => !!s && !!s.store &&
 																			s.store.getUsedCapacity('power') > 0 &&
-																			s.store.getFreeCapacity('energy') < 2500)
+																			s.store.getFreeCapacity('energy') > 2500)
 															.shift();
 			if(!!spawnToIn && tools.checkTarget(executer,spawnToIn.id)) {
 				const spawn = tools.setTarget(creep,spawnToIn,spawnToIn.id,role.run);
