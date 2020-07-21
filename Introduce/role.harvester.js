@@ -265,7 +265,9 @@ var role = {
 		
 		const ST  = !!flags.flags.ST && flags.flags.ST.pos.roomName == my_room;
 
-		if(!creep.getActiveBodyparts(WORK) && creep.memory.rerun && (Game.time % 1000 > 700 || ST)) {
+		if(!creep.getActiveBodyparts(WORK) &&
+			 creep.memory.rerun &&
+			 ((Game.time % 1000/10 < 20 && Game.cpu.bucket > 1000) || Game.cpu.bucket > 9500 || ST)) {
 			
 			const labToEmpty = labs.getLabsToEmpty(creep.room.name)
 													.filter((e) => tools.checkTarget(executer,e.lab.id))
