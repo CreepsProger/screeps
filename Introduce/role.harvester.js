@@ -269,7 +269,9 @@ var role = {
 			 creep.memory.rerun &&
 			 ((Game.time % 500/10 < 20/2 && Game.cpu.bucket > 1000) || Game.cpu.bucket > 9500 || ST)) {
 
-			if(creep.room.storage.store.getUsedCapacity('power') > 0) {
+			if(!!creep.room.storage &&
+				 !!creep.room.storage.store &&
+				 creep.room.storage.store.getUsedCapacity('power') > 0) {
 				const spawnToIn = cash.getPowerSpawns(creep.room.name)
 																.filter((s) => !!s && !!s.store && !!s.store.getFreeCapacity('power') > 0)
 																.shift();
