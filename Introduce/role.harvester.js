@@ -272,10 +272,10 @@ var role = {
 			if(!!spawnToIn && tools.checkTarget(executer,spawnToIn.id)) {
 				const spawn = tools.setTarget(creep,spawnToIn,spawnToIn.id,role.run);
 				if(!!spawn) {
-					const target = {resource:'power', amount:spawn.store.getFreeCapacity('power'), target:creep.room.storage};
+					const target = {resource:'power', amount:spawn.store.getFreeCapacity('power'), target:creep.room.storage};/*
 					console.log('🔴🎯↩️', Math.trunc(Game.time/10000), Game.time%10000
 															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
-																								, target:target}));
+																								, target:target}));*/
 					return target;
 				}
 			}
@@ -292,10 +292,10 @@ var role = {
 			if(!!spawnToIn && tools.checkTarget(executer,spawnToIn.id)) {
 				const spawn = tools.setTarget(creep,spawnToIn,spawnToIn.id,role.run);
 				if(!!spawn) {
-					const target = {resource:'energy', amount:spawn.store.getFreeCapacity('energy'), target:creep.room.storage};
+					const target = {resource:'energy', amount:spawn.store.getFreeCapacity('energy'), target:creep.room.storage};/*
 					console.log('🔴⚡🎯↩️', Math.trunc(Game.time/10000), Game.time%10000
 															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
-																								, target:target}));
+																								, target:target}));*/
 					return target;
 				}
 			}
