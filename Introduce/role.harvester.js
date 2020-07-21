@@ -267,11 +267,25 @@ var role = {
 
 		if(!creep.getActiveBodyparts(WORK) &&
 			 creep.memory.rerun &&
-			 ((Game.time % 1000/10 < 20 && Game.cpu.bucket > 1000) || Game.cpu.bucket > 9500 || ST)) {
+			 ((Game.time % 500/10 < 20/2 && Game.cpu.bucket > 1000) || Game.cpu.bucket > 9500 || ST)) {
 			
+			const spawnToIn = cash.getPowerSpawns(creep.room.name)
+															.filter((s) => !!s && !!s.store && !!s.store.getFreeCapacity('power') > 0)
+															.shift();
+			if(!!spawnToIn && tools.checkTarget(executer,spawnToIn.id)) {
+				const spawn = tools.setTarget(creep,spawnToIn,spawnToIn.id,role.run);
+				if(!!spawn) {
+					const target = {resource:'power', amount:spawn.store.getFreeCapacity('power'), target:spawn};
+					console.log('🔴🎯↩️', Math.trunc(Game.time/10000), Game.time%10000
+															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
+																								, target:target}));
+					return target;
+				}
+			}
+					
 			const labToEmpty = labs.getLabsToEmpty(creep.room.name)
 													.filter((e) => tools.checkTarget(executer,e.lab.id))
-													.shift();		
+													.shift();
 			if(!!labToEmpty) {
 				const lab = tools.setTarget(creep,labToEmpty.lab,labToEmpty.lab.id,role.run);
 				if(!!lab) {
