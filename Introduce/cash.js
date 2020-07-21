@@ -269,8 +269,8 @@ var cash = {
 	},
 	
 	power_spawns: {},
-	getPowerSpawns: function(room) {
-		return cash.getEntry(cash.power_spawns, STRUCTURE_POWER_SPAWN, tools.getRoomCode(room.name), () => {
+	getPowerSpawns: function(roomName) {
+		return cash.getEntry(cash.power_spawns, STRUCTURE_POWER_SPAWN, tools.getRoomCode(roomName), () => {
 			return room.find(FIND_STRUCTURES, {
 				filter: (structure) => structure.structureType == STRUCTURE_POWER_SPAWN });
 			});
