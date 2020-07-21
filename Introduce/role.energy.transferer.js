@@ -198,9 +198,8 @@ var roleEnergyTransferer = {
 																.filter((s) => !!s && !!s.store && !!s.store.getFreeCapacity('energy') > 2500)
 																.shift();
 				if(!!spawnToIn && tools.checkTarget(executer,spawnToIn.id)) {
-					const spawn = tools.setTarget(creep,spawnToIn,spawnToIn.id,roleEnergyTransferer.run);
-					if(!!spawn) {
-						target = spawn;
+					target = tools.setTarget(creep,spawnToIn,spawnToIn.id,roleEnergyTransferer.run);
+					if(!!target) {
 						console.log('🔴⚡🎯⬅️', Math.trunc(Game.time/10000), Game.time%10000
 															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
 																								, target:target}));
