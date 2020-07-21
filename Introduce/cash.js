@@ -3,7 +3,7 @@ const tools = require('tools');
 
 var cash = {
 
-	version: 50,
+	version: 51,
 	time: 0,
 
 	resetList:[],
@@ -333,6 +333,15 @@ var cash = {
 	getSources: function(room) {
 		return cash.getEntry(cash.sources, 'source', tools.getRoomCode(room.name), () => {
 			return room.find(FIND_SOURCES);});
+ 	},
+
+	all_my_power_spawns: {},
+	getAllMyPowerSpawns: function() {
+		return cash.getEntry(cash.all_my_power_spawns, STRUCTURE_POWER_SPAWN, 0, () => {
+			return _.filter(Game.structures,
+				 (structure) => !!structure && !!structure.my && !!structure.store
+											structure.structureType == STRUCTURE_POWER_SPAWN);
+			 });
  	},
 
 	all_my_terminals: {},
