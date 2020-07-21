@@ -2276,37 +2276,6 @@ var config = {
 						 		, W29S33: 'W28S33'
 								}
 							},
-							W23S34:
-							{ containers: {weight: 223}
-							// , sites:
-							// 	[ {x:38, y:5, type:STRUCTURE_CONTAINER}
-							// 	, {x:12, y:37, type:STRUCTURE_CONTAINER}
-							// 	, {x:13, y:36, type:STRUCTURE_CONTAINER}
-							// 	, {x:35, y:39, type:STRUCTURE_CONTAINER}
-							// 	, {x:35, y:40, type:STRUCTURE_CONTAINER}
-							// 	]
-							, energy_harvesting:
-								[ {name: '1', time: 0, min_weight: 220, max_weight: 229}
-								, {name: '2', time: 0, min_weight: 220, max_weight: 229}
-								, {name: '3', time: 0, min_weight: 220, max_weight: 229}
-								]
-							, attacker:
-								[ {name: '1', time: 0, min_weight: 220, max_weight: 229}
-								, {name: '2', time: 0, min_weight: 220, max_weight: 229}
-								, {name: '3', time: 0, min_weight: 220, max_weight: 229}
-								]
-						  , heal_room: 'W25S33'
-							, path_rooms:
-							 	{ W29S32: 'W28S32', W28S32: 'W28S33', W28S33: 'W27S33'
-								, W28S35: 'W28S34', W28S34: 'W28S33'
-							 	, W27S33: 'W26S33', W26S33: 'W25S33', W25S33: 'W25S34'
-								, W25S34: 'W24S34', W24S34: 'W23S34'
-								, W27S34: 'W27S33'
-								}
-							, escape_path:
-								{ W23S34: 'W24S34', W24S34: 'W25S34', W25S34: 'W25S33'
-								}
-						 	},
 							W25S34:
 							{ containers: {weight: 203}
 							, sites:
