@@ -267,6 +267,14 @@ var cash = {
 				filter: (structure) => structure.structureType == STRUCTURE_SPAWN });
 			});
 	},
+	
+	power_spawns: {},
+	getPowerSpawns: function(room) {
+		return cash.getEntry(cash.power_spawns, STRUCTURE_POWER_SPAWN, tools.getRoomCode(room.name), () => {
+			return room.find(FIND_STRUCTURES, {
+				filter: (structure) => structure.structureType == STRUCTURE_POWER_SPAWN });
+			});
+	},
 
 	links: {},
 	getLinks: function(room) {
