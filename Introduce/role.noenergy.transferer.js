@@ -134,7 +134,7 @@ var role = {
 			if(resources.length == 1) {
 				const res = resources[0];
 				const spawnToIn = cash.getPowerSpawns(creep.room.name)
-															.filter((s) => !!s && !!s.store && !!s.store.getFreeCapacity('power') > 0)
+															.filter((s) => !!s && !!s.store && s.store.getFreeCapacity('power') > 0)
 															.shift();
 				if(!!spawnToIn && tools.checkTarget(executer,spawnToIn.id)) {
 					console.log('🔴⬅️', Math.trunc(Game.time/10000), Game.time%10000
