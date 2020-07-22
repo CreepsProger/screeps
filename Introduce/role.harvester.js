@@ -269,6 +269,17 @@ var role = {
 			 creep.memory.rerun &&
 			 ((Game.time % 500/10 < 20/2 && Game.cpu.bucket > 1000) || Game.cpu.bucket > 9500 || ST)) {
 
+			const factoryToOut = factory.getFactoryToOut(creep.room.name);
+			if(!!factoryToOut && !!factoryToOut.out && tools.checkTarget(executer,factoryToOut.id)) {
+				const factory = tools.setTarget(creep,factoryToOut,factoryToOut.id,role.run);
+				if(!!factory) {
+					return {resource:factoryToOut.out.resource, amount:factoryToOut.out.amount, target:factoryToOut};/*
+					console.log('🏭🎯↪️', Math.trunc(Game.time/10000), Game.time%10000
+															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
+																								, target:target}));*/
+				}
+			}
+			
 			const labToEmpty = labs.getLabsToEmpty(creep.room.name)
 													.filter((e) => tools.checkTarget(executer,e.lab.id))
 													.shift();
@@ -312,17 +323,6 @@ var role = {
 			const res_to_send = terminals.getResourceToSend(creep);
 			if(!!res_to_send) {
 				return {target:creep.room.storage, resource:res_to_send.resource, amount:res_to_send.amount};
-			}
-			
-			const factoryToOut = factory.getFactoryToOut(creep.room.name);
-			if(!!factoryToOut && !!factoryToOut.out && tools.checkTarget(executer,factoryToOut.id)) {
-				const factory = tools.setTarget(creep,factoryToOut,factoryToOut.id,role.run);
-				if(!!factory) {
-					return {resource:factoryToOut.out.resource, amount:factoryToOut.out.amount, target:factoryToOut};/*
-					console.log('🏭🎯↪️', Math.trunc(Game.time/10000), Game.time%10000
-															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
-																								, target:target}));*/
-				}
 			}
 			
 			const labToOut = labs.getLabsToOut(creep.room.name)
