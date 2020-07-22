@@ -192,8 +192,10 @@ var roleEnergyTransferer = {
 					}
 				}
 			}
+			
+			const NPE  = !!flags.flags.NPE;
 
-			if(!target && !creep.getActiveBodyparts(WORK)) {
+			if(!target && !creep.getActiveBodyparts(WORK) && !NPE) {
 				const spawnToIn = cash.getPowerSpawns(creep.room.name)
 																.filter((s) => !!s && !!s.store && s.store.getFreeCapacity(RESOURCE_ENERGY) > 2000)
 																.shift();
