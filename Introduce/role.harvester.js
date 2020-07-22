@@ -283,7 +283,7 @@ var role = {
 
 		if(!!creep.room.storage &&
 			 !!creep.room.storage.store &&
-			 creep.room.storage.store.getUsedCapacity('power') > 0) {
+			 creep.room.storage.store.getUsedCapacity('energy') > 0) {
 			const spawnToIn = cash.getPowerSpawns(creep.room.name)
 															.filter((s) => !!s && !!s.store &&
 																			s.store.getUsedCapacity('power') > 0 &&
