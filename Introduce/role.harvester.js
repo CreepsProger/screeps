@@ -248,6 +248,7 @@ var role = {
 			 (!creep.getActiveBodyparts(WORK) || false) &&
 			 !!creep.room.terminal &&
 			 !!creep.room.terminal.my &&
+			 creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 			 (creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_TERMINAL_ENERGY || !conditions.TO_SPAWN_CLAIMING_ROOMS())) {
 			target = creep.room.terminal;
 			if(!!target) return target;
@@ -258,6 +259,7 @@ var role = {
 			 (!creep.getActiveBodyparts(WORK) || false) &&
 			 !!creep.room.storage &&
 			 !!creep.room.storage.my &&
+			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 			 (creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_STORAGE_ENERGY || !conditions.TO_SPAWN_CLAIMING_ROOMS())) {
 			target = creep.room.storage;
 			if(!!target) return target;
