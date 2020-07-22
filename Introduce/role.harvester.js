@@ -263,44 +263,6 @@ var role = {
 			if(!!target) return target;
 		}
 		
-		if(!!creep.room.storage &&
-			 !!creep.room.storage.store &&
-			 creep.room.storage.store.getUsedCapacity('power') > 0) {
-			const spawnToIn = cash.getPowerSpawns(creep.room.name)
-															.filter((s) => !!s && !!s.store && s.store.getFreeCapacity('power') > 75)
-															.shift();
-			if(!!spawnToIn && tools.checkTarget(executer,spawnToIn.id)) {
-				const spawn = tools.setTarget(creep,spawnToIn,spawnToIn.id,role.run);
-				if(!!spawn) {
-					const target = {resource:'power', amount:spawn.store.getFreeCapacity('power'), target:creep.room.storage};/*
-					console.log('🔴🎯↩️', Math.trunc(Game.time/10000), Game.time%10000
-															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
-																								, target:target}));*/
-					return target;
-				}
-			}
-		}
-
-		if(!!creep.room.storage &&
-			 !!creep.room.storage.store &&
-			 creep.room.storage.store.getUsedCapacity('energy') > constants.MIN_STORAGE_ENERGY) {
-			const spawnToIn = cash.getPowerSpawns(creep.room.name)
-															.filter((s) => !!s && !!s.store &&
-																			s.store.getUsedCapacity('power') > 0 &&
-																			s.store.getFreeCapacity('energy') > 2500)
-															.shift();
-			if(!!spawnToIn && tools.checkTarget(executer,spawnToIn.id)) {
-				const spawn = tools.setTarget(creep,spawnToIn,spawnToIn.id,role.run);
-				if(!!spawn) {
-					const target = {resource:'energy', amount:spawn.store.getFreeCapacity('energy'), target:creep.room.storage};/*
-					console.log('🔴⚡🎯↩️', Math.trunc(Game.time/10000), Game.time%10000
-															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
-																								, target:target}));*/
-					return target;
-				}
-			}
-		}
-
 		const ST  = !!flags.flags.ST && flags.flags.ST.pos.roomName == my_room;
 
 		if(!creep.getActiveBodyparts(WORK) &&
@@ -407,6 +369,46 @@ var role = {
 		// 		if(!!target) return target;
 		// 	}
 		// }
+		
+		if(!creep.getActiveBodyparts(WORK) &&
+			 !!creep.room.storage &&
+			 !!creep.room.storage.store &&
+			 creep.room.storage.store.getUsedCapacity('power') > 0) {
+			const spawnToIn = cash.getPowerSpawns(creep.room.name)
+															.filter((s) => !!s && !!s.store && s.store.getFreeCapacity('power') > 75)
+															.shift();
+			if(!!spawnToIn && tools.checkTarget(executer,spawnToIn.id)) {
+				const spawn = tools.setTarget(creep,spawnToIn,spawnToIn.id,role.run);
+				if(!!spawn) {
+					const target = {resource:'power', amount:spawn.store.getFreeCapacity('power'), target:creep.room.storage};/*
+					console.log('🔴🎯↩️', Math.trunc(Game.time/10000), Game.time%10000
+															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
+																								, target:target}));*/
+					return target;
+				}
+			}
+		}
+		
+		if(!creep.getActiveBodyparts(WORK) &&
+			 !!creep.room.storage &&
+			 !!creep.room.storage.store &&
+			 creep.room.storage.store.getUsedCapacity('energy') > constants.MIN_STORAGE_ENERGY) {
+			const spawnToIn = cash.getPowerSpawns(creep.room.name)
+															.filter((s) => !!s && !!s.store &&
+																			s.store.getUsedCapacity('power') > 0 &&
+																			s.store.getFreeCapacity('energy') > 2500)
+															.shift();
+			if(!!spawnToIn && tools.checkTarget(executer,spawnToIn.id)) {
+				const spawn = tools.setTarget(creep,spawnToIn,spawnToIn.id,role.run);
+				if(!!spawn) {
+					const target = {resource:'energy', amount:spawn.store.getFreeCapacity('energy'), target:creep.room.storage};/*
+					console.log('🔴⚡🎯↩️', Math.trunc(Game.time/10000), Game.time%10000
+															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
+																								, target:target}));*/
+					return target;
+				}
+			}
+		}
 
 		if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
 			var weightcreeps = creep.room.find(FIND_MY_CREEPS, {
