@@ -390,8 +390,10 @@ var role = {
 				}
 			}
 		}
+
+		const NPE  = !!flags.flags.NPE;
 		
-		if(!creep.getActiveBodyparts(WORK) &&
+		if(!creep.getActiveBodyparts(WORK) && !NPE &&
 			 !!creep.room.storage &&
 			 !!creep.room.storage.store &&
 			 creep.room.storage.store.getUsedCapacity('energy') > constants.MIN_STORAGE_ENERGY) {
