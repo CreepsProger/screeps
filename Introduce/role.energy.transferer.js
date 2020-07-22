@@ -195,7 +195,7 @@ var roleEnergyTransferer = {
 
 			if(!target && !creep.getActiveBodyparts(WORK)) {
 				const spawnToIn = cash.getPowerSpawns(creep.room.name)
-																.filter((s) => !!s && !!s.store && s.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
+																.filter((s) => !!s && !!s.store && s.store.getFreeCapacity(RESOURCE_ENERGY) > 2000)
 																.shift();
 				if(!!spawnToIn && tools.checkTarget(executer,spawnToIn.id)) {
 					target = tools.setTarget(creep,spawnToIn,spawnToIn.id,roleEnergyTransferer.run);
