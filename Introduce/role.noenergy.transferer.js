@@ -129,11 +129,9 @@ var role = {
 			} 
 		}
 
-		if(!creep.getActiveBodyparts(WORK)) {
-			const resources = Object.keys(creep.store).filter((k) => k == 'power');
-			if(resources.length == 1) {
-				const res = resources[0];
-				const spawnToIn = cash.getPowerSpawns(creep.room.name)
+		const power = creep.store.getUsedCapacity('power');
+		if(!creep.getActiveBodyparts(WORK) && !!power && power > 0) {
+			const spawnToIn = cash.getPowerSpawns(creep.room.name)
 															.filter((s) => !!s && !!s.store && s.store.getFreeCapacity('power') > 0)
 															.shift();
 				if(!!spawnToIn && tools.checkTarget(executer,spawnToIn.id)) {
@@ -141,12 +139,12 @@ var role = {
 											, JSON.stringify({creep:creep.name, roomName:creep.room.name, spawnToIn:spawnToIn}));
 					const spawn = tools.setTarget(creep,spawnToIn,spawnToIn.id,role.run);
 					if(!!spawn) {
-						const target = {resource:'power', amount:spawn.store.getFreeCapacity('power'), target:spawn};
+						const target = {resource:'power', amount:power, target:spawn};
 						console.log('🔴🎯⬅️', Math.trunc(Game.time/10000), Game.time%10000
 															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
 																								, target:target}));
 						return target;
-					}
+					
 				}
 			} 
 		}
