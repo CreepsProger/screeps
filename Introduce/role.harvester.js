@@ -249,7 +249,7 @@ var role = {
 			 !!creep.room.terminal &&
 			 !!creep.room.terminal.my &&
 			 (creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_TERMINAL_ENERGY || !conditions.TO_SPAWN_CLAIMING_ROOMS())) {
-			target = creep.room.storage;
+			target = creep.room.terminal;
 			if(!!target) return target;
 		}
 
