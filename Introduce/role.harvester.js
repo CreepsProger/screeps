@@ -494,7 +494,7 @@ var role = {
 											, JSON.stringify({LL:LL, creep:creep.name, target:target}));
 				}
 				var err = OK;
-				if(!!target.structureType && (target.structureType == STRUCTURE_CONTAINER || target.structureType == STRUCTURE_STORAGE || target.structureType == STRUCTURE_TERMINAL)) {
+				if(!!target.structureType && !target.my && (target.structureType == STRUCTURE_CONTAINER || target.structureType == STRUCTURE_STORAGE || target.structureType == STRUCTURE_TERMINAL)) {
 					const resources = Object.keys(target.store).sort((l,r) => role.sortRes(l,r) ); 
 					resources.forEach(function(resource,i) {
 						if(err == OK)
