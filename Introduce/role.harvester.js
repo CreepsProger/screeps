@@ -218,7 +218,7 @@ var role = {
 		if(!target &&
 			 (creep.room.energyAvailable != creep.room.energyCapacityAvailable || Memory.stop_upgrading) &&
 			 (!creep.getActiveBodyparts(WORK) || creep.memory.rerun) &&
-			 energy > constants.STOP_UPGRADING_ENERGY) {
+			 energy > constants.STOP_UPGRADING_ENERGY + creep.store.getFreeCapacity(RESOURCE_ENERGY) ) {
 			var st = [];
  			if(!!creep.room.terminal &&
  				 !!creep.room.terminal.my &&
