@@ -19,6 +19,11 @@ const factory = {
 	
 	getToIn: function(f,res) {
 		const conf = config.getFactoryConfig(f.pos.roomName);
+		if(Game.shard.name == 'shard3') {
+			console.log('🏭', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify( { roomName:f.pos.roomName
+																				, res:res, conf:conf}));
+		}
 		if(!conf || conf.length < 2)
 			return f;
 		const line = conf.slice(1)
