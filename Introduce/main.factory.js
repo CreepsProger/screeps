@@ -35,6 +35,7 @@ const factory = {
 																		, c.in.amount = c[2] - c.in.exist
 																		, c) )
 											.filter((c) => c.in.exist < c[1])
+											.filter((c) => res != '-' || tools.nvl(Game.rooms[roomName].storage.store[c.in.resource],0) > 0)
 											.sort((l,r) => r.in.amount - l.in.amount)
 											.shift();
 		if(!!line)
@@ -46,7 +47,7 @@ const factory = {
     return cash.getFactories(roomName)
 								.filter((f) => !!f && !!f.my && !!f.store && f.store.getFreeCapacity(RESOURCE_ENERGY) > 5000)
 								.map((f) => factory.getToIn(f,res))
-								.filter((f) => !!f.in && (res != '-' || tools.nvl(Game.rooms[roomName].storage.store[f.in.resource],0) > 0))
+								.filter((f) => !!f.in)
 								.sort((l,r) => r.in.amount - l.in.amount)
 								.shift();
   },
