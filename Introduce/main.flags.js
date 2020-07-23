@@ -17,6 +17,33 @@ var flags = {
 		return flags.flags[flagName];
 	},
 	
+	getStoreConfig: function(roomName) {
+		// W29S29.store: "wire":100,"switch":2
+		// W29S29.store: "XLHO2":1000,"battery":20000
+		// config == {"wire":100,"switch":2,"XLHO2":1000,"battery":20000}
+		const prefix = roomName + '.store:';
+		if(flags.flags[prefix] === undefined) {
+			const json = Object.keys(Game.flags)
+													.filter((name)=>name.substring(0,prefix.length) == prefix)
+													.sort((l,r) => l.localeCompare(r))
+													.map((s,i,arr) => s.substring(s.indexOf('\"')) + ((i!=arr.length-1)?',':'}') )
+													.reduce((p,c) => p+c, '{');
+			try {
+				if(json != '{')
+					flags.flags[prefix] = JSON.parse(json);
+			}
+			catch (e) {
+				console.log( '📦🏨📜⛔', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify({flags:'getStoreConfig', json:json, e_name:e.name, e_message:e.message }));
+			}
+		}
+		return flags.flags[prefix];
+	},
+	getStoreConfigAmount: function(roomName,resource) {
+		const storeConfig = flags.getStoreConfig(roomName);
+		return (!!storeConfig)?storeConfig[resource]:null;
+	},
+	
 	getDealConfig: function(roomName) {
 		// W29S29.deals: "wire":100,"switch":2
 		// W29S29.deals: "XLHO2":1000,"battery":20000
