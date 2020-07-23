@@ -205,7 +205,7 @@ var spawns = {
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn2'  || spawn.name == 'Spawn7'  || spawn.name == 'Spawn--'):
 				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn2'  || spawn.name == 'Spawn6'  || spawn.name == 'Spawn15'):All;
 				const Sp3 = (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn5'  || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
-				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn3'  || spawn.name == 'Spawn6'  || spawn.name == 'Spawn--'):
+				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn3'  || spawn.name == 'Spawn6'  || spawn.name == 'Spawn12'):
 				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn3'  || spawn.name == 'Spawn7'  || spawn.name == 'Spawn12'):All;
 				const Sp4 = (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn5'  || spawn.name == 'Spawn8' || spawn.name == 'Spawn--'):
@@ -243,7 +243,7 @@ var spawns = {
 											 , [  1616,   1818,   2412]  // 5 1800
 											 , [  2323,   2613,   3015]  // 6 2300
 											 , [  2525,   3216,   3317, 4010]  // 7 5600
-												, [ 300000006001625,  200000003003510]  // 8 12900
+												, [ 300000006001625,  200000003003510, 400000006003010 ]  // 8 12900
 												// TTClRrAaHhWwCcMm  TTClRrAaHhWwCcMm
 											];
 				const WORKER = [ [     0,      0,      0]  // 0  000
@@ -307,7 +307,7 @@ var spawns = {
   				else {
 						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[7][H], 5014);
   					if(Sp12) spawns.tryCreateCreep(spawn, CARIER[7][H], 5011);
-						if(spawn.name == 'Spawn1') spawns.tryCreateCreep(spawn, CARIER[8][M], 173);
+						if(spawn.name == 'Spawn1') spawns.tryCreateCreep(spawn, CARIER[8][H], 173);
 						if(spawn.name == 'Spawn1') spawns.tryCreateCreep(spawn, CARIER[7][L], 403);
   					//if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[7][H], 404, undefined, 3, 3);
   				}
