@@ -289,7 +289,7 @@ var role = {
 				const factory = tools.setTarget(creep,factoryToIn,factoryToIn.id,role.run);
 				if(!!factory) {
 					const target = {resource:factoryToIn.in.resource, amount:factoryToIn.in.amount, target:creep.room.storage};
-					if(Game.shard.name == 'shard3') {
+					if(Game.shard.name == 'shard0') {
 						console.log('🏭🎯↩️', Math.trunc(Game.time/10000), Game.time%10000
 																, JSON.stringify( { creep:creep.name, roomName:creep.room.name
 																									, target:target}));
