@@ -19,6 +19,25 @@ var config = {
 			}
 	},
 	
+	getAmountToStore: function(roomName,resource) {
+		const flagStoreConfigAmount = flags.getStoreConfigAmount(roomName,resource);
+		if(!!flagStoreConfigAmount) {/*
+			console.log( '📦🏨📜', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify( { config:'getAmountToDeal', roomName:roomName
+																			, resource:resource, flagDealConfigAmount:flagDealConfigAmount }));*/
+			return flagStoreConfigAmount;
+		}
+		const my_shard_config = Memory.config.shards[Game.shard.name];
+		const my_room_config = my_shard_config.rooms[roomName];
+		if(!my_room_config)
+			return undefined;
+		const my_store_config = my_room_config['store'];
+		if(!my_store_config)
+			return undefined;
+		const my_store_amount = my_store_config[resource];
+		return tools.nvl(my_store_amount,0);
+	},
+	
 	getAmountToDeal: function(roomName,resource) {
 		const flagDealConfigAmount = flags.getDealConfigAmount(roomName,resource);
 		if(!!flagDealConfigAmount) {/*
