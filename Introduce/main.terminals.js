@@ -9,12 +9,12 @@ var terminals = {
 	},
 	
 	getAmountToStore: function(terminal,resource) {
-		const amountToStore = tools.nvl(config.getAmountToStore(terminal.pos.roomName,resource),0);
+		const amountToStore = tools.nvl(config.getAmountToStore(terminal.pos.roomName,resource),0);/*
 		if(amountToStore > 0) {
 			console.log( '📦🏨📜', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { terminals:'getAmountToStore', roomName:terminal.pos.roomName
 																			, resource:resource, amountToStore:amountToStore }));
-		}
+		}*/
 		return amountToStore;
 	},
 
