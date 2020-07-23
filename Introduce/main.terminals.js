@@ -7,6 +7,16 @@ var terminals = {
 	getAllMyTerminalsToSpread: function() {
 		return cash.getAllMyTerminals().filter((t) => !!t && !!t.store && !!t.room && !!t.room.storage && !!t.room.storage.store);
 	},
+	
+	getAmountToStore: function(terminal,resource) {
+		const amountToStore = tools.nvl(config.getAmountToStore(terminal.pos.roomName,resource),0);
+		if(amountToStore > 0) {/*
+			console.log( '📦🏨📜', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify( { terminals:'getAmountToStore', roomName:terminal.pos.roomName
+																			, resource:resource, amountToStore:amountToStore }));*/
+		}
+		return amountToStore;
+	},
 
 	getAmountToDeal: function(terminal,resource) {
 		const amountToDeal = tools.nvl(config.getAmountToDeal(terminal.pos.roomName,resource),0);
@@ -20,10 +30,12 @@ var terminals = {
 	
 	getAmount: function(terminal,resource) {
 		const terminalAmount = tools.nvl(terminal.store[resource],0);
+		const storageAmount = tools.nvl(terminal.room.storage.store[resource],0);
 		const dealAmount = terminals.getAmountToDeal(terminal,resource);
+		const storeAmount = terminals.getAmountToStore(terminal,resource);
 		return (terminalAmount < dealAmount)?
 				 terminalAmount-dealAmount:
-				 terminalAmount-dealAmount + tools.nvl(terminal.room.storage.store[resource],0)
+				 terminalAmount-dealAmount + storageAmount-storeAmount;
 	},
 
 	getRoomAmount: function(creep,resource) {
