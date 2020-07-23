@@ -341,7 +341,7 @@ var cash = {
 			return _.filter(Game.structures,
 				 (structure) => !!structure && !!structure.my && !!structure.store &&
 											structure.structureType == STRUCTURE_POWER_SPAWN);
-			 });
+			 }).filter((s) => !!s && !!s.my && !!s.store);
  	},
 
 	all_my_terminals: {},
