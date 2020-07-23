@@ -85,6 +85,10 @@ var links = {
 		 // W27S29
      , { from: '5ed3460fdd460cf81538fd95', to: '5ed2ff7c0eb18a4626c06c30'}
 		 , { from: '5ed7071dfd8bf91a28413b8d', to: '5ed2ff7c0eb18a4626c06c30'}
+		 , { from: '5f1899d954ef6e5f472edc23', to: '5ee1a3681dc9510405865302'}
+		 , { from: '5f18989e500186f126b3910c', to: '5ee1a3681dc9510405865302'}
+		 , { from: '5f18989e500186f126b3910c', to: '5ed2ff7c0eb18a4626c06c30'}
+		 , { from: '5f1899d954ef6e5f472edc23', to: '5ed2ff7c0eb18a4626c06c30'}
 		 , { from: '5ed3460fdd460cf81538fd95', to: '5ee1a3681dc9510405865302'}
 		 , { from: '5ed7071dfd8bf91a28413b8d', to: '5ee1a3681dc9510405865302'}
 		 // W29S31
