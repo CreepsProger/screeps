@@ -150,7 +150,7 @@ var role = {
 		}
 
 		if(!!creep.room.storage && !!creep.room.storage.my /*&& creep.memory.rerun*/){
-			if(!!creep.room.terminal && !!creep.room.terminal.my) {
+			if(!!creep.room.terminal && !!creep.room.terminal.my && creep.room.terminal.store.getFreeCapacity(RESOURCE_ENERGY) > 5000) {
 				const resources = Object.keys(creep.store).filter((k) => k != RESOURCE_ENERGY);
 				if(resources.length == 1 &&
 					 terminals.getStorageAmountAvgDiff(creep.room.terminal, resources[0]) > 0) {
