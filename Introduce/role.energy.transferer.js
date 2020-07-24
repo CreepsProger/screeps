@@ -393,7 +393,7 @@ var roleEnergyTransferer = {
 																.shift();
 				if(!!spawnToIn && tools.checkTarget(executer,spawnToIn.id)) {
 					target = tools.setTarget(creep,spawnToIn,spawnToIn.id,roleEnergyTransferer.run);
-					if(!!target) {
+					if(!!target && false) {
 						console.log('🔴⚡🎯⬅️', Math.trunc(Game.time/10000), Game.time%10000
 															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
 																								, target:target}));
