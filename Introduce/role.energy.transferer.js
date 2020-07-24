@@ -393,11 +393,6 @@ var roleEnergyTransferer = {
 																.shift();
 				if(!!spawnToIn && tools.checkTarget(executer,spawnToIn.id)) {
 					target = tools.setTarget(creep,spawnToIn,spawnToIn.id,roleEnergyTransferer.run);
-					if(!!target && false) {
-						console.log('🔴⚡🎯⬅️', Math.trunc(Game.time/10000), Game.time%10000
-															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
-																								, target:target}));
-					}
 				} 
 			}
 
@@ -417,7 +412,7 @@ var roleEnergyTransferer = {
 				 creep.memory.rerun) {
 				var storages = cash.getStorages();
 				if(storages.length > 0) {
-					var target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY)
+					target = storages.reduce((p,c) => p.store.getUsedCapacity(RESOURCE_ENERGY)
 					 																		* tools.getRangeTo(creep.pos,p.pos)
 																						 	* tools.getRoomRange(p.pos.roomName,'W25S33')
 																	 				< c.store.getUsedCapacity(RESOURCE_ENERGY)
