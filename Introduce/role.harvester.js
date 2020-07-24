@@ -476,6 +476,10 @@ var role = {
 	
 	sortRes: function(l,r) {
 		const codeX = 'X'.charCodeAt(0);
+		if(l == 'wire')
+			return 1;
+		if(r == 'wire')
+			return -1;
 		if(l.charCodeAt(0) == codeX)
 			return 1;
 		if(r.charCodeAt(0) == codeX)
