@@ -193,22 +193,6 @@ var roleEnergyTransferer = {
 				}
 			}
 			
-			const NPE  = !!flags.flags.NPE;
-
-			if(!target && !creep.getActiveBodyparts(WORK) && !NPE) {
-				const spawnToIn = cash.getPowerSpawns(creep.room.name)
-																.filter((s) => !!s && !!s.store && s.store.getFreeCapacity(RESOURCE_ENERGY) > 2000)
-																.shift();
-				if(!!spawnToIn && tools.checkTarget(executer,spawnToIn.id)) {
-					target = tools.setTarget(creep,spawnToIn,spawnToIn.id,roleEnergyTransferer.run);
-					if(!!target) {
-						console.log('🔴⚡🎯⬅️', Math.trunc(Game.time/10000), Game.time%10000
-															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
-																								, target:target}));
-					}
-				} 
-			}
-
 			metrix.cpu.step_time(creep, 'transfering', '🌕');
 
 			/*if(tools.getWeight(creep.name) == 5124)
@@ -400,6 +384,22 @@ var roleEnergyTransferer = {
 			// }
 			//
 			// metrix.cpu.step_time(creep, 'transfering', '🔜💡2️⃣');
+			
+			const NPE  = !!flags.flags.NPE;
+
+			if(!target && !creep.getActiveBodyparts(WORK) && !NPE) {
+				const spawnToIn = cash.getPowerSpawns(creep.room.name)
+																.filter((s) => !!s && !!s.store && s.store.getFreeCapacity(RESOURCE_ENERGY) > 2000)
+																.shift();
+				if(!!spawnToIn && tools.checkTarget(executer,spawnToIn.id)) {
+					target = tools.setTarget(creep,spawnToIn,spawnToIn.id,roleEnergyTransferer.run);
+					if(!!target) {
+						console.log('🔴⚡🎯⬅️', Math.trunc(Game.time/10000), Game.time%10000
+															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
+																								, target:target}));
+					}
+				} 
+			}
 
 			if(!target &&
 				 creep.memory.rerun &&
