@@ -84,9 +84,9 @@ var role = {
 			var link = links.getTargetLinkToHarvest(creep,executer);
 			if(!!link && (!creep.getActiveBodyparts(WORK) || creep.pos.inRangeTo(link,5))) {
 				target = tools.setTarget(creep,link,link.id,role.run);
-				if(!!target)
-					return target;
 			}
+			if(!!target)
+				return target;
 		}
 
 		const XU = !!flags.flags.XU;
@@ -135,7 +135,8 @@ var role = {
 					 target = tools.setTarget(creep,source,source.id,role.run);
 				 }
 			 }
-			if(!!target) return target;
+			if(!!target)
+				return target;
 		}
 
 		metrix.cpu.step_time(creep, role.name, 'getTarget 1/2');
@@ -164,6 +165,7 @@ var role = {
 			if(!!target)
 				return target;
 		}
+
 		const LL  = !!flags.flags.LL && flags.flags.LL.pos.roomName == my_room;
 		if(LL) {
 				console.log('✔️', Math.trunc(Game.time/10000), Game.time%10000
