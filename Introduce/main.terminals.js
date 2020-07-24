@@ -108,10 +108,11 @@ var terminals = {
 			 !creep.room.terminal.store ||
 			 !creep.room.storage ||
 			 !creep.room.storage.my ||
-			 !creep.room.storage.store)
+			 !creep.room.storage.store ||
+			 creep.room.terminal.store.getFreeCapacity(RESOURCE_ENERGY) < 5000)
 			return null;
 		
-		const all = terminals.getAllMyTerminalsToSpread();
+		const all = terminals.getAllMyTerminalsToSpread().filter((t) => t.store.getFreeCapacity(RESOURCE_ENERGY) > 5000);
 		const t = creep.room.terminal;
 		const resources = Object.keys(creep.room.storage.store).filter((k) => k != RESOURCE_ENERGY);
 		if(resources.length == 0)
