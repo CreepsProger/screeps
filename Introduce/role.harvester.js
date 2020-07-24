@@ -84,6 +84,8 @@ var role = {
 			var link = links.getTargetLinkToHarvest(creep,executer);
 			if(!!link && (!creep.getActiveBodyparts(WORK) || creep.pos.inRangeTo(link,5))) {
 				target = tools.setTarget(creep,link,link.id,role.run);
+				if(!!target)
+					return target;
 			}
 		}
 
