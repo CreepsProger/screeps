@@ -2,6 +2,7 @@
 const constants = require('main.constants');
 const log = require('main.log');
 const tools = require('tools');
+const cash = require('cash');
 
 var lastFlagRemoved;
 
