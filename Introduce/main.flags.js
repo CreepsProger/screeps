@@ -362,6 +362,21 @@ var flags = {
         }
         Flag1.remove();
     },
+	//Nuker: launch a Nuker
+	Nuker: function(Nuker) {
+		const nuker = Object.keys(Game.rooms)
+                        .map( (rN) => cash.getNukers(rN))
+                        .filter((arr) => Array.isArray(arr) && arr.length > 0)
+                        .reduce((a, b) => a.concat(b), []) //.flat()
+                        .shift();
+		const err = nuker.launchNuke(Nuker.pos);
+		console.log('☢️', Math.trunc(Game.time/10000), Game.time%10000
+										, JSON.stringify( { Nuker:'Nuker', from:nuker.pos.roomName
+																			, to:Nuker.pos , err:err
+																			, nuker:nuker}));
+		lastFlagRemoved = Nuker; 
+    lastFlagRemoved.remove()
+	},
 	//Limits: set CPU limits on shards
 	Limits: function(Limits) {
 
