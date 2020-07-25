@@ -369,6 +369,7 @@ var flags = {
                         .map( (rN) => cash.getNukers(rN))
                         .filter((arr) => Array.isArray(arr) && arr.length > 0)
                         .reduce((a, b) => a.concat(b), []) //.flat()
+                        .filter((n) => !n.cooldown)
                         .shift();
 		const err = nuker.launchNuke(Nuker.pos);
 		console.log('☢️', Math.trunc(Game.time/10000), Game.time%10000
