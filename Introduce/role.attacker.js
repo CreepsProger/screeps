@@ -163,6 +163,10 @@ var role = {
 					 ((!!D1 && D1.pos.roomName == this_room)
 						||
 						(!!D2 && D2.pos.roomName == this_room)
+						||
+						(!!DR1 && DR1.pos.roomName == this_room)
+						||
+						(!!DR2 && DR2.pos.roomName == this_room)
 					 )) {
 					const structures = creep.room.find(FIND_STRUCTURES, {
 						filter: (structure) => {
