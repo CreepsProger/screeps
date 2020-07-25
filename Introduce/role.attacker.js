@@ -154,6 +154,8 @@ var role = {
 
 				const D1 = flags.flags.D1;
 				const D2 = flags.flags.D2;
+				const DR1 = flags.flags.DR1;
+				const DR2 = flags.flags.DR2;
 				const DSOURCE = !!flags.flags.DSOURCE && flags.flags.DSOURCE.pos.roomName == this_room;
 				const this_room_sources_are_empty = cash.areEmptySourcesByPath(creep);
 
@@ -179,6 +181,16 @@ var role = {
 								  structure.structureType == STRUCTURE_FACTORY ||
 								  structure.structureType == STRUCTURE_OBSERVER ||
 								  structure.structureType == STRUCTURE_POWER_SPAWN)) {
+								if(!!DR1 && DR1.pos.roomName == this_room &&
+									 DR1.pos.getRangeTo(structure) < 11-DR1.color &&
+									 structure.structureType == STRUCTURE_RAMPART ) {
+									return true;
+								}
+								if(!!DR2 && DR2.pos.roomName == this_room &&
+									 DR2.pos.getRangeTo(structure) < 11-DR2.color &&
+									 structure.structureType == STRUCTURE_RAMPART ) {
+									return true;
+								}
 								if(!!D1 && D1.pos.roomName == this_room && D1.pos.getRangeTo(structure) < 11-D1.color) {
 									return true;
 								}
