@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 400,
+	version: 402,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -1054,10 +1054,10 @@ var config = {
 								{ W25S28: 'W26S28', W26S27: 'W26S28', W26S28: 'W26S29', W26S29: 'W27S29', W27S29: 'W28S29', W28S29: 'W29S29'
 								}
 							},
-							W25S27:
+							W24S27:
 							{ containers: {weight: 5193}
 							, sites:
-							 	[ {x:42, y:43, type:STRUCTURE_CONTAINER}
+							 	[
 							 	]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 5190, max_weight: 5199}
@@ -1078,7 +1078,7 @@ var config = {
 								, {name: '4', time: 0, min_weight: 5190, max_weight: 5199}
 								]
 							, heal_room:
-								{ shard: 'shard1', room: 'W26S28'}
+								{ shard: 'shard1', room: 'W24S27'}
 							, path_rooms:
 								{ W29S29: 'W28S29', W28S29: 'W27S29', W28S29y:30
 								, W27S29: 'W26S29', W27S29y:9
@@ -1092,13 +1092,15 @@ var config = {
 								, W23S29: 'W24S29', W24S29: 'W24S28'
 								}
 								, escape_path:
-								{ W25S27: 'W25S28', W25S28: 'W26S28', W26S27: 'W26S28', W26S28: 'W26S29', W26S29: 'W27S29', W27S29: 'W28S29', W28S29: 'W29S29'
+								{ W25S27: 'W24S27'
+								, W24S26: 'W24S27'
+								, W23S27: 'W24S27'
 								}
 							},
-							W24S27:
+							W25S27:
 							{ containers: {weight: 5203}
 							, sites:
-							 	[
+							 	[ {x:42, y:43, type:STRUCTURE_CONTAINER}
 							 	]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 5200, max_weight: 5209}
@@ -1119,7 +1121,7 @@ var config = {
 								, {name: '4', time: 0, min_weight: 5200, max_weight: 5209}
 								]
 							, heal_room:
-								{ shard: 'shard1', room: 'W26S28'}
+								{ shard: 'shard1', room: 'W24S27'}
 							, path_rooms:
 								{ W29S29: 'W28S29', W28S29: 'W27S29', W28S29y:30
 								, W27S29: 'W26S29', W27S29y:9
@@ -1133,9 +1135,7 @@ var config = {
 								, W23S29: 'W24S29', W24S29: 'W24S28'
 								}
 								, escape_path:
-								{ W24S27: 'W25S27', W25S27: 'W25S28', W25S28: 'W26S28'
-								, W26S27: 'W26S28', W26S28: 'W26S29', W26S29: 'W27S29'
-								, W27S29: 'W28S29', W28S29: 'W29S29'
+								{ W25S27: 'W24S27'
 								}
 							},
 							W26S28:
