@@ -83,7 +83,7 @@ var role = {
 		if(!creep.getActiveBodyparts(WORK)) {
 			const resources = Object.keys(creep.store).filter((k) => k != RESOURCE_ENERGY);
 			if(resources.length == 1 && resources[0] == 'G') {
-				const nuker = cash.getNukers(creep.room).filter((n) =>
+				const nuker = cash.getNukers(creep.room.name).filter((n) =>
 						!!n && !!n.store && n.store.getFreeCapacity('G') > 0).shift();
 				if(!!nuker)
 					return nuker;
