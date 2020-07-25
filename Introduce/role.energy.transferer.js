@@ -289,7 +289,7 @@ var roleEnergyTransferer = {
 			}
 			
 			if(!target && creep.memory.rerun) {
-				var nukers = cash.getNukers(creep.room).filter((n) =>
+				var nukers = cash.getNukers(creep.room.name).filter((n) =>
 						!!n && !!n.store && n.store.getFreeCapacity(RESOURCE_ENERGY) > 0);
 				if(nukers.length > 0) {
 					target = nukers.reduce((p,c) => !!p && !!c && creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
