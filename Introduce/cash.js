@@ -228,9 +228,9 @@ var cash = {
 	},
 	
 	nukers: {},
-	getNukers: function(room) {
-		return cash.getEntry(cash.nukers, STRUCTURE_NUKER, tools.getRoomCode(room.name), () => {
-			return room.find(FIND_STRUCTURES, {
+	getNukers: function(roomName) {
+		return cash.getEntry(cash.nukers, STRUCTURE_NUKER, tools.getRoomCode(roomName), () => {
+			return Game.rooms[roomName].find(FIND_STRUCTURES, {
 				filter: (structure) => structure.structureType == STRUCTURE_NUKER });
 			});
 	},
