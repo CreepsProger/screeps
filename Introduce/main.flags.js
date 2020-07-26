@@ -422,7 +422,7 @@ var flags = {
 													, JSON.stringify( { Buy:'Buy', roomName:roomName
 																						, resourse:order.resourceType , amount:amount
 																						, err:err, fBuy:fBuy, order:order}));
-			}
+			});
 		}
 		lastFlagRemoved = Buy; 
     lastFlagRemoved.remove()
