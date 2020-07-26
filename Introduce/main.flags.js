@@ -421,6 +421,8 @@ var flags = {
 				var amount = order.amount;
 				while(Game.market.calcTransactionCost(amount, roomName, order.roomName) > terminalEnergy)
 					amount = Math.floor(amount/2);
+				if(!amount)
+					return
 				const err = Game.market.deal(order.id, amount, roomName);
 				console.log('🤝Ⓜ️💠', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { Buy:'Buy', roomName:roomName
