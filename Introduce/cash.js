@@ -265,7 +265,7 @@ var cash = {
 		return cash.getEntry(cash.spawns, STRUCTURE_SPAWN, tools.getRoomCode(room.name), () => {
 			return room.find(FIND_STRUCTURES, {
 				filter: (structure) => structure.structureType == STRUCTURE_SPAWN });
-			});
+			}).filter((s) => !!s && !!s.my && !!s.store);
 	},
 	
 	power_spawns: {},
