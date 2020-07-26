@@ -411,8 +411,6 @@ var flags = {
 															, f))
 						.forEach(function(fBuy)
 				{
-				if(err != OK)
-					return;
 				const terminalEnergy = terminal.store.getUsedCapacity(RESOURCE_ENERGY);
 				const order = Game.market.getAllOrders(order => order.resourceType == fBuy.resource &&
 																							 order.type == ORDER_SELL &&
