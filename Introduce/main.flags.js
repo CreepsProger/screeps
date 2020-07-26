@@ -398,7 +398,7 @@ var flags = {
 		const roomName = Buy.pos.roomName;
 		const prefix = 'Buy.';
 		const terminal = Game.rooms[roomName].terminal;
-		var err = OK;
+		var n = 0;
 
 		if(flags.flags[prefix+roomName] === undefined) {
 			Object.keys(Game.flags)
@@ -423,14 +423,16 @@ var flags = {
 				var amount = order.amount;
 				while(Game.market.calcTransactionCost(amount, roomName, order.roomName) > terminalEnergy)
 					amount = Math.floor(amount/2);
-				err = Game.market.deal(order.id, amount, roomName);
+				const err = Game.market.deal(order.id, amount, roomName);
 				console.log('🤝Ⓜ️💠', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { Buy:'Buy', roomName:roomName
-																						, resourse:order.resourceType , amount:amount
+																						, resourse:order.resourceType, price:order.price
+																						, amount:(amount==order.amount?amount:''+amount+'('+order.amount+')')
 																						, err:err, fBuy:fBuy, order:order}));
+				n++;
 			});
 		}
-		if(err == OK) {
+		if(n == 0) {
 			lastFlagRemoved = Buy;
 			lastFlagRemoved.remove();
 		}
