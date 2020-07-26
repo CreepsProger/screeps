@@ -418,6 +418,8 @@ var flags = {
 																							 order.type == ORDER_SELL &&
 																							 order.price <= fBuy.max &&
 																							 order.price >= fBuy.min).shift();
+				if(!order)
+					return;
 				var amount = order.amount;
 				while(Game.market.calcTransactionCost(amount, roomName, order.roomName) > terminalEnergy)
 					amount = Math.floor(amount/2);
