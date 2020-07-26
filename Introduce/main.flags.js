@@ -411,9 +411,12 @@ var flags = {
 															, f))
 						.forEach(function(fBuy)
 				{
+				console.log('🤝Ⓜ️💠', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify( { Buy:'fBuy', roomName:roomName, fBuy:fBuy}));
 				const terminalEnergy = terminal.store.getUsedCapacity(RESOURCE_ENERGY);
 				const order = Game.market.getAllOrders(order => order.resourceType == fBuy.resource &&
 																							 order.type == ORDER_SELL &&
+																							 order.amount > 0 &&
 																							 order.price <= fBuy.max &&
 																							 order.price >= fBuy.min).shift();
 				if(!order)
