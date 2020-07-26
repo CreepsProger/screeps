@@ -397,6 +397,8 @@ var flags = {
 	Buy: function(Buy) {
 		const roomName = Buy.pos.roomName;
 		const prefix = 'Buy.';
+		const terminal = Game.rooms[roomName].terminal;
+		var err = OK;
 
 		if(flags.flags[prefix+roomName] === undefined) {
 			Object.keys(Game.flags)
@@ -409,7 +411,9 @@ var flags = {
 															, f))
 						.forEach(function(fBuy)
 				{
-				const terminalEnergy = Game.rooms[roomName].terminal.store.getUsedCapacity(RESOURCE_ENERGY);
+				if(err != OK)
+					return;
+				const terminalEnergy = terminal.store.getUsedCapacity(RESOURCE_ENERGY);
 				const order = Game.market.getAllOrders(order => order.resourceType == fBuy.resource &&
 																							 order.type == ORDER_SELL &&
 																							 order.price <= fBuy.max &&
@@ -417,15 +421,17 @@ var flags = {
 				var amount = order.amount;
 				while(Game.market.calcTransactionCost(amount, roomName, order.roomName) > terminalEnergy)
 					amount = Math.floor(amount/2);
-				const err = Game.market.deal(order.id, amount, roomName);
+				err = Game.market.deal(order.id, amount, roomName);
 				console.log('🤝Ⓜ️💠', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { Buy:'Buy', roomName:roomName
 																						, resourse:order.resourceType , amount:amount
 																						, err:err, fBuy:fBuy, order:order}));
 			});
 		}
-		lastFlagRemoved = Buy; 
-    lastFlagRemoved.remove()
+		if(err == OK) {
+			lastFlagRemoved = Buy;
+			lastFlagRemoved.remove();
+		}
 	},
 	//Deal: market deal 
 	Deal: function(Deal) {
