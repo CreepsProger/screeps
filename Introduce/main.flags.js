@@ -423,7 +423,7 @@ var flags = {
 					return;
 				var amount = order.amount;
 				var half_amount = Math.floor(amount/2);
-				while(Game.market.calcTransactionCost(amount, roomName, order.roomName) < half_amount && half_amount < terminalEnergy) {
+				while(Game.market.calcTransactionCost(amount, roomName, order.roomName) > half_amount || half_amount > terminalEnergy) {
 					amount = half_amount;
 					half_amount = Math.floor(amount/2);
 				}
