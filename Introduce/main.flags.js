@@ -422,8 +422,11 @@ var flags = {
 				if(!order)
 					return;
 				var amount = order.amount;
-				while(Game.market.calcTransactionCost(amount, roomName, order.roomName) > terminalEnergy)
-					amount = Math.floor(amount/2);
+				var half_amount = Math.floor(amount/2);
+				while(Game.market.calcTransactionCost(amount, roomName, order.roomName) < half_amount && half_amount < terminalEnergy) {
+					amount = half_amount;
+					half_amount = Math.floor(amount/2);
+				}
 				if(!amount)
 					return
 				const err = Game.market.deal(order.id, amount, roomName);
