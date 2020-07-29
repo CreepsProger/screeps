@@ -81,6 +81,17 @@ var roleEnergyTransferer = {
 
 			var target;
 
+			if(!target && this_room != my_room && !creep.getActiveBodyparts(WORK)) {
+				const towers = cash.getTowers(creep.room)
+														.filter((t) =>
+																		!!t && !! t.my && !!t.store &&
+																		t.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+																		creep.pos.getRangeTo(t) < 7);
+				if(towers.length > 0) {
+					target = towers.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+				}
+			}
+
 			if(!target && (!creep.getActiveBodyparts(WORK) || !XU) ) {
 				 target = links.getTargetLinkToTransferEnergy(creep, executer, roleEnergyTransferer.run, this_room_config.containers.weight);
 				 if(!!target) {
@@ -96,16 +107,6 @@ var roleEnergyTransferer = {
 				 }
 			}
 
-			if(!target && this_room != my_room && !creep.getActiveBodyparts(WORK)) {
-				const towers = cash.getTowers(creep.room)
-														.filter((t) =>
-																		!!t && !! t.my && !!t.store &&
-																		t.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
-																		creep.pos.getRangeTo(t) < 7);
-				if(towers.length > 0) {
-					target = towers.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-				}
-			}
 			const DSOURCE = !!flags.flags.DSOURCE && flags.flags.DSOURCE.pos.roomName == my_room;
 			const this_room_sources_are_empty = cash.areEmptySourcesByPath(creep) && !DSOURCE;
 			const this_room_sources_are_not_empty = !this_room_sources_are_empty;
