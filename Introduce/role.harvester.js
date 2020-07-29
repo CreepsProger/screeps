@@ -280,9 +280,9 @@ var role = {
 													.filter((e) => tools.checkTarget(executer,e.lab.id))
 													.shift();
 			if(!!labToOutExtra) {
-				const lab = tools.setTarget(creep,labToOut.lab,labToOut.lab.id,role.run);
+				const lab = tools.setTarget(creep,labToOutExtra.lab,labToOutExtra.lab.id,role.run);
 				if(!!lab) {
-					return {resource:labToOut.resource, amount:labToOut.amount, target:lab};
+					return {resource:labToOutExtra.resource, amount:labToOutExtra.amount, target:lab};
 				}
 			}
 
