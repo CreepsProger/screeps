@@ -423,9 +423,11 @@ var flags = {
 					return;
 				var amount = order.amount;
 				var half_amount = Math.floor(amount/2);
-				while(Game.market.calcTransactionCost(amount, roomName, order.roomName) > half_amount || half_amount > terminalEnergy) {
+				var max_cost = order.resourceType==RESOURCE_ENERGY? half_amount:terminalEnergy;
+				while(Game.market.calcTransactionCost(amount, roomName, order.roomName) > max_cost) {
 					amount = half_amount;
 					half_amount = Math.floor(amount/2);
+					max_cost = order.resourceType==RESOURCE_ENERGY? half_amount:terminalEnergy;
 				}
 				if(!amount)
 					return
