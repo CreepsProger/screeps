@@ -275,6 +275,17 @@ var role = {
 			 creep.memory.rerun &&
 			 ((Game.time % 500/10 < 20/2 && Game.cpu.bucket > 1000) || Game.cpu.bucket > 9500 || ST)) {
 
+			const labToOutExtra = labs.getLabsToOut(creep.room.name)
+													.filter((e) => e.amount == 3000)
+													.filter((e) => tools.checkTarget(executer,e.lab.id))
+													.shift();
+			if(!!labToOutExtra) {
+				const lab = tools.setTarget(creep,labToOut.lab,labToOut.lab.id,role.run);
+				if(!!lab) {
+					return {resource:labToOut.resource, amount:labToOut.amount, target:lab};
+				}
+			}
+
 			const factoryToOut = factory.getFactoryToOut(creep.room.name);
 			if(!!factoryToOut && !!factoryToOut.out && tools.checkTarget(executer,factoryToOut.id)) {
 				const factory = tools.setTarget(creep,factoryToOut,factoryToOut.id,role.run);
@@ -332,7 +343,7 @@ var role = {
 			if(!!res_to_send) {
 				return {target:creep.room.storage, resource:res_to_send.resource, amount:res_to_send.amount};
 			}
-			
+
 			const labToOut = labs.getLabsToOut(creep.room.name)
 													.filter((e) => tools.checkTarget(executer,e.lab.id))
 													.shift();		
