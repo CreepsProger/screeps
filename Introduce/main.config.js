@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 408,
+	version: 409,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -1919,14 +1919,28 @@ var config = {
 								, {name: '5', time: 0, min_weight: 60, max_weight:69}
 								]
 					   	, heal_room: 'W28S33'
-						 	, path_rooms:
-								{ W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
-								, W28S35: 'W28S34', W28S34: 'W28S33'
-								, W29S32: 'W28S32', W28S32: 'W28S33'
-								, W27S34: 'W27S33'
+							, path_rooms:
+							 	{ shard0:
+									{ W57S52: 'W58S52', W58S52: 'W59S52', W59S52: 'W59S51'
+								  , W57S51: 'W58S51', W58S51: 'W59S51', W59S51: 'W59S50', W59S50: 'W60S50', W60S50: 'shard1'
+									}
+								, shard1:
+									{ shard0_W60S50: 'W30S30', W30S30: 'shard2'
+									, W29S29: 'W29S30', W29S30: 'W30S30'} 
+								, shard2:
+									{ shard1_W30S30: 'W30S30', W30S30: 'shard3'}
+								, shard3:
+									{ shard2_W30S30: 'W30S30'
+									, W30S30: 'W30S31', W30S31: 'W30S32', W30S32: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
+									, W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
+									, W28S35: 'W28S34', W28S34: 'W28S33'
+									, W29S32: 'W28S32', W28S32: 'W28S33'
+									, W27S34: 'W27S33'
+									}
 								}
 						 	, escape_path:
-								{ W28S37: 'W28S38', W28S38: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
+								{ W30S30: 'W30S31', W30S31: 'W30S32', W30S32: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
+								, W28S37: 'W28S38', W28S38: 'W29S38', W29S38: 'W30S38', W30S38: 'W30S37', W30S37: 'W30S36'
 								, W30S36: 'W30S35', W30S35: 'W30S34', W30S34: 'W30S33', W30S33: 'W29S33', W29S33: 'W28S33'
 								, W28S33: 'W27S33', W27S33: 'W26S33'
 								}
