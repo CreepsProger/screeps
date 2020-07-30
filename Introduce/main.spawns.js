@@ -640,15 +640,25 @@ var spawns = {
 						if(Sp3)	spawns.tryCreateCreep(spawn, WORKER[6][M], 524);
             if(Sp3)	spawns.tryCreateCreep(spawn, CARIER[6][H], 521);
 					}
-					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W53S51')) {
+					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W52S51')) {
 						if(Sp3)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 535);
 					}
 					else {
-						if(conditions.TO_SPAWN_ROOM_CLAIMER('W53S51')) {
+						if(conditions.TO_SPAWN_ROOM_CLAIMER('W52S51')) {
               if(Sp3)	spawns.tryCreateCreep(spawn, CLAIMER[6][M], 530);
 						}
-						if(Sp3)	spawns.tryCreateCreep(spawn, WORKER[6][S], 534);
+						if(Sp3)	spawns.tryCreateCreep(spawn, WORKER[5][M], 534);
             if(Sp3)	spawns.tryCreateCreep(spawn, CARIER[6][L], 531);
+					}
+					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W53S51')) {
+						if(Sp3)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 545);
+					}
+					else {
+						if(conditions.TO_SPAWN_ROOM_CLAIMER('W53S51')) {
+              if(Sp3)	spawns.tryCreateCreep(spawn, CLAIMER[6][M], 540);
+						}
+						if(Sp3)	spawns.tryCreateCreep(spawn, WORKER[6][S], 544);
+            if(Sp3)	spawns.tryCreateCreep(spawn, CARIER[6][L], 541);
 					}
 					if(spawn.name == 'Spawn4' && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[8][L], 63);
 					if(spawn.name == 'Spawn4' && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[8][L], 173);
