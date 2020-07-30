@@ -530,6 +530,7 @@ var config = {
 								{ shard: 'shard0', room: 'W57S52'}
 							, path_rooms:
 								{ W57S52: 'W56S52', W57S52y:24, W56S52: 'W56S51', W56S51: 'W57S51'
+								, W54S51: 'W55S51', W55S51: 'W56S51', W56S51: 'W57S51'
 								}
 								, escape_path:
 								{ W57S51: 'W56S51', W56S51: 'W56S52', W56S52: 'W57S52', W57S52: 'W57S52'
@@ -647,6 +648,7 @@ var config = {
 								{ shard: 'shard0', room: 'W57S52'}
 							, path_rooms:
 								{ W57S51: 'W56S51', W56S51: 'W56S52', W56S52: 'W57S52', W57S52: 'W57S53', W57S53: 'W57S53'
+								, W54S51: 'W55S51', W55S51: 'W56S51', W56S51: 'W56S52', W56S52: 'W57S52'
 								}
 								, escape_path:
 								{ W57S53: 'W57S52', W57S52: 'W57S52'
