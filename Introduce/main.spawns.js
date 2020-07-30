@@ -310,6 +310,7 @@ var spawns = {
   				else {
 						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[7][H], 5014);
   					if(Sp12) spawns.tryCreateCreep(spawn, CARIER[7][H], 5011);
+						if(spawn.name == 'Spawn1') spawns.tryCreateCreep(spawn, CARIER[8][L], 63);
 						if(spawn.name == 'Spawn1') spawns.tryCreateCreep(spawn, CARIER[8][L], 173);
 						if(spawn.name == 'Spawn1') spawns.tryCreateCreep(spawn, CARIER[7][L], 403);
   					//if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[7][H], 404, undefined, 3, 3);
@@ -649,6 +650,7 @@ var spawns = {
 						if(Sp3)	spawns.tryCreateCreep(spawn, WORKER[6][S], 534);
             if(Sp3)	spawns.tryCreateCreep(spawn, CARIER[6][L], 531);
 					}
+					if(spawn.name == 'Spawn4' && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[8][L], 63);
 					if(spawn.name == 'Spawn4' && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[8][L], 173);
 					if(spawn.name == 'Spawn4' && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[7][L], 5013);
 					if(Sp12 && (Game.time % 500000 < 250) ) spawns.tryCreateCreep(spawn, HEALER[7][L], 1000);
