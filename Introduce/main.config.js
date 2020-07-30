@@ -397,7 +397,7 @@ var config = {
 								{ shard: 'shard0', room: 'W54S51'}
 							, path_rooms:
 								{ W57S52: 'W56S52', W57S52y:24, W56S52: 'W56S51', W56S51: 'W55S51'
-								, W55S51: 'W54S51', W54S51: 'W54S51', W54S51: 'W53S51', W53S51: 'W52S51'
+								, W55S51: 'W54S51', W54S51: 'W53S51', W53S51: 'W52S51'
 								, W57S51: 'W56S51'
 								}
 								, escape_path:
@@ -431,7 +431,7 @@ var config = {
 								{ W57S52: 'W56S52', W57S52y:24, W56S52: 'W56S51'
 								, W56S50: 'W56S51'
 								, W57S51: 'W56S51'
-								, W55S51: 'W56S51'
+								, W54S51: 'W55S51', W55S51: 'W56S51'
 								}
 								, escape_path:
 								{ W55S51: 'W56S51', W56S51: 'W57S51'
@@ -465,6 +465,7 @@ var config = {
 								, W59S52: 'W59S51'
 								, W57S51: 'W58S51'
 								, W59S51: 'W58S51'
+								, W54S51: 'W55S51', W55S51: 'W56S51', W56S51: 'W57S51'
 								}
 								, escape_path:
 								{ W59S51: 'W58S51', W58S51: 'W57S51'
@@ -498,6 +499,7 @@ var config = {
 								{ W57S52: 'W58S52', W57S52y:20, W58S52: 'W59S52', W58S52y:15
 								, W59S52: 'W59S51'
 								, W57S51: 'W58S51', W58S51: 'W59S51'
+								, W54S51: 'W55S51', W55S51: 'W56S51', W56S51: 'W57S51'
 								}
 								, escape_path:
 								{ W59S51: 'W58S51', W58S51: 'W57S51'
@@ -595,6 +597,7 @@ var config = {
 								{ shard: 'shard0', room: 'W57S52'}
 							, path_rooms:
 								{ W57S52: 'W56S52', W57S52y:45, W56S52: 'W56S52'
+								, W54S51: 'W55S51', W55S51: 'W56S51', W56S51: 'W56S52'
 								}
 								, escape_path:
 								{ W56S52: 'W57S52'
@@ -626,6 +629,7 @@ var config = {
 								{ W57S51: 'W58S51', W58S51: 'W59S51', W59S51: 'W59S52'
 								, W57S52: 'W58S52', W57S52y:20, W58S52: 'W59S52', W58S52y:15
 								, W60S52: 'W59S52'
+								, W54S51: 'W55S51', W55S51: 'W56S51', W56S51: 'W56S52', W56S52: 'W57S52'
 								}
 								, escape_path:
 								{ W59S52: 'W58S52', W58S52: 'W57S52', W57S52: 'W57S52'
