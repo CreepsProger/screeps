@@ -310,9 +310,9 @@ var spawns = {
   				else {
 						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[7][H], 5014);
   					if(Sp12) spawns.tryCreateCreep(spawn, CARIER[7][H], 5011);
-						if(spawn.name == 'Spawn1') spawns.tryCreateCreep(spawn, CARIER[8][L], 63);
+						if(spawn.name == 'Spawn13') spawns.tryCreateCreep(spawn, CARIER[8][L], 63);
 						if(spawn.name == 'Spawn1') spawns.tryCreateCreep(spawn, CARIER[8][L], 173);
-						if(spawn.name == 'Spawn1') spawns.tryCreateCreep(spawn, CARIER[7][L], 403);
+						if(spawn.name == 'Spawn4') spawns.tryCreateCreep(spawn, CARIER[7][L], 403);
   					//if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[7][H], 404, undefined, 3, 3);
   				}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S31')) {
