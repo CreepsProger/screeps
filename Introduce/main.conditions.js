@@ -1,4 +1,5 @@
 const constants = require('main.constants');
+const tools = require('tools');
 
 const conditions = {
 	  MAIN_ROOM_CRISIS: 						function() {
