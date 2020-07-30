@@ -18,6 +18,9 @@ var tools = {
 	getWeight: function(name) {
 		if(name.length < 10)
 			return 0;
+		const prefix = 'creep-<';
+		if(name.substring(0,prefix.length) != prefix)
+			return 0;
 		const code0 = '0'.charCodeAt(0);
 		const nnnn = name.charCodeAt(7) - code0;
 		var weight = (nnnn >= 0 && nnnn < 10)? nnnn:0;
