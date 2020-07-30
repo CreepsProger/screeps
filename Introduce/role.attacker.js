@@ -418,7 +418,7 @@ var role = {
 							}
 						}
 					}
-					if ((creep.hits < creep.hitsMax || !target) && creep.getActiveBodyparts(HEAL)) {
+					if ((creep.hits < creep.hitsMax || !target || Dismantler) && creep.getActiveBodyparts(HEAL)) {
 						creep.heal(creep);
 					}
 
