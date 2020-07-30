@@ -38,7 +38,7 @@ const conditions = {
 	, TO_SPAWN_ROOM_DEFENDERS:			function(roomName) {
 																			const room = Game.rooms[roomName];
 																			if(!room) return false;
-																			const to_spawn_rd = (room.find(FIND_HOSTILE_CREEPS).filter((c) => tools.getWeight(c.name)==0).length > 0) ||
+																			const to_spawn_rd = (room.find(FIND_HOSTILE_CREEPS,{ filter:(c) => tools.getWeight(c.name)==0}).length > 0) ||
 																						(room.find(FIND_HOSTILE_STRUCTURES, { filter: (hs) => hs.level !== undefined && hs.level == 0} ).length > 0);
 		                                  if(to_spawn_rd) {
 																				if(!Memory.defence[roomName].attacked) {
