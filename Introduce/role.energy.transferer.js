@@ -85,7 +85,7 @@ var roleEnergyTransferer = {
 				const towers = cash.getTowers(creep.room)
 														.filter((t) =>
 																		!!t && !! t.my && !!t.store &&
-																		t.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
+																		t.store.getFreeCapacity(RESOURCE_ENERGY) > 100 &&
 																		creep.pos.getRangeTo(t) < 7);
 				if(towers.length > 0) {
 					target = towers.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
