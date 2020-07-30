@@ -272,7 +272,7 @@ var spawns = {
 												   ,       2515000010,     400000000010,       4400000006
 												   ,     170008000025,     170008000025,     170008000025]
 													, [  500000000200025, 1000002010000010, 2100000019000010]
-													, [ 1100002110000006, 1100001022000007, 1500000025000010,  100000000101111]
+													, [ 1100002110000006, 1100001022000007, 1500000025000010, 1000000012200006]
 										   	 ]; //TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 				const HEALER =   [ [                0,                0,                0]  // 0   000
 											 	 , [          1000001,          1000001,          1000001]  // 1   300
@@ -781,6 +781,8 @@ var spawns = {
 							if(Sp4) spawns.tryCreateCreep(spawn, CARIER[7][L], 222);
 							
 							if(Sp2) spawns.tryCreateCreep(spawn, ATTACKER[10][H], 87);
+							if(Sp2) spawns.tryCreateCreep(spawn, ATTACKER[10][S], 84);
+							if(Sp2) spawns.tryCreateCreep(spawn, ATTACKER[8][H+4], 86);
 						}
 
 						if(conditions.TO_SPAWN_CLAIMING_ROOMS()) {
