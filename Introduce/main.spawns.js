@@ -246,7 +246,7 @@ var spawns = {
 											 , [  1616,   1818,   2412]  // 5 1800
 											 , [  2323,   2613,   3015]  // 6 2300
 											 , [  2525,   3216,   3317, 4010]  // 7 5600
-												, [ 300000006001625,  200000003003510, 400000006003010 ]  // 8 12900
+												, [ 200000003002025,  200000003003510, 400000006003010 ]  // 8 12900
 												// TTClRrAaHhWwCcMm  TTClRrAaHhWwCcMm
 											];
 				const WORKER = [ [     0,      0,      0]  // 0  000
@@ -310,7 +310,7 @@ var spawns = {
   				else {
 						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[7][H], 5014);
   					if(Sp12) spawns.tryCreateCreep(spawn, CARIER[7][H], 5011);
-						if(spawn.name == 'Spawn1') spawns.tryCreateCreep(spawn, CARIER[8][H], 173);
+						if(spawn.name == 'Spawn1') spawns.tryCreateCreep(spawn, CARIER[8][L], 173);
 						if(spawn.name == 'Spawn1') spawns.tryCreateCreep(spawn, CARIER[7][L], 403);
   					//if(Sp1) spawns.tryCreateCreep(spawn,   WORKER[7][H], 404, undefined, 3, 3);
   				}
@@ -649,7 +649,7 @@ var spawns = {
 						if(Sp3)	spawns.tryCreateCreep(spawn, WORKER[6][S], 534);
             if(Sp3)	spawns.tryCreateCreep(spawn, CARIER[6][L], 531);
 					}
-					if(spawn.name == 'Spawn4' && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[7][L], 173);
+					if(spawn.name == 'Spawn4' && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[8][L], 173);
 					if(spawn.name == 'Spawn4' && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[7][L], 5013);
 					if(Sp12 && (Game.time % 500000 < 250) ) spawns.tryCreateCreep(spawn, HEALER[7][L], 1000);
 					if(Sp12 && (Game.time % 500000 > 250) ) spawns.tryCreateCreep(spawn, CARIER[1][L], 1000);
@@ -747,7 +747,7 @@ var spawns = {
 								if(Sp6) spawns.tryCreateCreep(spawn, CARIER[7][H], 71);
 								if(Sp6) spawns.tryCreateCreep(spawn, WORKER[7][H], 74);
 							}
-							if(spawn.name == 'Spawn9' && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[8][M], 5013);
+							if(spawn.name == 'Spawn9' && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[8][L], 5013);
 							if(spawn.name == 'Spawn1')	spawns.tryCreateCreep(spawn,    CARIER[7][L], 201);
 							if(spawn.name == 'Spawn1')	spawns.tryCreateCreep(spawn, ATTACKER[10][H], 207);
 							if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[8][H+4], 206);
