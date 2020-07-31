@@ -74,7 +74,7 @@ var role = {
 				const tough_count = creep.body.reduce((p,c) => p += (c.type == TOUGH),0);
 				const shouldBeHealled = creep.hitsMax - creep.hits > tough_count/2;
 				const attack_count = creep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK ),0);
-				const Attacker = attack_count > 0 && !NA;
+				const Attacker = attack_count > 0;
 				const canAttack = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK) > attack_count/2;
 				const canAttack2 = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK);
 				const heal_count = creep.body.reduce((p,c) => p += (c.type == HEAL),0);
@@ -211,7 +211,7 @@ var role = {
 					}
 				}
 
-				if(!target && canAttack) {
+				if(!target && canAttack && !NA) {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 5);
 					if(targets.length > 0) {
 						target = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS);
@@ -281,7 +281,7 @@ var role = {
 					}
 				}
 
-				if(!target && canAttack) {
+				if(!target && canAttack && !NA) {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, range);
 					if(targets.length > 0) {
 						console.log(creep, 'Attacking in', 'this_room:', this_room, 'in range', range);
@@ -297,7 +297,7 @@ var role = {
     			// console.log('🔜⚡', creep, 'exit:', this_room, 'to', my_room, 'target', target);
     		}
 				
-				if(!target && canAttack) {
+				if(!target && canAttack && !NA) {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, range, {
 						filter: (structure) => {
 							return (structure.structureType == STRUCTURE_INVADER_CORE) &&
@@ -309,7 +309,7 @@ var role = {
 					}
 				}
 
-				if(!target && canAttack) {
+				if(!target && canAttack && !NA) {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5, {
 						filter: (structure) => {
 							return (//structure.structureType != STRUCTURE_CONTROLLER &&
@@ -322,7 +322,7 @@ var role = {
 					}
 				}
 
-				if(!target && canAttack) {
+				if(!target && canAttack && !NA) {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, range, {
 						filter: (structure) => {
 							return structure.structureType != STRUCTURE_KEEPER_LAIR;
@@ -347,7 +347,7 @@ var role = {
 					//console.log('DP2', 'this_room:', this_room, 'DP2:', JSON.stringify(DP2));
 					target = DP2.pos;
 				}
-				if(!target && canAttack) {
+				if(!target && canAttack && !NA) {
 					// const room = Game.rooms[this_room];
 					const pos = (!A2 || A2.pos.roomName != my_room) ? creep.pos:A2.pos;
 					const keeperlairs = pos.findInRange(FIND_HOSTILE_STRUCTURES, range, {
