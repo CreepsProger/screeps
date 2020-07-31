@@ -749,6 +749,8 @@ var spawns = {
 								if(Sp5) spawns.tryCreateCreep(spawn,   CARIER[7][M], 171);
 							}
 							if(spawn.name == 'Spawn9' && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[8][L], 5013);
+
+							/*
 							if(spawn.name == 'Spawn1')	spawns.tryCreateCreep(spawn,    CARIER[7][L], 201);
 							if(spawn.name == 'Spawn1')	spawns.tryCreateCreep(spawn, ATTACKER[10][H], 207);
 							if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[8][H+4], 206);
@@ -772,6 +774,7 @@ var spawns = {
 							if(spawn.name == 'Spawn6') spawns.tryCreateCreep(spawn, ATTACKER[10][L], 75);
 							if(spawn.name == 'Spawn2') spawns.tryCreateCreep(spawn, CARIER[7][S+1], 71);
 							if(spawn.name == 'Spawn2') spawns.tryCreateCreep(spawn, ATTACKER[7][S+1], 78);
+							*/
 						}
 
 						if(conditions.TO_SPAWN_CLAIMING_ROOMS()) {
