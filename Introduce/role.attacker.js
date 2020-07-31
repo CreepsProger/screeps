@@ -61,7 +61,8 @@ var role = {
 				const my_next_escape_room = my_room_config.escape_path[this_room];
 
     		var target;
-
+				
+				const NA = !!flags.flags.NA && flags.flags.NA.pos.roomName == this_room;
 				const hostile_creeps_near = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 5).length > 0;
 				const good_healer_near = creep.pos.findInRange(FIND_MY_CREEPS, 3, {filter: (healler) => {
 					const attack_count = creep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK),0);
@@ -73,7 +74,7 @@ var role = {
 				const tough_count = creep.body.reduce((p,c) => p += (c.type == TOUGH),0);
 				const shouldBeHealled = creep.hitsMax - creep.hits > tough_count/2;
 				const attack_count = creep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK ),0);
-				const Attacker = attack_count > 0;
+				const Attacker = attack_count > 0 && !NA;
 				const canAttack = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK) > attack_count/2;
 				const canAttack2 = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK);
 				const heal_count = creep.body.reduce((p,c) => p += (c.type == HEAL),0);
