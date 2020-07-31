@@ -771,6 +771,7 @@ var spawns = {
 							if(spawn.name == 'Spawn2') spawns.tryCreateCreep(spawn, ATTACKER[10][M], 76);
 							if(spawn.name == 'Spawn6') spawns.tryCreateCreep(spawn, ATTACKER[10][L], 75);
 							if(spawn.name == 'Spawn2') spawns.tryCreateCreep(spawn, CARIER[7][S+1], 71);
+							if(spawn.name == 'Spawn2') spawns.tryCreateCreep(spawn, ATTACKER[7][S+1], 78);
 						}
 
 						if(conditions.TO_SPAWN_CLAIMING_ROOMS()) {
