@@ -758,7 +758,6 @@ var spawns = {
 							else {
 								if(Sp6) spawns.tryCreateCreep(spawn, WORKER[8][L], 84);
 								if(Sp6) spawns.tryCreateCreep(spawn, CARIER[7][M], 81);
-								if(Sp2) spawns.tryCreateCreep(spawn, ATTACKER[8][L2], 75);
 								if(Sp6) spawns.tryCreateCreep(spawn, CARIER[7][H], 71);
 								if(Sp6) spawns.tryCreateCreep(spawn, WORKER[7][H], 74);
 							}
@@ -783,7 +782,7 @@ var spawns = {
 							if(spawn.name == 'Spawn2') spawns.tryCreateCreep(spawn, ATTACKER[10][H], 77);
 							if(spawn.name == 'Spawn2') spawns.tryCreateCreep(spawn, ATTACKER[10][S], 74);
 							if(spawn.name == 'Spawn2') spawns.tryCreateCreep(spawn, ATTACKER[10][M], 76);
-							if(spawn.name == 'Spawn2') spawns.tryCreateCreep(spawn, ATTACKER[10][L], 75);
+							if(spawn.name == 'Spawn6') spawns.tryCreateCreep(spawn, ATTACKER[10][L], 75);
 						}
 
 						if(conditions.TO_SPAWN_CLAIMING_ROOMS()) {
