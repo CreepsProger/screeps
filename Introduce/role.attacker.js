@@ -108,7 +108,7 @@ var role = {
 					console.log(JSON.stringify({Attacker: Attacker, canAttack: canAttack, Healler: Healler, canHeal: canHeal, shouldBeHealled: shouldBeHealled}));
 				}
 
-				if(!target && Attacker && !canAttack2 && !good_healer_near) {
+				if(!target && ((Attacker && !canAttack2) || (Dismantler && !canDismantle)) && good_healer_near) {
 					var creep2 = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (healler) => {
 							const attack_count = creep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK),0);
