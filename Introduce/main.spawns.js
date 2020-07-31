@@ -245,7 +245,7 @@ var spawns = {
 											 , [  1313,   1407,   1608]  // 4 1300
 											 , [  1616,   1818,   2412]  // 5 1800
 											 , [  2323,   2613,   3015]  // 6 2300
-											 , [  2525,   3216,   3317, 4010]  // 7 5600
+											 , [  2525,   3216,   3317, 4010, 500000000002025]  // 7 5600
 												, [ 200000003002025,  200000003003510, 400000006003010 ]  // 8 12900
 												// TTClRrAaHhWwCcMm  TTClRrAaHhWwCcMm
 											];
@@ -770,6 +770,7 @@ var spawns = {
 							if(spawn.name == 'Spawn2') spawns.tryCreateCreep(spawn, ATTACKER[10][S], 74);
 							if(spawn.name == 'Spawn2') spawns.tryCreateCreep(spawn, ATTACKER[10][M], 76);
 							if(spawn.name == 'Spawn6') spawns.tryCreateCreep(spawn, ATTACKER[10][L], 75);
+							if(Sp2) spawns.tryCreateCreep(spawn, CARIER[7][S+1], 71);
 						}
 
 						if(conditions.TO_SPAWN_CLAIMING_ROOMS()) {
