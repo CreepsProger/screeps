@@ -27,8 +27,14 @@ const labs = {
   },
 	
 	getLabsToEmpty: function(roomName) {
-    return  labs.getLabsToInOut(roomName)
-								.filter((e) =>  !!e.toEmpty && e.configRes != '-')
+		const ls = cash.getLabs(roomName);
+    return  labs.getLabsToInOut(roomName) 
+								.map((e) => ( e.to_run = Math.floor(Math.abs(tools.nvl(e.toRun,0)))
+													  , e.l_reag = ls[Math.floor(e.to_run/10%10)].mineralType
+													  , e.r_reag = ls[Math.floor(e.to_run%10)].mineralType
+													  , e.reaction = !!REACTIONS[e.l_reag]?REACTIONS[e.l_reag][e.r_reag]:null
+													  , e))
+								.filter((e) =>  !!e.toEmpty && (e.configRes != '-' || (!!e.reaction && e.configRes != e.reaction))
 								.map((e) => {return {lab:e.lab, resource:e.resource, amount:tools.nvl(e.lab.store.getUsedCapacity(e.resource),0)}}) 
 								.sort((l,r) => r.amount - l.amount)
   },
