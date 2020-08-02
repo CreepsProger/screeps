@@ -306,13 +306,13 @@ var role = {
 				 tools.nvl(creep.room.storage.store[factoryToIn.in.resource],0) > 0) {
 				const factory = tools.setTarget(creep,factoryToIn,factoryToIn.id,role.run);
 				if(!!factory) {
-					const target = {resource:factoryToIn.in.resource, amount:factoryToIn.in.amount, target:creep.room.storage};
+					factoryToIn.target = creep.room.storage;
 					if(Game.shard.name == '-shard0') {
 						console.log('🏭🎯↩️', Math.trunc(Game.time/10000), Game.time%10000
 																, JSON.stringify( { creep:creep.name, roomName:creep.room.name
-																									, target:target}));
+																									, target:factoryToIn}));
 					}
-					return target;
+					return factoryToIn;
 				}
 			}
 			
@@ -322,13 +322,15 @@ var role = {
 			if(!!labToEmpty) {
 				const lab = tools.setTarget(creep,labToEmpty.lab,labToEmpty.lab.id,role.run);
 				if(!!lab) {
-					return {resource:labToEmpty.resource, amount:labToEmpty.amount, target:lab};
+					labToEmpty.target = lab;
+					return labToEmpty;
 				}
 			}
 			
 			const res_to_recieve = terminals.getResourceToRecieve(creep);
 			if(!!res_to_recieve) {
-				return {target:creep.room.terminal, resource:res_to_recieve.resource, amount:res_to_recieve.amount};
+				res_to_recieve.target = creep.room.terminal;
+				return res_to_recieve;
 			}
 
 			const labToIn = labs.getLabsToIn(creep.room.name)
