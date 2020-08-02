@@ -541,12 +541,12 @@ var role = {
 				err = (err != OK) ? err:!!target.isTask? target.harvestingBy(creep):
 				(!!target.name || (!target.id && !target.target))? // a creep || exit
 						ERR_NOT_IN_RANGE:
+					!!target.target?
+						creep.withdraw(target.target, target.resource, Math.min(target.target.store[target.resource],Math.min(target.amount,creep.store.getFreeCapacity(target.resource)))):
 				(!!target.mineralAmount)?
 				    creep.harvest(target):
-				(!!target.structureType && !!target.my)?
+					(!!target.structureType && !!target.my)?
 						creep.withdraw(target, RESOURCE_ENERGY): // a structure
-					!!target.target?
-						creep.withdraw(target.target, target.resource, Math.min(target.target.store[target.resource],Math.min(target.amount,creep.store.getFreeCapacity(target.resource)))): 
 				(target.energy == 0 && creep.pos.getRangeTo(target) > 1 )? // a source
 						ERR_NOT_IN_RANGE:
 				creep.harvest(target);
