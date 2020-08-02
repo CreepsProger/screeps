@@ -413,8 +413,8 @@ var flags = {
 				{
 				const roomName = fSell.pos.roomName;
 				const terminal = Game.rooms[roomName].terminal;
-				if(!!terminal.cooodown) {
-					Memory.sell_time = Math.min(tools.nvl(Memory.sell_time,Infinity), Game.time + terminal.cooodown);
+				if(!!terminal.cooldown) {
+					Memory.sell_time = Math.min(tools.nvl(Memory.sell_time,Infinity), Game.time + terminal.cooldown);
 					return;
 				}
 				console.log('🤝Ⓜ️💲', Math.trunc(Game.time/10000), Game.time%10000
@@ -457,8 +457,8 @@ var flags = {
 		const roomName = Buy.pos.roomName;
 		const prefix = 'Buy.';
 		const terminal = Game.rooms[roomName].terminal;
-		if(!!terminal.cooodown) {
-			Memory.buy_time = Math.min(tools.nvl(Memory.buy_time,Infinity), Game.time + terminal.cooodown);
+		if(!!terminal.cooldown) {
+			Memory.buy_time = Math.min(tools.nvl(Memory.buy_time,Infinity), Game.time + terminal.cooldown);
 			return;
 		}
 		var n = 0;
