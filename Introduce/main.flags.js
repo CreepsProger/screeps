@@ -417,7 +417,7 @@ var flags = {
 					Memory.sell_time = Math.min(tools.nvl(Memory.sell_time,Infinity), Game.time + terminal.cooodown);
 					return;
 				}
-				console.log('🤝Ⓜ️💠', Math.trunc(Game.time/10000), Game.time%10000
+				console.log('🤝Ⓜ️💲', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { Sell:'fSell', roomName:roomName, fSell:fSell}));
 				const terminalEnergy = terminal.store.getUsedCapacity(RESOURCE_ENERGY);
 				const order = Game.market.getAllOrders(order => order.resourceType == fSell.resource &&
@@ -426,7 +426,7 @@ var flags = {
 																							 order.price >= fSell.min).shift();
 				if(!order)
 					return;
-				var amount = order.amount;
+				var amount = Math.min(order.amount, terminal.store.getUsedCapacity(order.resourceType) );
 				var half_amount = Math.floor(amount/2);
 				var max_cost = order.resourceType==RESOURCE_ENERGY? half_amount:terminalEnergy;
 				while(Game.market.calcTransactionCost(amount, roomName, order.roomName) > max_cost) {
@@ -437,7 +437,7 @@ var flags = {
 				if(!amount)
 					return
 				const err = Game.market.deal(order.id, amount, roomName);
-				console.log('🤝Ⓜ️💠', Math.trunc(Game.time/10000), Game.time%10000
+				console.log('🤝Ⓜ️💲', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { Sell:'Sell', roomName:roomName
 																						, resourse:order.resourceType, price:order.price
 																						, amount:(amount==order.amount?amount:''+amount+'('+order.amount+')')
