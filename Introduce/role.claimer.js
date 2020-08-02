@@ -34,6 +34,7 @@ var role = {
 																, room: creep.room.name
 																, shard: Game.shard.name
 																};
+			mrole = creep.memory[role.name];
 		}
 	},
 	
