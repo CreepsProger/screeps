@@ -25,10 +25,10 @@ var role = {
 			}
 	},
 
-	init: function(creep) {
-		if(creep.memory[role.name] === undefined ||
-			 creep.memory[role.name].v === undefined ||
-			 creep.memory[role.name].v != config.version) {
+	init: function(creep, mrole) {
+		if(mrole === undefined ||
+			 mrole.v === undefined ||
+			 mrole.v != config.version) {
 			creep.memory[role.name] = { v: config.version
 																, on: false
 																, room: creep.room.name
@@ -36,25 +36,23 @@ var role = {
 																};
 		}
 	},
-
-	checkOff: function(creep) {
-		if(creep.getActiveBodyparts(CLAIM) == 0 && creep.memory[role.name].on) {
-			creep.memory[role.name].on = false;
+	
+	checkOff: function(creep, mrole) {
+		if(creep.getActiveBodyparts(CLAIM) == 0 && mrole.on) {
+			mrole.on = false;
 		}
 	},
 
-	checkOn: function(creep) {
-		if(!creep.memory[role.name].on &&
-			 creep.getActiveBodyparts(CLAIM) > 0 // && creep.memory.rerun
-		 ) {
+	checkOn: function(creep, mrole) {
+		if(!mrole.on && creep.getActiveBodyparts(CLAIM) > 0) {
 
-			creep.memory[role.name].on = true;
+			mrole.on = true;
 // 			creep.memory[role.name].room = role.target_room;
-			const old_shard = creep.memory[role.name].shard;
-			const old_room = creep.memory[role.name].room;
+			const old_shard = mrole.shard;
+			const old_room = mrole.room;
 			config.setRoom(creep, role.name);
-			const new_shard = creep.memory[role.name].shard;
-			const new_room = creep.memory[role.name].room;
+			const new_shard = mrole.shard;
+			const new_room = mrole.room;
 			if(new_shard != old_shard || new_room != old_room) {
 				console.log(creep, role.name, '['+old_shard+']'+old_room, '->', '['+new_shard+']'+new_room);
 			}
@@ -64,13 +62,14 @@ var role = {
 	test_weight: 300,
 
 	run: function(creep) {
+		var mrole = creep.memory[role.name];
 
-		role.init(creep);
-		role.checkOff(creep);
-		role.checkOn(creep);
+		role.init(creep, mrole);
+		role.checkOff(creep, mrole);
+		role.checkOn(creep, mrole);
 
 
-		if(creep.memory[role.name].on) {
+		if(tools.getWeight(creep.name) % 10 == 0 && mrole.on) {
 
 			var target = config.findPathToMyRoom(creep,role.name);
 
@@ -117,13 +116,13 @@ var role = {
 				}
 			}
 			else {
-				creep.memory[role.name].on = false;
+				mrole.on = false;
 			}
 		}
 
 		metrix.cpu.step_time(creep, role.name, '🗝🔚');
 		metrix.cpu.role_time(creep, role.name);
-		if(!creep.memory[role.name].on) {
+		if(!mrole.on) {
 			return roleNext.run(creep);
 		}
 	}
