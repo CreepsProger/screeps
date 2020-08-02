@@ -294,10 +294,10 @@ var role = {
 
 			const factoryToOut = factory.getFactoryToOut(creep.room.name);
 			if(!!factoryToOut && !!factoryToOut.out && tools.checkTarget(executer,factoryToOut.id)) {
-				var factory = tools.setTarget(creep,factoryToOut,factoryToOut.id,role.run);
-				if(!!factory) {
-					factory.target = factory;
-					return factory;/*
+				var target = tools.setTarget(creep,factoryToOut,factoryToOut.id,role.run);
+				if(!!target) {
+					target.target = target;
+					return target;/*
 					console.log('🏭🎯↪️', Math.trunc(Game.time/10000), Game.time%10000
 															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
 																								, target:target}));*/
@@ -308,15 +308,15 @@ var role = {
 			if(!!factoryToIn && !!factoryToIn.in &&
 				 tools.checkTarget(executer,factoryToIn.id) &&
 				 tools.nvl(creep.room.storage.store[factoryToIn.in.resource],0) > 0) {
-				var factory = tools.setTarget(creep,factoryToIn,factoryToIn.id,role.run);
-				if(!!factory) {
-					factory.target = creep.room.storage;
+				var target = tools.setTarget(creep,factoryToIn,factoryToIn.id,role.run);
+				if(!!target) {
+					target.target = creep.room.storage;
 					if(Game.shard.name == '-shard0') {
 						console.log('🏭🎯↩️', Math.trunc(Game.time/10000), Game.time%10000
 																, JSON.stringify( { creep:creep.name, roomName:creep.room.name
-																									, target:factory}));
+																									, target:target}));
 					}
-					return factory;
+					return target;
 				}
 			}
 			
