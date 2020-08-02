@@ -7,7 +7,7 @@ const log = require('main.log');
 const tools = require('tools');
 const cash = require('cash');
 
-var git = '$Format:%H$';
+//var git = '$Format:%H$';
 
 var role = {
 
@@ -38,7 +38,7 @@ var role = {
 	},
 
 	checkOff: function(creep) {
-		if(creep.memory[role.name].on && creep.getActiveBodyparts(CLAIM) == 0) {
+		if(creep.getActiveBodyparts(CLAIM) == 0 && creep.memory[role.name].on) {
 			creep.memory[role.name].on = false;
 		}
 	},
