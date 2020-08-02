@@ -190,7 +190,7 @@ var spawns = {
 			// 						, 'spawn:'
 			// 						, JSON.stringify(spawn));
 
-			if(!spawn.spawning && spawn.name != 'Spawn19' && Nspawns) {
+			if(!spawn.spawning && Nspawns) {
 
 				var controller = spawn.room.controller;
 				const CL = controller.level;
