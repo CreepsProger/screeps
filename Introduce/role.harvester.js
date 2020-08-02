@@ -258,7 +258,8 @@ var role = {
 			 creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 			 (creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_TERMINAL_ENERGY || !conditions.TO_SPAWN_CLAIMING_ROOMS())) {
 			target = creep.room.terminal;
-			if(!!target) return target;
+			if(!!target)
+				return target;
 		}
 
 		if(!target &&
@@ -269,7 +270,8 @@ var role = {
 			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 			 (creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_STORAGE_ENERGY || !conditions.TO_SPAWN_CLAIMING_ROOMS())) {
 			target = creep.room.storage;
-			if(!!target) return target;
+			if(!!target)
+				return target;
 		}
 		
 		const ST  = !!flags.flags.ST && flags.flags.ST.pos.roomName == my_room;
@@ -285,7 +287,8 @@ var role = {
 			if(!!labToOutExtra) {
 				const lab = tools.setTarget(creep,labToOutExtra.lab,labToOutExtra.lab.id,role.run);
 				if(!!lab) {
-					return {resource:labToOutExtra.resource, amount:labToOutExtra.amount, target:lab};
+					lab.target = lab;
+					return lab;
 				}
 			}
 
@@ -293,7 +296,8 @@ var role = {
 			if(!!factoryToOut && !!factoryToOut.out && tools.checkTarget(executer,factoryToOut.id)) {
 				const factory = tools.setTarget(creep,factoryToOut,factoryToOut.id,role.run);
 				if(!!factory) {
-					return {resource:factoryToOut.out.resource, amount:factoryToOut.out.amount, target:factoryToOut};/*
+					factory.target = factory;
+					return factory;/*
 					console.log('🏭🎯↪️', Math.trunc(Game.time/10000), Game.time%10000
 															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
 																								, target:target}));*/
@@ -306,13 +310,13 @@ var role = {
 				 tools.nvl(creep.room.storage.store[factoryToIn.in.resource],0) > 0) {
 				const factory = tools.setTarget(creep,factoryToIn,factoryToIn.id,role.run);
 				if(!!factory) {
-					factoryToIn.target = creep.room.storage;
+					factory.target = creep.room.storage;
 					if(Game.shard.name == '-shard0') {
 						console.log('🏭🎯↩️', Math.trunc(Game.time/10000), Game.time%10000
 																, JSON.stringify( { creep:creep.name, roomName:creep.room.name
-																									, target:factoryToIn}));
+																									, target:factory}));
 					}
-					return factoryToIn;
+					return factory;
 				}
 			}
 			
@@ -322,8 +326,8 @@ var role = {
 			if(!!labToEmpty) {
 				const lab = tools.setTarget(creep,labToEmpty.lab,labToEmpty.lab.id,role.run);
 				if(!!lab) {
-					labToEmpty.target = lab;
-					return labToEmpty;
+					lab.target = lab;
+					return lab;
 				}
 			}
 			
@@ -340,13 +344,15 @@ var role = {
 			if(!!labToIn) {
 				const lab = tools.setTarget(creep,labToIn.lab,labToIn.lab.id,role.run);
 				if(!!lab) {
-					return  {resource:labToIn.resource, amount:labToIn.amount, target:creep.room.storage};
+					lab.target = creep.room.storage;
+					return lab;
 				}
 			}
 
 			const res_to_send = terminals.getResourceToSend(creep);
 			if(!!res_to_send) {
-				return {target:creep.room.storage, resource:res_to_send.resource, amount:res_to_send.amount};
+				res_to_send.target = creep.room.storage;
+				return res_to_send;
 			}
 
 			const labToOut = labs.getLabsToOut(creep.room.name)
@@ -355,7 +361,8 @@ var role = {
 			if(!!labToOut) {
 				const lab = tools.setTarget(creep,labToOut.lab,labToOut.lab.id,role.run);
 				if(!!lab) {
-					return {resource:labToOut.resource, amount:labToOut.amount, target:lab};
+					lab.target = lab;
+					return lab;
 				}
 			}
 		}
