@@ -168,7 +168,7 @@ var tools = {
 						console.log( creep, 'range:', range
 												, creep2, 'range2:', range2
 												, 'cancelOrder:', order, 'err:', err
-												, 'for', id, JSON.stringify(target));
+												, 'for', id/*, JSON.stringify(target)*/);
 					}
 				}
 			}
