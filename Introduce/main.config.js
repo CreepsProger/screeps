@@ -154,18 +154,13 @@ var config = {
 		const path_rooms_by_shard = path_rooms[Game.shard.name];
 		const path_rooms2 = !!path_rooms_by_shard?path_rooms_by_shard:path_rooms;
 		const my_path_room = path_rooms2[this_room];
-		if(!my_path_room || (tools.getWeight(creep.name) % 10 == 3) ) {
+		if(!my_path_room || (tools.getWeight(creep.name) % 10 == 3 && Game.time%17 == 0) ) {
 			console.log(creep, role_name, JSON.stringify({this_room:this_room, my_path_room:my_path_room, path_rooms2:path_rooms2}));
 		}
 		const shard = my_path_room.substring(0,5);
 		if(!!shard && shard == 'shard') {
 			const dest_shard = my_path_room;
-			var dest_room = path_rooms[dest_shard][Game.shard.name + '_' + this_room];/*
-			const shard2 = dest_room.substring(0,5);
-			dest_room = (!!shard2 && shard2 == 'shard')?this_room:dest_room;*/
-			if(tools.getWeight(creep.name) == 173) {
-				console.log(creep, role_name, JSON.stringify({dest_shard:dest_shard, dest_room:dest_room}));
-			}
+			var dest_room = path_rooms[dest_shard][Game.shard.name + '_' + this_room];
 			var portals = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => structure.structureType == STRUCTURE_PORTAL &&
 															 structure.destination.shard == dest_shard &&
