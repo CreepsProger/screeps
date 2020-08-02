@@ -452,9 +452,15 @@ var flags = {
 	},
 	//Buy: buy on market
 	Buy: function(Buy) {
+		if(Game.time < tools.nvl(Memory.buy_time,0) )
+			return;
 		const roomName = Buy.pos.roomName;
 		const prefix = 'Buy.';
 		const terminal = Game.rooms[roomName].terminal;
+		if(!!terminal.cooodown) {
+			Memory.buy_time = Math.min(tools.nvl(Memory.buy_time,Infinity), Game.time + terminal.cooodown);
+			return;
+		}
 		var n = 0;
 
 		if(flags.flags[prefix+roomName] === undefined) {
