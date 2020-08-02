@@ -287,8 +287,8 @@ var role = {
 			if(!!labToOutExtra) {
 				var lab = tools.setTarget(creep,labToOutExtra.lab,labToOutExtra.lab.id,role.run);
 				if(!!lab) {
-					lab.target = lab;
-					return lab;
+					labToOutExtra.target = lab;
+					return labToOutExtra;
 				}
 			}
 
@@ -296,8 +296,8 @@ var role = {
 			if(!!factoryToOut && !!factoryToOut.out && tools.checkTarget(executer,factoryToOut.id)) {
 				var target = tools.setTarget(creep,factoryToOut,factoryToOut.id,role.run);
 				if(!!target) {
-					target.target = target;
-					return target;/*
+					factoryToOut.target = target;
+					return factoryToOut;/*
 					console.log('🏭🎯↪️', Math.trunc(Game.time/10000), Game.time%10000
 															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
 																								, target:target}));*/
@@ -310,13 +310,13 @@ var role = {
 				 tools.nvl(creep.room.storage.store[factoryToIn.in.resource],0) > 0) {
 				var target = tools.setTarget(creep,factoryToIn,factoryToIn.id,role.run);
 				if(!!target) {
-					target.target = creep.room.storage;
+					factoryToIn.target = creep.room.storage;
 					if(Game.shard.name == '-shard0') {
 						console.log('🏭🎯↩️', Math.trunc(Game.time/10000), Game.time%10000
 																, JSON.stringify( { creep:creep.name, roomName:creep.room.name
 																									, target:target}));
 					}
-					return target;
+					return factoryToIn;
 				}
 			}
 			
@@ -326,8 +326,8 @@ var role = {
 			if(!!labToEmpty) {
 				var lab = tools.setTarget(creep,labToEmpty.lab,labToEmpty.lab.id,role.run);
 				if(!!lab) {
-					lab.target = lab;
-					return lab;
+					labToEmpty.target = lab;
+					return labToEmpty;
 				}
 			}
 			
@@ -344,8 +344,8 @@ var role = {
 			if(!!labToIn) {
 				var lab = tools.setTarget(creep,labToIn.lab,labToIn.lab.id,role.run);
 				if(!!lab) {
-					lab.target = creep.room.storage;
-					return lab;
+					labToIn.target = creep.room.storage;
+					return labToIn;
 				}
 			}
 
@@ -361,8 +361,8 @@ var role = {
 			if(!!labToOut) {
 				var lab = tools.setTarget(creep,labToOut.lab,labToOut.lab.id,role.run);
 				if(!!lab) {
-					lab.target = lab;
-					return lab;
+					labToOut.target = lab;
+					return labToOut;
 				}
 			}
 		}
