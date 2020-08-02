@@ -560,7 +560,7 @@ var role = {
 				}
 				if(err) {
 					creep.say('⚡⚠️'+err)
-					role.log( '⚡⚠️', creep, 'err:', err, JSON.stringify(target));
+					role.log( '⚡⚠️', creep, 'err:', err, JSON.stringify(target.id));
 					creep.memory[role.name].on = false;
 				}
 			}
