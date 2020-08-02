@@ -421,7 +421,7 @@ var flags = {
 													, JSON.stringify( { Sell:'fSell', roomName:roomName, fSell:fSell}));
 				const terminalEnergy = terminal.store.getUsedCapacity(RESOURCE_ENERGY);
 				const order = Game.market.getAllOrders(order => order.resourceType == fSell.resource &&
-																							 order.type == ORDER_Buy &&
+																							 order.type == ORDER_BUY &&
 																							 order.amount > 0 &&
 																							 order.price >= fSell.min).shift();
 				if(!order)
@@ -540,7 +540,7 @@ var flags = {
 			if(found.length == 0) 
 				return;
 			const store = found[0].store;
-			console.log('Ｔ99', Math.trunc(Game.time/10000), Game.time%10000 
+			console.log('Ｔ99', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify({T99:T99, store:store, found:found}));
 			const keys = Object.keys(store);
 			const keysLength = keys.length;
