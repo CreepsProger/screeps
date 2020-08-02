@@ -401,7 +401,7 @@ var flags = {
 		const prefix = 'Sell.';
 		var n = 0;
 
-		if(flags.flags[prefix+roomName] === undefined) {
+		if(flags.flags[prefix] === undefined) {
 			Object.keys(Game.flags)
 						.filter((name)=>name.substring(0,prefix.length) == prefix)
 						.sort((l,r) => l.localeCompare(r))
