@@ -394,6 +394,62 @@ var flags = {
 		lastFlagRemoved = Limits; 
     lastFlagRemoved.remove()
 	},
+	//Sell: sell on market
+	Sell: function(Sell) {
+		if(Game.time < tools.nvl(Memory.sell_time,0) )
+			return;
+		const prefix = 'Sell.';
+		var n = 0;
+
+		if(flags.flags[prefix+roomName] === undefined) {
+			Object.keys(Game.flags)
+						.filter((name)=>name.substring(0,prefix.length) == prefix)
+						.sort((l,r) => l.localeCompare(r))
+						.map((name) => Game.flags[name])
+						.map((f,i,arr) => ( f.resource = f.name.substring(f.name.indexOf('.')+1,f.name.indexOf(':'))
+															, f.min = +f.name.substring(f.name.indexOf(':')+1)
+															, f))
+						.forEach(function(fSell)
+				{
+				const roomName = fSell.pos.roomName;
+				const terminal = Game.rooms[roomName].terminal;
+				if(!!terminal.cooodown) {
+					Memory.sell_time = Math.min(tools.nvl(Memory.sell_time,Infinity), Game.time + terminal.cooodown);
+					return;
+				}
+				console.log('🤝Ⓜ️💠', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify( { Sell:'fSell', roomName:roomName, fSell:fSell}));
+				const terminalEnergy = terminal.store.getUsedCapacity(RESOURCE_ENERGY);
+				const order = Game.market.getAllOrders(order => order.resourceType == fSell.resource &&
+																							 order.type == ORDER_Buy &&
+																							 order.amount > 0 &&
+																							 order.price >= fSell.min).shift();
+				if(!order)
+					return;
+				var amount = order.amount;
+				var half_amount = Math.floor(amount/2);
+				var max_cost = order.resourceType==RESOURCE_ENERGY? half_amount:terminalEnergy;
+				while(Game.market.calcTransactionCost(amount, roomName, order.roomName) > max_cost) {
+					amount = half_amount;
+					half_amount = Math.floor(amount/2);
+					max_cost = order.resourceType==RESOURCE_ENERGY? half_amount:terminalEnergy;
+				}
+				if(!amount)
+					return
+				const err = Game.market.deal(order.id, amount, roomName);
+				console.log('🤝Ⓜ️💠', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify( { Sell:'Sell', roomName:roomName
+																						, resourse:order.resourceType, price:order.price
+																						, amount:(amount==order.amount?amount:''+amount+'('+order.amount+')')
+																						, err:err, fSell:fSell, order:order}));
+				n++;
+			});
+		}
+		if(n == 0) {
+			lastFlagRemoved = Sell;
+			lastFlagRemoved.remove();
+		}
+	},
 	//Buy: buy on market
 	Buy: function(Buy) {
 		const roomName = Buy.pos.roomName;
