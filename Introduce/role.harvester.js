@@ -285,7 +285,7 @@ var role = {
 													.filter((e) => tools.checkTarget(executer,e.lab.id))
 													.shift();
 			if(!!labToOutExtra) {
-				const lab = tools.setTarget(creep,labToOutExtra.lab,labToOutExtra.lab.id,role.run);
+				var lab = tools.setTarget(creep,labToOutExtra.lab,labToOutExtra.lab.id,role.run);
 				if(!!lab) {
 					lab.target = lab;
 					return lab;
@@ -294,7 +294,7 @@ var role = {
 
 			const factoryToOut = factory.getFactoryToOut(creep.room.name);
 			if(!!factoryToOut && !!factoryToOut.out && tools.checkTarget(executer,factoryToOut.id)) {
-				const factory = tools.setTarget(creep,factoryToOut,factoryToOut.id,role.run);
+				var factory = tools.setTarget(creep,factoryToOut,factoryToOut.id,role.run);
 				if(!!factory) {
 					factory.target = factory;
 					return factory;/*
@@ -308,7 +308,7 @@ var role = {
 			if(!!factoryToIn && !!factoryToIn.in &&
 				 tools.checkTarget(executer,factoryToIn.id) &&
 				 tools.nvl(creep.room.storage.store[factoryToIn.in.resource],0) > 0) {
-				const factory = tools.setTarget(creep,factoryToIn,factoryToIn.id,role.run);
+				var factory = tools.setTarget(creep,factoryToIn,factoryToIn.id,role.run);
 				if(!!factory) {
 					factory.target = creep.room.storage;
 					if(Game.shard.name == '-shard0') {
@@ -324,14 +324,14 @@ var role = {
 													.filter((e) => tools.checkTarget(executer,e.lab.id))
 													.shift();
 			if(!!labToEmpty) {
-				const lab = tools.setTarget(creep,labToEmpty.lab,labToEmpty.lab.id,role.run);
+				var lab = tools.setTarget(creep,labToEmpty.lab,labToEmpty.lab.id,role.run);
 				if(!!lab) {
 					lab.target = lab;
 					return lab;
 				}
 			}
 			
-			const res_to_recieve = terminals.getResourceToRecieve(creep);
+			var res_to_recieve = terminals.getResourceToRecieve(creep);
 			if(!!res_to_recieve) {
 				res_to_recieve.target = creep.room.terminal;
 				return res_to_recieve;
@@ -342,14 +342,14 @@ var role = {
 																					tools.checkTarget(executer,e.lab.id))
 													.shift();
 			if(!!labToIn) {
-				const lab = tools.setTarget(creep,labToIn.lab,labToIn.lab.id,role.run);
+				var lab = tools.setTarget(creep,labToIn.lab,labToIn.lab.id,role.run);
 				if(!!lab) {
 					lab.target = creep.room.storage;
 					return lab;
 				}
 			}
 
-			const res_to_send = terminals.getResourceToSend(creep);
+			var res_to_send = terminals.getResourceToSend(creep);
 			if(!!res_to_send) {
 				res_to_send.target = creep.room.storage;
 				return res_to_send;
@@ -359,7 +359,7 @@ var role = {
 													.filter((e) => tools.checkTarget(executer,e.lab.id))
 													.shift();		
 			if(!!labToOut) {
-				const lab = tools.setTarget(creep,labToOut.lab,labToOut.lab.id,role.run);
+				var lab = tools.setTarget(creep,labToOut.lab,labToOut.lab.id,role.run);
 				if(!!lab) {
 					lab.target = lab;
 					return lab;
@@ -560,7 +560,7 @@ var role = {
 				}
 				if(err) {
 					creep.say('⚡⚠️'+err)
-					role.log( '⚡⚠️', creep, 'err:', err, JSON.stringify(creep.harvest));
+					role.log( '⚡⚠️', creep, 'err:', err, JSON.stringify(target));
 					creep.memory[role.name].on = false;
 				}
 			}
