@@ -25,7 +25,8 @@ var role = {
 			}
 	},
 
-	init: function(creep, mrole) {
+	init: function(creep) {
+		var mrole = creep.memory[role.name];
 		if(mrole === undefined ||
 			 mrole.v === undefined ||
 			 mrole.v != config.version) {
@@ -36,6 +37,7 @@ var role = {
 																};
 			mrole = creep.memory[role.name];
 		}
+		return mrole;
 	},
 	
 	checkOff: function(creep, mrole) {
@@ -63,9 +65,8 @@ var role = {
 	test_weight: 300,
 
 	run: function(creep) {
-		var mrole = creep.memory[role.name];
 
-		role.init(creep, mrole);
+		var mrole = role.init(creep);
 		role.checkOff(creep, mrole);
 		role.checkOn(creep, mrole);
 
