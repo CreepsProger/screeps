@@ -422,7 +422,7 @@ var tasks = {
 	},
 	
 	onRun: function(creep) {
-		if(tools.getWeight(creep.name) % 10 == 3) {
+		if(tools.getWeight(creep.name) % 10 == 3 && Game.time%17 == 0 ) {
 			console.log('🚚', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { tasks:'onRun.start', creep:creep.name
 																				, room:creep.room.name, pos:creep.pos}));
