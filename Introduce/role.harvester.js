@@ -296,8 +296,8 @@ var role = {
 			if(!!factoryToOut && !!factoryToOut.out && tools.checkTarget(executer,factoryToOut.id)) {
 				var target = tools.setTarget(creep,factoryToOut,factoryToOut.id,role.run);
 				if(!!target) {
-					factoryToOut.target = target;
-					return factoryToOut;/*
+					factoryToOut.out.target = target;
+					return factoryToOut.out;/*
 					console.log('🏭🎯↪️', Math.trunc(Game.time/10000), Game.time%10000
 															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
 																								, target:target}));*/
@@ -310,13 +310,13 @@ var role = {
 				 tools.nvl(creep.room.storage.store[factoryToIn.in.resource],0) > 0) {
 				var target = tools.setTarget(creep,factoryToIn,factoryToIn.id,role.run);
 				if(!!target) {
-					factoryToIn.target = creep.room.storage;
+					factoryToIn.in.target = creep.room.storage;
 					if(Game.shard.name == '-shard0') {
 						console.log('🏭🎯↩️', Math.trunc(Game.time/10000), Game.time%10000
 																, JSON.stringify( { creep:creep.name, roomName:creep.room.name
 																									, target:target}));
 					}
-					return factoryToIn;
+					return factoryToIn.in;
 				}
 			}
 			
