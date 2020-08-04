@@ -53,18 +53,19 @@ const power = {
 					 !!pc.room.storage.my &&
 					 !!pc.room.storage.store &&
 					 pc.room.storage.store.getUsedCapacity(RESOURCE_OPS) > 0) {
-					const err = pc.withdraw(storage, RESOURCE_OPS) 
-					const err = pc.enableRoom(pc.room.controller);
-						pc.say(err? '💈⚠️'+err:'💈');
-						if(err != OK) {
-							console.log('🔴👨‍🚒⚠️', Math.trunc(Game.time/10000), Game.time%10000
-													, JSON.stringify( { main:'enableRoom', room:roomName
-																						 , err:err, pcName:pcName, controller:pc.room.controller}));
-						}
-						if(err != ERR_NOT_IN_RANGE ) {
-							const err = tools.moveTo(pc, pc.room.controller);
-							pc.say(err? '🔜💈⚠️'+err:'🔜💈');
-						}
+					const amount = Math.min(pc.store.getUsedCapacity(RESOURCE_OPS)-100,pc.room.storage.store.getUsedCapacity(RESOURCE_OPS));
+					const err = pc.withdraw(pc.room.storage, RESOURCE_OPS, amount);
+					pc.say(err? '🏨♉⚠️'+err:'🏨♉');
+					if(err != OK) {
+						console.log('🔴👨‍🚒⚠️', Math.trunc(Game.time/10000), Game.time%10000
+												, JSON.stringify( { main:'withdrawOps', room:pc.pos.roomName
+																					, err:err, pcName:pcName, storage:pc.room.storage}));
+					}
+					if(err != ERR_NOT_IN_RANGE ) {
+						const err = tools.moveTo(pc, pc.room.storage);
+						pc.say(err? '🔜🏨♉⚠️'+err:'🔜🏨♉');
+						return;
+					}
 				}
 				const roomName = pc.pos.roomName;
 				const conf = power.getConfig(roomName,pcName);
