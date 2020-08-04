@@ -13,8 +13,8 @@ const power = {
 	run: function() {
 		
 		cash.getAllMyPowerSpawns()
-				.filter((s) => s.store.getUsedCapacity('power') > 0 &&
-												s.store.getUsedCapacity('energy') > 50)
+				.filter((s) => s.store.getUsedCapacity(RESOURCE_POWER) > 0 &&
+												s.store.getUsedCapacity(RESOURCE_ENERGY) > 50)
 				.forEach(function(powerSpawn,i) {
 					const err = powerSpawn.processPower();
 					if(err != OK) {
@@ -48,6 +48,24 @@ const power = {
 				});
 			}
 			else {
+				if(pc.store.getUsedCapacity(RESOURCE_OPS) < 100 &&
+					 !!pc.room.storage &&
+					 !!pc.room.storage.my &&
+					 !!pc.room.storage.store &&
+					 pc.room.storage.store.getUsedCapacity(RESOURCE_OPS) > 0) {
+					const err = pc.withdraw(storage, RESOURCE_OPS) 
+					const err = pc.enableRoom(pc.room.controller);
+						pc.say(err? '💈⚠️'+err:'💈');
+						if(err != OK) {
+							console.log('🔴👨‍🚒⚠️', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify( { main:'enableRoom', room:roomName
+																						 , err:err, pcName:pcName, controller:pc.room.controller}));
+						}
+						if(err != ERR_NOT_IN_RANGE ) {
+							const err = tools.moveTo(pc, pc.room.controller);
+							pc.say(err? '🔜💈⚠️'+err:'🔜💈');
+						}
+				}
 				const roomName = pc.pos.roomName;
 				const conf = power.getConfig(roomName,pcName);
 				if(!!conf && !!conf.enableRoom &&
@@ -72,7 +90,7 @@ const power = {
 				if(!!conf && !!conf.factory) {
 					cash.getFactories(roomName)
 						.forEach(function(factory,i) {
-						const err = pc.usePower(factory);
+						const err = pc.usePower(PWR_OPERATE_FACTORY, factory);
 						pc.say(err? '🏭⚠️'+err:'🏭');
 						if(err != OK) {
 							console.log('🔴👨‍🚒⚠️', Math.trunc(Game.time/10000), Game.time%10000
@@ -82,6 +100,7 @@ const power = {
 						if(err != ERR_NOT_IN_RANGE ) {
 							const err = tools.moveTo(pc, factory);
 							pc.say(err? '🔜🏭⚠️'+err:'🔜🏭');
+							return;
 						}
 					});
 				}
