@@ -27,7 +27,7 @@ const power = {
 			.keys(Game.powerCreeps)
 			.forEach(function(pcName,i) {
 
-			const pc = Game.powerCreeps[name];
+			const pc = Game.powerCreeps[pcName];
 			if(true) {
 				console.log('🔴👨‍🚒', Math.trunc(Game.time/10000), Game.time%10000
 										, JSON.stringify({main:'power', pc:pc}));
