@@ -28,7 +28,7 @@ const power = {
 			.forEach(function(pcName,i) {
 
 			const pc = Game.powerCreeps[pcName];
-			if(true) {
+			if(false) {
 				console.log('🔴👨‍🚒', Math.trunc(Game.time/10000), Game.time%10000
 										, JSON.stringify({main:'power', pc:pc}));
 			}
@@ -107,7 +107,7 @@ const power = {
 						}
 					});
 				}
-				if(!!conf && !!conf.factory) {
+				if(!!conf && !pc.powers.cooldown && !!conf.factory) {
 					cash.getFactories(roomName)
 						.forEach(function(factory,i) {
 						const err = pc.usePower(PWR_OPERATE_FACTORY, factory);
