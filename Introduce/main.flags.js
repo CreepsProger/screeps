@@ -18,6 +18,35 @@ var flags = {
 		return flags.flags[flagName];
 	},
 	
+	getRoomPowerConfig: function(roomName) {
+		// W29S29.power:"pc-op-01":{"spawn":true,"factory":true}
+		// W29S29.power:"pc-op-02":{"spawn":false,"factory":true}
+		// config == {"pc-op-01":{"spawn":true,"factory":true}, "pc-op-02":{"spawn":false,"factory":true}}
+		const prefix = roomName + '.power:';
+		if(flags.flags[prefix] === undefined) {
+			const json = Object.keys(Game.flags)
+													.filter((name)=>name.substring(0,prefix.length) == prefix)
+													.sort((l,r) => l.localeCompare(r))
+													.map((s,i,arr) => s.substring(s.indexOf(':')+1) + ((i!=arr.length-1)?',':'}') )
+													.reduce((p,c) => p+c, '{');
+			try {
+				if(json != '{')
+					flags.flags[prefix] = JSON.parse(json);
+			}
+			catch (e) {
+				console.log( '🔴👨‍🚒📜⛔', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify({flags:'getRoomPowerConfig', roomName:roomName, json:json, e_name:e.name, e_message:e.message }));
+			}
+		}
+		return flags.flags[prefix];
+	},
+	getPowerConfig: function(roomName, pcName) {
+		const roomPowerConf = flags.getRoomPowerConfig(roomName);
+		if(!roomPowerConf)
+			return roomPowerConf;
+		return roomPowerConf[pcName];
+	},
+	
 	getStoreConfig: function(roomName) {
 		// W29S29.store: "wire":100,"switch":2
 		// W29S29.store: "XLHO2":1000,"battery":20000
