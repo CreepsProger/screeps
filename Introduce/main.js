@@ -9,6 +9,7 @@ const towers = require('main.towers');
 const terminals = require('main.terminals');
 const factory = require('main.factory');
 const labs = require('main.labs')
+const power = require('main.power');
 const spawns = require('main.spawns');
 const log = require('main.log');
 const cash = require('cash');
@@ -31,17 +32,6 @@ module.exports.loop = function () {
 		Memory.cpu_main_part = {};
 
 	Memory.cpu_main_part.perf = Math.round((Memory.cpu_main_part.perf + Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
-	cash.getAllMyPowerSpawns()
-		.filter((s) => s.store.getUsedCapacity('power') > 0 &&
-									s.store.getUsedCapacity('energy') > 50)
-		.forEach(function(spawn,i) {
-		const err = spawn.processPower();
-		if(err != OK) {
-			console.log('🔴🌀⚠️', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({main:'processPower', room:spawn.room.name, err:err, spawn:spawn}));
-		}
-	});
-	Memory.cpu_main_part.power = Math.round((Memory.cpu_main_part.power + Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 
 	if(Game.time % constants.TICKS_TO_CHECK_NON_EXISTING == 0) {
 		// console.log( '⏳', Game.cpu.getUsed() + '/' + Game.cpu.tickLimit);
@@ -105,8 +95,9 @@ module.exports.loop = function () {
 	terminals.run();			Memory.cpu_main_part.terminals = Math.round((Memory.cpu_main_part.terminals+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	labs.run();						Memory.cpu_main_part.labs = Math.round((Memory.cpu_main_part.labs+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	factory.run();				Memory.cpu_main_part.factory = Math.round((Memory.cpu_main_part.factory+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
-	metrix.output();			Memory.cpu_main_part.metrix2 = Math.round((Memory.cpu_main_part.metrix2+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
-	
+	power.run();					Memory.cpu_main_part.power = Math.round((Memory.cpu_main_part.power+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
+	metrix.output();			Memory.cpu_main_part.metrix2 = Math.round((Memory.cpu_main_part.metrix2+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();	
+
 	delete Memory.cpu;
 	Memory.cpu = { creep: {max_dt: 0, creep: '', dt: 0, t: Math.round((Game.cpu.getUsed()) * 100)/100, n:1}
 							 , role : {max_dt: 0, creep: '', role: '', dt: 0, t: Math.round((Game.cpu.getUsed()) * 100)/100}
@@ -125,7 +116,7 @@ module.exports.loop = function () {
 						   // , dt
 						 );
 		delete Memory.cpu_main_part;
-		Memory.cpu_main_part = {perf:0, power:0, clearing:0, metrix:0, config:0, flags:0, event_processor:0, links:0, towers:0, spawns:0, terminals:0, labs:0, factory:0, metrix2:0, others:0};
+		Memory.cpu_main_part = {perf:0, clearing:0, metrix:0, config:0, flags:0, event_processor:0, links:0, towers:0, spawns:0, terminals:0, labs:0, factory:0, power:0, metrix2:0, others:0};
 	}
 
 	const creeps = Object.keys(Game.creeps).sort((l,r) => tools.getWeight(l) - tools.getWeight(r));
