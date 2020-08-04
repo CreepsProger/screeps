@@ -42,7 +42,7 @@ const power = {
 						if(err != OK) {
 							console.log('🔴👨‍🚒⚠️', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { main:'spawn', room:roomName
-																						, err:err, pcName:pcName, powerSpawn:powerSpawn}));
+																						, err:err, pcName:pcName, powerSpawn:powerSpawn, pc:pc}));
 						}
 					}
 				});
@@ -112,6 +112,7 @@ const power = {
 					 !pc.powers[PWR_OPERATE_FACTORY].cooldown) {
 					cash.getFactories(roomName)
 						.forEach(function(factory,i) {
+						if(!!factory.effects && factory.effects.find(PWR_OPERATE_FACTORY))
 						const err = pc.usePower(PWR_OPERATE_FACTORY, factory);
 						pc.say(err? '🏭⚠️'+err:'🏭');
 						if(err != OK) {
