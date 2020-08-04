@@ -47,7 +47,7 @@ const power = {
 					}
 				});
 			}
-			else if(pc.ticksToLive < 4000) {
+			else if(pc.ticksToLive < 1000) {
 				cash.getPowerSpawns(pc.pos.roomName)
 					.forEach(function(powerSpawn,i) {
 					const err = pc.renew(powerSpawn);
