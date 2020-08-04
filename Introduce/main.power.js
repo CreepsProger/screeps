@@ -47,6 +47,23 @@ const power = {
 					}
 				});
 			}
+			else if(pc.ticksToLive < 4000) {
+				cash.getPowerSpawns(pc.pos.roomName)
+					.forEach(function(powerSpawn,i) {
+					const err = pc.renew(powerSpawn);
+					pc.say(err? '👨‍🚒⚠️'+err:'👨‍🚒');
+					if(err != OK) {
+						console.log('🔴👨‍🚒⚠️', Math.trunc(Game.time/10000), Game.time%10000
+												, JSON.stringify( { main:'withdrawOps', room:pc.pos.roomName
+																					, err:err, pcName:pcName, powerSpawn:powerSpawn}));
+					}
+					if(err == ERR_NOT_IN_RANGE ) {
+						const err = tools.moveTo(pc, powerSpawn);
+						pc.say(err? '🔜👨‍🚒⚠️'+err:'🔜👨‍🚒');
+						return;
+					}
+				});
+			}
 			else {
 				const roomName = pc.pos.roomName;
 				if(pc.store.getUsedCapacity(RESOURCE_OPS) < 100 &&
