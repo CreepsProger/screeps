@@ -107,7 +107,9 @@ const power = {
 						}
 					});
 				}
-				if(!!conf && !pc.powers.cooldown && !!conf.factory) {
+				if(!!conf && !!conf.factory &&
+					 !!pc.powers[PWR_OPERATE_FACTORY] &&
+					 !pc.powers[PWR_OPERATE_FACTORY].cooldown) {
 					cash.getFactories(roomName)
 						.forEach(function(factory,i) {
 						const err = pc.usePower(PWR_OPERATE_FACTORY, factory);
