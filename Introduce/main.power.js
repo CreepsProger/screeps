@@ -6,8 +6,8 @@ const cash = require('cash');
 
 const power = {
 
-	getConfig: function(roomName) {
-		return config.getPowerConfig(roomName);
+	getConfig: function(roomName,pcName) {
+		return config.getPowerConfig(roomName, pcName);
 	},
 
 	run: function() {
@@ -25,7 +25,7 @@ const power = {
 
 		Object
 			.keys(Game.powerCreeps)
-			.forEach(function(name,i) {
+			.forEach(function(pcName,i) {
 
 			const pc = Game.powerCreeps[name];
 			if(true) {
@@ -36,13 +36,13 @@ const power = {
 				cash.getAllMyPowerSpawns()
 					.forEach(function(powerSpawn,i) {
 					const roomName = powerSpawn.pos.roomName;
-					const conf = power.getConfig(roomName,name);
+					const conf = power.getConfig(roomName,pcName);
 					if(!!conf && conf.spawn) {
 						const err = pc.spawn(powerSpawn);
 						if(err != OK) {
 							console.log('🔴👨‍🚒⚠️', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { main:'spawnPower', room:roomName
-																						, err:err, name:name, powerSpawn:powerSpawn}));
+																						, err:err, pcName:pcName, powerSpawn:powerSpawn}));
 						}
 					}
 				});
@@ -57,7 +57,7 @@ const power = {
 						if(err != OK) {
 							console.log('🔴👨‍🚒⚠️', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { main:'usePower', room:roomName
-																						 , err:err, name:name, factory:factory}));
+																						 , err:err, pcName:pcName, factory:factory}));
 						}
 					});
 				}
