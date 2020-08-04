@@ -19,6 +19,21 @@ var config = {
 			}
 	},
 	
+	getPowerConfig: function(roomName, pcName) {
+		const flagsPowerConfig = flags.getPowerConfig(roomName, pcName);
+		if(!!flagsPowerConfig)
+			return flagsPowerConfig;
+		const my_shard_config = Memory.config.shards[Game.shard.name];
+		const my_room_config = my_shard_config.rooms[roomName];
+		if(!my_room_config)
+			return undefined;
+		const my_power_config = my_room_config['power'];
+		if(!my_power_config)
+			return undefined;
+		const my_pc_config = my_power_config[pcName];
+		return my_pc_config;
+	},
+	
 	getAmountToStore: function(roomName,resource) {
 		const flagStoreConfigAmount = flags.getStoreConfigAmount(roomName,resource);
 		if(!!flagStoreConfigAmount) {/*
