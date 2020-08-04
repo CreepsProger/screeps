@@ -62,7 +62,7 @@ const power = {
 												, JSON.stringify( { main:'withdrawOps', room:pc.pos.roomName
 																					, err:err, pcName:pcName, storage:pc.room.storage}));
 					}
-					if(err != ERR_NOT_IN_RANGE ) {
+					if(err == ERR_NOT_IN_RANGE ) {
 						const err = tools.moveTo(pc, pc.room.storage);
 						pc.say(err? '🔜🏨➡️♉⚠️'+err:'🔜🏨➡️♉');
 						return;
@@ -81,7 +81,7 @@ const power = {
 												, JSON.stringify( { main:'withdrawOps', room:pc.pos.roomName
 																					, err:err, pcName:pcName, storage:pc.room.storage}));
 					}
-					if(err != ERR_NOT_IN_RANGE ) {
+					if(err == ERR_NOT_IN_RANGE ) {
 						const err = tools.moveTo(pc, pc.room.storage);
 						pc.say(err? '🔜♉➡️🏨⚠️'+err:'🔜♉➡️🏨');
 						return;
@@ -101,7 +101,7 @@ const power = {
 													, JSON.stringify( { main:'enableRoom', room:roomName
 																						 , err:err, pcName:pcName, controller:pc.room.controller}));
 						}
-						if(err != ERR_NOT_IN_RANGE ) {
+						if(err == ERR_NOT_IN_RANGE ) {
 							const err = tools.moveTo(pc, pc.room.controller);
 							pc.say(err? '🔜💈⚠️'+err:'🔜💈');
 						}
@@ -117,7 +117,7 @@ const power = {
 													, JSON.stringify( { main:'usePower', room:roomName
 																						 , err:err, pcName:pcName, factory:factory}));
 						}
-						if(err != ERR_NOT_IN_RANGE ) {
+						if(err == ERR_NOT_IN_RANGE ) {
 							const err = tools.moveTo(pc, factory);
 							pc.say(err? '🔜🏭⚠️'+err:'🔜🏭');
 							return;
