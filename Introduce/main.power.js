@@ -37,11 +37,11 @@ const power = {
 					.forEach(function(powerSpawn,i) {
 					const roomName = powerSpawn.pos.roomName;
 					const conf = power.getConfig(roomName,pcName);
-					if(!!conf && conf.spawn) {
+					if(!!conf && !!conf.spawn) {
 						const err = pc.spawn(powerSpawn);
 						if(err != OK) {
 							console.log('🔴👨‍🚒⚠️', Math.trunc(Game.time/10000), Game.time%10000
-													, JSON.stringify( { main:'spawnPower', room:roomName
+													, JSON.stringify( { main:'spawn', room:roomName
 																						, err:err, pcName:pcName, powerSpawn:powerSpawn}));
 						}
 					}
@@ -49,15 +49,39 @@ const power = {
 			}
 			else {
 				const roomName = pc.pos.roomName;
-				const conf = power.getConfig(roomName,name);
-				if(!!conf && conf.factory) {
+				const conf = power.getConfig(roomName,pcName);
+				if(!!conf && !!conf.enableRoom &&
+					 !!pc.room.controller &&
+					 !!pc.room.controller.my &&
+					 !pc.room.controller.isPowerEnabled) {
+					cash.getFactories(roomName)
+						.forEach(function(factory,i) {
+						const err = pc.enableRoom(pc.room.controller);
+						pc.say(err? '💈⚠️'+err:'💈');
+						if(err != OK) {
+							console.log('🔴👨‍🚒⚠️', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify( { main:'enableRoom', room:roomName
+																						 , err:err, pcName:pcName, controller:pc.room.controller}));
+						}
+						if(err != ERR_NOT_IN_RANGE ) {
+							const err = tools.moveTo(pc, pc.room.controller);
+							pc.say(err? '🔜💈⚠️'+err:'🔜💈');
+						}
+					});
+				}
+				if(!!conf && !!conf.factory) {
 					cash.getFactories(roomName)
 						.forEach(function(factory,i) {
 						const err = pc.usePower(factory);
+						pc.say(err? '🏭⚠️'+err:'🏭');
 						if(err != OK) {
 							console.log('🔴👨‍🚒⚠️', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { main:'usePower', room:roomName
 																						 , err:err, pcName:pcName, factory:factory}));
+						}
+						if(err != ERR_NOT_IN_RANGE ) {
+							const err = tools.moveTo(pc, factory);
+							pc.say(err? '🔜🏭⚠️'+err:'🔜🏭');
 						}
 					});
 				}
