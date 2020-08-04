@@ -144,6 +144,18 @@ const power = {
 						}
 					});
 				}
+				if(!!conf && !!conf.ops &&
+					 !!pc.powers[PWR_GENERATE_OPS] &&
+					 !pc.powers[PWR_GENERATE_OPS].cooldown) {
+					const err = pc.usePower(PWR_GENERATE_OPS);
+					pc.say(err? '♉⚠️'+err:'♉');
+					if(err != OK) {
+						console.log('🔴👨‍🚒♉⚠️', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify( { main:'usePower', room:roomName
+																						 , err:err, pcName:pcName, pc:pc}));
+					}
+				}
+				
 			}
 		});
 	}
