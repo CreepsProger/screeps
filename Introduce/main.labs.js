@@ -34,7 +34,7 @@ const labs = {
 													  , e.r_reag = ls[Math.floor(e.to_run%10)].mineralType
 													  , e.reaction = !!REACTIONS[e.l_reag]?REACTIONS[e.l_reag][e.r_reag]:null
 													  , e))
-								.filter((e) =>  !!e.toEmpty && (e.configRes != '-' || (!!e.reaction && e.configRes != e.reaction)))
+								.filter((e) =>  !!e.toEmpty && (e.configRes != '-' || (!!e.reaction && e.lab.mineralType != e.reaction)))
 								.map((e) => (e.amount = tools.nvl(e.lab.store.getUsedCapacity(e.resource),0),e)) 
 								.sort((l,r) => r.amount - l.amount)
   },
