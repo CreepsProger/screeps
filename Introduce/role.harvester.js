@@ -324,6 +324,11 @@ var role = {
 													.filter((e) => tools.checkTarget(executer,e.lab.id))
 													.shift();
 			if(!!labToEmpty) {
+				if(Game.shard.name == 'shard3') {
+						console.log('⚗️❓↩️', Math.trunc(Game.time/10000), Game.time%10000
+																, JSON.stringify( { creep:creep.name, roomName:creep.room.name
+																									, labToEmpty:labToEmpty}));
+				}
 				var lab = tools.setTarget(creep,labToEmpty.lab,labToEmpty.lab.id,role.run);
 				if(!!lab) {
 					labToEmpty.target = lab;
