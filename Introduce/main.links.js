@@ -91,6 +91,8 @@ var links = {
      // W28S29
      , { from: '5ec8e23e1d709fc4992a1bc9', to: '5ec8daa98ef2be519dc71a15'}
      , { from: '5ece83d23359265d2b9f12e1', to: '5ec8daa98ef2be519dc71a15'}
+     , { from: '5f2a5ea447f60c98f6ce341b', to: '5ec8daa98ef2be519dc71a15'}
+		 , { from: '5f2a5af80f0a8b02130a866d', to: '5ee4ea3abeab12e9af315313'}
 		 , { from: '5ec8e23e1d709fc4992a1bc9', to: '5ee4ea3abeab12e9af315313'}
      , { from: '5ece83d23359265d2b9f12e1', to: '5ee4ea3abeab12e9af315313'}
 		 // W27S29
