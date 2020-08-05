@@ -35,7 +35,7 @@ const labs = {
 													  , e.reaction = !!REACTIONS[e.l_reag]?REACTIONS[e.l_reag][e.r_reag]:null
 													  , e))
 								.filter((e) =>  !!e.toEmpty && (e.configRes != '-' || (!!e.reaction && e.configRes != e.reaction)))
-								.map((e) => {return {lab:e.lab, resource:e.resource, amount:tools.nvl(e.lab.store.getUsedCapacity(e.resource),0)}}) 
+								.map((e) => (e.amount = tools.nvl(e.lab.store.getUsedCapacity(e.resource),0),e)) 
 								.sort((l,r) => r.amount - l.amount)
   },
 	
