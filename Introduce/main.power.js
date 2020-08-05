@@ -32,6 +32,8 @@ const power = {
 				console.log('🔴👨‍🚒', Math.trunc(Game.time/10000), Game.time%10000
 										, JSON.stringify({main:'power', pc:pc}));
 			}
+			const roomName = pc.pos.roomName;
+			const conf = power.getConfig(roomName,pcName);
 			if(!pc.ticksToLive) {
 				cash.getAllMyPowerSpawns()
 					.forEach(function(powerSpawn,i) {
@@ -47,7 +49,7 @@ const power = {
 					}
 				});
 			}
-			else if(pc.ticksToLive < 1000) {
+			else if(!!conf && !!conf.renew && pc.ticksToLive < 1000) {
 				cash.getPowerSpawns(pc.pos.roomName)
 					.forEach(function(powerSpawn,i) {
 					const err = pc.renew(powerSpawn);
@@ -65,7 +67,6 @@ const power = {
 				});
 			}
 			else {
-				const roomName = pc.pos.roomName;
 				if(pc.store.getUsedCapacity(RESOURCE_OPS) < 100 &&
 					 !!pc.room.storage &&
 					 !!pc.room.storage.my &&
@@ -104,7 +105,6 @@ const power = {
 						return;
 					}
 				}
-				const conf = power.getConfig(roomName,pcName);
 				if(!!conf && !!conf.enableRoom &&
 					 !!pc.room.controller &&
 					 !!pc.room.controller.my &&
