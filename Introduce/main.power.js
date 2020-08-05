@@ -32,7 +32,7 @@ const power = {
 				console.log('🔴👨‍🚒', Math.trunc(Game.time/10000), Game.time%10000
 										, JSON.stringify({main:'power', pc:pc}));
 			}
-			const roomName = pc.pos.roomName;
+			const roomName = !!pc.pos?pc.pos.roomName:'##';
 			const conf = power.getConfig(roomName,pcName);
 			if(!pc.ticksToLive) {
 				cash.getAllMyPowerSpawns()
