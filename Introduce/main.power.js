@@ -49,7 +49,7 @@ const power = {
 					}
 				});
 			}
-			else if(!!conf && !!conf.renew && pc.ticksToLive < 1000) {
+			else if(!!conf && !!conf.renew && pc.ticksToLive < 4500) {
 				cash.getPowerSpawns(pc.pos.roomName)
 					.forEach(function(powerSpawn,i) {
 					const err = pc.renew(powerSpawn);
