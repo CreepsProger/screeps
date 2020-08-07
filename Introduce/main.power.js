@@ -49,7 +49,7 @@ const power = {
 					}
 				});
 			}
-			else if(!!conf && (!!conf.renew || !!conf.n || !!conf.ofln) && pc.ticksToLive < 500) {
+			else if(!!conf && (!!conf.renew || !!conf.n || !!conf.oflrn) && pc.ticksToLive < 500) {
 				cash.getPowerSpawns(pc.pos.roomName)
 					.forEach(function(powerSpawn,i) {
 					const err = pc.renew(powerSpawn);
@@ -124,7 +124,7 @@ const power = {
 						}
 					});
 				}
-				if(!!conf && (!!conf.factory || !!conf.f || !!conf.ofln) &&
+				if(!!conf && (!!conf.factory || !!conf.f || !!conf.oflr || !!conf.oflrn) &&
 					 !!pc.powers[PWR_OPERATE_FACTORY] &&
 					 !pc.powers[PWR_OPERATE_FACTORY].cooldown) {
 					cash.getFactories(roomName)
@@ -144,7 +144,27 @@ const power = {
 						}
 					});
 				}
-				if(!!conf && (!!conf.labs || !!conf.l || !!conf.ofln) &&
+				if(!!conf && (!!conf.sources || !!conf.r || !!conf.oflr || !!conf.oflrn) &&
+					 !!pc.powers[PWR_REGEN_SOURCE] &&
+					 !pc.powers[PWR_REGEN_SOURCE].cooldown) {
+					cash.getSources(roomName)
+						.forEach(function(source,i) {
+						//if(!!factory.effects && factory.effects.find(PWR_OPERATE_FACTORY))
+						const err = pc.usePower(PWR_REGEN_SOURCE, source);
+						pc.say(err? '⚡⚠️'+err:'⚡');
+						if(err != OK) {
+							console.log('🔴👨‍🚒⚠️', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify( { main:'usePower', room:roomName
+																						 , err:err, pcName:pcName, source:source}));
+						}
+						if(err == ERR_NOT_IN_RANGE ) {
+							const err = tools.moveTo(pc, source);
+							pc.say(err? '🔜⚡⚠️'+err:'🔜⚡');
+							return;
+						}
+					});
+				}
+				if(!!conf && (!!conf.labs || !!conf.l || !!conf.oflr || !!conf.oflrn) &&
 					 !!pc.powers[PWR_OPERATE_LAB] &&
 					 !pc.powers[PWR_OPERATE_LAB].cooldown) {
 					cash.getLabs(roomName)
@@ -164,7 +184,7 @@ const power = {
 						}
 					});
 				}
-				if(!!conf && (!!conf.ops || !!conf.o || !!conf.ofln) &&
+				if(!!conf && (!!conf.ops || !!conf.o || !!conf.oflr || !!conf.oflrn) &&
 					 !!pc.powers[PWR_GENERATE_OPS] &&
 					 !pc.powers[PWR_GENERATE_OPS].cooldown) {
 					const err = pc.usePower(PWR_GENERATE_OPS);
