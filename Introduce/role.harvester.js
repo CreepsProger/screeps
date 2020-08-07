@@ -308,6 +308,29 @@ var role = {
 				}
 			}
 
+			const labToOut = labs.getLabsToOut(creep.room.name)
+													.filter((e) => tools.checkTarget(executer,e.lab.id))
+													.shift();		
+			if(!!labToOut) {
+				var lab = tools.setTarget(creep,labToOut.lab,labToOut.lab.id,role.run);
+				if(!!lab) {
+					labToOut.target = lab;
+					return labToOut;
+				}
+			}
+
+			const factoryToOut = factory.getFactoryToOut(creep.room.name);
+			if(!!factoryToOut && !!factoryToOut.out && tools.checkTarget(executer,factoryToOut.id)) {
+				var target = tools.setTarget(creep,factoryToOut,factoryToOut.id,role.run);
+				if(!!target) {
+					factoryToOut.out.target = target;
+					return factoryToOut.out;/*
+					console.log('🏭🎯↪️', Math.trunc(Game.time/10000), Game.time%10000
+															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
+																								, target:target}));*/
+				}
+			}
+
 			var res_to_recieve = terminals.getResourceToRecieve(creep);
 			if(!!res_to_recieve) {
 				res_to_recieve.target = creep.room.terminal;
@@ -339,29 +362,6 @@ var role = {
 																									, target:target}));
 					}
 					return factoryToIn.in;
-				}
-			}
-
-			const factoryToOut = factory.getFactoryToOut(creep.room.name);
-			if(!!factoryToOut && !!factoryToOut.out && tools.checkTarget(executer,factoryToOut.id)) {
-				var target = tools.setTarget(creep,factoryToOut,factoryToOut.id,role.run);
-				if(!!target) {
-					factoryToOut.out.target = target;
-					return factoryToOut.out;/*
-					console.log('🏭🎯↪️', Math.trunc(Game.time/10000), Game.time%10000
-															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
-																								, target:target}));*/
-				}
-			}
-
-			const labToOut = labs.getLabsToOut(creep.room.name)
-													.filter((e) => tools.checkTarget(executer,e.lab.id))
-													.shift();		
-			if(!!labToOut) {
-				var lab = tools.setTarget(creep,labToOut.lab,labToOut.lab.id,role.run);
-				if(!!lab) {
-					labToOut.target = lab;
-					return labToOut;
 				}
 			}
 
