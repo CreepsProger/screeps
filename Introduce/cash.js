@@ -331,8 +331,9 @@ var cash = {
 
 	sources: {},
 	getSources: function(room) {
-		return cash.getEntry(cash.sources, 'source', tools.getRoomCode(room.name), () => {
-			return room.find(FIND_SOURCES);});
+		const roomName = !!room.name?room.name:room;
+		return cash.getEntry(cash.sources, 'source', tools.getRoomCode(roomName), () => {
+			return Game.rooms[roomName].find(FIND_SOURCES);});
  	},
 
 	all_my_power_spawns: {},
