@@ -308,12 +308,6 @@ var role = {
 				}
 			}
 
-			var res_to_send = terminals.getResourceToSend(creep);
-			if(!!res_to_send) {
-				res_to_send.target = creep.room.storage;
-				return res_to_send;
-			}
-			
 			var res_to_recieve = terminals.getResourceToRecieve(creep);
 			if(!!res_to_recieve) {
 				res_to_recieve.target = creep.room.terminal;
@@ -369,6 +363,12 @@ var role = {
 					labToOut.target = lab;
 					return labToOut;
 				}
+			}
+
+			var res_to_send = terminals.getResourceToSend(creep);
+			if(!!res_to_send) {
+				res_to_send.target = creep.room.storage;
+				return res_to_send;
 			}
 		}
 		
