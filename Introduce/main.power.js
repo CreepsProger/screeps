@@ -92,11 +92,11 @@ const power = {
 					 !!pc.room.storage.store &&
 					 pc.room.storage.store.getFreeCapacity(RESOURCE_OPS) > 0) {
 					const amount = Math.min(pc.store.getUsedCapacity(RESOURCE_OPS)-100,pc.room.storage.store.getFreeCapacity(RESOURCE_OPS));
-					const err = pc.withdraw(pc.room.storage, RESOURCE_OPS, amount);
+					const err = pc.transfer(pc.room.storage, RESOURCE_OPS, amount);
 					pc.say(err? '♉➡️🏨⚠️'+err:'♉➡️🏨');
 					if(err != OK) {
 						console.log('🔴👨‍🚒⚠️', Math.trunc(Game.time/10000), Game.time%10000
-												, JSON.stringify( { main:'withdrawOps', room:pc.pos.roomName
+												, JSON.stringify( { main:'transferOps', room:pc.pos.roomName
 																					, err:err, pcName:pcName, storage:pc.room.storage}));
 					}
 					if(err == ERR_NOT_IN_RANGE ) {
