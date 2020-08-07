@@ -22,7 +22,7 @@ const labs = {
                     , JSON.stringify( { labs:'getLabsToInOut', roomName:roomName, conf:conf}));*/
     return  cash.getLabs(roomName)
 								.map((lab,i) => {return { i:i, resource:tools.nvl(lab.mineralType,labs.getConfLabRes(conf,i))
-																				, toEmpty:(tools.nvl(lab.mineralType,labs.getConfLabRes(conf,i)) != labs.getConfLabRes(conf,i))
+																				, toEmpty:(labs.getConfLabRes(conf,i) != '-' && tools.nvl(lab.mineralType,labs.getConfLabRes(conf,i)) != labs.getConfLabRes(conf,i))
 																				, toRun:labs.getConfLabAgs(conf,i), configRes:labs.getConfLabRes(conf,i), lab:lab}}) 
   },
 	
@@ -34,7 +34,7 @@ const labs = {
 													  , e.r_reag = ls[Math.floor(e.to_run%10)].mineralType
 													  , e.reaction = !!REACTIONS[e.l_reag]?REACTIONS[e.l_reag][e.r_reag]:null
 													  , e))
-								.filter((e) =>  !!e.toEmpty && (e.configRes != '-' || (!!e.reaction && e.lab.mineralType != e.reaction)))
+								.filter((e) =>  !!e.toEmpty || (!!e.reaction && e.lab.mineralType != e.reaction))
 								.map((e) => (e.amount = tools.nvl(e.lab.store.getUsedCapacity(e.resource),0),e)) 
 								.sort((l,r) => r.amount - l.amount)
   },
