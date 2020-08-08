@@ -12,12 +12,18 @@ var last_tick = 0;
 var tools = {
 
 	time: {
-		power { factory:{on:0} 
-					, source:{on:0}
-					},
-		flags { buy:{on:0}
-					, sell:{on:0}
-					}
+		power: {
+			factory:{on:Infinity},
+			source:{on:Infinity}
+		},
+		flags: {
+			buy:{on:Infinity},
+			sell:{on:Infinity}
+		}
+	},
+
+	timeOn: function(time, on) {
+		return Math.min(time, Game.time + on);
 	},
 	
 	nvl: function(a,b) {
