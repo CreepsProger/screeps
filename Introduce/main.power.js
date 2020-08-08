@@ -179,6 +179,8 @@ const power = {
 								return;
 							}
 						}
+						if(!!source.energy)
+							return;
 						tools.timeOn(time);
 						const err = pc.usePower(PWR, source);
 						pc.say(err? '⚡⚠️'+err:'⚡');
