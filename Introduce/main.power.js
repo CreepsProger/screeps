@@ -86,7 +86,7 @@ const power = {
 						return;
 					}
 				}
-				if(pc.store.getUsedCapacity(RESOURCE_OPS) > 200 &&
+				if(pc.store.getUsedCapacity(RESOURCE_OPS) > 300 &&
 					 !!pc.room.storage &&
 					 !!pc.room.storage.my &&
 					 !!pc.room.storage.store &&
