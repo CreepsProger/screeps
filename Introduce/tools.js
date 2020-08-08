@@ -13,17 +13,17 @@ var tools = {
 
 	time: {
 		power: {
-			factory:{on:Infinity},
-			source:{on:Infinity}
+			factory:{on:0},
+			source:{on:0}
 		},
 		flags: {
-			buy:{on:Infinity},
-			sell:{on:Infinity}
+			buy:{on:0},
+			sell:{on:0}
 		}
 	},
 
 	timeOn: function(time, on) {
-		return Math.min(time, Game.time + on);
+		time.on = time.on < Game.time? Game.time + on : Math.min(time.on, Game.time + on);
 	},
 	
 	nvl: function(a,b) {
