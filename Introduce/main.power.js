@@ -126,11 +126,17 @@ const power = {
 				}
 				if(!!conf && (!!conf.factory || !!conf.f || !!conf.oflr || !!conf.oflrn) &&
 					 !!pc.powers[PWR_OPERATE_FACTORY] &&
-					 !pc.powers[PWR_OPERATE_FACTORY].cooldown) {
+					 !pc.powers[PWR_OPERATE_FACTORY].cooldown && 
+					 Game.time > tools.nvl(Memory.power_time,0) ) {
 					cash.getFactories(roomName)
 						.forEach(function(factory,i) {//"effects":[{"power":19,"effect":19,"level":2,"ticksRemaining":923}],
-						if(!!factory.effects && factory.effects.find((e) => e.effect == PWR_OPERATE_FACTORY && e.ticksRemaining > 20))
-							return; 
+						if(!!factory.effects) {
+							const effect = factory.effects.find((e) => e.effect == PWR_OPERATE_FACTORY && e.ticksRemaining > 0);
+							if(!!effect) {
+								Memory.power_time = Math.min(tools.nvl(Memory.power_time,Infinity), Game.time + effect.ticksRemaining); 
+								return;
+							}
+						}
 						const err = pc.usePower(PWR_OPERATE_FACTORY, factory);
 						pc.say(err? '🏭⚠️'+err:'🏭');
 						if(err != OK) {
