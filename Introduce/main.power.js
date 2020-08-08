@@ -170,11 +170,10 @@ const power = {
 						.forEach(function(source,i) {
 						if(!!source.effects) {
 							const effect = source.effects.find((e) => e.effect == PWR && e.ticksRemaining > 0);
-							if(!!effect) {
-								tools.timeOn(time, effect.ticksRemaining);
-								return;
-							}
+							tools.timeOn(time, effect.ticksRemaining);
 						}
+						else 
+							tools.timeOn(time);
 						const err = pc.usePower(PWR, source);
 						pc.say(err? '⚡⚠️'+err:'⚡');
 						if(err != OK) {
