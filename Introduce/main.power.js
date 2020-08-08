@@ -28,9 +28,9 @@ const power = {
 			.forEach(function(pcName,i) {
 
 			const pc = Game.powerCreeps[pcName];
-			if(false) {
+			if(true) {
 				console.log('🔴👨‍🚒', Math.trunc(Game.time/10000), Game.time%10000
-										, JSON.stringify({main:'power', pc:pc}));
+										, JSON.stringify({main:'power', pc:pc, time:tools.time.power}));
 			}
 			const roomName = !!pc.pos?pc.pos.roomName:'##';
 			const conf = power.getConfig(roomName,pcName);
