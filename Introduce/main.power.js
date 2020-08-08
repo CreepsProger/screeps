@@ -129,7 +129,6 @@ const power = {
 					 !!conf && (!!conf.factory || !!conf.f || !!conf.oflr || !!conf.oflrn)) {
 					if(!!pc.powers[PWR_OPERATE_FACTORY].cooldown) {
 						Memory.time_power_factory = Math.min(Game.time + pc.powers[PWR_OPERATE_FACTORY].cooldown, tools.nvl(Memory.time_power_factory,Infinity)); 
-						return;
 					}
 					cash.getFactories(roomName)
 						.forEach(function(factory,i) {//"effects":[{"power":19,"effect":19,"level":2,"ticksRemaining":923}],
