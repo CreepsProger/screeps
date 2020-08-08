@@ -124,26 +124,30 @@ const power = {
 						}
 					});
 				}
-				if(Game.time > tools.nvl(Memory.time_power_factory,0) &&
-					 !!pc.powers[PWR_OPERATE_FACTORY] &&
-					 !!conf && (!!conf.factory || !!conf.f || !!conf.oflr || !!conf.oflrn)) {
-					if(!!pc.powers[PWR_OPERATE_FACTORY].cooldown) {
-						Memory.time_power_factory = Math.min(Game.time + pc.powers[PWR_OPERATE_FACTORY].cooldown, tools.nvl(Memory.time_power_factory,Infinity)); 
+				var PWR = PWR_OPERATE_FACTORY;
+				var time = tools.time.power.source;
+				if(Game.time > time.on &&
+					 !!pc.powers[PWR] &&
+					 !!conf && (!!conf.factory || !!conf.f)) {
+					if(!!pc.powers[PWR].cooldown) {
+						tools.timeOn(time, pc.powers[PWR].cooldown);
+						return;
 					}
 					cash.getFactories(roomName)
 						.forEach(function(factory,i) {//"effects":[{"power":19,"effect":19,"level":2,"ticksRemaining":923}],
 						if(!!factory.cooldown) {
-								Memory.time_power_factory = Math.min(Game.time + factory.cooldown, tools.nvl(Memory.time_power_factory,Infinity)); 
+								tools.timeOn(time, factory.cooldown); 
 								return;
 						}
 						if(!!factory.effects) {
-							const effect = factory.effects.find((e) => e.effect == PWR_OPERATE_FACTORY && e.ticksRemaining > 0);
+							const effect = factory.effects.find((e) => e.effect == PWR && e.ticksRemaining > 0);
 							if(!!effect) {
-								Memory.time_power_factory = Math.min(Game.time + effect.ticksRemaining, tools.nvl(Memory.time_power_factory,Infinity)); 
+								tools.timeOn(time, effect.ticksRemaining);
 								return;
 							}
 						}
-						const err = pc.usePower(PWR_OPERATE_FACTORY, factory);
+						tools.timeOn(time);
+						const err = pc.usePower(PWR, factory);
 						pc.say(err? '🏭⚠️'+err:'🏭');
 						if(err != OK) {
 							console.log('🔴👨‍🚒⚠️', Math.trunc(Game.time/10000), Game.time%10000
@@ -157,9 +161,9 @@ const power = {
 						}
 					});
 				}//power.use(PWR_REGEN_SOURCE, !!conf && (!!conf.sources || !!conf.r), tools.time.power.source);
-				const PWR = PWR_REGEN_SOURCE;
-				var time = tools.time.power.source;
-				if(Game.time >= time.on &&
+				PWR = PWR_REGEN_SOURCE;
+				time = tools.time.power.source;
+				if(Game.time > time.on &&
 					 !!pc.powers[PWR] &&
 					 !!conf && (!!conf.sources || !!conf.s)) {
 					if(!!pc.powers[PWR].cooldown) {
@@ -170,11 +174,12 @@ const power = {
 						.forEach(function(source,i) {
 						if(!!source.effects) {
 							const effect = source.effects.find((e) => e.effect == PWR && e.ticksRemaining > 0);
-							tools.timeOn(time, effect.ticksRemaining);
-							return;
+							if(!!effect) {
+								tools.timeOn(time, effect.ticksRemaining);
+								return;
+							}
 						}
-						else 
-							tools.timeOn(time);
+						tools.timeOn(time);
 						const err = pc.usePower(PWR, source);
 						pc.say(err? '⚡⚠️'+err:'⚡');
 						if(err != OK) {
