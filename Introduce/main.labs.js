@@ -51,7 +51,7 @@ const labs = {
 	getLabsToIn: function(roomName, res = '-') {
     return  labs.getLabsToInOut(roomName)
 								.filter((e) =>  !e.toEmpty &&
-																(e.resource == res || res == '-') &&
+																e.resource == res &&
 																tools.nvl(e.lab.store.getUsedCapacity(e.resource),0) < 1500
 											 )
 								.map((e) => {return {lab:e.lab, resource:e.resource, amount:2000-tools.nvl(e.lab.store.getUsedCapacity(e.resource),0)}}) 
