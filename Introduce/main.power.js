@@ -124,16 +124,23 @@ const power = {
 						}
 					});
 				}
-				if(!!conf && (!!conf.factory || !!conf.f || !!conf.oflr || !!conf.oflrn) &&
+				if(Game.time > tools.nvl(Memory.time_power_factory,0) &&
 					 !!pc.powers[PWR_OPERATE_FACTORY] &&
-					 !pc.powers[PWR_OPERATE_FACTORY].cooldown && 
-					 Game.time > tools.nvl(Memory.time_power_factory,0) ) {
+					 !!conf && (!!conf.factory || !!conf.f || !!conf.oflr || !!conf.oflrn)) {
+					if(!!pc.powers[PWR_OPERATE_FACTORY].cooldown) {
+						Memory.time_power_factory = Math.min(Game.time + pc.powers[PWR_OPERATE_FACTORY].cooldown, tools.nvl(Memory.time_power_factory,Infinity)); 
+						return;
+					}
 					cash.getFactories(roomName)
 						.forEach(function(factory,i) {//"effects":[{"power":19,"effect":19,"level":2,"ticksRemaining":923}],
+						if(!!factory.cooldown) {
+								Memory.time_power_factory = Math.min(Game.time + factory.cooldown, tools.nvl(Memory.time_power_factory,Infinity)); 
+								return;
+						}
 						if(!!factory.effects) {
 							const effect = factory.effects.find((e) => e.effect == PWR_OPERATE_FACTORY && e.ticksRemaining > 0);
 							if(!!effect) {
-								Memory.time_power_factory = Math.min(tools.nvl(Memory.time_power_factory,Infinity), Game.time + effect.ticksRemaining); 
+								Memory.time_power_factory = Math.min(Game.time + effect.ticksRemaining, tools.nvl(Memory.time_power_factory,Infinity)); 
 								return;
 							}
 						}
