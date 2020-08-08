@@ -67,12 +67,12 @@ const power = {
 				});
 			}
 			else {
-				if(pc.store.getUsedCapacity(RESOURCE_OPS) < 100 &&
+				if(pc.store.getUsedCapacity(RESOURCE_OPS) < 200 &&
 					 !!pc.room.storage &&
 					 !!pc.room.storage.my &&
 					 !!pc.room.storage.store &&
 					 pc.room.storage.store.getUsedCapacity(RESOURCE_OPS) > 0) {
-					const amount = Math.min(100-pc.store.getUsedCapacity(RESOURCE_OPS),pc.room.storage.store.getUsedCapacity(RESOURCE_OPS));
+					const amount = Math.min(200-pc.store.getUsedCapacity(RESOURCE_OPS),pc.room.storage.store.getUsedCapacity(RESOURCE_OPS));
 					const err = pc.withdraw(pc.room.storage, RESOURCE_OPS, amount);
 					pc.say(err? '🏨➡️♉⚠️'+err:'🏨➡️♉');
 					if(err != OK) {
@@ -86,12 +86,12 @@ const power = {
 						return;
 					}
 				}
-				if(pc.store.getUsedCapacity(RESOURCE_OPS) > 190 &&
+				if(pc.store.getUsedCapacity(RESOURCE_OPS) > 200 &&
 					 !!pc.room.storage &&
 					 !!pc.room.storage.my &&
 					 !!pc.room.storage.store &&
 					 pc.room.storage.store.getFreeCapacity(RESOURCE_OPS) > 0) {
-					const amount = Math.min(pc.store.getUsedCapacity(RESOURCE_OPS)-100,pc.room.storage.store.getFreeCapacity(RESOURCE_OPS));
+					const amount = Math.min(pc.store.getUsedCapacity(RESOURCE_OPS)-200,pc.room.storage.store.getFreeCapacity(RESOURCE_OPS));
 					const err = pc.transfer(pc.room.storage, RESOURCE_OPS, amount);
 					pc.say(err? '♉➡️🏨⚠️'+err:'♉➡️🏨');
 					if(err != OK) {
