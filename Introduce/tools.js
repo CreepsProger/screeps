@@ -13,14 +13,14 @@ var tools = {
 
 	time: {
 		power: {
-			ops:{on:0},
-			factory:{on:0},
-			labs:{on:0},
-			source:{on:0}
+			ops:{},
+			factory:{},
+			labs:{},
+			source:{}
 		},
 		flags: {
-			buy:{on:0},
-			sell:{on:0}
+			buy:{},
+			sell:{}
 		}
 	},
 	
