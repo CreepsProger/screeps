@@ -128,8 +128,9 @@ const power = {
 					 !!pc.powers[PWR_OPERATE_FACTORY] &&
 					 !pc.powers[PWR_OPERATE_FACTORY].cooldown) {
 					cash.getFactories(roomName)
-						.forEach(function(factory,i) {
-						//if(!!factory.effects && factory.effects.find(PWR_OPERATE_FACTORY))
+						.forEach(function(factory,i) {//"effects":[{"power":19,"effect":19,"level":2,"ticksRemaining":923}],
+						if(!!factory.effects && factory.effects.find((e) => e.effect == PWR_OPERATE_FACTORY && e.ticksRemaining > 20))
+							return; 
 						const err = pc.usePower(PWR_OPERATE_FACTORY, factory);
 						pc.say(err? '🏭⚠️'+err:'🏭');
 						if(err != OK) {
