@@ -24,17 +24,18 @@ const labs = {
 								.map((lab,i) => {return { i:i, resource:tools.nvl(lab.mineralType,labs.getConfLabRes(conf,i))
 																				, toEmpty:(labs.getConfLabRes(conf,i) != '-' && tools.nvl(lab.mineralType,labs.getConfLabRes(conf,i)) != labs.getConfLabRes(conf,i))
 																				, toRun:labs.getConfLabAgs(conf,i), configRes:labs.getConfLabRes(conf,i), lab:lab}}) 
+								.map((e) => ( e.to_run = Math.floor(Math.abs(tools.nvl(e.toRun,0)))
+													  , e.l_reag = ls[Math.floor(e.to_run/10%10)].mineralType
+													  , e.r_reag = ls[Math.floor(e.to_run%10)].mineralType
+													  , e.reaction = !!REACTIONS[e.l_reag]?REACTIONS[e.l_reag][e.r_reag]:null
+													  , e.toEmpty = !!e.toEmpty || (!!e.reaction && e.lab.mineralType != e.reaction)
+													  , e))
   },
 	
 	getLabsToEmpty: function(roomName) {
 		const ls = cash.getLabs(roomName);
     return  labs.getLabsToInOut(roomName) 
-								.map((e) => ( e.to_run = Math.floor(Math.abs(tools.nvl(e.toRun,0)))
-													  , e.l_reag = ls[Math.floor(e.to_run/10%10)].mineralType
-													  , e.r_reag = ls[Math.floor(e.to_run%10)].mineralType
-													  , e.reaction = !!REACTIONS[e.l_reag]?REACTIONS[e.l_reag][e.r_reag]:null
-													  , e))
-								.filter((e) =>  !!e.toEmpty || (!!e.reaction && e.lab.mineralType != e.reaction))
+								.filter((e) => !!e.toEmpty)
 								.map((e) => (e.amount = tools.nvl(e.lab.store.getUsedCapacity(e.resource),0),e)) 
 								.sort((l,r) => r.amount - l.amount)
   },
@@ -42,8 +43,7 @@ const labs = {
 	getLabsToOut: function(roomName) {
     return  labs.getLabsToInOut(roomName)
 								.filter((e) =>  !!e.toEmpty ||
-																tools.nvl(e.lab.store.getUsedCapacity(e.resource),0) > (!!e.toEmpty?0:2500)
-											 )
+																tools.nvl(e.lab.store.getUsedCapacity(e.resource),0) > (!!e.toEmpty?0:2500))
 								.map((e) => {return {lab:e.lab, resource:e.resource, amount:tools.nvl(e.lab.store.getUsedCapacity(e.resource),0)-(!!e.toEmpty?0:2000)}})
 								.sort((l,r) => r.amount - l.amount)
   },
