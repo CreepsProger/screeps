@@ -10,6 +10,15 @@ const constants = require('main.constants');
 var last_tick = 0;
 
 var tools = {
+
+	time: {
+		power { factory:Infinity
+					, source:Infinity
+					},
+		flags { buy:Infinity
+					, sell:Infinity
+					}
+	},
 	
 	nvl: function(a,b) {
 		return (!a)? b:a;
