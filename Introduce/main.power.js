@@ -179,7 +179,7 @@ const power = {
 								return;
 							}
 						}
-						if(!!source.energy)
+						if(!!source.energy && tooos.nvl(source.ticksToRegeneration,0) > 100)
 							return;
 						tools.timeOn(time);
 						const err = pc.usePower(PWR, source);
