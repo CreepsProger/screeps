@@ -125,7 +125,7 @@ const power = {
 					});
 				}
 				var PWR = PWR_OPERATE_FACTORY;
-				var time = tools.time.power.factory;
+				var time = tools.timeObj(tools.time.power.factory,pcName);
 				if(Game.time > time.on &&
 					 !!pc.powers[PWR] &&
 					 !!conf && (!!conf.factory || !!conf.f)) {
@@ -162,7 +162,7 @@ const power = {
 					});
 				}
 				PWR = PWR_REGEN_SOURCE;
-				time = tools.time.power.source;
+				time = tools.timeObj(tools.time.power.source, pcName);
 				if(Game.time > time.on &&
 					 !!pc.powers[PWR] &&
 					 !!conf && (!!conf.sources || !!conf.s)) {
@@ -197,7 +197,7 @@ const power = {
 					});
 				}
 				PWR = PWR_OPERATE_LAB;
-				time = tools.time.power.labs;
+				time = tools.timeObj(tools.time.power.labs,pcName);
 				if(Game.time > time.on &&
 					 !!pc.powers[PWR] &&
 					 !!conf && (!!conf.labs || !!conf.l)) {
@@ -238,7 +238,7 @@ const power = {
 					});
 				}
 				PWR = PWR_GENERATE_OPS;
-				time = tools.time.power.ops;
+				time = tools.timeObj(tools.time.power.ops,pcName);;
 				if(Game.time > time.on &&
 					 !!pc.powers[PWR] &&
 					 !!conf && (!!conf.ops || !!conf.o)) {
