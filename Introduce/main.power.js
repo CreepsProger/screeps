@@ -157,14 +157,26 @@ const power = {
 							return;
 						}
 					});
-				}
-				if(!!conf && (!!conf.sources || !!conf.r || !!conf.oflr || !!conf.oflrn) &&
-					 !!pc.powers[PWR_REGEN_SOURCE] &&
-					 !pc.powers[PWR_REGEN_SOURCE].cooldown) {
+				}//power.use(PWR_REGEN_SOURCE, !!conf && (!!conf.sources || !!conf.r), tools.time.power.source);
+				const PWR = PWR_REGEN_SOURCE;
+				var time = tools.time.power.source;
+				if(Game.time >= time.on &&
+					 !!pc.powers[PWR] &&
+					 !!conf && (!!conf.sources || !!conf.r || !!conf.oflr || !!conf.oflrn)) {
+					if(!!pc.powers[PWR].cooldown) {
+						tools.timeOn(time, pc.powers[PWR].cooldown);
+						return;
+					}
 					cash.getSources(roomName)
 						.forEach(function(source,i) {
-						//if(!!factory.effects && factory.effects.find(PWR_OPERATE_FACTORY))
-						const err = pc.usePower(PWR_REGEN_SOURCE, source);
+						if(!!source.effects) {
+							const effect = source.effects.find((e) => e.effect == PWR && e.ticksRemaining > 0);
+							if(!!effect) {
+								tools.timeOn(time, effect.ticksRemaining);
+								return;
+							}
+						}
+						const err = pc.usePower(PWR, source);
 						pc.say(err? '⚡⚠️'+err:'⚡');
 						if(err != OK) {
 							console.log('🔴👨‍🚒⚠️', Math.trunc(Game.time/10000), Game.time%10000
