@@ -12,11 +12,11 @@ var last_tick = 0;
 var tools = {
 
 	time: {
-		power { factory:{time:0} 
-					, source:{time:0}
+		power { factory:{on:0} 
+					, source:{on:0}
 					},
-		flags { buy:{time:0}
-					, sell:{time:0}
+		flags { buy:{on:0}
+					, sell:{on:0}
 					}
 	},
 	
