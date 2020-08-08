@@ -701,7 +701,7 @@ var spawns = {
 							}
 							else {
 								const f = 0+!!flags.flags['31'];
-								if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[8][L], 34);
+								if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[7][H], 34);
 								if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[7][M], 31);
 							}
 							if(conditions.TO_SPAWN_ROOM_DEFENDERS('W26S33')) {
@@ -712,7 +712,7 @@ var spawns = {
 								if(spawn.name == 'Spawn2') spawns.tryCreateCreep(spawn,   HEALER[7][H], 48);
 							}
 							else {
-								if(Sp12)	spawns.tryCreateCreep(spawn, WORKER[8][L], 44);
+								if(Sp12)	spawns.tryCreateCreep(spawn, WORKER[7][H], 44);
 								if(Sp12)	spawns.tryCreateCreep(spawn, CARIER[7][M], 41);
 							}
 							if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S33')) {
@@ -726,7 +726,7 @@ var spawns = {
 								if(spawn.name == 'Spawn3') spawns.tryCreateCreep(spawn,   HEALER[7][H], 68);
 							}
 							else {
-								if(Sp3)	spawns.tryCreateCreep(spawn, WORKER[8][L], 64);
+								if(Sp3)	spawns.tryCreateCreep(spawn, WORKER[7][H], 64);
 								if(Sp3)	spawns.tryCreateCreep(spawn, CARIER[7][M], 61);
 							}
 							if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S35')) {
@@ -749,7 +749,7 @@ var spawns = {
 								if(spawn.name == 'Spawn13') spawns.tryCreateCreep(spawn,   HEALER[7][H], 178);
 							}
 							else {
-								if(Sp5) spawns.tryCreateCreep(spawn,   WORKER[8][L], 174);
+								if(Sp5) spawns.tryCreateCreep(spawn,   WORKER[7][H], 174);
 								if(Sp5) spawns.tryCreateCreep(spawn,   CARIER[7][M], 171);
 							}
 							if(conditions.TO_SPAWN_ROOM_DEFENDERS('W27S34')) {
@@ -760,7 +760,7 @@ var spawns = {
 								if(spawn.name == 'Spawn16') spawns.tryCreateCreep(spawn,   HEALER[7][H], 88);
 							}
 							else {
-								if(Sp6) spawns.tryCreateCreep(spawn,   WORKER[8][L], 84);
+								if(Sp6) spawns.tryCreateCreep(spawn,   WORKER[7][H], 84);
 								if(Sp6) spawns.tryCreateCreep(spawn,   CARIER[7][M], 81);
 							}
 
