@@ -22,7 +22,7 @@ var tools = {
 		}
 	},
 
-	timeOn: function(time, on) {
+	timeOn: function(time, on = 0) {
 		time.on = time.on < Game.time? Game.time + on : Math.min(time.on, Game.time + on);
 	},
 	
