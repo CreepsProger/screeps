@@ -162,7 +162,7 @@ const power = {
 				var time = tools.time.power.source;
 				if(Game.time >= time.on &&
 					 !!pc.powers[PWR] &&
-					 !!conf && (!!conf.sources || !!conf.r || !!conf.oflr || !!conf.oflrn)) {
+					 !!conf && (!!conf.sources || !!conf.s)) {
 					if(!!pc.powers[PWR].cooldown) {
 						tools.timeOn(time, pc.powers[PWR].cooldown);
 						return;
