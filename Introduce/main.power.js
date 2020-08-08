@@ -125,7 +125,7 @@ const power = {
 					});
 				}
 				var PWR = PWR_OPERATE_FACTORY;
-				var time = tools.time.power.source;
+				var time = tools.time.power.factory;
 				if(Game.time > time.on &&
 					 !!pc.powers[PWR] &&
 					 !!conf && (!!conf.factory || !!conf.f)) {
