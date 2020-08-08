@@ -49,7 +49,7 @@ const power = {
 					}
 				});
 			}
-			else if(!!conf && (!!conf.renew || !!conf.n || !!conf.oflrn) && pc.ticksToLive < 500) {
+			else if(pc.ticksToLive < 500 && !!conf && (!!conf.renew || !!conf.n || !!conf.oflrn)) {
 				cash.getPowerSpawns(pc.pos.roomName)
 					.forEach(function(powerSpawn,i) {
 					const err = pc.renew(powerSpawn);
@@ -160,7 +160,7 @@ const power = {
 							return;
 						}
 					});
-				}//power.use(PWR_REGEN_SOURCE, !!conf && (!!conf.sources || !!conf.r), tools.time.power.source);
+				}
 				PWR = PWR_REGEN_SOURCE;
 				time = tools.time.power.source;
 				if(Game.time > time.on &&
@@ -196,12 +196,33 @@ const power = {
 						}
 					});
 				}
-				if(!!conf && (!!conf.labs || !!conf.l || !!conf.oflr || !!conf.oflrn) &&
-					 !!pc.powers[PWR_OPERATE_LAB] &&
-					 !pc.powers[PWR_OPERATE_LAB].cooldown) {
+				PWR = PWR_OPERATE_LAB;
+				time = tools.time.power.labs;
+				if(Game.time > time.on &&
+					 !!pc.powers[PWR] &&
+					 !!conf && (!!conf.labs || !!conf.l)) {
+					if(!!pc.powers[PWR].cooldown) {
+						tools.timeOn(time, pc.powers[PWR].cooldown);
+						return;
+					}
 					cash.getLabs(roomName)
 						.forEach(function(lab,i) {
-						//if(!!factory.effects && factory.effects.find(PWR_OPERATE_FACTORY))
+						if(!lab.cooldown) {
+							tools.timeOn(time, 100);
+							return;
+						}
+						else if(lab.cooldown > 10) {
+								tools.timeOn(time, lab.cooldown - 10); 
+								return;
+						}
+						if(!!lab.effects) {
+							const effect = lab.effects.find((e) => e.effect == PWR && e.ticksRemaining > 0);
+							if(!!effect) {
+								tools.timeOn(time, effect.ticksRemaining);
+								return;
+							}
+						}
+						tools.timeOn(time);
 						const err = pc.usePower(PWR_OPERATE_LAB, lab);
 						pc.say(err? '⚗️⚠️'+err:'⚗️');
 						if(err != OK) {
@@ -216,9 +237,15 @@ const power = {
 						}
 					});
 				}
-				if(!!conf && (!!conf.ops || !!conf.o || !!conf.oflr || !!conf.oflrn) &&
-					 !!pc.powers[PWR_GENERATE_OPS] &&
-					 !pc.powers[PWR_GENERATE_OPS].cooldown) {
+				PWR = PWR_GENERATE_OPS;
+				time = tools.time.power.ops;
+				if(Game.time > time.on &&
+					 !!pc.powers[PWR] &&
+					 !!conf && (!!conf.ops || !!conf.o)) {
+					if(!!pc.powers[PWR].cooldown) {
+						tools.timeOn(time, pc.powers[PWR].cooldown);
+						return;
+					}
 					const err = pc.usePower(PWR_GENERATE_OPS);
 					pc.say(err? '♉⚠️'+err:'♉');
 					if(err != OK) {
