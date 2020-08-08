@@ -171,6 +171,7 @@ const power = {
 						if(!!source.effects) {
 							const effect = source.effects.find((e) => e.effect == PWR && e.ticksRemaining > 0);
 							tools.timeOn(time, effect.ticksRemaining);
+							return;
 						}
 						else 
 							tools.timeOn(time);
