@@ -23,8 +23,14 @@ var tools = {
 			sell:{on:0}
 		}
 	},
+	
+	timeObj: function(time, name) {
+		time[name] = tools.nvl(time[name],{on:0});
+		return time[name];
+	},
 
 	timeOn: function(time, on = 0) {
+		time.on = tools.nvl(time.on,0);
 		time.on = time.on < Game.time? Game.time + on : Math.min(time.on, Game.time + on);
 	},
 	
