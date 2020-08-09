@@ -443,6 +443,7 @@ var flags = {
 				const roomName = fSell.pos.roomName;
 				const terminal = Game.rooms[roomName].terminal;
 				if(!!terminal.cooldown) {
+					n++;
 					Memory.sell_time = Math.min(tools.nvl(Memory.sell_time,Infinity), Game.time + terminal.cooldown);
 					return;
 				}
