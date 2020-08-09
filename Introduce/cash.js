@@ -244,8 +244,8 @@ var cash = {
 			return creep.pos.findInRange(FIND_STRUCTURES, 10, {
 				filter: (s) => (s.structureType == STRUCTURE_SPAWN || s.structureType == STRUCTURE_EXTENSION) &&
 				 							 // q == Math.floor(s.pos.x/5)*10 + Math. floor(s.pos.y/5) &&
-											 Math.abs(s.pos.x - Math.floor(creep.pos.x/5)*5 - 2) < 5 &&
-											 Math.abs(s.pos.y - Math.floor(creep.pos.y/5)*5 - 2) < 5
+											 Math.abs(s.pos.x - Math.floor(creep.pos.x/5)*5 - 2) <= 5 &&
+											 Math.abs(s.pos.y - Math.floor(creep.pos.y/5)*5 - 2) <= 5
 											 });
 			});
 	},
