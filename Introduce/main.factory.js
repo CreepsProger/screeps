@@ -85,7 +85,9 @@ const factory = {
 		var result =[];
 		while(to_run > 0 && err != OK) {
 			const line = Math.floor(to_run%10);
-			const product = f.config[line][0]
+			const product = f.config[line][0];
+			if(conf.getMaxVolumeToProdece(product) < terminal.getShardAmount(product))
+				continue;
 			err = f.produce(product);
 			to_run = Math.floor(to_run/10);
 			result.push({[f.pos.roomName]:line, err:err, product:product});
