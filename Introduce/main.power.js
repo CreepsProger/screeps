@@ -49,7 +49,7 @@ const power = {
 					}
 				});
 			}
-			else if(pc.ticksToLive < 500 && !!conf && (!!conf.renew || !!conf.n || !!conf.oflrn)) {
+			else if(pc.ticksToLive < 500 && !!conf && (!!conf.renew || !!conf.n)) {
 				cash.getPowerSpawns(pc.pos.roomName)
 					.forEach(function(powerSpawn,i) {
 					const err = pc.renew(powerSpawn);
@@ -105,24 +105,33 @@ const power = {
 						return;
 					}
 				}
+				if(!!conf && !!conf.g && pc.room.name != conf.g) {
+					const my_path_room = conf.g;
+					const exit = pc.room.findExitTo(my_path_room);
+					const target = pc.pos.findClosestByPath(exit);
+					const err = tools.moveTo(pc,target);
+					pc.say(err? '🚨⚠️'+err:'🚨');
+					if(err != OK) {
+						console.log('🔴👨‍🚒⚠️', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify( { main:'go', from:roomName, to:my_path_room
+																						 , err:err, pcName:pcName, target:target}));
+					}
+				}
 				if(!!conf && !!conf.enableRoom &&
 					 !!pc.room.controller &&
 					 !!pc.room.controller.my &&
 					 !pc.room.controller.isPowerEnabled) {
-					cash.getFactories(roomName)
-						.forEach(function(factory,i) {
-						const err = pc.enableRoom(pc.room.controller);
-						pc.say(err? '💈⚠️'+err:'💈');
-						if(err != OK) {
-							console.log('🔴👨‍🚒⚠️', Math.trunc(Game.time/10000), Game.time%10000
+					const err = pc.enableRoom(pc.room.controller);
+					pc.say(err? '💈⚠️'+err:'💈');
+					if(err != OK) {
+						console.log('🔴👨‍🚒⚠️', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { main:'enableRoom', room:roomName
 																						 , err:err, pcName:pcName, controller:pc.room.controller}));
-						}
-						if(err == ERR_NOT_IN_RANGE ) {
-							const err = tools.moveTo(pc, pc.room.controller);
-							pc.say(err? '🔜💈⚠️'+err:'🔜💈');
-						}
-					});
+					}
+					if(err == ERR_NOT_IN_RANGE ) {
+						const err = tools.moveTo(pc, pc.room.controller);
+						pc.say(err? '🔜💈⚠️'+err:'🔜💈');
+					}
 				}
 				var PWR = PWR_OPERATE_FACTORY;
 				var time = tools.timeObj(tools.time.power.factory,pcName);
