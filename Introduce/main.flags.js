@@ -482,15 +482,19 @@ var flags = {
 	},
 	//Buy: buy on market
 	Buy: function(Buy) {
-		if(Game.time < tools.nvl(Memory.buy_time,0) )
+		var time = tools.timeObj(tools.time.flags, 'buy');
+		if(Game.time < time.on)
 			return;
-		const roomName = Buy.pos.roomName;
-		const prefix = 'Buy.';
-		const terminal = Game.rooms[roomName].terminal;
-		if(!!terminal.cooldown) {
-			Memory.buy_time = Math.min(tools.nvl(Memory.buy_time,Infinity), Game.time + terminal.cooldown);
+		const fCreditsLimit = Game.flags['creditsLimit'];
+		const creditsLimit = !fCreditsLimit? 100000:Math.pow(10,11-fCreditsLimit.color)*(11-fCreditsLimit.secondaryColor);
+		const fBuying = Game.flags['Buying'];
+		const buying = !fBuying? 0:Math.pow(10,fBuying.color-1)*(fBuying.secondaryColor);
+		if(Game.market.credits <= creditsLimit) {
+			if(buying > 0)
+				tools.timeOn(time, buying);
 			return;
 		}
+		const prefix = 'Buy.';
 		var n = 0;
 
 		if(flags.flags[prefix+roomName] === undefined) {
@@ -503,15 +507,22 @@ var flags = {
 															, f.max = +f.name.substring(f.name.indexOf('÷')+1)
 															, f))
 						.forEach(function(fBuy)
-				{/*
+				{
+				const roomName = fBuy.pos.roomName;
+				const terminal = Game.rooms[roomName].terminal;
+				if(!!terminal.cooldown) {
+					n++;
+					tools.timeOn(time, terminal.cooldown);
+					return;
+				}
 				console.log('🤝Ⓜ️💠', Math.trunc(Game.time/10000), Game.time%10000
-													, JSON.stringify( { Buy:'fBuy', roomName:roomName, fBuy:fBuy}));*/
+													, JSON.stringify( { Buy:'fBuy', roomName:roomName, fBuy:fBuy}));
 				const terminalEnergy = terminal.store.getUsedCapacity(RESOURCE_ENERGY);
 				const order = Game.market.getAllOrders(order => order.resourceType == fBuy.resource &&
 																							 order.type == ORDER_SELL &&
 																							 order.amount > 0 &&
 																							 order.price <= fBuy.max &&
-																							 order.price >= fBuy.min).shift();
+																							 order.price >= fBuy.min).sort((l,r) => l.price - r.price).shift();
 				if(!order)
 					return;
 				var amount = order.amount;
@@ -522,8 +533,10 @@ var flags = {
 					half_amount = Math.floor(amount/2);
 					max_cost = order.resourceType==RESOURCE_ENERGY? half_amount:terminalEnergy;
 				}
+				if(Game.market.credits - amount*order.price < creditsLimit)
+					amount = Math.floor((Game.market.credits - creditsLimit) / order.price);
 				if(!amount)
-					return
+					return;
 				const err = Game.market.deal(order.id, amount, roomName);
 				console.log('🤝Ⓜ️💠', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { Buy:'Buy', roomName:roomName
@@ -533,10 +546,12 @@ var flags = {
 				n++;
 			});
 		}
-		if(n == 0) {
+		if(n == 0 && !buying) {
 			lastFlagRemoved = Buy;
 			lastFlagRemoved.remove();
 		}
+		if(buying > 0)
+			tools.timeOn(time, buying);
 	},
 	//Deal: market deal 
 	Deal: function(Deal) {
