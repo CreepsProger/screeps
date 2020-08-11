@@ -516,7 +516,7 @@ var flags = {
 					return;
 				}
 				console.log('🤝Ⓜ️💠', Math.trunc(Game.time/10000), Game.time%10000
-													, JSON.stringify( { Buy:'fBuy', roomName:roomName, fBuy:fBuy}));
+													, JSON.stringify( { Buy:'fBuy', roomName:roomName, buying:buying, fBuy:fBuy}));
 				const terminalEnergy = terminal.store.getUsedCapacity(RESOURCE_ENERGY);
 				const order = Game.market.getAllOrders(order => order.resourceType == fBuy.resource &&
 																							 order.type == ORDER_SELL &&
@@ -542,7 +542,7 @@ var flags = {
 													, JSON.stringify( { Buy:'Buy', roomName:roomName
 																						, resourse:order.resourceType, price:order.price
 																						, amount:(amount==order.amount?amount:''+amount+'('+order.amount+')')
-																						, err:err, fBuy:fBuy, order:order}));
+																						, err:err, fBuy:fBuy, order:order, buying:buying}));
 				n++;
 			});
 		}
