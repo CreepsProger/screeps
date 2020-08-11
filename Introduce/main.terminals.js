@@ -4,38 +4,69 @@ const tools = require('tools');
 const cash = require('cash');
 
 var terminals = {
+
 	getAllMyTerminalsToSpread: function() {
 		return cash.getAllMyTerminals().filter((t) => !!t && !!t.store && !!t.room && !!t.room.storage && !!t.room.storage.store);
 	},
+
+	shardValues:{},
+
+	calcShardValues: function(resource) {
+		const value = termianls.shardValues[resource];
+		if(value === undefined || value.time < Game.time) {
+			const all = terminals.getAllMyTerminalsToSpread();
+			const inCreeps =  Object.keys(Game.creeps).map((n) => tools.nvl(Game.creeps[n].store[resource],0))
+																								.reduce((amount,a) => amount+a,0);
+			const amount = all.reduce((amount,t) => amount + terminals.getAmount(t,resource), inCreeps);
+			termianls.shardValues[resource] = { time:Game.time
+																				, amount:amount
+																				, avgAmount:Math.floor(amount/all.length)};
+		}
+	},
+
+	getShardAmount: function(resource) {
+		terminals.calcShardValues(resource);
+		return termianls.shardValues[resource].amount;
+	},
+
+	getShardAvgAmount: function(resource) {
+		terminals.calcShardValues(resource);
+		return termianls.shardValues[resource].avgAmount;
+	},
+
+	roomsValues:{},
 	
+	calcRoomsValues: function(terminal,resource) {
+		const value = termianls.roomsValues[terminal.pos.roomName+resource];
+		if(value === undefined || value.time < Game.time) {
+			const terminalAmount = tools.nvl(terminal.store[resource],0);
+			const storageAmount = tools.nvl(terminal.room.storage.store[resource],0);
+			const dealAmount = terminals.getAmountToDeal(terminal,resource);
+			const storeAmount = terminals.getAmountToStore(terminal,resource);
+			const amount = (terminalAmount < dealAmount)?
+						terminalAmount-dealAmount:
+						terminalAmount-dealAmount + storageAmount-storeAmount;
+			termianls.roomsValues[terminal.pos.roomName+resource] =
+				{ time:Game.time
+				, amount:amount
+				, amountToStore:tools.nvl(config.getAmountToStore(terminal.pos.roomName,resource),0)
+				, amountToDeal:tools.nvl(config.getAmountToDeal(terminal.pos.roomName,resource),0)};
+		}
+	},
+
+	getAmount: function(terminal,resource) {
+		terminals.calcRoomsValues(terminal,resource);
+		return termianls.roomsValues[resource].amount;
+	},
+
 	getAmountToStore: function(terminal,resource) {
-		const amountToStore = tools.nvl(config.getAmountToStore(terminal.pos.roomName,resource),0);/*
-		if(amountToStore > 0) {
-			console.log( '📦🏨📜', Math.trunc(Game.time/10000), Game.time%10000
-                    , JSON.stringify( { terminals:'getAmountToStore', roomName:terminal.pos.roomName
-																			, resource:resource, amountToStore:amountToStore }));
-		}*/
-		return amountToStore;
+		terminals.calcRoomsValues(terminal,resource);
+		return termianls.roomsValues[resource].amountToStore;
 	},
 
 	getAmountToDeal: function(terminal,resource) {
-		const amountToDeal = tools.nvl(config.getAmountToDeal(terminal.pos.roomName,resource),0);
-		if(amountToDeal > 0) {/*
-			console.log( '🤝💲💠📜', Math.trunc(Game.time/10000), Game.time%10000
-                    , JSON.stringify( { terminals:'getAmountToDeal', roomName:terminal.pos.roomName
-																			, resource:resource, amountToDeal:amountToDeal }));*/
-		}
-		return amountToDeal;
-	},
-	
-	getAmount: function(terminal,resource) {
-		const terminalAmount = tools.nvl(terminal.store[resource],0);
-		const storageAmount = tools.nvl(terminal.room.storage.store[resource],0);
-		const dealAmount = terminals.getAmountToDeal(terminal,resource);
-		const storeAmount = terminals.getAmountToStore(terminal,resource);
-		return (terminalAmount < dealAmount)?
-				 terminalAmount-dealAmount:
-				 terminalAmount-dealAmount + storageAmount-storeAmount;
+		terminals.calcRoomsValues(terminal,resource);
+		return termianls.roomsValues[resource].amountToDeal;
 	},
 
 	getRoomAmount: function(creep,resource) {
@@ -49,14 +80,6 @@ var terminals = {
 																							.map((n) => tools.nvl(Game.creeps[n].store[resource],0))
 																							.reduce((amount,a) => amount+a,0);
 		return inCreeps + terminals.getAmount(creep.room.terminal, resource);
-	},
-	
-	getShardAvgAmount: function(resource) {
-		const all = terminals.getAllMyTerminalsToSpread();
-		const inCreeps =  Object.keys(Game.creeps).map((n) => tools.nvl(Game.creeps[n].store[resource],0))
-																							.reduce((amount,a) => amount+a,0);
-		const amount = all.reduce((amount,t) => amount + terminals.getAmount(t,resource), inCreeps);
-		return Math.floor(amount/all.length);
 	},
 	
 	getShardMinAmount: function(resource) {
