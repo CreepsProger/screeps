@@ -41,16 +41,16 @@ var terminals = {
 		if(value === undefined || value.time < Game.time) {
 			const terminalAmount = tools.nvl(terminal.store[resource],0);
 			const storageAmount = tools.nvl(terminal.room.storage.store[resource],0);
-			const dealAmount = terminals.getAmountToDeal(terminal,resource);
-			const storeAmount = terminals.getAmountToStore(terminal,resource);
+			const dealAmount = tools.nvl(config.getAmountToDeal(terminal.pos.roomName,resource),0);
+			const storeAmount = tools.nvl(config.getAmountToStore(terminal.pos.roomName,resource),0);
 			const amount = (terminalAmount < dealAmount)?
 						terminalAmount-dealAmount:
 						terminalAmount-dealAmount + storageAmount-storeAmount;
 			termianls.roomsValues[terminal.pos.roomName+resource] =
 				{ time:Game.time
 				, amount:amount
-				, amountToStore:tools.nvl(config.getAmountToStore(terminal.pos.roomName,resource),0)
-				, amountToDeal:tools.nvl(config.getAmountToDeal(terminal.pos.roomName,resource),0)};
+				, amountToStore:storeAmount
+				, amountToDeal:dealAmount};
 		}
 	},
 
