@@ -86,7 +86,7 @@ const factory = {
 		while(to_run > 0 && err != OK) {
 			const line = Math.floor(to_run%10);
 			const product = f.config[line][0];
-			if(config.getMaxVolumeToProdece(product) < terminal.getShardAmount(product))
+			if(config.getMaxVolumeToProduce(product) < terminal.getShardAmount(product))
 				continue;
 			err = f.produce(product);
 			to_run = Math.floor(to_run/10);
