@@ -515,8 +515,12 @@ var flags = {
 					tools.timeOn(time, terminal.cooldown);
 					return;
 				}
-				console.log('🤝Ⓜ️💠', Math.trunc(Game.time/10000), Game.time%10000
-													, JSON.stringify( { Buy:'fBuy', roomName:roomName, buying:buying, creditsLimit:creditsLimit, fBuy:fBuy}));
+				const fLogBuy = Game.flags['LB'];
+				if(!!fLogBuy) {
+					console.log('🤝Ⓜ️💠', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify( { Buy:'fBuy', roomName:roomName
+																						, buying:buying, creditsLimit:creditsLimit, fBuy:fBuy}));
+				}
 				const terminalEnergy = terminal.store.getUsedCapacity(RESOURCE_ENERGY);
 				const order = Game.market.getAllOrders(order => order.resourceType == fBuy.resource &&
 																							 order.type == ORDER_SELL &&
@@ -551,7 +555,7 @@ var flags = {
 			lastFlagRemoved.remove();
 		}
 		if(buying > 0)
-			tools.timeOn(time, buying);
+			tools.timeOn(time, Math.floor(Math.random()*buying) );
 	},
 	//Deal: market deal 
 	Deal: function(Deal) {
