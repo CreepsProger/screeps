@@ -18,7 +18,7 @@ var terminals = {
 			const inCreeps =  Object.keys(Game.creeps).map((n) => tools.nvl(Game.creeps[n].store[resource],0))
 																								.reduce((amount,a) => amount+a,0);
 			const amount = all.reduce((amount,t) => amount + terminals.getAmount(t,resource), inCreeps);
-			termianls.shardValues[resource] = { time:Game.time
+			terminals.shardValues[resource] = { time:Game.time
 																				, amount:amount
 																				, avgAmount:Math.floor(amount/all.length)};
 		}
