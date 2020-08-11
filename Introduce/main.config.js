@@ -19,6 +19,18 @@ var config = {
 			}
 	},
 	
+	getMaxVolumeToProduce: function(res) {
+		return Infinity;
+	},
+	
+	getMinVolumeToSell: function(res) {
+		return 0;
+	},
+	
+	getMinVolumeToBuy: function(res) {
+		return Infinity;
+	},
+	
 	getPowerConfig: function(roomName, pcName) {
 		const flagsPowerConfig = flags.getPowerConfig(roomName, pcName);
 		if(!!flagsPowerConfig)
