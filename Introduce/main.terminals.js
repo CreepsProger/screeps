@@ -12,7 +12,7 @@ var terminals = {
 	shardValues:{},
 
 	calcShardValues: function(resource) {
-		const value = termianls.shardValues[resource];
+		const value = terminals.shardValues[resource];
 		if(value === undefined || value.time < Game.time) {
 			const all = terminals.getAllMyTerminalsToSpread();
 			const inCreeps =  Object.keys(Game.creeps).map((n) => tools.nvl(Game.creeps[n].store[resource],0))
@@ -26,12 +26,12 @@ var terminals = {
 
 	getShardAmount: function(resource) {
 		terminals.calcShardValues(resource);
-		return termianls.shardValues[resource].amount;
+		return terminals.shardValues[resource].amount;
 	},
 
 	getShardAvgAmount: function(resource) {
 		terminals.calcShardValues(resource);
-		return termianls.shardValues[resource].avgAmount;
+		return terminals.shardValues[resource].avgAmount;
 	},
 
 	roomsValues:{},
