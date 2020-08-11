@@ -483,7 +483,7 @@ var flags = {
 	//Buy: buy on market
 	Buy: function(Buy) {
 		var time = tools.timeObj(tools.time.flags, 'buy');
-		if(Game.time < time.on)
+		if(Game.time <= time.on)
 			return;
 		const fCreditsLimit = Game.flags['creditsLimit'];
 		const creditsLimit = !fCreditsLimit? 100000:Math.pow(10,11-fCreditsLimit.color)*(11-fCreditsLimit.secondaryColor);
@@ -516,7 +516,7 @@ var flags = {
 					return;
 				}
 				console.log('🤝Ⓜ️💠', Math.trunc(Game.time/10000), Game.time%10000
-													, JSON.stringify( { Buy:'fBuy', roomName:roomName, buying:buying, fBuy:fBuy}));
+													, JSON.stringify( { Buy:'fBuy', roomName:roomName, buying:buying, creditsLimit:creditsLimit, fBuy:fBuy}));
 				const terminalEnergy = terminal.store.getUsedCapacity(RESOURCE_ENERGY);
 				const order = Game.market.getAllOrders(order => order.resourceType == fBuy.resource &&
 																							 order.type == ORDER_SELL &&
@@ -542,7 +542,7 @@ var flags = {
 													, JSON.stringify( { Buy:'Buy', roomName:roomName
 																						, resourse:order.resourceType, price:order.price
 																						, amount:(amount==order.amount?amount:''+amount+'('+order.amount+')')
-																						, err:err, fBuy:fBuy, order:order, buying:buying}));
+																						, err:err, fBuy:fBuy, order:order, buying:buying, creditsLimit:creditsLimit }));
 				n++;
 			});
 		}
