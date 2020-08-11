@@ -56,17 +56,17 @@ var terminals = {
 
 	getAmount: function(terminal,resource) {
 		terminals.calcRoomsValues(terminal,resource);
-		return terminals.roomsValues[resource].amount;
+		return terminals.roomsValues[terminal.pos.roomName+resource].amount;
 	},
 
 	getAmountToStore: function(terminal,resource) {
 		terminals.calcRoomsValues(terminal,resource);
-		return terminals.roomsValues[resource].amountToStore;
+		return terminals.roomsValues[terminal.pos.roomName+resource].amountToStore;
 	},
 
 	getAmountToDeal: function(terminal,resource) {
 		terminals.calcRoomsValues(terminal,resource);
-		return terminals.roomsValues[resource].amountToDeal;
+		return terminals.roomsValues[terminal.pos.roomName+resource].amountToDeal;
 	},
 
 	getRoomAmount: function(creep,resource) {
