@@ -46,7 +46,7 @@ var terminals = {
 			const amount = (terminalAmount < dealAmount)?
 						terminalAmount-dealAmount:
 						terminalAmount-dealAmount + storageAmount-storeAmount;
-			termianls.roomsValues[terminal.pos.roomName+resource] =
+			terminals.roomsValues[terminal.pos.roomName+resource] =
 				{ time:Game.time
 				, amount:amount
 				, amountToStore:storeAmount
@@ -56,17 +56,17 @@ var terminals = {
 
 	getAmount: function(terminal,resource) {
 		terminals.calcRoomsValues(terminal,resource);
-		return termianls.roomsValues[resource].amount;
+		return terminals.roomsValues[resource].amount;
 	},
 
 	getAmountToStore: function(terminal,resource) {
 		terminals.calcRoomsValues(terminal,resource);
-		return termianls.roomsValues[resource].amountToStore;
+		return terminals.roomsValues[resource].amountToStore;
 	},
 
 	getAmountToDeal: function(terminal,resource) {
 		terminals.calcRoomsValues(terminal,resource);
-		return termianls.roomsValues[resource].amountToDeal;
+		return terminals.roomsValues[resource].amountToDeal;
 	},
 
 	getRoomAmount: function(creep,resource) {
