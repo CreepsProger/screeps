@@ -497,7 +497,7 @@ var flags = {
 		const prefix = 'Buy.';
 		var n = 0;
 
-		if(flags.flags[prefix+roomName] === undefined) {
+		if(true) {
 			Object.keys(Game.flags)
 						.filter((name)=>name.substring(0,prefix.length) == prefix && Game.flags[name].pos.roomName == Buy.pos.roomName)
 						.sort((l,r) => l.localeCompare(r))
