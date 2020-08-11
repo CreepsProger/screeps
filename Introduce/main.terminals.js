@@ -37,7 +37,7 @@ var terminals = {
 	roomsValues:{},
 	
 	calcRoomsValues: function(terminal,resource) {
-		const value = termianls.roomsValues[terminal.pos.roomName+resource];
+		const value = terminals.roomsValues[terminal.pos.roomName+resource];
 		if(value === undefined || value.time < Game.time) {
 			const terminalAmount = tools.nvl(terminal.store[resource],0);
 			const storageAmount = tools.nvl(terminal.room.storage.store[resource],0);
