@@ -423,6 +423,39 @@ var flags = {
 		lastFlagRemoved = Limits; 
     lastFlagRemoved.remove()
 	},
+	//Order: order on market
+	Order: function(Order) {
+		const prefix = 'Order-';
+		var n = 0;
+
+		if(flags.flags[prefix] === undefined) {
+			Object.keys(Game.flags)
+						.filter((name)=>name.substring(0,prefix.length) == prefix)
+						.sort((l,r) => l.localeCompare(r))
+						.map((name) => Game.flags[name])
+						.map((f,i,arr) => ( f.type = f.name.substring(f.name.indexOf('-')+1,f.name.indexOf('.'))
+															, f.resource = f.name.substring(f.name.indexOf('.')+1,f.name.indexOf(':'))
+															, f.amount = +f.name.substring(f.name.indexOf(':')+1,f.name.indexOf('*'))
+															, f.price = +f.name.substring(f.name.indexOf('*')+1)
+															, f))
+						.forEach(function(fOrder)
+				{
+				const roomName = fOrder.pos.roomName;
+				const terminal = Game.rooms[roomName].terminal;
+				console.log('👉Ⓜ️💠', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify( { Order:'fOrder', roomName:roomName, fOrder:fOrder}));
+				const type = (fOrder.type == 'buy'? ORDER_BUY:ORDER_SELL) 
+				const err = Game.market.createOrder( { type: (fOrder.type == 'buy'? ORDER_BUY:ORDER_SELL)
+																						 , resourceType: fOrder.resource
+																						 , price: fOrder.price
+																						 , totalAmount: fOrder.amount
+																						 , roomName: fOrder.pos.roomName});
+				console.log('👉Ⓜ️💠', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify( { Order:'fOrder', err:err, roomName:roomName, fOrder:fOrder}));
+			});
+		}
+		Order.remove();
+	},
 	//Sell: sell on market
 	Sell: function(Sell) {
 		if(Game.time < tools.nvl(Memory.sell_time,0) )
