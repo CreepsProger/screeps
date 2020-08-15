@@ -499,7 +499,7 @@ var flags = {
 				const order = Game.market.getAllOrders(order => order.resourceType == fSell.resource &&
 																							 order.type == ORDER_BUY &&
 																							 order.amount > 0 &&
-																							 order.price >= fSell.min).shift();
+																							 order.price >= fSell.min).sort((l,r) => r.price - l.price).shift();
 				if(!order)
 					return;
 				var amount = Math.min(order.amount, terminal.store.getUsedCapacity(order.resourceType) );
