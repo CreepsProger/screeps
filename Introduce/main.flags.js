@@ -454,14 +454,16 @@ var flags = {
 													, JSON.stringify( { Order:'fOrder', err:err, roomName:roomName, fOrder:fOrder}));
 				if(err == OK) {
 					fOrder.room.visual.text('👉Ⓜ️💠' + fOrder.name + ' 👌'
-															 , fOrder.pos.x
-															 , fOrder.pos.y);
+																	, fOrder.pos.x
+																	, fOrder.pos.y
+																	, {opacity: 0.0});
 					fOrder.remove();
 				}
 				else {
 					fOrder.room.visual.text('👉Ⓜ️💠' + fOrder.name + ' ⚠️ ' + err
-															 , fOrder.pos.x
-															 , fOrder.pos.y);
+																	, fOrder.pos.x
+																	, fOrder.pos.y
+																	, {opacity: 0.0});
 				}
 			});
 		}
