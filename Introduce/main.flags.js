@@ -447,7 +447,8 @@ var flags = {
 					fOrder.room.visual.text('👉Ⓜ️📈📉' + fOrder.name + ' 👌'
 																	, fOrder.pos.x
 																	, fOrder.pos.y
-																	, {opacity: 0.8, font:'bold 2 Courier New'});
+																	//, {opacity: 0.8, font:'bold 2 Courier New'});
+																	, {opacity: 0.8, font:'1 Arial'});
 					fOrder.remove();
 				}
 				else {
