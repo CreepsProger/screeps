@@ -456,14 +456,14 @@ var flags = {
 					fOrder.room.visual.text('👉Ⓜ️💠' + fOrder.name + ' 👌'
 																	, fOrder.pos.x
 																	, fOrder.pos.y
-																	, {opacity: 0.0});
+																	, {opacity: 0.8});
 					fOrder.remove();
 				}
 				else {
 					fOrder.room.visual.text('👉Ⓜ️💠' + fOrder.name + ' ⚠️ ' + err
 																	, fOrder.pos.x
 																	, fOrder.pos.y
-																	, {opacity: 0.0});
+																	, {color:'red', font:0.8, opacity: 1.0});
 				}
 			});
 		}
