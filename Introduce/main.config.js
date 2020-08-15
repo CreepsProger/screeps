@@ -19,16 +19,16 @@ var config = {
 			}
 	},
 	
-	getMaxVolumeToProduce: function(res) {
-		return Infinity;
+	getMaxAvgAmountToProduce: function(res) {
+		return 10000;
 	},
 	
-	getMinVolumeToSell: function(res) {
-		return 0;
+	getMaxAvgAmountToSell: function(res) {
+		return 10000;
 	},
 	
-	getMinVolumeToBuy: function(res) {
-		return Infinity;
+	getMinAvgAmountToBuy: function(res) {
+		return 10000;
 	},
 	
 	getPowerConfig: function(roomName, pcName) {
