@@ -455,15 +455,13 @@ var flags = {
 				if(err == OK) {
 					fOrder.room.visual.text('👉Ⓜ️💠' + fOrder.name + ' 👌'
 															 , fOrder.pos.x
-															 , fOrder.pos.y + 1
-															 , {align: 'bottom'});
+															 , fOrder.pos.y);
 					fOrder.remove();
 				}
 				else {
 					fOrder.room.visual.text('👉Ⓜ️💠' + fOrder.name + ' ⚠️ ' + err
 															 , fOrder.pos.x
-															 , fOrder.pos.y + 5
-															 , {align: 'bottom'});
+															 , fOrder.pos.y);
 				}
 			});
 		}
