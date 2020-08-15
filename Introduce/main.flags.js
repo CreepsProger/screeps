@@ -451,7 +451,8 @@ var flags = {
 																	//, {opacity: 0.8, font:'1 Arial'});
 																	//, {opacity: 1.0, font:'9px monospace'});
 																	//, {opacity: 1.0, font:'9px Tahoma'});
-																	, {opacity: 1.0, font:'9px Calibri'});
+																	//, {opacity: 1.0, font:'9px Calibri'});
+																	, {opacity: 1.0, font:'10px Verdana'});
 					fOrder.remove();
 				}
 				else {
