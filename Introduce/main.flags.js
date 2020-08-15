@@ -596,6 +596,7 @@ var flags = {
 															, f))
 						.forEach(function(fBuy)
 				{
+				const roomName = fBuy.pos.roomName;
 				const ShardAvgAmount = require('main.terminals').getShardAvgAmount(fBuy.resource);
 				const MinAvgAmountToBuy = require('main.config').getMinAvgAmountToBuy(fBuy.resource);
 				if(ShardAvgAmount > MinAvgAmountToBuy) {
@@ -609,7 +610,6 @@ var flags = {
 																						, MinAvgAmountToBuy:MinAvgAmountToBuy}));
 					return;
 				}
-				const roomName = fBuy.pos.roomName;
 				const terminal = Game.rooms[roomName].terminal;
 				if(!!terminal.cooldown) {
 					n++;
