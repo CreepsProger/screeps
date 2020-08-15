@@ -513,10 +513,13 @@ var flags = {
 	},
 	//Sell: sell on market
 	Sell: function(Sell) {
-		if(Game.time < tools.nvl(Memory.sell_time,0) )
+		var time = tools.timeObj(tools.time.flags, 'sell');
+		if(Game.time <= time.on)
 			return;
 		const prefix = 'Sell.';
 		var n = 0;
+		const fSelling = Game.flags['Selling'];
+		const selling = !fSelling? 0:Math.pow(10,fSelling.color-1)*(fSelling.secondaryColor);
 
 		if(flags.flags[prefix] === undefined) {
 			Object.keys(Game.flags)
@@ -532,11 +535,27 @@ var flags = {
 				const terminal = Game.rooms[roomName].terminal;
 				if(!!terminal.cooldown) {
 					n++;
-					Memory.sell_time = Math.min(tools.nvl(Memory.sell_time,Infinity), Game.time + terminal.cooldown);
+					tools.timeOn(time, terminal.cooldown);
 					return;
 				}
-				console.log('🤝Ⓜ️💲', Math.trunc(Game.time/10000), Game.time%10000
-													, JSON.stringify( { Sell:'fSell', roomName:roomName, fSell:fSell}));
+				const ShardAvgAmount = require('main.terminals').getShardAvgAmount(fSell.resource);
+				const MaxAvgAmountToSell = require('main.config').getMaxAvgAmountToSell(fSell.resource);
+				if(ShardAvgAmount < MaxAvgAmountToSell) {
+					fSell.room.visual.text('👉Ⓜ️💲⛔ ' + ShardAvgAmount + ' < ' + MaxAvgAmountToSell
+																, fSell.pos.x
+																, fSell.pos.y);
+					console.log('🤝Ⓜ️💲⛔', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify( { Sell:'fSell', roomName:roomName
+																						, selling:selling, fSell:fSell
+																						, ShardAvgAmount:ShardAvgAmount
+																						, MaxAvgAmountToSell:MaxAvgAmountToSell}));
+					return;
+				}
+				const fLogSell = Game.flags['LS'];
+				if(!!fLogSell) {
+					console.log('🤝Ⓜ️💲', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify( { Sell:'fSell', roomName:roomName, fSell:fSell}));
+				}
 				const terminalEnergy = terminal.store.getUsedCapacity(RESOURCE_ENERGY);
 				const order = Game.market.getAllOrders(order => order.resourceType == fSell.resource &&
 																							 order.type == ORDER_BUY &&
@@ -560,13 +579,20 @@ var flags = {
 																						, resourse:order.resourceType, price:order.price
 																						, amount:(amount==order.amount?amount:''+amount+'('+order.amount+')')
 																						, err:err, fSell:fSell, order:order}));
+				if(err == OK) {
+					fSell.room.visual.text('👉Ⓜ️💲 ' + amount + ' * ' + order.price + ' 👌'
+																, fSell.pos.x
+																, fSell.pos.y);
+				}
 				n++;
 			});
 		}
-		if(n == 0) {
+		if(n == 0 && !selling) {
 			lastFlagRemoved = Sell;
 			lastFlagRemoved.remove();
 		}
+		if(selling > 0)
+			tools.timeOn(time, Math.floor(Math.random()*selling) );
 	},
 	//Buy: buy on market
 	Buy: function(Buy) {
