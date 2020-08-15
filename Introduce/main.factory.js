@@ -86,9 +86,9 @@ const factory = {
 		while(to_run > 0 && err != OK) {
 			const line = Math.floor(to_run%10);
 			const product = f.config[line][0];
-			if(terminals.getShardAvgAmount(product) > config.getMaxAvgAmountToProduce(product))
-				continue;
-			err = f.produce(product);
+			if(terminals.getShardAvgAmount(product) < config.getMaxAvgAmountToProduce(product)) {
+				err = f.produce(product);
+			}
 			to_run = Math.floor(to_run/10);
 			result.push({[f.pos.roomName]:line, err:err, product:product});
 		}
