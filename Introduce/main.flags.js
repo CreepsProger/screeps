@@ -448,7 +448,8 @@ var flags = {
 																	, fOrder.pos.x
 																	, fOrder.pos.y
 																	//, {opacity: 0.8, font:'bold 2 Courier New'});
-																	, {opacity: 0.8, font:'1 Arial'});
+																	//, {opacity: 0.8, font:'1 Arial'});
+																	, {opacity: 1.0, font:'7px monospace'});
 					fOrder.remove();
 				}
 				else {
