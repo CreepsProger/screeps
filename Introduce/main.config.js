@@ -1129,8 +1129,7 @@ var config = {
 							W25S28:
 							{ containers: {weight: 5153}
 							, sites:
-							 	[ {x:32, y:29, type:STRUCTURE_CONTAINER}
-								, {x:46, y:19, type:STRUCTURE_CONTAINER}
+							 	[
 							 	]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 5150, max_weight: 5159}
