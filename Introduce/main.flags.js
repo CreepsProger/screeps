@@ -452,6 +452,19 @@ var flags = {
 																						 , roomName: fOrder.pos.roomName});
 				console.log('👉Ⓜ️💠', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { Order:'fOrder', err:err, roomName:roomName, fOrder:fOrder}));
+				if(err == OK) {
+					fOrder.room.visual.text('👉Ⓜ️💠' + fOrder.name + ' 👌'
+															 , fOrder.pos.x
+															 , fOrder.pos.y + 1
+															 , {align: 'bottom', opacity: 0.8});
+					fOrder.remove();
+				}
+				else {
+					fOrder.room.visual.text('👉Ⓜ️💠' + fOrder.name + ' ⚠️ ' + err
+															 , fOrder.pos.x
+															 , fOrder.pos.y + 1
+															 , {align: 'bottom', opacity: 0.8});
+				}
 			});
 		}
 		Order.remove();
