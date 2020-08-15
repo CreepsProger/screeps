@@ -449,7 +449,7 @@ var flags = {
 																	, fOrder.pos.y
 																	//, {opacity: 0.8, font:'bold 2 Courier New'});
 																	//, {opacity: 0.8, font:'1 Arial'});
-																	, {opacity: 1.0, font:'7px monospace'});
+																	, {opacity: 1.0, font:'9px monospace'});
 					fOrder.remove();
 				}
 				else {
