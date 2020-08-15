@@ -1,5 +1,6 @@
 // $Id$
 const constants = require('main.constants');
+const terminals = require('main.terminals');
 const log = require('main.log');
 const tools = require('tools');
 const cash = require('cash');
