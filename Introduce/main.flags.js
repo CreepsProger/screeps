@@ -422,9 +422,10 @@ var flags = {
 		}
 		lastFlagRemoved = Limits; 
     lastFlagRemoved.remove()
-	},// Price: Change order price on market
+	},
+	// Price: Change order price on market
 	Price: function(Price) {
-		const prefix = 'Price-';
+		const prefix = 'Price.';
 		var n = 0;
 
 		if(flags.flags[prefix] === undefined) {
