@@ -596,6 +596,20 @@ var flags = {
 															, f))
 						.forEach(function(fBuy)
 				{
+				if(terminals.getShardAvgAmount(fBuy.resource) > config.getMinAvgAmountToBuy(fBuy.resource)) {
+					fBuy.room.visual.text('👉Ⓜ️💠⛔ '
+																+ terminals.getShardAvgAmount(fBuy.resource)
+																+ ' > '
+																+ config.getMinAvgAmountToBuy(fBuy.resource)
+																, fBuy.pos.x
+																, fBuy.pos.y);
+					console.log('🤝Ⓜ️💠⛔', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify( { Buy:'fBuy', roomName:roomName
+																						, buying:buying, creditsLimit:creditsLimit, fBuy:fBuy
+																						, ShardAvgAmount:terminals.getShardAvgAmount(fBuy.resource)
+																						, MinAvgAmountToBuy:config.getMinAvgAmountToBuy(fBuy.resource)}));
+					return;
+				}
 				const roomName = fBuy.pos.roomName;
 				const terminal = Game.rooms[roomName].terminal;
 				if(!!terminal.cooldown) {
