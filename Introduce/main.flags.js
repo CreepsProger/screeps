@@ -463,7 +463,7 @@ var flags = {
 					fOrder.room.visual.text('👉Ⓜ️💠' + fOrder.name + ' ⚠️ ' + err
 																	, fOrder.pos.x
 																	, fOrder.pos.y
-																	, {color:'red', font:0.8, opacity: 1.0});
+																	, {color:'red', font:1/Order.color, opacity: 1.0});
 				}
 			});
 		}
