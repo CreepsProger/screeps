@@ -1,6 +1,5 @@
 // $Id$
 const constants = require('main.constants');
-const terminals = require('main.terminals');
 const log = require('main.log');
 const tools = require('tools');
 const cash = require('cash');
@@ -597,18 +596,17 @@ var flags = {
 															, f))
 						.forEach(function(fBuy)
 				{
-				if(terminals.getShardAvgAmount(fBuy.resource) > config.getMinAvgAmountToBuy(fBuy.resource)) {
-					fBuy.room.visual.text('👉Ⓜ️💠⛔ '
-																+ terminals.getShardAvgAmount(fBuy.resource)
-																+ ' > '
-																+ config.getMinAvgAmountToBuy(fBuy.resource)
+				const ShardAvgAmount = require('main.terminals').getShardAvgAmount(fBuy.resource);
+				const MinAvgAmountToBuy = require('main.config').getMinAvgAmountToBuy(fBuy.resource);
+				if(ShardAvgAmount > MinAvgAmountToBuy) {
+					fBuy.room.visual.text('👉Ⓜ️💠⛔ ' + ShardAvgAmount + ' > ' + MinAvgAmountToBuy
 																, fBuy.pos.x
 																, fBuy.pos.y);
 					console.log('🤝Ⓜ️💠⛔', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { Buy:'fBuy', roomName:roomName
 																						, buying:buying, creditsLimit:creditsLimit, fBuy:fBuy
-																						, ShardAvgAmount:terminals.getShardAvgAmount(fBuy.resource)
-																						, MinAvgAmountToBuy:config.getMinAvgAmountToBuy(fBuy.resource)}));
+																						, ShardAvgAmount:ShardAvgAmount
+																						, MinAvgAmountToBuy:MinAvgAmountToBuy}));
 					return;
 				}
 				const roomName = fBuy.pos.roomName;
