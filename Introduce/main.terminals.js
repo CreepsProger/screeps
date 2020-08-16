@@ -51,14 +51,15 @@ var terminals = {
 			const dealAmount = tools.nvl(config.getAmountToDeal(terminal.pos.roomName,resource),0);
 			const storeAmount = tools.nvl(config.getAmountToStore(terminal.pos.roomName,resource),0);
 			const amount = (terminalAmount < dealAmount)?
-						terminalAmount-dealAmount:
-						terminalAmount-dealAmount + storageAmount-storeAmount;
+						terminalAmount - dealAmount:
+						terminalAmount - dealAmount + storageAmount - storeAmount;
+			const amount2 = terminalAmount - dealAmount + storageAmount - storeAmount;
 			const amountWithoutDeal = (terminalAmount < dealAmount)?
 						storageAmount-storeAmount:
 						terminalAmount-dealAmount + storageAmount-storeAmount;
 			terminals.roomsValues[terminal.pos.roomName+resource] =
 				{ time:Game.time
-				, amount:amount
+				, amount:amount2
 				, amountWithoutDeal:amountWithoutDeal
 				, amountToStore:storeAmount
 				, amountToDeal:dealAmount};
