@@ -527,8 +527,8 @@ var flags = {
 						.sort((l,r) => l.localeCompare(r))
 						.map((name) => Game.flags[name])
 						.map((f,i,arr) => ( f.resource = f.name.substring(f.name.indexOf('.')+1,f.name.indexOf(':'))
-															, f.min = +f.name.substring(f.name.indexOf(':')+1,f.name.indexOf('!'))
-															, f.MaxAvgAmountToSell = +f.name.substring(f.name.indexOf('!')+1)
+															, f.min = +f.name.substring(f.name.indexOf(':')+1,f.name.indexOf('>'))
+															, f.MaxAvgAmountToSell = +f.name.substring(f.name.indexOf('>')+1)
 															, f))
 						.forEach(function(fSell)
 				{
@@ -619,13 +619,14 @@ var flags = {
 						.map((name) => Game.flags[name])
 						.map((f,i,arr) => ( f.resource = f.name.substring(f.name.indexOf('.')+1,f.name.indexOf(':'))
 															, f.min = +f.name.substring(f.name.indexOf(':')+1,f.name.indexOf('÷')) 
-															, f.max = +f.name.substring(f.name.indexOf('÷')+1)
+															, f.max = +f.name.substring(f.name.indexOf('÷')+1,f.name.indexOf('<')) 
+															, f.MinAvgAmountToBuy = +f.name.substring(f.name.indexOf('<')+1)
 															, f))
 						.forEach(function(fBuy)
 				{
 				const roomName = fBuy.pos.roomName;
 				const ShardAvgAmount = require('main.terminals').getShardAvgAmount(fBuy.resource);
-				const MinAvgAmountToBuy = require('main.config').getMinAvgAmountToBuy(fBuy.resource);
+				const MinAvgAmountToBuy = !!fBuy.MinAvgAmountToBuy? fBuy.MinAvgAmountToBuy : require('main.config').getMinAvgAmountToBuy(fBuy.resource);
 				if(ShardAvgAmount > MinAvgAmountToBuy) {
 					fBuy.room.visual.text('👉Ⓜ️💠⛔ ' + ShardAvgAmount + ' > ' + MinAvgAmountToBuy
 																, fBuy.pos.x
