@@ -53,13 +53,15 @@ var terminals = {
 			const amount = (terminalAmount < dealAmount)?
 						terminalAmount - dealAmount:
 						terminalAmount - dealAmount + storageAmount - storeAmount;
-			const amount2 = terminalAmount - dealAmount + storageAmount - storeAmount;
+			const amount2 = (terminalAmount < dealAmount)?
+						terminalAmount - dealAmount:
+						terminalAmount - dealAmount + storageAmount - storeAmount;
 			const amountWithoutDeal = (terminalAmount < dealAmount)?
 						storageAmount-storeAmount:
 						terminalAmount-dealAmount + storageAmount-storeAmount;
 			terminals.roomsValues[terminal.pos.roomName+resource] =
 				{ time:Game.time
-				, amount:amount2
+				, amount:amountWithoutDeal
 				, amountWithoutDeal:amountWithoutDeal
 				, amountToStore:storeAmount
 				, amountToDeal:dealAmount};
