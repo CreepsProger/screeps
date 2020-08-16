@@ -18,9 +18,11 @@ var terminals = {
 			const inCreeps =  Object.keys(Game.creeps).map((n) => tools.nvl(Game.creeps[n].store[resource],0))
 																								.reduce((amount,a) => amount+a,0);
 			const amount = all.reduce((amount,t) => amount + terminals.getAmount(t,resource), inCreeps);
+			const amountWithoutDeals = all.reduce((amount,t) => amount + terminals.getAmountWithoutDeal(t,resource), inCreeps);
 			terminals.shardValues[resource] = { time:Game.time
 																				, amount:amount
-																				, avgAmount:Math.floor(amount/all.length)};
+																				, avgAmount:Math.floor(amount/all.length)
+																				, avgAmountWithoutDeals:Math.floor(amountWithoutDeals/all.length)};
 		}
 	},
 
@@ -32,6 +34,11 @@ var terminals = {
 	getShardAvgAmount: function(resource) {
 		terminals.calcShardValues(resource);
 		return terminals.shardValues[resource].avgAmount;
+	},
+	
+	getShardAvgAmountWithoutDeals: function(resource) {
+		terminals.calcShardValues(resource);
+		return terminals.shardValues[resource].avgAmountWithoutDeals;
 	},
 
 	roomsValues:{},
@@ -46,9 +53,13 @@ var terminals = {
 			const amount = (terminalAmount < dealAmount)?
 						terminalAmount-dealAmount:
 						terminalAmount-dealAmount + storageAmount-storeAmount;
+			const amountWithoutDeal = (terminalAmount < dealAmount)?
+						storageAmount-storeAmount:
+						terminalAmount-dealAmount + storageAmount-storeAmount;
 			terminals.roomsValues[terminal.pos.roomName+resource] =
 				{ time:Game.time
 				, amount:amount
+				, amountWithoutDeal:amountWithoutDeal
 				, amountToStore:storeAmount
 				, amountToDeal:dealAmount};
 		}
@@ -57,6 +68,11 @@ var terminals = {
 	getAmount: function(terminal,resource) {
 		terminals.calcRoomsValues(terminal,resource);
 		return terminals.roomsValues[terminal.pos.roomName+resource].amount;
+	},
+	
+	getAmountWithoutDeal: function(terminal,resource) {
+		terminals.calcRoomsValues(terminal,resource);
+		return terminals.roomsValues[terminal.pos.roomName+resource].amountWithoutDeal;
 	},
 
 	getAmountToStore: function(terminal,resource) {
