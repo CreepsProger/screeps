@@ -540,7 +540,7 @@ var flags = {
 					return;
 				}
 				const ShardAvgAmountWithoutDeals = require('main.terminals').getShardAvgAmountWithoutDeals(fSell.resource);
-				const MaxAvgAmountToSell = !!f.MaxAvgAmountToSell? f.MaxAvgAmountToSell : require('main.config').getMaxAvgAmountToSell(fSell.resource);
+				const MaxAvgAmountToSell = !!fSell.MaxAvgAmountToSell? fSell.MaxAvgAmountToSell : require('main.config').getMaxAvgAmountToSell(fSell.resource);
 				if(ShardAvgAmountWithoutDeals < MaxAvgAmountToSell) {
 					fSell.room.visual.text('👉Ⓜ️💲⛔ ' + ShardAvgAmountWithoutDeals + ' < ' + MaxAvgAmountToSell
 																, fSell.pos.x
