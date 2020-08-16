@@ -538,16 +538,16 @@ var flags = {
 					tools.timeOn(time, terminal.cooldown);
 					return;
 				}
-				const ShardAvgAmount = require('main.terminals').getShardAvgAmount(fSell.resource);
+				const ShardAvgAmountWithoutDeals = require('main.terminals').getShardAvgAmountWithoutDeals(fSell.resource);
 				const MaxAvgAmountToSell = require('main.config').getMaxAvgAmountToSell(fSell.resource);
-				if(ShardAvgAmount < MaxAvgAmountToSell) {
-					fSell.room.visual.text('👉Ⓜ️💲⛔ ' + ShardAvgAmount + ' < ' + MaxAvgAmountToSell
+				if(ShardAvgAmountWithoutDeals < MaxAvgAmountToSell) {
+					fSell.room.visual.text('👉Ⓜ️💲⛔ ' + ShardAvgAmountWithoutDeals + ' < ' + MaxAvgAmountToSell
 																, fSell.pos.x
 																, fSell.pos.y);
 					console.log('🤝Ⓜ️💲⛔', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { Sell:'fSell', roomName:roomName
 																						, selling:selling, fSell:fSell
-																						, ShardAvgAmount:ShardAvgAmount
+																						, ShardAvgAmountWithoutDeals:ShardAvgAmountWithoutDeals
 																						, MaxAvgAmountToSell:MaxAvgAmountToSell}));
 					return;
 				}
