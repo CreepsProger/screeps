@@ -527,7 +527,8 @@ var flags = {
 						.sort((l,r) => l.localeCompare(r))
 						.map((name) => Game.flags[name])
 						.map((f,i,arr) => ( f.resource = f.name.substring(f.name.indexOf('.')+1,f.name.indexOf(':'))
-															, f.min = +f.name.substring(f.name.indexOf(':')+1)
+															, f.min = +f.name.substring(f.name.indexOf(':')+1,f.name.indexOf('!'))
+															, f.MaxAvgAmountToSell = +f.name.substring(f.name.indexOf('!')+1)
 															, f))
 						.forEach(function(fSell)
 				{
@@ -539,7 +540,7 @@ var flags = {
 					return;
 				}
 				const ShardAvgAmountWithoutDeals = require('main.terminals').getShardAvgAmountWithoutDeals(fSell.resource);
-				const MaxAvgAmountToSell = require('main.config').getMaxAvgAmountToSell(fSell.resource);
+				const MaxAvgAmountToSell = !!f.MaxAvgAmountToSell? f.MaxAvgAmountToSell : require('main.config').getMaxAvgAmountToSell(fSell.resource);
 				if(ShardAvgAmountWithoutDeals < MaxAvgAmountToSell) {
 					fSell.room.visual.text('👉Ⓜ️💲⛔ ' + ShardAvgAmountWithoutDeals + ' < ' + MaxAvgAmountToSell
 																, fSell.pos.x
