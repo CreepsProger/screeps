@@ -614,7 +614,7 @@ var flags = {
 
 		if(true) {
 			Object.keys(Game.flags)
-						.filter((name)=>name.substring(0,prefix.length) == prefix && Game.flags[name].pos.roomName == Buy.pos.roomName)
+						.filter((name)=>name.substring(0,prefix.length) == prefix)
 						.sort((l,r) => l.localeCompare(r))
 						.map((name) => Game.flags[name])
 						.map((f,i,arr) => ( f.resource = f.name.substring(f.name.indexOf('.')+1,f.name.indexOf(':'))
