@@ -619,7 +619,7 @@ var flags = {
 						.map((name) => Game.flags[name])
 						.map((f,i,arr) => ( f.resource = f.name.substring(f.name.indexOf('.')+1,f.name.indexOf(':'))
 															, f.min = +f.name.substring(f.name.indexOf(':')+1,f.name.indexOf('÷')) 
-															, f.max = +f.name.substring(f.name.indexOf('÷')+1,f.name.indexOf('<')) 
+															, f.max = +f.name.substring(f.name.indexOf('÷')+1,f.name.indexOf('<')<0?f.name.length:f.name.indexOf('<')) 
 															, f.MinAvgAmountToBuy = +f.name.substring(f.name.indexOf('<')+1)
 															, f))
 						.forEach(function(fBuy)
