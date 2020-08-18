@@ -626,16 +626,16 @@ var flags = {
 						.forEach(function(fBuy)
 				{
 				const roomName = fBuy.pos.roomName;
-				const ShardAvgAmount = require('main.terminals').getShardAvgAmount(fBuy.resource);
+				const ShardAvgAmountWithoutDeals = require('main.terminals').getShardAvgAmountWithoutDeals(fBuy.resource);
 				const MinAvgAmountToBuy = !!fBuy.MinAvgAmountToBuy? fBuy.MinAvgAmountToBuy : require('main.config').getMinAvgAmountToBuy(fBuy.resource);
-				if(ShardAvgAmount > MinAvgAmountToBuy) {
-					fBuy.room.visual.text('👉Ⓜ️💠⛔ ' + ShardAvgAmount + ' > ' + MinAvgAmountToBuy
+				if(ShardAvgAmountWithoutDeals > MinAvgAmountToBuy) {
+					fBuy.room.visual.text('👉Ⓜ️💠⛔ ' + ShardAvgAmountWithoutDeals + ' > ' + MinAvgAmountToBuy
 																, fBuy.pos.x
 																, fBuy.pos.y);
 					console.log('🤝Ⓜ️💠⛔', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { Buy:'fBuy', roomName:roomName
 																						, buying:buying, creditsLimit:creditsLimit, fBuy:fBuy
-																						, ShardAvgAmount:ShardAvgAmount
+																						, ShardAvgAmountWithoutDeals:ShardAvgAmountWithoutDeals
 																						, MinAvgAmountToBuy:MinAvgAmountToBuy}));
 					return;
 				}
