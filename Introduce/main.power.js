@@ -133,8 +133,42 @@ const power = {
 						pc.say(err? '🔜💈⚠️'+err:'🔜💈');
 					}
 				}
-				var PWR = PWR_OPERATE_FACTORY;
-				var time = tools.timeObj(tools.time.power.factory,pcName);
+				var PWR = PWR_OPERATE_CONTROLLER;
+				var time = tools.timeObj(tools.time.power.controller,pcName);
+				if(Game.time > time.on &&
+					 !!pc.powers[PWR] &&
+					 !!conf && (!!conf.controller || !!conf.c) &&
+					 !!pc.room.controller &&
+					 !!pc.room.controller.my) {
+					if(!!pc.powers[PWR].cooldown) {
+						tools.timeOn(time, pc.powers[PWR].cooldown);
+						return;
+					}
+					if(true) {
+						if(!!pc.room.controller.effects) {
+							const effect = pc.room.controller.effects.find((e) => e.effect == PWR && e.ticksRemaining > 0);
+							if(!!effect) {
+								tools.timeOn(time, effect.ticksRemaining);
+								return;
+							}
+						}
+						tools.timeOn(time);
+						const err = pc.usePower(PWR, pc.room.controller);
+						pc.say(err? '💈⚡⚠️'+err:'💈⚡');
+						if(err != OK) {
+							console.log('🔴👨‍🚒⚠️', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify( { main:'usePower', room:roomName
+																						 , err:err, pcName:pcName, controller:pc.room.controller}));
+						}
+						if(err == ERR_NOT_IN_RANGE ) {
+							const err = tools.moveTo(pc, pc.room.controller);
+							pc.say(err? '🔜💈⚡⚠️'+err:'🔜💈⚡');
+							return;
+						}
+					}
+				}
+				PWR = PWR_OPERATE_FACTORY;
+				time = tools.timeObj(tools.time.power.factory,pcName);
 				if(Game.time > time.on &&
 					 !!pc.powers[PWR] &&
 					 !!conf && (!!conf.factory || !!conf.f)) {
