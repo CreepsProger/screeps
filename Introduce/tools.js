@@ -16,7 +16,8 @@ var tools = {
 			ops:{},
 			factory:{},
 			labs:{},
-			source:{}
+			source:{},
+			controller{}
 		},
 		flags: {
 			buy:{},
