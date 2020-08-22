@@ -71,7 +71,7 @@ var role = {
 		const this_room = creep.room.name;
 		const my_room = creep.memory[role.name].room;
 		const my_shard = creep.memory[role.name].shard;
-		const my_shard_config = Memory.config.shards[my_shard];
+		const my_shard_config = config.Memory.shards[my_shard];
 		const this_room_config = my_shard_config.rooms[this_room];
 		const my_room_config = my_shard_config.rooms[my_room];
 
