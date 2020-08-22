@@ -17,7 +17,9 @@ var config = {
 										, JSON.stringify(config.version)
 									  , args);
 			}
-	},
+	}, 
+	
+	Memory: {},
 	
 	getMaxAvgAmountToProduce: function(res) {
 		const commodity = COMMODITIES[res];
@@ -282,9 +284,9 @@ var config = {
 	init: function() {
 		// if(Memory.config === undefined ||
 		// 	 Memory.config.v === undefined ||
-	  if(!Memory.config ||
-			 !Memory.config.v ||
-			  Memory.config.v != config.version) {
+	  if(!config.Memory ||
+			 !config.Memory.v ||
+			  config.Memory.v != config.version) {
 			Memory.config	=
 			{ v: config.version
 			,	main_path:{ W29S37: 'W28S37'
@@ -2599,14 +2601,15 @@ var config = {
 					}
 				}
 			};
+			config.Memory = Memory.config;
 			config.log('init config', config.inited, 'Memory.config:', JSON.stringify(Memory.config));
 		}
 	},
 
 	setRoom: function(creep, role) {
 		var already = false;
-		for(var shard_name in Memory.config.shards) {
-			var shard_config = Memory.config.shards[shard_name];
+		for(var shard_name in config.Memory.shards) {
+			var shard_config = config.Memory.shards[shard_name];
 			// console.log('setRoom:', JSON.stringify({shard_name:shard_name,shard_config:shard_config}));
 		  // var shard_name = 'shard3' // Game.shard.name
 			// var shard_config = Memory.config;
