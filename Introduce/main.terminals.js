@@ -84,6 +84,20 @@ var terminals = {
 		terminals.calcRoomsValues(terminal,resource);
 		return terminals.roomsValues[terminal.pos.roomName+resource].amountToDeal;
 	},
+	
+	creepsValues:{},
+	
+	calcCreepsValues: function(creepRoomId, resource) {
+		const value = terminals.creepsValues[creepRoomId];
+		if(value === undefined || value.time < Game.time) {
+			const inCreeps =  Object.keys(Game.creeps).filter((n) => Math.floor(tools.getWeight(n)/10) == creepRoomId)
+																							.map((n) => tools.nvl(Game.creeps[n].store[resource],0))
+																							.reduce((amount,a) => amount+a,0);
+			terminals.creepsValues[creepRoomId] =
+				{ time:Game.time
+				, amount:inCreeps};
+		}
+	},
 
 	getRoomAmount: function(creep,resource) {
 		if(!creep.room.terminal ||
@@ -92,10 +106,8 @@ var terminals = {
 			 !creep.room.storage.my)
 			return 0;
 		const creepRoomId = Math.floor(tools.getWeight(creep.name)/10);
-		const inCreeps =  Object.keys(Game.creeps).filter((n) => Math.floor(tools.getWeight(n)/10) == creepRoomId)
-																							.map((n) => tools.nvl(Game.creeps[n].store[resource],0))
-																							.reduce((amount,a) => amount+a,0);
-		return inCreeps + terminals.getAmount(creep.room.terminal, resource);
+		terminals.calcCreepsValues(creepRoomId, resource);
+		return terminals.creepsValues[creepRoomId].amount + terminals.getAmount(creep.room.terminal, resource);
 	},
 	
 	getShardMinAmount: function(resource) {
