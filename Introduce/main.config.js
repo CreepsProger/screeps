@@ -21,6 +21,26 @@ var config = {
 	
 	Memory: {},
 	
+	getRoleConfig: function(creep, role_name) {
+		if(!config.Memory[role_name])
+			config.Memory[role_name] = {};
+		const n = tools.getN(creep.name);
+		var mrole = config.Memory[role_name][n];
+		if(mrole === undefined ||
+			 mrole.v === undefined ||
+			 mrole.v != config.version) {
+			creep.memory[role_name] = { v: config.version
+																, on: false
+																, room: creep.room.name
+																, shard: Game.shard.name
+																, n: n
+																};
+			config.Memory[role_name][n] = creep.memory[role_name];
+			mrole = config.Memory[role_name][n];
+		}
+		return mrole;
+	},
+	
 	getMaxAvgAmountToProduce: function(res) {
 		const commodity = COMMODITIES[res];
 		if(!!commodity) {
