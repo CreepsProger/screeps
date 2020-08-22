@@ -20,14 +20,60 @@ var config = {
 	},
 	
 	getMaxAvgAmountToProduce: function(res) {
+		const commodity = COMMODITIES[res];
+		if(!!commodity) {
+			if(!commodity.level)
+				return 2000;
+			if(commodity.level == 1 && res != 'composite')
+				return 100;
+			if(commodity.level == 2 && res != 'crystal')
+				return 10;
+			if(!commodity.level == 3 && res != 'liquid')
+				return 5;
+			if(!commodity.level == 4)
+				return 2;
+			return 1000;
+		}
 		return 10000;
 	},
 	
 	getMaxAvgAmountToSell: function(res) {
-		return 10000;
+		const commodity = COMMODITIES[res];
+		if(!!commodity) {
+			if(!commodity.level)
+				return 2000;
+			if(commodity.level == 1 && res != 'composite')
+				return 100;
+			if(commodity.level == 2 && res != 'crystal')
+				return 10;
+			if(!commodity.level == 3 && res != 'liquid')
+				return 5;
+			if(!commodity.level == 4)
+				return 2;
+			if(!commodity.level == 5)
+				return 0;
+			return 1000;
+		}
+		return 20000;
 	},
 	
 	getMinAvgAmountToBuy: function(res) {
+		const commodity = COMMODITIES[res];
+		if(!!commodity) {
+			if(!commodity.level)
+				return 2000;
+			if(commodity.level == 1 && res != 'composite')
+				return 100;
+			if(commodity.level == 2 && res != 'crystal')
+				return 10;
+			if(!commodity.level == 3 && res != 'liquid')
+				return 5;
+			if(!commodity.level == 4)
+				return 2;
+			if(!commodity.level == 5)
+				return 0;
+			return 1000;
+		}
 		return 10000;
 	},
 	
