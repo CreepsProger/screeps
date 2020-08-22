@@ -23,7 +23,7 @@ var role = {
 										, JSON.stringify(creep.memory[role.name])
 									  , args);
 			}
-	},
+	},/*
 
 	init: function(creep) {
 		var mrole = creep.memory[role.name];
@@ -38,7 +38,7 @@ var role = {
 			mrole = creep.memory[role.name];
 		}
 		return mrole;
-	},
+	},*/
 	
 	checkOff: function(creep, mrole) {
 		if(creep.getActiveBodyparts(CLAIM) == 0 && mrole.on) {
@@ -66,7 +66,7 @@ var role = {
 
 	run: function(creep) {
 
-		var mrole = role.init(creep);
+		var mrole = config.getRole(creep, role.name);
 		role.checkOff(creep, mrole);
 		role.checkOn(creep, mrole);
 
