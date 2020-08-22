@@ -54,7 +54,7 @@ var roleBuilder = {
 
 				if(!target && this_room == my_room) {
 					const my_shard = creep.memory[constants.ROLE_ENERGY_HARVESTING].shard;
-					const my_shard_config = Memory.config.shards[my_shard];
+					const my_shard_config = config.Memory.shards[my_shard];
 					const my_room_config = my_shard_config.rooms[my_room];
 					const sites = my_room_config.sites;
 					if(!!sites) {
