@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 426,
+	version: 427,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -83,7 +83,7 @@ var config = {
 		const flagsPowerConfig = flags.getPowerConfig(roomName, pcName);
 		if(!!flagsPowerConfig)
 			return flagsPowerConfig;
-		const my_shard_config = Memory.config.shards[Game.shard.name];
+		const my_shard_config = config.Memory.shards[Game.shard.name];
 		const my_room_config = my_shard_config.rooms[roomName];
 		if(!my_room_config)
 			return undefined;
@@ -102,7 +102,7 @@ var config = {
 																			, resource:resource, flagDealConfigAmount:flagDealConfigAmount }));*/
 			return flagStoreConfigAmount;
 		}
-		const my_shard_config = Memory.config.shards[Game.shard.name];
+		const my_shard_config = config.Memory.shards[Game.shard.name];
 		const my_room_config = my_shard_config.rooms[roomName];
 		if(!my_room_config)
 			return undefined;
@@ -121,7 +121,7 @@ var config = {
 																			, resource:resource, flagDealConfigAmount:flagDealConfigAmount }));*/
 			return flagDealConfigAmount;
 		}
-		const my_shard_config = Memory.config.shards[Game.shard.name];
+		const my_shard_config = config.Memory.shards[Game.shard.name];
 		const my_room_config = my_shard_config.rooms[roomName];
 		if(!my_room_config)
 			return undefined;
@@ -136,7 +136,7 @@ var config = {
 		const flagsFactoryConfig = flags.getFactoryConfig(roomName);
 		if(!!flagsFactoryConfig)
 			return flagsFactoryConfig;
-		const my_shard_config = Memory.config.shards[Game.shard.name];
+		const my_shard_config = config.Memory.shards[Game.shard.name];
 		const my_room_config = my_shard_config.rooms[roomName];
 		if(!my_room_config)
 			return undefined;
@@ -148,7 +148,7 @@ var config = {
 		const flagLabsConfig = flags.getLabsConfig(roomName);
 		if(!!flagLabsConfig)
 			return flagLabsConfig;
-		const my_shard_config = Memory.config.shards[Game.shard.name];
+		const my_shard_config = config.Memory.shards[Game.shard.name];
 		const my_room_config = my_shard_config.rooms[roomName];
 		if(!my_room_config)
 			return undefined;
@@ -159,8 +159,8 @@ var config = {
 	getMW: function(roomName) {
 		const MW = flags.flags.MW;
 
-		const my_main_defaults = Memory.config.defaults;
-		const my_shard_config = Memory.config.shards[Game.shard.name];
+		const my_main_defaults = config.Memory.defaults;
+		const my_shard_config = config.Memory.shards[Game.shard.name];
 		const my_shard_defaults = my_shard_config.defaults;
 		const my_room_config = my_shard_config.rooms[roomName];
 
@@ -190,8 +190,8 @@ var config = {
 	getMR: function(roomName) {
 		const MR = flags.flags.MR;
 
-		const my_main_defaults = Memory.config.defaults;
-		const my_shard_config = Memory.config.shards[Game.shard.name];
+		const my_main_defaults = config.Memory.defaults;
+		const my_shard_config = config.Memory.shards[Game.shard.name];
 		const my_shard_defaults = my_shard_config.defaults;
 		const my_room_config = my_shard_config.rooms[roomName];
 
@@ -219,7 +219,7 @@ var config = {
 		if(this_room == my_room && Game.shard.name == my_shard)
 			return null;
 
-		const my_shard_config = Memory.config.shards[my_shard];
+		const my_shard_config = config.Memory.shards[my_shard];
 		// if(Game.shard.name == 'shard0') {
 		// 	creep.memory[role_name].shard = Game.shard.name;
 		// 	console.log(creep, role_name, JSON.stringify({this_room:this_room, my_room:my_room, my_shard:my_shard, my_shard_config:my_shard_config}));
@@ -266,11 +266,11 @@ var config = {
 		}
 
 		if(!!target.pos && creep.room.name != target.pos.roomName) {
-			const my_path_room = Memory.config.main_path[creep.room.name];
+			const my_path_room = config.Memory.main_path[creep.room.name];
 			const exit = creep.room.findExitTo(my_path_room);
 			target = creep.pos.findClosestByPath(exit);
-			const special_x = Memory.config.main_path[creep.room.name+'x'];
-			const special_y = Memory.config.main_path[creep.room.name+'y'];
+			const special_x = config.Memory.main_path[creep.room.name+'x'];
+			const special_y = config.Memory.main_path[creep.room.name+'y'];
 			// console.log(creep, role_name, JSON.stringify({pos:pos, exit:exit, my_path_room:my_path_room}));
 			if(!!special_x && !!target)
 				target.x = special_x+Game.time%3-1;
