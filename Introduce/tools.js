@@ -38,6 +38,15 @@ var tools = {
 	nvl: function(a,b) {
 		return (!a)? b:a;
 	},
+	
+	getN: function(name) {
+		if(name.length < 10)
+			return 0;
+		const prefix = 'creep-<';
+		if(name.substring(0,prefix.length) != prefix)
+			return 0;
+		return Number(name.substr(name.lastIndexOf("-")+1));
+	},
 
 	getWeight: function(name) {
 		if(name.length < 10)
