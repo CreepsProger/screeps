@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 427,
+	version: 428,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -21,7 +21,7 @@ var config = {
 	
 	Memory: {},
 	
-	getRoleConfig: function(creep, role_name) {
+	getRole: function(creep, role_name) {
 		if(!config.Memory[role_name])
 			config.Memory[role_name] = {};
 		const n = tools.getN(creep.name);
