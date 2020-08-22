@@ -15,7 +15,8 @@ const log = require('main.log');
 const cash = require('cash');
 const tools = require('tools');
 const tasks = require('tasks');
-const role = require('role.claimer');
+const claimer = require('role.claimer');
+const attacker = require('role.attacker');
 
 module.exports.loop = function () {
 	
@@ -137,8 +138,12 @@ module.exports.loop = function () {
 			}
 			if(needToRun) {
 				creep.memory.rerun = 0;
-				if(Memory.cpu.creep.t < 0.5*Game.cpu.tickLimit || tools.getWeight(creep.name) < 70)
-					role.run(creep);
+				if(Memory.cpu.creep.t < 0.5*Game.cpu.tickLimit || tools.getWeight(creep.name) < 70) {
+					if(tools.getWeight(creep.name)%10 !=0 )
+						attacker.run(creep);
+					else 
+						claimer.run(creep);
+				}
 				metrix.cpu.creep_time(creep);
 				if(Memory.cpu.creep.t > 0.9*Game.cpu.tickLimit) {
 					console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
