@@ -135,9 +135,13 @@ var links = {
 		 , { from: '5f06f2f3ae021357155fe904', to: '5f1cfbc3a923e96f80b70649'}
 		 // W24S27
      , { from: '5f1fc39c22555750702c437e', to: '5f1ed9627b54544b5b0a74c4'}
-     , { from: '5f1fc39c22555750702c437e', to: '5f2eca4411318ee2e59f5f45'}
      , { from: '5f244f0aaceb5f70ace9b80f', to: '5f2eca4411318ee2e59f5f45'}
+     , { from: '5f416c353cb23d54c283dd2d', to: '5f2eca4411318ee2e59f5f45'}
+     , { from: '5f415ca092167c8cc9f67dbb', to: '5f2eca4411318ee2e59f5f45'}
+     , { from: '5f415ca092167c8cc9f67dbb', to: '5f1ed9627b54544b5b0a74c4'}
+     , { from: '5f416c353cb23d54c283dd2d', to: '5f1ed9627b54544b5b0a74c4'}
      , { from: '5f244f0aaceb5f70ace9b80f', to: '5f1ed9627b54544b5b0a74c4'}
+     , { from: '5f1fc39c22555750702c437e', to: '5f1ed9627b54544b5b0a74c4'}
 		 // W25S28
      , { from: '5f3a2c42ef07735899b6db6c', to: '5f3a2ad8218ec55b8abed857'}
      , { from: '5f3e166c6013057f01447c62', to: '5f3a2ad8218ec55b8abed857'}
