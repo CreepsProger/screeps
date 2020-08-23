@@ -576,11 +576,13 @@ var flags = {
 				if(!amount)
 					return
 				const err = Game.market.deal(order.id, amount, roomName);
-				console.log('🤝Ⓜ️💲', Math.trunc(Game.time/10000), Game.time%10000
+				if(!!fLogSell) {
+					console.log('🤝Ⓜ️💲', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { Sell:'Sell', roomName:roomName
 																						, resourse:order.resourceType, price:order.price
 																						, amount:(amount==order.amount?amount:''+amount+'('+order.amount+')')
 																						, err:err, fSell:fSell, order:order}));
+				}
 				if(err == OK) {
 					fSell.room.visual.text('👉Ⓜ️💲 ' + amount + ' * ' + order.price + ' 👌'
 																, fSell.pos.x
@@ -614,6 +616,7 @@ var flags = {
 		var n = 0;
 
 		if(true) {
+			const fLogBuy = Game.flags['LB'];
 			Object.keys(Game.flags)
 						.filter((name)=>name.substring(0,prefix.length) == prefix)
 						.sort((l,r) => l.localeCompare(r))
@@ -632,11 +635,13 @@ var flags = {
 					fBuy.room.visual.text('👉Ⓜ️💠⛔ ' + ShardAvgAmountWithoutDeals + ' > ' + MinAvgAmountToBuy
 																, fBuy.pos.x
 																, fBuy.pos.y);
-					console.log('🤝Ⓜ️💠⛔', Math.trunc(Game.time/10000), Game.time%10000
+					if(!!fLogBuy) {
+						console.log('🤝Ⓜ️💠⛔', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { Buy:'fBuy', roomName:roomName
 																						, buying:buying, creditsLimit:creditsLimit, fBuy:fBuy
 																						, ShardAvgAmountWithoutDeals:ShardAvgAmountWithoutDeals
 																						, MinAvgAmountToBuy:MinAvgAmountToBuy}));
+					}
 					return;
 				}
 				const terminal = Game.rooms[roomName].terminal;
@@ -645,7 +650,6 @@ var flags = {
 					tools.timeOn(time, terminal.cooldown);
 					return;
 				}
-				const fLogBuy = Game.flags['LB'];
 				if(!!fLogBuy) {
 					console.log('🤝Ⓜ️💠', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { Buy:'fBuy', roomName:roomName
@@ -673,11 +677,13 @@ var flags = {
 				if(!amount)
 					return;
 				const err = Game.market.deal(order.id, amount, roomName);
-				console.log('🤝Ⓜ️💠', Math.trunc(Game.time/10000), Game.time%10000
+				if(!!fLogBuy) {
+					console.log('🤝Ⓜ️💠', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { Buy:'Buy', roomName:roomName
 																						, resourse:order.resourceType, price:order.price
 																						, amount:(amount==order.amount?amount:''+amount+'('+order.amount+')')
 																						, err:err, fBuy:fBuy, order:order, buying:buying, creditsLimit:creditsLimit }));
+				}
 				n++;
 			});
 		}
