@@ -171,7 +171,7 @@ var role = {
 				console.log('✔️', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({LL:LL, creep:creep.name, target:target}));
 		}
-		
+
 		if(creep.getActiveBodyparts(WORK) && !UU && !B && !cash.needToRenew(creep)) {
 			const extractor = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 							filter: function(s) { return s.structureType == STRUCTURE_EXTRACTOR && (s.my === undefined || s.my);}});
@@ -179,8 +179,14 @@ var role = {
 				const minerals = extractor.pos.lookFor(LOOK_MINERALS);
 				if(!!minerals && minerals.length > 0) {
 					const mineral = minerals[0];
-					if(!!mineral && mineral.mineralAmount > 0)
-						return mineral;
+					if(!!mineral && mineral.mineralAmount > 0) {
+						const roomName = mineral.pos.roomName;
+						const ShardAvgAmountWithoutDeals = terminals.getShardAvgAmountWithoutDeals(mineral.mineralType);
+						const MinAvgAmountToBuy = config.getMinAvgAmountToBuy(mineral.mineralType);
+						if(ShardAvgAmountWithoutDeals < MinAvgAmountToBuy/2) {
+							return mineral;
+						}
+					}
 				}
 			}
 		}
