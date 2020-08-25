@@ -131,8 +131,10 @@ var links = {
 		 // W21S28
      , { from: '5f06dc8407c460ca3d230a0a', to: '5f048e5511093c2c6f7062bc'}
 		 , { from: '5f06f2f3ae021357155fe904', to: '5f048e5511093c2c6f7062bc'}
+		 , { from: '5f44abb83cb23d57aa8587f5', to: '5f048e5511093c2c6f7062bc'}
      , { from: '5f06dc8407c460ca3d230a0a', to: '5f1cfbc3a923e96f80b70649'}
 		 , { from: '5f06f2f3ae021357155fe904', to: '5f1cfbc3a923e96f80b70649'}
+		 , { from: '5f44abb83cb23d57aa8587f5', to: '5f1cfbc3a923e96f80b70649'}
 		 // W24S27
      , { from: '5f1fc39c22555750702c437e', to: '5f1ed9627b54544b5b0a74c4'}
      , { from: '5f244f0aaceb5f70ace9b80f', to: '5f2eca4411318ee2e59f5f45'}
