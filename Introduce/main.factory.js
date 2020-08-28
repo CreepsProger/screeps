@@ -35,7 +35,9 @@ const factory = {
 																		, c.in.amount = c[2] - c.in.exist
 																		, c) )
 											.filter((c) => c.in.exist < c[1])
-											.filter((c) => res != '-' || tools.nvl(Game.rooms[f.pos.roomName].storage.store[c.in.resource],0) > 0)
+											.filter((c) => res != '-' ||
+															tools.nvl(Game.rooms[f.pos.roomName].storage.store[c.in.resource],0) > 0 ||
+															c.in.resource == RESOURCE_ENERGY)
 											.sort((l,r) => r.in.amount - l.in.amount)
 											.shift();
 		if(!!line)
