@@ -319,8 +319,7 @@ var role = {
 
 			const factoryToIn = factory.getFactoryToIn(creep.room.name);
 			if(!!factoryToIn && !!factoryToIn.in &&
-				 tools.checkTarget(executer,factoryToIn.id) && true
-				 /*tools.nvl(creep.room.storage.store[factoryToIn.in.resource],0) > 0*/) {
+				 tools.checkTarget(executer,factoryToIn.id)) {
 				var target = tools.setTarget(creep,factoryToIn,factoryToIn.id,role.run);
 				if(!!target) {
 					factoryToIn.in.target = (factoryToIn.in.resource == RESOURCE_ENERGY)? sot:creep.room.storage;
