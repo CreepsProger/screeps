@@ -398,7 +398,7 @@ var role = {
 
 		const NPE  = !!flags.flags.NPE;
 		
-		if(!creep.getActiveBodyparts(WORK) && !NPE && !!sot
+		if(!creep.getActiveBodyparts(WORK) && !NPE && !!sot &&
 			 !!creep.room.storage &&
 			 !!creep.room.storage.store &&
 			 !!creep.room.terminal &&
