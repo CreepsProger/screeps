@@ -415,6 +415,8 @@ var role = {
 		if(!creep.getActiveBodyparts(WORK) &&
 			 !!creep.room.storage &&
 			 !!creep.room.storage.store &&
+			 !!creep.room.terminal &&
+			 !!creep.room.terminal.my &&
 			 creep.room.storage.store.getUsedCapacity('power') > 0) {
 			const spawnToIn = cash.getPowerSpawns(creep.room.name)
 															.filter((s) => !!s && !!s.store && s.store.getFreeCapacity('power') > 75)
@@ -436,7 +438,9 @@ var role = {
 		if(!creep.getActiveBodyparts(WORK) && !NPE &&
 			 !!creep.room.storage &&
 			 !!creep.room.storage.store &&
-			 creep.room.storage.store.getUsedCapacity('energy') > constants.MIN_STORAGE_ENERGY) {
+			 !!creep.room.terminal &&
+			 !!creep.room.terminal.my &&
+			 energy > constants.STOP_UPGRADING_ENERGY) {
 			const spawnToIn = cash.getPowerSpawns(creep.room.name)
 															.filter((s) => !!s && !!s.store &&
 																			s.store.getUsedCapacity('power') > 0 &&
@@ -445,11 +449,20 @@ var role = {
 			if(!!spawnToIn && tools.checkTarget(executer,spawnToIn.id)) {
 				const spawn = tools.setTarget(creep,spawnToIn,spawnToIn.id,role.run);
 				if(!!spawn) {
-					const target = {resource:'energy', amount:spawn.store.getFreeCapacity('energy'), target:creep.room.storage};/*
-					console.log('🔴⚡🎯↩️', Math.trunc(Game.time/10000), Game.time%10000
-															, JSON.stringify( { creep:creep.name, roomName:creep.room.name
-																								, target:target}));*/
-					return target;
+					var st = [];
+					if(creep.room.storage.store.getUsedCapacity('energy') > constants.MIN_STORAGE_ENERGY) 
+						st.push(creep.room.storage);
+					if(creep.room.terminal.store.getUsedCapacity('energy') > constants.MIN_TERMINAL_ENERGY)
+						st.push(creep.room.terminal)
+					if(st.length > 0) {
+						const sot = st.reduce((p,c) => creep.pos.getRangeTo(p)
+																			/ (c.store.getUsedCapacity(RESOURCE_ENERGY) + 5000) // dp/ec < dc/ep !! it is right! don't change
+																			< creep.pos.getRangeTo(c)
+																			/ (p.store.getUsedCapacity(RESOURCE_ENERGY) + 5000)
+																			? p:c);
+						const target = {resource:'energy', amount:spawn.store.getFreeCapacity('energy'), target:sot};
+						return target;
+					}
 				}
 			}
 		}
