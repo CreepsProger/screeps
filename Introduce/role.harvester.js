@@ -66,6 +66,31 @@ var role = {
 		}
 	},
 
+	getStorageOrTerminal: function(creep) {
+			var st = [];
+ 			if(!!creep.room.terminal &&
+ 				 !!creep.room.terminal.my &&
+ 				   creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_TERMINAL_ENERGY) {
+ 				st.push(creep.room.terminal);
+ 			}
+ 			if(!!creep.room.storage &&
+ 				 !!creep.room.storage.my &&
+				 !!creep.room.storage.store &&
+				 !!creep.room.terminal &&
+				 !!creep.room.terminal.store &&
+ 				 	 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.STOP_UPGRADING_ENERGY + constants.MIN_STORAGE_ENERGY + creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY)) {
+ 				st.push(creep.room.storage);
+ 			}
+			if(st.length > 0) {
+				return st.reduce((p,c) => creep.pos.getRangeTo(p)
+																			/ (c.store.getUsedCapacity(RESOURCE_ENERGY) + 5000) // dp/ec < dc/ep !! it is right! don't change
+																			< creep.pos.getRangeTo(c)
+																			/ (p.store.getUsedCapacity(RESOURCE_ENERGY) + 5000)
+																			? p:c);
+			}
+		return null;
+	},
+
 	getTarget: function(creep,executer) {
 
 		const this_room = creep.room.name;
@@ -195,89 +220,27 @@ var role = {
 			  energy +=  (!!creep.room.storage && !!creep.room.storage.my)? creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY):0;
 				energy -= constants.MIN_TERMINAL_ENERGY;
 				energy -= constants.MIN_STORAGE_ENERGY;
+		
+		const sot = role.getStorageOrTerminal(creep);
 
-		if(!target &&
+		if(!target && !!sot &&
 			 Memory.stop_upgrading == false &&
 			 creep.getActiveBodyparts(WORK) &&
 			 energy > constants.STOP_UPGRADING_ENERGY) {
-			var st = [];
-			if(!!creep.room.terminal &&
-				 !!creep.room.terminal.my &&
-				   creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_TERMINAL_ENERGY + constants.MAX_TERMINAL_ENERGY) {
-				st.push(creep.room.terminal);
-			}
-			if(!!creep.room.storage &&
-				 !!creep.room.storage.my &&
-				 	 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_STORAGE_ENERGY &&
-				 (!creep.room.terminal || creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) < constants.MIN_TERMINAL_ENERGY + constants.MAX_TERMINAL_ENERGY)) {
-				st.push(creep.room.storage);
-			}
-			if(st.length > 0) {
-				var target = st.reduce((p,c) => creep.pos.getRangeTo(p)
-																			* (c.store.getUsedCapacity(RESOURCE_ENERGY) + 5000) // dp*ec < dc*ep !! it is right! don't change
-																			< creep.pos.getRangeTo(c)
-																			* (p.store.getUsedCapacity(RESOURCE_ENERGY) + 5000)
-																			? p:c);
-			}
-			if(!!target) {
-				// console.log('🔜⚡', creep, 'st for W:', target);
-			 return target;
-		  }
+				return sot;
 		}
 
-		if(!target &&
+		if(!target && !!sot &&
 			 (creep.room.energyAvailable != creep.room.energyCapacityAvailable /*|| Memory.stop_upgrading*/) &&
 			 (!creep.getActiveBodyparts(WORK) || creep.memory.rerun) &&
 			 energy > constants.STOP_UPGRADING_ENERGY + creep.store.getFreeCapacity(RESOURCE_ENERGY) ) {
-			var st = [];
- 			if(!!creep.room.terminal &&
- 				 !!creep.room.terminal.my &&
- 				   creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_TERMINAL_ENERGY) {
- 				st.push(creep.room.terminal);
- 			}
- 			if(!!creep.room.storage &&
- 				 !!creep.room.storage.my &&
-				 !!creep.room.storage.store &&
-				 !!creep.room.terminal &&
-				 !!creep.room.terminal.store &&
- 				 	 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.STOP_UPGRADING_ENERGY + constants.MIN_STORAGE_ENERGY + creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY)) {
- 				st.push(creep.room.storage);
- 			}
-			if(st.length > 0) {
-				var target = st.reduce((p,c) => creep.pos.getRangeTo(p)
-																			/ (c.store.getUsedCapacity(RESOURCE_ENERGY) + 5000) // dp/ec < dc/ep !! it is right! don't change
-																			< creep.pos.getRangeTo(c)
-																			/ (p.store.getUsedCapacity(RESOURCE_ENERGY) + 5000)
-																			? p:c);
-			}
- 			if(!!target) {
- 				// console.log('🔜⚡', creep, 'st for C:', target);
- 			 return target;
- 		  }
+				return sot;
 		}
 
-		if(!target &&
+		if(!target && !!sot &&
 			 creep.room.energyAvailable != creep.room.energyCapacityAvailable &&
-			 (!creep.getActiveBodyparts(WORK) || false) &&
-			 !!creep.room.terminal &&
-			 !!creep.room.terminal.my &&
-			 creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-			 (creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_TERMINAL_ENERGY || !conditions.TO_SPAWN_CLAIMING_ROOMS())) {
-			target = creep.room.terminal;
-			if(!!target)
-				return target;
-		}
-
-		if(!target &&
-			 creep.room.energyAvailable != creep.room.energyCapacityAvailable &&
-			 (!creep.getActiveBodyparts(WORK) || false) &&
-			 !!creep.room.storage &&
-			 !!creep.room.storage.my &&
-			 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-			 (creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_STORAGE_ENERGY || !conditions.TO_SPAWN_CLAIMING_ROOMS())) {
-			target = creep.room.storage;
-			if(!!target)
-				return target;
+			 (!creep.getActiveBodyparts(WORK) || false)) {
+				return sot;
 		}
 		
 		const ST  = !!flags.flags.ST && flags.flags.ST.pos.roomName == my_room;
@@ -350,7 +313,7 @@ var role = {
 			if(!!labToIn) {
 				var lab = tools.setTarget(creep,labToIn.lab,labToIn.lab.id,role.run);
 				if(!!lab) {
-					labToIn.target = creep.room.storage;
+					labToIn.target = (labToIn.resource == RESOURCE_ENERGY)? sot:creep.room.storage;
 					return labToIn;
 				}
 			}
@@ -361,7 +324,7 @@ var role = {
 				 tools.nvl(creep.room.storage.store[factoryToIn.in.resource],0) > 0) {
 				var target = tools.setTarget(creep,factoryToIn,factoryToIn.id,role.run);
 				if(!!target) {
-					factoryToIn.in.target = creep.room.storage;
+					factoryToIn.in.target = (factoryToIn.in.resource == RESOURCE_ENERGY)? sot:creep.room.storage;
 					if(Game.shard.name == '-shard0') {
 						console.log('🏭🎯↩️', Math.trunc(Game.time/10000), Game.time%10000
 																, JSON.stringify( { creep:creep.name, roomName:creep.room.name
@@ -435,7 +398,7 @@ var role = {
 
 		const NPE  = !!flags.flags.NPE;
 		
-		if(!creep.getActiveBodyparts(WORK) && !NPE &&
+		if(!creep.getActiveBodyparts(WORK) && !NPE && !!sot
 			 !!creep.room.storage &&
 			 !!creep.room.storage.store &&
 			 !!creep.room.terminal &&
@@ -449,20 +412,8 @@ var role = {
 			if(!!spawnToIn && tools.checkTarget(executer,spawnToIn.id)) {
 				const spawn = tools.setTarget(creep,spawnToIn,spawnToIn.id,role.run);
 				if(!!spawn) {
-					var st = [];
-					if(creep.room.storage.store.getUsedCapacity('energy') > constants.MIN_STORAGE_ENERGY) 
-						st.push(creep.room.storage);
-					if(creep.room.terminal.store.getUsedCapacity('energy') > constants.MIN_TERMINAL_ENERGY)
-						st.push(creep.room.terminal)
-					if(st.length > 0) {
-						const sot = st.reduce((p,c) => creep.pos.getRangeTo(p)
-																			/ (c.store.getUsedCapacity(RESOURCE_ENERGY) + 5000) // dp/ec < dc/ep !! it is right! don't change
-																			< creep.pos.getRangeTo(c)
-																			/ (p.store.getUsedCapacity(RESOURCE_ENERGY) + 5000)
-																			? p:c);
-						const target = {resource:'energy', amount:spawn.store.getFreeCapacity('energy'), target:sot};
-						return target;
-					}
+					const target = {resource:'energy', amount:spawn.store.getFreeCapacity('energy'), target:sot};
+					return target;
 				}
 			}
 		}
