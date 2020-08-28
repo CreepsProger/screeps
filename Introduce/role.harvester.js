@@ -225,7 +225,7 @@ var role = {
 		if(!target && !!sot &&
 			 Memory.stop_upgrading == false &&
 			 creep.getActiveBodyparts(WORK) &&
-			 energy > constants.STOP_UPGRADING_ENERGY) {
+			 energy > constants.STOP_UPGRADING_ENERGY + creep.store.getFreeCapacity(RESOURCE_ENERGY)) {
 				return sot;
 		}
 
@@ -233,12 +233,6 @@ var role = {
 			 (creep.room.energyAvailable != creep.room.energyCapacityAvailable /*|| Memory.stop_upgrading*/) &&
 			 (!creep.getActiveBodyparts(WORK) || creep.memory.rerun) &&
 			 energy > constants.STOP_UPGRADING_ENERGY + creep.store.getFreeCapacity(RESOURCE_ENERGY) ) {
-				return sot;
-		}
-
-		if(!target && !!sot &&
-			 creep.room.energyAvailable != creep.room.energyCapacityAvailable &&
-			 (!creep.getActiveBodyparts(WORK) || false)) {
 				return sot;
 		}
 		
@@ -396,11 +390,9 @@ var role = {
 
 		const NPE  = !!flags.flags.NPE;
 		
-		if(!creep.getActiveBodyparts(WORK) && !NPE && !!sot &&
-			 !!creep.room.storage &&
-			 !!creep.room.storage.store &&
-			 !!creep.room.terminal &&
-			 !!creep.room.terminal.my &&
+		if(!creep.getActiveBodyparts(WORK) &&
+			 !NPE &&
+			 !!sot &&
 			 energy > constants.STOP_UPGRADING_ENERGY * 2) {
 			const spawnToIn = cash.getPowerSpawns(creep.room.name)
 															.filter((s) => !!s && !!s.store &&
