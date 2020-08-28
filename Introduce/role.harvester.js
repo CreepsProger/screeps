@@ -76,17 +76,16 @@ var role = {
  			if(!!creep.room.storage &&
  				 !!creep.room.storage.my &&
 				 !!creep.room.storage.store &&
-				 !!creep.room.terminal &&
-				 !!creep.room.terminal.store &&
  				 	 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.STOP_UPGRADING_ENERGY + constants.MIN_STORAGE_ENERGY + creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY)) {
  				st.push(creep.room.storage);
  			}
 			if(st.length > 0) {
-				return st.reduce((p,c) => creep.pos.getRangeTo(p)
-																			/ (c.store.getUsedCapacity(RESOURCE_ENERGY) + 5000) // dp/ec < dc/ep !! it is right! don't change
-																			< creep.pos.getRangeTo(c)
-																			/ (p.store.getUsedCapacity(RESOURCE_ENERGY) + 5000)
-																			? p:c);
+				return st.reduce((p,c) =>
+												 creep.pos.getRangeTo(p)
+												 / (c.store.getUsedCapacity(RESOURCE_ENERGY) + 5000) // dp/ec < dc/ep !! it is right! don't change
+												 < creep.pos.getRangeTo(c)
+												 / (p.store.getUsedCapacity(RESOURCE_ENERGY) + 5000)
+												 ? p:c);
 			}
 		return null;
 	},
