@@ -427,6 +427,11 @@ var tasks = {
 											, JSON.stringify( { tasks:'onRun.start', creep:creep.name
 																				, room:creep.room.name, pos:creep.pos}));
 		}
+		if(tools.getWeight(creep.name) % 10 == 5) && Game.time%17 == 0 ) {
+			console.log('⚔️', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify( { tasks:'onRun.start', creep:creep.name
+																				, room:creep.room.name, pos:creep.pos}));
+		}
 		if(creep.memory.boosts !== undefined) {
 			const roomTodo = tasks.getRoomTodo(creep.room.name);
 			if(!!roomTodo) {
@@ -525,6 +530,45 @@ var tasks = {
 			if(creep.memory[role.name].room == creep.pos.roomName &&
 				 creep.memory[role.name].shard == Game.shard.name)
 				creep.suicide();
+
+			return true;
+		}
+		if(tools.getWeight(creep.name) % 10 == 5) {
+			const role = {name:constants.ROLE_ENERGY_HARVESTING}; 
+			if(creep.memory[role.name] === undefined ||
+					 creep.memory[role.name].v === undefined ||
+					 creep.memory[role.name].v != config.version) {
+					creep.memory[role.name] = { v: config.version
+																, on: false
+																, room: creep.room.name
+																, shard: Game.shard.name
+																};
+				config.setRoom(creep, role.name);
+			}
+			const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
+			const err = tools.moveTo(creep, target);
+			console.log('⚔️', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify( { tasks:'onRun.upgrade', creep:creep.name
+																				, room:creep.room.name, target:target
+																				, err:err, role:creep.memory[role.name] }));
+			creep.say((OK == err)?'⚔️':'⚔️'+err);
+			
+			if(creep.getActiveBodyparts(HEAL) > 0)
+				creep.heal(creep);
+			
+			if(creep.memory[role.name].room == creep.pos.roomName &&
+				 creep.memory[role.name].shard == Game.shard.name) {
+				if(creep.withdraw(creep.room.storage,RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+					const err = tools.moveTo(creep, creep.room.storage);
+					creep.say((OK == err)?'🔜⚔️':'🔜⚔️'+err);
+					return true;
+				}
+				if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+					err = tools.moveTo(creep, target);
+					creep.say((OK == err)?'🔜⚔️':'🔜⚔️'+err);
+					return true;
+				}
+			}
 
 			return true;
 		}
