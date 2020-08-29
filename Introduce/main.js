@@ -205,6 +205,11 @@ module.exports.loop = function () {
 		Memory.cpu_creeps_part_dt = 0;
 		Memory.cpu_dt = 0;
 	}
+	
+	if(Game.cpu.bucket > 9900) {
+    Game.cpu.generatePixel();
+	}
+
 	var main_part2_dt = Math.round((Game.cpu.getUsed() - cpu_dt) * 100)/100;
 	Memory.cpu_main_part_dt += main_part2_dt;
 	Memory.cpu_dt += main_part2_dt;
