@@ -449,9 +449,6 @@ var tasks = {
 			 tasks.taskToBoostCreeps.needToRun(creep)) {
 			return tasks.taskToBoostCreeps.run(creep);
 		}
-		if(tools.getWeight(creep.name) == 5035 && creep.ticksToLive < 1485) {
-			return creep.suicide() == OK;
-		}
 		const boostConfig = flags.getBoostConfig(creep);
 		if(!!boostConfig && boostConfig.length > 0) {
 			const ressToBoost = boostConfig.filter((res) => !creep.body.some((b,i) => tools.nvl(b.boost,'-') == res)); 
