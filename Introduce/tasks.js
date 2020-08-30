@@ -568,7 +568,7 @@ var tasks = {
 			}
 			else {
 				if(creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
-					if(creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 5000) {
+					if(creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.STOP_UPGRADING_ENERGY + constants.MIN_STORAGE_ENERGY) {
 						const err = creep.withdraw(creep.room.storage,RESOURCE_ENERGY);
 						if(err != ERR_NOT_IN_RANGE) {
 							creep.say((OK == err)?'⚡':'⚡'+err);
@@ -578,7 +578,7 @@ var tasks = {
 							creep.say((OK == err)?'🔜⚡':'🔜⚡'+err);
 						}
 					}
-					else if(creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > 5000) {
+					else if(creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_TERMINAL_ENERGY) {
 						const err = creep.withdraw(creep.room.terminal,RESOURCE_ENERGY);
 						if(err != ERR_NOT_IN_RANGE) {
 							creep.say((OK == err)?'⚡':'⚡'+err);
