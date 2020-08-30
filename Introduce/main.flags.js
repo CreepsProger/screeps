@@ -137,7 +137,7 @@ var flags = {
 			const json = Object.keys(Game.flags)
 													.filter((name) =>
 																	name.substring(0,prefix.length) == prefix ||
-																	(name.substring(0,prefix.length) == prefix2 &&  Game.flags[name].pos.roomName == roomName) )
+																	(name.substring(0,prefix2.length) == prefix2 &&  Game.flags[name].pos.roomName == roomName) )
 													.sort((l,r) => l.localeCompare(r))
 													.map((s,i,arr) => s.substring(s.indexOf(':')+1) + ((i!=arr.length-1)?',':'}') )
 													.reduce((p,c) => p+c, '{');
