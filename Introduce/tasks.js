@@ -567,14 +567,23 @@ var tasks = {
 				creep.say((OK == err)?'🔜⚒️':'🔜⚒️'+err);
 			}
 			else {
-				if(creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0 &&
-					 creep.withdraw(creep.room.storage,RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-					const err = tools.moveTo(creep, creep.room.storage);
-					creep.say((OK == err)?'🔜⚡':'🔜⚡'+err);
+				if(creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
+					const err = creep.withdraw(creep.room.storage,RESOURCE_ENERGY);
+					if(err != ERR_NOT_IN_RANGE) {
+						creep.say((OK == err)?'⚡':'⚡'+err);
+					}
+					else {
+						const err = tools.moveTo(creep, creep.room.storage);
+						creep.say((OK == err)?'🔜⚡':'🔜⚡'+err);
+					}
 					return true;
 				}
-				if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-					err = tools.moveTo(creep, creep.room.controller);
+				const err = creep.upgradeController(creep.room.controller);
+				if(err != ERR_NOT_IN_RANGE) {
+					creep.say((OK == err)?'⚒️':'⚒️'+err);
+				}
+				else {
+					const err = tools.moveTo(creep, creep.room.controller);
 					creep.say((OK == err)?'🔜⚒️':'🔜⚒️'+err);
 					return true;
 				}
