@@ -571,6 +571,16 @@ var tasks = {
 					const err = creep.withdraw(creep.room.storage,RESOURCE_ENERGY);
 					if(err != ERR_NOT_IN_RANGE) {
 						creep.say((OK == err)?'⚡':'⚡'+err);
+						if(err == ERR_NOT_ENOUGH_ENERGY) {
+							const err = creep.withdraw(creep.room.terminal,RESOURCE_ENERGY);
+							if(err != ERR_NOT_IN_RANGE) {
+								creep.say((OK == err)?'⚡':'⚡'+err);
+							}
+							else {
+								const err = tools.moveTo(creep, creep.room.terminal);
+								creep.say((OK == err)?'🔜⚡':'🔜⚡'+err);
+							}
+						}
 					}
 					else {
 						const err = tools.moveTo(creep, creep.room.storage);
