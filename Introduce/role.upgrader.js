@@ -9,6 +9,7 @@ const links = require('main.links');
 const log = require('main.log');
 const cash = require('cash');
 const tools = require('tools');
+const tasks = require('tasks');//tasks.boostedUpgraderExists()
 
 
 var roleUpgrader = {
@@ -72,7 +73,7 @@ var roleUpgrader = {
 			const total_energy = cash.getTotalEnergy();
 			const X = conditions.TO_EXTRA_UPGRADE(total_energy);
 
-			const canDo =
+			const canDo = !tasks.boostedUpgraderExists(creep) &&
 				(creep.getActiveBodyparts(WORK) &&
 				(!Memory.stop_upgrading || this_room_containers_are_full || U || UU) &&
 				this_room == my_room &&
