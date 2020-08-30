@@ -589,6 +589,7 @@ var tasks = {
 				}
 			}
 			tasks.addBoostedUpgrader(creep);
+			tools.dontGetInWay(creep);
 
 			return true;
 		}
