@@ -90,7 +90,7 @@ var terminals = {
 	calcCreepsValues: function(creepRoomId, resource) {
 		const value = terminals.creepsValues[creepRoomId];
 		if(value === undefined || value.time < Game.time) {
-			const inCreeps =  Object.keys(Game.creeps).filter((n) => Math.floor(tools.getWeight(n)/10) == creepRoomId)
+			const inCreeps =  Object.keys(Game.creeps).filter((n) => tools.getRoomId(n) == creepRoomId)
 																							.map((n) => tools.nvl(Game.creeps[n].store[resource],0))
 																							.reduce((amount,a) => amount+a,0);
 			terminals.creepsValues[creepRoomId] =
@@ -105,7 +105,7 @@ var terminals = {
 			 !creep.room.storage ||
 			 !creep.room.storage.my)
 			return 0;
-		const creepRoomId = Math.floor(tools.getWeight(creep.name)/10);
+		const creepRoomId = tools.getRoomId(creep.name);
 		terminals.calcCreepsValues(creepRoomId, resource);
 		return terminals.creepsValues[creepRoomId].amount + terminals.getAmount(creep.room.terminal, resource);
 	},
