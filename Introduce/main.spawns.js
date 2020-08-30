@@ -526,6 +526,9 @@ var spawns = {
 						if(Sp7)	spawns.tryCreateCreep(spawn,   CARIER[7][M], 5191);
 						if(Sp7)	spawns.tryCreateCreep(spawn,   WORKER[8][M], 5195);
 					}
+					if(true) {
+						if(Sp7)	spawns.tryCreateCreep(spawn,   ATTACKER[8][L2], 5266);
+					}
 					/*
 					if(spawn.name == 'Spawn10') spawns.tryCreateCreep(spawn, ATTACKER[1][L], 5254);
 					if(spawn.name == 'Spawn10') spawns.tryCreateCreep(spawn,   HEALER[1][L], 5255);
@@ -534,12 +537,12 @@ var spawns = {
 					if(spawn.name == 'Spawn10')	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 5258);
 					if(spawn.name == 'Spawn10') spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5257);
 					if(spawn.name == 'Spawn10') spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5256);
-					if(spawn.name == 'Spawn10') spawns.tryCreateCreep(spawn,   CARIER[7][L], 5251);*/
+					if(spawn.name == 'Spawn10') spawns.tryCreateCreep(spawn,   CARIER[7][L], 5251);
 					
 					if(spawn.name == 'Spawn10' || spawn.name == 'Spawn9') spawns.tryCreateCreep(spawn,   ATTACKER[10][H], 5267);
 					if(spawn.name == 'Spawn16') spawns.tryCreateCreep(spawn,   ATTACKER[10][M], 5266);
 					if(spawn.name == 'Spawn16') spawns.tryCreateCreep(spawn,   ATTACKER[10][L], 5265);
-					if(spawn.name == 'Spawn16') spawns.tryCreateCreep(spawn,   ATTACKER[10][S], 5264);
+					if(spawn.name == 'Spawn16') spawns.tryCreateCreep(spawn,   ATTACKER[10][S], 5264);*/
         }
 
 				if(Game.shard.name == 'shard0') {
