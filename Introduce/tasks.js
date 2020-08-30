@@ -568,11 +568,20 @@ var tasks = {
 			}
 			else {
 				if(creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
+					if(creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 5000) {
 					const err = creep.withdraw(creep.room.storage,RESOURCE_ENERGY);
 					if(err != ERR_NOT_IN_RANGE) {
 						creep.say((OK == err)?'⚡':'⚡'+err);
-						if(err == ERR_NOT_ENOUGH_ENERGY) {
-							const err = creep.withdraw(creep.room.terminal,RESOURCE_ENERGY);
+							
+						}
+					}
+					else {
+						const err = tools.moveTo(creep, creep.room.storage);
+						creep.say((OK == err)?'🔜⚡':'🔜⚡'+err);
+					}
+					}
+					else if(creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > 5000) {
+						const err = creep.withdraw(creep.room.terminal,RESOURCE_ENERGY);
 							if(err != ERR_NOT_IN_RANGE) {
 								creep.say((OK == err)?'⚡':'⚡'+err);
 							}
@@ -580,11 +589,6 @@ var tasks = {
 								const err = tools.moveTo(creep, creep.room.terminal);
 								creep.say((OK == err)?'🔜⚡':'🔜⚡'+err);
 							}
-						}
-					}
-					else {
-						const err = tools.moveTo(creep, creep.room.storage);
-						creep.say((OK == err)?'🔜⚡':'🔜⚡'+err);
 					}
 					return true;
 				}
