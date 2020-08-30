@@ -560,6 +560,7 @@ var flags = {
 		var n = 0;
 		const fSelling = Game.flags['Selling'];
 		const selling = !fSelling? 0:Math.pow(10,fSelling.color-1)*(fSelling.secondaryColor);
+		const fLogSell = Game.flags['LS'];
 
 		if(flags.flags[prefix] === undefined) {
 			Object.keys(Game.flags)
@@ -585,14 +586,15 @@ var flags = {
 					fSell.room.visual.text('👉Ⓜ️💲⛔ ' + ShardAvgAmountWithoutDeals + ' < ' + MaxAvgAmountToSell
 																, fSell.pos.x
 																, fSell.pos.y);
-					console.log('🤝Ⓜ️💲⛔', Math.trunc(Game.time/10000), Game.time%10000
+					if(!!fLogSell) { 
+						console.log('🤝Ⓜ️💲⛔', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { Sell:'fSell', roomName:roomName
 																						, selling:selling, fSell:fSell
 																						, ShardAvgAmountWithoutDeals:ShardAvgAmountWithoutDeals
 																						, MaxAvgAmountToSell:MaxAvgAmountToSell}));
+					}
 					return;
 				}
-				const fLogSell = Game.flags['LS'];
 				if(!!fLogSell) {
 					console.log('🤝Ⓜ️💲', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { Sell:'fSell', roomName:roomName, fSell:fSell}));
