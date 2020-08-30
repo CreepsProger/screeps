@@ -556,26 +556,25 @@ var tasks = {
 																};
 				config.setRoom(creep, role.name);
 			}
-			const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
-			const err = tools.moveTo(creep, target);
-			console.log('⚒️', Math.trunc(Game.time/10000), Game.time%10000
+			if(creep.memory[role.name].room != creep.pos.roomName ||
+				 creep.memory[role.name].shard != Game.shard.name) {
+				const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
+				const err = tools.moveTo(creep, target);
+				console.log('⚒️', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { tasks:'onRun.upgrade', creep:creep.name
 																				, room:creep.room.name, target:target
 																				, err:err, role:creep.memory[role.name] }));
-			creep.say((OK == err)?'⚒️':'⚒️'+err);
-			
-			if(creep.getActiveBodyparts(HEAL) > 0)
-				creep.heal(creep);
-			
-			if(creep.memory[role.name].room == creep.pos.roomName &&
-				 creep.memory[role.name].shard == Game.shard.name) {
-				if(creep.withdraw(creep.room.storage,RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+				creep.say((OK == err)?'🔜⚒️':'🔜⚒️'+err);
+			}
+			else {
+				if(creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0 &&
+					 creep.withdraw(creep.room.storage,RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 					const err = tools.moveTo(creep, creep.room.storage);
-					creep.say((OK == err)?'🔜⚒️':'🔜⚒️'+err);
+					creep.say((OK == err)?'🔜⚡':'🔜⚡'+err);
 					return true;
 				}
 				if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-					err = tools.moveTo(creep, target);
+					err = tools.moveTo(creep, creep.room.controller);
 					creep.say((OK == err)?'🔜⚒️':'🔜⚒️'+err);
 					return true;
 				}
