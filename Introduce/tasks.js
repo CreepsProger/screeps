@@ -372,7 +372,7 @@ var tasks = {
 				console.log('✅', Math.trunc(Game.time/10000), Game.time%10000
 												, JSON.stringify({creep:creep.name, task:creep.memory.task}));
 			}
-			return creep.memory.task;
+			return creep.memory.task; 
 		}
 	},
 
@@ -421,6 +421,20 @@ var tasks = {
 		}
 	},
 	
+	boostedUpgrader:{},
+
+	addBoostedUpgrader: function(creep) {
+		const creepRoomId = tools.getRoomId(creep.name);
+		tasks.boostedUpgrader[creepRoomId] = { time:Game.time };
+	},
+	boostedUpgraderExists: function(creep) {
+		const creepRoomId = tools.getRoomId(creep.name);
+		const entry = tasks.boostedUpgrader[creepRoomId];
+		if(!entry)
+			return false;
+		return entry.time + 10 > Game.time;
+	},
+	
 	onRun: function(creep) {
 		if(tools.getWeight(creep.name) % 10 == 3 && Game.time%17 == 0 ) {
 			console.log('🚚', Math.trunc(Game.time/10000), Game.time%10000
@@ -428,7 +442,7 @@ var tasks = {
 																				, room:creep.room.name, pos:creep.pos}));
 		}
 		if(tools.getWeight(creep.name) % 10 == 5 && Game.time%17 == 0 ) {
-			console.log('⚔️', Math.trunc(Game.time/10000), Game.time%10000
+			console.log('⚒️', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { tasks:'onRun.start', creep:creep.name
 																				, room:creep.room.name, pos:creep.pos}));
 		}
@@ -566,6 +580,7 @@ var tasks = {
 					return true;
 				}
 			}
+			tasks.addBoostedUpgrader(creep);
 
 			return true;
 		}
