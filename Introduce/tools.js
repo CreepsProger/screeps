@@ -71,6 +71,10 @@ var tools = {
 		}
 		return weight;
 	},
+	
+	getRoomId : function(name) {
+		return Math.floor(tools.getWeight(name)/10);
+	},
 
 	getRoomCode: function(roomName) {
 		const X = tools.getRoomX(roomName);
