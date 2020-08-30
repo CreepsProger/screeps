@@ -132,9 +132,12 @@ var flags = {
 		// W29S29.boosts:"5081":["XGHO2","XLHO2","XUH2O"]
 		// config == {"5084":["XGH2O","XKH2O","XZHO2"], "5081":["XGHO2","XLHO2","XUH2O"]}
 		const prefix = roomName + '.boosts:';
+		const prefix2 = 'boosts:';
 		if(flags.flags[prefix] === undefined) {
 			const json = Object.keys(Game.flags)
-													.filter((name)=>name.substring(0,prefix.length) == prefix)
+													.filter((name) =>
+																	name.substring(0,prefix.length) == prefix ||
+																	(name.substring(0,prefix.length) == prefix2 &&  Game.flags[name].pos.roomName == roomName) )
 													.sort((l,r) => l.localeCompare(r))
 													.map((s,i,arr) => s.substring(s.indexOf(':')+1) + ((i!=arr.length-1)?',':'}') )
 													.reduce((p,c) => p+c, '{');
