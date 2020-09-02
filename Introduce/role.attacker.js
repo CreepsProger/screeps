@@ -69,7 +69,7 @@ var role = {
 					const attacker = attack_count > 0;
 					const heal_count = healler.body.reduce((p,c) => p += (c.type == HEAL),0);
 					const mayHeal = healler.getActiveBodyparts(HEAL) > heal_count/2;
-					return mayHeal && !attacker;}});
+					return mayHeal && !attacker;}}).shift();
 				
 				const tough_count = creep.body.reduce((p,c) => p += (c.type == TOUGH),0);
 				const shouldBeHealled = creep.hitsMax - creep.hits > tough_count*200/3;
