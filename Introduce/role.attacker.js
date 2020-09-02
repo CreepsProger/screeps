@@ -11,7 +11,7 @@ const tools = require('tools');
 var role = {
 
     name: 'attacker',
-		test_n: 93031,
+		test_n: 93492,
 
 		init: function(creep) {
 			if(creep.memory[role.name] === undefined ||
@@ -87,7 +87,11 @@ var role = {
 				const canDismantle2 = creep.getActiveBodyparts(WORK);
 
 				if(creep.memory.n == role.test_n) {
-					console.log(JSON.stringify({Attacker: Attacker, canAttack: canAttack, Healler: Healler, canHeal: canHeal, shouldBeHealled: shouldBeHealled}));
+					console.log(JSON.stringify( { creep:creep.name
+																			, Attacker:Attacker, canAttack:canAttack, canAttack2:canAttack2
+																			, Healler:Healler, canHeal:canHeal, canHeal2:canHeal2
+																			, Dismantler:Dismantler, canDismantle:canDismantle, canDismantle2:canDismantle2
+																			, shouldBeHealled: shouldBeHealled, good_healer_near:good_healer_near}));
 				}
 
 				if(!target && this_room == my_heal_room && shouldBeHealled &&
