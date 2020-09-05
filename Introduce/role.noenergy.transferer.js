@@ -175,6 +175,10 @@ var role = {
 		if((creep.getActiveBodyparts(WORK) || !!creep.room.storage.my) && !!creep.room.storage) {
 			return creep.room.storage;
 		}
+		
+		if(!!creep.room.terminal && !creep.room.terminal.my) {
+			return creep.room.terminal;
+		}
 
 		return config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
 	},
