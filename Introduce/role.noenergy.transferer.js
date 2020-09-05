@@ -233,6 +233,9 @@ var role = {
 												, target.name?target.name:target.structureType);
 					}
 				}
+				else if(err == - 7) {
+					creep.drop(target.resource);
+				}
 				else if(!err) {
 					creep.say('💦'+tools.nvl(target.resource,''));
 					if(!!flags.flags.LRT || !!flags.flags.LR || !!flags.flags.L) {
