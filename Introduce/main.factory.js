@@ -19,7 +19,7 @@ const factory = {
 	
 	getToIn: function(f,res) {
 		const conf = config.getFactoryConfig(f.pos.roomName);
-		if(Game.shard.name == 'shard1') {
+		if(Game.shard.name == 'shard1-') {
 			console.log('🏭', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { roomName:f.pos.roomName
 																				, res:res, conf:conf}));
