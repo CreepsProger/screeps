@@ -176,9 +176,11 @@ var role = {
 			return creep.room.storage;
 		}
 		
-		if(!!creep.room.terminal && !creep.room.terminal.my) {
+		/*if(!!creep.room.terminal && !creep.room.terminal.my) {
+		ERR_INVALID_TARGET	-7	
+The target is not a valid object which can contain the specified resource.
 			return creep.room.terminal;
-		}
+		}*/
 
 		return config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
 	},
