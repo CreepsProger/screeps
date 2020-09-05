@@ -66,6 +66,7 @@ var roleWithdrawer = {
 			if(!target) {
 				var ruins = creep.room.find(FIND_RUINS, {filter: (ruin) => !!ruin.store &&
 					 Object.keys(ruin.store).length > 0 &&
+						!(!!NW1 && NW1.pos.roomName == my_room && NW1.pos.getRangeTo(ruin) < 11-NW1.color) &&
 					 tools.checkTarget(executer,ruin.id)});
 				if(ruins.length > 0) {
 					var ruin = ruins.reduce((p,c) => tools.checkTarget(executer,p.id) &&
