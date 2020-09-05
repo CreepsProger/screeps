@@ -243,7 +243,7 @@ var role = {
 						console.log( '💦', Math.trunc(Game.time/10000), Game.time%10000
 												, creep.name
 												, 'transfering resources to:'
-												, target.name?target.name:target.structureType, target.target);
+												, target.name?target.name:target.structureType, JSON.stringify(target));
 					}
 				}
 				else {
