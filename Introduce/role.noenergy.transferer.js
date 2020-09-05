@@ -247,7 +247,7 @@ var role = {
 					if(!!flags.flags.LRT || !!flags.flags.LR || !!flags.flags.L) {
 						console.log( '💦⚠️', Math.trunc(Game.time/10000), Game.time%10000
 												, creep.name
-												, 'transfering resources to:'
+												, 'transfering <', target.resource, '> to:'
 												, target.name?target.name:target.structureType, target.id
 												, 'with err:'
 												, err);
