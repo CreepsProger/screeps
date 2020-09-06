@@ -42,7 +42,7 @@ const conditions = {
 																			const to_spawn_rd = (room.find(FIND_HOSTILE_CREEPS,{ filter:(c) => tools.getWeight(c.name)==0}).length > 0) ||
 																						(room.find(FIND_HOSTILE_STRUCTURES, { filter: (hs) => hs.level !== undefined && hs.level == 0} ).length > 0);
 		                                  if(to_spawn_rd) {
-																				if(!Memory.defence[roomName].attacked) {
+																				if(!Memory.defence[roomName] || !Memory.defence[roomName].attacked) {
 																					Memory.defence[roomName].attacked = true;
 																					Memory.defence[roomName].time = Game.time;
 																				}
