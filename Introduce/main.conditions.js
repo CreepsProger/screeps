@@ -42,19 +42,17 @@ const conditions = {
 																			const to_spawn_rd = (room.find(FIND_HOSTILE_CREEPS,{ filter:(c) => tools.getWeight(c.name)==0}).length > 0) ||
 																						(room.find(FIND_HOSTILE_STRUCTURES, { filter: (hs) => hs.level !== undefined && hs.level == 0} ).length > 0);
 		                                  if(to_spawn_rd) {
-																				if(!Memory.defence[roomName] || !Memory.defence[roomName].attacked) {
+																				if(!Memory.defence)
+																					Memory.defence={};
+																				if(!Memory.defence[roomName])
+																					Memory.defence[roomName] = {};
+																				if(!Memory.defence[roomName].attacked) {
 																					Memory.defence[roomName].attacked = true;
 																					Memory.defence[roomName].time = Game.time;
 																				}
 																				if(Game.time - Memory.defence[roomName].time < 10)
 																					return false;
 																				console.log('TO_SPAWN_ROOM_DEFENDERS('+ roomName +') =' , to_spawn_rd, JSON.stringify({hs:room.find(FIND_HOSTILE_STRUCTURES), hc:room.find(FIND_HOSTILE_CREEPS)}));
-																			} else {
-																				if(!Memory.defence)
-																					Memory.defence={};
-																				if(!Memory.defence[roomName])
-																					Memory.defence[roomName] = {};
-																				Memory.defence[roomName].attacked = false;
 																			}
 																		  return to_spawn_rd;}
 	, TO_SPAWN_ROOM_EXTRA_DEFENDERS:function(roomName) {
