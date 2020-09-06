@@ -226,7 +226,17 @@ var tools = {
 									, 'setTarget', rerun_creep2, creep2
 								 );
 		return mytarget;
+	},
+
+	getInviderCoreLevel: function(roomName) {
+		const room = Game.rooms[roomName];
+		if(!room) return undefined;
+		return room.find(FIND_HOSTILE_STRUCTURES, { filter: (hs) => hs.level !== undefined} )
+							.map((hs) => hs.level)
+							.sort((l,r) => r-l)
+							.shift();
 	}
+	
 };
 
 module.exports = tools;
