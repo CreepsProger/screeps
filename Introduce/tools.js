@@ -235,6 +235,30 @@ var tools = {
 							.map((hs) => hs.level)
 							.sort((l,r) => r-l)
 							.shift();
+	},
+
+	getStorageOrTerminal: function(creep) {
+			var st = [];
+ 			if(!!creep.room.terminal &&
+ 				 !!creep.room.terminal.my &&
+ 				   creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_TERMINAL_ENERGY) {
+ 				st.push(creep.room.terminal);
+ 			}
+ 			if(!!creep.room.storage &&
+ 				 !!creep.room.storage.my &&
+				 !!creep.room.storage.store &&
+ 				 	 creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > constants.STOP_UPGRADING_ENERGY + constants.MIN_STORAGE_ENERGY + creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY)) {
+ 				st.push(creep.room.storage);
+ 			}
+			if(st.length > 0) {
+				return st.reduce((p,c) =>
+												 creep.pos.getRangeTo(p)
+												 * (c.store.getFreeCapacity(RESOURCE_ENERGY) + 5000) // dp*efc < dc*efp !! it is right! don't change
+												 < creep.pos.getRangeTo(c)
+												 * (p.store.getFreeCapacity(RESOURCE_ENERGY) + 5000)
+												 ? p:c);
+			}
+		return null;
 	}
 	
 };
