@@ -593,6 +593,10 @@ var tasks = {
 			}
 			tasks.addBoostedUpgrader(creep);
 			tools.dontGetInWay(creep);
+			const range = creep.pos.getRangeTo(creep.room.controller);
+			if(range > 1) {
+				tools.moveTo(creep,creep.room.controller);
+			}
 
 			return true;
 		}
