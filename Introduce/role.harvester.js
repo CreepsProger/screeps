@@ -82,9 +82,9 @@ var role = {
 			if(st.length > 0) {
 				return st.reduce((p,c) =>
 												 creep.pos.getRangeTo(p)
-												 / (c.store.getUsedCapacity(RESOURCE_ENERGY) + 5000) // dp/ec < dc/ep !! it is right! don't change
+												 * (c.store.getFreeCapacity(RESOURCE_ENERGY) + 5000) // dp*efc < dc*efp !! it is right! don't change
 												 < creep.pos.getRangeTo(c)
-												 / (p.store.getUsedCapacity(RESOURCE_ENERGY) + 5000)
+												 * (p.store.getFreeCapacity(RESOURCE_ENERGY) + 5000)
 												 ? p:c);
 			}
 		return null;
