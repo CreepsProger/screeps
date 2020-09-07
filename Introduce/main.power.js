@@ -297,7 +297,7 @@ const power = {
 																						 , err:err, pcName:pcName, pc:pc}));
 					}
 				}
-				tools.dontGetInWay(creep);
+				tools.dontGetInWay(pc);
 				
 			}
 		});
