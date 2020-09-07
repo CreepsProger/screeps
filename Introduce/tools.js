@@ -14,6 +14,7 @@ var tools = {
 	dontGetInWay: function(creep) {
 		if(creep.pos.findInRange(FIND_MY_SPAWNS, 1).length > 0 ||
 			 creep.pos.findInRange(FIND_MY_CREEPS, 1).length > 1 ||
+			 creep.pos.findInRange(FIND_MY_STRUCTURES, 1).length > 1 ||
 			 //(!!creep.room.storage && creep.pos.inRangeTo(creep.room.storage, 1)) ||
 			 (!!creep.room.terminal && creep.pos.inRangeTo(creep.room.terminal, 1)) ) {
 				const random = Math.floor(Math.random()*8+Game.time)%8+1;
