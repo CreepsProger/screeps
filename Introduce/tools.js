@@ -242,6 +242,7 @@ var tools = {
 			var st = [];
  			if(!!creep.room.terminal &&
  				 !!creep.room.terminal.my &&
+				 !!creep.room.terminal.store &&
  				   creep.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY) > constants.MIN_TERMINAL_ENERGY) {
  				st.push(creep.room.terminal);
  			}
