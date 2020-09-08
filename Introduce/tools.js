@@ -255,9 +255,9 @@ var tools = {
 			if(st.length > 0) {
 				return st.reduce((p,c) =>
 												 creep.pos.getRangeTo(p)
-												 * (c.store.getFreeCapacity(RESOURCE_ENERGY) + 5000) // dp*efc < dc*efp !! it is right! don't change
+												 * p.store.getFreeCapacity(RESOURCE_ENERGY)
 												 < creep.pos.getRangeTo(c)
-												 * (p.store.getFreeCapacity(RESOURCE_ENERGY) + 5000)
+												 * c.store.getFreeCapacity(RESOURCE_ENERGY)
 												 ? p:c);
 			}
 		return null;
