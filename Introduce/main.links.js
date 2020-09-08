@@ -153,8 +153,12 @@ var links = {
 		 // W25S28
      , { from: '5f3a2c42ef07735899b6db6c', to: '5f3a2ad8218ec55b8abed857'}
      , { from: '5f3e166c6013057f01447c62', to: '5f3a2ad8218ec55b8abed857'}
+     , { from: '5f56d0b15754b77e8cd41cec', to: '5f3a2ad8218ec55b8abed857'}
      , { from: '5f3a2c42ef07735899b6db6c', to: '5f452acdd9371e83f12d4c46'}
      , { from: '5f3e166c6013057f01447c62', to: '5f452acdd9371e83f12d4c46'}
+     , { from: '5f56d0b15754b77e8cd41cec', to: '5f452acdd9371e83f12d4c46'}
+		 // W29S27
+     , { from: '5f56cf1948a48dcae11be8ef', to: '5f56cc49fbfd1ed45772dd95'}
 	 ],
 
 	 getTargetLinkToTransferEnergy: function(creep, executer, role_run, link_weight) {
