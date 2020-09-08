@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 436,
+	version: 437,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -885,7 +885,7 @@ var config = {
 						{
 							W29S29:
 							{ containers: {weight: 5013}
-							, towers: {mw:6000000, mr:6000000}
+							, towers: {mw:11000000, mr:11000000}
 							// , sites:
 							// 	[ {x:37, y:39, type:STRUCTURE_CONTAINER}
 							// 	]
@@ -940,7 +940,7 @@ var config = {
 							},
 							W28S29:
 							{ containers: {weight: 5023}
-							, towers: {mw:11000000, mr:11000000}
+							, towers: {mw:21000000, mr:21000000}
 							, sites:
 							 	[ /*{x:13, y:30, type:STRUCTURE_CONTAINER}
 								, {x:22, y:19, type:STRUCTURE_CONTAINER}*/
@@ -1063,7 +1063,7 @@ var config = {
 							},
 							W27S29:
 							{ containers: {weight: 5053}
-							, towers: {mw:6000000, mr:6000000}
+							, towers: {mw:11000000, mr:11000000}
 							, sites:
 							 	[ /*{x:42, y:10, type:STRUCTURE_CONTAINER}
 								, {x:43, y:17, type:STRUCTURE_CONTAINER}*/
@@ -1188,7 +1188,7 @@ var config = {
 							},
 							W24S28:
 							{ containers: {weight: 5123}
-							, towers: {mw:6000000, mr:6000000}
+							, towers: {mw:11000000, mr:11000000}
 							, sites:
 							 	[ //{x:16, y:20, type:STRUCTURE_CONTAINER}
 								//, {x:12, y:34, type:STRUCTURE_CONTAINER}
@@ -1230,6 +1230,7 @@ var config = {
 							},
 							W25S28:
 							{ containers: {weight: 5153}
+							, towers: {mw:11000000, mr:11000000}
 							, sites:
 							 	[
 							 	]
@@ -1270,6 +1271,7 @@ var config = {
 							},
 							W29S27:
 							{ containers: {weight: 5273}
+							, towers: {mw:100000, mr:100000}
 							, sites:
 							 	[
 							 	]
@@ -1311,7 +1313,7 @@ var config = {
 							},
 							W24S27:
 							{ containers: {weight: 5193}
-							, towers: {mw:600000, mr:600000}
+							, towers: {mw:11000000, mr:11000000}
 							, sites:
 							 	[
 							 	]
@@ -1725,7 +1727,7 @@ var config = {
 							},
 							W21S28:
 							{ containers: {weight: 5213}
-							, towers: {mw:6000000, mr:6000000}
+							, towers: {mw:21000000, mr:21000000}
 							, sites:
 							 	[ //{x:18, y:23, type:STRUCTURE_CONTAINER}
 							 	]
@@ -1932,7 +1934,7 @@ var config = {
 							},
 							W29S31:
 							{ containers: {weight: 5083}
-							, towers: {mw:6000000, mr:6000000}
+							, towers: {mw:11000000, mr:11000000}
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 5080, max_weight: 5089}
 								, {name: '2', time: 0, min_weight: 5080, max_weight: 5089}
