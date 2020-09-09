@@ -385,12 +385,14 @@ var role = {
 		}
 		
 		if(!target && !creep.getActiveBodyparts(WORK)) {
-			const towers = cash.getTowers(creep.room)
+			const tower = cash.getTowers(creep.room)
 													.filter((t) =>
 																	!!t && !! t.my && !!t.store &&
 																	t.store.getFreeCapacity(RESOURCE_ENERGY) > constants.TOWER_NO_ENERGY_TO_FILL &&
-																	tools.checkTarget(executer,t.id));
-			if(towers.length > 0) {
+																	tools.checkTarget(executer,t.id))
+													.shift();
+			if(!!tower) {
+				tools.setTarget(creep,tower,tower.id,role.run);
 				target = sot;
 			}
 		}
