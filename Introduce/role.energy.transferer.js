@@ -114,6 +114,7 @@ var roleEnergyTransferer = {
 			metrix.cpu.step_time(creep, 'transfering', '🚸');
 
 			if(!target && this_room == my_room &&
+				 creep.room.energyAvailable == creep.room.energyCapacityAvailable &&
 				 (	!creep.getActiveBodyparts(WORK) ||
 				  	(this_room_sources_are_empty && creep.memory.rerun) ||
 					 	conditions.MAIN_ROOM_CRISIS() ||
