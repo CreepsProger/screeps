@@ -114,23 +114,12 @@ var roleEnergyTransferer = {
 			metrix.cpu.step_time(creep, 'transfering', '🚸');
 
 			if(!target && this_room == my_room &&
-				 creep.room.energyAvailable == creep.room.energyCapacityAvailable &&
 				 (	!creep.getActiveBodyparts(WORK) ||
 				  	(this_room_sources_are_empty && creep.memory.rerun) ||
 					 	conditions.MAIN_ROOM_CRISIS() ||
 					 	UU || B
 					)
 				) {
-				var towers = cash.getTowers(creep.room)
-													.filter((t) =>
-																	!!t && !! t.my && !!t.store &&
-																	t.store.getFreeCapacity(RESOURCE_ENERGY) > constants.TOWER_NO_ENERGY_TO_FILL &&
-																	tools.checkTarget(executer,t.id));
-				if(towers.length > 0) {
-					const infra = towers.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-					target = tools.setTarget(creep,infra,infra.id,roleEnergyTransferer.run);
-				}
-
 				var use_api = false; var sz = 0;
 				var use_cash_pos = false;
 				var use_cash = false;
@@ -203,6 +192,18 @@ var roleEnergyTransferer = {
 													, 'pos:', JSON.stringify(creep.pos)
 												 );
 					}
+				}
+			}
+			
+			if(!target && !creep.getActiveBodyparts(WORK)) {
+				const towers = cash.getTowers(creep.room)
+													.filter((t) =>
+																	!!t && !! t.my && !!t.store &&
+																	t.store.getFreeCapacity(RESOURCE_ENERGY) > constants.TOWER_NO_ENERGY_TO_FILL &&
+																	tools.checkTarget(executer,t.id));
+				if(towers.length > 0) {
+					const infra = towers.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
+					target = tools.setTarget(creep,infra,infra.id,roleEnergyTransferer.run);
 				}
 			}
 			
