@@ -11,9 +11,19 @@ var last_tick = 0;
 
 var tools = {
 	
+	isInWay: function(creep) {
+		if(creep.room.name == 'W26S33' &&
+			 ((creep.pos.x == 28 && creep.pos.y == 20) ||
+				(creep.pos.x == 29 && creep.pos.y == 19) ||
+				(creep.pos.x == 30 && creep.pos.y == 18)))
+			return true;
+		return false;
+	},
+	
 	dontGetInWay: function(creep) {
 		if(creep.pos.findInRange(FIND_MY_SPAWNS, 1).length > 0 ||
 			 creep.pos.findInRange(FIND_MY_CREEPS, 1).length > 1 ||
+			 tools.isInWay(creep) ||
 			 //creep.pos.findInRange(FIND_MY_STRUCTURES, 1).length > 1 ||
 			 //(!!creep.room.storage && creep.pos.inRangeTo(creep.room.storage, 1)) ||
 			 (!!creep.room.terminal && creep.pos.inRangeTo(creep.room.terminal, 1)) ) {
