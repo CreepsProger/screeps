@@ -196,14 +196,15 @@ var roleEnergyTransferer = {
 			}
 			
 			if(!target && !creep.getActiveBodyparts(WORK)) {
-				const towers = cash.getTowers(creep.room)
+				const tower = cash.getTowers(creep.room)
 													.filter((t) =>
 																	!!t && !! t.my && !!t.store &&
 																	t.store.getFreeCapacity(RESOURCE_ENERGY) > constants.TOWER_NO_ENERGY_TO_FILL &&
-																	tools.checkTarget(executer,t.id));
-				if(towers.length > 0) {
-					const infra = towers.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-					target = tools.setTarget(creep,infra,infra.id,roleEnergyTransferer.run);
+																	tools.checkTarget(executer,t.id))
+													.sort((l,r) => creep.pos.getRangeTo(l) - creep.pos.getRangeTo(r))
+													.shift();
+				if(!!tower) {
+					target = tools.setTarget(creep,tower,tower.id,roleEnergyTransferer.run);
 				}
 			}
 			
