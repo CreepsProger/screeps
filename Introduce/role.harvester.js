@@ -383,6 +383,17 @@ var role = {
 				}
 			}
 		}
+		
+		if(!target && !creep.getActiveBodyparts(WORK)) {
+			const towers = cash.getTowers(creep.room)
+													.filter((t) =>
+																	!!t && !! t.my && !!t.store &&
+																	t.store.getFreeCapacity(RESOURCE_ENERGY) > constants.TOWER_NO_ENERGY_TO_FILL &&
+																	tools.checkTarget(executer,t.id));
+			if(towers.length > 0) {
+				target = sot;
+			}
+		}
 
 		if(!target && !creep.getActiveBodyparts(WORK) && creep.memory.rerun) {
 			var weightcreeps = creep.room.find(FIND_MY_CREEPS, {
