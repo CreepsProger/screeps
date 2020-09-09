@@ -565,6 +565,7 @@ var tasks = {
 																				, room:creep.room.name, target:target
 																				, err:err, role:creep.memory[role.name] }));
 				creep.say((OK == err)?'🔜⚒️':'🔜⚒️'+err);
+				return true;
 			}
 			else {
 				if(creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
