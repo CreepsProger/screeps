@@ -170,7 +170,11 @@ var tools = {
 	},
 
 	checkTarget: function(executer,id) {
-		return (executer === undefined)? true:tools.targets[id] === undefined;
+		//return (executer === undefined)? true:tools.targets[id] === undefined;
+		if(tools.targets.time != Game.time) {
+			tools.targets = {time:Game.time};
+		}
+		return tools.targets[id] === undefined;
 	},
 
 	targets_prev: {prev_time:{},prev1:{},prev2:{},prev3:{}},
