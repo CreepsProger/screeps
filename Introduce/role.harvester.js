@@ -384,7 +384,7 @@ var role = {
 			}
 		}
 		
-		if(!target && !creep.getActiveBodyparts(WORK)) {
+		if(!target && !creep.getActiveBodyparts(WORK) && sot) {
 			const tower = cash.getTowers(creep.room)
 													.filter((t) =>
 																	!!t && !! t.my && !!t.store &&
