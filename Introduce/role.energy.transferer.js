@@ -205,7 +205,7 @@ var roleEnergyTransferer = {
 													.shift();
 				if(!!tower) {
 					target = tools.setTarget(creep,tower,tower.id,roleEnergyTransferer.run);
-					if(tools.getWeight(creep.name) == 5151) {
+					if(tools.getWeight(creep.name) == 999999) {
 						console.log('🗼💡', Math.trunc(Game.time/10000), Game.time%10000
 																, JSON.stringify( { creep:creep.name, roomName:creep.room.name
 																									, tower_id:tower.id}));
