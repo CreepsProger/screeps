@@ -201,7 +201,7 @@ var roleEnergyTransferer = {
 																	!!t && !! t.my && !!t.store &&
 																	t.store.getFreeCapacity(RESOURCE_ENERGY) > constants.TOWER_NO_ENERGY_TO_FILL &&
 																	tools.checkTarget(executer,t.id))
-													//.sort((l,r) => creep.pos.getRangeTo(l) - creep.pos.getRangeTo(r))
+													.sort((l,r) => creep.pos.getRangeTo(l) - creep.pos.getRangeTo(r))
 													.shift();
 				if(!!tower) {
 					target = tools.setTarget(creep,tower,tower.id,roleEnergyTransferer.run);
