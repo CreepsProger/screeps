@@ -393,7 +393,7 @@ var role = {
 													.shift();
 			if(!!tower) {
 				tools.setTarget(creep,tower,tower.id,role.run);
-				target = sot;
+				return sot;
 			}
 		}
 
