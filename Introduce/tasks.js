@@ -485,9 +485,9 @@ var tasks = {
 // 					console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
 // 								, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
 // 																	, room:creep.room.name, resToBoost:resToBoost, labToBoost:labToBoost}));
-					const err = labToBoost.boostCreep(creep);
+					const err = labToBoost.lab.boostCreep(creep);
 					if(err == ERR_NOT_IN_RANGE) {
-						const err2 = tools.moveTo(creep, labToBoost);
+						const err2 = tools.moveTo(creep, labToBoost.lab);
 						creep.say((OK == err2)?'🔜💉':'🔜💉'+err2);
 					}
 					else {
