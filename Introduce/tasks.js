@@ -471,15 +471,20 @@ var tasks = {
 // 				console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
 // 							, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
 // 																, room:creep.room.name, resToBoost:resToBoost, getLabsToInOut:labs.getLabsToInOut(creep.room.name)}));
-				const labsToBoost = labs.getLabsToInOut(creep.room.name).filter((lab) => !!lab.lab.mineralType &&
-																																				lab.lab.store[lab.lab.mineralType] > 30 &&
-																																				ressToBoost.includes(lab.lab.mineralType) );
-				if(labsToBoost.length > 0) { 
-					const resToBoost = labsToBoost[0].lab.mineralType;
+				const labToBoost = labs.getLabsToInOut(creep.room.name)
+																.filter((lab) => !!lab.lab.mineralType &&
+																				lab.lab.store[lab.lab.mineralType] > 30 &&
+																				ressToBoost.includes(lab.lab.mineralType) )
+																.map((lab) => (lab.m = lab.lab.store[lab.lab.mineralType],lab)) 
+																.map((lab) => (lab.e = tools.nvl(e.lab.store.getUsedCapacity(RESOURCE_ENERGY),0),lab)) 
+																.map((lab) => (lab.em = lab.e*lab.m,lab)) 
+																.sort((l,r) => r.em - l.em)
+																.shift();
+				if(!!labToBoost) { 
+					const resToBoost = labToBoost.lab.mineralType;
 // 					console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
 // 								, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
-// 																	, room:creep.room.name, resToBoost:resToBoost, labsToBoost:labsToBoost}));
-					const labToBoost = labsToBoost[0].lab;
+// 																	, room:creep.room.name, resToBoost:resToBoost, labToBoost:labToBoost}));
 					const err = labToBoost.boostCreep(creep);
 					if(err == ERR_NOT_IN_RANGE) {
 						const err2 = tools.moveTo(creep, labToBoost);
