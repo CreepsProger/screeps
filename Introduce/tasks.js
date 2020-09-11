@@ -476,7 +476,7 @@ var tasks = {
 																				lab.lab.store[lab.lab.mineralType] > 30 &&
 																				ressToBoost.includes(lab.lab.mineralType) )
 																.map((lab) => (lab.m = lab.lab.store[lab.lab.mineralType],lab)) 
-																.map((lab) => (lab.e = tools.nvl(e.lab.store.getUsedCapacity(RESOURCE_ENERGY),0),lab)) 
+																.map((lab) => (lab.e = tools.nvl(lab.lab.store.getUsedCapacity(RESOURCE_ENERGY),0),lab)) 
 																.map((lab) => (lab.em = lab.e*lab.m,lab)) 
 																.sort((l,r) => r.em - l.em)
 																.shift();
