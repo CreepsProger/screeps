@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 440,
+	version: 441,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -689,9 +689,10 @@ var config = {
 								{ W57S51: 'W56S51', W56S51: 'W56S52'
 								, W57S52: 'W56S52', W57S52y:45, W56S52: 'W56S52'
 								, W54S51: 'W55S51', W55S51: 'W56S51'
+								, W56S53: 'W56S52'
 								}
 								, escape_path:
-								{ W56S52: 'W57S52'
+								{ W56S53: 'W56S52', W56S52: 'W57S52'
 								}
 							},W56S53:
 							{ containers: {weight: 553}
