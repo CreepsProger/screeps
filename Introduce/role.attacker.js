@@ -272,16 +272,7 @@ var role = {
 					});
 				}
 				
-				if(!target && canHeal) {
-					target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
-						filter: (mycreep) => {
-							return  mycreep.hitsMax - mycreep.hits == 0 &&
-                      creep.pos.getRangeTo(mycreep) > 0 &&
-                      creep.pos.getRangeTo(mycreep) <= 1;
-						}
-					});
-				}
-
+				
 				var range = 50;
 
 				const A2 = flags.flags.A2;
@@ -433,9 +424,13 @@ var role = {
 							}
 						}
 					}
-					if ((creep.hits < creep.hitsMax || !target) && creep.getActiveBodyparts(HEAL)) {
-						creep.heal(creep);
-					}
+					if(!target && creep.getActiveBodyparts(HEAL)) {
+						const my_creep = creep.pos.findInRange(FIND_MY_CREEPS, 1, {filter: (mc) => mc.hits < mc.hitsMax}).shift();
+						if(!!my_creep)
+							creep.heal(my_creep);
+						else
+							creep.heal(creep);
+					} 
 
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜🎯');
