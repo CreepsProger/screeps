@@ -271,6 +271,16 @@ var role = {
 						}
 					});
 				}
+				
+				if(!target && canHeal) {
+					target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
+						filter: (mycreep) => {
+							return  mycreep.hitsMax - mycreep.hits == 0 &&
+                      creep.pos.getRangeTo(mycreep) > 0 &&
+                      creep.pos.getRangeTo(mycreep) <= 1;
+						}
+					});
+				}
 
 				var range = 50;
 
