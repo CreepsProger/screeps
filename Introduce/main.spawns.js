@@ -270,7 +270,7 @@ var spawns = {
 											 , [ 50907,  60606,  80406]  // 4 1300
 											 , [ 70707,  90909, 120408]  // 5 1800
 											 , [130911, 140711, 160410, 111111]  // 6 2300
-											 , [201020, 161616, 250817, 400206, 200525]  // 7 5600
+											 , [201020, 161616, 250817, 400206, 200525, 151025]  // 7 5600
 											 , [201216, 153005, 250025, 400010, 151515]  // 8
                        ];
 				const UPGRADER = [ 151515, 152510, 201020  // 0  000
@@ -666,7 +666,7 @@ var spawns = {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W56S53')) {
               if(Sp1)	spawns.tryCreateCreep(spawn, CLAIMER[6][M], 550);
 						}
-						if(Sp1)	spawns.tryCreateCreep(spawn,  WORKER[7][L], 554);
+						if(Sp1)	spawns.tryCreateCreep(spawn,  WORKER[7][S+2], 554);
             if(Sp1)	spawns.tryCreateCreep(spawn,  CARIER[7][L], 551);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W56S54')) {
