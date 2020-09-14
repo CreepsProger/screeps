@@ -286,9 +286,10 @@ var spawns = {
 													 ,        2112000017,     190006000025]  // 7 5600
 												 , [      250008000017,     170008000025,  400001308000025 // 8 12900
 												 ,          2515000010,     400000000010,  400004000000006
-												   ,      170008000025,     170008000025,     170008000025]
-													, [  500000000200025, 1000002010000010, 2100000019000010]
-													, [ 1100002110000006, 2000200000000010, 2000000020000010, 4200000000010007]
+												   ,      170008000025,     170008000025,     170008000025]//9
+													, [  500000000200025, 1000002010000010, 2100000019000010]//10
+													, [ 1100002110000006, 2000200000000010, 2000000020000010, 4200000000010007]//11
+													, [ 1000000030000010,  500003500000010, 5000350000000010,  500000035000010]//12
 										   	 ]; //TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 				const HEALER =   [ [                0,                0,                0]  // 0   000
 											 	 , [          1000001,          1000001,          1000001]  // 1   300
@@ -310,6 +311,11 @@ var spawns = {
 												 , [    4000000000004,    8000000000010,    8000000000014]  // 7 5600
 												 , [   10000000000010,   10000000000020,   19000000000019]  // 8 12900
 												];
+				const D = 0; const A = 1; const R = 2; const HR = 3;
+				const DEFENDER = [ [                 0,                0,                0]  // 0  000
+													, [ 1000000030000010,  500003500000010, 5000350000000010,  500000035000010]//1
+										   	 ]; //TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
+	
 
         if(Game.shard.name == 'shard1') {
   				// if(Memory.totals.CARRY < 25	) spawns.tryCreateCreep(spawn,   808, 10, 3); // E  800 Carier
@@ -797,9 +803,10 @@ var spawns = {
 							if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S32')) {
 								if(spawn.name == 'Spawn13') spawns.tryCreateCreep(spawn, ATTACKER[3][L], 176);
 								if(spawn.name == 'Spawn13') spawns.tryCreateCreep(spawn,   CARIER[7][M], 172);
-								if(spawn.name == 'Spawn13') spawns.tryCreateCreep(spawn, ATTACKER[7][S+1], 177);
-								if(spawn.name == 'Spawn13') spawns.tryCreateCreep(spawn, ATTACKER[7][S], 178);
-								if(spawn.name == 'Spawn13') spawns.tryCreateCreep(spawn,   HEALER[7][H], 179);
+								if(spawn.name == 'Spawn13') spawns.tryCreateCreep(spawn, DEFENDER[1][A], 177);
+								if(spawn.name == 'Spawn13') spawns.tryCreateCreep(spawn, DEFENDER[1][R], 178);
+								if(spawn.name == 'Spawn13') spawns.tryCreateCreep(spawn, DEFENDER[1][HR], 179);
+// 								if(spawn.name == 'Spawn13') spawns.tryCreateCreep(spawn, DEFENDER[12][D], 176);
 							}
 							else {
 								if(Sp5) spawns.tryCreateCreep(spawn,   WORKER[7][H], 174);
