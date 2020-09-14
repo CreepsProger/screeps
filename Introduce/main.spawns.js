@@ -86,10 +86,10 @@ var spawns = {
 			if(!!boosts) { // [["XUH2O",10,1],["XGHO2"],["XZHO2"],["XLHO2"]]
 				console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({weight:weight, spawn:spawn, boosts:boosts}));
-				const labs = [];
+				const labs = [];/*
 				boostLabsReady = boosts.filter((b) => !!b[2] && b[2] != 0) // check only mandatory 
 																.filter((b) => labs.some((l) => !l.e || l.e < b[1]*20 || !l.m || l.m < b[1]*30))
-																.reduce((c,p) => c++, 0) == 0;
+																.reduce((c,p) => c++, 0) == 0;*/
 				// tasks.addTasksToFillBoostingLab(newName, spawn.room.roomName, boosts);
 			}
 
