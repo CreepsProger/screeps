@@ -85,7 +85,7 @@ var spawns = {
 			var boostLabsReady = true;
 			if(!!boosts) { // [["XUH2O",10,1],["XGHO2"],["XZHO2"],["XLHO2"]]
 				console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({creep:newName, spawn:spawn, boosts:boosts}));
+											, JSON.stringify({weight:weight, spawn:spawn, boosts:boosts}));
 				const labs = [];
 				boostLabsReady = boosts.filter((b) => !!b[2] && b[2] != 0) // check only mandatory 
 																.filter((b) => labs.some((l) => !l.e || l.e < b[1]*20 || !l.m || l.m < b[1]*30))
@@ -285,7 +285,7 @@ var spawns = {
 											 	 , [        2005000025,     250000000025,       1213000025
 													 ,        2112000017,     190006000025]  // 7 5600
 												 , [      250008000017,     170008000025,  400001308000025 // 8 12900
-												 ,          2515000010,     400000000010,       4400000006
+												 ,          2515000010,     400000000010,  400004000000006
 												   ,      170008000025,     170008000025,     170008000025]
 													, [  500000000200025, 1000002010000010, 2100000019000010]
 													, [ 1100002110000006, 2000200000000010, 2000000020000010, 4200000000010007]
@@ -802,7 +802,7 @@ var spawns = {
 								if(spawn.name == 'Spawn13') spawns.tryCreateCreep(spawn,   HEALER[7][H], 179);
 							}
 							else {
-								if(Sp5 && Game.cpu.bucket > 7000) spawns.tryCreateCreep(spawn,   WORKER[7][H], 174);
+								if(Sp5) spawns.tryCreateCreep(spawn,   WORKER[7][H], 174);
 								if(Sp5) spawns.tryCreateCreep(spawn,   CARIER[7][M], 171);
 								if(Sp5) spawns.tryCreateCreep(spawn,   UPGRADER[L], 175);
 							}
