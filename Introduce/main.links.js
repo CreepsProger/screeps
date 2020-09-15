@@ -162,6 +162,7 @@ var links = {
      , { from: '5f56d0b15754b77e8cd41cec', to: '5f452acdd9371e83f12d4c46'}
 		 // W29S27
      , { from: '5f56cf1948a48dcae11be8ef', to: '5f56cc49fbfd1ed45772dd95'}
+     , { from: '5f60e22052c3b6df4a25723b', to: '5f56cc49fbfd1ed45772dd95'}
 	 ],
 
 	 getTargetLinkToTransferEnergy: function(creep, executer, role_run, link_weight) {
