@@ -580,17 +580,17 @@ var flags = {
 					tools.timeOn(time, terminal.cooldown);
 					return;
 				}
-				const ShardAvgAmountWithoutDeals = require('main.terminals').getShardAvgAmountWithoutDeals(fSell.resource);
+				const ShardAvgAmount = require('main.terminals').getShardAvgAmount(fSell.resource);
 				const MaxAvgAmountToSell = !!fSell.MaxAvgAmountToSell? fSell.MaxAvgAmountToSell : require('main.config').getMaxAvgAmountToSell(fSell.resource);
-				if(ShardAvgAmountWithoutDeals < MaxAvgAmountToSell) {
-					fSell.room.visual.text('👉Ⓜ️💲⛔ ' + ShardAvgAmountWithoutDeals + ' < ' + MaxAvgAmountToSell
+				if(ShardAvgAmount < MaxAvgAmountToSell) {
+					fSell.room.visual.text('👉Ⓜ️💲⛔ ' + ShardAvgAmount + ' < ' + MaxAvgAmountToSell
 																, fSell.pos.x
 																, fSell.pos.y);
 					if(!!fLogSell) { 
 						console.log('🤝Ⓜ️💲⛔', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { Sell:'fSell', roomName:roomName
 																						, selling:selling, fSell:fSell
-																						, ShardAvgAmountWithoutDeals:ShardAvgAmountWithoutDeals
+																						, ShardAvgAmount:ShardAvgAmount
 																						, MaxAvgAmountToSell:MaxAvgAmountToSell}));
 					}
 					return;
@@ -671,17 +671,17 @@ var flags = {
 						.forEach(function(fBuy)
 				{
 				const roomName = fBuy.pos.roomName;
-				const ShardAvgAmountWithoutDeals = require('main.terminals').getShardAvgAmountWithoutDeals(fBuy.resource);
+				const ShardAvgAmount = require('main.terminals').getShardAvgAmount(fBuy.resource);
 				const MinAvgAmountToBuy = !!fBuy.MinAvgAmountToBuy? fBuy.MinAvgAmountToBuy : require('main.config').getMinAvgAmountToBuy(fBuy.resource);
-				if(ShardAvgAmountWithoutDeals > MinAvgAmountToBuy) {
-					fBuy.room.visual.text('👉Ⓜ️💠⛔ ' + ShardAvgAmountWithoutDeals + ' > ' + MinAvgAmountToBuy
+				if(ShardAvgAmount > MinAvgAmountToBuy) {
+					fBuy.room.visual.text('👉Ⓜ️💠⛔ ' + ShardAvgAmount + ' > ' + MinAvgAmountToBuy
 																, fBuy.pos.x
 																, fBuy.pos.y);
 					if(!!fLogBuy) {
 						console.log('🤝Ⓜ️💠⛔', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { Buy:'fBuy', roomName:roomName
 																						, buying:buying, creditsLimit:creditsLimit, fBuy:fBuy
-																						, ShardAvgAmountWithoutDeals:ShardAvgAmountWithoutDeals
+																						, ShardAvgAmount:ShardAvgAmount
 																						, MinAvgAmountToBuy:MinAvgAmountToBuy}));
 					}
 					return;
