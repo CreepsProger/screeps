@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 449,
+	version: 450,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -344,6 +344,7 @@ var config = {
 			{	shard0:
 					{	defaults:
 						{ containers: {weight: 1000}
+						, towers: {mw:6000000, mr:6000000}
 						, heal_room:
 							{ shard: 'shard0', room: 'W57S52'}
 						, path_rooms:
@@ -388,7 +389,7 @@ var config = {
 							},
 							W54S51:
 							{ containers: {weight: 523}
-							, towers: {mw:80000, mr:80000}
+							, towers: {mw:6000000, mr:6000000}
 							// , sites:
 							// 	[ {x:37, y:39, type:STRUCTURE_CONTAINER}
 							// 	]
@@ -424,7 +425,7 @@ var config = {
 							},
 							W53S51:
 							{ containers: {weight: 543}
-							, towers: {mw:80000, mr:80000}
+							, towers: {mw:6000000, mr:6000000}
 							, sites:
 							  [ {x:5, y:42, type:STRUCTURE_CONTAINER}
 								, {x:23, y:11, type:STRUCTURE_CONTAINER}
@@ -461,7 +462,7 @@ var config = {
 							},
 							W52S51:
 							{ containers: {weight: 533}
-							, towers: {mw:80000, mr:80000}
+							, towers: {mw:6000000, mr:6000000}
 							, sites:
 							  [ {x:11, y:35, type:STRUCTURE_CONTAINER}
 								]
@@ -631,7 +632,7 @@ var config = {
 							},
 						  W57S51:
 							{ containers: {weight: 453}
-							, towers: {mw:200000, mr:200000}
+							, towers: {mw:6000000, mr:6000000}
 							, sites:
 								[ {x:7, y:41, type:STRUCTURE_LINK}
 								, {x:11, y:34, type:STRUCTURE_ROAD}
@@ -667,6 +668,7 @@ var config = {
 							},
 						  W56S52:
 							{ containers: {weight: 443}
+							, towers: {mw:6000000, mr:6000000}
 							, sites:
 								[
 								]
@@ -698,6 +700,7 @@ var config = {
 							},
 							W56S53:
 							{ containers: {weight: 553}
+							, towers: {mw:600000, mr:600000}
 							, sites:
 								[ //{x:37, y:30, type:STRUCTURE_CONTAINER}
 								]
