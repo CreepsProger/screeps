@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 450,
+	version: 451,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -711,6 +711,8 @@ var config = {
 								, {name: '4', time: 0, min_weight: 550, max_weight: 559}
 								, {name: '5', time: 0, min_weight: 550, max_weight: 559}
 								, {name: '6', time: 0, min_weight: 550, max_weight: 559}
+								, {name: '7', time: 0, min_weight: 550, max_weight: 559}
+								, {name: '8', time: 0, min_weight: 550, max_weight: 559}
 								]
 							, claiming:
 								[ {name: '1', time: 0, min_weight: 550, max_weight: 559}
@@ -720,6 +722,8 @@ var config = {
 								, {name: '2', time: 0, min_weight: 550, max_weight: 559}
 								, {name: '3', time: 0, min_weight: 550, max_weight: 559}
 								, {name: '4', time: 0, min_weight: 550, max_weight: 559}
+								, {name: '5', time: 0, min_weight: 550, max_weight: 559}
+								, {name: '6', time: 0, min_weight: 550, max_weight: 559}
 								]
 							, heal_room:
 								{ shard: 'shard0', room: 'W57S52'}
