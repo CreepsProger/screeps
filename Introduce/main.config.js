@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 452,
+	version: 453,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -2728,7 +2728,56 @@ var config = {
 							 	}
 							, escape_path:
 								{ W30S30: 'W30S31', W30S31: 'W30S32', W30S32: 'W29S32', W29S32: 'W28S32', W28S32: 'W28S33', W28S33: 'W28S34'
-						 		, W28S34: 'W28S35'
+						 		, W28S34: 'W28S35', W29S31: 'W29S32'
+								}
+							},
+						  W29S30:
+							{ containers: {weight: 243}
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '2', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '3', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '1', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '2', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '3', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '1', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '2', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '3', time: 0, min_weight: 240, max_weight: 249}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '2', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '3', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '4', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '5', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '6', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '7', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '8', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '9', time: 0, min_weight: 240, max_weight: 249}
+								]
+						  , heal_room: 'W29S32'
+							, path_rooms:
+							 	{ shard0:
+									{ W57S52: 'W58S52', W58S52: 'W59S52', W59S52: 'W59S51'
+								  , W57S51: 'W58S51', W58S51: 'W59S51', W59S51: 'W59S50', W59S50: 'W60S50', W60S50: 'shard1'
+									}
+								, shard1:
+									{ shard0_W60S50: 'W30S30', W30S30: 'shard2'
+									, W29S29: 'W29S30', W29S30: 'W30S30'} 
+								, shard2:
+									{ shard1_W30S30: 'W30S30', W30S30: 'shard3'}
+								, shard3:
+									{ shard2_W30S30: 'W30S30'
+									, W30S30: 'W30S31'
+									, W30S31: 'W30S32', W30S32: 'W29S32', W29S32: 'W29S31', W29S31: 'W30S31'
+									, W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
+									, W28S33: 'W28S32', W28S32: 'W29S32', W28S35: 'W28S34'
+									, W28S34: 'W28S33', W27S34: 'W28S34'
+									}
+							 	}
+							, escape_path:
+								{ W30S30: 'W30S31'
+								, W29S31: 'W30S31', W30S31: 'W30S32', W30S32: 'W29S32'
 								}
 							},
 							W25S34:
