@@ -214,10 +214,10 @@ var spawns = {
 				const Sp3 = (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn5'  || spawn.name == 'Spawn--' || spawn.name == 'Spawn8'):
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn3'  || spawn.name == 'Spawn6'  || spawn.name == 'Spawn12'):
 				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn3'  || spawn.name == 'Spawn7'  || spawn.name == 'Spawn12'):All;
-				const Sp4 = (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
+				const Sp4 = (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn10' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn5'  || spawn.name == 'Spawn8' || spawn.name == 'Spawn--'):
 				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn5'  || spawn.name == 'Spawn8'  || spawn.name == 'Spawn14'):All;
-				const Sp5 = (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
+				const Sp5 = (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn11' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn9'  || spawn.name == 'Spawn10' || spawn.name == 'Spawn--'):
 				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn9'  || spawn.name == 'Spawn10' || spawn.name == 'Spawn13'):All;
 				const Sp6 = (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
@@ -663,7 +663,7 @@ var spawns = {
 					}
 					else {
 						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[7][L], 444);
-						if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[7][H], 441);
+						if(Sp4)	spawns.tryCreateCreep(spawn, CARIER[6][H], 441);
 						if(Sp1)	spawns.tryCreateCreep(spawn, UPGRADER[H], 445);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W56S53')) {
@@ -674,7 +674,7 @@ var spawns = {
               if(Sp1)	spawns.tryCreateCreep(spawn, CLAIMER[6][M], 550);
 						}
 						if(Sp1)	spawns.tryCreateCreep(spawn,  WORKER[7][S+2], 554);
-            if(Sp1)	spawns.tryCreateCreep(spawn,  CARIER[7][L], 551);
+            if(Sp4)	spawns.tryCreateCreep(spawn,  CARIER[6][H], 551);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W56S54')) {
 						if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[8][L], 566);
