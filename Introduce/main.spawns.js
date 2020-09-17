@@ -313,7 +313,7 @@ var spawns = {
 												];
 				const D = 0; const A = 1; const R = 2; const HR = 3;
 				const DEFENDER = [ [                 0,                0,                0]  // 0  000
-													, [ 1000000030000010,  500003500000010, 5000350000000010,  500000035000010]//1
+													, [ 1000000030000010,  500003500000010,  500350000000010,  500000035000010]//1
 										   	 ]; //TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 	
 
@@ -812,6 +812,7 @@ var spawns = {
 								if(Sp5) spawns.tryCreateCreep(spawn,   WORKER[7][H], 174);
 								if(Sp5) spawns.tryCreateCreep(spawn,   CARIER[7][M], 171);
 								if(Sp5) spawns.tryCreateCreep(spawn,   UPGRADER[L], 175);
+								if(spawn.name == 'Spawn10') spawns.tryCreateCreep(spawn, HEALER[7][M], 231);
 							}
 							if(conditions.TO_SPAWN_ROOM_DEFENDERS('W27S34')) {
 								if(spawn.name == 'Spawn16') spawns.tryCreateCreep(spawn, ATTACKER[3][L], 86);
