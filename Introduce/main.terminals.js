@@ -203,14 +203,18 @@ var terminals = {
 			const minResourceRoom = terminals.getMinResourceRoom(res,terminal.pos.roomName);
 			if(!!minResourceRoom) {
 				const amountToSend = Math.floor((terminals.getAmount(terminal,res) - terminals.getShardMinAmount(res))/2);
-				const amount_to_send = Math.min(terminal.store[res], amountToSend);
-				const sending = {from:terminal.pos.roomName, to:minResourceRoom, resource:res, amount:amount_to_send};
-				const err = terminal.send(sending.resource, sending.amount, sending.to);
-				if(OK != err) {
-					console.log( '📲'
+				var amount_to_send = Math.min(terminal.store[res], amountToSend);
+				var err = -6;
+				while(err != OK && amount_to_send > 5) {
+					const sending = {from:terminal.pos.roomName, to:minResourceRoom, resource:res, amount:amount_to_send};
+					err = terminal.send(sending.resource, sending.amount, sending.to);
+					if(OK != err) {
+						console.log( '📲'
 											, Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { terminals:'spreadResources', err:err, sending:sending} ));
-				}
+						amount_to_send = Math.floor(amount_to_send/2);
+					}
+				} 
 			}
 		});
 	},
