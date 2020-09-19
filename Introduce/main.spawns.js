@@ -82,20 +82,9 @@ var spawns = {
 
 			Memory.CreepsNeedsByWeight[weight] = {needs: needed, needs_plus: needed_plus, bodys: body.length*needed, cost: cost*needed};
 			const needsNumber = needed_plus - existsNumber;
-			var boostLabsReady = true;
-			if(!!boosts) { // [["XUH2O",10,1],["XGHO2"],["XZHO2"],["XLHO2"]]
-				console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({weight:weight, spawn:spawn, boosts:boosts}));
-				const labs = [];/*
-				boostLabsReady = boosts.filter((b) => !!b[2] && b[2] != 0) // check only mandatory 
-																.filter((b) => labs.some((l) => !l.e || l.e < b[1]*20 || !l.m || l.m < b[1]*30))
-																.reduce((c,p) => c++, 0) == 0;*/
-				// tasks.addTasksToFillBoostingLab(newName, spawn.room.roomName, boosts);
-			}
 
 			if((!last_game_time_created_creep[spawn.name] || last_game_time_created_creep[spawn.name] != Game.time) &&
-				 needsNumber > 0 &&
-				 boostLabsReady) {
+				 needsNumber > 0) {
 				const newName = 'creep-<' + weight + '/' + Memory.CreepsCounter % 10 + '>-'
 												+ (Ts>0  ? Ts +'t' :'')
 												+ (CLs>0 ? CLs+'l' :'')
@@ -117,6 +106,31 @@ var spawns = {
 	//                     , 'preverr:'
 	//                     , preverr
 	//                   );
+				var boostLabsReady = true;
+				if(!!boosts) { // [["XUH2O",10,1],["XGHO2"],["XZHO2"],["XLHO2"]]
+					console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({weight:weight, spawn:spawn, boosts:boosts}));
+					const labs = [];/*
+				boostLabsReady = boosts.filter((b) => !!b[2] && b[2] != 0) // check only mandatory 
+																.filter((b) => labs.some((l) => !l.e || l.e < b[1]*20 || !l.m || l.m < b[1]*30))
+																.reduce((c,p) => c++, 0) == 0;*/
+				// tasks.addTasksToFillBoostingLab(newName, spawn.room.roomName, boosts);
+				}
+				const transferCreepConfig = flags.getTransferCreepConfig(newName);
+				if(!!transferCreepConfig){
+					const storage = spawn.room.storage;
+					if(!!storage && !!storage.store ) {
+						const amount = Object.keys(storage.store)
+																.filter((k) => transferCreepConfig.includes(k))
+																.reduce((a,r) => a + storage.store[r], 0);
+						if(amount < Cs * 50) {
+							console.log('🚚🚫', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify( { tasks:'tryCreateCreep', newName:newName
+																				, room:spawn.room.name, amount:amount, transferCreepConfig:transferCreepConfig}));
+							return false;
+						}
+					}
+				}
 				var err = spawn.spawnCreep( body
 																	, newName
 																	, {memory: {n: Memory.CreepsCounter, cost: cost, weight: weight, type: type, role: 'creep', boosts:boosts, transfering: { energy: { to: { all: false, nearest: {lighter: false }}}}}});
