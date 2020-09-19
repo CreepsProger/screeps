@@ -116,7 +116,7 @@ var spawns = {
 																.reduce((c,p) => c++, 0) == 0;*/
 				// tasks.addTasksToFillBoostingLab(newName, spawn.room.roomName, boosts);
 				}
-				const transferCreepConfig = flags.getTransferCreepConfig(newName, spawn.room);
+				const transferCreepConfig = flags.getTransferCreepConfig(newName, spawn.room.name);
 				if(!!transferCreepConfig){
 					console.log('🚚1️⃣', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { tasks:'tryCreateCreep', newName:newName
