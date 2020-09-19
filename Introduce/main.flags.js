@@ -426,6 +426,42 @@ var flags = {
 		lastFlagRemoved = Limits; 
     lastFlagRemoved.remove()
 	},
+	// Cancel: Cancel order on market
+	Cancel: function(Cancel) {
+		const prefix = 'Cancel.';
+		var n = 0;
+
+		if(flags.flags[prefix] === undefined) {
+			Object.keys(Game.flags)
+						.filter((name)=>name.substring(0,prefix.length) == prefix)
+						.sort((l,r) => l.localeCompare(r))
+						.map((name) => Game.flags[name])
+						.map((f,i,arr) => ( f.orderId = f.name.substring(f.name.indexOf('.')+1)
+															, f))
+						.forEach(function(fOrder)
+				{
+				console.log('👉Ⓜ️🚫', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify( { Order:'fOrder', fOrder:fOrder}));
+				const err = Game.market.cancelOrder(fOrder.orderId);
+				console.log('👉Ⓜ️🚫', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify( { Order:'fOrder', err:err, fOrder:fOrder}));
+				if(err == OK) {
+					fOrder.room.visual.text('👉Ⓜ️🚫' + fOrder.name + ' 👌'
+																	, fOrder.pos.x
+																	, fOrder.pos.y
+																	, {opacity: 1.0, font:'10px Verdana'});
+					fOrder.remove();
+				}
+				else {
+					fOrder.room.visual.text('👉Ⓜ️🚫' + fOrder.name + ' ⚠️ ' + err
+																	, fOrder.pos.x
+																	, fOrder.pos.y
+																	, {color:'red', font:0.9, opacity: 1.0});
+				}
+			});
+		}
+		Cancel.remove();
+	},
 	// Extend: Change order amount on market
 	Extend: function(Extend) {
 		const prefix = 'Extend.';
