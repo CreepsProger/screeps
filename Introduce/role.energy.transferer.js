@@ -325,8 +325,9 @@ var roleEnergyTransferer = {
 				energy -= constants.MIN_TERMINAL_ENERGY;
 				energy -= constants.MIN_STORAGE_ENERGY;
 
+			const psAmount = cash.getAllMyPowerSpawns().length;
 			if(!target && !creep.getActiveBodyparts(WORK) &&
-				 !NPE && energy > constants.START_UPGRADING_ENERGY * 5) {
+				 !NPE && energy > constants.START_UPGRADING_ENERGY * 5 * psAmount ) {
 				const spawnToIn = cash.getPowerSpawns(creep.room.name)
 																.filter((s) => !!s && !!s.store && s.store.getFreeCapacity(RESOURCE_ENERGY) > 2000)
 																.shift();
