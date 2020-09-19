@@ -271,6 +271,7 @@ var flags = {
 				,     XB: Game.flags['XB']			// eXtraBuild - 'B' in all rooms
 				,     XU: Game.flags['XU']			// eXtraUpgrade
 				,      C: Game.flags['C']			// Claim the room
+				,    NAT: Game.flags['NAT']		// towers don't attack
 				,     NA: Game.flags['NA']		// don't attack
 				,     A2: Game.flags['A2']		// attack only in range = 5*A2.color
 				,    DP1: Game.flags['DP1']		// defence point 1
