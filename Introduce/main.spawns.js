@@ -123,7 +123,7 @@ var spawns = {
 						const amount = Object.keys(storage.store)
 																.filter((k) => transferCreepConfig.includes(k))
 																.reduce((a,r) => a + storage.store[r], 0);
-						if(amount < Cs * 50) {
+						if(amount < Cs * 50 * 2) {
 							console.log('🚚🚫', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { tasks:'tryCreateCreep', newName:newName
 																				, room:spawn.room.name, amount:amount, transferCreepConfig:transferCreepConfig}));
