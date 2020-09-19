@@ -118,18 +118,11 @@ var spawns = {
 				}
 				const transferCreepConfig = flags.getTransferCreepConfig(newName, spawn.room.name);
 				if(!!transferCreepConfig){
-					console.log('🚚1️⃣', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify( { tasks:'tryCreateCreep', newName:newName
-																				, room:spawn.room.name, transferCreepConfig:transferCreepConfig}));
-							
 					const storage = spawn.room.storage;
 					if(!!storage && !!storage.store ) {
 						const amount = Object.keys(storage.store)
 																.filter((k) => transferCreepConfig.includes(k))
 																.reduce((a,r) => a + storage.store[r], 0);
-						console.log('🚚2️⃣', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify( { tasks:'tryCreateCreep', newName:newName
-																				, room:spawn.room.name, amount:amount, transferCreepConfig:transferCreepConfig}));
 						if(amount < Cs * 50) {
 							console.log('🚚🚫', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { tasks:'tryCreateCreep', newName:newName
