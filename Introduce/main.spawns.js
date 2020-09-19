@@ -117,7 +117,7 @@ var spawns = {
 				// tasks.addTasksToFillBoostingLab(newName, spawn.room.roomName, boosts);
 				}
 				const transferCreepConfig = flags.getTransferCreepConfig(newName);
-				if(!!transferCreepConfig){
+				if(false&&!!transferCreepConfig){
 					const storage = spawn.room.storage;
 					if(!!storage && !!storage.store ) {
 						const amount = Object.keys(storage.store)
