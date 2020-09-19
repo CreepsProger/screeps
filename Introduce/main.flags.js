@@ -123,8 +123,8 @@ var flags = {
 		}
 		return flags.flags[prefix];
 	}, 
-	getTransferCreepConfig: function(creepName, room) {
-		const transferConfig = flags.getTransferConfig(room);
+	getTransferCreepConfig: function(creepName, roomName) {
+		const transferConfig = flags.getTransferConfig(roomName);
 		return (!!transferConfig)?transferConfig[tools.getWeight(creepName)]:null;
 	},
 	getRoomBoostConfig: function(roomName) {
