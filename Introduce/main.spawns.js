@@ -315,7 +315,7 @@ var spawns = {
 				const D = 0; const A = 1; const R = 2; const HR = 3;
 				const DEFENDER = [ [                 0,                0,                0]  // 0  000
 													, [ 1000000030000010,  500003500000010,  500350000000010,  500000035000010] //1
-													, [  400002107000010,  0,  0, 0] //2
+													, [                0,  400002107000010,  0, 0] //2
 										   	 ]; //TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 	
 
