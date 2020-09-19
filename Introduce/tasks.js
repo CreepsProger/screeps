@@ -502,7 +502,7 @@ var tasks = {
 		}
 		//W29S32.transfer: "5011":["U","K"] 
 		//W57S51.transfer: "5011":["X"]
-		const transferCreepConfig = flags.getTransferCreepConfig(creep);
+		const transferCreepConfig = flags.getTransferCreepConfig(creep.name,creep.room);
 		if(!!transferCreepConfig){/*
 			console.log('🚚', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { tasks:'onRun.transfer', creep:creep.name
