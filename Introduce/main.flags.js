@@ -641,7 +641,13 @@ var flags = {
 																							 order.roomName.length < 7 &&
 																							 order.type == ORDER_BUY &&
 																							 order.amount > 0 &&
-																							 order.price >= fSell.min).sort((l,r) => r.price - l.price).shift();
+																							 order.price >= fSell.min)
+																	.map((o) => order.cost = Game.market.calcTransactionCost(order.amount, roomName, order.roomName)
+																						, order.cost_price = order.cost/order.amount
+																						, order.full_price = order.price + order.cost_price
+																						, order)
+																	.sort((l,r) => r.full_price - l.full_price)
+																	.shift();
 				if(!order)
 					return;
 				var amount = Math.min(order.amount, terminal.store.getUsedCapacity(order.resourceType) );
@@ -740,7 +746,13 @@ var flags = {
 																							 order.type == ORDER_SELL &&
 																							 order.amount > 0 &&
 																							 order.price <= fBuy.max &&
-																							 order.price >= fBuy.min).sort((l,r) => l.price - r.price).shift();
+																							 order.price >= fBuy.min)
+																	.map((o) => order.cost = Game.market.calcTransactionCost(order.amount, roomName, order.roomName)
+																						, order.cost_price = order.cost/order.amount
+																						, order.full_price = order.price + order.cost_price
+																						, order)
+																	.sort((l,r) => l.full_price - r.full_price)
+																	.shift();
 				if(!order)
 					return;
 				var amount = order.amount;
