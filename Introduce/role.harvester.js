@@ -365,11 +365,11 @@ var role = {
 		}
 
 		const NPE  = !!flags.flags.NPE;
-		
+		const psAmount = cash.getAllMyPowerSpawns().length;
 		if(!creep.getActiveBodyparts(WORK) &&
 			 !NPE &&
 			 !!sot &&
-			 energy > constants.START_UPGRADING_ENERGY * 5) {
+			 energy > constants.START_UPGRADING_ENERGY * 5 * psAmount) {
 			const spawnToIn = cash.getPowerSpawns(creep.room.name)
 															.filter((s) => !!s && !!s.store &&
 																			s.store.getUsedCapacity('power') > 0 &&
