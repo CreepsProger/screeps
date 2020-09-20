@@ -776,7 +776,7 @@ var flags = {
 																						, err:err, fBuy:fBuy, order:order, buying:buying, creditsLimit:creditsLimit }));
 				}
 				if(err == OK) {
-					fSell.room.visual.text('👉Ⓜ️💠 ' + amount + ' * ' + order.price + ' 👌'
+					fBuy.room.visual.text('👉Ⓜ️💠 ' + amount + ' * ' + order.price + ' 👌'
 																, fBuy.pos.x
 																, fBuy.pos.y);
 				}
