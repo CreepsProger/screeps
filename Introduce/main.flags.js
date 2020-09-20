@@ -662,7 +662,7 @@ var flags = {
 					return
 				const err = Game.market.deal(order.id, amount, roomName);
 				if(!!fLogSell) {
-					console.log('🤝Ⓜ️💲', Math.trunc(Game.time/10000), Game.time%10000
+					console.log('🤝Ⓜ️💲🤝', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { Sell:'Sell', roomName:roomName
 																						, resourse:order.resourceType, price:order.price
 																						, amount:(amount==order.amount?amount:''+amount+'('+order.amount+')')
@@ -769,11 +769,16 @@ var flags = {
 					return;
 				const err = Game.market.deal(order.id, amount, roomName);
 				if(!!fLogBuy) {
-					console.log('🤝Ⓜ️💠', Math.trunc(Game.time/10000), Game.time%10000
+					console.log('🤝Ⓜ️💠🤝', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { Buy:'Buy', roomName:roomName
 																						, resourse:order.resourceType, price:order.price
 																						, amount:(amount==order.amount?amount:''+amount+'('+order.amount+')')
 																						, err:err, fBuy:fBuy, order:order, buying:buying, creditsLimit:creditsLimit }));
+				}
+				if(err == OK) {
+					fSell.room.visual.text('👉Ⓜ️💠 ' + amount + ' * ' + order.price + ' 👌'
+																, fBuy.pos.x
+																, fBuy.pos.y);
 				}
 				n++;
 			});
