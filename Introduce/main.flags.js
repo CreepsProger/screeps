@@ -642,10 +642,10 @@ var flags = {
 																							 order.type == ORDER_BUY &&
 																							 order.amount > 0 &&
 																							 order.price >= fSell.min)
-																	.map((order) => order.cost = Game.market.calcTransactionCost(order.amount, roomName, order.roomName)
+																	.map((order) => (order.cost = Game.market.calcTransactionCost(order.amount, roomName, order.roomName)
 																						, order.cost_price = order.cost/order.amount
 																						, order.full_price = order.price + order.cost_price
-																						, order)
+																						, order))
 																	.sort((l,r) => r.full_price - l.full_price)
 																	.shift();
 				if(!order)
@@ -747,10 +747,10 @@ var flags = {
 																							 order.amount > 0 &&
 																							 order.price <= fBuy.max &&
 																							 order.price >= fBuy.min)
-																	.map((order) => order.cost = Game.market.calcTransactionCost(order.amount, roomName, order.roomName)
+																	.map((order) => (order.cost = Game.market.calcTransactionCost(order.amount, roomName, order.roomName)
 																						, order.cost_price = order.cost/order.amount
 																						, order.full_price = order.price + order.cost_price
-																						, order)
+																						, order))
 																	.sort((l,r) => l.full_price - r.full_price)
 																	.shift();
 				if(!order)
