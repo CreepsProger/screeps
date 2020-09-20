@@ -642,7 +642,7 @@ var flags = {
 																							 order.type == ORDER_BUY &&
 																							 order.amount > 0 &&
 																							 order.price >= fSell.min)
-																	.map((o) => order.cost = Game.market.calcTransactionCost(order.amount, roomName, order.roomName)
+																	.map((order) => order.cost = Game.market.calcTransactionCost(order.amount, roomName, order.roomName)
 																						, order.cost_price = order.cost/order.amount
 																						, order.full_price = order.price + order.cost_price
 																						, order)
@@ -747,7 +747,7 @@ var flags = {
 																							 order.amount > 0 &&
 																							 order.price <= fBuy.max &&
 																							 order.price >= fBuy.min)
-																	.map((o) => order.cost = Game.market.calcTransactionCost(order.amount, roomName, order.roomName)
+																	.map((order) => order.cost = Game.market.calcTransactionCost(order.amount, roomName, order.roomName)
 																						, order.cost_price = order.cost/order.amount
 																						, order.full_price = order.price + order.cost_price
 																						, order)
