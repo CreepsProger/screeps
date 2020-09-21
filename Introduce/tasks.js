@@ -585,6 +585,23 @@ var tasks = {
 							creep.say((OK == err)?'🔜⚡':'🔜⚡'+err);
 						}
 					}
+					else {
+						const container = cash.getContainers(creep.room)
+																	.filter((cont) => !!cont && !!cont.store && cont.store.getUsedCapacity(RESOURCE_ENERGY) > 0)
+																	.reduce((l,r) => ( (l.cont.store.getFreeCapacity()+1) * creep.pos.getRangeTo(l)
+                                                   < (r.cont.store.getFreeCapacity()+1) * creep.pos.getRangeTo(r))
+																									 ? l:r);
+						if(container) {
+							const err = creep.withdraw(container,RESOURCE_ENERGY);
+							if(err != ERR_NOT_IN_RANGE) {
+								creep.say((OK == err)?'⚡':'⚡'+err);
+							}
+							else {
+								const err = tools.moveTo(creep, container);
+								creep.say((OK == err)?'🔜⚡':'🔜⚡'+err);
+							}
+						}
+					}
 					return true;
 				}
 				const err = creep.upgradeController(creep.room.controller);
