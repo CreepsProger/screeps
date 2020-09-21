@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 459,
+	version: 460,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -2084,7 +2084,7 @@ var config = {
 							, sites:
 							 	[ {x:12, y:36, type:STRUCTURE_CONTAINER}
 								, {x:12, y:12, type:STRUCTURE_CONTAINER}
-								, {x:12, y:31, type:STRUCTURE_CONTAINER}
+								, {x:12, y:13, type:STRUCTURE_CONTAINER}
 								, {x:39, y:10, type:STRUCTURE_CONTAINER}
 								, {x:40, y:10, type:STRUCTURE_CONTAINER}
 							 	]
