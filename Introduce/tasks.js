@@ -65,6 +65,9 @@ var tasks = {
 				}
 				return  true;
 			});
+			console.log( '🧯', Math.trunc(Game.time/10000), Game.time%10000
+		 												, JSON.stringify({mw:mw, mr:mr, R:R, rps:rps})
+		 										);
 			if(rps.length > 0) {
 				target = rps.reduce((p,c) => creep.pos.getRangeTo(p) * (p.hits + 1) // dp*ec < dc*ep !! it is right! don't change
 																				< creep.pos.getRangeTo(c) * (c.hits + 1)
@@ -77,9 +80,6 @@ var tasks = {
 				}
 			}
 		}
-				console.log( '🧯', Math.trunc(Game.time/10000), Game.time%10000
-		 												, JSON.stringify({mw:mw, mr:mr, R:R, target:target})
-		 										);
 		return target;
 	}, 
 	
