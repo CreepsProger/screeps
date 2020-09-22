@@ -655,9 +655,8 @@ var tasks = {
 					creep.say((OK == err)?'🚚💡':'🚚💡'+err);
 				}
 				else {
-					const sot = tools.getStorageOrTerminal(creep);
-					if(!!sot) {
-						const err = creep.transfer(sot,RESOURCE_ENERGY);
+					if(!!creep.room.storage) {
+						const err = creep.transfer(creep.room.storage,RESOURCE_ENERGY);
 						if(err != ERR_NOT_IN_RANGE) {
 							creep.say((OK == err)?'💡':'💡'+err);
 						}
