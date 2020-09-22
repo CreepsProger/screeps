@@ -14,7 +14,7 @@ var tasks = {
 		var target;
 		
 		const R = flags.flags.R;
-		const NR = flags.flags.NRR;
+		const NRR = flags.flags.NRR;
 		const NR1 = flags.flags.NR1;
 		const NR2 = flags.flags.NR2;
 		const D = flags.flags.D;
@@ -23,7 +23,7 @@ var tasks = {
 		const mw = config.getMW(creep.pos.roomName);
 		const mr = config.getMR(creep.pos.roomName);
 		
-		if(!target && (!NR || R)) {
+		if(!target && (!NRR || R)) {
 			const rps = cash.getMyBuildings(creep.room).filter((structure) => {
 				if(!structure || !structure.structureType)
 					return false;
