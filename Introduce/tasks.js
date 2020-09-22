@@ -661,7 +661,7 @@ var tasks = {
 							creep.say((OK == err)?'💡':'💡'+err);
 						}
 						else {
-							const err = tools.moveTo(creep, sot);
+							const err = tools.moveTo(creep, creep.room.storage);
 							creep.say((OK == err)?'🔜💡':'🔜💡'+err);
 						}
 					}
