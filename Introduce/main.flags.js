@@ -291,6 +291,7 @@ var flags = {
 			 	,    NB1: Game.flags['NB1']		// don't build
 			 	,    NB2: Game.flags['NB2']		// don't build
 			 	,     NR: Game.flags['NR']		// don't repair
+			 	,    NRR: Game.flags['NR']		// don't repair by repairer 
 			 	,    NR1: Game.flags['NR1']		// don't repair
 			 	,    NR2: Game.flags['NR2']		// don't repair
 			 	,     MW: Game.flags['MW']		// multiplier to repair wall
