@@ -292,8 +292,10 @@ var flags = {
 			 	,    NB2: Game.flags['NB2']		// don't build
 			 	,     NR: Game.flags['NR']		// don't repair
 			 	,    NRR: Game.flags['NRR']		// don't repair by repairer 
-			 	,    NR1: Game.flags['NR1']		// don't repair
+			 	,    NR1: Game.flags['NR1']		// don't repair 
+			 	,   NRR1: Game.flags['NRR1']		// don't repair by repairer
 			 	,    NR2: Game.flags['NR2']		// don't repair
+			 	,   NRR2: Game.flags['NRR2']		// don't repair by repairer
 			 	,     MW: Game.flags['MW']		// multiplier to repair wall
 			 	,     MR: Game.flags['MR']		// multiplier to repair rampart
 				 
