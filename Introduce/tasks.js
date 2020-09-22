@@ -623,6 +623,53 @@ var tasks = {
 
 			return true;
 		}
+		if(tools.getWeight(creep.name) == 442) {
+			if(creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
+				if(creep.room.name != 'W56S52') {
+					const target = config.findPathToRoom(creep,'W56S52');
+					const err = tools.moveTo(creep, target);
+					creep.say((OK == err)?'🚚⚡':'🚚⚡'+err);
+				}
+				else {
+					const sot = tools.getStorageOrTerminal(creep);
+					if(!!sot) {
+						const err = creep.withdraw(sot,RESOURCE_ENERGY);
+						if(err != ERR_NOT_IN_RANGE) {
+							creep.say((OK == err)?'⚡':'⚡'+err);
+						}
+						else {
+							const err = tools.moveTo(creep, sot);
+							creep.say((OK == err)?'🔜⚡':'🔜⚡'+err);
+						}
+					}
+				}
+			}
+			else {
+				if(creep.room.name != 'W56S53') {
+					const target = config.findPathToRoom(creep,'W56S52');
+					const err = tools.moveTo(creep, target);
+					creep.say((OK == err)?'🚚💡':'🚚💡'+err);
+				}
+				else {
+					const sot = tools.getStorageOrTerminal(creep);
+					if(!!sot) {
+						const err = creep.transfer(sot,RESOURCE_ENERGY);
+						if(err != ERR_NOT_IN_RANGE) {
+							creep.say((OK == err)?'💡':'💡'+err);
+						}
+						else {
+							const err = tools.moveTo(creep, sot);
+							creep.say((OK == err)?'🔜💡':'🔜💡'+err);
+						}
+					}
+				} 
+			}
+			
+			if(creep.getActiveBodyparts(HEAL) > 0)
+				creep.heal(creep);
+			
+			return true;
+		}
 	},
 
 	needToHarvest: function(creep, checkTodo = false) {
