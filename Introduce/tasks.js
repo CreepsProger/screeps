@@ -14,7 +14,7 @@ var tasks = {
 		var target;
 		
 		const R = flags.flags.R;
-		const NR = flags.flags.NR;
+		const NR = flags.flags.NRR;
 		const NR1 = flags.flags.NR1;
 		const NR2 = flags.flags.NR2;
 		const D = flags.flags.D;
