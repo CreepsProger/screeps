@@ -647,8 +647,10 @@ var tasks = {
 			}
 			else {
 				if(creep.room.name != 'W56S53') {
-					const exit = creep.room.findExitTo('W56S52');
-					const pos = creep.pos.findClosestByPath(exit);
+					const exit = creep.room.findExitTo('W56S53');
+					var pos = creep.pos.findClosestByPath(exit);
+					if(!!pos)
+						pos.x = 31;
 					const err = tools.moveTo(creep, pos);
 					creep.say((OK == err)?'🚚💡':'🚚💡'+err);
 				}
