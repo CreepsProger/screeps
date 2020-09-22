@@ -38,13 +38,13 @@ var tasks = {
 				}
 				if(!repair && structure.structureType == STRUCTURE_RAMPART && r) {
 					repair = structure.hits < constants.STRUCTURE_RAMPART_HITS*mr*r;// 8000 E = 10 * 8000 / 800 = 100
-				}
+				}/*
 				if(structure.structureType != STRUCTURE_WALL &&
 					 structure.structureType != STRUCTURE_RAMPART &&
 					 (structure.hitsMax - structure.hits > structure.hitsMax/
 						(2+98*(!!towers.prev_target[i] && structure.id == towers.prev_target[i])))) {
 					repair = true;
-				}
+				}*/
 				if(!repair)
 					return false;
 				if(	!!D1 && D1.pos.roomName == structure.pos.roomName &&
