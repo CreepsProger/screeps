@@ -781,7 +781,7 @@ var tasks = {
 					}
 					return true;
 				}
-				target = tasks.getRepairTarget();
+				target = tasks.getRepairTarget(creep);
 				const err = creep.repair(target);
 				if(err != ERR_NOT_IN_RANGE) {
 					creep.say((OK == err)?'🧯':'🧯'+err);
