@@ -743,7 +743,7 @@ var tasks = {
 			
 			return true;
 		}
-		if(tools.getWeight(creep.name) == 174) {
+		if(tools.getWeight(creep.name) % 10 == 4 && creep.body.some((b,i) => tools.nvl(b.boost,'-') == 'XLH2O')) {
 			const role = {name:constants.ROLE_ENERGY_HARVESTING}; 
 			if(creep.memory[role.name] === undefined ||
 					 creep.memory[role.name].v === undefined ||
