@@ -38,13 +38,13 @@ var tasks = {
 				}
 				if(!repair && structure.structureType == STRUCTURE_RAMPART && r) {
 					repair = structure.hits < constants.STRUCTURE_RAMPART_HITS*mr*r;// 8000 E = 10 * 8000 / 800 = 100
-				}/*
+				}
 				if(structure.structureType != STRUCTURE_WALL &&
 					 structure.structureType != STRUCTURE_RAMPART &&
 					 (structure.hitsMax - structure.hits > structure.hitsMax/
-						(2+98*(!!towers.prev_target[i] && structure.id == towers.prev_target[i])))) {
+						(2+98*(!!creep.memory.target && structure.id == creep.memory.target.id)))) {
 					repair = true;
-				}*/
+				}
 				if(!repair)
 					return false;
 				if(	!!D1 && D1.pos.roomName == structure.pos.roomName &&
@@ -69,6 +69,7 @@ var tasks = {
 				target = rps.reduce((p,c) => creep.pos.getRangeTo(p) * (p.hits + 1) // dp*ec < dc*ep !! it is right! don't change
 																				< creep.pos.getRangeTo(c) * (c.hits + 1)
 																				? p:c);
+				creep.memory.target = {id:target.id, pos:target.pos, time: Game.time};
 				if(target && (Game.time % constants.TICKS_TO_CHECK_CPU == 0)) {
 					console.log( '🧯', Math.trunc(Game.time/10000), Game.time%10000
 		 												, JSON.stringify({mw:mw, mr:mr, R:R, target:target})
