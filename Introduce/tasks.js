@@ -10,6 +10,75 @@ const cash = require('cash');
 
 var tasks = {
 	
+	getRepairTarget: function(creep) {
+		var target;
+		
+		const R = flags.flags.R;
+		const NR = flags.flags.NR;
+		const NR1 = flags.flags.NR1;
+		const NR2 = flags.flags.NR2;
+		const D = flags.flags.D;
+		const D1 = flags.flags.D1;
+		const D2 = flags.flags.D2;
+		const mw = config.getMW(creep.pos.roomName);
+		const mr = config.getMR(creep.pos.roomName);
+		
+		if(!target && (!NR || R)) {
+			const rps = cash.getMyBuildings(creep.room).filter((structure) => {
+				if(!structure || !structure.structureType)
+					return false;
+				
+				const r = (!!R &&
+									 structure.pos.roomName == R.pos.roomName &&
+									 structure.pos.x == R.pos.x &&
+									 structure.pos.y == R.pos.y)?(11-R.color)*(11-R.secondaryColor):1;
+				var repair = false;
+				if(!repair && structure.structureType == STRUCTURE_WALL && r) {
+					repair = structure.hits < constants.STRUCTURE_WALL_HITS*mw*r;// 8000 E = 10 * 8000 / 800 = 100
+				}
+				if(!repair && structure.structureType == STRUCTURE_RAMPART && r) {
+					repair = structure.hits < constants.STRUCTURE_RAMPART_HITS*mr*r;// 8000 E = 10 * 8000 / 800 = 100
+				}
+				if(structure.structureType != STRUCTURE_WALL &&
+					 structure.structureType != STRUCTURE_RAMPART &&
+					 (structure.hitsMax - structure.hits > structure.hitsMax/
+						(2+98*(!!towers.prev_target[i] && structure.id == towers.prev_target[i])))) {
+					repair = true;
+				}
+				if(!repair)
+					return false;
+				if(	!!D1 && D1.pos.roomName == structure.pos.roomName &&
+					 D1.pos.getRangeTo(structure) <= 10-D1.color) {
+					return false;
+				}
+				if(	!!D2 && D2.pos.roomName == structure.pos.roomName &&
+					 D2.pos.getRangeTo(structure) <= 10-D2.color) {
+					return false;
+				}
+				if(	!!NR1 && NR1.pos.roomName == structure.pos.roomName &&
+					 NR1.pos.getRangeTo(structure) <= 10-NR1.color) {
+					return false;
+				}
+				if(	!!NR2 && NR2.pos.roomName == structure.pos.roomName &&
+					 NR2.pos.getRangeTo(structure) <= 10-NR2.color) {
+					return false;
+				}
+				return  true;
+			});
+			if(rps.length > 0) {
+				target = rps.reduce((p,c) => tower.pos.getRangeTo(p) * (p.hits + 1) // dp*ec < dc*ep !! it is right! don't change
+																				< tower.pos.getRangeTo(c) * (c.hits + 1)
+																				? p:c);
+				if(target && (Game.time % constants.TICKS_TO_CHECK_CPU == 0)) {
+					console.log( '🧯', Math.trunc(Game.time/10000), Game.time%10000
+		 												, JSON.stringify({mw:mw, mr:mr, R:R, target:target})
+		 										);
+				}
+			}
+		}
+		return target;
+	}, 
+	
 	taskToBoostCreeps: {
 		isToBoostCreeps:true, 
 		pos:{},
@@ -671,6 +740,64 @@ var tasks = {
 			if(creep.getActiveBodyparts(HEAL) > 0)
 				creep.heal(creep);
 			
+			return true;
+		}
+		if(tools.getWeight(creep.name) == 174) {
+			const role = {name:constants.ROLE_ENERGY_HARVESTING}; 
+			if(creep.memory[role.name] === undefined ||
+					 creep.memory[role.name].v === undefined ||
+					 creep.memory[role.name].v != config.version) {
+					creep.memory[role.name] = { v: config.version
+																, on: false
+																, room: creep.room.name
+																, shard: Game.shard.name
+																};
+				config.setRoom(creep, role.name);
+			}
+			var target;
+			if(creep.memory[role.name].room != creep.pos.roomName ||
+				 creep.memory[role.name].shard != Game.shard.name) {
+				const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
+				const err = tools.moveTo(creep, target);
+				console.log('🧯', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify( { tasks:'onRun.upgrade', creep:creep.name
+																				, room:creep.room.name, target:target
+																				, err:err, role:creep.memory[role.name] }));
+				creep.say((OK == err)?'🔜🧯':'🔜🧯'+err);
+				return true;
+			}
+			else {
+				if(creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
+					const sot = tools.getStorageOrTerminal(creep);
+					if(!!sot) {
+						const err = creep.withdraw(sot,RESOURCE_ENERGY);
+						if(err != ERR_NOT_IN_RANGE) {
+							creep.say((OK == err)?'⚡':'⚡'+err);
+						}
+						else {
+							const err = tools.moveTo(creep, sot);
+							creep.say((OK == err)?'🔜⚡':'🔜⚡'+err);
+						}
+					}
+					return true;
+				}
+				target = tasks.getRepairTarget();
+				const err = creep.repair(target);
+				if(err != ERR_NOT_IN_RANGE) {
+					creep.say((OK == err)?'🧯':'🧯'+err);
+				}
+				else {
+					const err = tools.moveTo(creep, target);
+					creep.say((OK == err)?'🔜🧯':'🔜🧯'+err);
+					return true;
+				}
+			}
+			tools.dontGetInWay(creep);
+			const range = creep.pos.getRangeTo(target);
+			if(range > 1) {
+				tools.moveTo(creep,target);
+			}
+
 			return true;
 		}
 	},
