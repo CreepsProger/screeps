@@ -75,6 +75,9 @@ var tasks = {
 		 												, JSON.stringify({mw:mw, mr:mr, R:R, target:target})
 		 										);
 				}
+				console.log( '🧯', Math.trunc(Game.time/10000), Game.time%10000
+		 												, JSON.stringify({mw:mw, mr:mr, R:R, target:target})
+		 										);
 			}
 		}
 		return target;
