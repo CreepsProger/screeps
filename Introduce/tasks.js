@@ -66,8 +66,8 @@ var tasks = {
 				return  true;
 			});
 			if(rps.length > 0) {
-				target = rps.reduce((p,c) => tower.pos.getRangeTo(p) * (p.hits + 1) // dp*ec < dc*ep !! it is right! don't change
-																				< tower.pos.getRangeTo(c) * (c.hits + 1)
+				target = rps.reduce((p,c) => creep.pos.getRangeTo(p) * (p.hits + 1) // dp*ec < dc*ep !! it is right! don't change
+																				< creep.pos.getRangeTo(c) * (c.hits + 1)
 																				? p:c);
 				if(target && (Game.time % constants.TICKS_TO_CHECK_CPU == 0)) {
 					console.log( '🧯', Math.trunc(Game.time/10000), Game.time%10000
