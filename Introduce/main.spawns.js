@@ -828,7 +828,7 @@ var spawns = {
 // 								if(spawn.name == 'Spawn13') spawns.tryCreateCreep(spawn, DEFENDER[12][D], 176);
 							}
 							else {
-								if(Sp5 && Game.cpu.bucket > 900) spawns.tryCreateCreep(spawn,   WORKER[7][H], 174);
+								if(Sp5 /*&& Game.cpu.bucket > 900*/) spawns.tryCreateCreep(spawn,   WORKER[7][H], 174);
 								if(Sp5) spawns.tryCreateCreep(spawn,   CARIER[7][M], 171);
 								if(Sp5 && Game.cpu.bucket > 7000) spawns.tryCreateCreep(spawn,    UPGRADER[L], 175);
 								if(Sp5) spawns.tryCreateCreep(spawn,   CARIER[9][L], 243);
