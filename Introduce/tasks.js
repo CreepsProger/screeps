@@ -13,25 +13,25 @@ var tasks = {
 	getRepairTarget: function(creep) {
 		var target;
 		
-		const R = flags.flags.R;
+		const RR = flags.flags.RR;
 		const NRR = flags.flags.NRR;
-		const NR1 = flags.flags.NR1;
-		const NR2 = flags.flags.NR2;
+		const NRR1 = flags.flags.NRR1;
+		const NRR2 = flags.flags.NRR2;
 		const D = flags.flags.D;
 		const D1 = flags.flags.D1;
 		const D2 = flags.flags.D2;
 		const mw = config.getMW(creep.pos.roomName);
 		const mr = config.getMR(creep.pos.roomName);
 		
-		if(!target && (!NRR || R)) {
+		if(!target && (!NRR || RR)) {
 			const rps = cash.getMyBuildings(creep.room).filter((structure) => {
 				if(!structure || !structure.structureType)
 					return false;
 				
-				const r = (!!R &&
-									 structure.pos.roomName == R.pos.roomName &&
-									 structure.pos.x == R.pos.x &&
-									 structure.pos.y == R.pos.y)?(11-R.color)*(11-R.secondaryColor):1;
+				const r = (!!RR &&
+									 structure.pos.roomName == RR.pos.roomName &&
+									 structure.pos.x == RR.pos.x &&
+									 structure.pos.y == RR.pos.y)?(11-RR.color)*(11-RR.secondaryColor):1;
 				var repair = false;
 				if(!repair && structure.structureType == STRUCTURE_WALL && r) {
 					repair = structure.hits < constants.STRUCTURE_WALL_HITS*mw*r;// 8000 E = 10 * 8000 / 800 = 100
@@ -55,12 +55,12 @@ var tasks = {
 					 D2.pos.getRangeTo(structure) <= 10-D2.color) {
 					return false;
 				}
-				if(	!!NR1 && NR1.pos.roomName == structure.pos.roomName &&
-					 NR1.pos.getRangeTo(structure) <= 10-NR1.color) {
+				if(	!!NRR1 && NRR1.pos.roomName == structure.pos.roomName &&
+					 NRR1.pos.getRangeTo(structure) <= 10-NRR1.color) {
 					return false;
 				}
-				if(	!!NR2 && NR2.pos.roomName == structure.pos.roomName &&
-					 NR2.pos.getRangeTo(structure) <= 10-NR2.color) {
+				if(	!!NRR2 && NRR2.pos.roomName == structure.pos.roomName &&
+					 NRR2.pos.getRangeTo(structure) <= 10-NRR2.color) {
 					return false;
 				}
 				return  true;
@@ -72,7 +72,7 @@ var tasks = {
 				creep.memory.target = {id:target.id, pos:target.pos, time: Game.time};
 				if(target && (Game.time % constants.TICKS_TO_CHECK_CPU == 0)) {
 					console.log( '🧯', Math.trunc(Game.time/10000), Game.time%10000
-		 												, JSON.stringify({mw:mw, mr:mr, R:R, target:target})
+		 												, JSON.stringify({mw:mw, mr:mr, RR:RR, target:target})
 		 										);
 				}
 			}
