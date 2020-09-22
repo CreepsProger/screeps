@@ -42,7 +42,7 @@ var tasks = {
 				if(structure.structureType != STRUCTURE_WALL &&
 					 structure.structureType != STRUCTURE_RAMPART &&
 					 (structure.hitsMax - structure.hits > structure.hitsMax/
-						(2+98*(!!creep.memory.target && structure.id == creep.memory.target.id)))) {
+						(1.5+98.5*(!!creep.memory.target && structure.id == creep.memory.target.id)))) {
 					repair = true;
 				}
 				if(!repair)
