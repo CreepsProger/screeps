@@ -264,40 +264,41 @@ var flags = {
 			flags.flags =
 				{    NPE: Game.flags['NPE']			// no power spawn is filled energy
 				,     ST: Game.flags['ST']			// from/to storage transfering resources in this room in any time
-				,   CONT: Game.flags['CONT']			// use setTarget for a container in this room
+				,   CONT: Game.flags['CONT']		// use setTarget for a container in this room
 				,    NP1: Game.flags['NP1']			// don't pick up in range 11-NW1.color
 				,    NW1: Game.flags['NW1']			// don't withdraw in range 11-NW1.color 
-				,DSOURCE: Game.flags['DSOURCE']			// DISMATLING SOURCE
+				,DSOURCE: Game.flags['DSOURCE']	// DISMATLING SOURCE
 				,     XB: Game.flags['XB']			// eXtraBuild - 'B' in all rooms
 				,     XU: Game.flags['XU']			// eXtraUpgrade
-				,      C: Game.flags['C']			// Claim the room
-				,    NAT: Game.flags['NAT']		// towers don't attack
-				,     NA: Game.flags['NA']		// don't attack
-				,     A2: Game.flags['A2']		// attack only in range = 5*A2.color
-				,    DP1: Game.flags['DP1']		// defence point 1
-				,    DP2: Game.flags['DP2']		// defence point 2
-				,      R: Game.flags['R']			// repair only this pos
-				,      B: Game.flags['B']			// build in spite of energyAvailable != energyCapacityAvailable or sources are empty or MAIN_ROOM_CRISIS
-				,     BB: Game.flags['BB']		// build in spite of sources are empty or MAIN_ROOM_CRISIS
-				,      U: Game.flags['U']			// upgrade in spite of and harvest from containers
-				,     UU: Game.flags['UU']		// upgrade in spite of sources
-				,     TW: Game.flags['TW']		// transfer from workers to workers
-				,      D: Game.flags['D']			// dismanle all
-				,     D1: Game.flags['D1']		// dismanle in range 11-D1.color
-			 	,     D2: Game.flags['D2']		// dismanle in range 11-D2.color
-				,    DR1: Game.flags['DR1']		// dismanle ramparts only in range 11-DR1.color
-			 	,    DR2: Game.flags['DR2']		// dismanle ramparts only in range 11-DR2.color
-				,     NB: Game.flags['NB']		// don't build
-			 	,    NB1: Game.flags['NB1']		// don't build
-			 	,    NB2: Game.flags['NB2']		// don't build
-			 	,     NR: Game.flags['NR']		// don't repair
-			 	,    NRR: Game.flags['NRR']		// don't repair by repairer 
-			 	,    NR1: Game.flags['NR1']		// don't repair 
+				,      C: Game.flags['C']				// Claim the room
+				,    NAT: Game.flags['NAT']			// towers don't attack
+				,     NA: Game.flags['NA']			// don't attack
+				,     A2: Game.flags['A2']			// attack only in range = 5*A2.color
+				,    DP1: Game.flags['DP1']			// defence point 1
+				,    DP2: Game.flags['DP2']			// defence point 2
+				,      R: Game.flags['R']				// repair only this pos
+				,     RR: Game.flags['RR']			// repair only this pos by repairer
+				,      B: Game.flags['B']				// build in spite of energyAvailable != energyCapacityAvailable or sources are empty or MAIN_ROOM_CRISIS
+				,     BB: Game.flags['BB']			// build in spite of sources are empty or MAIN_ROOM_CRISIS
+				,      U: Game.flags['U']				// upgrade in spite of and harvest from containers
+				,     UU: Game.flags['UU']			// upgrade in spite of sources
+				,     TW: Game.flags['TW']			// transfer from workers to workers
+				,      D: Game.flags['D']				// dismanle all
+				,     D1: Game.flags['D1']			// dismanle in range 11-D1.color
+			 	,     D2: Game.flags['D2']			// dismanle in range 11-D2.color
+				,    DR1: Game.flags['DR1']			// dismanle ramparts only in range 11-DR1.color
+			 	,    DR2: Game.flags['DR2']			// dismanle ramparts only in range 11-DR2.color
+				,     NB: Game.flags['NB']			// don't build
+			 	,    NB1: Game.flags['NB1']			// don't build
+			 	,    NB2: Game.flags['NB2']			// don't build
+			 	,     NR: Game.flags['NR']			// don't repair
+			 	,    NRR: Game.flags['NRR']			// don't repair by repairer 
+			 	,    NR1: Game.flags['NR1']			// don't repair 
 			 	,   NRR1: Game.flags['NRR1']		// don't repair by repairer
-			 	,    NR2: Game.flags['NR2']		// don't repair
+			 	,    NR2: Game.flags['NR2']			// don't repair
 			 	,   NRR2: Game.flags['NRR2']		// don't repair by repairer
-			 	,     MW: Game.flags['MW']		// multiplier to repair wall
-			 	,     MR: Game.flags['MR']		// multiplier to repair rampart
+			 	,     MW: Game.flags['MW']			// multiplier to repair wall
+			 	,     MR: Game.flags['MR']			// multiplier to repair rampart
 				 
 				
 				,    401: Game.flags['401']		// start spawning 401-st one more creep
