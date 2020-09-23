@@ -123,6 +123,8 @@ module.exports.loop = function () {
 	const creeps = Object.keys(Game.creeps).sort((l,r) => tools.getWeight(l) - tools.getWeight(r));
 
 	creeps.forEach(function(name,i) {
+		try {
+			
 		var creep = Game.creeps[name];
 		if(!!creep && !creep.spawning) {
 			var needToRun = true;
@@ -153,6 +155,11 @@ module.exports.loop = function () {
 				}
 			}
 		}
+		}
+		catch (e) {
+			console.log( '⛔', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify({main:'catch', creep:name, e_name:e.name, e_message:e.message }));
+		} 
 	});
 
 	var cpu_dt = Math.round((Game.cpu.getUsed()) * 100)/100;
