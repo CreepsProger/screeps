@@ -216,10 +216,8 @@ var spawns = {
 				var controller = spawn.room.controller;
 				const CL = controller.level;
 				var N = Memory.totals.CreepsNumber;
-				const total_energy = cash.getTotalEnergy();
-				const terminals_count = cash.getAllMyTerminals();
-				const extra_upgrade = conditions.TO_EXTRA_UPGRADE(total_energy);
-				const dont_upgrade = total_energy/(terminals_count+1) < 200000;// TODO: conditions.TO_NOT_UPGRADE(total_energy,terminals_count);
+				const extra_upgrade = false;
+				const dont_upgrade = terminals.getShardAvgAmount('energy') < 200000;// TODO: conditions.TO_NOT_UPGRADE(total_energy,terminals_count);
 				const All = !!rerun;
 				const Sp1 = (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn1'  || spawn.name == 'Spawn3'  || spawn.name == 'Spawn7'):
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn1'  || spawn.name == 'Spawn4'  || spawn.name == 'Spawn13'):
@@ -778,7 +776,7 @@ var spawns = {
 								if(spawn.name == 'Spawn1') spawns.tryCreateCreep(spawn,   HEALER[7][H], 39);
 							}
 							else {
-								if(Sp1 && (Game.cpu.bucket > 8100 || !!Game.flags['34']))	spawns.tryCreateCreep(spawn, WORKER[7][M], 34);
+								if(Sp1 && (Game.cpu.bucket > 7000 || dont_upgrade || !!Game.flags['34']))	spawns.tryCreateCreep(spawn, WORKER[7][M], 34);
 								if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[7][M], 31);
 								if(Sp1 && Game.cpu.bucket > 7000 && !dont_upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[M], 35);
 							}
@@ -790,7 +788,7 @@ var spawns = {
 								if(spawn.name == 'Spawn2') spawns.tryCreateCreep(spawn,   HEALER[7][H], 49);
 							}
 							else {
-								if(Sp2 && (Game.cpu.bucket > 8100 || !!Game.flags['44']))	spawns.tryCreateCreep(spawn, WORKER[7][M], 44);
+								if(Sp2 && (Game.cpu.bucket > 7000 || dont_upgrade || !!Game.flags['44']))	spawns.tryCreateCreep(spawn, WORKER[7][M], 44);
 								if(Sp2)	spawns.tryCreateCreep(spawn, CARIER[7][M], 41);
 								if(Sp2 && Game.cpu.bucket > 7900 && !dont_upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 45);
 							}
@@ -805,7 +803,7 @@ var spawns = {
 								if(spawn.name == 'Spawn3') spawns.tryCreateCreep(spawn,   HEALER[7][H], 69);
 							}
 							else {
-								if(Sp3 && (Game.cpu.bucket > 8100 || !!Game.flags['64']))	spawns.tryCreateCreep(spawn, WORKER[7][M], 64);
+								if(Sp3 && (Game.cpu.bucket > 7000 || dont_upgrade || !!Game.flags['64']))	spawns.tryCreateCreep(spawn, WORKER[7][M], 64);
 								if(Sp3)	spawns.tryCreateCreep(spawn, CARIER[7][M], 61);
 								if(Sp3 && Game.cpu.bucket > 7000 && !dont_upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 65);
 							}
@@ -817,7 +815,7 @@ var spawns = {
 								if(spawn.name == 'Spawn5') spawns.tryCreateCreep(spawn,   HEALER[7][H], 129);
 							}
 							else {
-								if(Sp4 && (Game.cpu.bucket > 8100 || !!Game.flags['124'])) spawns.tryCreateCreep(spawn, WORKER[7][M], 124);
+								if(Sp4 && (Game.cpu.bucket > 7000 || dont_upgrade || !!Game.flags['124'])) spawns.tryCreateCreep(spawn, WORKER[7][M], 124);
 								if(Sp4) spawns.tryCreateCreep(spawn, CARIER[7][M], 121);
 								if(Sp4 && Game.cpu.bucket > 7000 && !dont_upgrade) spawns.tryCreateCreep(spawn, UPGRADER[M], 125);
 							}
@@ -830,7 +828,7 @@ var spawns = {
 // 								if(spawn.name == 'Spawn13') spawns.tryCreateCreep(spawn, DEFENDER[12][D], 176);
 							}
 							else {
-								if(Sp5 && (Game.cpu.bucket > 8100 || !!Game.flags['174'])) spawns.tryCreateCreep(spawn,   WORKER[7][M], 174);
+								if(Sp5 && (Game.cpu.bucket > 7000 || dont_upgrade || !!Game.flags['174'])) spawns.tryCreateCreep(spawn,   WORKER[7][M], 174);
 								if(Sp5) spawns.tryCreateCreep(spawn,   CARIER[7][M], 171);
 								if(Sp5 && Game.cpu.bucket > 7000 && !dont_upgrade) spawns.tryCreateCreep(spawn,    UPGRADER[M], 175);
 								if(Sp5) spawns.tryCreateCreep(spawn,   CARIER[9][L], 243);
@@ -843,7 +841,7 @@ var spawns = {
 								if(spawn.name == 'Spawn16') spawns.tryCreateCreep(spawn,   HEALER[7][H], 89);
 							}
 							else {
-								if(Sp6 && (Game.cpu.bucket > 8100 || !!Game.flags['84'])) spawns.tryCreateCreep(spawn,   WORKER[7][M], 84);
+								if(Sp6 && (Game.cpu.bucket > 7000 || dont_upgrade || !!Game.flags['84'])) spawns.tryCreateCreep(spawn,   WORKER[7][M], 84);
 								if(Sp6) spawns.tryCreateCreep(spawn,   CARIER[7][M], 81);
 								if(Sp6 && Game.cpu.bucket > 7000 && !dont_upgrade) spawns.tryCreateCreep(spawn,   UPGRADER[M], 85);
 							}
