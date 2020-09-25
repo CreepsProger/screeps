@@ -87,8 +87,8 @@ var links = {
 		 , { from: '5ebabdae8cc74a8929449507', to: '5ecdfa2cca39541e2301a405'}
 		 , { from: '5eb25ddfc795bed55b8fa8c1', to: '5ecdfa2cca39541e2301a405'}
 		 // W56S52
-		 , { from: '5f5aec811b2ca675a0efc3fe', to: '5f5ae8be9b600c35f7cfc674'}
-		 , { from: '5f5ed4b6d75fca0a459bbc74', to: '5f5ae8be9b600c35f7cfc674'}
+		 , { from: '5f5aec811b2ca675a0efc3fe', to: '5f6c2ff4e86859a05259bc4b'}
+		 , { from: '5f5ed4b6d75fca0a459bbc74', to: '5f6c2ff4e86859a05259bc4b'}
 		 // W56S53
 		 , { from: '5f649c1b6064b61f5fb3f2b8', to: '5f6a682221c5360746c0e954'}
 		 , { from: '5f6d3aeab0011940ed7b2905', to: '5f6a682221c5360746c0e954'}
