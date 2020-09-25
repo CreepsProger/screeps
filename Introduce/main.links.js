@@ -90,7 +90,8 @@ var links = {
 		 , { from: '5f5aec811b2ca675a0efc3fe', to: '5f5ae8be9b600c35f7cfc674'}
 		 , { from: '5f5ed4b6d75fca0a459bbc74', to: '5f5ae8be9b600c35f7cfc674'}
 		 // W56S53
-		 , { from: '5f649c1b6064b61f5fb3f2b8', to: '5f6430411bd3b739ceb71874'}
+		 , { from: '5f649c1b6064b61f5fb3f2b8', to: '5f6a682221c5360746c0e954'}
+		 , { from: '5f6d3aeab0011940ed7b2905', to: '5f6a682221c5360746c0e954'}
      //shard1
 		 // W29S29
 		 , { from: '5ec2330dce2f77348cbbc2ae', to: '5ec1fb20a882200050a21624'}
