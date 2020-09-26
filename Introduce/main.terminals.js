@@ -148,7 +148,7 @@ var terminals = {
  			console.log( '✒️'
  									, Math.trunc(Game.time/10000), Game.time%10000
  									, JSON.stringify( { terminals:'getResourceToRecieve', creep:creep.name
- 																		, room:creep.room.name, ret:ret, surplus:surplus} ));
+ 																		, room:creep.room.name, ret:ret, deficit:deficit} ));
  		}
 		return ret;
 	},
