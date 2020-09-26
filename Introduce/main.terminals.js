@@ -141,7 +141,7 @@ var terminals = {
 		const deficit = resources.filter((r) => terminals.getStorageAmountAvgDiff(t,r) < 0);
 		if(deficit.length == 0)
 			return null;
-		const mr = deficit.sort((l,r) => terminals.getStorageAmountAvgDiff(t,l) - terminals.getStorageAmountAvgDiff(t,r) )[0];
+		const mr = deficit.sort((l,r) => terminals.getStorageAmountAvgDiff(t,r) - terminals.getStorageAmountAvgDiff(t,l) )[0];
 		const ret = {resource:mr, amount: 1-terminals.getStorageAmountAvgDiff(t,mr), avg:terminals.getShardAvgAmount(mr)};
 		
  		if(!!ret) {
