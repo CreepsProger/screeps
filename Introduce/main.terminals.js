@@ -50,8 +50,8 @@ var terminals = {
 			const storageAmount = tools.nvl(terminal.room.storage.store[resource],0);
 			const dealAmount = tools.nvl(config.getAmountToDeal(terminal.pos.roomName,resource),0);
 			const storeAmount = tools.nvl(config.getAmountToStore(terminal.pos.roomName,resource),0);
-			const amount = (storageAmount < storeAmount)?
-						storageAmount-storeAmount:
+			const amount = /*(storageAmount < storeAmount)?
+						storageAmount-storeAmount:*/
 						terminalAmount-dealAmount + storageAmount-storeAmount;
 			const amountWithoutDeal = (storageAmount < storeAmount)?
 						storageAmount-storeAmount:
