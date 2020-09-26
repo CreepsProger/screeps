@@ -144,7 +144,7 @@ var terminals = {
 		const mr = deficit.sort((l,r) => terminals.getStorageAmountAvgDiff(t,l) - terminals.getStorageAmountAvgDiff(t,r) )[0];
 		const ret = {resource:mr, amount: 1-terminals.getStorageAmountAvgDiff(t,mr), avg:terminals.getShardAvgAmount(mr)};
 		
- 		if(!!ret) {
+ 		if(!!ret) {/*
  			console.log( '✒️'
  									, Math.trunc(Game.time/10000), Game.time%10000
  									, JSON.stringify( { terminals:'getResourceToRecieve', creep:creep.name
@@ -156,7 +156,7 @@ var terminals = {
 									, Math.trunc(Game.time/10000), Game.time%10000
 									, JSON.stringify( { terminals:'getResourceToRecieve', creep:creep.name
 																		, room:creep.room.name, storageAmount:storageAmount
-																		, storeAmount:storeAmount, ShardAvgAmount:ShardAvgAmount} ));
+																		, storeAmount:storeAmount, ShardAvgAmount:ShardAvgAmount} ));*/
  		}
 		return ret;
 	},
