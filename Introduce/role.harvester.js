@@ -66,7 +66,23 @@ var role = {
 		}
 	},
 	
-	st: {time:Game.time, multi:1
+	st: {
+	},
+	getST: function(creep) {
+		if(!role.st[tools.getWeight(creep.name)])
+			role.st[tools.getWeight(creep.name)] = {time:Game.time,multi:1};
+		return role.st[tools.getWeight(creep.name)];
+	},
+	resetST: function(creep) {
+		const st = role.getST(creep.name);
+		st.time = Game.time;
+		st.multi = 1;
+	},
+	postponeST: function(creep) {
+		const st = role.getST(creep.name);
+		st.time = Game.time;
+		if(st.multi < 8)
+			st.multi *= 2;
 	},
 
 	getTarget: function(creep,executer) {
@@ -216,8 +232,10 @@ var role = {
 		}
 		
 		const ST  = !!flags.flags.ST && flags.flags.ST.pos.roomName == my_room;
+		const st = role.getST(creep.name);
 
-		if(!creep.getActiveBodyparts(WORK) && (role.st.time + role.st.multi <= Game.time) &&
+		if(!creep.getActiveBodyparts(WORK) &&
+			 (st.time + st.multi <= Game.time) &&
 			 creep.memory.rerun &&
 			 ((Game.time % 500/10 < 20/2 && Game.cpu.bucket > 2000) || Game.cpu.bucket > 8000 || ST)) {
 
@@ -229,7 +247,7 @@ var role = {
 				var lab = tools.setTarget(creep,labToOutExtra.lab,labToOutExtra.lab.id,role.run);
 				if(!!lab) {
 					labToOutExtra.target = lab;
-					role.st = {time:Game.time,multi:1};
+					role.resetST(creep.name);
 					return labToOutExtra;
 				}
 			}
@@ -246,7 +264,7 @@ var role = {
 				var lab = tools.setTarget(creep,labToEmpty.lab,labToEmpty.lab.id,role.run);
 				if(!!lab) {
 					labToEmpty.target = lab;
-					role.st = {time:Game.time,multi:1};
+					role.resetST(creep.name);
 					return labToEmpty;
 				}
 			}
@@ -258,7 +276,7 @@ var role = {
 				var lab = tools.setTarget(creep,labToOut.lab,labToOut.lab.id,role.run);
 				if(!!lab) {
 					labToOut.target = lab;
-					role.st = {time:Game.time,multi:1};
+					role.resetST(creep.name);
 					return labToOut;
 				}
 			}
@@ -278,7 +296,7 @@ var role = {
 			var res_to_recieve = terminals.getResourceToRecieve(creep);
 			if(!!res_to_recieve) {
 				res_to_recieve.target = creep.room.terminal;
-				role.st = {time:Game.time,multi:1};
+				role.resetST(creep.name);
 				return res_to_recieve;
 			}
 
@@ -290,7 +308,7 @@ var role = {
 				var lab = tools.setTarget(creep,labToIn.lab,labToIn.lab.id,role.run);
 				if(!!lab) {
 					labToIn.target = (labToIn.resource == RESOURCE_ENERGY)? sot:creep.room.storage;
-					role.st = {time:Game.time,multi:1};
+					role.resetST(creep.name);
 					return labToIn;
 				}
 			}
@@ -306,7 +324,7 @@ var role = {
 																, JSON.stringify( { creep:creep.name, roomName:creep.room.name
 																									, target:target}));
 					}
-					role.st = {time:Game.time,multi:1};
+					role.resetST(creep.name);
 					return factoryToIn.in;
 				}
 			}
@@ -314,12 +332,11 @@ var role = {
 			var res_to_send = terminals.getResourceToSend(creep);
 			if(!!res_to_send) {
 				res_to_send.target = creep.room.storage;
-				role.st = {time:Game.time,multi:1};
+				role.resetST(creep.name);
 				return res_to_send;
 			}
 			
-			if(role.st.multi < 16)
-				role.st.multi *= 2;
+			role.postponeST(creep.name);
 		}
 		
 
