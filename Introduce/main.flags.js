@@ -761,12 +761,10 @@ var flags = {
 				if(!order)
 					return;
 				var amount = order.amount;
-				var half_amount = Math.floor(amount/2);
-				var max_cost = /*order.resourceType==RESOURCE_ENERGY? half_amount:*/terminalEnergy;
+				var max_cost = order.resourceType==RESOURCE_ENERGY? Math.floor(amount*9/10):terminalEnergy;
 				while(Game.market.calcTransactionCost(amount, roomName, order.roomName) > max_cost) {
-					amount = half_amount;
-					half_amount = Math.floor(amount/2);
-					max_cost = /*order.resourceType==RESOURCE_ENERGY? half_amount:*/terminalEnergy;
+					amount = Math.floor(amount/2);
+					max_cost = order.resourceType==RESOURCE_ENERGY? Math.floor(amount*9/10):terminalEnergy;
 				}
 				if(Game.market.credits - amount*order.price < creditsLimit)
 					amount = Math.floor((Game.market.credits - creditsLimit) / order.price);
