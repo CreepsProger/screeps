@@ -317,9 +317,10 @@ var role = {
 				role.st = {time:Game.time,multi:1};
 				return res_to_send;
 			}
+			
+			if(role.st.multi < 16)
+				role.st.multi *= 2;
 		}
-		if(role.st.multi < 32)
-			role.st.multi *= 2;
 		
 
 		// const this_room_containers_are_empty = cash.areEmptyContainers(creep);
