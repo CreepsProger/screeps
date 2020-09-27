@@ -68,18 +68,18 @@ var role = {
 	
 	st: {
 	},
-	getST: function(creep) {
-		if(!role.st[tools.getWeight(creep.name)])
-			role.st[tools.getWeight(creep.name)] = {time:Game.time,multi:1};
-		return role.st[tools.getWeight(creep.name)];
+	getST: function(creepName) {
+		if(!role.st[tools.getWeight(creepName)])
+			role.st[tools.getWeight(creepName)] = {time:Game.time,multi:1};
+		return role.st[tools.getWeight(creepName)];
 	},
-	resetST: function(creep) {
-		const st = role.getST(creep.name);
+	resetST: function(creepName) {
+		const st = role.getST(creepName);
 		st.time = Game.time;
 		st.multi = 1;
 	},
-	postponeST: function(creep) {
-		const st = role.getST(creep.name);
+	postponeST: function(creepName) {
+		const st = role.getST(creepName);
 		st.time = Game.time;
 		if(st.multi < 8)
 			st.multi *= 2;
