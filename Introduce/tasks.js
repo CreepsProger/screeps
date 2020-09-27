@@ -693,10 +693,15 @@ var tasks = {
 
 			return true;
 		}
-		if(tools.getWeight(creep.name) == 442) {
+		const localTransportWeight = 462;
+		const localTransportFrom = 'W54S51';
+		const localTransportThrough_x = 0;
+		const localTransportThrough_y = 31;
+		const localTransportTo = 'W54S51';
+		if(tools.getWeight(creep.name) == localTransportWeight) {
 			if(creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
-				if(creep.room.name != 'W56S52') {
-					const exit = creep.room.findExitTo('W56S52');
+				if(creep.room.name != localTransportFrom) {
+					const exit = creep.room.findExitTo(localTransportFrom);
 					const pos = creep.pos.findClosestByPath(exit);
 					const err = tools.moveTo(creep, pos);
 					creep.say((OK == err)?'🚚⚡':'🚚⚡'+err);
@@ -716,11 +721,13 @@ var tasks = {
 				}
 			}
 			else {
-				if(creep.room.name != 'W56S53') {
-					const exit = creep.room.findExitTo('W56S53');
+				if(creep.room.name != localTransportTo) {
+					const exit = creep.room.findExitTo(localTransportTo);
 					var pos = creep.pos.findClosestByPath(exit);
-					if(!!pos)
-						pos.x = 31;
+					if(!!pos && !!localTransportThrough_x)
+						pos.x = localTransportThrough_x;
+					if(!!pos && !!localTransportThrough_y)
+						pos.y = localTransportThrough_y;
 					const err = tools.moveTo(creep, pos);
 					creep.say((OK == err)?'🚚💡':'🚚💡'+err);
 				}
