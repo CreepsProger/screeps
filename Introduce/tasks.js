@@ -697,7 +697,7 @@ var tasks = {
 		const localTransportFrom = 'W54S51';
 		const localTransportThrough_x = 0;
 		const localTransportThrough_y = 31;
-		const localTransportTo = 'W54S51';
+		const localTransportTo = 'W55S51';
 		if(tools.getWeight(creep.name) == localTransportWeight) {
 			if(creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
 				if(creep.room.name != localTransportFrom) {
