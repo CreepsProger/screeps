@@ -217,7 +217,7 @@ var role = {
 		
 		const ST  = !!flags.flags.ST && flags.flags.ST.pos.roomName == my_room;
 
-		if(!creep.getActiveBodyparts(WORK) && role.st.time + role.st.multi <= Game.time &&
+		if(!creep.getActiveBodyparts(WORK) && (role.st.time + role.st.multi <= Game.time) &&
 			 creep.memory.rerun &&
 			 ((Game.time % 500/10 < 20/2 && Game.cpu.bucket > 2000) || Game.cpu.bucket > 8000 || ST)) {
 
