@@ -158,8 +158,7 @@ module.exports.loop = function () {
 		}
 		catch (e) {
 			console.log( '⛔', Math.trunc(Game.time/10000), Game.time%10000
-                    , JSON.stringify({main:'catch', creep:name, e_name:e.name, e_message:e.message, e_stack:e.stack }));
-			throw;
+                    , JSON.stringify({main:'catch', creep:name, e_name:e.name, e_message:e.message, e_stack:e.stack }));  		
 		} 
 	});
 
