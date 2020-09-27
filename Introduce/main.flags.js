@@ -647,7 +647,7 @@ var flags = {
 																							 order.amount > 0 &&
 																							 order.price >= fSell.min)
 																	.map((order) => (order.cost = Game.market.calcTransactionCost(order.amount, roomName, order.roomName)
-																						, order.cost_price = order.cost/order.amount
+																						, order.cost_price = order.cost*0.125/order.amount
 																						, order.full_price = order.price + order.cost_price
 																						, order))
 																	.sort((l,r) => r.full_price - l.full_price)
@@ -752,20 +752,21 @@ var flags = {
 																							 order.price <= fBuy.max &&
 																							 order.price >= fBuy.min)
 																	.map((order) => (order.cost = Game.market.calcTransactionCost(order.amount, roomName, order.roomName)
-																						, order.cost_price = order.cost/order.amount
+																						, order.cost_price = order.cost*(order.resourceType==RESOURCE_ENERGY? order.price:0.125)/order.amount
 																						, order.full_price = order.price + order.cost_price
 																						, order))
+																	.filter((order) => order.full_price <= fBuy.max)
 																	.sort((l,r) => l.full_price - r.full_price)
 																	.shift();
 				if(!order)
 					return;
 				var amount = order.amount;
 				var half_amount = Math.floor(amount/2);
-				var max_cost = order.resourceType==RESOURCE_ENERGY? half_amount:terminalEnergy;
+				var max_cost = /*order.resourceType==RESOURCE_ENERGY? half_amount:*/terminalEnergy;
 				while(Game.market.calcTransactionCost(amount, roomName, order.roomName) > max_cost) {
 					amount = half_amount;
 					half_amount = Math.floor(amount/2);
-					max_cost = order.resourceType==RESOURCE_ENERGY? half_amount:terminalEnergy;
+					max_cost = /*order.resourceType==RESOURCE_ENERGY? half_amount:*/terminalEnergy;
 				}
 				if(Game.market.credits - amount*order.price < creditsLimit)
 					amount = Math.floor((Game.market.credits - creditsLimit) / order.price);
