@@ -47,13 +47,13 @@ var config = {
 			if(!commodity.level)
 				return 2000;
 			if(commodity.level == 1 && res != 'composite')
-				return 100;
+				return 200;
 			if(commodity.level == 2 && res != 'crystal')
-				return 10;
+				return 50;
 			if(!commodity.level == 3 && res != 'liquid')
-				return 5;
+				return 20;
 			if(!commodity.level == 4)
-				return 2;
+				return 5;
 			return 1000;
 		}
 		return 10000;
@@ -65,15 +65,15 @@ var config = {
 			if(!commodity.level)
 				return 2000;
 			if(commodity.level == 1 && res != 'composite')
-				return 100;
+				return 200;
 			if(commodity.level == 2 && res != 'crystal')
-				return 10;
+				return 50;
 			if(!commodity.level == 3 && res != 'liquid')
-				return 5;
+				return 20;
 			if(!commodity.level == 4)
-				return 2;
+				return 5;
 			if(!commodity.level == 5)
-				return 0;
+				return 2;
 			return 1000;
 		}
 		return 20000;
@@ -85,15 +85,15 @@ var config = {
 			if(!commodity.level)
 				return 2000;
 			if(commodity.level == 1 && res != 'composite')
-				return 100;
+				return 200;
 			if(commodity.level == 2 && res != 'crystal')
-				return 10;
+				return 50;
 			if(!commodity.level == 3 && res != 'liquid')
-				return 5;
+				return 20;
 			if(!commodity.level == 4)
-				return 2;
+				return 5;
 			if(!commodity.level == 5)
-				return 0;
+				return 2;
 			return 1000;
 		}
 		return 10000;
