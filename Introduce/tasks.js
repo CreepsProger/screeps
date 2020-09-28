@@ -693,7 +693,7 @@ var tasks = {
 
 			return true;
 		}
-		const localTransportWeight = 461;
+		const localTransportWeight = 462;
 		const localTransportFrom = 'W54S51';
 		const localTransportThrough_x = 0;
 		const localTransportThrough_y = 31;
