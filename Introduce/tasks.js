@@ -693,11 +693,11 @@ var tasks = {
 
 			return true;
 		}
-		const localTransportWeight = 462;
-		const localTransportFrom = 'W54S51';
-		const localTransportThrough_x = 0;
-		const localTransportThrough_y = 31;
-		const localTransportTo = 'W55S51';
+		const localTransportWeight =    (Game.shard.name == 'shard1')? 5142:462;
+		const localTransportFrom =      (Game.shard.name == 'shard1')? 'W25S28':'W54S51';
+		const localTransportThrough_x = (Game.shard.name == 'shard1')? 0:0;
+		const localTransportThrough_y = (Game.shard.name == 'shard1')? 0:31;
+		const localTransportTo =        (Game.shard.name == 'shard1')? 'W26S27':'W55S51';
 		if(tools.getWeight(creep.name) == localTransportWeight) {
 			if(creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
 				if(creep.room.name != localTransportFrom) {
