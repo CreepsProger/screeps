@@ -221,9 +221,9 @@ const power = {
 								tools.timeOn(time, effect.ticksRemaining);
 								return;
 							}
-						}/*
-						if(tools.nvl(source.ticksToRegeneration,0) < 275)
-							return;*/
+						}
+						if(tools.nvl(source.ticksToRegeneration,0) < 100)
+							return;
 						tools.timeOn(time);
 						const err = pc.usePower(PWR, source);
 						pc.say(err? '⚡⚠️'+err:'⚡');
