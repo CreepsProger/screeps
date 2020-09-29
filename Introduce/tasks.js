@@ -696,7 +696,7 @@ var tasks = {
 		const localTransportWeight =    (Game.shard.name == 'shard1')? 5142:462;
 		const localTransportFrom =      (Game.shard.name == 'shard1')? 'W25S28':'W54S51';
 		const localTransportThrough_x = (Game.shard.name == 'shard1')? 0:0;
-		const localTransportThrough_y = (Game.shard.name == 'shard1')? 0:31;
+		const localTransportThrough_y = (Game.shard.name == 'shard1')? 16:31;
 		const localTransportTo =        (Game.shard.name == 'shard1')? 'W26S27':'W55S51';
 		if(tools.getWeight(creep.name) == localTransportWeight) {
 			if(creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
@@ -724,9 +724,9 @@ var tasks = {
 				if(creep.room.name != localTransportTo) {
 					const exit = creep.room.findExitTo(localTransportTo);
 					var pos = creep.pos.findClosestByPath(exit);
-					if(!!pos && !!localTransportThrough_x)
+					if(!!pos && pos.y%49==0 && !!localTransportThrough_x)
 						pos.x = localTransportThrough_x;
-					if(!!pos && !!localTransportThrough_y)
+					if(!!pos && pos.x%49==0 && !!localTransportThrough_y)
 						pos.y = localTransportThrough_y;
 					const err = tools.moveTo(creep, pos);
 					creep.say((OK == err)?'🚚💡':'🚚💡'+err);
