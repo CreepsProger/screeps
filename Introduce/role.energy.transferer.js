@@ -5,6 +5,7 @@ const config = require('main.config');
 const metrix = require('main.metrix');
 const flags = require('main.flags');
 const links = require('main.links');
+const terminals = require('main.terminals');
 const factory = require('main.factory');
 const log = require('main.log');
 const tools = require('tools');
