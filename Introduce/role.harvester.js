@@ -399,16 +399,17 @@ var role = {
 		if(!creep.getActiveBodyparts(WORK) &&
 			 !NPE &&
 			 !!sot &&
-			 energy > constants.START_UPGRADING_ENERGY * 5 * psAmount) {
+			 energy > constants.START_UPGRADING_ENERGY * 5 &&
+			 terminals.getShardAvgAmount(RESOURCE_ENERGY) > 300000) {
 			const spawnToIn = cash.getPowerSpawns(creep.room.name)
 															.filter((s) => !!s && !!s.store &&
 																			s.store.getUsedCapacity('power') > 0 &&
-																			s.store.getFreeCapacity('energy') > 2500)
+																			s.store.getFreeCapacity(RESOURCE_ENERGY) > 2500)
 															.shift();
 			if(!!spawnToIn && tools.checkTarget(executer,spawnToIn.id)) {
 				const spawn = tools.setTarget(creep,spawnToIn,spawnToIn.id,role.run);
 				if(!!spawn) {
-					const target = {resource:'energy', amount:spawn.store.getFreeCapacity('energy'), target:sot};
+					const target = {resource:'energy', amount:spawn.store.getFreeCapacity(RESOURCE_ENERGY), target:sot};
 					return target;
 				}
 			}
