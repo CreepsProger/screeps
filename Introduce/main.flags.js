@@ -278,6 +278,8 @@ var flags = {
 				,    DP2: Game.flags['DP2']			// defence point 2
 				,      R: Game.flags['R']				// repair only this pos
 				,     RR: Game.flags['RR']			// repair only this pos by repairer
+				,    RR1: Game.flags['RR1']			// repair only this pos by repairer
+				,    RR2: Game.flags['RR2']			// repair only this pos by repairer
 				,      B: Game.flags['B']				// build in spite of energyAvailable != energyCapacityAvailable or sources are empty or MAIN_ROOM_CRISIS
 				,     BB: Game.flags['BB']			// build in spite of sources are empty or MAIN_ROOM_CRISIS
 				,      U: Game.flags['U']				// upgrade in spite of and harvest from containers
