@@ -14,6 +14,8 @@ var tasks = {
 		var target;
 		
 		const RR = flags.flags.RR;
+		const RR1 = flags.flags.RR1;
+		const RR2 = flags.flags.RR2;
 		const NRR = flags.flags.NRR;
 		const NRR1 = flags.flags.NRR1;
 		const NRR2 = flags.flags.NRR2;
@@ -24,14 +26,24 @@ var tasks = {
 		const mr = 2*config.getMR(creep.pos.roomName);
 		
 		if(!target && (!NRR || RR)) {
-			const rps = cash.getMyBuildings(creep.room).filter((structure) => {
+			const rps = cash.getMyBuildings(creep.room)
+			.filter((structure) => {
 				if(!structure || !structure.structureType)
 					return false;
-				
-				const r = (!!RR &&
+
+				const r0 = (!!RR &&
 									 structure.pos.roomName == RR.pos.roomName &&
 									 structure.pos.x == RR.pos.x &&
 									 structure.pos.y == RR.pos.y)?(11-RR.color)*(11-RR.secondaryColor):1;
+				const r1 = (!!RR1 &&
+									 structure.pos.roomName == RR1.pos.roomName &&
+									 structure.pos.x == RR1.pos.x &&
+									 structure.pos.y == RR1.pos.y)?(11-RR1.color)*(11-RR1.secondaryColor):1;
+				const r2 = (!!RR2 &&
+									 structure.pos.roomName == RR2.pos.roomName &&
+									 structure.pos.x == RR2.pos.x &&
+									 structure.pos.y == RR2.pos.y)?(11-RR2.color)*(11-RR2.secondaryColor):1;
+				const r = r0*r1*r2;
 				var repair = false;
 				if(!repair && structure.structureType == STRUCTURE_WALL && r) {
 					repair = structure.hits < constants.STRUCTURE_WALL_HITS*mw*r;// 8000 E = 10 * 8000 / 800 = 100
