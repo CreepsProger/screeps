@@ -222,7 +222,7 @@ const power = {
 								return;
 							}
 						}
-						if(tools.nvl(source.ticksToRegeneration,0) < 200)
+						if(tools.nvl(source.ticksToRegeneration,0) < 225)
 							return;
 						if(tools.nvl(source.ticksToRegeneration,0) > 275)
 							return;
