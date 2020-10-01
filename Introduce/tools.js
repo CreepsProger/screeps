@@ -15,7 +15,8 @@ var tools = {
 		if(creep.room.name == 'W26S33' &&
 			 ((creep.pos.x == 28 && creep.pos.y == 20) ||
 				(creep.pos.x == 29 && creep.pos.y == 19) ||
-				(creep.pos.x == 30 && creep.pos.y == 18)))
+				(creep.pos.x == 30 && creep.pos.y == 18) ||
+				(creep.pos.x == 35 && creep.pos.y == 16)))
 			return true;
 		return false;
 	},
