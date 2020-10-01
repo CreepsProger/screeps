@@ -11,6 +11,19 @@ var last_tick = 0;
 
 var tools = {
 	
+	getPosByDirection: function(pos, direction) {
+		switch (direction) {
+			case TOP: return new RoomPosition(pos.x, pos.y-1, pos.roomName);
+			case TOP_RIGHT: return new RoomPosition(pos.x+1, pos.y-1, pos.roomName);
+			case RIGHT: return new RoomPosition(pos.x+1, pos.y, pos.roomName);
+			case BOTTOM_RIGHT: return new RoomPosition(pos.x+1, pos.y+1, pos.roomName);
+			case BOTTOM: return new RoomPosition(pos.x, pos.y+1, pos.roomName);
+			case BOTTOM_LEFT: return new RoomPosition(pos.x-1, pos.y+1, pos.roomName);
+			case LEFT: return new RoomPosition(pos.x-1, pos.y, pos.roomName);
+			case TOP_LEFT: return new RoomPosition(pos.x-1, pos.y-1, pos.roomName);
+		}
+	},
+	
 	isInWay: function(creep) {
 		if(creep.room.name == 'W26S33' &&
 			 ((creep.pos.x == 28 && creep.pos.y == 20) ||
