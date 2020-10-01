@@ -52,7 +52,7 @@ var roleRepairer = {
 				const D2 = flags.flags.D2;
 				if(!target) {
 					var structures = cash.getStructuresToRepaire(creep.room, creep.memory.rerun).filter((s) => {
-							if(!!s && s.hitsMax - s.hits + 1 > s.hitsMax/(1.5+98.5*((!!creep.memory.target && s.id == creep.memory.target.id) + 0.08*creep.memory.rerun))) {
+							if(!!s && s.hitsMax - s.hits + 1 > s.hitsMax/(1.25+98.75*((!!creep.memory.target && s.id == creep.memory.target.id) + 0.005*creep.memory.rerun))) {
 								 if(!!D1 && D1.pos.roomName == my_room &&
  									D1.pos.getRangeTo(s) < 11-D1.color) {
  									return false;
