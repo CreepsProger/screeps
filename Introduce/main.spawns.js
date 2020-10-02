@@ -200,6 +200,13 @@ var spawns = {
 					, [ 500000010000116,  0, 0 ]  // 9 12900
 					//  TTClRrAaHhWwCcMm  TTClRrAaHhWwCcMm TTClRrAaHhWwCcMm
 					],
+	TRANSPORT: [ [     0,      0,      0]  // 0  000
+					, [ 500000000000106,    201,    402]  // 1  
+					, [  2525,   3216,   3317, 4010, 500000000002025]  // 7 5600
+					, [ 200000003002025,  200000003003510, 400000006003010 ]  // 8 12900
+					, [ 500000010000116,  0, 0 ]  // 9 12900
+					//  TTClRrAaHhWwCcMm  TTClRrAaHhWwCcMm TTClRrAaHhWwCcMm
+					],
 
 	WORKER: [ [     0,      0,      0]  // 0  000
 					, [ 10101,  10202,  20101]  // 1  300
@@ -340,6 +347,7 @@ var spawns = {
 				}
 
 				const CARIER = spawns.CARIER;
+				const TRANSPORT = spawns.TRANSPORT;
 				const WORKER = spawns.WORKER;
 				const UPGRADER = spawns.UPGRADER;
 				const ATTACKER = spawns.ATTACKER;
@@ -366,7 +374,7 @@ var spawns = {
 						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[8][M], 5015);
   					if(Sp1) spawns.tryCreateCreep(spawn, CARIER[7][H], 5011);
 						//if(Sp1) spawns.tryCreateCreep(spawn, CARIER[8][L], 63);
-						if(Sp1) spawns.tryCreateCreep(spawn, CARIER[1][L], 63);
+						if(Sp1) spawns.tryCreateCreep(spawn, TRANSPORT[1][L], 63);
 						if(Sp1) spawns.tryCreateCreep(spawn, CARIER[8][L], 173);
 						if(Sp1) spawns.tryCreateCreep(spawn, CARIER[7][L], 403);
   				}
