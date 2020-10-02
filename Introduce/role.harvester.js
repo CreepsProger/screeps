@@ -200,9 +200,9 @@ var role = {
 					const mineral = minerals[0];
 					if(!!mineral && mineral.mineralAmount > 0) {
 						const roomName = mineral.pos.roomName;
-						const ShardAvgAmountWithoutDeals = terminals.getShardAvgAmountWithoutDeals(mineral.mineralType);
+						const ShardAvgAmount = terminals.getShardAvgAmount(mineral.mineralType);
 						const MinAvgAmountToBuy = config.getMinAvgAmountToBuy(mineral.mineralType);
-						if(ShardAvgAmountWithoutDeals < MinAvgAmountToBuy/2) {
+						if(ShardAvgAmount < MinAvgAmountToBuy*2) {
 							return mineral;
 						}
 					}
