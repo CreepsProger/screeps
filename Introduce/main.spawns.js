@@ -755,11 +755,11 @@ var spawns = {
 						if(Sp3)	spawns.tryCreateCreep(spawn, WORKER[6][S], 544);
             if(Sp3)	spawns.tryCreateCreep(spawn, CARIER[6][L], 541);
 					}
-					if(spawn.name == 'Spawn4' && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[8][L], 63);
-					if(spawn.name == 'Spawn4' && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[8][L], 173);
-					if(spawn.name == 'Spawn4' && (Game.time % 500 < 500) ) spawns.tryCreateCreep(spawn,   CARIER[7][L], 5013);
-					if(Sp12 && (Game.time % 500000 < 250) ) spawns.tryCreateCreep(spawn, HEALER[7][L], 1000);
-					if(Sp12 && (Game.time % 500000 > 250) ) spawns.tryCreateCreep(spawn, CARIER[1][L], 1000);
+					if(Sp2 &&! All) spawns.tryCreateCreep(spawn,   CARIER[8][L], 63);
+					if(Sp2 &&! All) spawns.tryCreateCreep(spawn,   CARIER[8][L], 173);
+					if(Sp2 &&! All) spawns.tryCreateCreep(spawn,   CARIER[7][L], 5023);
+					if(Sp1 && (Game.time % 500000 < 250) ) spawns.tryCreateCreep(spawn, HEALER[7][L], 1000);
+					if(Sp1 && (Game.time % 500000 > 250) ) spawns.tryCreateCreep(spawn, CARIER[1][L], 1000);
 				}
 
 				if(Game.shard.name == 'shard3') {
