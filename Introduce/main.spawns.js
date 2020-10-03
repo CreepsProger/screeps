@@ -266,6 +266,11 @@ var spawns = {
 						, [ 1000000030000010,  500003500000010,  500350000000010,  500000035000010] //1
 						, [                0,  500002109000005,  0, 0] //2
 						],//TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
+	
+	DISMANTLER : [ [0, 0, 0]  // 0  000
+						, [           250025,  0,  0] //1
+						, [                0,  0,  0] //2
+						],//TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 
 	run: function() {
 
@@ -354,6 +359,7 @@ var spawns = {
 				const HEALER = spawns.HEALER;
 				const CLAIMER = spawns.CLAIMER;
 				const DEFENDER = spawns.DEFENDER;
+				const DISMANTLER = spawns.DISMANTLER;
 	
 				const D = 0; const A = 1; const R = 2; const HR = 3;
 
@@ -760,6 +766,10 @@ var spawns = {
 					if(Sp2 &&! All) spawns.tryCreateCreep(spawn,   CARIER[7][L], 5023);
 					if(Sp1 && (Game.time % 500000 < 250) ) spawns.tryCreateCreep(spawn, HEALER[7][L], 1000);
 					if(Sp1 && (Game.time % 500000 > 250) ) spawns.tryCreateCreep(spawn, CARIER[1][L], 1000);
+					
+					if(Sp1) spawns.tryCreateCreep(spawn,   HEALER[8][L], 579);
+					if(Sp5) spawns.tryCreateCreep(spawn,   CARIER[7][L], 571);
+					if(Sp5) spawns.tryCreateCreep(spawn,   DISMANTLER[1][L], 574);
 				}
 
 				if(Game.shard.name == 'shard3') {
