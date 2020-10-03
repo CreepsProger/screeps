@@ -644,7 +644,7 @@ var flags = {
 				}
 				const terminalEnergy = terminal.store.getUsedCapacity(RESOURCE_ENERGY);
 				const order = Game.market.getAllOrders(order => order.resourceType == fSell.resource &&
-																							 order.roomName.length < 7 &&
+																							 //order.roomName.length < 7 &&
 																							 order.type == ORDER_BUY &&
 																							 order.amount > 0 &&
 																							 order.price >= fSell.min)
