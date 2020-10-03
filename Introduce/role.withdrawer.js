@@ -68,12 +68,12 @@ var roleWithdrawer = {
 				var ruins = creep.room.find(FIND_RUINS, {filter: (ruin) => !!ruin.store &&
 					 Object.keys(ruin.store).length > 0 &&
 						!(!!NW1 && NW1.pos.roomName == my_room && NW1.pos.getRangeTo(ruin) < 11-NW1.color) &&
-					 tools.checkTarget(executer,ruin.id)});
+					 (W || tools.checkTarget(executer,ruin.id))});
 				if(ruins.length > 0) {
-					var ruin = ruins.reduce((p,c) => tools.checkTarget(executer,p.id) &&
+					var ruin = ruins.reduce((p,c) => (W || tools.checkTarget(executer,p.id)) &&
 																						creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-					if(!!ruin && tools.checkTarget(executer,ruin.id)) {
-						target = tools.setTarget(creep,ruin,ruin.id,roleWithdrawer.run);
+					if(!!ruin && (W || tools.checkTarget(executer,ruin.id))) {
+						target = W? ruin : tools.setTarget(creep,ruin,ruin.id,roleWithdrawer.run);
 					}
 				}
 			}
