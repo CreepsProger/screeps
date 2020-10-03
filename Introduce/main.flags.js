@@ -656,7 +656,7 @@ var flags = {
 																	.shift();
 				if(!order)
 					return;
-				var amount = Math.min(order.amount, terminal.store.getUsedCapacity(order.resourceType) );
+				var amount = (!order.roomName)? Math.min(order.amount,Game.resources[order.resourceType]) : Math.min(order.amount, terminal.store.getUsedCapacity(order.resourceType) );
 				var half_amount = Math.floor(amount/2);
 				var max_cost = order.resourceType==RESOURCE_ENERGY? half_amount:terminalEnergy;
 				while( ((!order.roomName)? 0:Game.market.calcTransactionCost(amount, roomName, order.roomName)) > max_cost) {
