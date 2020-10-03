@@ -648,7 +648,7 @@ var flags = {
 																							 order.type == ORDER_BUY &&
 																							 order.amount > 0 &&
 																							 order.price >= fSell.min)
-																	.map((order) => (order.cost = Game.market.calcTransactionCost(order.amount, roomName, order.roomName)
+																	.map((order) => (order.cost = (!order.roomName)? 0:Game.market.calcTransactionCost(order.amount, roomName, order.roomName)
 																						, order.cost_price = order.cost*0.125/order.amount
 																						, order.full_price = order.price + order.cost_price
 																						, order))
@@ -659,7 +659,7 @@ var flags = {
 				var amount = Math.min(order.amount, terminal.store.getUsedCapacity(order.resourceType) );
 				var half_amount = Math.floor(amount/2);
 				var max_cost = order.resourceType==RESOURCE_ENERGY? half_amount:terminalEnergy;
-				while(Game.market.calcTransactionCost(amount, roomName, order.roomName) > max_cost) {
+				while( ((!order.roomName)? 0:Game.market.calcTransactionCost(amount, roomName, order.roomName)) > max_cost) {
 					amount = half_amount;
 					half_amount = Math.floor(amount/2);
 					max_cost = order.resourceType==RESOURCE_ENERGY? half_amount:terminalEnergy;
