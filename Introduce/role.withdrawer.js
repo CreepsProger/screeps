@@ -51,7 +51,7 @@ var roleWithdrawer = {
 										 	(!!DP1 && DP1.pos.roomName == creep.room.name && DP1.pos.findPathTo(tombstone).length < 5) ||
 										 	(!!DP2 && DP2.pos.roomName == creep.room.name && DP2.pos.findPathTo(tombstone).length < 5)
 										) && !(!!NW1 && NW1.pos.roomName == my_room && NW1.pos.getRangeTo(tombstone) < 11-NW1.color) &&
-										tools.checkTarget(executer,tombstone.id);
+										(W || tools.checkTarget(executer,tombstone.id));
 						}
 				});
 				if(tombstones.length > 0) {
