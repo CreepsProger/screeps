@@ -37,6 +37,7 @@ var rolePickuper = {
 				const DP1 = flags.flags.DP1;
 				const DP2 = flags.flags.DP2;
 				const NP1 = flags.flags.NP1;
+				const P = !!flags.flags.P && flags.flags.P.pos.roomName == my_room;
 
 				var target;
 
@@ -51,13 +52,13 @@ var rolePickuper = {
 										 (!!DP1 && DP1.pos.roomName == creep.room.name && DP1.pos.findPathTo(dropped).length < 5) ||
 										 (!!DP2 && DP2.pos.roomName == creep.room.name && DP2.pos.findPathTo(dropped).length < 5)) &&
 								!(!!NP1 && NP1.pos.roomName == my_room && NP1.pos.getRangeTo(dropped) < 11-NP1.color) &&
-								tools.checkTarget(executer,dropped.id);
+								(P || tools.checkTarget(executer,dropped.id));
 						}
 					});
 					if(droppeds.length > 0) {
 						var dropped = droppeds.reduce((p,c) => creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 						if(!!dropped) {
-							target = tools.setTarget(creep,dropped,dropped.id,rolePickuper.run);
+							target = P? dropped:tools.setTarget(creep,dropped,dropped.id,rolePickuper.run);
 							/*console.log('👊', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({creep:creep.name, target:target}));*/
 						}
