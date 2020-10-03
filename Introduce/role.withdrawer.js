@@ -36,6 +36,7 @@ var roleWithdrawer = {
 			const DP1 = flags.flags.DP1;
 			const DP2 = flags.flags.DP2;
 			const NW1 = flags.flags.NW1;
+			const W = flags.flags.W;
 
 			var target;
 
@@ -56,7 +57,7 @@ var roleWithdrawer = {
 				if(tombstones.length > 0) {
 					var tombstone = tombstones.reduce((p,c) => tools.checkTarget(executer,p.id) &&
 																						creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
-					if(!!tombstone && tools.checkTarget(executer,tombstone.id)) {
+					if(!!tombstone && (W || tools.checkTarget(executer,tombstone.id))) {
 						target = tools.setTarget(creep,tombstone,tombstone.id,roleWithdrawer.run);
 					}
 				}
