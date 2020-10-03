@@ -55,7 +55,7 @@ var roleWithdrawer = {
 						}
 				});
 				if(tombstones.length > 0) {
-					var tombstone = tombstones.reduce((p,c) => tools.checkTarget(executer,p.id) &&
+					var tombstone = tombstones.reduce((p,c) => (W || tools.checkTarget(executer,p.id) ) &&
 																						creep.pos.getRangeTo(p) < creep.pos.getRangeTo(c)? p:c);
 					if(!!tombstone && (W || tools.checkTarget(executer,tombstone.id))) {
 						target = W? tombstone : tools.setTarget(creep,tombstone,tombstone.id,roleWithdrawer.run);
