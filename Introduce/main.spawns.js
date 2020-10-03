@@ -770,6 +770,10 @@ var spawns = {
 					if(Sp1) spawns.tryCreateCreep(spawn,   HEALER[8][L], 579);
 					if(Sp5) spawns.tryCreateCreep(spawn,   CARIER[7][L], 571);
 					if(Sp5) spawns.tryCreateCreep(spawn,   DISMANTLER[1][L], 574);
+
+					if(Sp1) spawns.tryCreateCreep(spawn,   HEALER[8][L], 589);
+					if(Sp5) spawns.tryCreateCreep(spawn,   CARIER[7][L], 581);
+					if(Sp5) spawns.tryCreateCreep(spawn,   DISMANTLER[1][L], 584);
 				}
 
 				if(Game.shard.name == 'shard3') {
