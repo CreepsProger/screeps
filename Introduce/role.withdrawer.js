@@ -36,7 +36,7 @@ var roleWithdrawer = {
 			const DP1 = flags.flags.DP1;
 			const DP2 = flags.flags.DP2;
 			const NW1 = flags.flags.NW1;
-			const W = flags.flags.W;
+			const W = !!flags.flags.W && flags.flags.W.pos.roomName == my_room;
 
 			var target;
 
