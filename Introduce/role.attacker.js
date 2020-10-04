@@ -159,6 +159,8 @@ var role = {
 
 				const D1 = flags.flags.D1;
 				const D2 = flags.flags.D2;
+				const D3 = flags.flags.D3;
+				const D4 = flags.flags.D4;
 				const DR1 = flags.flags.DR1;
 				const DR2 = flags.flags.DR2;
 				const DSOURCE = !!flags.flags.DSOURCE && flags.flags.DSOURCE.pos.roomName == this_room;
@@ -168,6 +170,10 @@ var role = {
 					 ((!!D1 && D1.pos.roomName == this_room)
 						||
 						(!!D2 && D2.pos.roomName == this_room)
+						||
+						(!!D3 && D3.pos.roomName == this_room)
+						||
+						(!!D4 && D4.pos.roomName == this_room)
 						||
 						(!!DR1 && DR1.pos.roomName == this_room)
 						||
@@ -204,6 +210,12 @@ var role = {
 									return true;
 								}
 								if(!!D2 && D2.pos.roomName == this_room && D2.pos.getRangeTo(structure) < 11-D2.color) {
+									return true;
+								}
+								if(!!D3 && D3.pos.roomName == this_room && D3.pos.getRangeTo(structure) < 11-D3.color) {
+									return true;
+								}
+								if(!!D4 && D4.pos.roomName == this_room && D4.pos.getRangeTo(structure) < 11-D4.color) {
 									return true;
 								}
 							}
