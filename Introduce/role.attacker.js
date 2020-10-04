@@ -419,11 +419,11 @@ var role = {
 									if(hc_count > 1) {
 										err = creep.rangedMassAttack();
 									}
+									else err = range<4?creep.rangedAttack(target):ERR_NOT_IN_RANGE;
 									const pos = tools.getPosByDirection(creep.pos, creep.pos.getDirectionTo(target));
 									if(pos.findInRange(FIND_HOSTILE_CREEPS, 2).length > hc_count) {
 										creep.moveTo(pos);
 									}
-									else err = range<4?creep.rangedAttack(target):ERR_NOT_IN_RANGE;
 								}
 								if(creep.getActiveBodyparts(ATTACK)) {
 									err = range==1?creep.attack(target):ERR_NOT_IN_RANGE;
