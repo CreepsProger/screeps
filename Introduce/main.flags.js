@@ -290,6 +290,8 @@ var flags = {
 				,      D: Game.flags['D']				// dismanle all
 				,     D1: Game.flags['D1']			// dismanle in range 11-D1.color
 			 	,     D2: Game.flags['D2']			// dismanle in range 11-D2.color
+			 	,     D3: Game.flags['D3']			// dismanle in range 11-D3.color
+			 	,     D4: Game.flags['D4']			// dismanle in range 11-D4.color
 				,    DR1: Game.flags['DR1']			// dismanle ramparts only in range 11-DR1.color
 			 	,    DR2: Game.flags['DR2']			// dismanle ramparts only in range 11-DR2.color
 				,     NB: Game.flags['NB']			// don't build
