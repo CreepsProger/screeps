@@ -70,6 +70,10 @@ var roleDismantler = {
 						(!!D1 && D1.pos.roomName == this_room)
 						||
 						(!!D2 && D2.pos.roomName == this_room)
+						||
+						(!!D3 && D3.pos.roomName == this_room)
+						||
+						(!!D4 && D4.pos.roomName == this_room)
 					 )) {
 					var structures = creep.room.find(FIND_STRUCTURES, {
 						filter: (structure) => {
