@@ -120,7 +120,7 @@ module.exports.loop = function () {
 		Memory.cpu_main_part = {perf:0, clearing:0, metrix:0, config:0, flags:0, event_processor:0, links:0, towers:0, spawns:0, terminals:0, labs:0, factory:0, power:0, metrix2:0, others:0};
 	}
 
-	const creeps = Object.keys(Game.creeps).sort((l,r) => tools.getWeight(l) - tools.getWeight(r));
+	const creeps = Object.keys(Game.creeps).sort((l,r) => (tools.getWeight(l) != tools.getWeight(r))? (tools.getWeight(l) - tools.getWeight(r)):(tools.getN(l) - tools.getN(r)));
 
 	creeps.forEach(function(name,i) {
 		try {
