@@ -52,7 +52,8 @@ const conditions = {
 																				}
 																				if(Game.time - Memory.defence[roomName].time < 10)
 																					return false;
-																				console.log('TO_SPAWN_ROOM_DEFENDERS('+ roomName +') =' , to_spawn_rd, JSON.stringify({hs:room.find(FIND_HOSTILE_STRUCTURES), hc:room.find(FIND_HOSTILE_CREEPS)}));
+																				if(Game.time % 25 == 0)
+																					console.log('TO_SPAWN_ROOM_DEFENDERS('+ roomName +') =' , to_spawn_rd, JSON.stringify({hs:room.find(FIND_HOSTILE_STRUCTURES), hc:room.find(FIND_HOSTILE_CREEPS)}));
 																			}
 																		  return to_spawn_rd;}
 	, TO_SPAWN_ROOM_EXTRA_DEFENDERS:function(roomName) {
