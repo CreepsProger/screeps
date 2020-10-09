@@ -263,6 +263,7 @@ var flags = {
 			flags.time = Game.time;
 			flags.flags =
 				{    NPE: Game.flags['NPE']			// no power spawn is filled energy
+				,     SO: Game.flags['SO']			// from storage transfering resources in this room in any time
 				,     ST: Game.flags['ST']			// from/to storage transfering resources in this room in any time
 				,   CONT: Game.flags['CONT']		// use setTarget for a container in this room
 				,    NP1: Game.flags['NP1']			// don't pick up in range 11-NW1.color
