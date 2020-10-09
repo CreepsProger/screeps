@@ -228,7 +228,17 @@ var role = {
 			 (creep.room.energyAvailable != creep.room.energyCapacityAvailable /*|| Memory.stop_upgrading*/) &&
 			 (!creep.getActiveBodyparts(WORK) || creep.memory.rerun) &&
 			 energy > constants.STOP_UPGRADING_ENERGY + creep.store.getFreeCapacity(RESOURCE_ENERGY) ) {
-				return sot;
+				return sot; 
+		}
+
+		const SO  = !!flags.flags.SO && flags.flags.SO.pos.roomName == my_room;
+		if(!creep.getActiveBodyparts(WORK) && SO)) {
+			var res_to_send = terminals.getResourceToSend(creep);
+			if(!!res_to_send) {
+				res_to_send.target = creep.room.storage;
+				role.resetST(creep.name);
+				return res_to_send;
+			}
 		}
 		
 		const ST  = !!flags.flags.ST && flags.flags.ST.pos.roomName == my_room;
