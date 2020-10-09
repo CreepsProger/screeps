@@ -232,7 +232,7 @@ var role = {
 		}
 
 		const SO  = !!flags.flags.SO && flags.flags.SO.pos.roomName == my_room;
-		if(!creep.getActiveBodyparts(WORK) && SO)) {
+		if(!creep.getActiveBodyparts(WORK) && SO) {
 			var res_to_send = terminals.getResourceToSend(creep);
 			if(!!res_to_send) {
 				res_to_send.target = creep.room.storage;
