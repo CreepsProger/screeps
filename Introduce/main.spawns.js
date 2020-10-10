@@ -572,7 +572,7 @@ var spawns = {
 					else {
 						if(Sp10)	spawns.tryCreateCreep(spawn,   WORKER[7][M], 5204);
 						if(Sp10)	spawns.tryCreateCreep(spawn,   CARIER[7][M], 5201);
-						if(Sp8)	spawns.tryCreateCreep(spawn,    UPGRADER[H], 5205);
+						if(Sp10)	spawns.tryCreateCreep(spawn,    UPGRADER[H], 5205);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W24S27')) {
 						if(Sp7)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5196);
@@ -593,11 +593,11 @@ var spawns = {
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W25S26') &&
 						 tools.getInviderCoreLevel('W25S26') !== undefined ) {
 						if(tools.getInviderCoreLevel('W25S26') == 1) {
-							if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5257);
+							if(Sp10)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5257);
 						}
 					}
 					else {
-						if(Sp8)	spawns.tryCreateCreep(spawn,ATTACKER[9][L], 5256);
+						if(Sp10)	spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5256);
 						if(Sp10)	spawns.tryCreateCreep(spawn, WORKER[7][S+1], 5254);
 						if(Sp10)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 5251);
 					}
@@ -608,7 +608,7 @@ var spawns = {
 						}
 					}
 					else {
-						if(Sp7)	spawns.tryCreateCreep(spawn,ATTACKER[9][L], 5266);
+						if(Sp7)	spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5266);
 						if(Sp7)	spawns.tryCreateCreep(spawn, WORKER[7][S+1], 5264);
 						if(Sp7)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 5261);
 					}
@@ -619,6 +619,17 @@ var spawns = {
 						if(Sp9)	spawns.tryCreateCreep(spawn, CARIER[7][M], 5271);
 						if(Sp9)	spawns.tryCreateCreep(spawn, WORKER[7][M], 5274);
 						if(Sp9)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5275);
+					}
+					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W26S26') &&
+						 tools.getInviderCoreLevel('W26S26') !== undefined ) {
+						if(tools.getInviderCoreLevel('W26S26') == 1) {
+							if(Sp10)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5287);
+						}
+					}
+					else {
+						if(Sp10)	spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5286);
+						if(Sp10)	spawns.tryCreateCreep(spawn, WORKER[7][S+1], 5284);
+						if(Sp10)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 5281);
 					}
         }
 
