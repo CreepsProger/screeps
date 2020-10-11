@@ -638,7 +638,7 @@ var spawns = {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W28S27')) {
 							if(Sp9)	spawns.tryCreateCreep(spawn, CLAIMER[7][M], 5290);
 						}
-						if(Sp9)	spawns.tryCreateCreep(spawn, WORKER[5][M], 5294);
+						if(Sp10)	spawns.tryCreateCreep(spawn, WORKER[5][M], 5294);
 						if(Sp9)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5291);
 					}
         }
