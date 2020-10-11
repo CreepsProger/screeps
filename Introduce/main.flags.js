@@ -438,6 +438,51 @@ var flags = {
 		lastFlagRemoved = Limits; 
     lastFlagRemoved.remove()
 	},
+	// Flags: generate flags on map
+	Flags: function(Flags) {
+		const prefix = 'Flags>';
+		var n = 0;
+
+		if(flags.flags[prefix] === undefined) {
+			Object.keys(Game.flags)
+						.filter((name)=>name.substring(0,prefix.length) == prefix)
+						.sort((l,r) => l.localeCompare(r))
+						.map((name) => Game.flags[name])
+						.map((f,i,arr) => ( f.prefix = f.name.substring(f.name.indexOf('>')+1,f.name.indexOf('.'))
+															, f.otype = f.name.substring(f.name.indexOf('.')+1,f.name.indexOf('-'))
+															, f.resource = f.name.substring(f.name.indexOf('-')+1,f.name.indexOf(':'))
+															, f.suffix = +f.name.substring(f.name.indexOf(':')+1)
+															, f))
+						.forEach(function(fFlags)
+				{
+				console.log('👉🏳️🏴', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify( { Flags:fFlags.prefix, fFlags:fFlags}));
+				const err = Game.market.getAllOrders(order => order.resourceType == fFlags.resource &&
+																						 order.type == fFlags.otype &&
+																						 !!order.my)
+																.map((order,i) => ( order.pos = new RoomPosition(fFlags.pos.x, fFlags.pos.y+2+i+i, fFlags.pos.roomName)
+																									, order.err = order.pos.createFlag(fFlags.prefix+'.'+order.orderId+':'+fFlags.suffix)
+																									, order.err))
+																.reduce((p,c) => p!=OK?p:OK, OK);
+				console.log('👉🏳️🏴', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify( { Flags:fFlags.prefix, err:err, fFlags:fFlags}));
+				if(err == OK) {
+					fFlags.room.visual.text('👉🏳️🏴' + fFlags.name + ' 👌'
+																	, fFlags.pos.x
+																	, fFlags.pos.y
+																	, {opacity: 1.0, font:'10px Verdana'});
+					fFlags.remove();
+				}
+				else {
+					fFlags.room.visual.text('👉🏳️🏴' + fFlags.name + ' ⚠️ ' + err
+																	, fFlags.pos.x
+																	, fFlags.pos.y
+																	, {color:'red', font:0.9, opacity: 1.0});
+				}
+			});
+		}
+		Flags.remove();
+	},
 	// Cancel: Cancel order on market
 	Cancel: function(Cancel) {
 		const prefix = 'Cancel.';
