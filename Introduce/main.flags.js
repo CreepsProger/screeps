@@ -462,7 +462,7 @@ var flags = {
 													.filter((order) => order.resourceType == fFlags.resource &&
 																							order.type == (fFlags.otype == 'buy'? ORDER_BUY:ORDER_SELL))
 													.map((order,i) => ( order.pos = new RoomPosition(fFlags.pos.x, fFlags.pos.y+2+i+i, fFlags.pos.roomName)
-																						, order.err = order.pos.createFlag(fFlags.prefix+'.'+order.orderId+':'+fFlags.suffix)
+																						, order.err = order.pos.createFlag(fFlags.prefix+'.'+order.id+(!!fFlags.suffix?':'+fFlags.suffix:''))
 																						, order.err))
 													.reduce((p,c) => p!=OK?p:OK, OK);
 				console.log('👉🏳️🏴', Math.trunc(Game.time/10000), Game.time%10000
