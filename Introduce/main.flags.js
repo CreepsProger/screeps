@@ -457,9 +457,8 @@ var flags = {
 				{
 				console.log('👉🏳️🏴', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { Flags:fFlags.prefix, fFlags:fFlags}));
-				const err = Game.market.getAllOrders(order => order.resourceType == fFlags.resource &&
-																						 order.type == (fFlags.otype == 'buy'? ORDER_BUY:ORDER_SELL) &&
-																						 !!order.my)
+				const err = Game.market.orders(order => order.resourceType == fFlags.resource &&
+																			          order.type == (fFlags.otype == 'buy'? ORDER_BUY:ORDER_SELL))
 																.map((order,i) => ( order.pos = new RoomPosition(fFlags.pos.x, fFlags.pos.y+2+i+i, fFlags.pos.roomName)
 																									, order.err = order.pos.createFlag(fFlags.prefix+'.'+order.orderId+':'+fFlags.suffix)
 																									, order.err))
