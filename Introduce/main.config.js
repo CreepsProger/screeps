@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 508,
+	version: 509,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -2511,10 +2511,10 @@ var config = {
 								, {name: '9', time: 0, min_weight: 5300, max_weight: 5309}
 								]
 							, attacker:
-								[ {name: '1', time: 0, min_weight: 5309, max_weight: 5309}
-								, {name: '2', time: 0, min_weight: 5309, max_weight: 5309}
-								, {name: '3', time: 0, min_weight: 5309, max_weight: 5309}
-								, {name: '4', time: 0, min_weight: 5309, max_weight: 5309}
+								[ {name: '1', time: 0, min_weight: 5300, max_weight: 5309}
+								, {name: '2', time: 0, min_weight: 5300, max_weight: 5309}
+								, {name: '3', time: 0, min_weight: 5300, max_weight: 5309}
+								, {name: '4', time: 0, min_weight: 5300, max_weight: 5309}
 								]
 							, heal_room:
 								{ shard: 'shard1', room: 'W27S26'}
@@ -2554,11 +2554,11 @@ var config = {
 								, {name: '9', time: 0, min_weight: 5310, max_weight: 5319}
 								]
 							, claiming:
-							  [ {name: '1', time: 0, min_weight: 5300, max_weight: 5319}
+							  [ {name: '1', time: 0, min_weight: 5310, max_weight: 5319}
 								, {name: '2', time: 0, min_weight: 5310, max_weight: 5319}
 								]
 							, attacker:
-								[ {name: '1', time: 0, min_weight: 5300, max_weight: 5319}
+								[ {name: '1', time: 0, min_weight: 5310, max_weight: 5319}
 								, {name: '2', time: 0, min_weight: 5310, max_weight: 5319}
 								, {name: '3', time: 0, min_weight: 5310, max_weight: 5319}
 								, {name: '4', time: 0, min_weight: 5310, max_weight: 5319}
