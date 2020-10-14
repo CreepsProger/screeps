@@ -715,7 +715,11 @@ var tasks = {
 			if(creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
 				if(creep.room.name != localTransportFrom) {
 					const exit = creep.room.findExitTo(localTransportFrom);
-					const pos = creep.pos.findClosestByPath(exit);
+					var pos = creep.pos.findClosestByPath(exit);
+					if(!!pos && pos.y%49==0 && !!localTransportThrough_x)
+						pos.x = localTransportThrough_x;
+					if(!!pos && pos.x%49==0 && !!localTransportThrough_y)
+						pos.y = localTransportThrough_y;
 					const err = tools.moveTo(creep, pos);
 					creep.say((OK == err)?'🚚⚡':'🚚⚡'+err);
 				}
