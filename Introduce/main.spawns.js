@@ -26,7 +26,7 @@ var spawns = {
       return Math.floor(300 * Cs * 50 / (harvest_ticks + move_to_rc_ticks + upgrade_ticks + move_from_rc_ticks));
    },
 
-    tryCreateCreep: function(spawn, type, weight, boosts = undefined, needed = flags.getNeeded(weight), max_needed = flags.getMaxNeeded(weight, needed)) {
+    tryCreateCreep: function(spawn, type, weight, modification = 0, boosts = undefined, needed = flags.getNeeded(weight), max_needed = flags.getMaxNeeded(weight, needed)) {
 			
 			var body = [];
 			const  Ts = Math.trunc(type%10000000000000000/100000000000000);
@@ -85,7 +85,7 @@ var spawns = {
 
 			if((!last_game_time_created_creep[spawn.name] || last_game_time_created_creep[spawn.name] != Game.time) &&
 				 needsNumber > 0) {
-				const newName = 'creep-<' + weight + '/' + Memory.CreepsCounter % 10 + '>-'
+				const newName = 'creep-<' + weight + '/' + modification + '>-'
 												+ (Ts>0  ? Ts +'t' :'')
 												+ (CLs>0 ? CLs+'l' :'')
 												+ (RAs>0 ? RAs+'r' :'')
@@ -925,7 +925,7 @@ var spawns = {
 								if(spawn.name == 'Spawn1') spawns.tryCreateCreep(spawn,   HEALER[7][H], 39);
 							}
 							else {
-								if(Sp1 && Game.cpu.bucket > 7000 && (harvest || !!Game.flags['34']))	spawns.tryCreateCreep(spawn, WORKER[7][M], 34);
+								if(Sp1 && Game.cpu.bucket > 7000 && (harvest || !!Game.flags['34']))	spawns.tryCreateCreep(spawn, WORKER[5][M], 34, 1);
 								if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[7][M], 31);
 								if(Sp1 && Game.cpu.bucket > 7000 && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[M], 35);
 							}
