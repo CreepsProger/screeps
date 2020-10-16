@@ -3,6 +3,7 @@ const constants = require('main.constants');
 const config = require('main.config');
 const flags = require('main.flags');
 const labs = require('main.labs');
+const links = require('main.links');
 const tools = require('tools');
 const cash = require('cash');
 
