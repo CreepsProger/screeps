@@ -583,27 +583,29 @@ var tasks = {
 				}
 			}
 		}
-		//W29S32.transfer: "5011":["U","K"] 
-		//W57S51.transfer: "5011":["X"]
-		const transferCreepConfig = flags.getTransferCreepConfig(creep.name,creep.room.name);
-		if(!!transferCreepConfig){/*
-			console.log('🚚', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify( { tasks:'onRun.transfer', creep:creep.name
-																				, room:creep.room.name, transferCreepConfig:transferCreepConfig}));*/
-			if(!!creep.room.storage && !!creep.room.storage.store && creep.store.getFreeCapacity() > 0 ) {
-				const resource = Object.keys(creep.room.storage.store)
-																.filter((k) => transferCreepConfig.includes(k))
-																.sort((l,r) => creep.room.storage.store[r] - creep.room.storage.store[l])
-																.shift();
-				if(!!resource && creep.withdraw(creep.room.storage,resource) == ERR_NOT_IN_RANGE) {
-					const err = tools.moveTo(creep, creep.room.storage);
-					creep.say((OK == err)?'🔜🚚':'🔜🚚'+err);
-					return true;
+		const type = tools.getWeight(creep.name) % 10;
+		const modification = tools.getMod(creep.name);
+		if(type == 3) {
+			//W29S32.transfer: "5011":["U","K"] 
+			//W57S51.transfer: "5011":["X"]
+			const transferCreepConfig = flags.getTransferCreepConfig(creep.name,creep.room.name);
+			if(!!transferCreepConfig){/*
+				console.log('🚚', Math.trunc(Game.time/10000), Game.time%10000
+												, JSON.stringify( { tasks:'onRun.transfer', creep:creep.name
+																					, room:creep.room.name, transferCreepConfig:transferCreepConfig}));*/
+				if(!!creep.room.storage && !!creep.room.storage.store && creep.store.getFreeCapacity() > 0 ) {
+					const resource = Object.keys(creep.room.storage.store)
+																	.filter((k) => transferCreepConfig.includes(k))
+																	.sort((l,r) => creep.room.storage.store[r] - creep.room.storage.store[l])
+																	.shift();
+					if(!!resource && creep.withdraw(creep.room.storage,resource) == ERR_NOT_IN_RANGE) {
+						const err = tools.moveTo(creep, creep.room.storage);
+						creep.say((OK == err)?'🔜🚚':'🔜🚚'+err);
+						return true;
+					}
+					creep.memory.transfer = true;
 				}
-				creep.memory.transfer = true;
 			}
-		}
-		if(tools.getWeight(creep.name) % 10 == 3) {
 			const role = {name:constants.ROLE_ENERGY_HARVESTING}; 
 			if(creep.memory[role.name] === undefined ||
 					 creep.memory[role.name].v === undefined ||
@@ -632,7 +634,7 @@ var tasks = {
 
 			return true;
 		}
-		if(tools.getWeight(creep.name) % 10 == 5) {
+		if(type == 5) {
 			const role = {name:constants.ROLE_ENERGY_HARVESTING}; 
 			if(creep.memory[role.name] === undefined ||
 					 creep.memory[role.name].v === undefined ||
@@ -647,11 +649,11 @@ var tasks = {
 			if(creep.memory[role.name].room != creep.pos.roomName ||
 				 creep.memory[role.name].shard != Game.shard.name) {
 				const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
-				const err = tools.moveTo(creep, target);
+				const err = tools.moveTo(creep, target);/*
 				console.log('⚒️', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify( { tasks:'onRun.upgrade', creep:creep.name
 																				, room:creep.room.name, target:target
-																				, err:err, role:creep.memory[role.name] }));
+																				, err:err, role:creep.memory[role.name] }));*/
 				creep.say((OK == err)?'🔜⚒️':'🔜⚒️'+err);
 				return true;
 			}
@@ -767,7 +769,7 @@ var tasks = {
 			
 			return true;
 		}
-		if(tools.getWeight(creep.name) % 10 == 4 && creep.body.some((b,i) => tools.nvl(b.boost,'-') == 'XLH2O')) {
+		if(type == 4 && creep.body.some((b,i) => tools.nvl(b.boost,'-') == 'XLH2O')) {
 			const role = {name:constants.ROLE_ENERGY_HARVESTING}; 
 			if(creep.memory[role.name] === undefined ||
 					 creep.memory[role.name].v === undefined ||
