@@ -79,6 +79,15 @@ var tools = {
 			return 0;
 		return Number(name.substr(name.lastIndexOf("-")+1));
 	},
+	
+	getMod: function(name) {
+		if(name.length < 10)
+			return 0;
+		const prefix = 'creep-<';
+		if(name.substring(0,prefix.length) != prefix)
+			return 0;
+		return Number(name.substr(name.indexOf('/')+1, name.indexOf('>')));
+	},
 
 	getWeight: function(name) {
 		if(name.length < 10)
