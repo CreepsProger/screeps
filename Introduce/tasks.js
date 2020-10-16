@@ -852,22 +852,22 @@ var tasks = {
 			}
 			else {
 				if(creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0) {
-					const sot = tools.getStorageOrTerminal(creep);
-					if(!!sot) {
-						const err = creep.transfer(sot,RESOURCE_ENERGY);
+					const link = links.getTargetLinkToTransferEnergy(creep, null, null, 0);
+				 if(!!link) {
+						const err = creep.transfer(link,RESOURCE_ENERGY);
 						if(err != ERR_NOT_IN_RANGE) {
 							creep.say((OK == err)?'💡':'💡'+err);
 						}
 						else {
-							const err = tools.moveTo(creep, sot);
+							const err = tools.moveTo(creep, link);
 							creep.say((OK == err)?'🔜💡':'🔜💡'+err);
 						}
 					}
 					else {
 						const container = cash.getContainers(creep.room)
 																	.filter((c) => !!c && !!c.store && c.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
-																	.sort((l,r) => (l.store.getUsedCapacity()+1) * creep.pos.getRangeTo(l)
-                                               - (r.store.getUsedCapacity()+1) * creep.pos.getRangeTo(r))
+																	.sort((l,r) => Math.min(r.store.getFreeCapacity(),creep.store.getUsedCapacity(RESOURCE_ENERGY)) * creep.pos.getRangeTo(l)
+                                               - Math.min(l.store.getFreeCapacity(),creep.store.getUsedCapacity(RESOURCE_ENERGY)) * creep.pos.getRangeTo(r))
 																	.shift();
 						if(!!container) {
 							const err = creep.transfer(container,RESOURCE_ENERGY);
