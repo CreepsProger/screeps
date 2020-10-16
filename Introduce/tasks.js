@@ -852,6 +852,7 @@ var tasks = {
 			}
 			else {
 				if(creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0) {
+					creep.say('👀1');
 					const link = links.getTargetLinkToTransferEnergy(creep, null, null, 0);
 					if(!!link) {
 						const err = creep.transfer(link,RESOURCE_ENERGY);
@@ -864,7 +865,7 @@ var tasks = {
 						}
 					}
 					else {
-						creep.say('👀');
+						creep.say('👀2');
 						const container = cash.getContainers(creep.room)
 																	.filter((c) => !!c && !!c.store && c.store.getFreeCapacity(RESOURCE_ENERGY) > 0 && creep.pos.getRangeTo(c) < 7) 
 																	.sort((l,r) => Math.min(r.store.getFreeCapacity(RESOURCE_ENERGY),creep.store.getUsedCapacity(RESOURCE_ENERGY)) * creep.pos.getRangeTo(l)
