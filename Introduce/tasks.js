@@ -584,7 +584,7 @@ var tasks = {
 			}
 		}
 		const type = tools.getWeight(creep.name) % 10;
-		const modification = tools.getMod(creep.name);
+		const modification = tools.getMod(creep.name);//tools.getMod('creep-<5014/1>-16w16c16m-158110');
 		if(type == 3) {
 			//W29S32.transfer: "5011":["U","K"] 
 			//W57S51.transfer: "5011":["X"]
@@ -649,11 +649,11 @@ var tasks = {
 			if(creep.memory[role.name].room != creep.pos.roomName ||
 				 creep.memory[role.name].shard != Game.shard.name) {
 				const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
-				const err = tools.moveTo(creep, target);/*
+				const err = tools.moveTo(creep, target);
 				console.log('⚒️', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify( { tasks:'onRun.upgrade', creep:creep.name
+											, JSON.stringify( { tasks:'onRun.upgrade', creep:creep.name, modification:modification
 																				, room:creep.room.name, target:target
-																				, err:err, role:creep.memory[role.name] }));*/
+																				, err:err, role:creep.memory[role.name] }));
 				creep.say((OK == err)?'🔜⚒️':'🔜⚒️'+err);
 				return true;
 			}
