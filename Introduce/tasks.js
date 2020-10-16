@@ -827,6 +827,82 @@ var tasks = {
 
 			return true;
 		}
+		if(type == 4 && modification == 1) {
+			const role = {name:constants.ROLE_ENERGY_HARVESTING}; 
+			if(creep.memory[role.name] === undefined ||
+					 creep.memory[role.name].v === undefined ||
+					 creep.memory[role.name].v != config.version) {
+					creep.memory[role.name] = { v: config.version
+																, on: false
+																, room: creep.room.name
+																, shard: Game.shard.name
+																};
+				config.setRoom(creep, role.name);
+			}
+			if(creep.memory[role.name].room != creep.pos.roomName ||
+				 creep.memory[role.name].shard != Game.shard.name) {
+				const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
+				const err = tools.moveTo(creep, target);
+				console.log('🚜', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify( { tasks:'🚜', creep:creep.name
+																				, room:creep.room.name, target:target
+																				, err:err, role:creep.memory[role.name] }));
+				creep.say((OK == err)?'🔜🚜':'🔜🚜'+err);
+				return true;
+			}
+			else {
+				if(creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0) {
+					const sot = tools.getStorageOrTerminal(creep);
+					if(!!sot) {
+						const err = creep.transfer(sot,RESOURCE_ENERGY);
+						if(err != ERR_NOT_IN_RANGE) {
+							creep.say((OK == err)?'💡':'💡'+err);
+						}
+						else {
+							const err = tools.moveTo(creep, sot);
+							creep.say((OK == err)?'🔜💡':'🔜💡'+err);
+						}
+					}
+					else {
+						const container = cash.getContainers(creep.room)
+																	.filter((c) => !!c && !!c.store && c.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
+																	.sort((l,r) => (l.store.getUsedCapacity()+1) * creep.pos.getRangeTo(l)
+                                               - (r.store.getUsedCapacity()+1) * creep.pos.getRangeTo(r))
+																	.shift();
+						if(!!container) {
+							const err = creep.transfer(container,RESOURCE_ENERGY);
+							if(err != ERR_NOT_IN_RANGE) {
+								creep.say((OK == err)?'💡':'💡'+err);
+							}
+							else {
+								const err = tools.moveTo(creep, container);
+								creep.say((OK == err)?'🔜💡':'🔜💡'+err);
+							}
+						}
+					}
+					return true;
+				}
+				const source = cash.getSources(creep.room)
+														.filter((source) => source.energy > 0)
+														.sort((l,r) => (l.energyCapacity - l.energy + 1) * creep.pos.getRangeTo(l)
+                                         - (r.energyCapacity - r.energy + 1) * creep.pos.getRangeTo(r))
+														.shift();
+				if(!!source) {
+					const err = creep.harvest(source);
+					if(err != ERR_NOT_IN_RANGE) {
+						creep.say((OK == err)?'🚜':'🚜'+err);
+					}
+					else {
+						const err = tools.moveTo(creep, source);
+						creep.say((OK == err)?'🔜🚜':'🔜🚜'+err);
+						return true;
+					}
+				}
+			}
+			tools.dontGetInWay(creep);
+
+			return true;
+		}
 	},
 
 	needToHarvest: function(creep, checkTodo = false) {
