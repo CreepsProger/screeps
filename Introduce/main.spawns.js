@@ -217,7 +217,7 @@ var spawns = {
 					, [130911, 140711, 160410, 111111]  // 6 2300
 					, [201020, 161616, 250817, 400206, 200525, 151025]  // 7 5600
 					, [201216, 153005, 250025, 400010, 151515]  // 8
-					, [0, 0, 201317, 0, 0]  // 9
+					, [0, 81612, 201317, 0, 0]  // 9
 					],
 
 	UPGRADER: [ 151515, 201020, 250817, 301505  // 0  000
@@ -925,7 +925,7 @@ var spawns = {
 								if(spawn.name == 'Spawn1') spawns.tryCreateCreep(spawn,   HEALER[7][H], 39);
 							}
 							else {
-								if(Sp1 && Game.cpu.bucket > 7000 && (harvest || !!Game.flags['34']))	spawns.tryCreateCreep(spawn, WORKER[5][M], 34, 1);
+								if(Sp1 && Game.cpu.bucket > 7000 && (harvest || !!Game.flags['34']))	spawns.tryCreateCreep(spawn, WORKER[9][M], 34, 1);
 								if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[7][M], 31);
 								if(Sp1 && Game.cpu.bucket > 7000 && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[M], 35);
 							}
