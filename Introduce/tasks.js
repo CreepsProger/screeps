@@ -864,6 +864,7 @@ var tasks = {
 						}
 					}
 					else {
+						creep.say('👀');
 						const container = cash.getContainers(creep.room)
 																	.filter((c) => !!c && !!c.store && c.store.getFreeCapacity(RESOURCE_ENERGY) > 0 && creep.pos.getRangeTo(c) < 7) 
 																	.sort((l,r) => Math.min(r.store.getFreeCapacity(RESOURCE_ENERGY),creep.store.getUsedCapacity(RESOURCE_ENERGY)) * creep.pos.getRangeTo(l)
