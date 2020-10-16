@@ -86,7 +86,7 @@ var tools = {
 		const prefix = 'creep-<';
 		if(name.substring(0,prefix.length) != prefix)
 			return 0;
-		return Number(name.substr(name.indexOf('/')+1, name.indexOf('>')));
+		return Number(name.substring(name.indexOf('/')+1, name.indexOf('>')));
 	},
 
 	getWeight: function(name) {
