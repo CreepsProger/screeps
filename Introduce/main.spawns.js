@@ -937,7 +937,7 @@ var spawns = {
 								if(spawn.name == 'Spawn2') spawns.tryCreateCreep(spawn,   HEALER[7][H], 49);
 							}
 							else {
-								if(Sp2 && Game.time % 10000 > 1500 && Game.cpu.bucket > 7000)	spawns.tryCreateCreep(spawn, WORKER[7][H], 44);
+								if(Sp2 && Game.time % 10000 > 1500 && Game.cpu.bucket > 7000)	spawns.tryCreateCreep(spawn, WORKER[7][H], 44, 1);
 								if(Sp2)	spawns.tryCreateCreep(spawn, CARIER[7][M], 41);
 								if(Sp2 && Game.time % 10000 < 1500 && Game.cpu.bucket > 7000)	spawns.tryCreateCreep(spawn, UPGRADER[L], 45);
 							}
