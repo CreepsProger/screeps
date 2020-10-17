@@ -884,7 +884,6 @@ var tasks = {
 					return true;
 				}
 				const source = cash.getSources(creep.room)
-														.filter((source) => source.energy > 0)
 														.sort((l,r) => (l.energyCapacity - tools.nvl(l.energy,0) + 1) * tools.nvl(l.ticksToRegeneration,1) * creep.pos.getRangeTo(l)
                                          - (r.energyCapacity - tools.nvl(r.energy,0) + 1) * tools.nvl(r.ticksToRegeneration,1) * creep.pos.getRangeTo(r))
 														.shift();
