@@ -889,7 +889,7 @@ var tasks = {
 														.shift();
 				if(!!source) {
 					const err = creep.harvest(source);
-					if(err != ERR_NOT_IN_RANGE) {
+					if(err != ERR_NOT_IN_RANGE && creep.pos.getRangeTo(source) == 1) {
 						creep.say((OK == err)?'🚜':'🚜'+err);
 					}
 					else {
