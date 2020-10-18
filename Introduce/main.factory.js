@@ -83,15 +83,23 @@ const factory = {
 	
 	toRun: function(f) {
 		var to_run = f.config[0][0];
+		var base = 10;
+		if (typeof to_run === 'string' || to_run instanceof String) {
+			const h = parseInt(to_run, 16);
+			to_run = h;
+			base = 16;
+			console.log('🏭🌀⚠️', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify( { "factory":'toRun', to_run:to_run, base:base}));
+		}
 		var err = ERR_NOT_IN_RANGE;
 		var result =[];
 		while(to_run > 0 && err != OK) {
-			const line = Math.floor(to_run%10);
+			const line = Math.floor(to_run%base);
 			const product = f.config[line][0];
 			if(terminals.getShardAvgAmount(product) < config.getMaxAvgAmountToProduce(product)) {
 				err = f.produce(product);
 			}
-			to_run = Math.floor(to_run/10);
+			to_run = Math.floor(to_run/base);
 			result.push({[f.pos.roomName]:line, err:err, product:product});
 		}
 		return result;
