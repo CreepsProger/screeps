@@ -88,8 +88,6 @@ const factory = {
 			const h = parseInt(to_run, 16);
 			to_run = h;
 			base = 16;
-			console.log('🏭🌀⚠️', Math.trunc(Game.time/10000), Game.time%10000
-                    , JSON.stringify( { "factory":'toRun', to_run:to_run, base:base}));
 		}
 		var err = ERR_NOT_IN_RANGE;
 		var result =[];
