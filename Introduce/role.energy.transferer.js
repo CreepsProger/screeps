@@ -131,7 +131,6 @@ var roleEnergyTransferer = {
 						var exts = creep.pos.findInRange(FIND_STRUCTURES, 1, {
 							filter: (structure) => {
 								return ( structure.structureType == STRUCTURE_SPAWN ||
-												structure.structureType == STRUCTURE_POWER_SPAWN ||
 												structure.structureType == STRUCTURE_EXTENSION)  &&
 									!!structure.store &&
 									structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
