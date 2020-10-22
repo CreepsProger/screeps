@@ -87,6 +87,20 @@ const labs = {
 	
   run: function() { 
     if(Game.time % constants.TICKS_TO_LAB_RECONFIG == 0) {
+			const rooms  = Object.keys(Game.rooms)
+				.map((room) =>  ( room.labsConfig = config.getLabsConfig(room)
+												, room.flagLabsSubConfigN = Game.flags[room + '.labsSubConfigN']
+												, room))
+				.filter((room) => !!room.flagLabsSubConfigN)
+				.map((room) =>  ( room.CurN = room.labsConfig.subConfigN
+												, room.NextN = room.CurN + 1
+												, room.minAmountResourcesForCurN = 1000
+												, room.minAmountResourcesForNextN = 10000
+												, room.NextN = (room.minAmountResourcesForCurN < 10000 && room.minAmountResourcesForNextN > 10000)? room.NextN:room.CurN
+												, room.err = room.flagLabsSubConfigN.setColor(10-room.NextN)
+												, room));
+			console.log('⚗️⚖️', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify( { "labs":'reconfig', rooms:rooms}));
 		}
     if(Game.time % constants.TICKS_TO_LAB_RUN != 0)
       return;
