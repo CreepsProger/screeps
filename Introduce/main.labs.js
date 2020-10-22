@@ -7,6 +7,9 @@ const cash = require('cash');
 const labs = {
 	
 	getConfLabRes: function(conf, i) {
+		if(!!conf && !!conf.subConfigN && conf.subConfigN>0) {
+			return conf[i][conf.subConfigN+1];
+		}
 		return (!conf)? null:(!conf[i])? null:(!conf[i][0])?null:conf[i][0];
 	},
 	
@@ -83,6 +86,8 @@ const labs = {
 	},
 	
   run: function() { 
+    if(Game.time % constants.TICKS_TO_LAB_RECONFIG == 0) {
+		}
     if(Game.time % constants.TICKS_TO_LAB_RUN != 0)
       return;
       
