@@ -86,7 +86,7 @@ const labs = {
 	},
 	
   run: function() { 
-    if(Game.time % constants.TICKS_TO_LAB_RECONFIG == 0) {
+    if(Game.time % constants.TICKS_TO_LAB_RECONFIG == 11110) {
 			const rooms  = Object.keys(Game.rooms)
 				.map((room) =>  ( room.labsConfig = config.getLabsConfig(room)
 												, room.flagLabsSubConfigN = Game.flags[room + '.labsSubConfigN']
