@@ -109,7 +109,7 @@ const labs = {
 															, flagLabsSubConfigN:Game.flags[roomName + '.labsSubConfigN']}))
 				.filter((room) => !!room.flagLabsSubConfigN)
 				.map((room) =>  ( room.CurN = room.labsConfig.subConfigN
-												, room.NextN = labs.findNextConfigN(room,room.labsConfig)
+												, room.NextN = labs.findNextConfigN(room.roomName,room.labsConfig)
 												, room.labsConfig.subConfigN = room.CurN
 												, room.err = room.flagLabsSubConfigN.setColor(10-room.NextN.N)
 												, room));
