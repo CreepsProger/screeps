@@ -104,8 +104,8 @@ const labs = {
 		const ret = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 				.map((i) =>  labs.getAmountResourcesForConfigN(roomName,conf,i))
 				.reduce((p,c,i,arr) => ((c > 1000 && !p)? {Ns:arr, N:i}:p));
-		/*console.log('⚗️⚖️', Math.trunc(Game.time/10000), Game.time%10000
-                    , JSON.stringify( { "labs":'findNextConfigN', roomName:roomName, conf:conf, ret:ret}));*/
+		console.log('⚗️⚖️', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify( { "labs":'findNextConfigN', roomName:roomName, conf:conf, ret:ret}));
 		return ret;
   },
 	
@@ -116,9 +116,9 @@ const labs = {
 															, flagLabsSubConfigN:Game.flags[roomName + '.labsSubConfigN']}))
 				.filter((room) => !!room.flagLabsSubConfigN)
 				.map((room) =>  ( room.CurN = room.labsConfig.subConfigN
-												, room.NextN = labs.findNextConfigN(room.roomName,room.labsConfig)
+												, room.Next = labs.findNextConfigN(room.roomName,room.labsConfig)
 												, room.labsConfig.subConfigN = room.CurN
-												, room.err = room.flagLabsSubConfigN.setColor(10-room.NextN.N)
+												, room.err = room.flagLabsSubConfigN.setColor(10-room.Next.N)
 												, room));
 			console.log('⚗️⚖️', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { "labs":'reconfig', rooms:rooms}));
