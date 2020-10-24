@@ -85,19 +85,34 @@ const labs = {
 		return result;
 	},
 	
+	getAmountResourcesForConfigN: function(roomName, conf, N) {
+		conf.subConfigN = N;
+		const storage = Game.rooms[roomName].storage;
+		return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+				.filter((i) => labs.getConfLabAgs(conf,i) !== undefined)
+				.map((i) =>  labs.getConfLabRes(conf,i))
+				.filter((res) => res != '-')
+				.map((res) =>  tools.nvl(storage[res],0) )
+				.reduce((p,c) =>  Math.min(p,c), Infinity );
+  },
+	
+	findNextConfigN: function(roomName, conf) {
+		return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+				.map((i) =>  labs.getAmountResourcesForConfigN(roomName,conf,i))
+				.reduce((p,c,i,arr) => (c > 1000 && !p)? {Ns:arr, N:c}:p);
+  },
+	
   run: function() { 
-    if(Game.time % constants.TICKS_TO_LAB_RECONFIG == 11110) {
+    if(Game.time % constants.TICKS_TO_LAB_RECONFIG == 0) {
 			const rooms  = Object.keys(Game.rooms)
 				.map((room) =>  ( room.labsConfig = config.getLabsConfig(room)
 												, room.flagLabsSubConfigN = Game.flags[room + '.labsSubConfigN']
 												, room))
 				.filter((room) => !!room.flagLabsSubConfigN)
 				.map((room) =>  ( room.CurN = room.labsConfig.subConfigN
-												, room.NextN = room.CurN + 1
-												, room.minAmountResourcesForCurN = 1000
-												, room.minAmountResourcesForNextN = 10000
-												, room.NextN = (room.minAmountResourcesForCurN < 10000 && room.minAmountResourcesForNextN > 10000)? room.NextN:room.CurN
-												, room.err = room.flagLabsSubConfigN.setColor(10-room.NextN)
+												, room.NextN = labs.findNextConfigN(room,room.labsConfig)
+												, room.labsConfig.subConfigN = room.CurN
+												, room.err = room.flagLabsSubConfigN.setColor(10-room.NextN.N)
 												, room));
 			console.log('⚗️⚖️', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { "labs":'reconfig', rooms:rooms}));
