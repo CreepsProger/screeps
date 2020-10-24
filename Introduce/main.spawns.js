@@ -26,7 +26,7 @@ var spawns = {
       return Math.floor(300 * Cs * 50 / (harvest_ticks + move_to_rc_ticks + upgrade_ticks + move_from_rc_ticks));
    },
 
-    tryCreateCreep: function(spawn, type, weight, modification, boosts = undefined, needed = flags.getNeeded(weight), max_needed = flags.getMaxNeeded(weight, needed)) {
+    tryCreateCreep: function(spawn, type, weight, modification = 0, boosts = undefined, needed = flags.getNeeded(weight), max_needed = flags.getMaxNeeded(weight, needed)) {
 			
 			var body = [];
 			const  Ts = Math.trunc(type%10000000000000000/100000000000000);
