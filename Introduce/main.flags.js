@@ -266,6 +266,14 @@ var flags = {
 		const Plus = flags.flags[plus];
 		return !Plus?needed:11-Plus.secondaryColor;
 	},
+	getModification: function(weight, modification) {
+		const mod = '' + weight + '/';
+		if(flags.flags[mod] === undefined) {
+			flags.flags[mod] = Game.flags[mod];
+		}
+		const Mod = flags.flags[mod];
+		return !Mod?modification:10-Mod.color;
+	},
 	cashFlags: function() {
 		if(flags.time != Game.time) {
 			flags.time = Game.time;
