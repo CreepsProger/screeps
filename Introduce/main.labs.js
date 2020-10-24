@@ -122,7 +122,7 @@ const labs = {
 			console.log('⚗️⚖️', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { "labs":'reconfig', rooms:rooms}));
 		}
-    if(Game.time % constants.TICKS_TO_LAB_RUN != 0)
+    if(Game.time % constants.TICKS_TO_LAB_RUN != 2220)
       return;
       
     const labsToRun = labs.getLabsToRun();/*
