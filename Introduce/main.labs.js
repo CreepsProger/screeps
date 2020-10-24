@@ -8,7 +8,8 @@ const labs = {
 	
 	getConfLabRes: function(conf, i) {
 		if(!!conf && !!conf.subConfigN && conf.subConfigN>0) {
-			return (!!conf[i][conf.subConfigN+1])? conf[i][conf.subConfigN+1]:conf[i][0];
+			return conf[i][conf.subConfigN+1];
+			//return (!!conf[i][conf.subConfigN+1])? conf[i][conf.subConfigN+1]:conf[i][0];
 		}
 		return (!conf)? null:(!conf[i])? null:(!conf[i][0])?null:conf[i][0];
 	},
@@ -91,7 +92,7 @@ const labs = {
 		const ret = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 				.filter((i) => labs.getConfLabAgs(conf,i) !== undefined)
 				.map((i) =>  labs.getConfLabRes(conf,i))
-				.filter((res) => res != '-')
+				.filter((res) => !!res && res != '-')
 				.map((res) =>  tools.nvl(storage.store[res],0) )
 				.reduce((p,c) =>  Math.min(p,c), Infinity );
 		console.log('⚗️⚖️', Math.trunc(Game.time/10000), Game.time%10000
@@ -102,7 +103,7 @@ const labs = {
 	findNextConfigN: function(roomName, conf) {
 		const ret = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 				.map((i) =>  labs.getAmountResourcesForConfigN(roomName,conf,i))
-				.reduce((p,c,i,arr) => (c > 1000 && !p)? {Ns:arr, N:c}:p);
+				.reduce((p,c,i,arr) => ((c > 1000 && !p)? {Ns:arr, N:c}:p));
 		console.log('⚗️⚖️', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { "labs":'findNextConfigN', roomName:roomName, conf:conf, ret:ret}));
 		return ret;
