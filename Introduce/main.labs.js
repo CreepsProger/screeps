@@ -92,7 +92,7 @@ const labs = {
 				.filter((i) => labs.getConfLabAgs(conf,i) !== undefined)
 				.map((i) =>  labs.getConfLabRes(conf,i))
 				.filter((res) => res != '-')
-				.map((res) =>  tools.nvl(storage[res],0) )
+				.map((res) =>  tools.nvl(storage.store[res],0) )
 				.reduce((p,c) =>  Math.min(p,c), Infinity );
 		console.log('⚗️⚖️', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { "labs":'getAmountResourcesForConfigN', roomName:roomName, conf:conf, N:N, ret:ret}));
