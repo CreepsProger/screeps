@@ -90,8 +90,8 @@ const labs = {
 		conf.subConfigN = N;
 		const storage = Game.rooms[roomName].storage;
 		const ret = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-				.filter((i) => labs.getConfLabAgs(conf,i) != undefined)
 				.map((i) =>  labs.getConfLabRes(conf,i))
+				.filter((i) => labs.getConfLabAgs(conf,i) != undefined)
 				.filter((res) => !!res && res != '-')
 				.map((res) =>  tools.nvl(storage.store[res],0) )
 				.reduce((p,c) =>  Math.min(p,c), Infinity );
