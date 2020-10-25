@@ -108,8 +108,8 @@ const labs = {
 		return ret;
   },
 	
-  run: function() { 
-    if(Game.time % constants.TICKS_TO_LAB_RECONFIG == 0 || (Game.time % 100 == 0 && !!Game.flags['labsReconfig'])) {
+	reconfig: function() {
+		if(true) {
 			const rooms  = Object.keys(Game.rooms)
 				.map((roomName) =>  ( { roomName:roomName, labsConfig:config.getLabsConfig(roomName)
 															, flagLabsSubConfigN:Game.flags[roomName + '.labsSubConfigN']}))
@@ -121,6 +121,12 @@ const labs = {
 												, room));
 			console.log('⚗️⚖️', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { "labs":'reconfig', rooms:rooms}));
+		}
+  },
+	
+  run: function() { 
+    if(Game.time % constants.TICKS_TO_LAB_RECONFIG == 0 || (Game.time % 100 == 0 && !!Game.flags['labsReconfig'])) {
+			labs.reconfig();
 		}
     if(Game.time % constants.TICKS_TO_LAB_RUN != 0)
       return;
