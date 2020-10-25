@@ -91,7 +91,7 @@ const labs = {
 		const storage = Game.rooms[roomName].storage;
 		const ret = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 				.map((n) =>  labs.getConfLabRes(conf,n))
-				.filter((res,i) => !!labs.getConfLabAgs(conf,i) && !!res && res != '-');/*
+				.filter((res,i) => labs.getConfLabAgs(conf,i) == 0 && !!res && res != '-');/*
 				.map((res) =>  tools.nvl(storage.store[res],0) )
 				.reduce((p,c) =>  Math.min(p,c), Infinity );*/
 		console.log('⚗️⚖️', Math.trunc(Game.time/10000), Game.time%10000
