@@ -426,6 +426,12 @@ var flags = {
         }
         Flag1.remove();
     },
+	//Reconfig: run Reconfig
+	Reconfig: function(Reconfig) {
+		require('main.labs').reconfig();
+		lastFlagRemoved = Reconfig; 
+    lastFlagRemoved.remove()
+	},
 	//Nuker: launch a Nuker
 	Nuker: function(Nuker) {
 		const nuker = Object.keys(Game.rooms)
