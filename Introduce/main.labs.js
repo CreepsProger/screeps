@@ -15,7 +15,7 @@ const labs = {
 	},
 	
 	getConfLabAgs: function(conf, i) {
-		return (!conf)? null:(!conf[i])? null:(!conf[i][1])?null:conf[i][1];
+		return (!conf)? null:(!conf[i])? null:conf[i][1];
 	},
 	
 	getLabsToInOut: function(roomName) {
