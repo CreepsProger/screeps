@@ -94,8 +94,8 @@ const labs = {
 				.filter((res,i) => labs.getConfLabAgs(conf,i) == 0 && !!res && res != '-')
 				.map((res) =>  tools.nvl(storage.store[res],0) )
 				.reduce((p,c) =>  Math.min(p,c), Infinity );
-		/*console.log('⚗️⚖️', Math.trunc(Game.time/10000), Game.time%10000
-                    , JSON.stringify( { "labs":'getAmountResourcesForConfigN', roomName:roomName, conf:conf, N:N, ret:ret}));*/
+		/**/console.log('⚗️⚖️', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify( { "labs":'getAmountResourcesForConfigN', roomName:roomName, conf:conf, N:N, ret:ret}));/**/
 		return ret;
   },
 	
