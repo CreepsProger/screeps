@@ -116,6 +116,7 @@ const labs = {
 				.filter((room) => !!room.flagLabsSubConfigN)
 				.map((room) =>  ( room.CurN = room.labsConfig.subConfigN
 												, room.Next = labs.findNextConfigN(room.roomName,room.labsConfig)
+												, room.Next = !!room.Next? room.Next:{Ns:null, N:0}
 												, room.labsConfig.subConfigN = room.CurN
 												, room.err = room.flagLabsSubConfigN.setColor(10-room.Next.N)
 												, room));
