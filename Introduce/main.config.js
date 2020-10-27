@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 528,
+	version: 529,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -2671,7 +2671,54 @@ var config = {
 								, escape_path:
 								{ W26S25: 'W26S26', W26S26: 'W27S26'
 								}
-							}
+							},
+							W27S24:
+							{ containers: {weight: 5343}
+							, sites:
+							 	[ {x:21, y:15, type:STRUCTURE_CONTAINER}
+							 	]
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 5340, max_weight: 5349}
+								, {name: '2', time: 0, min_weight: 5340, max_weight: 5349}
+								, {name: '3', time: 0, min_weight: 5340, max_weight: 5349}
+								, {name: '4', time: 0, min_weight: 5340, max_weight: 5349}
+								, {name: '5', time: 0, min_weight: 5340, max_weight: 5349}
+								, {name: '6', time: 0, min_weight: 5340, max_weight: 5349}
+								, {name: '7', time: 0, min_weight: 5340, max_weight: 5349}
+								, {name: '8', time: 0, min_weight: 5340, max_weight: 5349}
+								, {name: '9', time: 0, min_weight: 5340, max_weight: 5349}
+								]
+							, claiming:
+							 	[ {name: '1', time: 0, min_weight: 5340, max_weight: 5349}
+								, {name: '2', time: 0, min_weight: 5340, max_weight: 5349}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 5340, max_weight: 5349}
+								, {name: '2', time: 0, min_weight: 5340, max_weight: 5349}
+								, {name: '3', time: 0, min_weight: 5340, max_weight: 5349}
+								, {name: '4', time: 0, min_weight: 5340, max_weight: 5349}
+								]
+							, heal_room:
+								{ shard: 'shard1', room: 'W27S26'}
+							, path_rooms:
+								{ W29S29: 'W28S29', W28S29: 'W27S29', W28S29y:30
+								, W27S29: 'W26S29', W27S29y:9
+								, W26S29: 'W26S28', W26S28: 'W26S27'
+								, W29S31: 'W30S31', W30S31: 'W30S30'
+								, W30S30: 'W29S30', W29S30: 'W29S29', W29S30x:32
+								, W25S27: 'W26S27', W26S27: 'W26S26', W26S27x:21
+								, W25S26: 'W26S26', W26S26: 'W27S26', W26S26y:21, W28S26: 'W27S26', W27S26: 'W27S25', W27S25: 'W27S24'
+								, W24S28: 'W25S28', W25S28: 'W26S28', W25S28y:16
+								, W21S28: 'W22S28', W22S28: 'W23S28', W23S28: 'W23S29'
+								, W23S29: 'W24S29', W24S29: 'W24S28'
+								, W24S27: 'W25S27', W25S27: 'W26S27'
+								, W29S27: 'W28S27', W28S27: 'W27S27', W27S27: 'W27S28'
+								, W27S28: 'W26S28'
+								}
+								, escape_path:
+								{ W27S24: 'W27S25', W27S25: 'W27S26', W27S26: 'W27S26'
+								}
+							},
 							//,
 						}
 					}
