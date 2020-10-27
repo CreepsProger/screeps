@@ -455,31 +455,31 @@ var spawns = {
 						if(Sp3)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5071);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W27S27')) {
-						if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5106);
+						if(Sp11)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5106);
 					}
 					else {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W27S27')) {
-							if(Sp8)	spawns.tryCreateCreep(spawn, CLAIMER[7][H], 5100);
+							if(Sp11)	spawns.tryCreateCreep(spawn, CLAIMER[7][H], 5100);
 						}
-						if(Sp8)	spawns.tryCreateCreep(spawn, WORKER[5][M], 5104);
-						if(Sp8)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5101);
+						if(Sp11)	spawns.tryCreateCreep(spawn, WORKER[5][M], 5104);
+						if(Sp11)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5101);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W27S28')) {
-						if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5116);
+						if(Sp11)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5116);
 					}
 					else {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W27S28')) {
-							if(Sp8)	spawns.tryCreateCreep(spawn, CLAIMER[7][H], 5110);
+							if(Sp11)	spawns.tryCreateCreep(spawn, CLAIMER[7][H], 5110);
 						}
-						if(Sp8)	spawns.tryCreateCreep(spawn, WORKER[5][M], 5114);
-						if(Sp8)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5111);
+						if(Sp11)	spawns.tryCreateCreep(spawn, WORKER[5][M], 5114);
+						if(Sp11)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5111);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W26S28')) {
 						if(Sp11)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5136);
 					}
 					else {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W26S28')) {
-							if(Sp8)	spawns.tryCreateCreep(spawn, CLAIMER[7][H], 5130);
+							if(Sp11)	spawns.tryCreateCreep(spawn, CLAIMER[7][H], 5130);
 						}
 						if(Sp11)	spawns.tryCreateCreep(spawn, WORKER[5][M], 5134);
 						if(Sp11)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5131);
@@ -625,13 +625,13 @@ var spawns = {
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W26S26') &&
 						 tools.getInviderCoreLevel('W26S26') !== undefined ) {
 						if(tools.getInviderCoreLevel('W26S26') == 1) {
-							if(Sp8 || Sp11)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5287);
+							if(Sp11)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5287);
 						}
 					}
 					else {
-						if(Sp8 || Sp11)	spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5286);
-						if(Sp8 || Sp11)	spawns.tryCreateCreep(spawn, WORKER[7][S+1], 5284);
-						if(Sp8 || Sp11)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 5281);
+						if(Sp11)	spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5286);
+						if(Sp11)	spawns.tryCreateCreep(spawn, WORKER[7][S+1], 5284);
+						if(Sp11)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 5281);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S27')) {
 						if(Sp9)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5296);
