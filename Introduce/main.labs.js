@@ -94,6 +94,7 @@ const labs = {
 				.map((e,i,arr) => ( e.l_reag = (!!e.ags)? arr[Math.floor(e.ags/10%10)].res:'#'
 													, e.r_reag = (!!e.ags)? arr[Math.floor(e.ags%10)].res:'#'
 													, e.prod = !!REACTIONS[e.l_reag]?REACTIONS[e.l_reag][e.r_reag]:'#'
+													, e.prod = (!!e.prod)? e.prod:'#'
 													, e))
 				.map((e) => ( e.resAmount = tools.nvl(storage.store[e.res],0)
 										, e.prodAmount = tools.nvl(storage.store[e.prod],Infinity)
