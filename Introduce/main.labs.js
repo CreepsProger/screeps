@@ -29,7 +29,7 @@ const labs = {
 								.map((lab,i) => {return { i:i, resource:tools.nvl(lab.mineralType,labs.getConfLabRes(conf,i))
 																				, to_empty:(labs.getConfLabRes(conf,i) != '-' && tools.nvl(lab.mineralType,labs.getConfLabRes(conf,i)) != labs.getConfLabRes(conf,i))
 																				, toRun:labs.getConfLabAgs(conf,i), configRes:labs.getConfLabRes(conf,i), lab:lab}}) 
-								.map((e) => ( e.to_run = Math.floor(Math.abs(tools.nvl(e.toRun,0)))
+								.map((e) => ( e.to_run = Math.abs(tools.nvl(e.toRun,0))
 													  , e.l_reag = ls[Math.floor(e.to_run/10%10)].mineralType
 													  , e.r_reag = ls[Math.floor(e.to_run%10)].mineralType
 													  , e.reaction = !!REACTIONS[e.l_reag]?REACTIONS[e.l_reag][e.r_reag]:null
