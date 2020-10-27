@@ -96,9 +96,10 @@ const labs = {
 													, e.prod = !!REACTIONS[e.l_reag]?REACTIONS[e.l_reag][e.r_reag]:'#'
 													, e.prod = (!!e.prod)? e.prod:'#'
 													, e))
-				.map((e) => ( e.resAmount = tools.nvl(storage.store[e.res],(e.ags >= 0)?1000000:0)
+				.map((e) => ( e.resAmount = tools.nvl(storage.store[e.res],(!!e.ags)?1000000:0)
 										, e.prodAmount = tools.nvl(storage.store[e.prod],(!!e.ags)?0:1000000)
-										, e))/*
+										, e))
+				.filter((e) => !!e.ags || e.ags==0)/*
 				.reduce((p,c) => ({resAmount:Math.min(p.resAmount,c.resAmount), prodAmount:Math.min(p.prodAmount,c.prodAmount)}), {resAmount:Infinity, prodAmount:Infinity} );
 		*//**/console.log('⚗️⚖️', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { "labs":'getAmountResourcesForConfigN', roomName:roomName, conf:conf, N:N, ret:ret}));/**/
