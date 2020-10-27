@@ -33,7 +33,8 @@ const labs = {
 													  , e.l_reag = ls[Math.floor(e.to_run/10%10)].mineralType
 													  , e.r_reag = ls[Math.floor(e.to_run%10)].mineralType
 													  , e.reaction = !!REACTIONS[e.l_reag]?REACTIONS[e.l_reag][e.r_reag]:null
-													  , e.toEmpty = !!e.to_empty || (!!e.reaction && tools.nvl(e.lab.mineralType,e.reaction) != e.reaction)
+														, e.to_boost = e.to_run - Math.floor(e.to_run) > 0
+													  , e.toEmpty = !!e.to_empty || (!!e.reaction && tools.nvl(e.lab.mineralType,e.reaction) != e.reaction && !e.to_boost)
 													  , e))
   },
 	
