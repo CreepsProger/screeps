@@ -90,15 +90,14 @@ const labs = {
 		conf.subConfigN = N;
 		const storage = Game.rooms[roomName].storage;
 		const ret = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-				.map((i) =>  ({res:labs.getConfLabRes(conf,i), ags:labs.getConfLabAgs(conf,i)}))
+				.map((i) =>  ({res:labs.getConfLabRes(conf,i), ags:labs.getConfLabAgs(conf,i)}))/*
 				.map((e,i,arr) => ( e.l_reag = arr[Math.floor(e.ags/10%10)].res
 													, e.r_reag = arr[Math.floor(e.ags%10)].res
 													, e.prod = !!REACTIONS[e.l_reag]?REACTIONS[e.l_reag][e.r_reag]:null
-													, e)) /*
-				.filter((res,i) => labs.getConfLabAgs(conf,i) == 0 && !!res && res != '-')*/
+													, e))
 				.map((e) => ( e.resAmount = tools.nvl(storage.store[e.res],0)
 										, e.prodAmount = tools.nvl(storage.store[e.prod],0)
-										, e));/*
+										, e));
 				.reduce((p,c) => ({resAmount:Math.min(p.resAmount,c.resAmount), prodAmount:Math.min(p.prodAmount,c.prodAmount)}), {resAmount:Infinity, prodAmount:Infinity} );*/
 		/**/console.log('⚗️⚖️', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { "labs":'getAmountResourcesForConfigN', roomName:roomName, conf:conf, N:N, ret:ret}));/**/
