@@ -860,7 +860,7 @@ var spawns = {
 					else {
 						if(Sp7)	spawns.tryCreateCreep(spawn, WORKER[7][H], 594);
             if(Sp7)	spawns.tryCreateCreep(spawn, CARIER[7][H], 591);
-						if(Sp7)	spawns.tryCreateCreep(spawn,  UPGRADER[L], 595);
+						if(Sp7)	spawns.tryCreateCreep(spawn,  UPGRADER[S], 595);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W55S52')) {
 						if(Sp4)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 606);
