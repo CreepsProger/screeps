@@ -104,11 +104,12 @@ const labs = {
 													, e.r_reag = (!!e.ags)? arr[Math.floor(e.ags%10)].res:'#'
 													, e.prod = !!REACTIONS[e.l_reag]?REACTIONS[e.l_reag][e.r_reag]:'#'
 													, e.prod = (!!e.prod)? e.prod:'#'
+													, e.to_boost = e.to_run - Math.floor(e.to_run) > 0
 													, e))
 				.map((e) => ( e.resAmount = tools.nvl(storage.store[e.res],(!!e.ags)?1000000:0)
 										, e.prodAmount = tools.nvl(storage.store[e.prod],(!!e.ags)?0:1000000)
 										, e))
-				.filter((e) => !!e.ags || e.ags==0)
+				.filter((e) => (!!e.ags && !e.to_boost) || e.ags==0)
 				.reduce((p,c) => ({ resAmount:Math.min(p.resAmount,c.resAmount)
 													, prodAmount:Math.min(p.prodAmount,c.prodAmount)
 													, isNotDef:(p.isNotDef||c.isNotDef)
@@ -121,8 +122,8 @@ const labs = {
 	
 	findNextConfigN: function(roomName, conf) {
 		const ret = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-				.map((i) =>  labs.getAmountResourcesForConfigN(roomName,conf,i))/*
-				.filter((e) => !!e.isNotDef)*/
+				.map((i) =>  labs.getAmountResourcesForConfigN(roomName,conf,i))
+				.filter((e) => !!e.isNotDef)
 				.reduce((p,c,i,arr) => (c.resAmount > constants.MINMAX_TO_LAB_RECONFIG && (c.prodAmount < constants.MINMAX_TO_LAB_RECONFIG || i+1 == arr.length) && !p)? {Ns:arr, N:i}:p, null);
 		/**/console.log('⚗️⚖️', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { "labs":'findNextConfigN', roomName:roomName, conf:conf, ret:ret}));/**/
