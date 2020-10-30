@@ -19,7 +19,7 @@ const labs = {
 			//return conf[i][conf.subConfigN+1];
 			return (!!conf[i][conf.subConfigN+1]);
 		}
-		return (!conf)? false:(!conf[i])? false:conf[i][0];
+		return (!conf)? false:(!conf[i])? false:!!conf[i][0];
 	},
 	
 	getConfLabAgs: function(conf, i) {
