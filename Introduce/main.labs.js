@@ -14,6 +14,14 @@ const labs = {
 		return (!conf)? null:(!conf[i])? null:conf[i][0];
 	},
 	
+	getConfIsMaxSub: function(conf, i) {
+		if(!!conf && !!conf.subConfigN && conf.subConfigN>0) {
+			//return conf[i][conf.subConfigN+1];
+			return (!!conf[i][conf.subConfigN+1]);
+		}
+		return (!conf)? false:(!conf[i]);
+	},
+	
 	getConfLabAgs: function(conf, i) {
 		return (!conf)? null:(!conf[i])? null:conf[i][1];
 	},
@@ -91,6 +99,7 @@ const labs = {
 		conf.subConfigN = N;
 		const storage = Game.rooms[roomName].storage;
 		const ret = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+				.filter((i) => !!labs.getConfIsMaxSub(conf,i))
 				.map((i) =>  ({res:labs.getConfLabRes(conf,i), ags:labs.getConfLabAgs(conf,i)}))
 				.map((e,i,arr) => ( e.l_reag = (!!e.ags)? arr[Math.floor(e.ags/10%10)].res:'#'
 													, e.r_reag = (!!e.ags)? arr[Math.floor(e.ags%10)].res:'#'
