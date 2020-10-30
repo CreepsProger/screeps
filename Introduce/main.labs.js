@@ -114,7 +114,7 @@ const labs = {
 													, isNotDef:(p.isNotDef||c.isNotDef)
 													})
 													, {resAmount:Infinity, prodAmount:Infinity, isNotDef:false} );
-		*//**/console.log('⚗️⚖️', Math.trunc(Game.time/10000), Game.time%10000
+		/**/console.log('⚗️⚖️', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { "labs":'getAmountResourcesForConfigN', roomName:roomName, conf:conf, N:N, ret:ret}));/**/
 		return ret;
   },
