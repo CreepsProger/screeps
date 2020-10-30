@@ -122,7 +122,7 @@ const labs = {
 	findNextConfigN: function(roomName, conf) {
 		const ret = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 				.map((i) =>  labs.getAmountResourcesForConfigN(roomName,conf,i))
-				.filter((e) => e.isNotDef)
+				.filter((e) => !!e.isNotDef)
 				.reduce((p,c,i,arr) => (c.resAmount > constants.MINMAX_TO_LAB_RECONFIG && (c.prodAmount < constants.MINMAX_TO_LAB_RECONFIG || i+1 == arr.length) && !p)? {Ns:arr, N:i}:p, null);
 		/**/console.log('⚗️⚖️', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { "labs":'findNextConfigN', roomName:roomName, conf:conf, ret:ret}));/**/
