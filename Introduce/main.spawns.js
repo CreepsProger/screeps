@@ -945,7 +945,7 @@ var spawns = {
 								if(spawn.name == 'Spawn1') spawns.tryCreateCreep(spawn,   HEALER[7][H], 39);
 							}
 							else {
-								if(Sp1 && Game.cpu.bucket > 7000 && (harvest || !!Game.flags['34']))	spawns.tryCreateCreep(spawn, WORKER[9][M], 34,1);
+								if(Sp1 && Game.cpu.bucket > 7000 && (harvest || !!Game.flags['34']))	spawns.tryCreateCreep(spawn, WORKER[7][M], 34,1);
 								if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[7][M], 31);
 								if(Sp1 && Game.cpu.bucket > 7000 && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[M], 35);
 							}
