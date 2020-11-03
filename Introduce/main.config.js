@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 532,
+	version: 533,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -1200,7 +1200,50 @@ var config = {
 								{ W51S54: 'W52S54', W52S54: 'W53S54', W53S54: 'W54S54', W54S54: 'W54S53', W54S54x:38, W54S53: 'W55S53'
 								, W54S52: 'W55S52', W55S52: 'W55S53', W55S53: 'W56S53', W55S53y:6, W56S53: 'W56S52', W56S52: 'W57S52'
 								}
-							}//, 
+							},
+							W54S54:
+							{ containers: {weight: 623}
+							, sites:
+								[ {x:1, y:16, type:STRUCTURE_CONTAINER}
+								, {x:31, y:34, type:STRUCTURE_CONTAINER}
+								, {x:11, y:38, type:STRUCTURE_CONTAINER}
+								, {x:11, y:39, type:STRUCTURE_CONTAINER}
+								, {x:37, y:3, type:STRUCTURE_CONTAINER}
+								]
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 620, max_weight: 629}
+								, {name: '2', time: 0, min_weight: 620, max_weight: 629}
+								, {name: '3', time: 0, min_weight: 620, max_weight: 629}
+								, {name: '4', time: 0, min_weight: 620, max_weight: 629}
+								, {name: '5', time: 0, min_weight: 620, max_weight: 629}
+								, {name: '6', time: 0, min_weight: 620, max_weight: 629}
+								, {name: '7', time: 0, min_weight: 620, max_weight: 629}
+								, {name: '8', time: 0, min_weight: 620, max_weight: 629}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 620, max_weight: 629}
+								, {name: '2', time: 0, min_weight: 620, max_weight: 629}
+								, {name: '3', time: 0, min_weight: 620, max_weight: 629}
+								, {name: '4', time: 0, min_weight: 620, max_weight: 629}
+								, {name: '5', time: 0, min_weight: 620, max_weight: 629}
+								, {name: '6', time: 0, min_weight: 620, max_weight: 629}
+								]
+							, heal_room:
+								{ shard: 'shard0', room: 'W54S53'}
+							, path_rooms:
+								{ W57S51: 'W56S51'
+								, W57S52: 'W56S52', W57S52y:45, W56S52: 'W56S53', W56S52x:38, W56S53: 'W55S53', W55S53: 'W54S53'
+								, W54S51: 'W55S51', W55S51: 'W56S51', W56S51: 'W56S52'
+								, W56S54: 'W56S53', W56S54y:27
+								, W54S53: 'W54S54', W54S53x:38, W54S54: 'W53S54', W53S54: 'W52S54', W52S54: 'W51S54'
+								, W55S54: 'W54S54'
+								}
+								, escape_path:
+								{ W51S54: 'W52S54', W52S54: 'W53S54', W53S54: 'W54S54', W54S54: 'W54S53', W54S54x:38, W54S53: 'W55S53'
+								, W55S53: 'W56S53', W55S53y:27, W56S53: 'W56S52', W56S52: 'W57S52'
+								}
+							}
+							//, 
 						}
 					}
 				,	shard1:
