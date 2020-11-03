@@ -1014,7 +1014,6 @@ var spawns = {
 								if(Sp6) spawns.tryCreateCreep(spawn,   CARIER[7][M], 81);
 								if(Sp6 && Game.cpu.bucket > 7000 && upgrade) spawns.tryCreateCreep(spawn, UPGRADER[M], 85);
 							}
-							if(spawn.name == 'Spawn10') spawns.tryCreateCreep(spawn,   CARIER[8][L], 5013);
 							if(spawn.name == 'Spawn10') spawns.tryCreateCreep(spawn,   CARIER[8][L], 5023);
 							if(conditions.TO_SPAWN_CLAIMING_ROOMS()) {
 							}
