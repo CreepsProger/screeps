@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 535,
+	version: 536,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -2249,6 +2249,7 @@ var config = {
 								, W24S27: 'W25S27', W27S26: 'W26S26', W26S26: 'W26S27', W26S27: 'W26S28', W26S28: 'W25S28', W25S28: 'W24S28'
 								, W29S27: 'W28S27', W28S27: 'W27S27', W27S27: 'W27S28'
 								, W27S28: 'W26S28', W26S28: 'W26S29'
+								, W25S27: 'W26S27'
 								}
 								, escape_path:
 								{ W22S27: 'W21S27', W21S27: 'W21S28'
