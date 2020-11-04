@@ -203,9 +203,9 @@ var spawns = {
 	TRANSPORT: [ [     0,      0,      0]  // 0  000
 					, [ 500000000000106,    201,    402]  // 1  
 					, [  2525,   3216,   3317, 4010, 500000000002025]  // 7 5600
-					, [ 200000003002025,  200000003003510, 400000006003010 ]  // 8 12900
+					, [ 200000003002025,          5002025, 400000006003010 ]  // 8 12900
 					, [ 500000010000116,  0, 0 ]  // 9 12900
-					//  TTClRrAaHhWwCcMm  TTClRrAaHhWwCcMm TTClRrAaHhWwCcMm
+					// TTClRrAaHhWwCcMm  TTClRrAaHhWwCcMm TTClRrAaHhWwCcMm
 					],
 
 	WORKER: [ [     0,      0,      0]  // 0  000
@@ -379,14 +379,14 @@ var spawns = {
   				// if(Memory.totals.WORK < 25	) spawns.tryCreateCreep(spawn, 10101, 20, 3); // E  200 Worker
 
   				if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S29')) {
-  					if(Sp12)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5016);
+  					if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5016);
   				}
   				else {
 						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[7][M], 5014, 1);
 						if(Sp1) spawns.tryCreateCreep(spawn, UPGRADER[L], 5015);
   					if(Sp1) spawns.tryCreateCreep(spawn, CARIER[7][H], 5011);
 						//if(Sp1) spawns.tryCreateCreep(spawn, CARIER[8][L], 63);
-						if(Sp1 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[1][L], 63);
+						if(Sp1 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][M], 63);
 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, CARIER[8][L], 173);
 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, CARIER[7][L], 403);
   				}
