@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 538,
+	version: 539,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -990,8 +990,8 @@ var config = {
 								{ W57S51: 'W56S51', W56S51: 'W56S52'
 								, W57S52: 'W56S52', W57S52y:45
 								, W54S51: 'W55S51', W55S51: 'W56S51', W56S51: 'W56S52'
-								, W56S52: 'W56S53', W56S52x:25, W55S53: 'W56S53', W56S53: 'W56S54'
-								, W57S54: 'W56S54'
+								, W56S52: 'W56S53', W56S52x:25, W55S53: 'W56S53'
+								, W56S53: 'W56S54', W57S54: 'W56S54', W55S54: 'W56S54'
 								}
 								, escape_path:
 								{ W56S54: 'W56S53', W56S53: 'W56S52', W56S52: 'W57S52'
@@ -1278,7 +1278,7 @@ var config = {
 								, W54S51: 'W55S51', W55S51: 'W56S51', W56S51: 'W56S52', W56S52: 'W56S53', W56S52x:25
 								, W56S54: 'W56S53', W56S54y:27, W56S53: 'W55S53'
 								, W54S53: 'W55S53'
-								, W55S53: 'W55S54', W56S54: 'W55S54', W54S54: 'W55S54'
+								, W55S53: 'W55S54', W55S53x:26, W56S54: 'W55S54', W54S54: 'W55S54'
 								}
 								, escape_path:
 								{ W55S54: 'W55S53', W55S53: 'W56S53', W55S53y:27, W56S53: 'W56S52', W56S52: 'W57S52'
