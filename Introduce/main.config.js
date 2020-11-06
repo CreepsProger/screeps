@@ -279,6 +279,18 @@ var config = {
 		return pos;
 	},
 
+	getPassConfig: function(roomName) {
+		const flagPassConfig = flags.getPassConfig(roomName);
+		if(!!flagPassConfig)
+			return flagPassConfig;
+		const my_shard_config = config.Memory.shards[Game.shard.name];
+		const my_room_config = my_shard_config.rooms[roomName];
+		if(!my_room_config)
+			return undefined;
+		const my_pass_config = my_room_config['pass'];
+		return my_pass_config;
+	},
+
 	moveTo: function(creep,target) {
 
 		if(!!target.id || !!target.pos) {
@@ -296,6 +308,21 @@ var config = {
 				target.x = special_x+Game.time%3-1;
 			if(!!special_y && !!target)
 				target.y = special_y+Game.time%3-1;
+		}
+		const passConfig = config.getPassConfig(creep.room.name);
+		if(!!passConfig && passConfig.length > 0) {
+			if(!creep.memory.pass || (creep.pos.x % 48 == 1) || (creep.pos.y % 48 == 1))
+				creep.memory.pass = {}:
+			const pass = creep.memory.pass;
+			const p = (!pass[creep.room.name])? 0:pass[creep.room.name].p;
+			const pos = (p < passConfig.length)? passConfig[p]:null;
+			if(!!pos && Math.abs(pos.x - creep.pos.x) <= 1 && Math.abs(pos.y - creep.pos.y) <= 1) {
+				p++;
+				pass[creep.room.name] = {p:p, time:Game.time};
+			}
+			if(p < passConfig.length) {
+				target = passConfig[p];
+			}
 		}
 
 		return tools.moveTo(creep,target);
