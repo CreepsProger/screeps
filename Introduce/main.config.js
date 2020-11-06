@@ -311,7 +311,7 @@ var config = {
 		}
 		const passConfig = config.getPassConfig(creep.room.name);
 		if(!!passConfig && passConfig.length > 0) {
-			if(!creep.memory.pass || (creep.pos.x % 48 == 1) || (creep.pos.y % 48 == 1))
+			if(!creep.memory.pass)
 				creep.memory.pass = {};
 			const pass = creep.memory.pass;
 			const p = (!pass[creep.room.name])? 0:pass[creep.room.name].p;
@@ -322,6 +322,8 @@ var config = {
 			if(p < passConfig.length) {
 				target = passConfig[p];
 			}
+			if((target.pos.x % 48 == 1) || (target.pos.y % 48 == 1))
+				creep.memory.pass = {};
 		}
 
 		return tools.moveTo(creep,target);
