@@ -317,8 +317,7 @@ var config = {
 			const p = (!pass[creep.room.name])? 0:pass[creep.room.name].p;
 			const pos = (p < passConfig.length)? passConfig[p]:null;
 			if(!!pos && Math.abs(pos.x - creep.pos.x) <= 1 && Math.abs(pos.y - creep.pos.y) <= 1) {
-				p++;
-				pass[creep.room.name] = {p:p, time:Game.time};
+				creep.memory.pass[creep.room.name] = {p:p+1, time:Game.time};
 			}
 			if(p < passConfig.length) {
 				target = passConfig[p];
