@@ -18,6 +18,20 @@ var flags = {
 		return flags.flags[flagName];
 	},
 	
+	getPassConfig: function(roomName) {
+		// W55S54.pass:0
+		// W55S54.pass:1
+		// config == [RoomPosition(12,23,'W55S54'),{x:23,y:34}]
+		const prefix = roomName + '.pass:';
+		if(flags.flags[prefix] === undefined) {
+			flags.flags[prefix] = Object.keys(Game.flags)
+													.filter((name)=>name.substring(0,prefix.length) == prefix)
+													.sort((l,r) => l.localeCompare(r))
+													.map((fname) => Game.flags[fname].pos);
+		}
+		return flags.flags[prefix];
+	},
+	
 	getRoomPowerConfig: function(roomName) {
 		// W29S29.power:"pc-op-01":{"spawn":true,"factory":true}
 		// W29S29.power:"pc-op-02":{"spawn":false,"factory":true}
@@ -217,7 +231,8 @@ var flags = {
 			flags.flags[name] = !Game.flags[name]?0:(10-Game.flags[name].color);
 		}
 		return flags.flags[name];
-	}, 
+	},
+	
 	getLabsConfig: function(roomName) {
 		// W29S29.labs:0-2 ["ZHO2",23], ["Z"], ["ZO",14]
 		// W29S29.labs:3-5 ["OH",45], ["O"], ["H"]
@@ -245,6 +260,7 @@ var flags = {
 		}
 		return flags.flags[prefix];
 	},
+
 	getNeeded: function(weight) {
 		const plus = '' + weight;
 		if(flags.flags[plus] === undefined) {
