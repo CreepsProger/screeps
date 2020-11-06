@@ -322,7 +322,7 @@ var config = {
 			if(p < passConfig.length) {
 				target = passConfig[p];
 			}
-			if((target.pos.x % 48 == 1) || (target.pos.y % 48 == 1)) {
+			if((target.x % 48 == 1) || (target.y % 48 == 1)) {
 				if((creep.pos.x % 48 == 1) || (creep.pos.y % 48 == 1)) 
 					creep.memory.pass = {};
 			}
