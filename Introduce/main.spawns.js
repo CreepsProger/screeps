@@ -371,6 +371,19 @@ var spawns = {
 				const DISMANTLER = spawns.DISMANTLER;
 	
 				const D = 0; const A = 1; const R = 2; const HR = 3;
+				const energyShardAvgAmount = terminals.getShardAvgAmount('energy'); 
+				
+				if(energyShardAvgAmount > 300000)
+					Memory.shardUpgradeEnable = true;
+				if(energyShardAvgAmount < 200000)
+					Memory.shardUpgradeEnable = false;
+				const upgrade = Memory.shardUpgradeEnable;
+				
+				if(energyShardAvgAmount < 200000)
+					Memory.shardHarvestEnable = true;
+				if(energyShardAvgAmount > 300000)
+					Memory.shardHarvestEnable = false;
+				const harvest = Memory.shardHarvestEnable;
 
         if(Game.shard.name == 'shard1') {
   				// if(Memory.totals.CARRY < 25	) spawns.tryCreateCreep(spawn,   808, 10, 3); // E  800 Carier
@@ -696,7 +709,7 @@ var spawns = {
 					else {
 						if(Sp1) spawns.tryCreateCreep(spawn, WORKER[7][H], 404);
 						if(Sp1) spawns.tryCreateCreep(spawn, CARIER[7][M], 401);
-						if(Sp1) spawns.tryCreateCreep(spawn, UPGRADER[L], 405);
+						if(Sp1 && upgrade) spawns.tryCreateCreep(spawn, UPGRADER[L], 405);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W57S53')) {
 						if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 416);
@@ -734,7 +747,7 @@ var spawns = {
 					else {
 						if(Sp4)	spawns.tryCreateCreep(spawn, WORKER[7][M], 444);
 						if(Sp4)	spawns.tryCreateCreep(spawn, CARIER[7][M], 441);
-						if(Sp4)	spawns.tryCreateCreep(spawn, UPGRADER[L], 445);
+						if(Sp4 && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 445);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W57S51')) {
 						if(Sp2)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 456);
@@ -742,7 +755,7 @@ var spawns = {
 					if(true) {
 						if(Sp2)	spawns.tryCreateCreep(spawn, WORKER[7][M], 454);
 						if(Sp2)	spawns.tryCreateCreep(spawn, CARIER[7][M], 451);
-						if(Sp2)	spawns.tryCreateCreep(spawn, UPGRADER[L], 455);
+						if(Sp2 && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 455);
 					}
           if(conditions.TO_SPAWN_ROOM_DEFENDERS('W55S51')) {
 						if(Sp6)	spawns.tryCreateCreep(spawn, ATTACKER[4][M], 466);
@@ -750,7 +763,7 @@ var spawns = {
 					else {
 						if(Sp6)	spawns.tryCreateCreep(spawn, WORKER[7][M], 464);
 						if(Sp6)	spawns.tryCreateCreep(spawn, CARIER[7][M], 461);
-						if(Sp6)	spawns.tryCreateCreep(spawn,  UPGRADER[L], 465);
+						if(Sp6 && upgrade)	spawns.tryCreateCreep(spawn,  UPGRADER[L], 465);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W59S51')) {
 						if(Sp2)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 476);
@@ -808,7 +821,7 @@ var spawns = {
 					else {
 						if(Sp3)	spawns.tryCreateCreep(spawn, WORKER[7][H], 524);
             if(Sp3)	spawns.tryCreateCreep(spawn, CARIER[7][M], 521);
-						if(Sp3)	spawns.tryCreateCreep(spawn, UPGRADER[L], 525);
+						if(Sp3 && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 525);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W52S51')) {
 						if(Sp3)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 536);
@@ -837,7 +850,7 @@ var spawns = {
 					else {
 						if(Sp5)	spawns.tryCreateCreep(spawn, WORKER[7][M], 554);
             if(Sp5)	spawns.tryCreateCreep(spawn, CARIER[7][M], 551);
-						if(Sp5)	spawns.tryCreateCreep(spawn,  UPGRADER[L], 555);
+						if(Sp5 && upgrade)	spawns.tryCreateCreep(spawn,  UPGRADER[L], 555);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W56S54') &&
 						 tools.getInviderCoreLevel('W56S54') !== undefined ) {
@@ -856,7 +869,7 @@ var spawns = {
 					else {
 						if(Sp8)	spawns.tryCreateCreep(spawn, WORKER[7][L], 574);
             if(Sp8)	spawns.tryCreateCreep(spawn, CARIER[7][H], 571);
-						if(Sp8)	spawns.tryCreateCreep(spawn,  UPGRADER[H], 575);
+						if(Sp8 && upgrade)	spawns.tryCreateCreep(spawn,  UPGRADER[H], 575);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W54S53')) {
 						if(Sp7)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 596);
@@ -864,7 +877,7 @@ var spawns = {
 					else {
 						if(Sp7)	spawns.tryCreateCreep(spawn, WORKER[7][L], 594);
             if(Sp7)	spawns.tryCreateCreep(spawn, CARIER[7][H], 591);
-						if(Sp7)	spawns.tryCreateCreep(spawn,  UPGRADER[L], 595);
+						if(Sp7 && upgrade)	spawns.tryCreateCreep(spawn,  UPGRADER[L], 595);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W55S52')) {
 						if(Sp4)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 606);
@@ -934,19 +947,6 @@ var spawns = {
 				if(Game.shard.name == 'shard3') {
 					
 					const XU = 0+(!!flags.flags['XU']+!!flags.flags['XB']);
-					const energyShardAvgAmount = terminals.getShardAvgAmount('energy'); 
-
-					if(energyShardAvgAmount > 300000)
-						Memory.shardUpgradeEnable = true;
-					if(energyShardAvgAmount < 200000)
-						Memory.shardUpgradeEnable = false;
-					const upgrade = Memory.shardUpgradeEnable;
-
-					if(energyShardAvgAmount < 200000)
-						Memory.shardHarvestEnable = true;
-					if(energyShardAvgAmount > 300000)
-						Memory.shardHarvestEnable = false;
-					const harvest = Memory.shardHarvestEnable;
 
 					if(Memory.totals.CARRY < 75 && Game.cpu.bucket > 9500) spawns.tryCreateCreep(spawn,   808, undefined, 10, 3); // E  800 Carier
 					if(Memory.totals.CARRY < 75 && Game.cpu.bucket > 9500) spawns.tryCreateCreep(spawn,   505, undefined, 10, 3); // E  500 Carier
