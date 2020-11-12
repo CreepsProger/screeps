@@ -6,6 +6,8 @@ const cash = require('cash');
 
 const factory = {
 	
+	lcash:{},
+	
 	getConfig: function(roomName) {
 		return flags.getFactoryConf(roomName);
 	},
@@ -74,11 +76,16 @@ const factory = {
 	},
 
   getFactoryToOut: function(roomName) {
-    return cash.getFactories(roomName)
+		const cashEntry = roomName + '.getFactoryToOut';
+		if(factory.lcash[cashEntry] === undefined || (factory.lcash[cashEntry].time < Game.time-3 && Game.time%5 == 0) ) {
+			factory.lcash[cashEntry].time = cash.getFactories(roomName)
 								.filter((f) => !!f && !!f.my && !!f.store)
 								.map((f) => factory.getToOut(f))
 								.sort((l,r) => r.out.amount - l.out.amount)
 								.shift();
+			factory.lcash[cashEntry].time = Game.time;
+		}
+		return factory.lcash[cashEntry];
   },
 	
 	toRun: function(f) {
