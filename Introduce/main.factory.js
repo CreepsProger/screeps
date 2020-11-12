@@ -78,7 +78,7 @@ const factory = {
   getFactoryToOut: function(roomName) {
 		const cashEntry = roomName + '.getFactoryToOut';
 		if(factory.lcash[cashEntry] === undefined || (factory.lcash[cashEntry].time < Game.time-3 && Game.time%5 == 0) ) {
-			factory.lcash[cashEntry].time = cash.getFactories(roomName)
+			factory.lcash[cashEntry] = cash.getFactories(roomName)
 								.filter((f) => !!f && !!f.my && !!f.store)
 								.map((f) => factory.getToOut(f))
 								.sort((l,r) => r.out.amount - l.out.amount)
