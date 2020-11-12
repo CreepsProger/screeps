@@ -5,6 +5,9 @@ const tools = require('tools');
 const cash = require('cash');
 
 const labs = {
+
+	time:0,
+	lcash:{},
 	
 	getConfLabRes: function(conf, i) {
 		if(!!conf && !!conf.subConfigN && conf.subConfigN>0) {
@@ -27,13 +30,15 @@ const labs = {
 	},
 	
 	getLabsToInOut: function(roomName) {
-		const conf = config.getLabsConfig(roomName);
-		if(!conf)
-			return [];/*
-		console.log('⚗️', Math.trunc(Game.time/10000), Game.time%10000
+		const cashEntry = roomName + '.getLabsToInOut';
+		if(labs.lcash[cashEntry] === undefined || labs.lcash[cashEntry].time < Game.time-5) {
+			const conf = config.getLabsConfig(roomName);
+			if(!conf)
+				return [];/*
+			console.log('⚗️', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { labs:'getLabsToInOut', roomName:roomName, conf:conf}));*/
-		const ls = cash.getLabs(roomName);
-    return  cash.getLabs(roomName)
+			const ls = cash.getLabs(roomName);
+			labs.lcash[cashEntry] = cash.getLabs(roomName)
 								.map((lab,i) => {return { i:i, resource:tools.nvl(lab.mineralType,labs.getConfLabRes(conf,i))
 																				, to_empty:(labs.getConfLabRes(conf,i) != '-' && tools.nvl(lab.mineralType,labs.getConfLabRes(conf,i)) != labs.getConfLabRes(conf,i))
 																				, toRun:labs.getConfLabAgs(conf,i), configRes:labs.getConfLabRes(conf,i), lab:lab}}) 
@@ -43,7 +48,10 @@ const labs = {
 													  , e.reaction = !!REACTIONS[e.l_reag]?REACTIONS[e.l_reag][e.r_reag]:null
 														, e.to_boost = e.to_run - Math.floor(e.to_run) > 0
 													  , e.toEmpty = !!e.to_empty || (!!e.reaction && tools.nvl(e.lab.mineralType,e.reaction) != e.reaction && !e.to_boost)
-													  , e))
+													  , e));
+			labs.lcash[cashEntry].time = Game.time;
+		}
+		return labs.lcash[cashEntry];
   },
 	
 	getLabsToEmpty: function(roomName) {
