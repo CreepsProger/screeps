@@ -31,7 +31,7 @@ const labs = {
 	getLabsToInOut: function(roomName) {
 		const cashEntry = roomName + '.getLabsToInOut';
 		if(labs.lcash[cashEntry] === undefined)
-			labs.lcash[cashEntry] = {entry:null,time:0};
+			labs.lcash[cashEntry] = {entry:[],time:0};
 		if(labs.lcash[cashEntry].time < Game.time-5 && Game.time%10 == 0) {
 			const conf = config.getLabsConfig(roomName);
 			if(!conf)
