@@ -5,8 +5,7 @@ const tools = require('tools');
 const cash = require('cash');
 
 const labs = {
-
-	time:0,
+	
 	lcash:{},
 	
 	getConfLabRes: function(conf, i) {
