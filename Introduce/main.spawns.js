@@ -1007,7 +1007,7 @@ var spawns = {
 							else {
 								if(Sp1 && Game.cpu.bucket > 7000 && (harvest || !!Game.flags['34']))	spawns.tryCreateCreep(spawn, WORKER[7][M], 34,1);
 								if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[7][M], 31);
-								if(Sp1 && Game.cpu.bucket > 7000 && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[M], 35);
+								if(Sp1 && Game.cpu.bucket > 7000 && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 35);
 							}
 							if(conditions.TO_SPAWN_ROOM_DEFENDERS('W26S33')) {
 								if(spawn.name == 'Spawn2') spawns.tryCreateCreep(spawn, ATTACKER[3][L], 46);
@@ -1046,7 +1046,7 @@ var spawns = {
 							else {
 								if(Sp4 && Game.cpu.bucket > 7000 && (harvest || !!Game.flags['124'])) spawns.tryCreateCreep(spawn, WORKER[7][M], 124,1);
 								if(Sp4) spawns.tryCreateCreep(spawn, CARIER[7][M], 121);
-								if(Sp4 && Game.cpu.bucket > 7000 && upgrade) spawns.tryCreateCreep(spawn, UPGRADER[M], 125);
+								if(Sp4 && Game.cpu.bucket > 7000 && upgrade) spawns.tryCreateCreep(spawn, UPGRADER[L], 125);
 							}
 							if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S32')) {
 								if(spawn.name == 'Spawn13') spawns.tryCreateCreep(spawn, ATTACKER[3][L], 176);
@@ -1059,7 +1059,7 @@ var spawns = {
 							else {
 								if(Sp5 && Game.cpu.bucket > 7000 && (harvest || !!Game.flags['174'])) spawns.tryCreateCreep(spawn, WORKER[7][M], 174,1);
 								if(Sp5) spawns.tryCreateCreep(spawn,   CARIER[7][M], 171);
-								if(Sp5 && Game.cpu.bucket > 7000 && upgrade) spawns.tryCreateCreep(spawn, UPGRADER[M], 175);
+								if(Sp5 && Game.cpu.bucket > 7000 && upgrade) spawns.tryCreateCreep(spawn, UPGRADER[L], 175);
 								//if(Sp5) spawns.tryCreateCreep(spawn,   CARIER[9][L], 243);
 							}
 							if(conditions.TO_SPAWN_ROOM_DEFENDERS('W27S34')) {
@@ -1072,7 +1072,7 @@ var spawns = {
 							else {
 								if(Sp6 && Game.cpu.bucket > 7000 && (harvest || !!Game.flags['84'])) spawns.tryCreateCreep(spawn, WORKER[7][M], 84,1);
 								if(Sp6) spawns.tryCreateCreep(spawn,   CARIER[7][M], 81);
-								if(Sp6 && Game.cpu.bucket > 7000 && upgrade) spawns.tryCreateCreep(spawn, UPGRADER[M], 85);
+								if(Sp6 && Game.cpu.bucket > 7000 && upgrade) spawns.tryCreateCreep(spawn, UPGRADER[L], 85);
 							}
 							if(Sp5 && Game.cpu.bucket > 7000 && upgrade) spawns.tryCreateCreep(spawn,   CARIER[8][L], 5023);
 							if(conditions.TO_SPAWN_CLAIMING_ROOMS()) {
