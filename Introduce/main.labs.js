@@ -30,14 +30,16 @@ const labs = {
 	
 	getLabsToInOut: function(roomName) {
 		const cashEntry = roomName + '.getLabsToInOut';
-		if(labs.lcash[cashEntry] === undefined || (labs.lcash[cashEntry].time < Game.time-5 && Game.time%10 == 0) ) {
+		if(labs.lcash[cashEntry] === undefined)
+			labs.lcash[cashEntry] = {entry:null,time:0};
+		if(labs.lcash[cashEntry].time < Game.time-5 && Game.time%10 == 0) {
 			const conf = config.getLabsConfig(roomName);
 			if(!conf)
 				return [];/*
 			console.log('⚗️', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { labs:'getLabsToInOut', roomName:roomName, conf:conf}));*/
 			const ls = cash.getLabs(roomName);
-			labs.lcash[cashEntry] = cash.getLabs(roomName)
+			labs.lcash[cashEntry].entry = cash.getLabs(roomName)
 								.map((lab,i) => {return { i:i, resource:tools.nvl(lab.mineralType,labs.getConfLabRes(conf,i))
 																				, to_empty:(labs.getConfLabRes(conf,i) != '-' && tools.nvl(lab.mineralType,labs.getConfLabRes(conf,i)) != labs.getConfLabRes(conf,i))
 																				, toRun:labs.getConfLabAgs(conf,i), configRes:labs.getConfLabRes(conf,i), lab:lab}}) 
@@ -50,7 +52,7 @@ const labs = {
 													  , e));
 			labs.lcash[cashEntry].time = Game.time;
 		}
-		return labs.lcash[cashEntry];
+		return labs.lcash[cashEntry].entry;
   },
 	
 	getLabsToEmpty: function(roomName) {
