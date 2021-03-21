@@ -316,16 +316,16 @@ var config = {
 			if(!!passConfig && passConfig.length > 0) {
 				const pass = passConfig[0];
 				const dx = pass.x - creep.pos.x;
-				const DX = pass.x - target.x;
+				const DX = pass.x - target.pos.x;
 				const dxDX = dx*DX;
 				const dy = pass.y - creep.pos.y;
-				const DY = pass.y - target.y;
+				const DY = pass.y - target.pos.y;
 				const dyDY = dy*DY;
 				console.log(creep, target.pos.roomName, JSON.stringify({target:target.pos, pass:pass, pos:creep.pos, dx:dx, dy:dy, DX:DX, DY:DY, dxDX:dxDX, dyDY:dyDY}));
 				if(dxDX < 0 ||
 					 dyDY < 0) {
-					target.x = passConfig[0].x;
-					target.y = passConfig[0].y;
+					target.pos.x = pass.x;
+					target.pos.y = pass.y;
 				}
 			}
 		}
