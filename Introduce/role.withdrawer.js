@@ -94,7 +94,7 @@ var roleWithdrawer = {
 
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.say('🔜💼');
-					err = tools.moveTo(creep,target);
+					err = config.moveTo(creep,target);
 
 					var id;
 					if(!!target.id) {
