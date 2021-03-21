@@ -314,9 +314,14 @@ var config = {
 		else if(!!target.pos && creep.room.name == target.pos.roomName) {
 			const passConfig = config.getPassConfig(creep.room.name);
 			if(!!passConfig && passConfig.length > 0) {
-				var dxDX = (Math.floor(passConfig[0].x) - Math.floor(creep.pos.x)) * (Math.floor(passConfig[0].x) - Math.floor(target.x));
-				const dyDY = (Math.floor(passConfig[0].y) - Math.floor(creep.pos.y)) * (Math.floor(passConfig[0].y) - Math.floor(target.y));
-				console.log(creep, target.pos.roomName, JSON.stringify({target:target.pos, pass:passConfig[0], pos:creep.pos, dxDX:dxDX, dyDY:dyDY}));
+				const pass = passConfig[0];
+				const dx = pass.x - creep.pos.x;
+				const DX = pass.x - target.x;
+				const dxDX = dx*DX;
+				const dy = pass.y - creep.pos.y;
+				const DY = pass.y - target.y;
+				const dyDY = dy*DY;
+				console.log(creep, target.pos.roomName, JSON.stringify({target:target.pos, pass:pass, pos:creep.pos, dx:dx, dy:dy, DX:DX, DY:DY, dxDX:dxDX, dyDY:dyDY}));
 				if(dxDX < 0 ||
 					 dyDY < 0) {
 					target.x = passConfig[0].x;
