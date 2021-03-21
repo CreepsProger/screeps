@@ -217,7 +217,9 @@ var links = {
      , { from: '5fa3b008847dbc692b2cbe53', to: '5fa3a7f1c63f0f33786ce1ef'}
 		 // W27S25
      , { from: '5f9f955b68da5212e38c186a', to: '5f9f752c1d0e8d18ee6b82ff'} 
-     , { from: '5fa2d3669e4f1d5e05a1fda5', to: '5f9f752c1d0e8d18ee6b82ff'} 
+     , { from: '60575f57a591d08cd4c75890', to: '5f9f752c1d0e8d18ee6b82ff'} 
+     , { from: '5f9f955b68da5212e38c186a', to: '5faaaedb2139da4efe80bf11'} 
+     , { from: '60575f57a591d08cd4c75890', to: '5faaaedb2139da4efe80bf11'} 
 		 // W27S24
      , { from: '5fae75938dc19a1a87c4240c', to: '5fafed3be00561eaab9b9f3c'}
      , { from: '5fae75938dc19a1a87c4240c', to: '60562f4d539848db0c959628'}
