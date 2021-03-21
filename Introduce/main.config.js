@@ -317,7 +317,7 @@ var config = {
 				console.log(creep, target.pos.roomName, JSON.stringify({target:target.pos, pass:passConfig[0], pos:creep.pos}));
 				if((passConfig[0].x-creep.pos.x)*(passConfig[0].x-target.x) < 0 ||
 					 (passConfig[0].y-creep.pos.y)*(passConfig[0].y-target.y) < 0) {
-					target = passConfig[0];
+					target.pos = passConfig[0];
 				}
 			}
 		}
