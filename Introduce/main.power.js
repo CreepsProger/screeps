@@ -222,9 +222,9 @@ const power = {
 								return;
 							}
 						}
-						if(tools.nvl(source.ticksToRegeneration,0) < 225)
+						if(tools.nvl(source.ticksToRegeneration,0) < 255)
 							return;
-						if(tools.nvl(source.ticksToRegeneration,0) > 275)
+						if(tools.nvl(source.ticksToRegeneration,0) > 295)
 							return;
 						tools.timeOn(time);
 						const err = pc.usePower(PWR, source);
