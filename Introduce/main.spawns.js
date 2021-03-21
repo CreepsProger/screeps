@@ -952,8 +952,6 @@ var spawns = {
             if(Sp8)	spawns.tryCreateCreep(spawn,  CARIER[7][L], 631);
 					}
 
-					if(Sp2 && !All && upgrade) spawns.tryCreateCreep(spawn,   CARIER[8][L], 63);
-					if(Sp2 && !All && upgrade) spawns.tryCreateCreep(spawn,   CARIER[8][L], 173);
 					if(Sp2 && !All && upgrade) spawns.tryCreateCreep(spawn,   CARIER[7][L], 5023);
 					//if(Sp1 && (Game.time % 500000 < 250) ) spawns.tryCreateCreep(spawn, HEALER[7][L], 1000);
 					//if(Sp1 && (Game.time % 500000 > 250) ) spawns.tryCreateCreep(spawn, CARIER[1][L], 1000);
