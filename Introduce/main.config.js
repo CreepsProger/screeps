@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 553,
+	version: 554,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -311,22 +311,13 @@ var config = {
 			if(!!special_y && !!target)
 				target.y = special_y+Game.time%3-1;
 		}
-		const passConfig = config.getPassConfig(creep.room.name);
-		if(!!passConfig && passConfig.length > 0) {
-			if(!creep.memory.pass)
-				creep.memory.pass = {};
-			const pass = creep.memory.pass;
-			const p = (!pass[creep.room.name])? 0:pass[creep.room.name].p;
-			const pos = (p < passConfig.length)? passConfig[p]:null;
-			if(!!pos && Math.abs(pos.x - creep.pos.x) <= 1 && Math.abs(pos.y - creep.pos.y) <= 1) {
-				creep.memory.pass[creep.room.name] = {p:p+1, time:Game.time};
-			}
-			if(p < passConfig.length) {
-				target = passConfig[p];
-			}
-			if((target.x % 48 == 1) || (target.y % 48 == 1)) {
-				if((creep.pos.x % 48 == 1) || (creep.pos.y % 48 == 1)) 
-					creep.memory.pass = {};
+		else if(!!target.pos && creep.room.name == target.pos.roomName) {
+			const passConfig = config.getPassConfig(creep.room.name);
+			if(!!passConfig && passConfig.length > 0) {
+				if((passConfig[0].x-creep.pos.x)*(target.x-creep.pos.x) < 0 ||
+					 (passConfig[0].y-creep.pos.y)*(target.y-creep.pos.y) < 0) {
+					target = passConfig[0];
+				}
 			}
 		}
 
