@@ -110,8 +110,12 @@ var links = {
 		 // W55S53
 		 , { from: '5f9b05ed897cb5597c0acbeb', to: '5f9aae53c238df790bd0e10e'}
 		 , { from: '5f9d6bcef370105e5bc10418', to: '5f9aae53c238df790bd0e10e'}
+		 , { from: '60577eb1208207a0af035f5f', to: '5f9aae53c238df790bd0e10e'}
+		 , { from: '60577df8cbcd8d3483eb345b', to: '5f9aae53c238df790bd0e10e'}
 		 , { from: '5f9b05ed897cb5597c0acbeb', to: '5fa169869f1fa40b9ee0d07c'}
 		 , { from: '5f9d6bcef370105e5bc10418', to: '5fa169869f1fa40b9ee0d07c'}
+		 , { from: '60577eb1208207a0af035f5f', to: '5fa169869f1fa40b9ee0d07c'}
+		 , { from: '60577df8cbcd8d3483eb345b', to: '5fa169869f1fa40b9ee0d07c'}
      //shard1
 		 // W29S29
 		 , { from: '5ec2330dce2f77348cbbc2ae', to: '5ec1fb20a882200050a21624'}
