@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 554,
+	version: 555,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -314,10 +314,13 @@ var config = {
 		else if(!!target.pos && creep.room.name == target.pos.roomName) {
 			const passConfig = config.getPassConfig(creep.room.name);
 			if(!!passConfig && passConfig.length > 0) {
-				console.log(creep, target.pos.roomName, JSON.stringify({target:target.pos, pass:passConfig[0], pos:creep.pos}));
-				if((passConfig[0].x-creep.pos.x)*(passConfig[0].x-target.x) < 0 ||
-					 (passConfig[0].y-creep.pos.y)*(passConfig[0].y-target.y) < 0) {
-					target.pos = passConfig[0];
+				const dxDX = (passConfig[0].x-creep.pos.x)*(passConfig[0].x-target.x);
+				const dyDY = (passConfig[0].y-creep.pos.y)*(passConfig[0].y-target.y);
+				console.log(creep, target.pos.roomName, JSON.stringify({target:target.pos, pass:passConfig[0], pos:creep.pos, dxDX:dxDX, dyDY:dyDY}));
+				if(dxDX < 0 ||
+					 dyDY < 0) {
+					target.x = passConfig[0].x;
+					target.y = passConfig[0].y;
 				}
 			}
 		}
