@@ -556,7 +556,7 @@ var role = {
 
 				if(err == ERR_NOT_IN_RANGE) {
 					creep.say((!target.target)?'🔜⚡':'🔜💦');
-					err = (!!target.target)? tools.moveTo(creep, target.target):tools.moveTo(creep, target);
+					err = (!!target.target)? config.moveTo(creep, target.target):config.moveTo(creep, target);
 				}
 				if(err) {
 					creep.say('⚡⚠️'+err)
