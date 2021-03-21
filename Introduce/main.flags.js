@@ -468,10 +468,10 @@ var flags = {
 	Limits: function(Limits) {
 
 		if(Game.shard.name == 'shard1' && Limits.color == 9) {
-			Game.cpu.setShardLimits({shard0:4,shard1:170,shard2:4,shard3:2});
+			Game.cpu.setShardLimits({shard0:4,shard1:190,shard2:4,shard3:2});
 		}
 		if(Game.shard.name == 'shard0' && Limits.color == 4) {
-			Game.cpu.setShardLimits({shard0:150,shard1:4,shard2:4,shard3:2});;
+			Game.cpu.setShardLimits({shard0:170,shard1:4,shard2:4,shard3:2});;
 		}
 		lastFlagRemoved = Limits; 
     lastFlagRemoved.remove()
