@@ -324,7 +324,7 @@ var config = {
 				const dy = pass.y - creep.pos.y;
 				const DY = pass.y - target.pos.y;
 				const dyDY = dy*DY;
-				console.log(creep, target.pos.roomName, JSON.stringify({target:target.pos, pass:pass, pos:creep.pos, dx:dx, dy:dy, DX:DX, DY:DY, dxDX:dxDX, dyDY:dyDY}));
+				//console.log(creep, target.pos.roomName, JSON.stringify({target:target.pos, pass:pass, pos:creep.pos, dx:dx, dy:dy, DX:DX, DY:DY, dxDX:dxDX, dyDY:dyDY}));
 				if(dxDX < 0 ||
 					 dyDY < 0) {
 					target.pos.x = pass.x;
