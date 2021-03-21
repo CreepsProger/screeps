@@ -314,8 +314,9 @@ var config = {
 		else if(!!target.pos && creep.room.name == target.pos.roomName) {
 			const passConfig = config.getPassConfig(creep.room.name);
 			if(!!passConfig && passConfig.length > 0) {
-				const pass = passConfig.sort((l,r) => Math.abs((l.x - target.pos.x)*(l.y - target.pos.y))
-																		        - Math.abs((r.x - target.pos.x)*(r.y - target.pos.y)) )
+				const tx = target.pos.x; const ty = target.pos.y;
+				const pass = passConfig.sort((l,r) => ((l.x-tx)*(l.x-tx)+(l.y-ty)*(l.y-ty))
+																		        - ((r.x-tx)*(r.x-tx)+(r.y-ty)*(r.y-ty)) )
 																	.shift();
 				const dx = pass.x - creep.pos.x;
 				const DX = pass.x - target.pos.x;
