@@ -72,16 +72,16 @@ var roleUpgrader = {
 			const UU = XU || !!flags.flags['UU'] && flags.flags['UU'].pos.roomName == my_room;
 			const total_energy = cash.getTotalEnergy();
 			const X = conditions.TO_EXTRA_UPGRADE(total_energy);
+			const upgrade = Memory.shardUpgradeEnable && (!Memory.stop_upgrading || this_room_sources_are_empty || this_room_containers_are_full);
 
 			const canDo = !tasks.boostedUpgraderExists(creep) &&
 				(creep.getActiveBodyparts(WORK) &&
-				(!Memory.stop_upgrading || this_room_containers_are_full || U || UU) &&
+				(upgrade || U || UU) &&
 				this_room == my_room &&
 				(creep.room.energyAvailable == creep.room.energyCapacityAvailable || conditions.TO_SPAWN_CLAIMING_ROOMS() || U || X) &&
 				!!creep.room.controller &&
 				!!creep.room.controller.my &&
 				creep.room.controller.level > 0 &&
-				(this_room_sources_are_empty || this_room_containers_are_full || U || UU) &&
 				((creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.store.getFreeCapacity(RESOURCE_ENERGY) < creep.getActiveBodyparts(WORK)*2) ||
 				(creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0 && creep.memory.rerun))) ;
 
