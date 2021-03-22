@@ -958,18 +958,19 @@ var spawns = {
 					}
 					else {
 						if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 636);
+						if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 636);
 						if(Sp8)	spawns.tryCreateCreep(spawn,  WORKER[7][S+1], 634);
             if(Sp8)	spawns.tryCreateCreep(spawn,  CARIER[7][L], 631);
 					}
-					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W53S54')) {
-						if(Sp4)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 646);
+					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W57S55')) {
+						if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 656);
 					}
 					else {
-						if(conditions.TO_SPAWN_ROOM_CLAIMER('W53S54')) {
-              if(Sp4)	spawns.tryCreateCreep(spawn, CLAIMER[7][H], 640);
+						if(conditions.TO_SPAWN_ROOM_CLAIMER('W57S55')) {
+              if(Sp5)	spawns.tryCreateCreep(spawn, CLAIMER[1][H], 650);
 						}
-						if(Sp4)	spawns.tryCreateCreep(spawn, WORKER[5][M], 644);
-            if(Sp4)	spawns.tryCreateCreep(spawn, CARIER[7][L], 641);
+						if(Sp5)	spawns.tryCreateCreep(spawn, WORKER[7][M], 654);
+            if(Sp5)	spawns.tryCreateCreep(spawn, CARIER[7][L], 651);
 					}
 
 					if(Sp2 && !All && upgrade) spawns.tryCreateCreep(spawn,   CARIER[7][L], 5023);
