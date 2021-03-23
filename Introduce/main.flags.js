@@ -42,7 +42,7 @@ var flags = {
 			const json = Object.keys(Game.flags)
 													.filter((name) => name.substring(0,prefix.length) == prefix)
 													.sort((l,r) => l.localeCompare(r))
-													.map((s,i,arr) => s.substring(0,s.indexOf('.')) + ' :' + s.substring(s.indexOf(':')+1) + ((i!=arr.length-1)?',':'}') )
+													.map((s,i,arr) => '\'' + s.substring(0,s.indexOf('.')) + '\' :' + s.substring(s.indexOf(':')+1) + ((i!=arr.length-1)?',':'}') )
 													.reduce((p,c) => p+c, '{ ');
 			console.log( '💉📜⛔', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify({flags:'getObserverConfig', json:json }));
