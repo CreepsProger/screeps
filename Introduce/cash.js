@@ -343,6 +343,15 @@ var cash = {
 			return Game.rooms[roomName].find(FIND_SOURCES);});
  	},
 
+	all_my_observers: {},
+	getAllMyObservers: function() {
+		return cash.getEntry(cash.all_my_power_spawns, STRUCTURE_OBSERVER, 0, () => {
+			return _.filter(Game.structures,
+				 (structure) => !!structure && !!structure.my &&
+											structure.structureType == STRUCTURE_OBSERVER);
+			 }).filter((s) => !!s && !!s.my && !!s.store);
+ 	},
+
 	all_my_power_spawns: {},
 	getAllMyPowerSpawns: function() {
 		return cash.getEntry(cash.all_my_power_spawns, STRUCTURE_POWER_SPAWN, 0, () => {
