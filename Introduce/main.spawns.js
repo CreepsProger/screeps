@@ -690,7 +690,7 @@ var spawns = {
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W26S25') &&
 						 tools.getInviderCoreLevel('W26S25') !== undefined ) {
-						if(tools.getInviderCoreLevel('W26S25') >= 1) {
+						if(tools.getInviderCoreLevel('W26S25') == 1) {
 							if(Sp12)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5327);
 						}
 					}
