@@ -100,6 +100,21 @@ var config = {
 		}
 		return 10000;
 	},
+
+	getObserverConfig: function(roomName) {
+		const flagsObserverConfig = flags.getObserverConfig(roomName);
+		if(!!flagsObserverConfig)
+			return flagsObserverConfig;
+		const my_shard_config = config.Memory.shards[Game.shard.name];
+		const my_room_config = my_shard_config.rooms[roomName];
+		if(!my_room_config)
+			return undefined;
+		const my_observer_config = my_room_config['observer'];
+		if(!my_observer_config)
+			return undefined;
+		const my_o_rooms = my_observer_config[roomName];
+		return my_o_rooms;
+	},
 	
 	getPowerConfig: function(roomName, pcName) {
 		const flagsPowerConfig = flags.getPowerConfig(roomName, pcName);
