@@ -184,6 +184,14 @@ var cash = {
 		return cash_o.objs;
 	},
 
+	observer: {},
+	getObserver: function(room) {
+		return cash.getEntry(cash.controller, STRUCTURE_OBSERVER, tools.getRoomCode(room.name), () => {
+			return room.find(FIND_STRUCTURES, {
+				filter: (structure) => structure.structureType == STRUCTURE_OBSERVER });
+			})[0];
+	},
+
 	controller: {},
 	getController: function(room) {
 		return cash.getEntry(cash.controller, STRUCTURE_CONTROLLER, tools.getRoomCode(room.name), () => {
