@@ -3,7 +3,7 @@ const tools = require('tools');
 
 var cash = {
 
-	version: 51,
+	version: 52,
 	time: 0,
 
 	resetList:[],
