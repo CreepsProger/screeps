@@ -13,8 +13,8 @@ const observer = {
 	run: function() {
 		
 		cash.getAllMyObservers()
-				.forEach(function(observer,i) {
-          const o_rooms = observer.getConfig(observer.room.name);
+				.forEach(function(o,i) {
+          const o_rooms = observer.getConfig(o.room.name);
           const o_room = o_rooms[Game.time%o_rooms.length];
 					const err = observer.observeRoom(o_room);
 					/*if(err != OK)*/ {
