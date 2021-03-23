@@ -16,7 +16,7 @@ const observer = {
 				.forEach(function(o,i) {
           const o_rooms = observer.getConfig(o.room.name);
           const o_room = o_rooms[Game.time%o_rooms.length];
-					const err = observer.observeRoom(o_room);
+					const err = o.observeRoom(o_room);
 					/*if(err != OK)*/ {
 						console.log('🔴🌀⚠️', Math.trunc(Game.time/10000), Game.time%10000
 												, JSON.stringify({main:'observeRoom', room:observer.room.name, o_room:o_room, err:err, o_rooms:o_rooms, observer:observer}));
