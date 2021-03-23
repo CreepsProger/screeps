@@ -31,7 +31,31 @@ var flags = {
 		}
 		return flags.flags[prefix];
 	},
-	
+
+	getObserverConfig: function(roomName) {
+		// W27S26.observe: ['W26S25','W26S26']
+		// W29S29.observe: ['W26S25','W26S26']
+		// config == {"W27S26":['W26S25','W26S26'], "W29S29":['W26S25','W26S26']}
+		// return config[roomName];
+		const prefix = roomName + '.observe:';
+		if(flags.flags[prefix] === undefined) {
+			const json = Object.keys(Game.flags)
+													.filter((name) => name.substring(0,prefix.length) == prefix)
+													.sort((l,r) => l.localeCompare(r))
+													.map((s,i,arr) => s.substring(0,s.indexOf('.')+1) + ':' + s.substring(s.indexOf(':')+1) + ((i!=arr.length-1)?',':'}') )
+													.reduce((p,c) => p+c, '{');
+			try {
+				if(json != '{')
+					flags.flags[prefix] = JSON.parse(json);
+			}
+			catch (e) {
+				console.log( '💉📜⛔', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify({flags:'getObserverConfig', json:json, e_name:e.name, e_message:e.message }));
+			}
+		}
+		return flags.flags[prefix][roomName];
+	},
+
 	getRoomPowerConfig: function(roomName) {
 		// W29S29.power:"pc-op-01":{"spawn":true,"factory":true}
 		// W29S29.power:"pc-op-02":{"spawn":false,"factory":true}
@@ -141,6 +165,7 @@ var flags = {
 		const transferConfig = flags.getTransferConfig(roomName);
 		return (!!transferConfig)?transferConfig[tools.getWeight(creepName)]:null;
 	},
+
 	getRoomBoostConfig: function(roomName) {
 		// W29S29.boosts:"5084":["XGH2O","XKH2O","XZHO2"]
 		// W29S29.boosts:"5081":["XGHO2","XLHO2","XUH2O"]
