@@ -9,6 +9,7 @@ const towers = require('main.towers');
 const terminals = require('main.terminals');
 const factory = require('main.factory');
 const labs = require('main.labs')
+const observer = require('main.observer');
 const power = require('main.power');
 const spawns = require('main.spawns');
 const log = require('main.log');
@@ -97,6 +98,7 @@ module.exports.loop = function () {
 	labs.run();						Memory.cpu_main_part.labs = Math.round((Memory.cpu_main_part.labs+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	factory.run();				Memory.cpu_main_part.factory = Math.round((Memory.cpu_main_part.factory+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	power.run();					Memory.cpu_main_part.power = Math.round((Memory.cpu_main_part.power+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
+	observer.run();				Memory.cpu_main_part.observer = Math.round((Memory.cpu_main_part.observer+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	metrix.output();			Memory.cpu_main_part.metrix2 = Math.round((Memory.cpu_main_part.metrix2+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();	
 
 	delete Memory.cpu;
@@ -117,7 +119,7 @@ module.exports.loop = function () {
 						   // , dt
 						 );
 		delete Memory.cpu_main_part;
-		Memory.cpu_main_part = {perf:0, clearing:0, metrix:0, config:0, flags:0, event_processor:0, links:0, towers:0, spawns:0, terminals:0, labs:0, factory:0, power:0, metrix2:0, others:0};
+		Memory.cpu_main_part = {perf:0, clearing:0, metrix:0, config:0, flags:0, event_processor:0, links:0, towers:0, spawns:0, terminals:0, labs:0, factory:0, power:0, observer:0, metrix2:0, others:0};
 	}
 
 	const creeps = Object.keys(Game.creeps).sort((l,r) => (tools.getWeight(l) != tools.getWeight(r))? (tools.getWeight(l) - tools.getWeight(r)):(tools.getN(l) - tools.getN(r)));
