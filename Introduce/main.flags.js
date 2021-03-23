@@ -55,6 +55,8 @@ var flags = {
                     , JSON.stringify({flags:'getObserverConfig', json:json, e_name:e.name, e_message:e.message }));
 			}
 		}
+		if(flags.flags[prefix] === undefined)
+			return [];
 		return flags.flags[prefix][roomName];
 	},
 
