@@ -44,6 +44,8 @@ var flags = {
 													.sort((l,r) => l.localeCompare(r))
 													.map((s,i,arr) => s.substring(0,s.indexOf('.')+1) + ':' + s.substring(s.indexOf(':')+1) + ((i!=arr.length-1)?',':'}') )
 													.reduce((p,c) => p+c, '{');
+			console.log( '💉📜⛔', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify({flags:'getObserverConfig', json:json }));
 			try {
 				if(json != '{')
 					flags.flags[prefix] = JSON.parse(json);
