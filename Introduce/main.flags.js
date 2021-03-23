@@ -952,7 +952,14 @@ var flags = {
 			lastFlagRemoved = BR;
 			lastFlagRemoved.remove();
     },
-    // T100: Test 100
+    // T101: Test 101
+    T101: function(T101) {
+    // T101: Test 101
+			const CL = tools.getInviderCoreLevel('W26S25');
+			console.log('getInviderCoreLevel(\'W26S25\')', JSON.stringify({CL:CL, aaaa:1, bbbb:2}));
+			lastFlagRemoved = T101;
+			lastFlagRemoved.remove();
+    },
     T100: function(T100) {
         var N = 1234;
         var id = '$Id$';
