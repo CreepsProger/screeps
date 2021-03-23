@@ -345,11 +345,11 @@ var cash = {
 
 	all_my_observers: {},
 	getAllMyObservers: function() {
-		return cash.getEntry(cash.all_my_power_spawns, STRUCTURE_OBSERVER, 0, () => {
+		return cash.getEntry(cash.all_my_observers, STRUCTURE_OBSERVER, 0, () => {
 			return _.filter(Game.structures,
 				 (structure) => !!structure && !!structure.my &&
 											structure.structureType == STRUCTURE_OBSERVER);
-			 }).filter((s) => !!s && !!s.my && !!s.store);
+			 }).filter((s) => !!s && !!s.my);
  	},
 
 	all_my_power_spawns: {},
