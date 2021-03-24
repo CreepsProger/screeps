@@ -157,6 +157,7 @@ var role = {
 					target = config.findPathToMyRoom(creep,role.name);
 				}
 
+				const D = flags.flags.D;
 				const D1 = flags.flags.D1;
 				const D2 = flags.flags.D2;
 				const D3 = flags.flags.D3;
@@ -167,7 +168,9 @@ var role = {
 				const this_room_sources_are_empty = cash.areEmptySourcesByPath(creep);
 
 				if(!target && (Dismantler && canDismantle) && 
-					 ((!!D1 && D1.pos.roomName == this_room)
+					 (D
+						||
+						(!!D1 && D1.pos.roomName == this_room)
 						||
 						(!!D2 && D2.pos.roomName == this_room)
 						||
@@ -219,7 +222,7 @@ var role = {
 									return true;
 								}
 							}
-							return false;
+							return !!D;
 						}
 					});
 					if(structures.length > 0) {
