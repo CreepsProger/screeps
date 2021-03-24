@@ -320,8 +320,7 @@ var role = {
 				if(!target && canAttack && !NA) {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, range, {
 						filter: (structure) => {
-							return (structure.structureType == STRUCTURE_INVADER_CORE) &&
-								structure.level !== undefined && structure.level >= 0;
+							return (structure.structureType == STRUCTURE_INVADER_CORE) && !structure.ticksToDeploy;
 						}
 					});
 					if(targets.length > 0) {
