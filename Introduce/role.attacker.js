@@ -420,7 +420,7 @@ var role = {
 									const hc_count = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 2).length;
 									const hs_count = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, 2,
 																												 {filter : (s) => {return s.structureType != STRUCTURE_KEEPER_LAIR && !s.ticksToDeploy;}}).length;
-									if(hc_count > 1 || hs_count > 0) {
+									if(hc_count + hs_count > 1) {
 										err = creep.rangedMassAttack();
 									}
 									else err = range<4?creep.rangedAttack(target):ERR_NOT_IN_RANGE;
