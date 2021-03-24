@@ -418,7 +418,8 @@ var role = {
 							if(Attacker && canAttack2) {
 								if(creep.getActiveBodyparts(RANGED_ATTACK)) {
 									const hc_count = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 2).length;
-									const hs_count = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, 2, {filter : (structure) => {return structure.structureType != STRUCTURE_KEEPER_LAIR;}}).length;
+									const hs_count = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, 2,
+																												 {filter : (s) => {return s.structureType != STRUCTURE_KEEPER_LAIR && !s.ticksToDeploy;}}).length;
 									if(hc_count > 1 || hs_count > 0) {
 										err = creep.rangedMassAttack();
 									}
