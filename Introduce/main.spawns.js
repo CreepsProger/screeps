@@ -256,6 +256,7 @@ var spawns = {
 					, [          7000007,          7000009,          7000011]  // 6  2300
 					, [         16000032,  800000017000025,  300000018000021]  // 7  5600
 					, [         25000025,         33000017,         42000008]  // 8 12900
+					, [ 1100000031000006,         33000017,         42000008]  // 9 12900
 					],
 
 	CLAIMER:  [ [                0,                0,                0]  // 0  000
@@ -955,7 +956,7 @@ var spawns = {
 							if(Sp7)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 627);
 						}
 						if(tools.getInviderCoreLevel('W54S54') == 4) {
-							if(Sp7) spawns.tryCreateCreep(spawn,   HEALER[8][L], 627, 0, [["XGHO2",40,1],["XLHO2",40,1],["XZHO2",10,1]]);
+							if(Sp7) spawns.tryCreateCreep(spawn,   HEALER[9][L], 627, 0, [["XGHO2",40,1],["XLHO2",40,1],["XZHO2",10,1]]);
 							if(Sp7)	spawns.tryCreateCreep(spawn, ATTACKER[11][L], 628, 0, [["XGHO2",40,1],["XUH2O",40,1],["XLHO2",40,1],["XZHO2",10,1]]);
 						}
 					}
