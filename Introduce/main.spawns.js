@@ -120,7 +120,8 @@ var spawns = {
 						console.log('🏋️‍♂️🚫', Math.trunc(Game.time/10000), Game.time%10000
 											              , JSON.stringify( { tasks:'tryCreateCreep', newName:newName
 																		, room:spawn.room.name, readyBoosts:readyBoosts, boosts:boosts}));
-				// tasks.addTasksToFillBoostingLab(newName, spawn.room.roomName, boosts);
+					}
+					// tasks.addTasksToFillBoostingLab(newName, spawn.room.roomName, boosts);
 				}
 				const transferCreepConfig = flags.getTransferCreepConfig(newName, spawn.room.name);
 				if(!!transferCreepConfig){
