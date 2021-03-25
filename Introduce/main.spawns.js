@@ -112,7 +112,7 @@ var spawns = {
 											, JSON.stringify({weight:weight, spawn:spawn, boosts:boosts}));
 					const labs = cash.getLabs(spawn.room.name);
 					const readyBoosts = boosts.filter((b) => !!b[2] && b[2] != 0) // check only mandatory 
-												 	  			  .filter((b) => labs.some((l) => !!l.mineralType && l.mineralType = b[0] &&
+												 	  			  .filter((b) => labs.some((l) => !!l.mineralType && l.mineralType == b[0] &&
 																													          !!l.energy && l.energy > b[1]*20 &&
 																													          !!l.mineralAmount && l.mineralAmount > b[1]*30 ))
 																    .map((b) => b[0]);
