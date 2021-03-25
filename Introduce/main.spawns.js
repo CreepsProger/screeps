@@ -108,12 +108,18 @@ var spawns = {
 	//                   );
 				var boostLabsReady = true;
 				if(!!boosts) { // [["XUH2O",10,1],["XGHO2"],["XZHO2"],["XLHO2"]]
-					console.log( '✒️', Math.trunc(Game.time/10000), Game.time%10000
+					console.log( '🏋️‍♂️', Math.trunc(Game.time/10000), Game.time%10000
 											, JSON.stringify({weight:weight, spawn:spawn, boosts:boosts}));
-					const labs = [];/*
-				boostLabsReady = boosts.filter((b) => !!b[2] && b[2] != 0) // check only mandatory 
-																.filter((b) => labs.some((l) => !l.e || l.e < b[1]*20 || !l.m || l.m < b[1]*30))
-																.reduce((c,p) => c++, 0) == 0;*/
+					const labs = cash.getLabs(spawn.room.name);
+					const readyBoosts = boosts.filter((b) => !!b[2] && b[2] != 0) // check only mandatory 
+												 	  			  .filter((b) => labs.some((l) => !!l.mineralType && l.mineralType = b[0] &&
+																													          !!l.energy && l.energy > b[1]*20 &&
+																													          !!l.mineralAmount && l.mineralAmount > b[1]*30 ))
+																    .map((b) => b[0]);
+					if(readyBoosts.length != boosts.length) {
+						console.log('🏋️‍♂️🚫', Math.trunc(Game.time/10000), Game.time%10000
+											              , JSON.stringify( { tasks:'tryCreateCreep', newName:newName
+																		, room:spawn.room.name, readyBoosts:readyBoosts, boosts:boosts}));
 				// tasks.addTasksToFillBoostingLab(newName, spawn.room.roomName, boosts);
 				}
 				const transferCreepConfig = flags.getTransferCreepConfig(newName, spawn.room.name);
@@ -945,6 +951,9 @@ var spawns = {
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W54S54') &&
 						 tools.getInviderCoreLevel('W54S54') !== undefined ) {
 						if(tools.getInviderCoreLevel('W54S54') == 1) {
+							if(Sp7)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 627);
+						}
+						if(tools.getInviderCoreLevel('W54S54') == 2) {
 							if(Sp7)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 627);
 						}
 					}
