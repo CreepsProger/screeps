@@ -241,8 +241,8 @@ var role = {
 			}
 		}
 		
-		const roomST = flags.getFlag(my_room + '.ST')
-		const ST  = (!!flags.flags.ST && flags.flags.ST.pos.roomName == my_room) || roomST;
+		const roomST = flags.getFlag(my_room + '.ST');
+		const ST  = (!!flags.flags.ST && flags.flags.ST.pos.roomName == my_room) || !!roomST;
 		const st = role.getST(creep.name);
 
 		if(!creep.getActiveBodyparts(WORK) &&
