@@ -1428,6 +1428,7 @@ var config = {
 									, W54S53: 'W55S53', W55S53: 'W56S53'
 									, W58S54: 'W57S54'
 									, W57S52: 'W56S52', W56S52: 'W56S53'
+									, W56S55: 'W57S55
 									}
 								}
 								, escape_path:
