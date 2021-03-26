@@ -215,7 +215,7 @@ module.exports.loop = function () {
 		Memory.cpu_dt = 0;
 	}
 	
-	if(Game.cpu.bucket > 9900) {
+	if(Game.cpu.bucket >= 9999) {
     Game.cpu.generatePixel();
 	}
 
