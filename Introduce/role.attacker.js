@@ -453,8 +453,10 @@ var role = {
 						const my_creep = creep.pos.findInRange(FIND_MY_CREEPS, 1, {filter: (mc) => mc.hits < mc.hitsMax}).shift();
 						if(!!my_creep)
 							creep.heal(my_creep);
-					} 
-
+						else
+							creep.heal(creep);
+					}
+					
 					if(err == ERR_NOT_IN_RANGE) {
 						creep.say('🔜🎯');
 						config.moveTo(creep,target);
