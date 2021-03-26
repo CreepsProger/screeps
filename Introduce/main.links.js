@@ -120,7 +120,7 @@ var links = {
 		 , { from: '605aa712ca16000db03cd120', to: '605ab55c98e670e45cdb62e6'}
 		 , { from: 'bbbbbbbbbbbbbbbbbbbbbbbb', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W57S55
-		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: '605de22cfac58c035bd6bbef', to: '605de61e985bf911c9555c72'}
 		 // W52S54
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
      //shard1
