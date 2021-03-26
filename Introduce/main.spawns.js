@@ -337,7 +337,7 @@ var spawns = {
 				const Sp9 = (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn25' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn24' || spawn.name == 'Spawn26' || spawn.name == 'Spawn30'):
 				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):All;
-				const Sp10= (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
+				const Sp10= (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn26' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn27' || spawn.name == 'Spawn28' || spawn.name == 'Spawn31'):
 				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):All;
 				const Sp11= (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
@@ -351,6 +351,9 @@ var spawns = {
 				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):All;
 				const Sp14= (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn39' || spawn.name == 'Spawn40' || spawn.name == 'Spawn41'):
+				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):All;
+				const Sp15= (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
+				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
 				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):All;
 
 
@@ -871,7 +874,7 @@ var spawns = {
             if(Sp1)	spawns.tryCreateCreep(spawn, CARIER[7][L], 501);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W58S54')) {
-						if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 516);
+						if(Sp9)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 516);
 					}
 					else {
 						if(Sp1)	spawns.tryCreateCreep(spawn, WORKER[7][M], 514);
@@ -1010,7 +1013,7 @@ var spawns = {
             if(Sp8)	spawns.tryCreateCreep(spawn,  CARIER[7][L], 631);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W57S55')) {
-						if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 656);
+						if(Sp10)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 656);
 					}
 					else {
 						if(Sp5)	spawns.tryCreateCreep(spawn, WORKER[7][M], 654);
