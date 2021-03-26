@@ -118,10 +118,18 @@ var links = {
 		 , { from: '60577df8cbcd8d3483eb345b', to: '5fa169869f1fa40b9ee0d07c'}
 		 // W58S54
 		 , { from: '605aa712ca16000db03cd120', to: '605ab55c98e670e45cdb62e6'}
-		 , { from: 'bbbbbbbbbbbbbbbbbbbbbbbb', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: '605e00eba7699c0a6609ad6f', to: '605ab55c98e670e45cdb62e6'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W57S55
 		 , { from: '605de22cfac58c035bd6bbef', to: '605de61e985bf911c9555c72'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W52S54
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
      //shard1
 		 // W29S29
