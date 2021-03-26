@@ -446,11 +446,8 @@ var role = {
 							}
 						}
 					}
-					if ((creep.hits < creep.hitsMax || !target) && creep.getActiveBodyparts(HEAL)) {
-						creep.heal(creep);
-					}
-					else if(creep.getActiveBodyparts(HEAL)) {
-						const my_creep = creep.pos.findInRange(FIND_MY_CREEPS, 1, {filter: (mc) => mc.hits < mc.hitsMax}).shift();
+					if(creep.getActiveBodyparts(HEAL)) {
+						const my_creep = creep.pos.findInRange(FIND_MY_CREEPS, 2, {filter: (mc) => mc.hits < mc.hitsMax}).shift();
 						if(!!my_creep)
 							creep.heal(my_creep);
 						else
