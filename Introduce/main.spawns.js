@@ -243,7 +243,7 @@ var spawns = {
 						,          2515000010,     400000000010,  400004000000006] 
 						, [      170008000025,     170008000025,     170008000025]//9 
 						, [   500000000200025, 1000002010000010, 2100000019000010]//10 
-						, [  1500003000000003, 2000200000000010, 2000000020000010, 4200000000010007]//11 
+						, [  3400001000000006, 2000200000000010, 2000000020000010, 4200000000010007]//11 
 						, [  1000000030000010,  500003500000010, 5000350000000010,  500000035000010]//12
 						], //TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 
@@ -256,7 +256,7 @@ var spawns = {
 					, [          7000007,          7000009,          7000011]  // 6  2300
 					, [         16000032,  800000017000025,  300000018000021]  // 7  5600
 					, [         25000025,         33000017,         42000008]  // 8 12900
-					, [ 1500000027000006,         33000017,         42000008]  // 9 12900
+					, [ 1500000025000010,         33000017,         42000008]  // 9 12900
 					],
 
 	CLAIMER:  [ [                0,                0,                0]  // 0  000
@@ -272,12 +272,12 @@ var spawns = {
 	
 	DEFENDER: [ [                 0,                0,                0]  // 0  000
 						, [ 1000000030000010,  500003500000010,  500350000000010,  500000035000010] //1
-						, [                0,  500002109000005,  0, 0] //2
+						, [                0,  500002609000005,  0, 0] //2
 						],//TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 	
 	DISMANTLER : [ [0, 0, 0]  // 0  000
 						, [           250025,           340017,           400010] //1
-						, [                0,  0,  0] //2
+						, [ 3400000000100006,  0,  0] //2
 						],//TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 
 	run: function() {
@@ -972,8 +972,9 @@ var spawns = {
 							if(Sp7)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 627);
 						}
 						if(tools.getInviderCoreLevel('W54S54') == 4) {
-							if(Sp7) spawns.tryCreateCreep(spawn,   HEALER[9][L], 627, 0, [["XGHO2",40,1],["XLHO2",40,1],["XZHO2",10,1]]);
-							if(Sp7)	spawns.tryCreateCreep(spawn, ATTACKER[11][L], 628, 0, [["XGHO2",40,1],["XUH2O",40,1],["XLHO2",40,1],["XZHO2",10,1]]);
+							if(Sp7) spawns.tryCreateCreep(spawn,   HEALER[9][L], 627, 0, [["XGHO2",40,1],["XLHO2",40,1],["XZHO2",30,1]]);
+							if(Sp7)	spawns.tryCreateCreep(spawn, ATTACKER[11][L], 628, 0, [["XGHO2",40,1],["XUH2O",40,1],["XZHO2",30,1]]);
+							if(Sp7)	spawns.tryCreateCreep(spawn, DISMANTLER[2][L], 629, 0, [["XGHO2",40,1],["XUH2O",40,1],["XZHO2",30,1]]);
 						}
 					}
 					else {
