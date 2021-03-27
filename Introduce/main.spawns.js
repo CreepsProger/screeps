@@ -1012,8 +1012,10 @@ var spawns = {
 						if(Sp5)	spawns.tryCreateCreep(spawn,  WORKER[7][S+1], 684);
             if(Sp5)	spawns.tryCreateCreep(spawn,  CARIER[7][L], 681);
 					}
-					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W55S55') &&
-						 tools.getInviderCoreLevel('W55S55') !== undefined ) {
+					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W55S55')) {
+						if(tools.getInviderCoreLevel('W55S55') === undefined ) {
+							if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 697);
+						}
 						if(tools.getInviderCoreLevel('W55S55') == 1) {
 							if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 697);
 						}
