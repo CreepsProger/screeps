@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 573,
+	version: 574,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -374,7 +374,8 @@ var config = {
 									, W25S35: 'W25S34', W25S34: 'W25S33', W25S33: 'W25S33'
 									, W59S52: 'W58S52', W58S52: 'W57S52'
 									, W56S54: 'W56S53', W56S53: 'W56S52', W56S52: 'W57S52'
-									, W58S54: 'W58S53', W58S53: 'W57S53', W57S53: 'W57S52', W57S53x:30
+									, W59S54: 'W58S54', W59S53: 'W58S53', W58S53: 'W58S54'
+									, W57S53: 'W57S52', W57S53x:30
 									, W55S51: 'W54S51'
 									, W52S51: 'W53S51', W53S51: 'W54S51'
 									, W56S50: 'W56S51', W56S51: 'W57S51', W56S51y:37
@@ -794,36 +795,6 @@ var config = {
 								}
 								, escape_path:
 								{ W55S51: 'W56S51', W56S51: 'W57S51'
-								}
-							},
-							W58S53:
-							{ containers: {weight: 503}
-							, sites:
-								[ {x:35, y:37, type:STRUCTURE_CONTAINER}
-								]
-							, energy_harvesting:
-								[ {name: '1', time: 0, min_weight: 500, max_weight: 509}
-								, {name: '2', time: 0, min_weight: 500, max_weight: 509}
-								, {name: '3', time: 0, min_weight: 500, max_weight: 509}
-								, {name: '4', time: 0, min_weight: 500, max_weight: 509}
-								, {name: '5', time: 0, min_weight: 500, max_weight: 509}
-								]
-							, claiming:
-								[ {name: '1', time: 0, min_weight: 500, max_weight: 509}
-								]
-							, attacker:
-								[ {name: '1', time: 0, min_weight: 500, max_weight: 509}
-								, {name: '2', time: 0, min_weight: 500, max_weight: 509}
-								]
-							, heal_room:
-								{ shard: 'shard0', room: 'W57S52'}
-							, path_rooms:
-								{ W57S51: 'W56S51', W56S51: 'W56S52', W56S52: 'W57S52', W57S52: 'W57S53', W57S53: 'W58S53', W58S53: 'W58S53'
-								, W54S51: 'W55S51', W55S51: 'W56S51', W56S51: 'W56S52', W56S52: 'W57S52'
-								, W56S53: 'W56S52'
-								}
-								, escape_path:
-								{ W58S53: 'W57S53', W57S53: 'W57S52', W57S52: 'W57S52'
 								}
 							},
 							W58S54:
@@ -1605,6 +1576,75 @@ var config = {
 								}
 								, escape_path:
 								{ W57S54: 'W57S55'
+								}
+							},
+							W59S53:
+							{ containers: {weight: 713}
+							, sites:
+								[ {x:46, y:40, type:STRUCTURE_CONTAINER}
+								]
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 710, max_weight: 719}
+								, {name: '2', time: 0, min_weight: 710, max_weight: 719}
+								, {name: '3', time: 0, min_weight: 710, max_weight: 719}
+								, {name: '4', time: 0, min_weight: 710, max_weight: 719}
+								, {name: '5', time: 0, min_weight: 710, max_weight: 719}
+								]
+							, claiming:
+								[ {name: '1', time: 0, min_weight: 710, max_weight: 719}
+								, {name: '1', time: 0, min_weight: 710, max_weight: 719}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 710, max_weight: 719}
+								, {name: '2', time: 0, min_weight: 710, max_weight: 719}
+								, {name: '3', time: 0, min_weight: 710, max_weight: 719}
+								]
+							, heal_room:
+								{ shard: 'shard0', room: 'W58S54'}
+							, path_rooms:
+								{ W57S51: 'W56S51', W56S51: 'W56S52', W56S52: 'W57S52', W57S52: 'W57S53', W57S53: 'W58S53', W58S53: 'W59S53'
+								, W54S51: 'W55S51', W55S51: 'W56S51'
+								, W54S53: 'W55S53', W55S53: 'W56S53', W56S53: 'W56S54', W56S54: 'W57S54', W57S54: 'W58S54', W58S54: 'W58S53'
+								, W57S55: 'W57S54'
+								}
+								, escape_path:
+								{ W59S53: 'W58S53', W58S53: 'W58S54'
+								, W56S54: 'W57S54', W57S54: 'W58S54'
+								}
+							},
+							W58S53:
+							{ containers: {weight: 503}
+							, sites:
+								[ {x:35, y:37, type:STRUCTURE_CONTAINER}
+								]
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 720, max_weight: 729}
+								, {name: '2', time: 0, min_weight: 720, max_weight: 729}
+								, {name: '3', time: 0, min_weight: 720, max_weight: 729}
+								, {name: '4', time: 0, min_weight: 500, max_weight: 509}
+								, {name: '5', time: 0, min_weight: 500, max_weight: 509}
+								]
+							, claiming:
+								[ {name: '1', time: 0, min_weight: 720, max_weight: 729}
+								, {name: '1', time: 0, min_weight: 500, max_weight: 509}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 720, max_weight: 729}
+								, {name: '2', time: 0, min_weight: 500, max_weight: 509}
+								, {name: '3', time: 0, min_weight: 500, max_weight: 509}
+								]
+							, heal_room:
+								{ shard: 'shard0', room: 'W57S52'}
+							, path_rooms:
+								{ W57S51: 'W56S51', W56S51: 'W56S52', W56S52: 'W57S52', W57S52: 'W57S53', W57S53: 'W58S53'
+								, W59S53: 'W58S53'
+								, W54S51: 'W55S51', W55S51: 'W56S51'
+								, W54S53: 'W55S53', W55S53: 'W56S53', W56S53: 'W56S54', W56S54: 'W57S54', W57S54: 'W58S54', W58S54: 'W58S53'
+								, W57S55: 'W57S54'
+								}
+								, escape_path:
+								{ W59S53: 'W58S53', W58S53: 'W58S54'
+								, W56S54: 'W57S54', W57S54: 'W58S54'
 								}
 							}
 							//, 
