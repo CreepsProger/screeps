@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 578,
+	version: 579,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -1543,7 +1543,7 @@ var config = {
 								, W54S53: 'W55S53'
 								, W55S53: 'W55S54', W55S53x:26, W56S54: 'W55S54', W55S54: 'W55S55'
 								, W54S54: 'W55S54'
-								, W57S55: 'W56S55', W56S55: 'W55S55'
+								, W58S54: 'W57S54', W57S54: 'W57S55', W57S55: 'W56S55', W56S55: 'W55S55'
 								}
 								, escape_path:
 								{ W55S55: 'W56S55', W56S55: 'W57S55', W56S55y:29, W57S55: 'W57S54', W57S54: 'W58S54'
@@ -1723,10 +1723,12 @@ var config = {
 							, heal_room:
 								{ shard: 'shard0', room: 'W57S55'}
 							, path_rooms:
-								{ W57S51: 'W56S51', W56S51: 'W56S52', W56S52: 'W57S52', W57S52: 'W57S53', W57S53: 'W58S53', W58S53: 'W59S53'
+								{ W57S51: 'W56S51', W56S51: 'W56S52', W56S52: 'W57S52', W57S52: 'W57S53'
+								, W57S53: 'W58S53', W58S53: 'W58S54', W58S54: 'W58S55'
+								, W59S53: 'W58S53'
 								, W54S51: 'W55S51', W55S51: 'W56S51'
-								, W54S53: 'W55S53', W55S53: 'W56S53', W56S53: 'W56S54', W56S54: 'W57S54', W57S54: 'W58S54', W58S54: 'W58S55'
-								, W57S55: 'W58S55'
+								, W54S53: 'W55S53', W55S53: 'W56S53', W56S53: 'W56S54'
+								, W56S54: 'W57S54', W57S54: 'W57S55', W57S55: 'W58S55'
 								}
 								, escape_path:
 								{ W58S55: 'W57S55'
