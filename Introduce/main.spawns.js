@@ -120,6 +120,7 @@ var spawns = {
 						console.log('🏋️‍♂️🚫', Math.trunc(Game.time/10000), Game.time%10000
 											              , JSON.stringify( { tasks:'tryCreateCreep', newName:newName
 																		, room:spawn.room.name, readyBoosts:readyBoosts, boosts:boosts}));
+						return false;
 					}
 					// tasks.addTasksToFillBoostingLab(newName, spawn.room.roomName, boosts);
 				}
