@@ -277,7 +277,7 @@ var spawns = {
 	
 	DISMANTLER : [ [0, 0, 0]  // 0  000
 						, [           250025,           340017,           400010] //1
-						, [ 3400000000100006,  0,  0] //2
+						, [ 2800000000160006,  0,  0] //2
 						],//TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 
 	run: function() {
