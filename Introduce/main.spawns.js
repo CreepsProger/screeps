@@ -974,7 +974,7 @@ var spawns = {
 						if(tools.getInviderCoreLevel('W54S54') == 4) {
 							if(Sp7) spawns.tryCreateCreep(spawn,   HEALER[9][L], 627, 0, [["XGHO2",40,1],["XLHO2",40,1],["XZHO2",30,1]]);
 							if(Sp7)	spawns.tryCreateCreep(spawn, ATTACKER[11][L], 628, 0, [["XGHO2",40,1],["XUH2O",40,1],["XZHO2",30,1]]);
-							if(Sp7)	spawns.tryCreateCreep(spawn, DISMANTLER[2][L], 629, 0, [["XGHO2",40,1],["XUH2O",40,1],["XZHO2",30,1]]);
+							if(Sp7)	spawns.tryCreateCreep(spawn, DISMANTLER[2][L], 629, 0, [["XGHO2",40,1],["XZH2O",40,1],["XZHO2",30,1]]);
 						}
 					}
 					else {
