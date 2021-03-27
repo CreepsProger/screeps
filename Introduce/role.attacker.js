@@ -404,11 +404,13 @@ var role = {
 				}
 				
 				if(creep.getActiveBodyparts(HEAL)) {
-					const my_creep = creep.pos.findInRange(FIND_MY_CREEPS, 2, {filter: (mc) => mc.hits < mc.hitsMax}).shift();
-					if(!!my_creep)
-						creep.heal(my_creep);
-					else
+					if(creep.hits < creep.hitsMax)
 						creep.heal(creep);
+					else {
+						const my_creep = creep.pos.findInRange(FIND_MY_CREEPS, 1, {filter: (mc) => mc.hits < mc.hitsMax}).shift();
+						if(!!my_creep)
+							creep.heal(my_creep);
+					}
 				}
 
 				if(target)
