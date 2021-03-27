@@ -1061,6 +1061,26 @@ var spawns = {
 						if(Sp9)	spawns.tryCreateCreep(spawn, WORKER[5][M], 724);
             if(Sp9)	spawns.tryCreateCreep(spawn, CARIER[6][L], 721);
 					}
+					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W59S54')) {
+						if(Sp9)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 736);
+					}
+					else {
+						if(conditions.TO_SPAWN_ROOM_CLAIMER('W59S54')) {
+              if(Sp9)	spawns.tryCreateCreep(spawn, CLAIMER[6][H], 730);
+						}
+						if(Sp9)	spawns.tryCreateCreep(spawn, WORKER[5][M], 734);
+            if(Sp9)	spawns.tryCreateCreep(spawn, CARIER[6][L], 731);
+					}
+					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W58S55')) {
+						if(Sp9)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 746);
+					}
+					else {
+						if(conditions.TO_SPAWN_ROOM_CLAIMER('W58S55')) {
+              if(Sp9)	spawns.tryCreateCreep(spawn, CLAIMER[6][H], 740);
+						}
+						if(Sp9)	spawns.tryCreateCreep(spawn, WORKER[5][M], 744);
+            if(Sp9)	spawns.tryCreateCreep(spawn, CARIER[6][L], 741);
+					}
 
 					if(Sp2 && !All && upgrade) spawns.tryCreateCreep(spawn,   CARIER[7][L], 5023);
 					//if(Sp1 && (Game.time % 500000 < 250) ) spawns.tryCreateCreep(spawn, HEALER[7][L], 1000);
