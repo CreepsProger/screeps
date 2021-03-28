@@ -698,7 +698,7 @@ var spawns = {
 					else {
 						if(Sp13)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5304);
 						if(Sp13)	spawns.tryCreateCreep(spawn, CARIER[7][H], 5301);
-						if(Sp13 && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[H], 5305);
+						if(Sp13 && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5305);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W26S25') &&
 						 tools.getInviderCoreLevel('W26S25') !== undefined ) {
