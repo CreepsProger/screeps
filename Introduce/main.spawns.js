@@ -757,7 +757,7 @@ var spawns = {
 					}
 					else {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W21S29')) {
-							if(Sp6)	spawns.tryCreateCreep(spawn, CLAIMER[7][M], 5400);
+							if(Sp6)	spawns.tryCreateCreep(spawn, CLAIMER[8][H], 5400);
 						}
 						if(Sp6)	spawns.tryCreateCreep(spawn, HEALER[8][L], 5407);
 						if(Sp6)	spawns.tryCreateCreep(spawn, WORKER[7][M], 5404);
