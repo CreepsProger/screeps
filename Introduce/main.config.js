@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 585,
+	version: 586,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -1734,6 +1734,64 @@ var config = {
 								, escape_path:
 								{ W58S55: 'W57S55'
 								, W56S54: 'W57S54', W57S54: 'W57S55'
+								}
+							},
+							W57S56:
+							{ containers: {weight: 753}
+							, towers: {mw:500000, mr:500000}
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 750, max_weight: 759}
+								, {name: '2', time: 0, min_weight: 750, max_weight: 759}
+								, {name: '3', time: 0, min_weight: 750, max_weight: 759}
+								, {name: '4', time: 0, min_weight: 750, max_weight: 759}
+								, {name: '5', time: 0, min_weight: 750, max_weight: 759}
+								, {name: '6', time: 0, min_weight: 750, max_weight: 759}
+								, {name: '7', time: 0, min_weight: 750, max_weight: 759}
+								, {name: '8', time: 0, min_weight: 750, max_weight: 759}
+								, {name: '9', time: 0, min_weight: 750, max_weight: 759}
+								]
+							, claiming:
+								[ {name: '1', time: 0, min_weight: 750, max_weight: 759}
+								, {name: '2', time: 0, min_weight: 750, max_weight: 759}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 750, max_weight: 759}
+								, {name: '2', time: 0, min_weight: 750, max_weight: 759}
+								, {name: '3', time: 0, min_weight: 750, max_weight: 759}
+								, {name: '4', time: 0, min_weight: 750, max_weight: 759}
+								, {name: '5', time: 0, min_weight: 750, max_weight: 759}
+								]
+							, heal_room:
+								{ shard: 'shard0', room: 'W57S56'}
+							, path_rooms:
+								{ shard3:
+									{ W28S35: 'W28S34', W28S34: 'W28S33'
+									, W25S33: 'W26S33', W26S33: 'W27S33', W27S33: 'W28S33'
+									, W28S33: 'W28S32', W28S32: 'W29S32', W29S32: 'W30S32'
+									, W30S32: 'W30S31', W30S31: 'W30S30'
+									, W30S30: 'shard2'
+									}
+								, shard2:
+									{ shard3_W30S30:'W30S30', W30S30: 'shard1'}
+								, shard1:
+									{ shard2_W30S30:'W30S30', W30S30: 'shard0'
+									, W29S31: 'W30S31', W30S31: 'W30S30'
+									, W29S29: 'W29S30', W29S30: 'W30S30'
+									}
+								, shard0:
+									{ shard1_W30S30: 'W60S50', W60S50: 'W60S51', W60S51: 'W60S52'
+									, W60S52: 'W59S52', W59S52: 'W58S52', W58S52: 'W57S52'
+									, W57S51: 'W56S51', W56S51: 'W56S52', W56S52: 'W56S53'
+									, W56S53: 'W56S54', W56S54: 'W57S54', W57S54: 'W57S55'
+									, W54S51: 'W55S51', W55S51: 'W56S51'
+									, W54S53: 'W55S53', W55S53: 'W56S53'
+									, W58S54: 'W57S54'
+									, W57S52: 'W56S52', W56S52: 'W56S53'
+									, W56S55: 'W57S55', W57S55: 'W57S56'
+									}
+								}
+								, escape_path:
+								{ W57S56: 'W57S55', W57S55: 'W57S54', W57S54: 'W56S54', W56S54: 'W56S53', W56S53: 'W56S52'
 								}
 							}
 							//, 
