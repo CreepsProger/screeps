@@ -66,7 +66,7 @@ const conditions = {
 																			var rc = room.controller;
 																			const to_spawn = !!rc && !rc.upgradeBlocked && !rc.reservation ||
 																						(!!rc && !!rc.reservation && rc.reservation.username == 'Invader') ||
-																						rc.reservation.ticksToEnd < 1000;
+																						(!!rc && !!rc.reservation && rc.reservation.ticksToEnd < 1000) ;
 																			// if(!to_spawn)
 																		  	// console.log('TO_SPAWN_ROOM_CLAIMER('+ roomName +') =' , to_spawn, JSON.stringify(rc));
 																		  return to_spawn;}
