@@ -113,9 +113,9 @@ var spawns = {
 					console.log( '🏋️‍♂️', Math.trunc(Game.time/10000), Game.time%10000
 														  , JSON.stringify({weight:weight, spawn:spawn, boostConf:boostConf}));
 					const labs = cash.getLabs(spawn.room.name);
-					const readyBoosts = boosts.filter((b) => labs.some((l) => !!l.mineralType && l.mineralType == b &&
-																														        !!l.energy && l.energy >= 1000 &&
-																													          !!l.mineralAmount && l.mineralAmount >= 1500 ));
+					const readyBoosts = boostConf.filter((b) => labs.some((l) => !!l.mineralType && l.mineralType == b &&
+																														        	 !!l.energy && l.energy >= 1000 &&
+																													          	 !!l.mineralAmount && l.mineralAmount >= 1500 ));
 					if(readyBoosts.length != boostConf.length) {
 						console.log('🏋️‍♂️🚫', Math.trunc(Game.time/10000), Game.time%10000
 											           , JSON.stringify( { tasks:'tryCreateCreep', newName:newName
