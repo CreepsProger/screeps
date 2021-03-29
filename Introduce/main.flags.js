@@ -498,7 +498,7 @@ var flags = {
 			Game.cpu.setShardLimits({shard0:5,shard1:170,shard2:5,shard3:20});
 		}
 		if(Game.shard.name == 'shard0' && Limits.color == 4) {
-			Game.cpu.setShardLimits({shard0:140,shard1:10,shard2:10,shard3:20});;
+			Game.cpu.setShardLimits({shard0:150,shard1:5,shard2:5,shard3:20});;
 		}
 		lastFlagRemoved = Limits; 
     lastFlagRemoved.remove()
