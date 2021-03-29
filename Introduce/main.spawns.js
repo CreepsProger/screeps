@@ -1007,6 +1007,19 @@ var spawns = {
 						if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 636);
 						if(Sp8)	spawns.tryCreateCreep(spawn,  WORKER[7][S+1], 634);
             if(Sp8)	spawns.tryCreateCreep(spawn,  CARIER[7][L], 631);
+						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W55S55')) {
+							if(tools.getInviderCoreLevel('W55S55') === undefined ) {
+								if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 697);
+							}
+							if(tools.getInviderCoreLevel('W55S55') == 1) {
+								if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 697);
+							}
+						}
+						else {
+							if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 696);
+							if(Sp8)	spawns.tryCreateCreep(spawn,  WORKER[7][S+1], 694);
+							if(Sp8)	spawns.tryCreateCreep(spawn,  CARIER[7][L], 691);
+						}
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W54S54') &&
 						 tools.getInviderCoreLevel('W54S54') !== undefined ) {
@@ -1054,19 +1067,6 @@ var spawns = {
 						if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 686);
 						if(Sp5)	spawns.tryCreateCreep(spawn,  WORKER[7][S+1], 684);
             if(Sp5)	spawns.tryCreateCreep(spawn,  CARIER[7][L], 681);
-					}
-					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W55S55')) {
-						if(tools.getInviderCoreLevel('W55S55') === undefined ) {
-							if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 697);
-						}
-						if(tools.getInviderCoreLevel('W55S55') == 1) {
-							if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 697);
-						}
-					}
-					else {
-						if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 696);
-						if(Sp8)	spawns.tryCreateCreep(spawn,  WORKER[7][S+1], 694);
-            if(Sp8)	spawns.tryCreateCreep(spawn,  CARIER[7][L], 691);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W57S55')) {
 						if(Sp10)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 656);
