@@ -297,6 +297,12 @@ var spawns = {
 						, [ 2800000000160006,  0,  0] //2
 						],//TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 
+	tryCreateCreepForDeposit: function(spawn) {
+			console.log('✒️', Math.trunc(Game.time/10000), Game.time%10000
+									, 'tryCreateCreepForDeposit by spawn:', spawn.name,
+									, JSON.stringify(spawn));
+	},
+
 	run: function() {
 
     const Nspawns = Object.keys(Game.spawns).length;
@@ -1301,6 +1307,7 @@ var spawns = {
 						}
 					}
 				}
+				spawns.tryCreateCreepForDeposit(spawn);
 			}
 
 			if(spawn.spawning) {
