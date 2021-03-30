@@ -261,7 +261,7 @@ var spawns = {
 						, [      170008000025,     170008000025,     170008000025]//9 
 						, [   500000000200025, 1000002010000010, 2100000019000010]//10 
 						, [  2800001800000004, 2000200000000010, 2000000020000010, 4200000000010007]//11 
-						, [  1000000030000010,  500003500000010, 5000350000000010,  500000035000010]//12
+						, [  1000000030000010, 1000003000000010, 1000300000000010,  500000035000010]//12
 						], //TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 
 	HEALER: [ [                0,                0,                0]  // 0   000
@@ -970,7 +970,9 @@ var spawns = {
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W56S54') &&
 						 tools.getInviderCoreLevel('W56S54') !== undefined ) {
 						if(tools.getInviderCoreLevel('W56S54') == 1) {
-							if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 567);
+							if(Sp5) spawns.tryCreateCreep(spawn,    HEALER[9][L], 567);
+							if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[12][M], 568);
+							if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[12][H], 569);
 						}
 					}
 					else {
