@@ -298,7 +298,7 @@ var flags = {
 			flags.flags[minus] = Game.flags[minus];
 		}
 		const Plus = flags.flags[plus];
-		const Minus = flags.flags[minus];
+		const Minus = flags.flags[minus] || (Plus.color == COLOR_RED);
 		return !Plus?(!Minus?1:0):11-Plus.color;
 	},
 	getMaxNeeded: function(weight, needed) {
