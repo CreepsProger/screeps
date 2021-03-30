@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 593,
+	version: 595,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -399,6 +399,7 @@ var config = {
 									, W26S25: 'W27S25'
 									, W21S29: 'W20S29', W20S29: 'W20S28', W20S28: 'W20S27', W20S27: 'W21S27', W21S27: 'W21S28'
 									, W55S54: 'W55S53', W55S55: 'W56S55', W56S55: 'W57S55', W56S55y:14, W57S54: 'W57S55'
+									, W54S55: 'W54S56', W54S56: 'W54S57'
 									, W22S24: 'W22S23', W22S23: 'W21S23'
 									, W22S22: 'W22S23'
 									}
@@ -1796,7 +1797,49 @@ var config = {
 								, escape_path:
 								{ W57S56: 'W57S55', W57S55: 'W57S54', W57S54: 'W56S54', W56S54: 'W56S53', W56S53: 'W56S52'
 								}
-							}
+							},
+							W54S57:
+							{ containers: {weight: 763}
+							, towers: {mw:600000, mr:600000}
+							, sites:
+								[
+								]
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 760, max_weight: 769}
+								, {name: '2', time: 0, min_weight: 760, max_weight: 769}
+								, {name: '3', time: 0, min_weight: 760, max_weight: 769}
+								, {name: '4', time: 0, min_weight: 760, max_weight: 769}
+								, {name: '5', time: 0, min_weight: 760, max_weight: 769}
+								, {name: '6', time: 0, min_weight: 760, max_weight: 769}
+								, {name: '7', time: 0, min_weight: 760, max_weight: 769}
+								, {name: '8', time: 0, min_weight: 760, max_weight: 769}
+								]
+							, claiming:
+								[ {name: '1', time: 0, min_weight: 760, max_weight: 769}
+								, {name: '2', time: 0, min_weight: 760, max_weight: 769}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 760, max_weight: 769}
+								, {name: '2', time: 0, min_weight: 760, max_weight: 769}
+								, {name: '3', time: 0, min_weight: 760, max_weight: 769}
+								, {name: '4', time: 0, min_weight: 760, max_weight: 769}
+								, {name: '5', time: 0, min_weight: 760, max_weight: 769}
+								, {name: '6', time: 0, min_weight: 760, max_weight: 769}
+								]
+							, heal_room:
+								{ shard: 'shard0', room: 'W54S57'}
+							, path_rooms:
+								{ W57S51: 'W56S51'
+								, W57S52: 'W56S52', W57S52y:45, W56S52: 'W56S53', W56S52x:38, W56S53: 'W55S53', W55S53: 'W54S53'
+								, W54S51: 'W55S51', W55S51: 'W56S51', W56S51: 'W56S52'
+								, W56S54: 'W56S53', W56S54y:27
+								, W54S53: 'W54S54', W54S53x:38, W54S54: 'W54S55'
+								, W55S55: 'W54S55', W54S55: 'W54S56', W54S56: 'W54S57'
+								}
+								, escape_path:
+								{ W55S55: 'W54S55', W54S55: 'W54S56', W54S56: 'W54S57'
+								}
+							},
 							//, 
 						}
 					}
