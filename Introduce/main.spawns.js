@@ -1024,9 +1024,9 @@ var spawns = {
 							if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 637);
 						}
 						if(tools.getInviderCoreLevel('W55S54') == 3) {
-							if(Sp5) spawns.tryCreateCreep(spawn,    HEALER[9][L], 637);
-							if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[12][M], 638);
-							if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[12][H], 639);
+							if(Sp8) spawns.tryCreateCreep(spawn,    HEALER[9][L], 637);
+							if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[12][M], 638);
+							if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[12][H], 639);
 						}
 					}
 					else {
