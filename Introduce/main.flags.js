@@ -297,8 +297,10 @@ var flags = {
 		if(flags.flags[minus] === undefined) {
 			flags.flags[minus] = Game.flags[minus];
 		}
-		const Plus = flags.flags[plus] && (Plus.color != COLOR_RED);
-		const Minus = flags.flags[minus] || (Plus.color == COLOR_RED);
+		const Plus = flags.flags[plus];
+		const Minus = flags.flags[minus];
+		if(!!Plus && Plus.color == COLOR_RED)
+			return 0;
 		return !Plus?(!Minus?1:0):11-Plus.color;
 	},
 	getMaxNeeded: function(weight, needed) {
@@ -307,6 +309,8 @@ var flags = {
 			flags.flags[plus] = Game.flags[plus];
 		}
 		const Plus = flags.flags[plus];
+		if(!!Plus && Plus.color == COLOR_RED)
+			return 0;
 		return !Plus?needed:11-Plus.secondaryColor;
 	},
 	getModification: function(weight, modification) {
