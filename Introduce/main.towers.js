@@ -258,11 +258,10 @@ var towers = {
 			if(!target && (!towers.sleep[i] || towers.sleep[i] < constants.TICKS_MAX_TOWERS_SLEEPING )) {
 				if(!towers.sleep[i])
 					towers.sleep[i] = 0;
-				 	towers.sleep[i]++;
-				 	delete towers.prev_target[i];
-			 	}
-		 	}
-		);
+				towers.sleep[i]++;
+				delete towers.prev_target[i];
+			}
+		});
 	}
 };
 
