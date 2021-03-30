@@ -261,7 +261,7 @@ var spawns = {
 						, [      170008000025,     170008000025,     170008000025]//9 
 						, [   500000000200025, 1000002010000010, 2100000019000010]//10 
 						, [  2800001800000004, 2000200000000010, 2000000020000010, 4200000000010007]//11 
-						, [  1000000030000010, 1000003700000003, 1000370000000003,  500000035000010]//12
+						, [  1200000028000010, 1200003300000005, 1200330000000005,  500000035000010]//12
 						], //TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 
 	HEALER: [ [                0,                0,                0]  // 0   000
@@ -1024,7 +1024,7 @@ var spawns = {
 							if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 637);
 						}
 						if(tools.getInviderCoreLevel('W55S54') == 3) {
-							if(Sp8) spawns.tryCreateCreep(spawn,    HEALER[9][L], 637);
+							if(Sp8) spawns.tryCreateCreep(spawn, ATTACKER[12][L], 637);
 							if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[12][M], 638);
 							if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[12][H], 639);
 						}
