@@ -970,6 +970,8 @@ var spawns = {
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W56S54') &&
 						 tools.getInviderCoreLevel('W56S54') !== undefined ) {
 						if(tools.getInviderCoreLevel('W56S54') == 1) {
+						}
+						if(tools.getInviderCoreLevel('W56S54') == 6) {
 							if(Sp5) spawns.tryCreateCreep(spawn,    HEALER[9][L], 567);
 							if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[12][M], 568);
 							if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[12][H], 569);
@@ -1020,6 +1022,11 @@ var spawns = {
 						 tools.getInviderCoreLevel('W55S54') !== undefined ) {
 						if(tools.getInviderCoreLevel('W55S54') == 1) {
 							if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 637);
+						}
+						if(tools.getInviderCoreLevel('W55S54') == 3) {
+							if(Sp5) spawns.tryCreateCreep(spawn,    HEALER[9][L], 637);
+							if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[12][M], 638);
+							if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[12][H], 639);
 						}
 					}
 					else {
