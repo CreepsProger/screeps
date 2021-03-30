@@ -297,7 +297,7 @@ var flags = {
 		if(flags.flags[minus] === undefined) {
 			flags.flags[minus] = Game.flags[minus];
 		}
-		const Plus = flags.flags[plus];
+		const Plus = flags.flags[plus] && (Plus.color != COLOR_RED);
 		const Minus = flags.flags[minus] || (Plus.color == COLOR_RED);
 		return !Plus?(!Minus?1:0):11-Plus.color;
 	},
