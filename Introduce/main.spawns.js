@@ -299,7 +299,7 @@ var spawns = {
 
 	tryCreateCreepForDeposit: function(spawn) {
 			console.log('✒️', Math.trunc(Game.time/10000), Game.time%10000
-									, 'tryCreateCreepForDeposit by spawn:', spawn.name,
+									, 'tryCreateCreepForDeposit by spawn:', spawn.name, ' '
 									, JSON.stringify(spawn));
 	},
 
