@@ -1,6 +1,7 @@
 const constants = require('main.constants');
 const conditions = require('main.conditions');
 const terminals = require('main.terminals');
+const observer = require('main.observer');
 const config = require('main.config');
 const flags = require('main.flags');
 const cash = require('cash');
@@ -301,14 +302,13 @@ var spawns = {
 			console.log('✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'tryCreateCreepForDeposit by spawn:', spawn.name, ' '
 									, JSON.stringify(spawn));
-// 		if(Game.cpu.bucket >= 5000 && countHarvestingDeposits(spawn) < maxHarvestingDeposits(spawn)) {
-// 			const room = getDepositRoomToDetect(spawn);
-// 			if(isDepositDetected(room)) {
-// 				const weight = getDepositWorkerWeight(spawn.room.name);
-// 				const mod = getDepositWorkerMod();
-// 				spawns.tryCreateCreep(spawn, WORKER[7][H], weight, mod, 2);
-// 				spawns.tryCreateCreep(spawn, CARIER[7][M], weight, mod,);
-// 		}
+ 		if(Game.cpu.bucket >= 5000) {
+			const base_weight = observer.shouldSpawnForDeposit(spawn);
+			if(base_weight > 0) {
+				spawns.tryCreateCreep(spawn, spawns.WORKER[7][M], base_weight+4);
+				spawns.tryCreateCreep(spawn, spawns.CARIER[7][L], base_weight+1);
+			}
+ 		}
 	},
 
 	run: function() {
