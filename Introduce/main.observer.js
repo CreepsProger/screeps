@@ -8,6 +8,16 @@ const observer = {
 
 	getConfig: function(roomName) {
 		return config.getObserverConfig(roomName);
+	}
+	
+	, deposits: {}, 
+	
+	depositExists: function(roomName) {
+		return false;
+	},
+	
+	shouldSpawnForDeposit: function(spawn) {
+		return false;
 	},
 
 	run: function() {
