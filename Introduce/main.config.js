@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 602,
+	version: 603,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -1839,6 +1839,37 @@ var config = {
 								}
 								, escape_path:
 								{ W55S55: 'W54S55', W54S55: 'W54S56', W54S56: 'W54S57'
+								}
+							},
+							W55S50:
+							{ containers: {weight: 1003}
+							, deposit: {spawnRooms: ['W55S51', 'W54S51', 'W57S51'] }
+							, sites:
+								[ 
+								]
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 1000, max_weight: 1009}
+								, {name: '2', time: 0, min_weight: 1000, max_weight: 1009}
+								, {name: '3', time: 0, min_weight: 1000, max_weight: 1009}
+								, {name: '4', time: 0, min_weight: 1000, max_weight: 1009}
+								, {name: '5', time: 0, min_weight: 1000, max_weight: 1009}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 1000, max_weight: 1009}
+								, {name: '2', time: 0, min_weight: 1000, max_weight: 1009}
+								, {name: '3', time: 0, min_weight: 1000, max_weight: 1009}
+								, {name: '4', time: 0, min_weight: 1000, max_weight: 1009}
+								, {name: '5', time: 0, min_weight: 1000, max_weight: 1009}
+								]
+							, heal_room:
+								{ shard: 'shard0', room: 'W55S51'}
+							, path_rooms:
+								{ W57S51: 'W56S51', W56S51: 'W55S51'
+								, W54S51: 'W55S51'
+								, W55S51: 'W55S50'
+								}
+								, escape_path:
+								{ W55S50: 'W55S51'
 								}
 							},
 							//, 
