@@ -260,7 +260,7 @@ var spawns = {
 						,          2515000010,     400000000010,  400004000000006] 
 						, [      170008000025,     170008000025,     170008000025]//9 
 						, [   500000000200025, 1000002010000010, 2100000019000010]//10 
-						, [  1100000033000006, 1100001221000006, 1100120021000006, 4200000000010007]//11 
+						, [  1100000033000006, 1100001221000006, 1100120021000006, 1100000021120006]//11 
 						, [  1200000028000010, 1200003300000005, 1200330000000005,  500000035000010]//12
 						], //TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 
@@ -778,9 +778,10 @@ var spawns = {
 							if(Sp14)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5457);
 						}
 						if(ICL == 3) {
-							if(Sp14) spawns.tryCreateCreep(spawn, ATTACKER[11][L], 5457);
-							if(Sp14)	spawns.tryCreateCreep(spawn, ATTACKER[11][M], 5458);
-							if(Sp14)	spawns.tryCreateCreep(spawn, ATTACKER[11][H], 5459);
+							if(Sp14) spawns.tryCreateCreep(spawn, ATTACKER[11][L], 5456);
+							if(Sp14) spawns.tryCreateCreep(spawn, ATTACKER[11][M], 5457);
+							if(Sp14)	spawns.tryCreateCreep(spawn, ATTACKER[11][H], 5458);
+							if(Sp14)	spawns.tryCreateCreep(spawn, ATTACKER[11][S], 5459);
 						}
 					}
 					else {
