@@ -25,7 +25,7 @@ var flags = {
 		const prefix = roomName + '.pass:';
 		if(flags.flags[prefix] === undefined) {
 			flags.flags[prefix] = Object.keys(Game.flags)
-													.filter((name)=>name.substring(0,prefix.length) == prefix)
+													.filter((name)=>name.substring(0,prefix.length) == prefix && Game.flags[name].color != COLOR_RED)
 													.sort((l,r) => l.localeCompare(r))
 													.map((fname) => Game.flags[fname].pos);
 		}
@@ -40,7 +40,7 @@ var flags = {
 		const prefix = roomName + '.observe:';
 		if(flags.flags[prefix] === undefined) {
 			const json = Object.keys(Game.flags)
-													.filter((name) => name.substring(0,prefix.length) == prefix)
+													.filter((name) => name.substring(0,prefix.length) == prefix && Game.flags[name].color != COLOR_RED)
 													.sort((l,r) => l.localeCompare(r))
 													.map((s,i,arr) => '\"' + s.substring(0,s.indexOf('.')) + '\" :' + s.substring(s.indexOf(':')+1) + ((i!=arr.length-1)?',':'}') )
 													.reduce((p,c) => p+c, '{ ');
@@ -65,7 +65,7 @@ var flags = {
 		const prefix = roomName + '.power:';
 		if(flags.flags[prefix] === undefined) {
 			const json = Object.keys(Game.flags)
-													.filter((name)=>name.substring(0,prefix.length) == prefix)
+													.filter((name)=>name.substring(0,prefix.length) == prefix && Game.flags[name].color != COLOR_RED)
 													.sort((l,r) => l.localeCompare(r))
 													.map((s,i,arr) => s.substring(s.indexOf(':')+1) + ((i!=arr.length-1)?',':'}') )
 													.reduce((p,c) => p+c, '{');
@@ -94,7 +94,7 @@ var flags = {
 		const prefix = roomName + '.store:';
 		if(flags.flags[prefix] === undefined) {
 			const json = Object.keys(Game.flags)
-													.filter((name)=>name.substring(0,prefix.length) == prefix)
+													.filter((name)=>name.substring(0,prefix.length) == prefix && Game.flags[name].color != COLOR_RED)
 													.sort((l,r) => l.localeCompare(r))
 													.map((s,i,arr) => s.substring(s.indexOf('\"')) + ((i!=arr.length-1)?',':'}') )
 													.reduce((p,c) => p+c, '{');
@@ -121,7 +121,7 @@ var flags = {
 		const prefix = roomName + '.deals:';
 		if(flags.flags[prefix] === undefined) {
 			const json = Object.keys(Game.flags)
-													.filter((name)=>name.substring(0,prefix.length) == prefix)
+													.filter((name)=>name.substring(0,prefix.length) == prefix && Game.flags[name].color != COLOR_RED)
 													.sort((l,r) => l.localeCompare(r))
 													.map((s,i,arr) => s.substring(s.indexOf('\"')) + ((i!=arr.length-1)?',':'}') )
 													.reduce((p,c) => p+c, '{');
@@ -148,7 +148,7 @@ var flags = {
 		const prefix = roomName + '.transfer:';
 		if(flags.flags[prefix] === undefined) {
 			const json = Object.keys(Game.flags)
-													.filter((name)=>name.substring(0,prefix.length) == prefix)
+													.filter((name)=>name.substring(0,prefix.length) == prefix && Game.flags[name].color != COLOR_RED)
 													.sort((l,r) => l.localeCompare(r))
 													.map((s,i,arr) => s.substring(s.indexOf(':')+1) + ((i!=arr.length-1)?',':'}') )
 													.reduce((p,c) => p+c, '{');
@@ -177,8 +177,8 @@ var flags = {
 		if(flags.flags[prefix] === undefined) {
 			const json = Object.keys(Game.flags)
 													.filter((name) =>
-																	name.substring(0,prefix.length) == prefix ||
-																	(name.substring(0,prefix2.length) == prefix2 &&  Game.flags[name].pos.roomName == roomName) )
+																	name.substring(0,prefix.length) == prefix && Game.flags[name].color != COLOR_RED) ||
+																	(name.substring(0,prefix2.length) == prefix2 &&  Game.flags[name].pos.roomName == roomName && Game.flags[name].color != COLOR_RED) )
 													.sort((l,r) => l.localeCompare(r))
 													.map((s,i,arr) => s.substring(s.indexOf(':')+1) + ((i!=arr.length-1)?',':'}') )
 													.reduce((p,c) => p+c, '{');
@@ -210,7 +210,7 @@ var flags = {
 		const prefix = roomName + '.boostLabs:';
 		if(flags.flags[prefix] === undefined) {
 			const json = Object.keys(Game.flags)
-													.filter((name)=>name.substring(0,prefix.length) == prefix)
+													.filter((name)=>name.substring(0,prefix.length) == prefix && Game.flags[name].color != COLOR_RED)
 													.sort((l,r) => l.localeCompare(r))
 													.map((s,i,arr) => s.substring(s.indexOf('[')) + ((i!=arr.length-1)?',':']') )
 													.reduce((p,c) => p+c, '[');
@@ -237,7 +237,7 @@ var flags = {
 		const prefix = roomName + '.factory:';
 		if(flags.flags[prefix] === undefined) {
 			const json = Object.keys(Game.flags)
-													.filter((name)=>name.substring(0,prefix.length) == prefix)
+													.filter((name)=>name.substring(0,prefix.length) == prefix && Game.flags[name].color != COLOR_RED)
 													.sort((l,r) => l.localeCompare(r))
 													.map((s,i,arr) => s.substring(s.indexOf('[')) + ((i!=arr.length-1)?',':']') )
 													.reduce((p,c) => p+c, '[');
