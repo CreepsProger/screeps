@@ -772,8 +772,12 @@ var spawns = {
 						if(Sp14)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5371);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W26S24')) {
-						const ICL = tools.getInviderCoreLevel('W26S25');
-						console.log('getInviderCoreLevel(\'W26S25\')', JSON.stringify({W26S24:ICL}));
+						const ICL = tools.getInviderCoreLevel('W26S24');
+						if(ICL !== undefined) {
+							console.log( '🎃', Math.trunc(Game.time/10000), Game.time%10000
+																, 'INVIDER CORE', JSON.stringify({W26S24:spawn.name, ICL:ICL})
+										);
+						}
 						if(ICL == 1) {
 							if(Sp14)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5457);
 						}
