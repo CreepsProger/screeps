@@ -778,7 +778,7 @@ var spawns = {
 						if(ICL == 1) {
 							if(Sp14)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5456);
 						}
-						if(ICL == 3) {
+						if(ICL == 3 && Game.cpu.bucket >= 8000) {
 							if(Sp14) spawns.tryCreateCreep(spawn, ATTACKER[11][L], 5456);
 							if(Sp14) spawns.tryCreateCreep(spawn, ATTACKER[11][M], 5457);
 							if(Sp14)	spawns.tryCreateCreep(spawn, ATTACKER[11][H], 5458);
