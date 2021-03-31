@@ -301,6 +301,14 @@ var spawns = {
 			console.log('✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'tryCreateCreepForDeposit by spawn:', spawn.name, ' '
 									, JSON.stringify(spawn));
+// 		if(Game.cpu.bucket >= 5000 && countHarvestingDeposits(spawn) < maxHarvestingDeposits(spawn)) {
+// 			const room = getDepositRoomToDetect(spawn);
+// 			if(isDepositDetected(room)) {
+// 				const weight = getDepositWorkerWeight(spawn.room.name);
+// 				const mod = getDepositWorkerMod();
+// 				spawns.tryCreateCreep(spawn, WORKER[7][H], weight, mod, 2);
+// 				spawns.tryCreateCreep(spawn, CARIER[7][M], weight, mod,);
+// 		}
 	},
 
 	run: function() {
