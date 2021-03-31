@@ -277,7 +277,7 @@ var spawns = {
 					],
 
 	CLAIMER:  [ [                0,                0,                0]  // 0  000
-						, [           			0,                0,                0]  // 1  300
+						, [          			0,                0,                0]  // 1  300
 						, [                0,                0,                0]  // 2  550
 						, [    1000000000002,    1000000000002,    1000000000002]  // 3  800
 						, [    2000000000002,    2000000000002,    2000000000002]  // 4 1300
@@ -776,7 +776,7 @@ var spawns = {
 										);
 						}
 						if(ICL == 1) {
-							if(Sp14)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5457);
+							if(Sp14)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5456);
 						}
 						if(ICL == 3) {
 							if(Sp14) spawns.tryCreateCreep(spawn, ATTACKER[11][L], 5456);
