@@ -177,7 +177,7 @@ var flags = {
 		if(flags.flags[prefix] === undefined) {
 			const json = Object.keys(Game.flags)
 													.filter((name) =>
-																	name.substring(0,prefix.length) == prefix && Game.flags[name].color != COLOR_RED) ||
+																	(name.substring(0,prefix.length) == prefix && Game.flags[name].color != COLOR_RED) ||
 																	(name.substring(0,prefix2.length) == prefix2 &&  Game.flags[name].pos.roomName == roomName && Game.flags[name].color != COLOR_RED) )
 													.sort((l,r) => l.localeCompare(r))
 													.map((s,i,arr) => s.substring(s.indexOf(':')+1) + ((i!=arr.length-1)?',':'}') )
