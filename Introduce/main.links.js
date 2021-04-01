@@ -124,8 +124,8 @@ var links = {
 		 // W57S55
 		 , { from: '605de22cfac58c035bd6bbef', to: '605de61e985bf911c9555c72'}
 		 , { from: '60601b8507732f3d96e827b6', to: '605de61e985bf911c9555c72'}
-		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
-		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: '605de22cfac58c035bd6bbef', to: '606610369118fc6dd0f053d4'}
+		 , { from: '60601b8507732f3d96e827b6', to: '606610369118fc6dd0f053d4'}
 		 // W57S56
 		 , { from: '60649984bdf9e1aa7c1c715e', to: '6064cbe20e1ec265977c7945'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
