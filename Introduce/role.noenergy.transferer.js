@@ -162,8 +162,8 @@ var role = {
 			return target;
 		}
 		
-		if(!creep.room.terminal && flags.getFlag('net_to_nmt') ) {
-			const nmt = creep.room.find(FIND_HOSTILE_STRUCTURES, { filter: (structure) => !structure.my && structure.structureType == STRUCTURE_TERMINAL });
+		if(flags.getFlag('net_to_nmt')) {
+			const nmt = creep.room.find(FIND_STRUCTURES, { filter: (structure) => !structure.my && structure.structureType == STRUCTURE_TERMINAL });
 		// ERR_INVALID_TARGET	-7	The target is not a valid object which can contain the specified resource.
 			return nmt;
 		}
