@@ -162,6 +162,11 @@ var role = {
 			return target;
 		}
 		
+		if(!!creep.room.terminal && !creep.room.terminal.my && flags.getFlag('net_to_nmt') ) {
+		// ERR_INVALID_TARGET	-7	The target is not a valid object which can contain the specified resource.
+			return creep.room.terminal;
+		}
+		
 		if(!creep.getActiveBodyparts(WORK)) {
 			const storages = cash.getStorages();
 			if(storages.length > 0) {
