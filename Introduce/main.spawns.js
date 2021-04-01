@@ -384,6 +384,15 @@ var spawns = {
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn39' || spawn.name == 'Spawn40' || spawn.name == 'Spawn41'):
 				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):All;
 				const Sp15= (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
+				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn42' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
+				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):All;
+				const Sp16= (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
+				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
+				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):All;
+				const Sp17= (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
+				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
+				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):All;
+				const Sp18= (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
 				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):All;
 
@@ -815,43 +824,44 @@ var spawns = {
 						if(Sp6)	spawns.tryCreateCreep(spawn, ATTACKER[12][H], 5419);
 					}
 					else {
-						if(Sp6)	spawns.tryCreateCreep(spawn, WORKER[7][M], 5414);
-						if(Sp6)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5411);
-						if(Sp6)	spawns.tryCreateCreep(spawn, UPGRADER[M], 5415);
-						if(Sp6)	spawns.tryCreateCreep(spawn, WORKER[7][M], 5416);
+						if(Sp15)	spawns.tryCreateCreep(spawn, WORKER[6][H], 5416);
+						if(Sp15)	spawns.tryCreateCreep(spawn, CARIER[6][H], 5411);
+						if(Sp15)	spawns.tryCreateCreep(spawn, WORKER[6][H], 5415);
+						//if(Sp6)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5415);
+						if(Sp15)	spawns.tryCreateCreep(spawn, WORKER[6][M], 5416);
 						if(Sp6)	spawns.tryCreateCreep(spawn, HEALER[8][L], 5417);
 						if(Sp6)	spawns.tryCreateCreep(spawn, ATTACKER[12][M], 5418);
 						if(Sp6)	spawns.tryCreateCreep(spawn, ATTACKER[12][H], 5419);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W22S24')) {
-						if(Sp6)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5427);
+						if(Sp15)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5427);
 					}
 					else {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W22S24')) {
-							if(Sp6)	spawns.tryCreateCreep(spawn, CLAIMER[7][M], 5420);
+							if(Sp15)	spawns.tryCreateCreep(spawn, CLAIMER[6][M], 5420);
 						}
 						if(Sp6)	spawns.tryCreateCreep(spawn, WORKER[7][M], 5424);
-						if(Sp6)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5421);
+						if(Sp15)	spawns.tryCreateCreep(spawn, CARIER[6][L], 5421);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W22S22')) {
-						if(Sp6)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5437);
+						if(Sp15)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5437);
 					}
 					else {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W22S22')) {
-							if(Sp6)	spawns.tryCreateCreep(spawn, CLAIMER[7][M], 5430);
+							if(Sp15)	spawns.tryCreateCreep(spawn, CLAIMER[6][M], 5430);
 						}
 						if(Sp6)	spawns.tryCreateCreep(spawn, WORKER[7][M], 5434);
-						if(Sp6)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5431);
+						if(Sp15)	spawns.tryCreateCreep(spawn, CARIER[6][L], 5431);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W22S23')) {
-						if(Sp6)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5447);
+						if(Sp15)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5447);
 					}
 					else {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W22S23')) {
-							if(Sp6)	spawns.tryCreateCreep(spawn, CLAIMER[7][M], 5440);
+							if(Sp15)	spawns.tryCreateCreep(spawn, CLAIMER[6][M], 5440);
 						}
 						if(Sp6)	spawns.tryCreateCreep(spawn, WORKER[5][M], 5444);
-						if(Sp6)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5441);
+						if(Sp15)	spawns.tryCreateCreep(spawn, CARIER[6][L], 5441);
 					}
         }
 
