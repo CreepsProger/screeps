@@ -1196,7 +1196,6 @@ var spawns = {
 						if(Sp7)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 767);
 					}
 					else {
-						if(Sp7)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 767);
 						if(Sp7)	spawns.tryCreateCreep(spawn, WORKER[7][M], 764);
             if(Sp7)	spawns.tryCreateCreep(spawn, CARIER[7][L], 761);
 						if(Sp7)	spawns.tryCreateCreep(spawn,  UPGRADER[L], 765);
