@@ -404,7 +404,8 @@ var role = {
 					}
 				}
 
-				if(!target && this_room != my_room && canAttack /*!shouldHeal*/) {
+				if(!target && this_room != my_room && canAttack /*!shouldHeal*/ &&
+					 (!StopHereFlag || StopHereFlag.pos.roomName != this_room)) {
 					target = config.findPathToMyRoom(creep,role.name);
 				}
 				
