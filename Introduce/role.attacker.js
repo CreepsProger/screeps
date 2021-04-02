@@ -362,7 +362,7 @@ var role = {
 
 				const DP1 = flags.flags.DP1;
 				if(!target && !!DP1 &&
-					 (DP1.pos.roomName == my_room || (!!StopHereFlag && StopHereFlag.pos.roomName == DP1.pos.roomName)) &&
+					 (DP1.pos.roomName == my_room || (!!StopHereFlag && StopHereFlag.pos.roomName == DP1.pos.roomName && DP1.pos.roomName == this_room )) &&
 					creep.pos.getRangeTo(DP1.pos)>1 ) {
 					// console.log('DP1', 'this_room:', this_room, 'DP1:', JSON.stringify(DP1));
 					target = DP1.pos;
@@ -370,7 +370,7 @@ var role = {
 
 				const DP2 = flags.flags.DP2;
 				if(!target && !!DP2 && 
-					 (DP2.pos.roomName == my_room || (!!StopHereFlag && StopHereFlag.pos.roomName == DP2.pos.roomName)) && 
+					 (DP2.pos.roomName == my_room || (!!StopHereFlag && StopHereFlag.pos.roomName == DP2.pos.roomName && DP2.pos.roomName == this_room)) && 
 					 creep.pos.getRangeTo(DP2.pos)>1 ) {
 					//console.log('DP2', 'this_room:', this_room, 'DP2:', JSON.stringify(DP2));
 					target = DP2.pos;
