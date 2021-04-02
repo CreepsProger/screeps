@@ -65,8 +65,6 @@ var role = {
 				const NA = !!flags.flags.NA && flags.flags.NA.pos.roomName == this_room;
 				const hostile_creeps_near = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 5).length > 0;
 				const good_healer_near = creep.pos.findInRange(FIND_MY_CREEPS, 3, {filter: (healler) => {
-					const attack_count = creep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK),0);
-					const attacker = attack_count > 0;
 					const heal_count = healler.body.reduce((p,c) => p += (c.type == HEAL),0);
 					const mayHeal = healler.getActiveBodyparts(HEAL) > heal_count/2;
 					return mayHeal && !attacker;}}).shift();
@@ -75,7 +73,9 @@ var role = {
 				const shouldBeHealled = creep.hitsMax - creep.hits > tough_count*200/3;
 				const attack_count = creep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK ),0);
 				const Attacker = attack_count > 0;
-				const canAttack = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK) > attack_count/2;
+				const attacker = attack_count > 0;
+				const canAttack = (creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK) > attack_count/2) &&
+							(!flags.getFlag('canAttack if tough>50%') || (creep.getActiveBodyparts(TOUGH) + creep.getActiveBodyparts(TOUGH) > tough_count/2));
 				const canAttack2 = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK);
 				const heal_count = creep.body.reduce((p,c) => p += (c.type == HEAL),0);
 				const Healler = !Attacker && heal_count > 0;
