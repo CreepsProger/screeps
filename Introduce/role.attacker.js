@@ -65,6 +65,8 @@ var role = {
 				const NA = !!flags.flags.NA && flags.flags.NA.pos.roomName == this_room;
 				const hostile_creeps_near = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 5).length > 0;
 				const good_healer_near = creep.pos.findInRange(FIND_MY_CREEPS, 3, {filter: (healler) => {
+					const attack_count = creep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK),0);
+					const attacker = attack_count > 0;
 					const heal_count = healler.body.reduce((p,c) => p += (c.type == HEAL),0);
 					const mayHeal = healler.getActiveBodyparts(HEAL) > heal_count/2;
 					return mayHeal && !attacker;}}).shift();
