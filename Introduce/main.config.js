@@ -3625,6 +3625,9 @@ var config = {
 								, {name: '4', time: 0, min_weight: 5400, max_weight: 5409}
 								, {name: '5', time: 0, min_weight: 5400, max_weight: 5409}
 								, {name: '6', time: 0, min_weight: 5400, max_weight: 5409}
+								, {name: '7', time: 0, min_weight: 5400, max_weight: 5409}
+								, {name: '8', time: 0, min_weight: 5400, max_weight: 5409}
+								, {name: '9', time: 0, min_weight: 5400, max_weight: 5409}
 								]
 							, claiming:
 							 	[ {name: '1', time: 0, min_weight: 5400, max_weight: 5409}
@@ -3635,6 +3638,11 @@ var config = {
 								, {name: '2', time: 0, min_weight: 5400, max_weight: 5409}
 								, {name: '3', time: 0, min_weight: 5400, max_weight: 5409}
 								, {name: '4', time: 0, min_weight: 5400, max_weight: 5409}
+								, {name: '5', time: 0, min_weight: 5400, max_weight: 5409}
+								, {name: '6', time: 0, min_weight: 5400, max_weight: 5409}
+								, {name: '7', time: 0, min_weight: 5400, max_weight: 5409}
+								, {name: '8', time: 0, min_weight: 5400, max_weight: 5409}
+								, {name: '9', time: 0, min_weight: 5400, max_weight: 5409}
 								]
 							, heal_room:
 								{ shard: 'shard1', room: 'W21S28'}
@@ -3668,6 +3676,9 @@ var config = {
 								, {name: '4', time: 0, min_weight: 5410, max_weight: 5419}
 								, {name: '5', time: 0, min_weight: 5410, max_weight: 5419}
 								, {name: '6', time: 0, min_weight: 5410, max_weight: 5419}
+								, {name: '7', time: 0, min_weight: 5410, max_weight: 5419}
+								, {name: '8', time: 0, min_weight: 5410, max_weight: 5419}
+								, {name: '9', time: 0, min_weight: 5410, max_weight: 5419}
 								]
 							, claiming:
 							 	[ {name: '1', time: 0, min_weight: 5410, max_weight: 5419}
@@ -3678,6 +3689,11 @@ var config = {
 								, {name: '2', time: 0, min_weight: 5410, max_weight: 5419}
 								, {name: '3', time: 0, min_weight: 5410, max_weight: 5419}
 								, {name: '4', time: 0, min_weight: 5410, max_weight: 5419}
+								, {name: '5', time: 0, min_weight: 5410, max_weight: 5419}
+								, {name: '6', time: 0, min_weight: 5410, max_weight: 5419}
+								, {name: '7', time: 0, min_weight: 5410, max_weight: 5419}
+								, {name: '8', time: 0, min_weight: 5410, max_weight: 5419}
+								, {name: '9', time: 0, min_weight: 5410, max_weight: 5419}
 								]
 							, heal_room:
 								{ shard: 'shard1', room: 'W21S28'}
