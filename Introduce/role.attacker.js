@@ -314,7 +314,8 @@ var role = {
 					}
 				}
 
-    		if(!target && this_room != my_room && creep.hitsMax == creep.hits) {
+    		if(!target && this_room != my_room && creep.hitsMax == creep.hits &&
+					 (!StopHereFlag || StopHereFlag.pos.roomName != this_room)) {
     			const exitDir = Game.map.findExit(this_room , my_path_room);
     			target = creep.pos.findClosestByPath(exitDir);
 					if(!!target && target.x > 1 && target.x < 49)
