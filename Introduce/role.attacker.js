@@ -155,8 +155,10 @@ var role = {
 					}
 				}
 				const StopHereFlag = flags.getFlag('Stop attackers in this room');
-				if(!target && this_room != my_room && (canAttack || canHeal || canDismantle) &&
-					 !(!!StopHereFlag && StopHereFlag.pos.roomName == this_room) ) {
+				if(!target &&
+					 this_room != my_room &&
+					 (canAttack || canHeal || canDismantle) &&
+					 (!StopHereFlag || StopHereFlag.pos.roomName != this_room) ) {
 					target = config.findPathToMyRoom(creep,role.name);
 				}
 
