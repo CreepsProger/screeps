@@ -134,8 +134,13 @@ var role = {
 				return target;
 		}
 
+		const DP1 = flags.flags.DP1;
 		const DP2 = flags.flags.DP2;
 		// const this_room_sources_are_not_empty = !cash.areEmptySources(creep);
+		
+		const NH = flags.flags.NH;
+		const NH1 = flags.flags.NH1
+		const NH2 = flags.flags.NH2;
 
 		if(!target &&
 			 //this_room_sources_are_not_empty &&
@@ -144,7 +149,11 @@ var role = {
 			) {
 			var sources = cash.getSources(creep.room).filter((source) => {
 					return source.energy == source.energyCapacity &&
+						!(!!NH && NH.pos.roomName == my_room) &&
+						!(!!NH1 && NH1.pos.roomName == my_room && NH1.pos.getRangeTo(source) < 11-NH1.color) &&
+						!(!!NH2 && NH2.pos.roomName == my_room && NH2.pos.getRangeTo(source) < 11-NH2.color) &&
 						(!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0 ||
+						  (!!DP1 && DP1.pos.roomName == this_room && DP1.pos.getRangeTo(source) <= 5)
 						  (!!DP2 && DP2.pos.roomName == this_room && DP2.pos.getRangeTo(source) <= 5)) &&
 						 tools.checkTarget(executer,source.id);
 				 });
