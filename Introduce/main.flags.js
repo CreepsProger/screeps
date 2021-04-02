@@ -369,9 +369,9 @@ var flags = {
 			 	,   NRR2: Game.flags['NRR2']		// don't repair by repairer
 			 	,     MW: Game.flags['MW']			// multiplier to repair wall
 			 	,     MR: Game.flags['MR']			// multiplier to repair rampart 
-				,     NH: Game.flags['NB']			// don't harvest
-			 	,    NH1: Game.flags['NB1']			// don't harvest only in range 11-DR1.color
-			 	,    NH2: Game.flags['NB2']			// don't harvest only in range 11-DR1.color
+				,     NH: Game.flags['NH']			// don't harvest
+			 	,    NH1: Game.flags['NH1']			// don't harvest only in range 11-NH1.color
+			 	,    NH2: Game.flags['NH2']			// don't harvest only in range 11-NH2.color
 				 
 				
 				,    401: Game.flags['401']		// start spawning 401-st one more creep
