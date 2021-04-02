@@ -404,7 +404,7 @@ var cash = {
 		return cash.getEntry(cash.all_my_storages, STRUCTURE_STORAGE, 0, () => {
  			return _.filter(Game.structures,
  				 (structure) => !!structure.my && structure.structureType == STRUCTURE_STORAGE);
-			 });
+			 }).filter((s) => !!s && !!s.my && !!s.store); 
  	},
 
 	areEmptyContainers: function(creep) {
