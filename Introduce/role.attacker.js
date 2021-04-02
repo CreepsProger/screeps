@@ -155,10 +155,11 @@ var role = {
 					}
 				}
 				const StopHereFlag = flags.getFlag('Stop attackers in this room');
+				const StopHere = !!StopHereFlag && StopHereFlag.pos.roomName == this_room;
 				if(!target &&
 					 this_room != my_room &&
 					 (canAttack || canHeal || canDismantle) &&
-					 (!StopHereFlag || StopHereFlag.pos.roomName != this_room) ) {
+					 !StopHere) {
 					target = config.findPathToMyRoom(creep,role.name);
 				}
 
@@ -314,8 +315,7 @@ var role = {
 					}
 				}
 
-    		if(!target && this_room != my_room && creep.hitsMax == creep.hits &&
-					 (!StopHereFlag || StopHereFlag.pos.roomName != this_room)) {
+    		if(!target && this_room != my_room && creep.hitsMax == creep.hits && !StopHere)) {
     			const exitDir = Game.map.findExit(this_room , my_path_room);
     			target = creep.pos.findClosestByPath(exitDir);
 					if(!!target && target.x > 1 && target.x < 49)
@@ -409,8 +409,7 @@ var role = {
 					}
 				}
 
-				if(!target && this_room != my_room && canAttack /*!shouldHeal*/ &&
-					 (!StopHereFlag || StopHereFlag.pos.roomName != this_room)) {
+				if(!target && this_room != my_room && canAttack /*!shouldHeal*/ && !StopHere) {
 					target = config.findPathToMyRoom(creep,role.name);
 				}
 				
