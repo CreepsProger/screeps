@@ -493,6 +493,9 @@ var role = {
 		if(!target && creep.getActiveBodyparts(WORK) && creep.memory.rerun && !BB) {
 			var emptysources = cash.getSources(creep.room).filter((source) => {
 					return source.energy == 0 && source.ticksToRegeneration < 100 &&
+						!(!!NH && NH.pos.roomName == my_room) &&
+						!(!!NH1 && NH1.pos.roomName == my_room && NH1.pos.getRangeTo(source) < 11-NH1.color) &&
+						!(!!NH2 && NH2.pos.roomName == my_room && NH2.pos.getRangeTo(source) < 11-NH2.color) &&
 						(!source.pos.findInRange(FIND_HOSTILE_STRUCTURES, 5).length > 0 ||
 						  (!!DP2 && DP2.pos.roomName == this_room && DP2.pos.findPathTo(source).length <= 5))
 				});
