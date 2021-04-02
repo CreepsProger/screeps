@@ -154,8 +154,9 @@ var role = {
 						console.log('Go to my heal room:', JSON.stringify({n:creep.memory.n, my_pos:creep.pos, my_heal_room: my_heal_room, shouldBeHealled: shouldBeHealled, canAttack: canAttack, canAttack2: canAttack2}));
 					}
 				}
-
-				if(!target && this_room != my_room && (canAttack || canHeal || canDismantle) && !flags.getFlag('Stop attackers in this room')) {
+				const StopHereFlag = flags.getFlag('Stop attackers in this room');
+				if(!target && this_room != my_room && (canAttack || canHeal || canDismantle) &&
+					 !(!!StopHereFlag && StopHereFlag.pos.roomName == this_room) ) {
 					target = config.findPathToMyRoom(creep,role.name);
 				}
 
