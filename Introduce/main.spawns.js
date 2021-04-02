@@ -262,7 +262,7 @@ var spawns = {
 						, [      170008000025,     170008000025,     170008000025]//9 
 						, [   500000000200025, 1000002010000010, 2100000019000010]//10 
 						, [  1200000028000010, 1200002111000006, 1200210011000006, 12000000112100006]//11 
-						, [  1200000028000010, 1200003300000005, 1200330000000005,  500000035000010]//12
+						, [  1200000028000010, 1200002008000010, 1200200008000010, 12000000082000010]//12
 						], //TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 
 	HEALER: [ [                0,                0,                0]  // 0   000
@@ -819,9 +819,10 @@ var spawns = {
 						if(Sp6)	spawns.tryCreateCreep(spawn, WORKER[7][M], 5406);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W21S23')) {
-						if(Sp6)	spawns.tryCreateCreep(spawn, HEALER[8][L], 5417);
-						if(Sp6)	spawns.tryCreateCreep(spawn, ATTACKER[12][M], 5418);
-						if(Sp6)	spawns.tryCreateCreep(spawn, ATTACKER[12][H], 5419);
+						if(Sp6)	spawns.tryCreateCreep(spawn, ATTACKER[12][L], 5416);
+						if(Sp6)	spawns.tryCreateCreep(spawn, ATTACKER[12][M], 5417);
+						if(Sp6)	spawns.tryCreateCreep(spawn, ATTACKER[12][H], 5418);
+						if(Sp6)	spawns.tryCreateCreep(spawn, ATTACKER[12][S], 5419);
 					}
 					else {
 						if(Sp15)	spawns.tryCreateCreep(spawn, WORKER[6][H], 5416);
