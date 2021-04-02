@@ -366,7 +366,7 @@ var role = {
 					creep.pos.getRangeTo(DP1.pos)>1 ) {
 					// console.log('DP1', 'this_room:', this_room, 'DP1:', JSON.stringify(DP1));
 					target = DP1.pos;
-				}!StopHereFlag || StopHereFlag.pos.roomName != this_room)
+				}
 
 				const DP2 = flags.flags.DP2;
 				if(!target && !!DP2 && 
