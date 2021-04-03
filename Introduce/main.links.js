@@ -136,6 +136,9 @@ var links = {
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 // W54S57
+		 , { from: '606823b8dd93327f2408915c', to: '6067de588c32091c95fdd798'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
      //shard1
 		 // W21S23
 		 , { from: '6061f22a51e6a6c279b13ca3', to: '6061dc24f65aff38d39a2f2a'}
