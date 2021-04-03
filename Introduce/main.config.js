@@ -3950,7 +3950,7 @@ var config = {
 						 	, escape_path:
 								{ W20S30: 'W19S30', W19S30: 'W19S31'}
 								}
-							},
+							}//, 
 						}
 					}
 				, shard3:
