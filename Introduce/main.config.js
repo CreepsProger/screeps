@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 619,
+	version: 620,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -3908,13 +3908,13 @@ var config = {
 								, escape_path:
 								{ W26S24: 'W27S24', W27S24: 'W27S25', W27S25: 'W27S26', W27S26: 'W27S26'
 								}
-							},
+							}
 							//,
 						}
 					}
 				,	shard2:
 					{	rooms:
-						{W19S31:
+						{ W19S31:
 							{ containers: {weight: 203}
 							, towers: {mw:6000000, mr:6000000}
 							, energy_harvesting:
@@ -3939,10 +3939,11 @@ var config = {
 								, {name: '6', time: 0, min_weight: 200, max_weight: 209}
 								, {name: '7', time: 0, min_weight: 200, max_weight: 209}
 								]
-					   	, heal_room: 'W28S33'
+					   	, heal_room: 'W19S31'
 							, path_rooms:
 							 	{ shard1:
-									{ W21S28: 'W21S27', W21S27: 'W20S27', W20S27: 'W20S28', W20S28: 'W20S29', W20S29: 'W20S30', W20S30: 'shard2'
+									{ W21S28: 'W21S27', W21S27: 'W20S27', W20S27: 'W20S28'
+									, W20S28: 'W20S29', W20S29: 'W20S30', W20S30: 'shard2'
 									, W21S29: 'W20S29'} 
 								, shard2:
 									{ shard1_W20S30: 'W19S30', W19S30: 'W19S31'}
