@@ -3914,7 +3914,7 @@ var config = {
 					}
 				,	shard2:
 					{	rooms:
-						{ W19S31:
+						{ /*W19S31:
 							{ containers: {weight: 203}
 							, towers: {mw:6000000, mr:6000000}
 							, energy_harvesting:
@@ -3951,7 +3951,7 @@ var config = {
 						 	, escape_path:
 								{ W20S30: 'W19S30', W19S30: 'W19S31'}
 								}
-							}//, 
+							}*/
 						}
 					}
 				, shard3:
