@@ -873,6 +873,10 @@ var spawns = {
 						if(Sp6)	spawns.tryCreateCreep(spawn, WORKER[5][M], 5444);
 						if(Sp15)	spawns.tryCreateCreep(spawn, CARIER[6][L], 5441);
 					}
+					
+					if(Sp6 && !All)	spawns.tryCreateCreep(spawn, CLAIMER[2][M], 200);
+					if(Sp6 && !All && Game.time%800 < 100) spawns.tryCreateCreep(spawn, WORKER[7][M], 5414);
+					//if(Sp6 && !All && Game.time%700 < 100) spawns.tryCreateCreep(spawn, CARIER[7][L], 5411);
         }
 
 				if(Game.shard.name == 'shard0') {
