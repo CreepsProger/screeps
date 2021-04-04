@@ -631,9 +631,14 @@ var tasks = {
 			
 			if(creep.memory[role.name].room == creep.pos.roomName &&
 				 creep.memory[role.name].shard == Game.shard.name) {
+				const N3 = !!flags.getFlag('N3') && flags.getFlag('N3').pos.roomName == creep.pos.roomName;
+				if(N3) {
+					return false;
+				}
 				const err = tools.moveTo(creep, creep.room.controller);
 				creep.say((OK == err)?'💈🚚':'💈🚚'+err);
-				if(OK != err && Game.time%10==0) {
+				const range = creep.pos.getRangeTo(creep.room.controller);
+				if(range <= 3) {
 					creep.suicide();
 				}
 			}
