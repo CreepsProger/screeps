@@ -641,8 +641,9 @@ var tasks = {
 					const range = creep.pos.getRangeTo(creep.room.storage);
 					if(range <= 1) {
 						const err = creep.transfer(creep.room.storage,RESOURCE_ENERGY);
-						creep.say((OK == err)?'💡⚰️':'💡'+err);
-						if(OK == err) {
+						creep.say((OK == err)?'💡':'💡'+err);
+						if(creep.store.getFreeCapacity(RESOURCE_ENERGY) == creep.store.getCapacity(RESOURCE_ENERGY)) {
+							creep.say('⚰️');
 							creep.suicide();
 						}
 					}
