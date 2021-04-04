@@ -630,8 +630,13 @@ var tasks = {
 				creep.heal(creep);
 			
 			if(creep.memory[role.name].room == creep.pos.roomName &&
-				 creep.memory[role.name].shard == Game.shard.name)
-				creep.suicide();
+				 creep.memory[role.name].shard == Game.shard.name) {
+				const err = tools.moveTo(creep, creep.room.controller);
+				creep.say((OK == err)?'💈🚚':'💈🚚'+err);
+				if(OK != err && Game.time%10==0) {
+					creep.suicide();
+				}
+			}
 
 			return true;
 		}
