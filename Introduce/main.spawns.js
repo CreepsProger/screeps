@@ -602,9 +602,11 @@ var spawns = {
 						if(Sp6)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5216);
 					}
 					else {
-						if(Sp6 && !All)	spawns.tryCreateCreep(spawn, CLAIMER[4][H], 200);
-						if(Sp6 && !All) spawns.tryCreateCreep(spawn, WORKER[7][L], 204);
-						if(Sp6 && !All && Game.time%1500 < 150) spawns.tryCreateCreep(spawn, CARIER[7][L], 201);
+						if(Sp6 && !All && Game.time%1500 < 200) spawns.tryCreateCreep(spawn, WORKER[7][M], 204);
+						if(Sp6 && !All && Game.time%1500 < 200) spawns.tryCreateCreep(spawn, CARIER[7][L], 201);
+						if(Sp6 && !All && Game.time%1500 < 200) spawns.tryCreateCreep(spawn, WORKER[7][M], 214);
+						if(Sp6 && !All && Game.time%1500 < 200) spawns.tryCreateCreep(spawn, CARIER[7][L], 211);
+						if(Sp6 && !All && Game.time%1500 < 200)	spawns.tryCreateCreep(spawn, CLAIMER[5][H], 210);
 						if(Sp6 && !All) spawns.tryCreateCreep(spawn, CARIER[7][L], 203);
 						if(Sp6)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5214);
 						if(Sp6)	spawns.tryCreateCreep(spawn, CARIER[7][M], 5211);
