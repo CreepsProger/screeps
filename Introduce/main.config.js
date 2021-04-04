@@ -3949,7 +3949,7 @@ var config = {
 									, W21S29: 'W20S29'
 									}
 								, shard2:
-									{ shard1_W20S30: 'W19S30', W19S30: 'W19S31'
+									{ shard1_W20S30: 'W20S30', W20S30: 'W19S30', W19S30: 'W19S31'
 									}
 								}
 							, escape_path:
