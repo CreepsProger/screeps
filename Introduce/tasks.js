@@ -635,6 +635,17 @@ var tasks = {
 				if(N3) {
 					return false;
 				}
+				if(!!creep.room.storage) {
+					const err = tools.moveTo(creep, creep.room.storage);
+					creep.say((OK == err)?'🏨🚚':'🏨🚚'+err);
+					if(range <= 1) {
+						const err = creep.transfer(creep.room.storage,RESOURCE_ENERGY);
+						creep.say((OK == err)?'💡⚰️':'💡'+err);
+						if(OK == err) {
+							creep.suicide();
+						}
+					}
+				}
 				const err = tools.moveTo(creep, creep.room.controller);
 				creep.say((OK == err)?'💈🚚':'💈🚚'+err);
 				const range = creep.pos.getRangeTo(creep.room.controller);
