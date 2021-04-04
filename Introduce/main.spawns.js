@@ -883,8 +883,8 @@ var spawns = {
 						if(Sp6)	spawns.tryCreateCreep(spawn, WORKER[5][M], 5444);
 						if(Sp15)	spawns.tryCreateCreep(spawn, CARIER[6][L], 5441);
 					}
-					
-        }
+					if(Sp6 && !All) spawns.tryCreateCreep(spawn, CARIER[7][L], 203);
+				}
 
 				if(Game.shard.name == 'shard0') {
 					if(false) {
