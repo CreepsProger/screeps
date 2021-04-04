@@ -604,10 +604,10 @@ var spawns = {
 					else {
 						const tm = Math.floor(Game.time%1200 / 200);
 						if(Sp6 && !All && tm == 0) spawns.tryCreateCreep(spawn, WORKER[7][M], 204);
-						if(Sp6 && !All && tm == 1) spawns.tryCreateCreep(spawn,  UPGRADER[M], 205);
+						if(Sp6 && !All && tm == 1) spawns.tryCreateCreep(spawn,  UPGRADER[L], 205);
 						if(Sp6 && !All && tm == 2) spawns.tryCreateCreep(spawn, CARIER[7][L], 203);
 						//if(Sp6 && !All) spawns.tryCreateCreep(spawn, CARIER[7][L], 203);
-						if(Sp6 && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[7][M], 202);
+						if(Sp6 && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[6][S], 202);
 						if(Sp6 && !All && tm == 3) spawns.tryCreateCreep(spawn, CARIER[7][L], 201);
 						if(Sp6 && !All && tm == 4) spawns.tryCreateCreep(spawn,CLAIMER[5][H], 210);
 						if(Sp6 && !All && tm == 5) spawns.tryCreateCreep(spawn, WORKER[7][M], 214);
