@@ -638,6 +638,7 @@ var tasks = {
 				if(!!creep.room.storage) {
 					const err = tools.moveTo(creep, creep.room.storage);
 					creep.say((OK == err)?'🏨🚚':'🏨🚚'+err);
+					const range = creep.pos.getRangeTo(creep.room.storage);
 					if(range <= 1) {
 						const err = creep.transfer(creep.room.storage,RESOURCE_ENERGY);
 						creep.say((OK == err)?'💡⚰️':'💡'+err);
