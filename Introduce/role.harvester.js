@@ -607,7 +607,7 @@ var role = {
 				creep.move(random); // TOP:1 ,..., TOP_LEFT:8
 				// W19S31.202.DP
 				const cDP = flags.getFlag(creep.room.name+'.'+tools.getWeight(creep)+'.DP');
-				if(!cDP) {
+				if(!!cDP && cDP.pos.roomName == creep.room.name && cDP.pos != creep.pos) {
 					const direction = creep.pos.getDirectionTo(cDP.pos);
 					creep.move(direction);
 				}
