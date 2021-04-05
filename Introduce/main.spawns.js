@@ -611,9 +611,9 @@ var spawns = {
 						//if(Sp6 && !All) spawns.tryCreateCreep(spawn, CARIER[7][L], 203);
 						if(Sp6 && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[6][S], 202);
 						if(Sp6 && !All && tm == 3) spawns.tryCreateCreep(spawn, CARIER[7][L], 201);
-						if(Sp6 && !All && tm == 4) spawns.tryCreateCreep(spawn, ATTACKER[11][L], 206);
-						if(Sp6 && !All && tm == 5) spawns.tryCreateCreep(spawn, ATTACKER[11][M], 207);
-						if(Sp6 && !All && tm == 6) spawns.tryCreateCreep(spawn, ATTACKER[11][H], 208);
+						if(Sp6 && !All && tm == 4) spawns.tryCreateCreep(spawn, ATTACKER[13][L], 206);
+						if(Sp6 && !All && tm == 5) spawns.tryCreateCreep(spawn, ATTACKER[13][M], 207);
+						if(Sp6 && !All && tm == 6) spawns.tryCreateCreep(spawn, ATTACKER[13][H], 208);
 						if(Sp6 && !All) spawns.tryCreateCreep(spawn, ATTACKER[11][L], 206);
 						if(Sp6 && !All) spawns.tryCreateCreep(spawn, ATTACKER[11][M], 207);
 						if(Sp6 && !All) spawns.tryCreateCreep(spawn, ATTACKER[11][H], 208);
