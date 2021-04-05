@@ -608,7 +608,8 @@ var role = {
 			}
 
 			if(creep.getActiveBodyparts(ATTACK) > 0) {
-				cash.recycleCreep(creep)
+				cash.recycleCreep(creep) 
+			}
 		}
 		
 		// W19S31.202.DP   
@@ -618,6 +619,7 @@ var role = {
 			const direction = creep.pos.getDirectionTo(cDP.pos);
 			creep.move(direction);
 		}
+		
 	}
 };
 
