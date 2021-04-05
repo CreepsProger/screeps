@@ -159,7 +159,7 @@ module.exports.loop = function () {
 			// W19S31.202.DP   
 			const cDP = flags.getFlag(creep.room.name+'.'+tools.getWeight(creep.name)+'.DP');
 			if(!!cDP && cDP.pos.roomName == creep.room.name &&
-				 cDP.pos != creep.pos && creep.pos.inRangeTo(cDP,5)) {
+				 cDP.pos != creep.pos && creep.pos.inRangeTo(11-cDP.color)) {
 				const direction = creep.pos.getDirectionTo(cDP.pos);
 				creep.move(direction);
 			}
