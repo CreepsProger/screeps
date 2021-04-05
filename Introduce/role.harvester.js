@@ -606,18 +606,17 @@ var role = {
 				const random = Math.floor(Math.random()*8+Game.time)%8+1;
 				creep.move(random); // TOP:1 ,..., TOP_LEFT:8
 			}
-			// W19S31.202.DP   
-			const cDP = flags.getFlag(creep.room.name+'.'+tools.getWeight(creep)+'.DP');
-			if(!!cDP && cDP.pos.roomName == creep.room.name &&
-				 cDP.pos != creep.pos && creep.pos.inRangeTo(cDP,5)) {
-				const direction = creep.pos.getDirectionTo(cDP.pos);
-				creep.move(direction);
-			}
 
 			if(creep.getActiveBodyparts(ATTACK) > 0) {
-				cash.recycleCreep(creep);
-			}
-
+				cash.recycleCreep(creep)
+		}
+		
+		// W19S31.202.DP   
+		const cDP = flags.getFlag(creep.room.name+'.'+tools.getWeight(creep)+'.DP');
+		if(!!cDP && cDP.pos.roomName == creep.room.name &&
+			 cDP.pos != creep.pos && creep.pos.inRangeTo(cDP,5)) {
+			const direction = creep.pos.getDirectionTo(cDP.pos);
+			creep.move(direction);
 		}
 	}
 };
