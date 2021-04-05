@@ -161,6 +161,8 @@ module.exports.loop = function () {
 					 cDP.pos != creep.pos && creep.pos.inRangeTo(5)) {
 					 // cDP.pos != creep.pos && creep.pos.inRangeTo(11-cDP.color)) {
 					const direction = creep.pos.getDirectionTo(cDP.pos);
+					const order = 'move';
+					const err = creep.cancelOrder(order);
 					creep.move(direction);
 				}
 			} // if(!!creep && !creep.spawning)
