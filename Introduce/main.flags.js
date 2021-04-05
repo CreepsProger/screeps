@@ -13,7 +13,7 @@ var flags = {
 	time:0,
 	flags:{},getFlag: function(flagName) {
 		if(flags.flags[flagName] === undefined) {
-			if(Game.flags[flagName].color != COLOR_RED) {
+			if(!!Game.flags[flagName] && Game.flags[flagName].color != COLOR_RED) {
 				flags.flags[flagName] = Game.flags[flagName];
 			}
 		}
