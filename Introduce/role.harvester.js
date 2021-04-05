@@ -612,13 +612,6 @@ var role = {
 			}
 		}
 		
-		// W19S31.202.DP   
-		const cDP = flags.getFlag(creep.room.name+'.'+tools.getWeight(creep.name)+'.DP');
-		if(!!cDP && cDP.pos.roomName == creep.room.name &&
-			 cDP.pos != creep.pos && creep.pos.inRangeTo(cDP,5)) {
-			const direction = creep.pos.getDirectionTo(cDP.pos);
-			creep.move(direction);
-		}
 		
 	}
 };
