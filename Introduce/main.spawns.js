@@ -618,6 +618,7 @@ var spawns = {
 						if(Sp6 && !All) spawns.tryCreateCreep(spawn, ATTACKER[11][M], 207);
 						if(Sp6 && !All) spawns.tryCreateCreep(spawn, ATTACKER[11][H], 208);
 						if(Sp6 && !All) spawns.tryCreateCreep(spawn, ATTACKER[11][S], 204);
+						if(Sp6 && !All) spawns.tryCreateCreep(spawn, WORKER[1][L], 209);
 						
 						if(Sp6 && !All && tm == 4) spawns.tryCreateCreep(spawn,CLAIMER[5][H], 210);
 						if(Sp6 && !All && tm == 5) spawns.tryCreateCreep(spawn, WORKER[7][M], 214);
@@ -894,6 +895,7 @@ var spawns = {
 						if(Sp15)	spawns.tryCreateCreep(spawn, CARIER[6][L], 5441);
 					}
 					if(Sp6 && !All) spawns.tryCreateCreep(spawn, CARIER[7][L], 203);
+						if(Sp6 && !All) spawns.tryCreateCreep(spawn, WORKER[1][L], 209);
 				}
 
 				if(Game.shard.name == 'shard0') {
