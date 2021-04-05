@@ -148,15 +148,22 @@ module.exports.loop = function () {
 					else 
 						claimer.run(creep);
 				}
-				metrix.cpu.creep_time(creep);
-				if(Memory.cpu.creep.t > 0.9*Game.cpu.tickLimit) {
-					console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
+			}
+			metrix.cpu.creep_time(creep);
+			if(Memory.cpu.creep.t > 0.9*Game.cpu.tickLimit) {
+				console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 										, 'tickLimit:'
 										, Game.cpu.tickLimit
 										, JSON.stringify(Memory.cpu));
-				}
 			}
-		}
+			// W19S31.202.DP   
+			const cDP = flags.getFlag(creep.room.name+'.'+tools.getWeight(creep.name)+'.DP');
+			if(!!cDP && cDP.pos.roomName == creep.room.name &&
+				 cDP.pos != creep.pos && creep.pos.inRangeTo(cDP,5)) {
+				const direction = creep.pos.getDirectionTo(cDP.pos);
+				creep.move(direction);
+			}
+		} // try
 		}
 		catch (e) {
 			console.log( '⛔', Math.trunc(Game.time/10000), Game.time%10000
