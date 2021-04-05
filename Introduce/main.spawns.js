@@ -603,6 +603,7 @@ var spawns = {
 					}
 					else {
 						const tm = Math.floor(Game.time%1200 / 200);
+						if(Sp6 && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[1][L], 206);
 						if(Sp6 && !All && tm == 0) spawns.tryCreateCreep(spawn, WORKER[7][M], 204);
 						if(Sp6 && !All && tm == 1) spawns.tryCreateCreep(spawn,  UPGRADER[M], 205);
 						if(Sp6 && !All && tm == 2) spawns.tryCreateCreep(spawn, CARIER[7][L], 203);
