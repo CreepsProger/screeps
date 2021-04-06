@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 637,
+	version: 638,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -3916,7 +3916,52 @@ var config = {
 					}
 				,	shard2:
 					{	rooms:
-						{ W18S31:
+						{ W19S31:
+							{ containers: {weight: 223}
+							, towers: {mw:6000000, mr:6000000}
+							, energy_harvesting:
+							  [ {name: '1', time: 0, min_weight: 220, max_weight: 229}
+								, {name: '2', time: 0, min_weight: 220, max_weight: 229}
+								, {name: '3', time: 0, min_weight: 220, max_weight: 229}
+								, {name: '4', time: 0, min_weight: 220, max_weight: 229}
+								, {name: '5', time: 0, min_weight: 220, max_weight: 229}
+								, {name: '6', time: 0, min_weight: 220, max_weight: 229}
+								, {name: '7', time: 0, min_weight: 220, max_weight: 229}
+								]
+							, claiming:
+							  [ {name: '1', time: 0, min_weight: 220, max_weight: 229}
+								, {name: '2', time: 0, min_weight: 220, max_weight: 229}
+								]
+							, attacker:
+							  [ {name: '1', time: 0, min_weight: 220, max_weight: 229}
+								, {name: '2', time: 0, min_weight: 220, max_weight: 229}
+								, {name: '3', time: 0, min_weight: 220, max_weight: 229}
+								, {name: '4', time: 0, min_weight: 220, max_weight: 229}
+								, {name: '5', time: 0, min_weight: 220, max_weight: 229}
+								, {name: '6', time: 0, min_weight: 220, max_weight: 229}
+								, {name: '7', time: 0, min_weight: 220, max_weight: 229}
+								]
+							,
+							heal_room: 'W19S31'
+							, path_rooms:
+							  { shard1:
+									{ W21S28: 'W21S27', W21S28x:39, W21S27: 'W20S27', W20S27: 'W20S28'
+									, W20S28: 'W20S29', W20S29: 'W20S30', W20S30: 'shard2'
+									, W21S29: 'W20S29'
+									}
+								, shard2:
+									{ shard1_W20S30: 'W20S30', W20S30: 'W19S30', W20S30y:43
+									, W18S30: 'W19S30', W18S30y:22
+									, W19S31: 'W19S30'
+									}
+								}
+							, escape_path:
+								{ W19S30: 'W19S31'
+								, W20S31: 'W19S31'
+								, W18S31: 'W19S31'
+								}
+							},
+						  W18S31:
 							{ containers: {weight: 203}
 							, towers: {mw:6000000, mr:6000000}
 							, energy_harvesting:
@@ -3942,7 +3987,7 @@ var config = {
 								, {name: '7', time: 0, min_weight: 200, max_weight: 209}
 								]
 							,
-							heal_room: 'W18S31'
+							heal_room: 'W19S31'
 							, path_rooms:
 							  { shard1:
 									{ W21S28: 'W21S27', W21S28x:39, W21S27: 'W20S27', W20S27: 'W20S28'
@@ -3951,7 +3996,10 @@ var config = {
 									}
 								, shard2:
 									{ //shard1_W20S30: 'W20S30', W20S30: 'W19S30', W20S30y:43, W19S30: 'W19S31', W19S30x:4
-									 shard1_W20S30: 'W20S30', W20S30: 'W19S30', W20S30y:22, W19S30: 'W18S30', W19S30y:22, W18S30: 'W18S31', W18S30x:13, W18S31: 'W19S31'
+									  shard1_W20S30: 'W20S30', W20S30: 'W19S30', W20S30y:22
+									, W19S30: 'W18S30', W19S30y:22
+									, W18S30: 'W18S31', W18S30x:10
+									, W19S31: 'W18S31'
 									}
 								}
 							, escape_path:
@@ -3992,13 +4040,13 @@ var config = {
 									, W21S29: 'W20S29'
 									}
 								, shard2:
-									{ shard1_W20S30: 'W20S30', W20S30: 'W19S30'
-									, W19S30: 'W19S31'
-									//, W19S30: 'W18S30', W18S30: 'W18S31'
+									{ shard1_W20S30: 'W20S30', W20S30: 'W20S31', W20S31: 'W19S31'
+									, W18S31: 'W19S31'
+									, W19S30: 'W20S30'
 									}
 								}
 							, escape_path:
-								{ W20S30: 'W19S30', W19S30: 'W19S31', W18S31: 'W19S31'
+								{ W19S31: 'W19S30', W19S30: 'W20S30', W20S30: 'W20S31', W20S31: 'W19S30'
 								}
 							}
 						}
