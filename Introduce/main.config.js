@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 642,
+	version: 643,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -3387,7 +3387,8 @@ var config = {
 								, {x:7, y:9, type:STRUCTURE_CONTAINER}
 								]
 							, energy_harvesting:
-								[ {name: '1', time: 0, min_weight: 5320, max_weight: 5329}
+								[ {name: '0', time: 0, min_weight: 5320, max_weight: 5329}
+								, {name: '1', time: 0, min_weight: 5320, max_weight: 5329}
 								, {name: '2', time: 0, min_weight: 5320, max_weight: 5329}
 								, {name: '3', time: 0, min_weight: 5320, max_weight: 5329}
 								, {name: '4', time: 0, min_weight: 5320, max_weight: 5329}
@@ -3402,6 +3403,11 @@ var config = {
 								, {name: '2', time: 0, min_weight: 5320, max_weight: 5329}
 								, {name: '3', time: 0, min_weight: 5320, max_weight: 5329}
 								, {name: '4', time: 0, min_weight: 5320, max_weight: 5329}
+								, {name: '5', time: 0, min_weight: 5320, max_weight: 5329}
+								, {name: '6', time: 0, min_weight: 5320, max_weight: 5329}
+								, {name: '7', time: 0, min_weight: 5320, max_weight: 5329}
+								, {name: '8', time: 0, min_weight: 5320, max_weight: 5329}
+								, {name: '9', time: 0, min_weight: 5320, max_weight: 5329}
 								]
 							, heal_room:
 								{ shard: 'shard1', room: 'W27S26'}
