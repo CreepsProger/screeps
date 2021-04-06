@@ -11,13 +11,18 @@ var last_game_time_created_creep = 0;
 var flags = {
 
 	time:0,
-	flags:{},getFlag: function(flagName) {
-		if(flags.flags[flagName] === undefined) {
-			if(!!Game.flags[flagName] && Game.flags[flagName].color != COLOR_RED) {
-				flags.flags[flagName] = Game.flags[flagName];
-			}
+	flags:{},
+	getFlag: function(flagName) {
+		if(!!Game.flags[flagName] && Game.flags[flagName].color != COLOR_RED) {
+			return Game.flags[flagName];
 		}
-		return flags.flags[flagName];
+		return undefined;
+// 		if(flags.flags[flagName] === undefined) {
+// 			if(!!Game.flags[flagName] && Game.flags[flagName].color != COLOR_RED) {
+// 				flags.flags[flagName] = Game.flags[flagName];
+// 			}
+// 		}
+// 		return flags.flags[flagName];
 	},
 	
 	getPassConfig: function(roomName) {
