@@ -154,7 +154,8 @@ var role = {
 						console.log('Go to my heal room:', JSON.stringify({n:creep.memory.n, my_pos:creep.pos, my_heal_room: my_heal_room, shouldBeHealled: shouldBeHealled, canAttack: canAttack, canAttack2: canAttack2}));
 					}
 				}
-				const StopHereFlag = flags.getFlag('Stop attackers in this room');
+
+				const StopHereFlag = flags.getFlag(creep.room.name+'.Stop_attackers_in_this_room');
 				const StopHere = (!!StopHereFlag && (StopHereFlag.pos.roomName == this_room));
 				if(!target &&
 					 this_room != my_room &&
@@ -360,7 +361,7 @@ var role = {
 					}
 				}
 
-				const DP1 = flags.flags.DP1;
+				const DP1 = (!!flags.getFlag(creep.room.name + '.DP1'))? flags.getFlag(creep.room.name + '.NA'):flags.getFlag('DP1');
 				if(!target && !!DP1 &&
 					 (DP1.pos.roomName == my_room || (!!StopHereFlag && StopHereFlag.pos.roomName == DP1.pos.roomName && DP1.pos.roomName == this_room )) &&
 					creep.pos.getRangeTo(DP1.pos)>1 ) {
@@ -368,7 +369,7 @@ var role = {
 					target = DP1.pos;
 				}
 
-				const DP2 = flags.flags.DP2;
+				const DP2 = (!!flags.getFlag(creep.room.name + '.DP2'))? flags.getFlag(creep.room.name + '.NA'):flags.getFlag('DP2');
 				if(!target && !!DP2 && 
 					 (DP2.pos.roomName == my_room || (!!StopHereFlag && StopHereFlag.pos.roomName == DP2.pos.roomName && DP2.pos.roomName == this_room)) && 
 					 creep.pos.getRangeTo(DP2.pos)>1 ) {
