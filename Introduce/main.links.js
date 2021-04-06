@@ -142,7 +142,7 @@ var links = {
      //shard1
 		 // W21S29
 		 , { from: '606c0103e4f71a7dc14b0add', to: '606bf19c11a48494f0af712b'}
-		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { pass: '606bf19c11a48494f0af712b', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W21S23
@@ -311,7 +311,7 @@ var links = {
 
    run: function() {
 		 links.links.forEach(function(link) {
-			 const from = Game.getObjectById(link.from);
+			 const from = (!!link.from)? Game.getObjectById(link.from):(!!link.pass)? Game.getObjectById(link.pass):undefined;
 			 const to = Game.getObjectById(link.to);
 			 if(!!from && !!to &&
 				  !!from.store && from.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
