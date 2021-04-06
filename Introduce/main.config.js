@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 646,
+	version: 647,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -3955,7 +3955,8 @@ var config = {
 							heal_room: 'W18S31'
 							, path_rooms:
 							  { shard1:
-									{ W21S28: 'W21S27', W21S28x:39, W21S27: 'W20S27', W20S27: 'W20S28'
+									{ W21S29: 'W20S29'
+									, W21S28: 'W21S27', W21S28x:39, W21S27: 'W20S27', W20S27: 'W20S28'
 									, W20S28: 'W20S29', W20S29: 'W20S30', W20S30: 'shard2'
 									, W21S29: 'W20S29'
 									}
@@ -3998,7 +3999,8 @@ var config = {
 							heal_room: 'W19S31'
 							, path_rooms:
 							  { shard1:
-									{ W21S28: 'W21S27', W21S28x:39, W21S27: 'W20S27', W20S27: 'W20S28'
+									{ W21S29: 'W20S29'
+									, W21S28: 'W21S27', W21S28x:39, W21S27: 'W20S27', W20S27: 'W20S28'
 									, W20S28: 'W20S29', W20S29: 'W20S30', W20S30: 'shard2'
 									, W21S29: 'W20S29'
 									}
@@ -4044,7 +4046,8 @@ var config = {
 							heal_room: 'W19S31'
 							, path_rooms:
 							  { shard1:
-									{ W21S28: 'W21S27', W21S28x:39, W21S27: 'W20S27', W20S27: 'W20S28'
+									{ W21S29: 'W20S29'
+									, W21S28: 'W21S27', W21S28x:39, W21S27: 'W20S27', W20S27: 'W20S28'
 									, W20S28: 'W20S29', W20S29: 'W20S30', W20S30: 'shard2'
 									, W21S29: 'W20S29'
 									}
