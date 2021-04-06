@@ -39,7 +39,7 @@ const power = {
 					.forEach(function(powerSpawn,i) {
 					const roomName = powerSpawn.pos.roomName;
 					const conf = power.getConfig(roomName,pcName);
-					if(!!conf && !!conf.spawn) {
+					if(!!conf && !conf.nospawn) {
 						const err = pc.spawn(powerSpawn);
 						if(err != OK) {
 							console.log('🔴👨‍🚒⚠️', Math.trunc(Game.time/10000), Game.time%10000
