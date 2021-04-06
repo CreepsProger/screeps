@@ -236,7 +236,7 @@ var role = {
 					}
 				}
 
-				const NA = (!!flags.getFlag(creep.room.name + '.NA'))? flags.getFlag(creep.room.name + '.NA'):flags.getFlag('NA');
+				const NA = flags.getFlag(creep.room.name + '.NA');
 				if(!target && canAttack && !NA) {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 5);
 					if(targets.length > 0) {
