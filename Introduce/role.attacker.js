@@ -296,17 +296,16 @@ var role = {
 				
 				var range = 50;
 
-				const A2 = flags.flags.A2;
+				const A2 = (!!flags.getFlag(creep.room.name + '.A2'))? flags.getFlag(creep.room.name + '.A2'):flags.getFlag('A2');
 				if(!target && !!A2) {
-					//console.log('A2', creep, 'this_room:', this_room, 'range', range, 'A2:', JSON.stringify(A2));
-					if(A2.pos.roomName == this_room) {
-						range = 5*A2.color;
-						if(Game.time % constants.TICKS_TO_CHECK_CREEPS_NUMBER == 0) {
+					//console.log('A2', creep, 'this_room:', this_room, 'range', range, 'A2:', JSON.stringify(A2))
+					range = 5*(A2.color-1);
+					if(Game.time % constants.TICKS_TO_CHECK_CREEPS_NUMBER == 0) {
 						//console.log('A2', creep, 'this_room:', this_room, 'range', range, 'A2:', JSON.stringify(A2));
-						}
 					}
 				}
 
+				const NA = (!!flags.getFlag(creep.room.name + '.NA'))? flags.getFlag(creep.room.name + '.NA'):flags.getFlag('NA');
 				if(!target && canAttack && !NA) {
 					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, range);
 					if(targets.length > 0) {
