@@ -140,9 +140,14 @@ var links = {
 		 , { from: '606823b8dd93327f2408915c', to: '6067de588c32091c95fdd798'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
      //shard1
+		 // W21S29
+		 , { from: '606c0103e4f71a7dc14b0add', to: '606bf19c11a48494f0af712b'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W21S23
-		 , { from: '6061f22a51e6a6c279b13ca3', to: '6061dc24f65aff38d39a2f2a'}
-		 , { from: '6064ac3c5ef9140dd1186216', to: '6061dc24f65aff38d39a2f2a'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W29S29
