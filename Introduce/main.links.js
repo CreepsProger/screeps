@@ -313,7 +313,7 @@ var links = {
 
    run: function() {
 		 links.links.forEach(function(link) {
-			 const from = Game.getObjectById(link.to);
+			 const from = Game.getObjectById(link.from);
 			 const to = Game.getObjectById(link.to);
 			 if(!!from && !!to &&
 				  !!from.store && from.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
