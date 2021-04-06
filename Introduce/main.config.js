@@ -4042,7 +4042,7 @@ var config = {
 									{ shard1_W20S30: 'W20S30', W20S30: 'W19S30', W20S30y:22
 									, W19S30: 'W18S30', W19S30y:22
 									, W18S30: 'W18S31', W18S30x:10
-									, W19S30: 'W19S31', W19S31: 'W18S31'
+									, W20S31: 'W19S31', W19S31: 'W18S31'
 									}
 								}
 							, escape_path:
