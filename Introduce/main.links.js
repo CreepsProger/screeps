@@ -281,7 +281,7 @@ var links = {
 					 return !!link && link.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 						 			creep.pos.inRangeTo(link, 7) &&
 									!!links.links.find((ft) => ft.from == link.id &&
-																		 (!link.nofrom_iffull || Game.getObjectById(link.nofrom_iffull).store.getFreeCapacity(RESOURCE_ENERGY) > 0 )) && 
+																		 (!link.nofrom_iffull || Game.getObjectById(link.nofrom_iffull).store.getFreeCapacity(RESOURCE_ENERGY) > 100 )) && 
 						 			tools.checkTarget(executer,link.id);
 				 }
 			 );
@@ -303,7 +303,7 @@ var links = {
 		 var link_objs = cash.getLinks(creep.room).filter( (l) => {
 				 return !!l && l.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 				 				!!links.links.find((ft) => ft.to == l.id &&
-																	 (!l.noto_ifnotfull || Game.getObjectById(l.noto_ifnotfull).store.getFreeCapacity(RESOURCE_ENERGY) == 0 )) &&
+																	 (!l.noto_ifnotfull || Game.getObjectById(l.noto_ifnotfull).store.getFreeCapacity(RESOURCE_ENERGY) < 100 )) &&
 				 				tools.checkTarget(executer,l.id);
 		   }
 		 );
