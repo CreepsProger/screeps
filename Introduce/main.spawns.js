@@ -227,8 +227,8 @@ var spawns = {
 					],
 	TRANSPORT: [ [     0,      0,      0]  // 0  000
 					, [ 500000000000106,    201,    402]  // 1  
-					, [  2525,   3216,   3317, 4010, 500000000002025]  // 7 5600
-					, [ 200000003002025,          5002025, 400000006003010 ]  // 8 12900
+					, [  2525,   3216,   3317, 4010, 500000000002025]  // 2 5600
+					, [ 100000001002325,  200000003002025, 400000006003010 ]  // 3 12900
 					, [ 500000010000116,  0, 0 ]  // 9 12900
 					// TTClRrAaHhWwCcMm  TTClRrAaHhWwCcMm TTClRrAaHhWwCcMm
 					],
@@ -897,7 +897,7 @@ var spawns = {
 						if(Sp16)	spawns.tryCreateCreep(spawn, CARIER[6][L], 5441);
 					}
 					if(Sp6 && !All) spawns.tryCreateCreep(spawn, WORKER[1][L], 209);
-					if(Sp6 && !All) spawns.tryCreateCreep(spawn, CARIER[7][L], 203);
+					if(Sp6 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 203);
 					if(Sp15 && !All) spawns.tryCreateCreep(spawn, CARIER[6][L], 203);
 				}
 
