@@ -340,10 +340,10 @@ var flags = {
 				,     XU: Game.flags['XU']			// eXtraUpgrade
 				,      C: Game.flags['C']				// Claim the room
 				,    NAT: Game.flags['NAT']			// towers don't attack
-//				,     NA: flags.getFlag('NA')		// don't attack
-				,     A2: Game.flags['A2']			// attack only in range = 5*A2.color
-				,    DP1: Game.flags['DP1']			// defence point 1
-				,    DP2: Game.flags['DP2']			// defence point 2
+//				,     NA: flags.getFlag('NA')		use W19S31.NA // don't attack
+//				,     A2: Game.flags['A2']			use W19S31.A2 // attack only in range = 5*A2.color
+//				,    DP1: Game.flags['DP1']			use W19S31.DP1 // defence point 1
+//				,    DP2: Game.flags['DP2']			use W19S31.DP2 // defence point 2
 				,      R: Game.flags['R']				// repair only this pos
 				,     RR: Game.flags['RR']			// repair only this pos by repairer
 				,    RR1: Game.flags['RR1']			// repair only this pos by repairer
