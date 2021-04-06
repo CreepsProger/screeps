@@ -141,9 +141,9 @@ var links = {
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
      //shard1
 		 // W21S29
-		 , { from: '606c0103e4f71a7dc14b0add', to: '606bf19c11a48494f0af712b'}
-		 , { pass: '606bf19c11a48494f0af712b', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
-		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: '606c0103e4f71a7dc14b0add', to: '606bf19c11a48494f0af712b', full: '606bf19c11a48494f0af712b'}
+		 , { from: '606bf19c11a48494f0af712b', to: 'bbbbbbbbbbbbbbbbbbbbbbbb', full: '606bf19c11a48494f0af712b'}
+		 , { from: '606c0103e4f71a7dc14b0add', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W21S23
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
@@ -278,7 +278,8 @@ var links = {
 			 var link_objs = cash.getLinks(creep.room).filter( (link) => {
 					 return !!link && link.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
 						 			creep.pos.inRangeTo(link, 7) &&
-									!!links.links.find((ft) => ft.from == link.id) &&
+									!!links.links.find((ft) => ft.from == link.id &&
+																		 (!ft.full || Game.getObjectById(ft.full).store.getFreeCapacity(RESOURCE_ENERGY) > 0 )) && 
 						 			tools.checkTarget(executer,link.id);
 				 }
 			 );
@@ -299,7 +300,8 @@ var links = {
 		 var link;
 		 var link_objs = cash.getLinks(creep.room).filter( (l) => {
 				 return !!l && l.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-				 				!!links.links.find((ft) => ft.to == l.id) &&
+				 				!!links.links.find((ft) => ft.to == l.id &&
+																	 (!ft.full || Game.getObjectById(ft.full).store.getFreeCapacity(RESOURCE_ENERGY) == 0 )) &&
 				 				tools.checkTarget(executer,l.id);
 		   }
 		 );
@@ -311,7 +313,7 @@ var links = {
 
    run: function() {
 		 links.links.forEach(function(link) {
-			 const from = (!!link.from)? Game.getObjectById(link.from):(!!link.pass)? Game.getObjectById(link.pass):undefined;
+			 const from = Game.getObjectById(link.to);
 			 const to = Game.getObjectById(link.to);
 			 if(!!from && !!to &&
 				  !!from.store && from.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
