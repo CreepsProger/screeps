@@ -303,7 +303,7 @@ var links = {
 		 var link_objs = cash.getLinks(creep.room).filter( (l) => {
 				 return !!l && l.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
 				 				!!links.links.find((ft) => ft.to == l.id &&
-																	 (!ft.noto_ifnotfull || Game.getObjectById(ft.full).store.getFreeCapacity(RESOURCE_ENERGY) == 0 )) &&
+																	 (!ft.noto_ifnotfull || Game.getObjectById(ft.noto_ifnotfull).store.getFreeCapacity(RESOURCE_ENERGY) == 0 )) &&
 				 				tools.checkTarget(executer,l.id);
 		   }
 		 );
