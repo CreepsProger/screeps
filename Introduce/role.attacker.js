@@ -77,7 +77,7 @@ var role = {
 				const Attacker = attack_count > 0;
 				const attacker = attack_count > 0;
 				const canAttack = (creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK) > attack_count/2) &&
-							(!flags.getFlag('canAttack if tough>50%') || (creep.getActiveBodyparts(TOUGH) + creep.getActiveBodyparts(TOUGH) > tough_count/2));
+							(!flags.getFlag(creep.room.name + '.canAttack_if_tough>50%') || (creep.getActiveBodyparts(TOUGH) + creep.getActiveBodyparts(TOUGH) > tough_count/2));
 				const canAttack2 = creep.getActiveBodyparts(RANGED_ATTACK) + creep.getActiveBodyparts(ATTACK);
 				const heal_count = creep.body.reduce((p,c) => p += (c.type == HEAL),0);
 				const Healler = !Attacker && heal_count > 0;
