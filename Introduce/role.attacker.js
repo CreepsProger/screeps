@@ -360,15 +360,15 @@ var role = {
 					}
 				}
 
-				const DP1 = (!!flags.getFlag(creep.room.name + '.DP1'))? flags.getFlag(creep.room.name + '.NA'):flags.getFlag('DP1');
+				const DP1 = flags.getFlag(creep.room.name + '.NA');
 				if(!target && !!DP1 &&
 					 (DP1.pos.roomName == my_room || (!!StopHereFlag && StopHereFlag.pos.roomName == DP1.pos.roomName && DP1.pos.roomName == this_room )) &&
 					creep.pos.getRangeTo(DP1.pos)>1 ) {
-					// console.log('DP1', 'this_room:', this_room, 'DP1:', JSON.stringify(DP1));
+					console.log('DP1', 'this_room:', this_room, 'DP1:', JSON.stringify(DP1));
 					target = DP1.pos;
 				}
 
-				const DP2 = (!!flags.getFlag(creep.room.name + '.DP2'))? flags.getFlag(creep.room.name + '.NA'):flags.getFlag('DP2');
+				const DP2 = flags.getFlag(creep.room.name + '.NA');
 				if(!target && !!DP2 && 
 					 (DP2.pos.roomName == my_room || (!!StopHereFlag && StopHereFlag.pos.roomName == DP2.pos.roomName && DP2.pos.roomName == this_room)) && 
 					 creep.pos.getRangeTo(DP2.pos)>1 ) {
