@@ -360,7 +360,7 @@ var role = {
 					}
 				}
 
-				const DP1 = flags.getFlag(creep.room.name + '.NA');
+				const DP1 = flags.getFlag(creep.room.name + '.DP1');
 				if(!target && !!DP1 &&
 					 (DP1.pos.roomName == my_room || (!!StopHereFlag && StopHereFlag.pos.roomName == DP1.pos.roomName && DP1.pos.roomName == this_room )) &&
 					creep.pos.getRangeTo(DP1.pos)>1 ) {
@@ -368,7 +368,7 @@ var role = {
 					target = DP1.pos;
 				}
 
-				const DP2 = flags.getFlag(creep.room.name + '.NA');
+				const DP2 = flags.getFlag(creep.room.name + '.DP2');
 				if(!target && !!DP2 && 
 					 (DP2.pos.roomName == my_room || (!!StopHereFlag && StopHereFlag.pos.roomName == DP2.pos.roomName && DP2.pos.roomName == this_room)) && 
 					 creep.pos.getRangeTo(DP2.pos)>1 ) {
