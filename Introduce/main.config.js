@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 639,
+	version: 640,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -1854,8 +1854,8 @@ var config = {
 								[ {x:20, y:27, type:STRUCTURE_CONTAINER}
 								]
 							, energy_harvesting:
-								[ {name: '1', time: 0, min_weight: 780, max_weight: 789}
-								, {name: '2', time: 0, min_weight: 780, max_weight: 789}
+								[ {name: '1', time: 0, min_weight: 640, max_weight: 649}
+								, {name: '2', time: 0, min_weight: 640, max_weight: 649}
 								, {name: '3', time: 0, min_weight: 780, max_weight: 789}
 								, {name: '4', time: 0, min_weight: 780, max_weight: 789}
 								, {name: '5', time: 0, min_weight: 780, max_weight: 789}
@@ -1864,11 +1864,11 @@ var config = {
 								, {name: '8', time: 0, min_weight: 780, max_weight: 789}
 								]
 							, claiming:
-								[ {name: '1', time: 0, min_weight: 780, max_weight: 789}
+								[ {name: '1', time: 0, min_weight: 640, max_weight: 649}
 								, {name: '2', time: 0, min_weight: 780, max_weight: 789}
 								]
 							, attacker:
-								[ {name: '1', time: 0, min_weight: 780, max_weight: 789}
+								[ {name: '1', time: 0, min_weight: 640, max_weight: 649}
 								, {name: '2', time: 0, min_weight: 780, max_weight: 789}
 								, {name: '3', time: 0, min_weight: 780, max_weight: 789}
 								, {name: '4', time: 0, min_weight: 780, max_weight: 789}
