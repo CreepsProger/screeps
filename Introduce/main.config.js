@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 657,
+	version: 658,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -3931,7 +3931,19 @@ var config = {
 						}
 					}
 				,	shard2:
-					{	rooms:
+					{	defaults:
+						{ containers: {weight: 2000}
+						, towers: {mw:6000000, mr:6000000}
+						, heal_room:
+							{ shard: 'shard0', room: 'W19S31'}
+						, path_rooms:
+							{ W20S30: 'W20S31', W20S31: 'W19S31'
+							}
+							, escape_path:
+							{ W20S30: 'W20S31', W20S31: 'W19S31'
+							}
+						},
+						rooms:
 						{ W19S31:
 							{ containers: {weight: 203}
 							, towers: {mw:6000000, mr:6000000}
