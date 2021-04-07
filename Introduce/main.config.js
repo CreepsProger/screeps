@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 656,
+	version: 657,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -257,6 +257,8 @@ var config = {
 			return null;
 
 		const my_shard_config = config.Memory.shards[my_shard];
+		const my_shard_defaults = my_shard_config.defaults;
+		const my_path_room_defaults = my_shard_defaults.path_room ;
 		// if(Game.shard.name == 'shard0') {
 		// 	creep.memory[role_name].shard = Game.shard.name;
 		// 	console.log(creep, role_name, JSON.stringify({this_room:this_room, my_room:my_room, my_shard:my_shard, my_shard_config:my_shard_config}));
@@ -265,7 +267,7 @@ var config = {
 		const path_rooms = my_room_config.path_rooms;
 		const path_rooms_by_shard = path_rooms[Game.shard.name];
 		const path_rooms2 = !!path_rooms_by_shard?path_rooms_by_shard:path_rooms;
-		const my_path_room = path_rooms2[this_room];
+		const my_path_room = !!path_rooms2[this_room]?path_rooms2[this_room]:my_path_room_defaults[this_room];
 		if(!my_path_room || (tools.getWeight(creep.name) % 10 == 3 && Game.time%17 == 0) ) {
 			console.log(creep, role_name, JSON.stringify({this_room:this_room, my_path_room:my_path_room, path_rooms2:path_rooms2}));
 		}
