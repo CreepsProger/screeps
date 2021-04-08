@@ -128,7 +128,7 @@ var links = {
 		 , { from: '60601b8507732f3d96e827b6', to: '606610369118fc6dd0f053d4'}
 		 // W57S56
 		 , { from: '60649984bdf9e1aa7c1c715e', to: '6064cbe20e1ec265977c7945'}
-		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: '606c5f01e970ce547bde8f77', to: '6064cbe20e1ec265977c7945'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W52S54
