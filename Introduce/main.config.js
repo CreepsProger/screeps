@@ -1817,7 +1817,8 @@ var config = {
 							{ containers: {weight: 773}
 							, towers: {mw:600000, mr:600000}
 							, sites:
-								[ //{x:37, y:30, type:STRUCTURE_CONTAINER}
+								[ {x:18, y:11, type:STRUCTURE_CONTAINER}
+								, {x:8, y:15, type:STRUCTURE_CONTAINER} 
 								]
 							, energy_harvesting:
 								[ {name: '1', time: 0, min_weight: 770, max_weight: 779}
