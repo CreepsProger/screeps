@@ -1155,9 +1155,9 @@ var spawns = {
 							if(Sp12)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 677);
 						}
 						else {
-							if(Sp12)	spawns.tryCreateCreep(spawn, WORKER[5][H], 674);
-							if(Sp12)	spawns.tryCreateCreep(spawn, CARIER[5][H], 671);
-							if(Sp12)	spawns.tryCreateCreep(spawn, WORKER[5][H], 675);
+							if(Sp12)	spawns.tryCreateCreep(spawn, WORKER[6][H], 674);
+							if(Sp12)	spawns.tryCreateCreep(spawn, CARIER[6][H], 671);
+							if(Sp12)	spawns.tryCreateCreep(spawn, WORKER[6][H], 675);
 //							if(Sp12)	spawns.tryCreateCreep(spawn,  UPGRADER[L], 675);
 						}
 						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W51S54')) {
