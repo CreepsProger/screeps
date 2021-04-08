@@ -138,6 +138,8 @@ var links = {
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W54S57
 		 , { from: '606823b8dd93327f2408915c', to: '6067de588c32091c95fdd798'}
+		 , { from: '606e6efb3b6b3f035a63453e', to: '6067de588c32091c95fdd798'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
      //shard1
 		 // W21S29
