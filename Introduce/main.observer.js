@@ -44,18 +44,21 @@ const observer = {
 			if(!od_room.deposit) {
 				od_room.deposit = room.find(FIND_DEPOSITS, { filter: (d) => tools.nvl(d.ticksToDecay,0) > 2000});
 				od_room.deposit.timeToDecay = Game.time + od_room.deposit.ticksToDecay;
+				console.log('👀🌀⚠️', Math.trunc(Game.time/10000), Game.time%10000
+														 , JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
 			}
 			else if(od_room.deposit.timeToDecay < Game.time) {
 				od_room.deposit = undefined;
 			}
+				console.log('👀🌀⚠️', Math.trunc(Game.time/10000), Game.time%10000
+														 , JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
+
 			if(!od_room.power) {
 				od_room.power = room.find(FIND_HOSTILE_STRUCTURES, { filter: (hs) => hs.structureType == STRUCTURE_POWER_BANK});
 			}
 			else if(od_room.power.timeToDecay < Game.time) {
 				od_room.power = undefined;
 			}
-			console.log('👀🌀⚠️', Math.trunc(Game.time/10000), Game.time%10000
-													 , JSON.stringify({main:'observedRoom', roomName:roomName, od_room:od_room, room:room}));
 		});
 	}
 };
