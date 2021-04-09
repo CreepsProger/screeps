@@ -10,7 +10,7 @@ const observer = {
 		return config.getObserverConfig(roomName);
 	}
 	
-	, deposits: {}, 
+	, rooms: {}, 
 	
 	depositExists: function(roomName) {
 		return false;
