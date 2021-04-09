@@ -11,6 +11,32 @@ const cash = require('cash');
 
 var tasks = {
 	
+	goToMyRoom: function(creep,symbol) {
+			const role = {name:constants.ROLE_ENERGY_HARVESTING}; 
+			if(creep.memory[role.name] === undefined ||
+					 creep.memory[role.name].v === undefined ||
+					 creep.memory[role.name].v != config.version) {
+					creep.memory[role.name] = { v: config.version
+																, on: false
+																, room: creep.room.name
+																, shard: Game.shard.name
+																};
+				config.setRoom(creep, role.name);
+			}
+			var target;
+			if(creep.memory[role.name].room != creep.pos.roomName ||
+				 creep.memory[role.name].shard != Game.shard.name) {
+				const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
+				const err = tools.moveTo(creep, target);
+				console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify( { tasks:'onRun.harvest_deposit', creep:creep.name
+																				, room:creep.room.name, target:target
+																				, err:err, role:creep.memory[role.name] }));
+				creep.say((OK == err)?'🔜'+symbol:'🔜'+symbol+err);
+				return true;
+			}
+	},
+
 	getRepairTarget: function(creep) {
 		var target;
 		
@@ -631,6 +657,48 @@ var tasks = {
 					}
 					else {
 						const err = tools.moveTo(creep, deposit);
+						creep.say((OK == err)?'🔜▣':'🔜▣'+err);
+						return true;
+					}
+				}
+			}
+			tools.dontGetInWay(creep);
+			const range = creep.pos.getRangeTo(target);
+			if(range > 1) {
+				tools.moveTo(creep,target);
+			}
+			return true;
+		}
+		if((type == 1 && modification == 1) ||
+			 (type == 1 && modification != 1 && flags.getFlag('1->1/1') && flags.getFlag('1->1/1').pos.roomName == creep.room.name ) ) {
+			if(tasks.goToMyRoom(creep,'▣'))
+				return true;
+			else {
+				const my_usefull_creep = creep.pos.find(FIND_MY_CREEPS)
+																					.filter((mc) => !mc.store && tools.getRoomId(mc) == tools.getRoomId(creep))
+																					.map((e) => ( e.UsedCapacyty = e.store.getCapacyty(RESOURCE_ENERGY) - e.store.getFreeCapacyty(RESOURCE_ENERGY)
+													  													, e.Distance = e.pos.getRangeTo(creep)
+																											, e.Usefull = Math.floor(e.UsedCapacyty/e.Distance)
+																											, e)
+																					.sort((l,r) => r.Usefull - l.Usefull)
+																					.shift();
+				const deposit = creep.pos.findClosestByPath(FIND_DEPOSITS);
+				console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
+												, JSON.stringify( { tasks:'onRun.out_deposit_mineral', creep:creep.name
+																				, room:creep.room.name, my_usefull_creep:my_usefull_creep}));
+				if(my_usefull_creep === undefined) {
+					creep.say('🔜▣⚰️'+Game.time%100);
+					if(Game.time%1000 == 0) {
+						creep.suicide();
+					}
+				}
+				else {
+					const err = creep.harvest(my_usefull_creep);
+					if(err != ERR_NOT_IN_RANGE) {
+						creep.say((OK == err)?'▣':'▣'+err);
+					}
+					else {
+						const err = tools.moveTo(creep, my_usefull_creep);
 						creep.say((OK == err)?'🔜▣':'🔜▣'+err);
 						return true;
 					}
