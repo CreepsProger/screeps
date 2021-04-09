@@ -619,10 +619,10 @@ var tasks = {
 					if(!!sot) {
 						if(creep.store.getUsedCapacity('G') + creep.store.getFreeCapacity('G') < 1000) {
 							const resources = Object.keys(creep.store);
-							var err = OK;
+							var err2 = OK;
 							resources.forEach(function(resource,i) {
-								if(err == OK && resource != 'G') {
-									err = creep.transfer(sot, resource);
+								if(err2 == OK && resource != 'G') {
+									err2 = creep.transfer(sot, resource);
 								}
 							});
 						}
