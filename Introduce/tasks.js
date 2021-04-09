@@ -655,31 +655,26 @@ var tasks = {
 				return true;
 			else {
 				const my_usefull_creep = creep.pos.find(FIND_MY_CREEPS)
-																					.filter((mc) => !mc.store && tools.getRoomId(mc) == tools.getRoomId(creep))
+																					.filter((mc) => !!mc.store && tools.getRoomId(mc) == tools.getRoomId(creep))
 																					.map((e) => ( e.UsedCapacyty = e.store.getCapacyty(RESOURCE_ENERGY) - e.store.getFreeCapacyty(RESOURCE_ENERGY)
 													  													, e.Distance = e.pos.getRangeTo(creep)
 																											, e.Usefull = Math.floor(e.UsedCapacyty/e.Distance)
 																											, e))
 																					.sort((l,r) => r.Usefull - l.Usefull)
 																					.shift();
-				const deposit = creep.pos.findClosestByPath(FIND_DEPOSITS);
 				console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
 												, JSON.stringify( { tasks:'onRun.out_deposit_mineral', creep:creep.name
 																				, room:creep.room.name, my_usefull_creep:my_usefull_creep}));
 				if(my_usefull_creep === undefined) {
-					creep.say('🔜▣⚰️'+Game.time%100);
+					creep.say('🔜▣🗑⚰️'+Game.time%1000);
 					if(Game.time%1000 == 0) {
 						creep.suicide();
 					}
 				}
 				else {
-					const err = creep.harvest(my_usefull_creep);
-					if(err != ERR_NOT_IN_RANGE) {
-						creep.say((OK == err)?'▣':'▣'+err);
-					}
-					else {
+					if(creep.pos.getRangeTo(my_usefull_creep) > 1) {
 						const err = tools.moveTo(creep, my_usefull_creep);
-						creep.say((OK == err)?'🔜▣':'🔜▣'+err);
+						creep.say((OK == err)?'🔜▣🗑':'🔜▣🗑'+err);
 						return true;
 					}
 				}
