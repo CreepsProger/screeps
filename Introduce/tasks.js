@@ -616,11 +616,11 @@ var tasks = {
 			else {
 				console.log('☂🏛', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { tasks:'onRun.generateSafeMode', creep:creep.name
-																				, room:creep.room.name, store:creep.store}));
-				if(creep.store.getUsedCapacity('G') < 1000) {
+																				, room:creep.room.name, store:creep.store, G:creep.store.getUsedCapacity('G')}));
+				if(tools.nvl(creep.store.getUsedCapacity('G'),0) < 1000) {
 					const sot = tools.getStorageOrTerminal(creep);
 					if(!!sot) {
-						if(creep.store.getUsedCapacity('G') + creep.store.getFreeCapacity('G') < 1000) {
+						if(tools.nvl(creep.store.getUsedCapacity('G'),0) + creep.store.getFreeCapacity('G') < 1000) {
 							const resources = Object.keys(creep.store);
 							var err2 = OK;
 							resources.forEach(function(resource,i) {
