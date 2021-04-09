@@ -584,8 +584,65 @@ var tasks = {
 				}
 			}
 		}
+		
 		const type = tools.getWeight(creep.name) % 10;
 		const modification = tools.getMod(creep.name);//tools.getMod('creep-<5014/1>-16w16c16m-158110');
+		
+		if((type == 4 && modification == 1) ||
+			 (type == 4 && modification != 1 && flags.getFlag('4->4/1') && flags.getFlag('4->4/1').pos.roomName == creep.room.name ) ) {
+			const role = {name:constants.ROLE_ENERGY_HARVESTING}; 
+			if(creep.memory[role.name] === undefined ||
+					 creep.memory[role.name].v === undefined ||
+					 creep.memory[role.name].v != config.version) {
+					creep.memory[role.name] = { v: config.version
+																, on: false
+																, room: creep.room.name
+																, shard: Game.shard.name
+																};
+				config.setRoom(creep, role.name);
+			}
+			var target;
+			if(creep.memory[role.name].room != creep.pos.roomName ||
+				 creep.memory[role.name].shard != Game.shard.name) {
+				const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
+				const err = tools.moveTo(creep, target);
+				console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify( { tasks:'onRun.harvest_deposit', creep:creep.name
+																				, room:creep.room.name, target:target
+																				, err:err, role:creep.memory[role.name] }));
+				creep.say((OK == err)?'🔜▣':'🔜▣'+err);
+				return true;
+			}
+			else {
+				const deposit = creep.pos.findClosestByPath(FIND_DEPOSITS);
+				console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
+												, JSON.stringify( { tasks:'onRun.harvest_deposit', creep:creep.name
+																				, room:creep.room.name, deposit:deposit}));
+				if(deposit === undefined) {
+					creep.say('🔜▣⚰️'+Game.time%100);
+					if(Game.time%100 == 0) {
+						creep.suicide();
+					}
+				}
+				else {
+					const err = creep.harvest(deposit);
+					if(err != ERR_NOT_IN_RANGE) {
+						creep.say((OK == err)?'▣':'▣'+err);
+					}
+					else {
+						const err = tools.moveTo(creep, deposit);
+						creep.say((OK == err)?'🔜▣':'🔜▣'+err);
+						return true;
+					}
+				}
+			}
+			tools.dontGetInWay(creep);
+			const range = creep.pos.getRangeTo(target);
+			if(range > 1) {
+				tools.moveTo(creep,target);
+			}
+			return true;
+		}
 		if((type == 1 && modification == 1) ||
 			 (type == 3 && modification == 1) ||
 			 (type == 1 && modification != 1 && flags.getFlag('1->1/1') && flags.getFlag('1->1/1').pos.roomName == creep.room.name ) ||
