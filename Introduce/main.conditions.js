@@ -73,8 +73,11 @@ const conditions = {
 																		  return to_spawn;}
 	, TO_EXTRA_UPGRADE:			function(total_energy) {
 																			return Game.cpu.bucket > constants.CPU_BUCKET_TO_EXTRA_UPGRADE &&
-															total_energy > constants.TOTAL_ENERGY_TO_EXTRA_UPGRADE;}
-
+																								total_energy > constants.TOTAL_ENERGY_TO_EXTRA_UPGRADE;}
+	, TO_SPAWN_DEPOSIT_HARVESTER:	function(roomName) {
+																			const room = Game.rooms[roomName];
+																			if(!room) return false;
+																			return 	room.find(FIND_DEPOSITS, { filter: (d) => tools.nvl(d.ticksToDecay,0) > 2000}).length > 0;}
 };
 
 
