@@ -901,6 +901,7 @@ var spawns = {
 
 					if(conditions.TO_SPAWN_DEPOSIT_HARVESTER('W30S29')) {
 						if(Sp1 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5464, 1);
+						if(Sp1 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][L], 5461, 1);
 					}
 
 					if(Sp6 && !All) spawns.tryCreateCreep(spawn, WORKER[1][L], 209);
