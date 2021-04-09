@@ -659,7 +659,7 @@ var tasks = {
 																					.map((e) => ( e.UsedCapacyty = e.store.getCapacyty(RESOURCE_ENERGY) - e.store.getFreeCapacyty(RESOURCE_ENERGY)
 													  													, e.Distance = e.pos.getRangeTo(creep)
 																											, e.Usefull = Math.floor(e.UsedCapacyty/e.Distance)
-																											, e)
+																											, e))
 																					.sort((l,r) => r.Usefull - l.Usefull)
 																					.shift();
 				const deposit = creep.pos.findClosestByPath(FIND_DEPOSITS);
