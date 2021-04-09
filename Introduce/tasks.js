@@ -722,8 +722,23 @@ var tasks = {
 					creep.say((OK == err)?'🏨🚚':'🏨🚚'+err);
 					const range = creep.pos.getRangeTo(creep.room.storage);
 					if(range <= 1) {
-						const err = creep.transfer(creep.room.storage,RESOURCE_ENERGY);
-						creep.say((OK == err)?'💡':'💡'+err);
+						const resources = Object.keys(creep.store);
+						var err2 = OK;
+						resources.forEach(function(resource,i) {
+							if(err2 == OK) {
+								err2 = creep.transfer(creep.room.storage, resource);
+							}
+						});
+						if(err != ERR_NOT_IN_RANGE) {
+							creep.say((OK == err)?'💎':'💎'+err);
+						}
+						else {
+							const err = tools.moveTo(creep, creep.room.storage);
+							creep.say((OK == err2)?'🔜💎':'🔜💎'+err);
+						}
+
+// 						const err = creep.transfer(creep.room.storage,RESOURCE_ENERGY);
+						creep.say((OK == err)?'💎':'💎'+err);
 						if(creep.store.getFreeCapacity(RESOURCE_ENERGY) == creep.store.getCapacity(RESOURCE_ENERGY)) {
 							creep.say('⚰️');
 							creep.suicide();
