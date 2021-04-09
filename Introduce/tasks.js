@@ -656,9 +656,9 @@ var tasks = {
 			else {
 				const my_usefull_creep = creep.room.find(FIND_MY_CREEPS)
 																					.filter((mc) => !!mc.store && tools.getRoomId(mc.name) == tools.getRoomId(creep.name))
-																					.map((e) => ( e.UsedCapacyty = e.store.getCapacyty(RESOURCE_ENERGY) - e.store.getFreeCapacyty(RESOURCE_ENERGY)
+																					.map((e) => ( e.UsedCapacity = e.store.getCapacity(RESOURCE_ENERGY) - e.store.getFreeCapacity(RESOURCE_ENERGY)
 													  													, e.Distance = e.pos.getRangeTo(creep)
-																											, e.Usefull = Math.floor(e.UsedCapacyty/e.Distance)
+																											, e.Usefull = Math.floor(e.UsedCapacity/e.Distance)
 																											, e))
 																					.sort((l,r) => r.Usefull - l.Usefull)
 																					.shift();
