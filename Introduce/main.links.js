@@ -150,8 +150,8 @@ var links = {
 		 //, { from: '606bf19c11a48494f0af712b', to: '606c5c0a4f9c9e8416e2b3e4', nofrom_iffull: '606c5c0a4f9c9e8416e2b3e4'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W21S23
-		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
-		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: '606f7f098216f827c8a44e5b', to: '606fa2fc9280265695c48bff'}
+		 , { from: '606f7d9abd683277d48f9da2', to: '606fa2fc9280265695c48bff'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W29S29
