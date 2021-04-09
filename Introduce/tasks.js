@@ -962,17 +962,17 @@ var tasks = {
 					if(!!sot) {
 						const err = creep.withdraw(sot,'G');
 						if(err != ERR_NOT_IN_RANGE) {
-							creep.say((OK == err)?'Ğ':'Ğ'+err);
+							creep.say((OK == err)?'☁':'☁'+err);
 						}
 						else {
 							const err = tools.moveTo(creep, sot);
-							creep.say((OK == err)?'🔜Ğ':'🔜Ğ'+err);
+							creep.say((OK == err)?'🔜☁':'🔜☁'+err);
 						}
 					}
 					return true;
 				}
 				target = creep.room.controller;
-				const err = creep.upgradeController(target);
+				const err = creep.generateSafeMode(target);
 				if(err != ERR_NOT_IN_RANGE) {
 					creep.say((OK == err)?'☂🏛':'☂🏛'+err);
 				}
