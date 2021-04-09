@@ -617,19 +617,18 @@ var tasks = {
 				console.log('☂🏛', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify( { tasks:'onRun.generateSafeMode', creep:creep.name
 																				, room:creep.room.name, store:creep.store, G:creep.store.getUsedCapacity('G')}));
-				if(tools.nvl(creep.store.getUsedCapacity('G'),0) < 1000) {
+				if(creep.store.getUsedCapacity('G') < 1000) {
 					const sot = tools.getStorageOrTerminal(creep);
 					if(!!sot) {
-						if(tools.nvl(creep.store.getUsedCapacity('G'),0) + creep.store.getFreeCapacity('G') < 1000) {
-							const resources = Object.keys(creep.store);
+						if(creep.store.getUsedCapacity('G') + creep.store.getFreeCapacity('G') < 1000) {
 							var err2 = OK;
-							resources.forEach(function(resource,i) {
+							Object.keys(creep.store).forEach(function(resource,i) {
 								if(err2 == OK && resource != 'G') {
 									err2 = creep.transfer(sot, resource);
 								}
 							});
 							if(err != ERR_NOT_IN_RANGE) {
-								creep.say((OK == err)?'☁²':'☁²'+err);
+								creep.say((OK == err2)?'☁²':'☁²'+err2);
 							}
 							else {
 								const err = tools.moveTo(creep, sot);
