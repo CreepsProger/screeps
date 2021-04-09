@@ -625,6 +625,13 @@ var tasks = {
 									err2 = creep.transfer(sot, resource);
 								}
 							});
+							if(err != ERR_NOT_IN_RANGE) {
+								creep.say((OK == err)?'☁²':'☁²'+err);
+							}
+							else {
+								const err = tools.moveTo(creep, sot);
+								creep.say((OK == err2)?'🔜☁²':'🔜☁²'+err);
+							}
 						}
 						else {
 							const err = creep.withdraw(sot,'G');
