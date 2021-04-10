@@ -3989,10 +3989,6 @@ var config = {
 								, {name: '8', time: 0, min_weight: 5460, max_weight: 5469}
 								, {name: '9', time: 0, min_weight: 5460, max_weight: 5469}
 								]
-							, claiming:
-							 	[ {name: '1', time: 0, min_weight: 5460, max_weight: 5469}
-								, {name: '2', time: 0, min_weight: 5460, max_weight: 5469}
-								]
 							, attacker:
 								[ {name: '1', time: 0, min_weight: 5460, max_weight: 5469}
 								, {name: '2', time: 0, min_weight: 5460, max_weight: 5469}
