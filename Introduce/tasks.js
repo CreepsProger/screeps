@@ -658,6 +658,7 @@ var tasks = {
 					if(err2 != ERR_NOT_IN_RANGE) {
 						creep.say((OK == err2)?'▣→🚚':'▣→🚚'+err2);
 					}
+				}
 			}
 // 			tools.dontGetInWay(creep);
 			const range = creep.pos.getRangeTo(target);
