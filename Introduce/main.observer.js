@@ -39,7 +39,9 @@ const observer = {
 		
 		Object.keys(observer.rooms).filter((roomName) => observer.rooms[roomName].lst_time == Game.time)
 									.forEach(function(roomName,i) {
+
 			const od_room = observer.rooms[roomName];
+
 			if(!od_room.deposit || !od_room.deposit.obj) {
 				const room = Game.rooms[roomName];
 				const obj = room.find(FIND_DEPOSITS)
