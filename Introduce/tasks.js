@@ -667,10 +667,12 @@ var tasks = {
 						return true;
 					}
 				}
-				if(Game.time % 10 == 0 && creep.store.getCapacity(RESOURCE_ENERGY) != creep.store.getFreeCapacity(RESOURCE_ENERGY)) {
+				if(Game.time % 1 == 0 && creep.store.getCapacity(RESOURCE_ENERGY) != creep.store.getFreeCapacity(RESOURCE_ENERGY)) {
 					const my_usefull_carier =
 								creep.pos.findInRange(FIND_MY_CREEPS, 1)
-													.filter((mc) => !!mc.store && mc.name != creep.name && tools.getRoomId(mc.name) == tools.getRoomId(creep.name))
+													.filter((mc) => !!mc.store && mc.name != creep.name &&
+																					!mc.getActiveBodyparts(WORK) &&
+																					tools.getRoomId(mc.name) == tools.getRoomId(creep.name))
 													.sort((l,r) => l.store.getFreeCapacity(RESOURCE_ENERGY) - r.store.getFreeCapacity(RESOURCE_ENERGY))
 													.shift();
 					var err2 = OK;
