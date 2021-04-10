@@ -683,7 +683,7 @@ var spawns = {
 							if(Sp10)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5257);
 						}
 					}
-					else {
+					else if(Game.cpu.bucket >= 5001) {
 						if(Sp10)	spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5256);
 						if(Sp10)	spawns.tryCreateCreep(spawn, WORKER[7][S+1], 5254);
 						if(Sp10)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 5251);
@@ -694,7 +694,7 @@ var spawns = {
 							if(Sp7)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5267);
 						}
 					}
-					else {
+					else if(Game.cpu.bucket >= 5501) {
 						if(Sp7)	spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5266);
 						if(Sp7)	spawns.tryCreateCreep(spawn, WORKER[7][S+1], 5264);
 						if(Sp7)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 5261);
@@ -713,7 +713,7 @@ var spawns = {
 							if(Sp11 || Sp12)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5288);
 						}
 					}
-					else {
+					else if(Game.cpu.bucket >= 6001) {
 						if(Sp12)	spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5288);
 						if(Sp12)	spawns.tryCreateCreep(spawn, WORKER[7][S+1], 5284);
 						if(Sp12)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 5281);
@@ -760,7 +760,7 @@ var spawns = {
 							if(Sp13)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5327);
 						}
 					}
-					else {
+					else if(Game.cpu.bucket >= 6501) {
 						if(Sp13)	spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5326);
 						if(Sp13)	spawns.tryCreateCreep(spawn, WORKER[7][S+1], 5324);
 						if(Sp13)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 5321);
@@ -820,7 +820,7 @@ var spawns = {
 							if(Sp14)	spawns.tryCreateCreep(spawn, ATTACKER[11][S], 5459);
 						}
 					}
-					else {
+					else if(Game.cpu.bucket >= 7001) {
 						if(Sp14)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5456);
 						if(Sp14)	spawns.tryCreateCreep(spawn,  WORKER[7][S+1], 5454);
             if(Sp14)	spawns.tryCreateCreep(spawn,  CARIER[7][L], 5451);
