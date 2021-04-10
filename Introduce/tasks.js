@@ -745,14 +745,12 @@ var tasks = {
 																		, e))
 												.sort((l,r) => r.Usefull - l.Usefull)
 												.shift();
-				console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
-												, JSON.stringify( { tasks:'onRun.out_deposit_mineral', creep:creep.name
-																						, room:creep.room.name, my_usefull_creep:my_usefull_creep}));
-				if(my_usefull_creep === undefined) {
+				if(my_usefull_creep === undefined || my_usefull_creep.UsedCapacity == 0) {
 					creep.say('🔜▣🗑⚰️'+Game.time%1000);
 					if(Game.time%1000 == 0) {
 						creep.suicide();
 					}
+					return false;
 				}
 				else {
 					if(creep.pos.getRangeTo(my_usefull_creep) > 1) {
