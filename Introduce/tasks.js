@@ -643,6 +643,21 @@ var tasks = {
 						return true;
 					}
 				}
+				if(Game.time % 1 == 0 && creep.store.getCapacity(RESOURCE_ENERGY) != creep.store.getFreeCapacity(RESOURCE_ENERGY)) {
+					const my_usefull_carier =
+								creep.pos.findInRange(FIND_MY_CREEPS, 1)
+													.filter((mc) => !!mc.store && mc.name != creep.name && tools.getRoomId(mc.name) == tools.getRoomId(creep.name))
+													.sort((l,r) => l.store.getFreeCapacity(RESOURCE_ENERGY) - r.store.getFreeCapacity(RESOURCE_ENERGY))
+													.shift();
+					var err2 = OK;
+					Object.keys(creep.store).forEach(function(resource,i) {
+						if(err2 == OK) {
+							err2 = creep.transfer(my_usefull_carier, resource);
+						}
+					});
+					if(err2 != ERR_NOT_IN_RANGE) {
+						creep.say((OK == err2)?'▣→🚚':'▣→🚚'+err2);
+					}
 			}
 // 			tools.dontGetInWay(creep);
 			const range = creep.pos.getRangeTo(target);
