@@ -667,7 +667,7 @@ var tasks = {
 						return true;
 					}
 				}
-				if(Game.time % 1 == 0 && creep.store.getCapacity(RESOURCE_ENERGY) != creep.store.getFreeCapacity(RESOURCE_ENERGY)) {
+				if(Game.time % 10 == 0 && creep.store.getCapacity(RESOURCE_ENERGY) != creep.store.getFreeCapacity(RESOURCE_ENERGY)) {
 					const my_usefull_carier =
 								creep.pos.findInRange(FIND_MY_CREEPS, 1)
 													.filter((mc) => !!mc.store && mc.name != creep.name && tools.getRoomId(mc.name) == tools.getRoomId(creep.name))
@@ -730,7 +730,23 @@ var tasks = {
 							(creep.store.getFreeCapacity(RESOURCE_ENERGY) < 100) ) ) {
 					if(tasks.goToEscapeRoom(creep,'▣→🏦'))
 						return true;
-					return false;
+					
+					const sot = tools.getStorageOrTerminal(creep);
+					if(!!sot) {
+						var err = OK;
+						Object.keys(creep.store).forEach(function(resource,i) {
+							if(err == OK) {
+								err = creep.transfer(sot, resource);
+							}
+						});
+						if(err != ERR_NOT_IN_RANGE) {
+							creep.say((OK == err)?'▣→🏦':'▣→🏦'+err);
+						}
+						else {
+							err = tools.moveTo(creep, sot);
+							creep.say((OK == err)?'🔜▣→🏦':'🔜▣→🏦'+err);
+						}
+					}
 				}
 			}
 			tools.dontGetInWay(creep);
