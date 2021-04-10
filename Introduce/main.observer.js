@@ -41,7 +41,7 @@ const observer = {
 									.forEach(function(roomName,i) {
 			const od_room = observer.rooms[roomName];
 			const room = Game.rooms[roomName];
-			if(!od_room.deposit && !od_room.deposit.obj) {
+			if(!od_room.deposit || !od_room.deposit.obj)) {
 				const obj = room.find(FIND_DEPOSITS, { filter: (d) => tools.nvl(d.ticksToDecay,0) > 2000});
 				if(!!obj) {
 					od_room.deposit = {obj:obj, id:obj.id};
