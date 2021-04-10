@@ -42,7 +42,7 @@ const observer = {
 			const od_room = observer.rooms[roomName];
 			const room = Game.rooms[roomName];
 			if(!od_room.deposit || !od_room.deposit.obj) {
-				const obj = room.find(FIND_DEPOSITS, { filter: (d) => tools.nvl(d.ticksToDecay,0) > 2000});
+				const obj = room.find(FIND_DEPOSITS, { filter: (d) => tools.nvl(d.ticksToDecay,0) > 2000}).shift();
 				if(!!obj) {
 					od_room.deposit = {obj:obj, id:obj.id};
 					od_room.deposit.timeToDecay = Game.time + obj.ticksToDecay;
