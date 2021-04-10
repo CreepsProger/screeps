@@ -52,7 +52,7 @@ const observer = {
 			}
 			else {
 				od_room.deposit.obj = Game.getObjectById(od_room.deposit.id);
-				od_room.deposit.timeToDecay = Game.time + obj.ticksToDecay;
+				od_room.deposit.timeToDecay = Game.time + od_room.deposit.obj.ticksToDecay;
 				if(od_room.deposit.timeToDecay < Game.time) {
 					od_room.deposit = undefined;
 				}
