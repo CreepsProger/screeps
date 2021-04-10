@@ -643,7 +643,7 @@ var tasks = {
 					}
 				}
 			}
-			tools.dontGetInWay(creep);
+// 			tools.dontGetInWay(creep);
 			const range = creep.pos.getRangeTo(target);
 			if(range > 1) {
 				tools.moveTo(creep,target);
