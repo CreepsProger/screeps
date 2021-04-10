@@ -51,7 +51,7 @@ var tasks = {
 		const my_shard = creep.memory[role.name].shard;
 		const my_shard_config = config.Memory.shards[my_shard];
 		const my_room_config = my_shard_config.rooms[my_room];
-		const my_heal_room = my_room_config.heal_room;//'W25S33';
+		const my_heal_room = my_room_config.heal_room.room;//'W25S33';
 		const my_next_escape_room = my_room_config.escape_path[this_room];
 
 		console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
