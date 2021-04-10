@@ -620,10 +620,11 @@ var tasks = {
 			if(tasks.goToMyRoom(creep,'▣'))
 				return true;
 			else {
-				const deposit = creep.pos.findClosestByPath(FIND_DEPOSITS);
+				const od_deposit = observer.getDeposit(creep.room.name);
+				const deposit = !!od_deposit? od_deposit.obj:undefined;
 				console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
 												, JSON.stringify( { tasks:'onRun.harvest_deposit', creep:creep.name
-																				, room:creep.room.name, deposit:deposit}));
+																					, room:creep.room.name, deposit:deposit}));
 				if(deposit === undefined) {
 					creep.say('🔜▣⚰️'+Game.time%100);
 					if(Game.time%100 == 0) {
