@@ -304,20 +304,8 @@ var spawns = {
 						, [           250025,           340017,           400010] //1
 						, [ 2800000000160006,  0,  0] //2
 						],//TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
-
-	tryCreateCreepForDeposit: function(spawn) {
-			console.log('✒️', Math.trunc(Game.time/10000), Game.time%10000
-									, 'tryCreateCreepForDeposit by spawn:', spawn.name, ' '
-									, JSON.stringify(spawn));
- 		if(Game.cpu.bucket >= 5000) {
-			const base_weight = observer.shouldSpawnForDeposit(spawn);
-			if(base_weight > 0) {
-				spawns.tryCreateCreep(spawn, spawns.WORKER[7][M], base_weight+4);
-				spawns.tryCreateCreep(spawn, spawns.CARIER[7][L], base_weight+1);
-			}
- 		}
-	},
-
+	
+	
 	run: function() {
 
     const Nspawns = Object.keys(Game.spawns).length;
@@ -904,7 +892,7 @@ var spawns = {
 						if(Sp16)	spawns.tryCreateCreep(spawn, CARIER[6][L], 5441);
 					}
 
-					if(observer.shouldSpawnForDeposit('W30S29')) {
+					if(Game.cpu.bucket >= 5000 && observer.shouldSpawnForDeposit('W30S29')) {
 						if(Sp1 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5464, 2);
 						if(Sp1 && !All)	spawns.tryCreateCreep(spawn, CARIER[3][L], 5461, 2);
 					}
@@ -1413,7 +1401,7 @@ var spawns = {
 						}
 					}
 				}
-				spawns.tryCreateCreepForDeposit(spawn);
+
 			}
 
 			if(spawn.spawning) {
