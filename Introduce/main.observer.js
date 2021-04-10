@@ -14,7 +14,7 @@ const observer = {
 	
 	getDeposit: function(roomName) {
 		const od_room = observer.rooms[roomName];
-		return od_room.deposit;
+		return !!od_room? od_room.deposit:undefined;
 	},
 	
 	shouldSpawnForDeposit: function(roomName) {
