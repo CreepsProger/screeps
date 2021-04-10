@@ -13,29 +13,53 @@ const cash = require('cash');
 var tasks = {
 	
 	goToMyRoom: function(creep,symbol) {
-			const role = {name:constants.ROLE_ENERGY_HARVESTING}; 
-			if(creep.memory[role.name] === undefined ||
-					 creep.memory[role.name].v === undefined ||
-					 creep.memory[role.name].v != config.version) {
-					creep.memory[role.name] = { v: config.version
+		const role = {name:constants.ROLE_ENERGY_HARVESTING}; 
+		if(creep.memory[role.name] === undefined ||
+			 creep.memory[role.name].v === undefined ||
+			 creep.memory[role.name].v != config.version) {
+			creep.memory[role.name] = { v: config.version
 																, on: false
 																, room: creep.room.name
 																, shard: Game.shard.name
 																};
-				config.setRoom(creep, role.name);
-			}
-			var target;
-			if(creep.memory[role.name].room != creep.pos.roomName ||
-				 creep.memory[role.name].shard != Game.shard.name) {
-				const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
-				const err = tools.moveTo(creep, target);
-				console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
-													, JSON.stringify( { tasks:'onRun.harvest_deposit', creep:creep.name
-																				, room:creep.room.name, target:target
-																				, err:err, role:creep.memory[role.name] }));
-				creep.say((OK == err)?'🔜'+symbol:'🔜'+symbol+err);
-				return true;
-			}
+			config.setRoom(creep, role.name);
+		}
+		if(creep.memory[role.name].room != creep.pos.roomName ||
+			 creep.memory[role.name].shard != Game.shard.name) {
+			const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
+			const err = tools.moveTo(creep, target);
+			creep.say((OK == err)?'🔜'+symbol:'🔜'+symbol+err);
+			return true;
+		}
+	},
+	
+	goToEscapeRoom: function(creep,symbol) {
+		const role = {name:constants.ROLE_ENERGY_HARVESTING}; 
+		if(creep.memory[role.name] === undefined ||
+			 creep.memory[role.name].v === undefined ||
+			 creep.memory[role.name].v != config.version) {
+			creep.memory[role.name] = { v: config.version
+																, on: false
+																, room: creep.room.name
+																, shard: Game.shard.name
+																};
+			config.setRoom(creep, role.name);
+		}
+		const this_room = creep.room.name;
+		const my_room = creep.memory[role.name].room;
+		const my_shard = creep.memory[role.name].shard;
+		const my_shard_config = config.Memory.shards[my_shard];
+		const my_room_config = my_shard_config.rooms[my_room];
+		const my_heal_room = my_room_config.heal_room;//'W25S33';
+		const my_next_escape_room = my_room_config.escape_path[this_room];
+		
+		if(my_next_escape_room != creep.pos.roomName) {
+			const exit = creep.room.findExitTo(my_next_escape_room);
+			const target = creep.pos.findClosestByPath(exit);
+			const err = tools.moveTo(creep, target);
+			creep.say((OK == err)?'🔜'+symbol:'🔜'+symbol+err);
+			return true;
+		}
 	},
 
 	getRepairTarget: function(creep) {
@@ -667,22 +691,25 @@ var tasks = {
 			}
 			return true;
 		}
+
 		if((type == 1 && modification == 2) ||
 			 (type == 1 && modification != 2 && flags.getFlag('1->1/2') && flags.getFlag('1->1/2').pos.roomName == creep.room.name ) ) {
-			if(tasks.goToMyRoom(creep,'▣'))
-				return true;
-			else {
-				const my_usefull_creep = creep.room.find(FIND_MY_CREEPS)
-																					.filter((mc) => !!mc.store && mc.name != creep.name && tools.getRoomId(mc.name) == tools.getRoomId(creep.name))
-																					.map((e) => ( e.UsedCapacity = e.store.getCapacity(RESOURCE_ENERGY) - e.store.getFreeCapacity(RESOURCE_ENERGY)
-													  													, e.Distance = e.pos.getRangeTo(creep)
-																											, e.Usefull = Math.floor(e.UsedCapacity/e.Distance)
-																											, e))
-																					.sort((l,r) => r.Usefull - l.Usefull)
-																					.shift();
+			if(creep.store.getCapacity(RESOURCE_ENERGY) == creep.store.getFreeCapacity(RESOURCE_ENERGY)) {
+				if(tasks.goToMyRoom(creep,'▣'))
+					return true;
+				
+				const my_usefull_creep =
+							creep.room.find(FIND_MY_CREEPS)
+												.filter((mc) => !!mc.store && mc.name != creep.name && tools.getRoomId(mc.name) == tools.getRoomId(creep.name))
+												.map((e) => ( e.UsedCapacity = e.store.getCapacity(RESOURCE_ENERGY) - e.store.getFreeCapacity(RESOURCE_ENERGY)
+																		, e.Distance = e.pos.getRangeTo(creep)
+																		, e.Usefull = Math.floor(e.UsedCapacity/e.Distance)
+																		, e))
+												.sort((l,r) => r.Usefull - l.Usefull)
+												.shift();
 				console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
 												, JSON.stringify( { tasks:'onRun.out_deposit_mineral', creep:creep.name
-																				, room:creep.room.name, my_usefull_creep:my_usefull_creep}));
+																						, room:creep.room.name, my_usefull_creep:my_usefull_creep}));
 				if(my_usefull_creep === undefined) {
 					creep.say('🔜▣🗑⚰️'+Game.time%1000);
 					if(Game.time%1000 == 0) {
@@ -697,13 +724,19 @@ var tasks = {
 					}
 				}
 			}
-			tools.dontGetInWay(creep);
-			const range = creep.pos.getRangeTo(target);
-			if(range > 1) {
-				tools.moveTo(creep,target);
+			else {
+				if(	Game.time % 1 == 0 &&
+					 (	(creep.store.getCapacity(RESOURCE_ENERGY) != creep.store.getFreeCapacity(RESOURCE_ENERGY) && creep.ticksToLive < 500) ||
+							(creep.store.getFreeCapacity(RESOURCE_ENERGY) < 100) ) ) {
+					if(tasks.goToEscapeRoom(creep,'▣→🏦'))
+						return true;
+					return false;
+				}
 			}
+			tools.dontGetInWay(creep);
 			return true;
 		}
+
 		if((type == 1 && modification == 1) ||
 			 (type == 3 && modification == 1) ||
 			 (type == 1 && modification != 1 && flags.getFlag('1->1/1') && flags.getFlag('1->1/1').pos.roomName == creep.room.name ) ||
