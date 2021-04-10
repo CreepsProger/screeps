@@ -53,7 +53,7 @@ var tasks = {
 		const my_heal_room = my_room_config.heal_room;//'W25S33';
 		const my_next_escape_room = my_room_config.escape_path[this_room];
 		
-		if(my_next_escape_room != creep.pos.roomName) {
+		if(my_heal_room != creep.pos.roomName) {
 			const exit = creep.room.findExitTo(my_next_escape_room);
 			const target = creep.pos.findClosestByPath(exit);
 			const err = tools.moveTo(creep, target);
