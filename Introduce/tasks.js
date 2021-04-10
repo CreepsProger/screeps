@@ -54,9 +54,9 @@ var tasks = {
 		const my_heal_room = my_room_config.heal_room.room;//'W25S33';
 		const my_next_escape_room = my_room_config.escape_path[this_room];
 
-		console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
-										, JSON.stringify( { tasks:'goToEscapeRoom', creep:creep.name
-																			, room:creep.room.name, this_room:this_room, my_heal_room:my_heal_room}));
+// 		console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
+// 										, JSON.stringify( { tasks:'goToEscapeRoom', creep:creep.name
+// 																			, room:creep.room.name, this_room:this_room, my_heal_room:my_heal_room}));
 
 		if(my_heal_room != creep.room.name) {
 			const exit = creep.room.findExitTo(my_next_escape_room);
@@ -711,9 +711,6 @@ var tasks = {
 					return true;
 
 				const sot = tools.getStorageOrTerminal(creep);
-				console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
-												, JSON.stringify( { tasks:'onRun.delevery_deposit', creep:creep.name
-																					, room:creep.room.name, store:creep.store, sot:sot}));
 				if(!!sot) {
 					var err = OK;
 					Object.keys(creep.store).forEach(function(resource,i) {
@@ -723,6 +720,11 @@ var tasks = {
 					});
 					if(err != ERR_NOT_IN_RANGE) {
 						creep.say((OK == err)?'▣→🏦':'▣→🏦'+err);
+						if(OK == err) {
+							console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
+															, JSON.stringify( { tasks:'onRun.delevery_deposit', creep:creep.name
+																								, room:creep.room.name, store:creep.store, sot:sot}));
+						}
 					}
 					else {
 						err = tools.moveTo(creep, sot);
