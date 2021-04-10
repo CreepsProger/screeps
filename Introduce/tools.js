@@ -44,6 +44,10 @@ var tools = {
 	},
 
 	time: {
+		harvest: {
+			deposit:{},
+			power:{}
+		},
 		power: {
 			ops:{},
 			factory:{},
