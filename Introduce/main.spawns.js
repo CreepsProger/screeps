@@ -241,13 +241,17 @@ var spawns = {
 					, [ 70707,  90909, 120408]  // 5 1800
 					, [130911, 140711, 160410, 111111]  // 6 2300
 					, [201020, 161616, 250817, 400206, 200525, 151025]  // 7 5600
-					, [201216, 153005, 250025, 400010, 151515]  // 8
+					, [201216, 153005, 250025, 400010 ]  // 8
 					, [0, 81612, 201317, 0, 0]  // 9
 					],
 
 	UPGRADER: [ 151515,           201020, 250817
 						, 301505,  500000005011021  // 0  000
 						 //        TTClRrAaHhWwCcMm
+						],
+	
+	DEPOSITER: [ 240224, 320216  // 0  000
+						 // TTClRrAaHhWwCcMm
 						],
 
 	ATTACKER: [ [                 0,                0,                0]  // 0  000
@@ -421,6 +425,7 @@ var spawns = {
 				const TRANSPORT = spawns.TRANSPORT;
 				const WORKER = spawns.WORKER;
 				const UPGRADER = spawns.UPGRADER;
+				const DEPOSITER = spawns.DEPOSITER;
 				const ATTACKER = spawns.ATTACKER;
 				const HEALER = spawns.HEALER;
 				const CLAIMER = spawns.CLAIMER;
@@ -900,8 +905,8 @@ var spawns = {
 					}
 
 					if(observer.shouldSpawnForDeposit('W30S29')) {
-						if(Sp1 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5464, 2);
-						if(Sp1 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5461, 2);
+						if(Sp1 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5464, 2);
+						if(Sp1 && !All)	spawns.tryCreateCreep(spawn, CARIER[3][L], 5461, 2);
 					}
 
 					if(Sp6 && !All) spawns.tryCreateCreep(spawn, WORKER[1][L], 209);
