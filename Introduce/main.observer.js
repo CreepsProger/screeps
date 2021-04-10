@@ -69,7 +69,7 @@ const observer = {
 				const room = Game.rooms[roomName];
 				const obj = room.find(FIND_HOSTILE_STRUCTURES)
 												.filter((hs) => hs.structureType == STRUCTURE_POWER_BANK &&
-																				tools.nvl(d.ticksToDecay,0) > 5000)
+																				tools.nvl(hs.ticksToDecay,0) > 5000)
 												.shift();
 				if(!!obj) {
 					od_room.power = {obj:obj, id:obj.id};
