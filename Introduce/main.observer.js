@@ -33,7 +33,7 @@ const observer = {
 					observer.rooms[o_room].lst_time = Game.time+1;
 					if(err != OK) {
 						console.log('👀🌀⚠️', Math.trunc(Game.time/10000), Game.time%10000
-												, JSON.stringify({main:'observeRoom', room:o.room.name, o_room:o_room, err:err, o_rooms:o_rooms, observer:o}));
+																 , JSON.stringify({main:'observeRoom', room:o.room.name, o_room:o_room, err:err, o_rooms:o_rooms, observer:o}));
 					}
 		});
 		
@@ -41,18 +41,27 @@ const observer = {
 									.forEach(function(roomName,i) {
 			const od_room = observer.rooms[roomName];
 			const room = Game.rooms[roomName];
-			if(!od_room.deposit) {
-				od_room.deposit = room.find(FIND_DEPOSITS, { filter: (d) => tools.nvl(d.ticksToDecay,0) > 2000});
-				od_room.deposit.timeToDecay = Game.time + od_room.deposit.ticksToDecay;
-				console.log('👀🌀⚠️', Math.trunc(Game.time/10000), Game.time%10000
-														 , JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
+			if(!od_room.deposit && !od_room.deposit.obj) {
+				const obj = room.find(FIND_DEPOSITS, { filter: (d) => tools.nvl(d.ticksToDecay,0) > 2000});
+				if(!!obj) {
+					od_room.deposit = {obj:obj, id:obj.id};
+					od_room.deposit.timeToDecay = Game.time + obj.ticksToDecay;
+					console.log('👀🌀⚠️', Math.trunc(Game.time/10000), Game.time%10000
+															 , JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
+				}
 			}
-			else if(od_room.deposit.timeToDecay < Game.time) {
-				od_room.deposit = undefined;
+			else {
+				od_room.deposit.obj = Game.getObjectById(od_room.deposit.id);
+				od_room.deposit.timeToDecay = Game.time + obj.ticksToDecay;
+				if(od_room.deposit.timeToDecay < Game.time) {
+					od_room.deposit = undefined;
+				}
+				if(Game.time%10 == 0) {
+					console.log('👀🌀⚠️', Math.trunc(Game.time/10000), Game.time%10000
+										 					 , JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
+				}
 			}
-				console.log('👀🌀⚠️', Math.trunc(Game.time/10000), Game.time%10000
-														 , JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
-
+			
 			if(!od_room.power) {
 				od_room.power = room.find(FIND_HOSTILE_STRUCTURES, { filter: (hs) => hs.structureType == STRUCTURE_POWER_BANK});
 			}
