@@ -41,12 +41,12 @@ const observer = {
 									.forEach(function(roomName,i) {
 			const od_room = observer.rooms[roomName];
 			const room = Game.rooms[roomName];
-			if(!od_room.deposit || !od_room.deposit.obj) {
+			if(!od_room.deposit && !od_room.deposit.obj) {
 				const obj = room.find(FIND_DEPOSITS, { filter: (d) => tools.nvl(d.ticksToDecay,0) > 2000});
 				if(!!obj) {
 					od_room.deposit = {obj:obj, id:obj.id};
 					od_room.deposit.timeToDecay = Game.time + obj.ticksToDecay;
-					console.log('👀🌀⚠️', Math.trunc(Game.time/10000), Game.time%10000
+					console.log('👀', Math.trunc(Game.time/10000), Game.time%10000
 															 , JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
 				}
 			}
@@ -57,7 +57,7 @@ const observer = {
 					od_room.deposit = undefined;
 				}
 				if(Game.time%10 == 0) {
-					console.log('👀🌀⚠️', Math.trunc(Game.time/10000), Game.time%10000
+					console.log('👀', Math.trunc(Game.time/10000), Game.time%10000
 										 					 , JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
 				}
 			}
