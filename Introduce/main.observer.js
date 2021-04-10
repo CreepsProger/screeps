@@ -12,12 +12,13 @@ const observer = {
 	
 	, rooms: {}, 
 	
-	depositExists: function(roomName) {
-		return false;
+	getDeposit: function(roomName) {
+		const od_room = observer.rooms[roomName];
+		return od_room.deposit;
 	},
 	
-	shouldSpawnForDeposit: function(spawn) {
-		return false;
+	shouldSpawnForDeposit: function(roomName) {
+		return !!observer.getDeposit(roomName);
 	},
 
 	run: function() {
@@ -54,7 +55,7 @@ const observer = {
 													, JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
 				}
 			}
-			else if(Game.time%100 == 0) {
+			else if(Game.time%100 == 1) {
 					od_room.deposit.obj = Game.getObjectById(od_room.deposit.id);
 					od_room.deposit.timeToDecay = Game.time + od_room.deposit.obj.ticksToDecay;
 					if(od_room.deposit.timeToDecay < Game.time) {
@@ -77,7 +78,7 @@ const observer = {
 													, JSON.stringify({main:'observedRoom', roomName:roomName, power:od_room.power}));
 				}
 			}
-			else if(Game.time%100 == 0) {
+			else if(Game.time%100 == 2) {
 					od_room.power.obj = Game.getObjectById(od_room.power.id);
 					od_room.power.timeToDecay = Game.time + od_room.power.obj.ticksToDecay;
 					if(od_room.power.timeToDecay < Game.time) {
