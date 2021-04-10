@@ -40,34 +40,51 @@ const observer = {
 		Object.keys(observer.rooms).filter((roomName) => observer.rooms[roomName].lst_time == Game.time)
 									.forEach(function(roomName,i) {
 			const od_room = observer.rooms[roomName];
-			const room = Game.rooms[roomName];
 			if(!od_room.deposit || !od_room.deposit.obj) {
-				const obj = room.find(FIND_DEPOSITS, { filter: (d) => tools.nvl(d.ticksToDecay,0) > 2000}).shift();
+				const room = Game.rooms[roomName];
+				const obj = room.find(FIND_DEPOSITS)
+												.filter((d) => tools.nvl(d.ticksToDecay,0) > 5000)
+												.shift();
 				if(!!obj) {
 					od_room.deposit = {obj:obj, id:obj.id};
 					od_room.deposit.timeToDecay = Game.time + obj.ticksToDecay;
 					console.log('👀', Math.trunc(Game.time/10000), Game.time%10000
-															 , JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
+													, JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
 				}
 			}
-			else {
-				od_room.deposit.obj = Game.getObjectById(od_room.deposit.id);
-				od_room.deposit.timeToDecay = Game.time + od_room.deposit.obj.ticksToDecay;
-				if(od_room.deposit.timeToDecay < Game.time) {
-					od_room.deposit = undefined;
-				}
-				if(Game.time%10 == 0) {
+			else if(Game.time%100 == 0) {
+					od_room.deposit.obj = Game.getObjectById(od_room.deposit.id);
+					od_room.deposit.timeToDecay = Game.time + od_room.deposit.obj.ticksToDecay;
+					if(od_room.deposit.timeToDecay < Game.time) {
+						od_room.deposit = undefined;
 					console.log('👀', Math.trunc(Game.time/10000), Game.time%10000
-										 					 , JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
+										 			, JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
 				}
 			}
-			
-			if(!od_room.power) {
-				od_room.power = room.find(FIND_HOSTILE_STRUCTURES, { filter: (hs) => hs.structureType == STRUCTURE_POWER_BANK});
+
+			if(!od_room.power || !od_room.power.obj) {
+				const room = Game.rooms[roomName];
+				const obj = room.find(FIND_HOSTILE_STRUCTURES)
+												.filter((hs) => hs.structureType == STRUCTURE_POWER_BANK &&
+																				tools.nvl(d.ticksToDecay,0) > 5000)
+												.shift();
+				if(!!obj) {
+					od_room.power = {obj:obj, id:obj.id};
+					od_room.power.timeToDecay = Game.time + obj.ticksToDecay;
+					console.log('👀', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify({main:'observedRoom', roomName:roomName, power:od_room.power}));
+				}
 			}
-			else if(od_room.power.timeToDecay < Game.time) {
-				od_room.power = undefined;
+			else if(Game.time%100 == 0) {
+					od_room.power.obj = Game.getObjectById(od_room.power.id);
+					od_room.power.timeToDecay = Game.time + od_room.power.obj.ticksToDecay;
+					if(od_room.power.timeToDecay < Game.time) {
+						od_room.power = undefined;
+					console.log('👀', Math.trunc(Game.time/10000), Game.time%10000
+										 			, JSON.stringify({main:'observedRoom', roomName:roomName, power:od_room.deposit}));
+				}
 			}
+
 		});
 	}
 };
