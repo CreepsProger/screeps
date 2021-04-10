@@ -893,13 +893,15 @@ var spawns = {
 					}
 
 					if(Game.cpu.bucket >= 5000 && observer.shouldSpawnForDeposit('W30S29')) {
-						if(Sp1 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5464, 2);
 						if(Sp1 && !All)	spawns.tryCreateCreep(spawn, CARIER[3][L], 5461, 2);
+						if(Sp1 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5464, 2);
 					}
 
-					if(Sp6 && !All) spawns.tryCreateCreep(spawn, WORKER[1][L], 209);
-					if(Sp6 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 203);
-					if(Sp15 && !All) spawns.tryCreateCreep(spawn, CARIER[6][L], 203);
+					if(Game.cpu.bucket >= 5000) {
+						if(Sp6 && !All) spawns.tryCreateCreep(spawn, WORKER[1][L], 209);
+						if(Sp6 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 203);
+						if(Sp15 && !All) spawns.tryCreateCreep(spawn, CARIER[6][L], 203);
+					}
 				}
 
 				if(Game.shard.name == 'shard0') {
