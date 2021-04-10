@@ -53,8 +53,12 @@ var tasks = {
 		const my_room_config = my_shard_config.rooms[my_room];
 		const my_heal_room = my_room_config.heal_room;//'W25S33';
 		const my_next_escape_room = my_room_config.escape_path[this_room];
-		
-		if(my_heal_room != creep.pos.roomName) {
+
+		console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
+										, JSON.stringify( { tasks:'goToEscapeRoom', creep:creep.name
+																			, room:creep.room.name, this_room:this_room, my_heal_room:my_heal_room}));
+
+		if(my_heal_room != creep.room.name) {
 			const exit = creep.room.findExitTo(my_next_escape_room);
 			const target = creep.pos.findClosestByPath(exit);
 			const err = tools.moveTo(creep, target);
