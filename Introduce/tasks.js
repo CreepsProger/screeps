@@ -649,9 +649,6 @@ var tasks = {
 			else {
 				const od_deposit = observer.getDeposit(creep.room.name);
 				const deposit = !!od_deposit? od_deposit.obj:undefined;
-				console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
-												, JSON.stringify( { tasks:'onRun.harvest_deposit', creep:creep.name
-																					, room:creep.room.name, deposit:deposit}));
 				if(deposit === undefined) {
 					creep.say('🔜▣⚰️'+Game.time%100);
 					if(Game.time%100 == 0) {
@@ -662,6 +659,11 @@ var tasks = {
 					const err = creep.harvest(deposit);
 					if(err != ERR_NOT_IN_RANGE) {
 						creep.say((OK == err)?'▣':'▣'+err);
+						if(OK == err) {
+							console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
+															, JSON.stringify( { tasks:'onRun.harvest_deposit', creep:creep.name
+																								, room:creep.room.name, store:creep.store, deposit:deposit}));
+						}
 					}
 					else {
 						const err = tools.moveTo(creep, deposit);
@@ -705,6 +707,9 @@ var tasks = {
 					return true;
 
 				const sot = tools.getStorageOrTerminal(creep);
+				console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
+												, JSON.stringify( { tasks:'onRun.delevery_deposit', creep:creep.name
+																					, room:creep.room.name, store:creep.store, sot:sot}));
 				if(!!sot) {
 					var err = OK;
 					Object.keys(creep.store).forEach(function(resource,i) {
