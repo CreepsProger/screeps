@@ -696,7 +696,30 @@ var tasks = {
 
 		if((type == 1 && modification == 2) ||
 			 (type == 1 && modification != 2 && flags.getFlag('1->1/2') && flags.getFlag('1->1/2').pos.roomName == creep.room.name ) ) {
-			if(creep.store.getCapacity(RESOURCE_ENERGY) == creep.store.getFreeCapacity(RESOURCE_ENERGY)) {
+			const delevery = ((creep.store.getCapacity(RESOURCE_ENERGY) != creep.store.getFreeCapacity(RESOURCE_ENERGY) && creep.ticksToLive < 500) ||
+															 (creep.store.getFreeCapacity(RESOURCE_ENERGY) < 100) );
+			if(delevery) {
+				if(tasks.goToEscapeRoom(creep,'▣→🏦'))
+					return true;
+
+				const sot = tools.getStorageOrTerminal(creep);
+				if(!!sot) {
+					var err = OK;
+					Object.keys(creep.store).forEach(function(resource,i) {
+						if(err == OK) {
+							err = creep.transfer(sot, resource);
+						}
+					});
+					if(err != ERR_NOT_IN_RANGE) {
+						creep.say((OK == err)?'▣→🏦':'▣→🏦'+err);
+					}
+					else {
+						err = tools.moveTo(creep, sot);
+						creep.say((OK == err)?'🔜▣→🏦':'🔜▣→🏦'+err);
+					}
+				}
+			}
+			else {
 				if(tasks.goToMyRoom(creep,'▣'))
 					return true;
 				
@@ -726,32 +749,6 @@ var tasks = {
 					}
 				}
 			}
-			else {
-				if(	Game.time % 1 == 0 &&
-					 (	(creep.store.getCapacity(RESOURCE_ENERGY) != creep.store.getFreeCapacity(RESOURCE_ENERGY) && creep.ticksToLive < 500) ||
-							(creep.store.getFreeCapacity(RESOURCE_ENERGY) < 100) ) ) {
-					if(tasks.goToEscapeRoom(creep,'▣→🏦'))
-						return true;
-					
-					const sot = tools.getStorageOrTerminal(creep);
-					if(!!sot) {
-						var err = OK;
-						Object.keys(creep.store).forEach(function(resource,i) {
-							if(err == OK) {
-								err = creep.transfer(sot, resource);
-							}
-						});
-						if(err != ERR_NOT_IN_RANGE) {
-							creep.say((OK == err)?'▣→🏦':'▣→🏦'+err);
-						}
-						else {
-							err = tools.moveTo(creep, sot);
-							creep.say((OK == err)?'🔜▣→🏦':'🔜▣→🏦'+err);
-						}
-					}
-				}
-			}
-			tools.dontGetInWay(creep);
 			return true;
 		}
 
