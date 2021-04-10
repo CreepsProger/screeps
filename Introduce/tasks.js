@@ -31,6 +31,7 @@ var tasks = {
 			creep.say((OK == err)?'🔜'+symbol:'🔜'+symbol+err);
 			return true;
 		}
+		return false;
 	},
 	
 	goToEscapeRoom: function(creep,symbol) {
@@ -60,6 +61,7 @@ var tasks = {
 			creep.say((OK == err)?'🔜'+symbol:'🔜'+symbol+err);
 			return true;
 		}
+		return false;
 	},
 
 	getRepairTarget: function(creep) {
