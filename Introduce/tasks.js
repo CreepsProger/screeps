@@ -1,5 +1,6 @@
 const constants = require('main.constants');
 //const harvester = require('role.harvester');
+const observer = require('main.observer');
 const config = require('main.config');
 const flags = require('main.flags');
 const labs = require('main.labs');
