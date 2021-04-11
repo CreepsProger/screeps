@@ -453,7 +453,7 @@ var spawns = {
 						if(Sp1 && upgrade) spawns.tryCreateCreep(spawn, UPGRADER[L], 5015);
 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, CARIER[7][L], 403);
 						const tm = Math.floor(Game.time%1200 / 200);
-						if(Sp1 && !All && tm == 0) spawns.tryCreateCreep(spawn, UPGRADER[M], 234);
+						if(Sp1 && !All && tm == 0) spawns.tryCreateCreep(spawn, WORKER[7][L], 234);
   				}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S31')) {
 						if(Sp4)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5086);
