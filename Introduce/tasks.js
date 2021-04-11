@@ -664,8 +664,7 @@ var tasks = {
 						creep.say((OK == err)?'🔜▣':'🔜▣'+err);
 						return true;
 					}
- 					var time = tools.timeObj(tools.time.harvest.deposit,tools.getRoomId(creep.name));
- 					if(time.on < Game.time)
+ 					if(tools.nvl(deposit.cooldown,0) == 0)
 					{
 						if(creep.store.getFreeCapacity(RESOURCE_ENERGY) > creep.getActiveBodyparts(WORK)) {
 							const err = creep.harvest(deposit);
@@ -673,9 +672,8 @@ var tasks = {
 							if(OK != err)
 								console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
 																, JSON.stringify( { tasks:'onRun.harvest_deposit', creep:creep.name, err:err
-																									, room:creep.room.name, store:creep.store, deposit:deposit, on:time.on}));
+																									, room:creep.room.name, store:creep.store, deposit:deposit}));
 						}
-						tools.timeOn(time, tools.nvl(deposit.cooldown,0));
 					}
 				}
 				if(Game.time % 1 == 0 && creep.store.getCapacity(RESOURCE_ENERGY) != creep.store.getFreeCapacity(RESOURCE_ENERGY)) {
