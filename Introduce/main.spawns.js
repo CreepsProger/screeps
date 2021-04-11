@@ -346,7 +346,7 @@ var spawns = {
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn3'  || spawn.name == 'Spawn6'  || spawn.name == 'Spawn12'):
 				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn3'  || spawn.name == 'Spawn7'  || spawn.name == 'Spawn12'):All;
 				const Sp4 = (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn10' || spawn.name == 'Spawn12' || spawn.name == 'Spawn15'):
-				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn5'  || spawn.name == 'Spawn8'  || spawn.name == 'Spawn--'):
+				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn5'  || spawn.name == 'Spawn8'  || spawn.name == 'Spawn19'):
 				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn5'  || spawn.name == 'Spawn8'  || spawn.name == 'Spawn14'):All;
 				const Sp5 = (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn11' || spawn.name == 'Spawn13' || spawn.name == 'Spawn17'):
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn9'  || spawn.name == 'Spawn10' || spawn.name == 'Spawn--'):
@@ -895,13 +895,17 @@ var spawns = {
 						if(Sp16)	spawns.tryCreateCreep(spawn, CARIER[6][L], 5441);
 					}
 
-					if(Game.cpu.bucket >= 5000 && observer.shouldSpawnForDeposit('W30S29')) {
+					if(observer.shouldSpawnForDeposit('W30S29')) {
 						if(Sp1 && !All)	spawns.tryCreateCreep(spawn, CARIER[3][L], 5461, 2);
-						if(Sp1 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5464, 2);
+						if(Game.cpu.bucket >= 5000 && Sp1 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5464, 2);
 					}
-					if(Game.cpu.bucket >= 5000 && observer.shouldSpawnForDeposit('W27S30')) {
+					if(observer.shouldSpawnForDeposit('W27S30')) {
 						if(Sp3 && !All)	spawns.tryCreateCreep(spawn, CARIER[3][L], 5471, 2);
-						if(Sp3 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5474, 2);
+						if(Game.cpu.bucket >= 5000 && Sp3 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5474, 2);
+					}
+					if(observer.shouldSpawnForDeposit('W30S31')) {
+						if(Sp4 && !All)	spawns.tryCreateCreep(spawn, CARIER[3][L], 5481, 2);
+						if(Game.cpu.bucket >= 5000 && Sp3 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5484, 2);
 					}
 
 					if(Game.cpu.bucket >= 5000) {
