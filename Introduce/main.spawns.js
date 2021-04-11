@@ -453,7 +453,7 @@ var spawns = {
 						if(Sp1 && upgrade) spawns.tryCreateCreep(spawn, UPGRADER[L], 5015);
 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, CARIER[7][L], 403);
 						const tm = Math.floor(Game.time%1200 / 200);
-						if(Sp1 && !All && tm == 0) spawns.tryCreateCreep(spawn, WORKER[3][L], 231);
+						if(Sp1 && !All && tm == 0) spawns.tryCreateCreep(spawn, CARIER[3][L], 231);
 						if(Sp1 && !All && tm == 1) spawns.tryCreateCreep(spawn, WORKER[7][L], 234);
   				}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S31')) {
@@ -897,15 +897,15 @@ var spawns = {
 					}
 
 					if(observer.shouldSpawnForDeposit('W30S29')) {
-						if(Sp1 && !All)	spawns.tryCreateCreep(spawn, CARIER[3][L], 5461, 2);
+						if(Sp1 && !All)	spawns.tryCreateCreep(spawn, CARIER[4][L], 5461, 2);
 						if(Game.cpu.bucket >= 5000 && Sp1 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5464, 2);
 					}
 					if(observer.shouldSpawnForDeposit('W27S30')) {
-						if(Sp3 && !All)	spawns.tryCreateCreep(spawn, CARIER[3][L], 5471, 2);
+						if(Sp3 && !All)	spawns.tryCreateCreep(spawn, CARIER[4][L], 5471, 2);
 						if(Game.cpu.bucket >= 5000 && Sp3 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5474, 2);
 					}
 					if(observer.shouldSpawnForDeposit('W30S31')) {
-						if(Sp4 && !All)	spawns.tryCreateCreep(spawn, CARIER[3][L], 5481, 2);
+						if(Sp4 && !All)	spawns.tryCreateCreep(spawn, CARIER[4][L], 5481, 2);
 						if(Game.cpu.bucket >= 5000 && Sp3 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5484, 2);
 					}
 
