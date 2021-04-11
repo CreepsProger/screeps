@@ -735,9 +735,10 @@ var tasks = {
 					else {
 						err = tools.moveTo(creep, sot);
 						creep.say((OK == err)?'🔜▣→🏦':'🔜▣→🏦'+err);
-						console.log('🔜▣→🏦', Math.trunc(Game.time/10000), Game.time%10000
-														, JSON.stringify( { tasks:'onRun.delevery_deposit', err:err, creep:creep.name
-																							, room:creep.room.name, store:creep.store, sot:sot}));
+						if(OK != err) 
+							console.log('🔜▣→🏦⚠', Math.trunc(Game.time/10000), Game.time%10000
+															, JSON.stringify( { tasks:'onRun.delevery_deposit', err:err, creep:creep.name
+																								, room:creep.room.name, store:creep.store, sot:sot}));
 					}
 				}
 			}
