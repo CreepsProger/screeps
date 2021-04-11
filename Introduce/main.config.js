@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 673,
+	version: 674,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -4036,7 +4036,7 @@ var config = {
 								{ W27S30: 'W27S29'
 								}
 							},
-							W31S30:
+							W30S31:
 							{ containers: {weight: 5483}
 							, sites:
 							 	[
@@ -4059,12 +4059,12 @@ var config = {
 								, {name: '4', time: 0, min_weight: 5480, max_weight: 5489}
 								]
 							, heal_room:
-								{ shard: 'shard1', room: 'W31S29'}
+								{ shard: 'shard1', room: 'W29S31'}
 							, path_rooms:
-								{ W31S29: 'W31S30'
+								{ W29S31: 'W30S31'
 								}
 								, escape_path:
-								{ W31S30: 'W31S29'
+								{ W30S31: 'W29S31'
 								}
 							}
 							//,
