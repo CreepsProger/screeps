@@ -38,15 +38,15 @@ const observer = {
 					}
 		});
 		
-		if(Game.time%25 == 1) {
-			Object.keys(observer.rooms).filter((roomName) => observer.rooms[roomName].lst_time == Game.time)
+		Object.keys(observer.rooms).filter((roomName) => observer.rooms[roomName].lst_time == Game.time)
 									.forEach(function(roomName,i) {
-				const od_room = observer.rooms[roomName];
+			const od_room = observer.rooms[roomName];
 
 			if(!od_room.deposit || !od_room.deposit.obj) {
-				const room = Game.rooms[roomName];
-				const obj = room.find(FIND_DEPOSITS)
-												.filter((d) => tools.nvl(d.ticksToDecay,0) > 5000)
+				if(Game.time%25 == 1) {
+					const room = Game.rooms[roomName];
+					const obj = room.find(FIND_DEPOSITS)
+					.filter((d) => tools.nvl(d.ticksToDecay,0) > 5000)
 												.shift();
 				if(!!obj) {
 					od_room.deposit = {obj:obj, id:obj.id};
@@ -54,7 +54,7 @@ const observer = {
 					od_room.deposit.timeElapsCooldown = Game.time + obj.cooldown;
 					console.log('▣👀', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
-				}
+				}} 
 			}
 			else if(!!od_room.deposit.timeElapsCooldown && od_room.deposit.timeElapsCooldown <= Game.time) {
 					od_room.deposit.obj = Game.getObjectById(od_room.deposit.id);
@@ -93,7 +93,7 @@ const observer = {
 			}
 
 		});
-		}
+		
 	}
 };
 
