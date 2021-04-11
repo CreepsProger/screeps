@@ -661,8 +661,8 @@ var tasks = {
  					var time = tools.timeObj(tools.time.harvest.deposit,tools.getRoomId(creep.name));
  					if(time.on < Game.time)
 					{
-						tools.timeOn(time, tools.nvl(deposit.cooldown,0));
 						const deposit = Game.getObjectById(od_deposit.id);
+						tools.timeOn(time, tools.nvl(deposit.cooldown,0));
 						if(creep.store.getFreeCapacity(RESOURCE_ENERGY) > creep.getActiveBodyparts(WORK)) {
 							const err = creep.harvest(deposit);
 							if(err != ERR_NOT_IN_RANGE) {
