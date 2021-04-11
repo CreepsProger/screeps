@@ -43,7 +43,7 @@ const observer = {
 			const od_room = observer.rooms[roomName];
 
 			if(!od_room.deposit || !od_room.deposit.obj) {
-				if(Game.time%25 == 1) {
+				if(Game.time%1 == 0) {
 					const room = Game.rooms[roomName];
 					const obj = room.find(FIND_DEPOSITS)
 													.filter((d) => tools.nvl(d.ticksToDecay,0) > 5000)
@@ -71,7 +71,7 @@ const observer = {
 			}
 
 			if(!od_room.power || !od_room.power.obj) {
-				if(Game.time%25 == 2) {
+				if(Game.time%1 == 0) {
 					const room = Game.rooms[roomName];
 					const obj = room.find(FIND_HOSTILE_STRUCTURES)
 													.filter((hs) => hs.structureType == STRUCTURE_POWER_BANK &&
@@ -80,6 +80,7 @@ const observer = {
 					if(!!obj) {
 						od_room.power = {obj:obj, id:obj.id};
 						od_room.power.timeToDecay = Game.time + obj.ticksToDecay;
+						od_room.power.timeElapsCooldown = Game.time + od_room.power.obj.cooldown;
 						console.log('🔴👀', Math.trunc(Game.time/10000), Game.time%10000
 														, JSON.stringify({main:'observedRoom', roomName:roomName, power:od_room.power}));
 					}
