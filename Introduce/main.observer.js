@@ -56,7 +56,7 @@ const observer = {
 													, JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
 				}
 			}
-			else if(Game.time%100 == 1 || (!!od_room.deposit.timeElapsCooldown && od_room.deposit.timeElapsCooldown <= Game.time) ) {
+			else if(Game.time%10 == 1 || (!!od_room.deposit.timeElapsCooldown && od_room.deposit.timeElapsCooldown <= Game.time) ) {
 					od_room.deposit.obj = Game.getObjectById(od_room.deposit.id);
 					od_room.deposit.timeToDecay = Game.time + od_room.deposit.obj.ticksToDecay;
 					od_room.deposit.timeElapsCooldown = Game.time + od_room.deposit.obj.cooldown;
