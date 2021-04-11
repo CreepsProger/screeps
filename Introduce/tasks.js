@@ -647,37 +647,39 @@ var tasks = {
 		
 		if((type == 4 && modification == 2) ||
 			 (type == 4 && modification != 2 && flags.getFlag('4->4/2') && flags.getFlag('4->4/2').pos.roomName == creep.room.name ) ) {
-			const role = {name:constants.ROLE_ENERGY_HARVESTING}; 
+			const role = {name:constants.ROLE_ENERGY_HARVESTING};
 			if(tasks.goToMyRoom(creep,'▣'))
 				return true;
 			else {
 				const od_deposit = observer.getDeposit(creep.room.name);
-				const deposit = !!od_deposit? od_deposit.obj:undefined;
-				if(deposit === undefined) {
-					creep.say('🔜▣⚰️'+Game.time%100);
-					if(Game.time%100 == 0) {
-						creep.suicide();
-					}
+				if(od_deposit === undefined) {
+					if(tasks.goToEscapeRoom(creep,'▣→⚰️'))
+						return true;
+					creep.suicide();
 				}
 				else {
  					var time = tools.timeObj(tools.time.harvest.deposit,tools.getRoomId(creep.name));
- 					if(Game.time > time.on)
+ 					if(time.on < Game.time)
 					{
-						const err = creep.harvest(deposit);
-						if(err != ERR_NOT_IN_RANGE) {
-							creep.say((OK == err)?'▣':'▣'+err);
- 							if(OK == err) 
-							{
- 								tools.timeOn(time, deposit.cooldown);
-								console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
-																, JSON.stringify( { tasks:'onRun.harvest_deposit', creep:creep.name
-																									, room:creep.room.name, store:creep.store, deposit:deposit}));
+						const deposit = Game.getObjectById(od_deposit.id);
+						if(creep.store.getFreeCapacity(RESOURCE_ENERGY) > creep.getActiveBodyparts(WORK)) {
+							const err = creep.harvest(deposit);
+							if(err != ERR_NOT_IN_RANGE) {
+								creep.say((OK == err)?'▣':'▣'+err);
+ 								if(OK == err) 
+								{
+ 									tools.timeOn(time, tools.nvl(deposit.cooldown,0));
+								}
+								else
+									console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
+																	, JSON.stringify( { tasks:'onRun.harvest_deposit', creep:creep.name, err:err
+																										, room:creep.room.name, store:creep.store, deposit:deposit}));
 							}
-						}
-						else {
-							const err = tools.moveTo(creep, deposit);
-							creep.say((OK == err)?'🔜▣':'🔜▣'+err);
-							return true;
+							else {
+								const err = tools.moveTo(creep, deposit);
+								creep.say((OK == err)?'🔜▣':'🔜▣'+err);
+								return true;
+							}
 						}
 					}
 				}
@@ -701,10 +703,6 @@ var tasks = {
 				}
 			}
 // 			tools.dontGetInWay(creep);
-			const range = creep.pos.getRangeTo(target);
-			if(range > 1) {
-				tools.moveTo(creep,target);
-			}
 			return true;
 		}
 
