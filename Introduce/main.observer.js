@@ -63,7 +63,7 @@ const observer = {
 					if(od_room.deposit.timeToDecay < Game.time) {
 						od_room.deposit = undefined;
 					}
-				if(Game.time%100 == 1) {
+				if(Game.time%10 == 1) {
 					console.log('▣👀', Math.trunc(Game.time/10000), Game.time%10000
 										 			, JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
 				}
