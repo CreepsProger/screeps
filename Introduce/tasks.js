@@ -747,11 +747,7 @@ var tasks = {
 												.sort((l,r) => r.Usefull - l.Usefull)
 												.shift();
 				if(my_usefull_creep === undefined || my_usefull_creep.UsedCapacity == 0) {
-					creep.say('🔜▣🗑⚰️'+Game.time%1000);
-					if(Game.time%1000 == 0) {
-						creep.suicide();
-					}
-					return false;
+					creep.say('🔜▣🗑💬'+Game.time%1000);
 				}
 				else {
 					if(creep.pos.getRangeTo(my_usefull_creep) > 1) {
