@@ -727,14 +727,17 @@ var tasks = {
 					if(err != ERR_NOT_IN_RANGE) {
 						creep.say((OK == err)?'▣→🏦':'▣→🏦'+err);
 						if(OK == err) {
-							console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
-															, JSON.stringify( { tasks:'onRun.delevery_deposit', creep:creep.name
-																								, room:creep.room.name, store:creep.store, sot:sot}));
+							console.log('▣→🏦', Math.trunc(Game.time/10000), Game.time%10000
+																	, JSON.stringify( { tasks:'onRun.delevery_deposit', creep:creep.name
+																										, room:creep.room.name, store:creep.store, sot:sot}));
 						}
 					}
 					else {
 						err = tools.moveTo(creep, sot);
 						creep.say((OK == err)?'🔜▣→🏦':'🔜▣→🏦'+err);
+						console.log('🔜▣→🏦', Math.trunc(Game.time/10000), Game.time%10000
+														, JSON.stringify( { tasks:'onRun.delevery_deposit', err:err, creep:creep.name
+																							, room:creep.room.name, store:creep.store, sot:sot}));
 					}
 				}
 			}
