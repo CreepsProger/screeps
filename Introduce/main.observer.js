@@ -55,14 +55,16 @@ const observer = {
 													, JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
 				}
 			}
-			else if(Game.time%100 == 1) {
+			else if(Game.time%10 == 1) {
 					od_room.deposit.obj = Game.getObjectById(od_room.deposit.id);
 					od_room.deposit.timeToDecay = Game.time + od_room.deposit.obj.ticksToDecay;
 					if(od_room.deposit.timeToDecay < Game.time) {
 						od_room.deposit = undefined;
 					}
+				if(Game.time%100 == 1) {
 					console.log('▣👀', Math.trunc(Game.time/10000), Game.time%10000
 										 			, JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
+				}
 			}
 
 			if(!od_room.power || !od_room.power.obj) {
