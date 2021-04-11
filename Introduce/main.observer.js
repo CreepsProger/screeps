@@ -46,23 +46,24 @@ const observer = {
 				if(Game.time%25 == 1) {
 					const room = Game.rooms[roomName];
 					const obj = room.find(FIND_DEPOSITS)
-					.filter((d) => tools.nvl(d.ticksToDecay,0) > 5000)
-												.shift();
-				if(!!obj) {
-					od_room.deposit = {obj:obj, id:obj.id};
-					od_room.deposit.timeToDecay = Game.time + obj.ticksToDecay;
-					od_room.deposit.timeElapsCooldown = Game.time + obj.cooldown;
-					console.log('▣👀', Math.trunc(Game.time/10000), Game.time%10000
-													, JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
-				}} 
+													.filter((d) => tools.nvl(d.ticksToDecay,0) > 5000)
+													.shift();
+					if(!!obj) {
+						od_room.deposit = {obj:obj, id:obj.id};
+						od_room.deposit.timeToDecay = Game.time + obj.ticksToDecay;
+						od_room.deposit.timeElapsCooldown = Game.time + obj.cooldown;
+						console.log('▣👀', Math.trunc(Game.time/10000), Game.time%10000
+														, JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
+					}
+				}
 			}
 			else if(!!od_room.deposit.timeElapsCooldown && od_room.deposit.timeElapsCooldown <= Game.time) {
-					od_room.deposit.obj = Game.getObjectById(od_room.deposit.id);
-					od_room.deposit.timeToDecay = Game.time + od_room.deposit.obj.ticksToDecay;
-					od_room.deposit.timeElapsCooldown = Game.time + od_room.deposit.obj.cooldown;
-					if(od_room.deposit.timeToDecay < Game.time) {
-						od_room.deposit = undefined;
-					}
+				od_room.deposit.obj = Game.getObjectById(od_room.deposit.id);
+				od_room.deposit.timeToDecay = Game.time + od_room.deposit.obj.ticksToDecay;
+				od_room.deposit.timeElapsCooldown = Game.time + od_room.deposit.obj.cooldown;
+				if(od_room.deposit.timeToDecay < Game.time) {
+					od_room.deposit = undefined;
+				}
 				if(Game.time%100 == 1) {
 					console.log('▣👀', Math.trunc(Game.time/10000), Game.time%10000
 										 			, JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
@@ -70,26 +71,31 @@ const observer = {
 			}
 
 			if(!od_room.power || !od_room.power.obj) {
-				const room = Game.rooms[roomName];
-				const obj = room.find(FIND_HOSTILE_STRUCTURES)
-												.filter((hs) => hs.structureType == STRUCTURE_POWER_BANK &&
-																				tools.nvl(hs.ticksToDecay,0) > 5000)
-												.shift();
-				if(!!obj) {
-					od_room.power = {obj:obj, id:obj.id};
-					od_room.power.timeToDecay = Game.time + obj.ticksToDecay;
+				if(Game.time%25 == 2) {
+					const room = Game.rooms[roomName];
+					const obj = room.find(FIND_HOSTILE_STRUCTURES)
+													.filter((hs) => hs.structureType == STRUCTURE_POWER_BANK &&
+																					tools.nvl(hs.ticksToDecay,0) > 5000)
+													.shift();
+					if(!!obj) {
+						od_room.power = {obj:obj, id:obj.id};
+						od_room.power.timeToDecay = Game.time + obj.ticksToDecay;
+						console.log('🔴👀', Math.trunc(Game.time/10000), Game.time%10000
+														, JSON.stringify({main:'observedRoom', roomName:roomName, power:od_room.power}));
+					}
+				}
+			}
+			else if(!!od_room.power.timeElapsCooldown && od_room.power.timeElapsCooldown <= Game.time) {
+				od_room.power.obj = Game.getObjectById(od_room.power.id);
+				od_room.power.timeToDecay = Game.time + od_room.power.obj.ticksToDecay;
+				od_room.power.timeElapsCooldown = Game.time + od_room.power.obj.cooldown;
+				if(od_room.power.timeToDecay < Game.time) {
+					od_room.power = undefined;
+				}
+				if(Game.time%100 == 2) {
 					console.log('🔴👀', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify({main:'observedRoom', roomName:roomName, power:od_room.power}));
 				}
-			}
-			else if(Game.time%100 == 1) {
-					od_room.power.obj = Game.getObjectById(od_room.power.id);
-					od_room.power.timeToDecay = Game.time + od_room.power.obj.ticksToDecay;
-					if(od_room.power.timeToDecay < Game.time) {
-						od_room.power = undefined;
-					}
-					console.log('🔴👀', Math.trunc(Game.time/10000), Game.time%10000
-										 			, JSON.stringify({main:'observedRoom', roomName:roomName, power:od_room.deposit}));
 			}
 
 		});
