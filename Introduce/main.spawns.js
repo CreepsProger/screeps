@@ -613,7 +613,8 @@ var spawns = {
 						if(Sp6 && !All && tm == 2) spawns.tryCreateCreep(spawn, ATTACKER[G][H], 228);
 						
 						if((Sp6 || Sp15) && !All && tm == 3) spawns.tryCreateCreep(spawn,  UPGRADER[M], 205);
-						if((Sp6 || Sp15) && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[7][M], 204);
+						if(Sp6  && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[7][M], 204);
+						if(Sp15 && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[7][M], 204);
 						if((Sp6 || Sp15) && !All && tm == 3) spawns.tryCreateCreep(spawn, CARIER[7][L], 203);
 						if((Sp6 || Sp15) && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[6][S], 202);
 						if((Sp6 || Sp15) && !All && tm == 3) spawns.tryCreateCreep(spawn, CARIER[7][L], 201);
