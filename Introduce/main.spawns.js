@@ -694,7 +694,7 @@ var spawns = {
 							if(Sp7)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5267);
 						}
 					}
-					else if(Game.cpu.bucket >= 5501) {
+					else if(Game.cpu.bucket >= 6001) {
 						if(Sp7)	spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5266);
 						if(Sp7)	spawns.tryCreateCreep(spawn, WORKER[7][S+1], 5264);
 						if(Sp7)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 5261);
@@ -713,7 +713,7 @@ var spawns = {
 							if(Sp11 || Sp12)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5288);
 						}
 					}
-					else if(Game.cpu.bucket >= 6001) {
+					else if(Game.cpu.bucket >= 7001) {
 						if(Sp12)	spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5288);
 						if(Sp12)	spawns.tryCreateCreep(spawn, WORKER[7][S+1], 5284);
 						if(Sp12)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 5281);
@@ -760,7 +760,7 @@ var spawns = {
 							if(Sp13)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5327);
 						}
 					}
-					else if(Game.cpu.bucket >= 6501) {
+					else if(Game.cpu.bucket >= 8001) {
 						if(Sp13)	spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5326);
 						if(Sp13)	spawns.tryCreateCreep(spawn, WORKER[7][S+1], 5324);
 						if(Sp13)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 5321);
@@ -813,14 +813,14 @@ var spawns = {
 						if(ICL == 1) {
 							if(Sp14)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5456);
 						}
-						if(ICL == 3 && Game.cpu.bucket >= 8000) {
+						if(ICL == 3 && Game.cpu.bucket >= 9500) {
 							if(Sp14) spawns.tryCreateCreep(spawn, ATTACKER[11][L], 5456);
 							if(Sp14) spawns.tryCreateCreep(spawn, ATTACKER[11][M], 5457);
 							if(Sp14)	spawns.tryCreateCreep(spawn, ATTACKER[11][H], 5458);
 							if(Sp14)	spawns.tryCreateCreep(spawn, ATTACKER[11][S], 5459);
 						}
 					}
-					else if(Game.cpu.bucket >= 7001) {
+					else if(Game.cpu.bucket >= 9001) {
 						if(Sp14)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5456);
 						if(Sp14)	spawns.tryCreateCreep(spawn,  WORKER[7][S+1], 5454);
             if(Sp14)	spawns.tryCreateCreep(spawn,  CARIER[7][L], 5451);
