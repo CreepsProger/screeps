@@ -661,19 +661,16 @@ var tasks = {
  					var time = tools.timeObj(tools.time.harvest.deposit,tools.getRoomId(creep.name));
  					if(time.on < Game.time)
 					{
+						tools.timeOn(time, tools.nvl(deposit.cooldown,0));
 						const deposit = Game.getObjectById(od_deposit.id);
 						if(creep.store.getFreeCapacity(RESOURCE_ENERGY) > creep.getActiveBodyparts(WORK)) {
 							const err = creep.harvest(deposit);
 							if(err != ERR_NOT_IN_RANGE) {
 								creep.say((OK == err)?'▣':'▣'+err);
- 								if(OK == err) 
-								{
- 									tools.timeOn(time, tools.nvl(deposit.cooldown,0));
-								}
-								else
+ 								if(OK != err) 
 									console.log('▣', Math.trunc(Game.time/10000), Game.time%10000
 																	, JSON.stringify( { tasks:'onRun.harvest_deposit', creep:creep.name, err:err
-																										, room:creep.room.name, store:creep.store, deposit:deposit}));
+																										, room:creep.room.name, store:creep.store, deposit:deposit, on:time.on}));
 							}
 							else {
 								const err = tools.moveTo(creep, deposit);
