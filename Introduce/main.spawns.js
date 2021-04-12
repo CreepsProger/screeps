@@ -605,7 +605,7 @@ var spawns = {
 					else {
 						const tm = Math.floor(Game.time%1200 / 300);
 						const fG = flags.getFlag('20G');
-						const G = 9 + (!fG)? 0:fG.color-10; //WHITE = 0
+						const G = 9 + (!fG)? 0:10-fG.color; //WHITE = 9+0
 						if(Sp6 && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[G][L], 206);
 						if(Sp6 && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[G][L], 216);
 						if(Sp6 && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[G][L], 226);
