@@ -455,6 +455,7 @@ var spawns = {
 						const tm = Math.floor(Game.time%1200 / 200);
 						if(Sp1 && !All && tm == 0) spawns.tryCreateCreep(spawn, CARIER[3][L], 231);
 						if(Sp1 && !All && tm == 1) spawns.tryCreateCreep(spawn, WORKER[7][L], 234);
+						if(Sp1 && !All && tm == 2) spawns.tryCreateCreep(spawn, UPGRADER[L], 235);
 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, CARIER[7][L], 233);
   				}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S31')) {
