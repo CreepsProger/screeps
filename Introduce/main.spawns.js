@@ -713,19 +713,28 @@ var spawns = {
 						if(Sp9)	spawns.tryCreateCreep(spawn, CARIER[7][M], 5271);
 						if(Sp9 && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5275);
 					}
-					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W26S26') &&
-						 tools.getInviderCoreLevel('W26S26') !== undefined ) {
-						if(tools.getInviderCoreLevel('W26S26') == 1) {
+					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W26S26')) {
+						const ICL = tools.getInviderCoreLevel('W26S24');
+						const fG = flags.getFlag('528G');
+						const G = 9 + (!fG)? 0:10-fG.color; //WHITE = 9+0
+						if(ICL !== undefined) {
+							console.log( '🎃', Math.trunc(Game.time/10000), Game.time%10000
+																, 'INVIDER CORE', JSON.stringify({W26S26:spawn.name, ICL:ICL, fG:fG, G:G})
+										);
+						}
+						if(ICL == 1) {
 							if(Sp11 || Sp12)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5288);
 						}
-						if(tools.getInviderCoreLevel('W26S26') == 2) {
-							if(Sp12 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5288);
+						if(ICL == 2 && Game.cpu.bucket >= 7001) {
+							if(Sp12 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][L], 5286);
+							if(Sp12 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][M], 5287);
+							if(Sp12 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][H], 5288);
 						}
-					}
-					else if(Game.cpu.bucket >= 7001) {
-						if(Sp12)	spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5288);
-						if(Sp12)	spawns.tryCreateCreep(spawn, WORKER[7][S+1], 5284);
-						if(Sp12)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 5281);
+						else if(ICL === undefined && Game.cpu.bucket >= 7001) {
+							if(Sp12)	spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5288);
+							if(Sp12)	spawns.tryCreateCreep(spawn, WORKER[7][S+1], 5284);
+							if(Sp12)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 5281);
+						}
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S27')) {
 						if(Sp9)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5296);
