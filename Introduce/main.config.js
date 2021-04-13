@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 678,
+	version: 679,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -4319,11 +4319,11 @@ var config = {
 								, {name: '6', time: 0, min_weight: 230, max_weight: 239}
 								, {name: '7', time: 0, min_weight: 230, max_weight: 239}
 								]
-							,
-							heal_room: 'W19S31'
+							, heal_room: 'W31S29'
 							, path_rooms:
 							  { shard1:
 									{ W29S29: 'W29S30', W29S30: 'W30S30', W30S30: 'shard2'
+									, W29S31: 'W30S31', W30S31: 'W30S30'
 									}
 								, shard2:
 									{ shard1_W30S30: 'W30S30', W30S30: 'W30S29', W30S30x:7
@@ -4332,8 +4332,49 @@ var config = {
 								}
 							, escape_path:
 								{ W30S30: 'W30S29', W30S30x:7, W30S29: 'W31S29'
+								, W31S28: 'W31S29'
 								}
-							}//,
+							},
+						  W31S28:
+							{ containers: {weight: 243}
+							, towers: {mw:6000000, mr:6000000}
+							, energy_harvesting:
+							  [ {name: '1', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '2', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '3', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '4', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '5', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '6', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '7', time: 0, min_weight: 240, max_weight: 249}
+								]
+							, claiming:
+							  [ {name: '1', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '2', time: 0, min_weight: 240, max_weight: 249}
+								]
+							, attacker:
+							  [ {name: '1', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '2', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '3', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '4', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '5', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '6', time: 0, min_weight: 240, max_weight: 249}
+								, {name: '7', time: 0, min_weight: 240, max_weight: 249}
+								]
+							, heal_room: 'W31S29'
+							, path_rooms:
+							  { shard1:
+									{ W29S29: 'W29S30', W29S30: 'W30S30', W30S30: 'shard2'
+									}
+								, shard2:
+									{ shard1_W30S30: 'W30S30', W30S30: 'W30S29', W30S30x:7
+									, W30S29: 'W31S29', W31S29: 'W31S28'
+									}
+								}
+							, escape_path:
+								{ W31S28: 'W31S29'
+								}
+							}
+						 //,
 						}
 					}
 				, shard3:
