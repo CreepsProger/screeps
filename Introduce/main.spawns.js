@@ -437,18 +437,29 @@ var spawns = {
 				const harvest = Memory.shardHarvestEnable;
 
         if(Game.shard.name == 'shard2') {
-					
-  				if(conditions.TO_SPAWN_ROOM_DEFENDERS('W31S29')) {
+
+					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W31S29')) {
   					if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 236);
   				}
   				else {
 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, CARIER[6][H], 231);
-						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[6][M], 232);
-						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[6][M], 234);
+						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[6][S], 232);
+						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[6][H], 234);
 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[6][M], 235);					
 // 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, UPGRADER[L], 235);					
   				}
-					
+
+					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W31S28')) {
+						if(Sp1 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 245);
+					}
+					else {
+						if(conditions.TO_SPAWN_ROOM_CLAIMER('W31S28')) {
+							if(Sp1 && !All)	spawns.tryCreateCreep(spawn, CLAIMER[6][H], 240);
+						}
+						if(Sp1 && !All)	spawns.tryCreateCreep(spawn, WORKER[5][M], 244);
+						if(Sp1 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][L], 241);
+					}
+
 				}
 				
         if(Game.shard.name == 'shard1') {
