@@ -296,7 +296,11 @@ var spawns = {
 						],
 	
 	DEFENDER: [ [                 0,                0,                0]  // 0  000
-						, [ 1000000030000010,  500003500000010,  500350000000010,  500000035000010] //1
+						, [         32000016,       3200000006,     320000000016,           320016] //1
+						, [  800000032000010,  800003200000005,  800320000000005,  800000032000005] //2
+						, [ 1100000029000010, 1100002900000005, 1100290000000005, 1100000029000005] //3
+						, [ 1500000025000010, 1500002500000005, 1500250000000005, 1500000025000005] //4
+						, [ 1800000022000010, 1800002200000005, 1800220000000005, 1800000022000005] //5
 						, [                0,  500002609000005,  0, 0] //2
 						],//TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm, TTClRrAaHhWwCcMm
 	
@@ -739,7 +743,7 @@ var spawns = {
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W26S26')) {
 						const ICL = tools.getInviderCoreLevel('W26S26');
 						const fG = flags.getFlag('528G');
-						const G = 9 + ((!fG)? 0:10-fG.color); //WHITE = 9+0
+						const G = 1 + ((!fG)? 0:10-fG.color); //WHITE = 1+0
 						if(ICL !== undefined) {
 							console.log( '🎃', Math.trunc(Game.time/10000), Game.time%10000
 																, 'INVIDER CORE', JSON.stringify({W26S26:spawn.name, ICL:ICL, fG:fG, G:G})
@@ -749,9 +753,9 @@ var spawns = {
 							if(Sp11 || Sp12)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5288);
 						}
 						if(ICL == 2 && Game.cpu.bucket >= 7001) {
-							if(Sp12 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][L], 5286);
-							if(Sp12 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][M], 5287);
-							if(Sp12 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][H], 5288);
+							if(Sp12 && !All)	spawns.tryCreateCreep(spawn, DEFENDER[G][L], 5286);
+							if(Sp12 && !All)	spawns.tryCreateCreep(spawn, DEFENDER[G][M], 5287);
+							if(Sp12 && !All)	spawns.tryCreateCreep(spawn, DEFENDER[G][H], 5288);
 						}
 						else if(ICL === undefined && Game.cpu.bucket >= 7001) {
 							if(Sp12)	spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5288);
