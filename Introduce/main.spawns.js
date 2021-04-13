@@ -737,7 +737,7 @@ var spawns = {
 						if(Sp9 && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5275);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W26S26')) {
-						const ICL = tools.getInviderCoreLevel('W26S24');
+						const ICL = tools.getInviderCoreLevel('W26S26');
 						const fG = flags.getFlag('528G');
 						const G = 9 + (!fG)? 0:10-fG.color; //WHITE = 9+0
 						if(ICL !== undefined) {
