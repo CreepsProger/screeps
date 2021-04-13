@@ -437,7 +437,7 @@ var spawns = {
 				const harvest = Memory.shardHarvestEnable;
 
         if(Game.shard.name == 'shard2') {
-				{
+					
   				if(conditions.TO_SPAWN_ROOM_DEFENDERS('W31S29')) {
   					if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 236);
   				}
@@ -448,7 +448,9 @@ var spawns = {
 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[6][M], 235);					
 // 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, UPGRADER[L], 235);					
   				}
+					
 				}
+				
         if(Game.shard.name == 'shard1') {
   				// if(Memory.totals.CARRY < 25	) spawns.tryCreateCreep(spawn,   808, 10, 3); // E  800 Carier
   				// if(Memory.totals.CARRY < 25	) spawns.tryCreateCreep(spawn,   505, 10, 3); // E  500 Carier
