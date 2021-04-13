@@ -338,7 +338,8 @@ var spawns = {
 				const All = !!rerun;
 				const Sp1 = (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn1'  || spawn.name == 'Spawn3'  || spawn.name == 'Spawn7'):
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn1'  || spawn.name == 'Spawn4'  || spawn.name == 'Spawn13'):
-				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn1'  || spawn.name == 'Spawn4'  || spawn.name == 'Spawn11'):All;
+				         		(Game.shard.name == 'shard2')? (All || spawn.name == 'Spawn1'  || spawn.name == 'Spawn2'  || spawn.name == 'Spawn3'):
+				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn1'  || spawn.name == 'Spawn2'  || spawn.name == 'Spawn3'):All;
 				const Sp2 = (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn2'  || spawn.name == 'Spawn4'  || spawn.name == 'Spawn6'):
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn2'  || spawn.name == 'Spawn7'  || spawn.name == 'Spawn--'):
 				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn2'  || spawn.name == 'Spawn6'  || spawn.name == 'Spawn15'):All;
@@ -435,6 +436,19 @@ var spawns = {
 					Memory.shardHarvestEnable = false;
 				const harvest = Memory.shardHarvestEnable;
 
+        if(Game.shard.name == 'shard2') {
+				{
+  				if(conditions.TO_SPAWN_ROOM_DEFENDERS('W31S29')) {
+  					if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 236);
+  				}
+  				else {
+						if(Sp1 && !All) spawns.tryCreateCreep(spawn, CARIER[6][H], 231);
+						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[6][M], 232);
+						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[6][M], 234);
+						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[6][M], 235);					
+// 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, UPGRADER[L], 235);					
+  				}
+				}
         if(Game.shard.name == 'shard1') {
   				// if(Memory.totals.CARRY < 25	) spawns.tryCreateCreep(spawn,   808, 10, 3); // E  800 Carier
   				// if(Memory.totals.CARRY < 25	) spawns.tryCreateCreep(spawn,   505, 10, 3); // E  500 Carier
@@ -453,10 +467,6 @@ var spawns = {
 						if(Sp1 && upgrade) spawns.tryCreateCreep(spawn, UPGRADER[L], 5015);
 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, CARIER[7][L], 403);
 						const tm = Math.floor(Game.time%1200 / 200);
-						if(Sp1 && !All && tm == 0) spawns.tryCreateCreep(spawn, CARIER[3][L], 231);
-						if(Sp1 && !All && tm == 1) spawns.tryCreateCreep(spawn, WORKER[7][S+3], 232);
-						if(Sp1 && !All && tm == 2) spawns.tryCreateCreep(spawn, WORKER[7][M], 234);
-						if(Sp1 && !All && tm == 3) spawns.tryCreateCreep(spawn, UPGRADER[L], 235);
   				}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S31')) {
 						if(Sp4)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5086);
