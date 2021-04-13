@@ -627,7 +627,7 @@ var spawns = {
 					else {
 						const tm = Math.floor(Game.time%1200 / 300);
 						const fG = flags.getFlag('20G');
-						const G = 9 + (!fG)? 0:10-fG.color; //WHITE = 9+0
+						const G = 9 + ((!fG)? 0:10-fG.color); //WHITE = 9+0
 						if(Sp6 && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[G][L], 206);
 						if(Sp6 && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[G][L], 216);
 						if(Sp6 && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[G][L], 226);
@@ -739,7 +739,7 @@ var spawns = {
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W26S26')) {
 						const ICL = tools.getInviderCoreLevel('W26S26');
 						const fG = flags.getFlag('528G');
-						const G = 9 + (!fG)? 0:10-fG.color; //WHITE = 9+0
+						const G = 9 + ((!fG)? 0:10-fG.color); //WHITE = 9+0
 						if(ICL !== undefined) {
 							console.log( '🎃', Math.trunc(Game.time/10000), Game.time%10000
 																, 'INVIDER CORE', JSON.stringify({W26S26:spawn.name, ICL:ICL, fG:fG, G:G})
