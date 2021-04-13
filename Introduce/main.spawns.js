@@ -718,6 +718,9 @@ var spawns = {
 						if(tools.getInviderCoreLevel('W26S26') == 1) {
 							if(Sp11 || Sp12)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5288);
 						}
+						if(tools.getInviderCoreLevel('W26S26') == 2) {
+							if(Sp12 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[9][M], 5288);
+						}
 					}
 					else if(Game.cpu.bucket >= 7001) {
 						if(Sp12)	spawns.tryCreateCreep(spawn, ATTACKER[9][L], 5288);
