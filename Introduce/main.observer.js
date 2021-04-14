@@ -48,6 +48,8 @@ const observer = {
 					const room = Game.rooms[roomName];
 					const obj = room.find(FIND_DEPOSITS)
 													.filter((d) => tools.nvl(d.lastCooldown,0) < maxLastCooldown)
+													.sort((l,r) => (l.ticksToDecay < 10000) ? -1:
+																					(r.ticksToDecay < 10000) ? 1:0)
 													.shift();
 					if(!!obj) {
 						od_room.deposit = {obj:obj, id:obj.id};
