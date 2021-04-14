@@ -485,12 +485,12 @@ var spawns = {
 						const tm = Math.floor(Game.time%1200 / 200);
   				}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S31')) {
-						if(Sp4)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5086);
+						if(Sp4 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5086);
 					}
 					else {
-						if(Sp4)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5084);
+						if(Sp4 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5084);
 						if(Sp4)	spawns.tryCreateCreep(spawn, CARIER[7][M], 5081);
-						if(Sp4 && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5085);
+						if(Sp4 && !All && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5085);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S29')) {
 						if(Sp12)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5026);
