@@ -12,7 +12,7 @@ const cash = require('cash');
 
 var tasks = {
 	
-	goToMyRoom: function(creep,symbol) {
+	getMyRoom: function(creep) {
 		const role = {name:constants.ROLE_ENERGY_HARVESTING}; 
 		if(creep.memory[role.name] === undefined ||
 			 creep.memory[role.name].v === undefined ||
@@ -24,8 +24,13 @@ var tasks = {
 																};
 			config.setRoom(creep, role.name);
 		}
-		if(creep.memory[role.name].room != creep.pos.roomName ||
-			 creep.memory[role.name].shard != Game.shard.name) {
+		return {room:creep.memory[role.name].room, shard:creep.memory[role.name].shard};
+	}, 
+	
+	goToMyRoom: function(creep,symbol) {
+		const myRoom = tasks.getMyRoom(creep);
+		if(myRoom.room != creep.pos.roomName ||
+			 myRoom.shard != Game.shard.name) {
 			const target = config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
 			const err = tools.moveTo(creep, target);
 			creep.say((OK == err)?'🔜'+symbol:'🔜'+symbol+err);
@@ -648,10 +653,11 @@ var tasks = {
 		if((type == 4 && modification == 2) ||
 			 (type == 4 && modification != 2 && flags.getFlag('4->4/2') && flags.getFlag('4->4/2').pos.roomName == creep.room.name ) ) {
 			const role = {name:constants.ROLE_ENERGY_HARVESTING};
-			if(tasks.goToMyRoom(creep,'▣'))
+			const myRoom = tasks.getMyRoom();
+				const od_deposit = observer.getDeposit(myRoom.room);
+			if(od_deposit !== undefined && tasks.goToMyRoom(creep,'▣'))
 				return true;
 			else {
-				const od_deposit = observer.getDeposit(creep.room.name);
 				if(od_deposit === undefined) {
 					if(tasks.goToEscapeRoom(creep,'▣→⚰️'))
 						return true;
