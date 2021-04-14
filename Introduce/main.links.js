@@ -134,7 +134,7 @@ var links = {
 		 // W52S54
 		 , { from: '60656d17394e164e8d65034f', to: '60656a16efd8745d87108cf2'}
 		 , { from: '606845632a2993e2e6e7089a', to: '60656a16efd8745d87108cf2'}
-		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: '6073b885eb3a32cc8406b0aa', to: '6073b885eb3a32cc8406b0aa'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W54S57
 		 , { from: '606823b8dd93327f2408915c', to: '6067de588c32091c95fdd798'}
