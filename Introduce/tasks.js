@@ -653,7 +653,7 @@ var tasks = {
 		if((type == 4 && modification == 2) ||
 			 (type == 4 && modification != 2 && flags.getFlag('4->4/2') && flags.getFlag('4->4/2').pos.roomName == creep.room.name ) ) {
 			const role = {name:constants.ROLE_ENERGY_HARVESTING};
-			const myRoom = tasks.getMyRoom();
+			const myRoom = tasks.getMyRoom(creep);
 				const od_deposit = observer.getDeposit(myRoom.room);
 			if(od_deposit !== undefined && tasks.goToMyRoom(creep,'▣'))
 				return true;
