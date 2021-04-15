@@ -886,20 +886,23 @@ var spawns = {
 						if(Sp15 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5405);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W21S23')) {
-						const fG = flags.getFlag('20G');
+						const fG = flags.getFlag('541G');
 						const G = 9 + ((!fG)? 0:10-fG.color); //WHITE = 9+0
 						if(Sp6 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][L], 5416);
 						if(Sp6 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][M], 5417);
 						if(Sp6 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][H], 5418);
 						if(Sp6 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][S], 5419);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[6][S], 5412);
+						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[6][M], 5414);
+						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][M], 5411);
+						if(Sp15 && !All)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5415);
 					}
 					else {
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[6][S], 5412);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[6][M], 5414);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][M], 5411);
-						//if(Sp15 && !All)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5415);
-						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[6][M], 5415);
+						if(Sp15 && !All)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5415);
+						//if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[6][M], 5415);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W22S24')) {
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5427);
@@ -966,6 +969,7 @@ var spawns = {
 					}
 
 					if(Game.cpu.bucket >= 5000) {
+						if(Sp6 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 5413);
 						if(Sp6 && !All) spawns.tryCreateCreep(spawn, WORKER[1][L], 209);
 						if(Sp6 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 203);
 						if(Sp15 && !All) spawns.tryCreateCreep(spawn, CARIER[6][L], 203);
