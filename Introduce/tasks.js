@@ -707,7 +707,7 @@ var tasks = {
 
 		if((type == 1 && modification == 2) ||
 			 (type == 1 && modification != 2 && flags.getFlag('1->1/2') && flags.getFlag('1->1/2').pos.roomName == creep.room.name ) ) {
-			const delevery = ((creep.store.getCapacity(RESOURCE_ENERGY) != creep.store.getFreeCapacity(RESOURCE_ENERGY) && creep.ticksToLive < 200) ||
+			const delevery = ((creep.store.getCapacity(RESOURCE_ENERGY) != creep.store.getFreeCapacity(RESOURCE_ENERGY) && creep.ticksToLive < 350) ||
 															 (creep.store.getFreeCapacity(RESOURCE_ENERGY) < 32) );
 			if(delevery) {
 				if(tasks.goToEscapeRoom(creep,'▣→🏦'))
