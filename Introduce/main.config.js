@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 688,
+	version: 689,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -1948,9 +1948,9 @@ var config = {
 								, W55S53: 'W56S53', W55S53y:27, W56S53: 'W56S52', W56S52: 'W57S52'
 								}
 							},
-							W55S50:
+							W50S52:
 							{ containers: {weight: 1003}
-							, deposit: {spawnRooms: ['W55S51', 'W54S51', 'W57S51'] }
+// 							, deposit: {spawnRooms: ['W55S51', 'W54S51', 'W57S51'] }
 							, sites:
 								[ 
 								]
@@ -1969,14 +1969,12 @@ var config = {
 								, {name: '5', time: 0, min_weight: 1000, max_weight: 1009}
 								]
 							, heal_room:
-								{ shard: 'shard0', room: 'W55S51'}
+								{ shard: 'shard0', room: 'W52S54'}
 							, path_rooms:
-								{ W57S51: 'W56S51', W56S51: 'W55S51'
-								, W54S51: 'W55S51'
-								, W55S51: 'W55S50'
+								{ W52S54: 'W51S54', W51S54: 'W50S54', W50S54: 'W50S53', W50S53: 'W50S52'
 								}
 								, escape_path:
-								{ W55S50: 'W55S51'
+								{ W50S52: 'W50S53', W50S53: 'W50S54', W50S54: 'W51S54', W51S54: 'W52S54'
 								}
 							},
 							//, 
