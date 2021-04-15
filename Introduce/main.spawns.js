@@ -263,10 +263,9 @@ var spawns = {
 						, [        1700000017,       1700000017,       1700000017]  // 6 2300
 						, [        2005000025,     250000000025,       1213000025
 							,        2112000017,     190006000025]  // 7 5600
-						, [      250008000017,     170008000025,  400001308000025 // 8 12900
-						,          2515000010,     400000000010,  400004000000006] 
-						, [          25000025,       1708000025,     170008000025]//9 
-						, [          40000010,       3010000010,     300010000010]//10 
+						, [          25000025,       2401000025,     240001000025,          1240025]//8
+						, [          25000025,       2005000025,     200005000025,          5200025]//9 
+						, [          40000010,       3010000010,     300010000010,         10300010]//10 
 						, [  1000000030000010,  500003005000010,  500300005000010, 1000000010101010]//11 
 						, [  1000000030000010, 1000002505000010, 1000250005000010, 1000000005250010]//12
 						, [  1500000025000010, 1500002005000010, 1500200005000010, 1500000005200010]//13
@@ -630,7 +629,7 @@ var spawns = {
 					else {
 						const tm = Math.floor(Game.time%1200 / 300);
 						const fG = flags.getFlag('20G');
-						const G = 9 + ((!fG)? 0:10-fG.color); //WHITE = 9+0
+						const G = 8 + ((!fG)? 0:10-fG.color); //WHITE = 8+0
 						if(Sp6 && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[G][L], 206);
 						if(Sp6 && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[G][L], 216);
 						if(Sp6 && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[G][L], 226);
@@ -873,7 +872,7 @@ var spawns = {
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W21S29')) {
 						const fG = flags.getFlag('540G');
-						const G = 9 + ((!fG)? 0:10-fG.color); //WHITE = 9+0
+						const G = 8 + ((!fG)? 0:10-fG.color); //WHITE = 8+0
 						if(Sp6 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][L], 5406);
 						if(Sp6 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][M], 5407);
 						if(Sp6 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][H], 5408);
@@ -889,7 +888,7 @@ var spawns = {
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W21S23')) {
 						const fG = flags.getFlag('541G');
-						const G = 9 + ((!fG)? 0:10-fG.color); //WHITE = 9+0
+						const G = 8 + ((!fG)? 0:10-fG.color); //WHITE = 8+0
 						if(Sp6 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][L], 5416);
 						if(Sp6 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][M], 5417);
 						if(Sp6 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][H], 5418);
