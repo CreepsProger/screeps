@@ -641,15 +641,13 @@ var spawns = {
 						if(Sp6 && !All && tm == 2) spawns.tryCreateCreep(spawn, ATTACKER[G][H], 218);
 						if(Sp6 && !All && tm == 2) spawns.tryCreateCreep(spawn, ATTACKER[G][H], 228);
 						
-						if((Sp6 || Sp15) && !All && tm == 3) spawns.tryCreateCreep(spawn,  UPGRADER[M], 205);
+						if(Sp15 && !All && tm == 3) spawns.tryCreateCreep(spawn,  UPGRADER[M], 205);
 						if(Sp6  && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[7][L], 204);
 						if(Sp15 && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[7][L], 204);
-						if((Sp6 || Sp15) && !All && tm == 3) spawns.tryCreateCreep(spawn, CARIER[7][L], 203);
-						if((Sp6 || Sp15) && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[6][S], 202);
 						if((Sp6 || Sp15) && !All && tm == 3) spawns.tryCreateCreep(spawn, CARIER[7][L], 201);
-						if(Sp6 && !All && tm == 3) spawns.tryCreateCreep(spawn,CLAIMER[5][H], 220);
-						if(Sp6 && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[7][L], 224);
-						if(Sp6 && !All && tm == 3) spawns.tryCreateCreep(spawn, CARIER[7][L], 221);
+// 						if(Sp6 && !All && tm == 3) spawns.tryCreateCreep(spawn,CLAIMER[5][H], 220);
+// 						if(Sp6 && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[7][L], 224);
+// 						if(Sp6 && !All && tm == 3) spawns.tryCreateCreep(spawn, CARIER[7][L], 221);
 
 						if(Sp6)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5214);
 						if(Sp6)	spawns.tryCreateCreep(spawn, CARIER[7][M], 5211);
