@@ -375,7 +375,7 @@ var spawns = {
 				const Sp12= (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn28' || spawn.name == 'Spawn32' || spawn.name == 'Spawn--'):
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn33' || spawn.name == 'Spawn35' || spawn.name == 'Spawn37'):
 				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):All;
-				const Sp13= (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn30' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
+				const Sp13= (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn30' || spawn.name == 'Spawn34' || spawn.name == 'Spawn--'):
 				         		(Game.shard.name == 'shard1')? (All || spawn.name == 'Spawn36' || spawn.name == 'Spawn38' || spawn.name == 'Spawn40'):
 				            (Game.shard.name == 'shard3')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):All;
 				const Sp14= (Game.shard.name == 'shard0')? (All || spawn.name == 'Spawn--' || spawn.name == 'Spawn--' || spawn.name == 'Spawn--'):
@@ -1339,16 +1339,20 @@ var spawns = {
 						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 767);
 					}
 					else {
-						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, WORKER[6][H], 764);
-            if(Sp13 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][H], 761);
+						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 764);
+            if(Sp13 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][H], 761);
             if(All)	spawns.tryCreateCreep(spawn, CARIER[7][L], 761);
-						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, WORKER[6][H], 765);
+						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 765);
 						//if(Sp13 && !All)	spawns.tryCreateCreep(spawn,  UPGRADER[L], 765);
 					}
 
 					if(observer.shouldSpawnForDeposit('W50S52')) {
 						if(Sp12 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][L], 1001, 2);
 						if(Game.cpu.bucket >= 5000 && Sp12 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 1004, 2);
+					}
+					if(observer.shouldSpawnForDeposit('W52S60')) {
+						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][L], 1011, 2);
+						if(Game.cpu.bucket >= 5000 && Sp13 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 1014, 2);
 					}
 
 					if(Sp2 && !All && upgrade) spawns.tryCreateCreep(spawn,   CARIER[7][L], 5023);
