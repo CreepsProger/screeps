@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 691,
+	version: 692,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -2043,6 +2043,7 @@ var config = {
 								, {name: '6', time: 0, min_weight: 5010, max_weight: 5019}
 								, {name: '7', time: 0, min_weight: 5010, max_weight: 5019}
 								, {name: '8', time: 0, min_weight: 5010, max_weight: 5019}
+								, {name: '9', time: 0, min_weight: 5010, max_weight: 5019}
 								]
 							, attacker:
 								[ {name: '1', time: 0, min_weight: 5010, max_weight: 5019}
