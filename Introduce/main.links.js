@@ -145,8 +145,8 @@ var links = {
 		 // W31S29
 		 , { from: '6075427b5c14295f6dfa87b8', to: '60752abed90f9e58c2383e9d'}
 		 , { from: '6075352f234567e1c96e85b7', to: '60752abed90f9e58c2383e9d'}
-		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
-		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: '6075427b5c14295f6dfa87b8', to: '6078ceeec30a9f3e05aee3c4'}
+		 , { from: '6075352f234567e1c96e85b7', to: '6078ceeec30a9f3e05aee3c4'}
      //shard1
 		 // W21S29
 		//, { from: '606c0103e4f71a7dc14b0add', to: '606c5c0a4f9c9e8416e2b3e4'}
