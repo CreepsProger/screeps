@@ -44,8 +44,11 @@ var config = {
 	getMaxAvgAmountToProduce: function(res) {
 		const commodity = COMMODITIES[res];
 		if(!!commodity) {
-			if(!commodity.level)
+			if(!commodity.level) {
+				if(res == RESOURCE_ENERGY)
+					return 400000;
 				return 2000;
+			}
 			if(commodity.level == 1 && res != 'composite')
 				return 1;
 			if(commodity.level == 2 && res != 'crystal')
@@ -58,8 +61,6 @@ var config = {
 				return 5;
 			return 3000;
 		}
-		if(res == RESOURCE_ENERGY)
-			return 400000
 		return 10000;
 	},
 	
