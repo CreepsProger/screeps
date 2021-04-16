@@ -58,6 +58,8 @@ var config = {
 				return 5;
 			return 3000;
 		}
+		if(res == RESOURCE_ENERGY)
+			return 400000
 		return 10000;
 	},
 	
