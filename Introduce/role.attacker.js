@@ -238,7 +238,7 @@ var role = {
 
 				const NA = flags.getFlag(creep.room.name + '.NA');
 				if(!target && canAttack && !NA) {
-					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 5);
+					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 5).filter((c) => tools.getWeight(c.name)==0);
 					if(targets.length > 0) {
 						target = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS);
 					}
@@ -307,7 +307,7 @@ var role = {
 				}
 
 				if(!target && canAttack && !NA) {
-					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, range);
+					const targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, range).filter((c) => tools.getWeight(c.name)==0);
 					if(targets.length > 0) {
 						console.log(creep, 'Attacking in', 'this_room:', this_room, 'in range', range);
 						target = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS);
