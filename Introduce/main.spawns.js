@@ -979,8 +979,8 @@ var spawns = {
 						if(Sp6 && !All) spawns.tryCreateCreep(spawn, WORKER[1][L], 209);
 						if(Sp6 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 203);
 						if(Sp15 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 203);
-						if(Sp1 && !All && upgrade) spawns.tryCreateCreep(spawn, CARIER[7][L], 233);
-						if(Sp1 && !All && upgrade) spawns.tryCreateCreep(spawn, CARIER[7][L], 403);
+						if(Sp4 && !All && upgrade) spawns.tryCreateCreep(spawn, CARIER[7][L], 233);
+						if(Sp4 && !All && upgrade) spawns.tryCreateCreep(spawn, CARIER[7][L], 403);
 					}
 				}
 
