@@ -219,7 +219,7 @@ var spawns = {
 					, [   808,    905,   1005]  // 3  800
 					, [  1313,   1407,   1608]  // 4 1300
 					, [  1616,   1818,   2412]  // 5 1800
-					, [  2323,   2613,   3015, 2020]  // 6 2300
+					, [  2323,   2613,   3015]  // 6 2300
 					, [  2525,   3216,   3317, 4010, 500000000002025]  // 7 5600
 					, [ 200000003002025,  200000003003510, 400000006003010 ]  // 8 12900
 					, [ 500000010000116,  0, 0 ]  // 9 12900
@@ -1350,7 +1350,7 @@ var spawns = {
 						if(Game.cpu.bucket >= 5000 && Sp12 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 1004, 2);
 					}
 					if(observer.shouldSpawnForDeposit('W52S60')) {
-						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][S], 1011, 2);
+						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][H], 1011, 2);
 						if(Game.cpu.bucket >= 5000 && Sp13 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 1014, 2);
 					}
 
