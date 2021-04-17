@@ -1137,9 +1137,9 @@ var spawns = {
 						}
 					}
 					else if(Game.cpu.bucket >= 5000) {
-						if(Sp5)	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 568);
-						if(Sp5)	spawns.tryCreateCreep(spawn,  WORKER[7][L], 564);
-            if(Sp5)	spawns.tryCreateCreep(spawn,  CARIER[7][L], 561);
+						if(Sp5 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 568);
+						if(Sp8)	spawns.tryCreateCreep(spawn,  WORKER[7][L], 564);
+            if(Sp8)	spawns.tryCreateCreep(spawn,  CARIER[7][L], 561);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W55S53')) {
 						if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 577);
@@ -1189,7 +1189,7 @@ var spawns = {
 						}
 					}
 					else if(Game.cpu.bucket >= 6000) {
-						if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 638);
+						if(Sp8 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 638);
 						if(Sp8)	spawns.tryCreateCreep(spawn,   WORKER[7][L], 634);
             if(Sp8)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 631);
 						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W55S55')) {
@@ -1201,7 +1201,7 @@ var spawns = {
 							}
 						}
 						else if(Game.cpu.bucket >= 7000) {
-							if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 698);
+							if(Sp8 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 698);
 							if(Sp8)	spawns.tryCreateCreep(spawn,   WORKER[7][L], 694);
 							if(Sp8)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 691);
 						}
@@ -1215,9 +1215,9 @@ var spawns = {
 						}
 					}
 					else if(Game.cpu.bucket >= 8000) {
-						if(Sp7)	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 628);
-						if(Sp7)	spawns.tryCreateCreep(spawn,   WORKER[7][L], 624);
-            if(Sp7)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 621);
+						if(Sp7 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 628);
+						if(Sp8)	spawns.tryCreateCreep(spawn,   WORKER[7][L], 624);
+            if(Sp8)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 621);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W56S55') &&
 						 tools.getInviderCoreLevel('W56S55') !== undefined ) {
@@ -1226,7 +1226,7 @@ var spawns = {
 						}
 					}
 					else if(Game.cpu.bucket >= 9000) {
-						if(Sp10)	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 688);
+						if(Sp10 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 688);
 						if(Sp10)	spawns.tryCreateCreep(spawn,   WORKER[7][L], 684);
             if(Sp10)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 681);
 					}
