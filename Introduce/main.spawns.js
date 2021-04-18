@@ -242,8 +242,8 @@ var spawns = {
 					, [130911, 140711, 160410, 111111]  // 6 2300
 					, [161616, 201020, 250817, 400206, 200525, 151025, 102015]  // 7 5600
 					, [240816, 153005, 250025, 400010 ]  // 8
-					, [0, 81612, 201317, 0, 0]  // 9
-					],
+					, [  100000002050109, 81612, 201317, 0, 0]  // 9
+					],//TTClRrAaHhWwCcMm
 
 	UPGRADER: [ 151515,           201020, 250817
 						, 301505,  500000005011021  // 0  000
@@ -980,7 +980,7 @@ var spawns = {
 
 					if(Game.cpu.bucket >= 5000) {
 						if(Sp6 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 5413);
-						if(Sp6 && !All) spawns.tryCreateCreep(spawn, WORKER[1][L], 209);
+						if(Sp6 && !All) spawns.tryCreateCreep(spawn, WORKER[9][L], 209);
 						if(Sp6 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 203);
 						if(Sp15 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 203);
 						if(Sp4 && !All && upgrade) spawns.tryCreateCreep(spawn, CARIER[7][L], 233);
