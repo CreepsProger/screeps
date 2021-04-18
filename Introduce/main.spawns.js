@@ -1353,16 +1353,16 @@ var spawns = {
 					}
 
 					if(observer.shouldSpawnForDeposit('W50S52')) {
-						if(Sp12 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][L], 1001, 2);
-						if(Game.cpu.bucket >= 5000 && Sp12 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 1004, 2);
+						if(Sp12 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][H], 1001, 2);
+						if(Game.cpu.bucket >= 5000 && Sp12 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 1004, 2);
 					}
 					if(observer.shouldSpawnForDeposit('W52S60')) {
 						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][H], 1011, 2);
 						if(Game.cpu.bucket >= 5000 && Sp13 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 1014, 2);
 					}
 					if(observer.shouldSpawnForDeposit('W50S55')) {
-						if(Game.cpu.bucket >= 5000 && Sp12 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 1024, 2);
 						if(Sp12 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][H], 1021, 2);
+						if(Game.cpu.bucket >= 5000 && Sp12 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 1024, 2);
 					}
 					if(observer.shouldSpawnForDeposit('W49S60')) {
 						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][H], 1031, 2);
