@@ -541,7 +541,7 @@ var role = {
 			// if(tools.getWeight(creep.name) >= 424) {
 			// 	console.log(creep, JSON.stringify({this_room:creep.room.name, target:target}));
 			// }
-			if(target) {
+			if(!!target) {
 				const LL  = !!flags.flags.LL && flags.flags.LL.pos.roomName == creep.room.name;
 				if(LL) {
 					console.log('✔️', Math.trunc(Game.time/10000), Game.time%10000
