@@ -753,9 +753,9 @@ var spawns = {
 							if(Sp12 && !All)	spawns.tryCreateCreep(spawn, DEFENDER[G][H], 5288);
 						}
 						else if(ICL === undefined && Game.cpu.bucket >= 7001) {
-							if(Sp12)	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 5288);
-							if(Sp12)	spawns.tryCreateCreep(spawn, WORKER[7][S+1], 5284);
-							if(Sp12)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 5281);
+							if(Sp12 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 5288);
+							if(Sp12 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][S+1], 5284);
+							if(Sp12 && !All)	spawns.tryCreateCreep(spawn,   CARIER[7][L], 5281);
 						}
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S27')) {
