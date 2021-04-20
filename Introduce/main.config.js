@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 701,
+	version: 702,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -2086,6 +2086,39 @@ var config = {
 								, escape_path:
 								{ W49S60: 'W50S60', W50S60: 'W51S60', W51S60: 'W52S60'
 								, W52S60: 'W53S60', W53S60: 'W53S59', W53S59: 'W53S58', W53S58: 'W54S58', W54S58: 'W54S57'
+								}
+							},
+							W55S50:
+							{ containers: {weight: 1043}
+							, sites:
+								[ 
+								]
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 1040, max_weight: 1049}
+								, {name: '2', time: 0, min_weight: 1040, max_weight: 1049}
+								, {name: '3', time: 0, min_weight: 1040, max_weight: 1049}
+								, {name: '4', time: 0, min_weight: 1040, max_weight: 1049}
+								, {name: '5', time: 0, min_weight: 1040, max_weight: 1049}
+								, {name: '6', time: 0, min_weight: 1040, max_weight: 1049}
+								, {name: '7', time: 0, min_weight: 1040, max_weight: 1049}
+								, {name: '8', time: 0, min_weight: 1040, max_weight: 1049}
+								, {name: '9', time: 0, min_weight: 1040, max_weight: 1049}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 1040, max_weight: 1049}
+								, {name: '2', time: 0, min_weight: 1040, max_weight: 1049}
+								, {name: '3', time: 0, min_weight: 1040, max_weight: 1049}
+								, {name: '4', time: 0, min_weight: 1040, max_weight: 1049}
+								, {name: '5', time: 0, min_weight: 1040, max_weight: 1049}
+								, {name: '6', time: 0, min_weight: 1040, max_weight: 1049}
+								]
+							, heal_room:
+								{ shard: 'shard0', room: 'W55S51'}
+							, path_rooms:
+								{ W55S51: 'W55S50'
+								}
+								, escape_path:
+								{ W55S50: 'W55S51'
 								}
 							},
 							//, 
