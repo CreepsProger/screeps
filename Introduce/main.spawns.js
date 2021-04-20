@@ -1385,9 +1385,8 @@ var spawns = {
 						if(Game.cpu.bucket >= 5000 && Sp6 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 1044, 2);
 					}
 
-					if(Sp2 && !All && upgrade) spawns.tryCreateCreep(spawn,   CARIER[7][L], 5023);
 					if(Sp9 && !All && upgrade) spawns.tryCreateCreep(spawn,   CARIER[7][L], 5023);
-					if(Sp2 && !All && upgrade) spawns.tryCreateCreep(spawn, TRANSPORT[4][L], 233);
+					if(Sp2 && !All && upgrade) spawns.tryCreateCreep(spawn, TRANSPORT[4][L],5023);
 					//if(Sp1 && (Game.time % 500000 < 250) ) spawns.tryCreateCreep(spawn, HEALER[7][L], 1000);
 					//if(Sp1 && (Game.time % 500000 > 250) ) spawns.tryCreateCreep(spawn, CARIER[1][L], 1000);
 				}
