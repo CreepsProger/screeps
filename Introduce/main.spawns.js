@@ -11,6 +11,13 @@ const tasks = require('tasks');
 var last_game_time_created_creep = {};
 
 var spawns = {
+	
+	setRampartsPublic: function(roomName, isPublic = true) {
+		const errs = cash.getMyBuildings(roomName)
+										.filter((b) => !!b && !!b.structureType && b.structureType == STRUCTURE_RAMPART)
+										.map((rmp) => rmp.setPublic(isPublic))
+										.filter((err) => err != OK);
+   },
 
    work_efficiency: function(type,range) {
        var RAs = Math.trunc(type%10000000000/100000000);
@@ -492,8 +499,10 @@ var spawns = {
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S29')) {
 						if(Sp12)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5027);
+						spawns.setRampartsPublic('W28S29',false);
 					}
 					else {
+						spawns.setRampartsPublic('W28S29')
 						if(Sp2)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5024);
 						if(Sp2)	spawns.tryCreateCreep(spawn, CARIER[7][M], 5021);
 						if(Sp2 && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5025);
