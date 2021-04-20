@@ -13,7 +13,9 @@ var last_game_time_created_creep = {};
 var spawns = {
 	
 	setRampartsPublic: function(roomName, isPublic = true) {
-		const errs = cash.getMyBuildings(roomName)
+		const room = Game.rooms[roomName];
+		if(!room) return;
+		const errs = cash.getMyBuildings(room)
 										.filter((b) => !!b && !!b.structureType && b.structureType == STRUCTURE_RAMPART)
 										.map((rmp) => rmp.setPublic(isPublic))
 										.filter((err) => err != OK);
