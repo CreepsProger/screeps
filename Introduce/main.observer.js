@@ -45,7 +45,7 @@ const observer = {
 			}
 			
 			if(!od_room.deposit || !od_room.deposit.obj) {
-				if(Game.time%101 == 1) {
+				if(Game.time%100 < 5) {
 					const room = Game.rooms[roomName];
 					const obj = room.find(FIND_DEPOSITS)
 													.filter((d) => tools.nvl(d.lastCooldown,0) < maxLastCooldown)
@@ -66,14 +66,14 @@ const observer = {
 				if(od_room.deposit.lastCooldown > maxLastCooldown) {
 					od_room.deposit = undefined;
 				}
-				if(Game.time%100 == 1) {
+				if(Game.time%1000 < 5) {
 					console.log('▣👀', Math.trunc(Game.time/10000), Game.time%10000
 										 			, JSON.stringify({main:'observedRoom', roomName:roomName, deposit:od_room.deposit}));
 				}
 			}
 
 			if(!od_room.power || !od_room.power.obj) {
-				if(Game.time%101 == 2) {
+				if(Game.time%100 < 5) {
 					const room = Game.rooms[roomName];
 					const obj = room.find(FIND_HOSTILE_STRUCTURES)
 													.filter((hs) => hs.structureType == STRUCTURE_POWER_BANK &&
@@ -95,14 +95,14 @@ const observer = {
 				if(od_room.power.timeToDecay < Game.time) {
 					od_room.power = undefined;
 				}
-				if(Game.time%101 == 2) {
+				if(Game.time%1000 < 5) {
 					console.log('🔴👀', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify({main:'observedRoom', roomName:roomName, power:od_room.power}));
 				}
 			}
 			
 			if(!od_room.inviderCore || !od_room.inviderCore.obj) {
-				if(Game.time%1 == 0) {
+				if(Game.time%100 < 5) {
 					const room = Game.rooms[roomName];
 					const obj = room.find(FIND_HOSTILE_STRUCTURES, { filter: (hs) => hs.level !== undefined} )
 													.shift();
@@ -120,7 +120,7 @@ const observer = {
 				if(od_room.inviderCore.timeToDecay < Game.time) {
 					od_room.inviderCore = undefined;
 				}
-				if(Game.time%1 == 0) {
+				if(Game.time%1000 < 5) {
 					console.log('🎃👀', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify({main:'observedRoom', roomName:roomName, inviderCore:od_room.inviderCore}));
 				}
