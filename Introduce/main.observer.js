@@ -44,8 +44,8 @@ const observer = {
 						observer.rooms[o_room] = {lst_time:Game.time+1};
 					}
 					observer.rooms[o_room].lst_time = Game.time+1;
-					if(err != OK) {
-						console.log('👀🌀⚠️', Math.trunc(Game.time/10000), Game.time%10000
+					if(err == OK) {
+						console.log('👀🌀! ⚠️', Math.trunc(Game.time/10000), Game.time%10000
 																 , JSON.stringify({main:'observeRoom', room:o.room.name, o_room:o_room, err:err, o_rooms:o_rooms, observer:o}));
 					}
 		});
