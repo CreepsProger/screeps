@@ -115,8 +115,7 @@ const observer = {
 			if(!od_room.inviderCore || !od_room.inviderCore.obj) {
 				if(Game.time%1 == 0) {
 					const room = Game.rooms[roomName];
-					const obj = room.find(FIND_HOSTILE_STRUCTURES)
-													.filter((hs) => hs.level !== undefined)
+					const obj = room.find(FIND_HOSTILE_STRUCTURES, { filter: (hs) => hs.level !== undefined} )
 													.shift();
 					if(!!obj) {
 						od_room.inviderCore = {obj:obj, id:obj.id};
