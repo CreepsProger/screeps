@@ -62,7 +62,7 @@ var flags = {
 		}
 		if(flags.flags[prefix] === undefined)
 			return [];
-		return flags.flags[prefix];
+		return flags.flags[prefix][roomName];
 	},
 
 	getRoomPowerConfig: function(roomName) {
