@@ -17,8 +17,20 @@ const observer = {
 		return !!od_room? od_room.deposit:undefined;
 	},
 	
+	getInviderCore: function(roomName) {
+		const od_room = observer.rooms[roomName];
+		return !!od_room? od_room.inviderCore :undefined;
+	},
+	
 	shouldSpawnForDeposit: function(roomName) {
 		return !!observer.getDeposit(roomName);
+	},
+	
+	getInviderCoreLevel: function(roomName) {
+		const od_inviderCore = observer.getInviderCore(roomName);
+		if (!od_inviderCore)
+			return undefined;
+		return od_inviderCore.obj.level;
 	},
 
 	run: function() {
@@ -41,10 +53,10 @@ const observer = {
 		Object.keys(observer.rooms).filter((roomName) => observer.rooms[roomName].lst_time == Game.time)
 									.forEach(function(roomName,i) {
 			const od_room = observer.rooms[roomName];
-			const maxLastCooldown = 250;
+			const maxLastCooldown = 300;
 
 			if(!od_room.deposit || !od_room.deposit.obj) {
-				if(Game.time%1 == 0) {
+				if(Game.time%101 == 1) {
 					const room = Game.rooms[roomName];
 					const obj = room.find(FIND_DEPOSITS)
 													.filter((d) => tools.nvl(d.lastCooldown,0) < maxLastCooldown)
@@ -72,7 +84,7 @@ const observer = {
 			}
 
 			if(!od_room.power || !od_room.power.obj) {
-				if(Game.time%1 == 0) {
+				if(Game.time%101 == 2) {
 					const room = Game.rooms[roomName];
 					const obj = room.find(FIND_HOSTILE_STRUCTURES)
 													.filter((hs) => hs.structureType == STRUCTURE_POWER_BANK &&
@@ -94,9 +106,35 @@ const observer = {
 				if(od_room.power.timeToDecay < Game.time) {
 					od_room.power = undefined;
 				}
-				if(Game.time%100 == 2) {
+				if(Game.time%101 == 2) {
 					console.log('🔴👀', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify({main:'observedRoom', roomName:roomName, power:od_room.power}));
+				}
+			}
+			
+			if(!od_room.power || !od_room.power.obj) {
+				if(Game.time%101%4 == 3) {
+					const room = Game.rooms[roomName];
+					const obj = room.find(FIND_HOSTILE_STRUCTURES)
+													.filter((hs) => hs.level !== undefined)
+													.shift();
+					if(!!obj) {
+						od_room.inviderCore = {obj:obj, id:obj.id};
+						od_room.inviderCore.timeToDecay = Game.time + obj.ticksToDecay;
+						console.log('🎃👀', Math.trunc(Game.time/10000), Game.time%10000
+														, JSON.stringify({main:'observedRoom', roomName:roomName, inviderCore:od_room.inviderCore }));
+					}
+				}
+			}
+			else {
+				od_room.inviderCore.obj = Game.getObjectById(od_room.inviderCore.id);
+				od_room.inviderCore.timeToDecay = Game.time + od_room.inviderCore.obj.ticksToDecay;
+				if(od_room.inviderCore.timeToDecay < Game.time) {
+					od_room.inviderCore = undefined;
+				}
+				if(Game.time%101%4 == 3) {
+					console.log('🎃👀', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify({main:'observedRoom', roomName:roomName, inviderCore:od_room.inviderCore}));
 				}
 			}
 
