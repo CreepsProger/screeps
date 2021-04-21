@@ -55,6 +55,11 @@ const observer = {
 			const od_room = observer.rooms[roomName];
 			const maxLastCooldown = 300;
 
+			if(true) {
+				console.log('👀', Math.trunc(Game.time/10000), Game.time%10000
+													, JSON.stringify({main:'observeRoom', room:roomName, od_room:od_room}));
+			}
+			
 			if(!od_room.deposit || !od_room.deposit.obj) {
 				if(Game.time%101 == 1) {
 					const room = Game.rooms[roomName];
