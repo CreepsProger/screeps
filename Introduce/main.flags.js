@@ -524,7 +524,7 @@ var flags = {
 
 		if(flags.flags[prefix] === undefined) {
 			Object.keys(Game.flags)
-						.filter((name)=>name.substring(0,prefix.length) == prefix)
+						.filter((name)=>name.substring(0,prefix.length) == prefix && Game.flags[name].color != COLOR_RED)
 						.sort((l,r) => l.localeCompare(r))
 						.map((name) => Game.flags[name])
 						.map((f,i,arr) => ( f.prefix = f.name.substring(f.name.indexOf('>')+1,f.name.indexOf('.'))
@@ -570,7 +570,7 @@ var flags = {
 
 		if(flags.flags[prefix] === undefined) {
 			Object.keys(Game.flags)
-						.filter((name)=>name.substring(0,prefix.length) == prefix)
+						.filter((name)=>name.substring(0,prefix.length) == prefix && Game.flags[name].color != COLOR_RED)
 						.sort((l,r) => l.localeCompare(r))
 						.map((name) => Game.flags[name])
 						.map((f,i,arr) => ( f.orderId = f.name.substring(f.name.indexOf('.')+1)
@@ -606,7 +606,7 @@ var flags = {
 
 		if(flags.flags[prefix] === undefined) {
 			Object.keys(Game.flags)
-						.filter((name)=>name.substring(0,prefix.length) == prefix)
+						.filter((name)=>name.substring(0,prefix.length) == prefix && Game.flags[name].color != COLOR_RED)
 						.sort((l,r) => l.localeCompare(r))
 						.map((name) => Game.flags[name])
 						.map((f,i,arr) => ( f.orderId = f.name.substring(f.name.indexOf('.')+1,f.name.indexOf(':'))
@@ -643,7 +643,7 @@ var flags = {
 
 		if(flags.flags[prefix] === undefined) {
 			Object.keys(Game.flags)
-						.filter((name)=>name.substring(0,prefix.length) == prefix)
+						.filter((name)=>name.substring(0,prefix.length) == prefix && Game.flags[name].color != COLOR_RED)
 						.sort((l,r) => l.localeCompare(r))
 						.map((name) => Game.flags[name])
 						.map((f,i,arr) => ( f.orderId = f.name.substring(f.name.indexOf('.')+1,f.name.indexOf(':'))
@@ -685,7 +685,7 @@ var flags = {
 
 		if(flags.flags[prefix] === undefined) {
 			Object.keys(Game.flags)
-						.filter((name)=>name.substring(0,prefix.length) == prefix)
+						.filter((name)=>name.substring(0,prefix.length) == prefix && Game.flags[name].color != COLOR_RED)
 						.sort((l,r) => l.localeCompare(r))
 						.map((name) => Game.flags[name])
 						.map((f,i,arr) => ( f.type = f.name.substring(f.name.indexOf('-')+1,f.name.indexOf('.'))
@@ -737,7 +737,7 @@ var flags = {
 
 		if(flags.flags[prefix] === undefined) {
 			Object.keys(Game.flags)
-						.filter((name)=>name.substring(0,prefix.length) == prefix)
+						.filter((name)=>name.substring(0,prefix.length) == prefix && Game.flags[name].color != COLOR_RED)
 						.sort((l,r) => l.localeCompare(r))
 						.map((name) => Game.flags[name])
 						.map((f,i,arr) => ( f.resource = f.name.substring(f.name.indexOf('.')+1,f.name.indexOf(':'))
@@ -839,7 +839,7 @@ var flags = {
 		if(true) {
 			const fLogBuy = Game.flags['LB'];
 			Object.keys(Game.flags)
-						.filter((name)=>name.substring(0,prefix.length) == prefix)
+						.filter((name)=>name.substring(0,prefix.length) == prefix && Game.flags[name].color != COLOR_RED)
 						.sort((l,r) => l.localeCompare(r))
 						.map((name) => Game.flags[name])
 						.map((f,i,arr) => ( f.resource = f.name.substring(f.name.indexOf('.')+1,f.name.indexOf(':'))
@@ -932,7 +932,7 @@ var flags = {
 
 		if(flags.flags[prefix+roomName] === undefined) {
 			const fDeal = Object.keys(Game.flags)
-													.filter((name)=>name.substring(0,prefix.length) == prefix && Game.flags[name].pos.roomName == Deal.pos.roomName)
+													.filter((name)=>name.substring(0,prefix.length) == prefix && Game.flags[name].color != COLOR_RED && Game.flags[name].pos.roomName == Deal.pos.roomName)
 													.sort((l,r) => l.localeCompare(r))
 													.map((name) => Game.flags[name])
 													.map((f,i,arr) => ( f.orderId = f.name.substring(f.name.indexOf('.')+1,f.name.indexOf(':'))
