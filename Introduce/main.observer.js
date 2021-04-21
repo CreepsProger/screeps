@@ -112,8 +112,8 @@ const observer = {
 				}
 			}
 			
-			if(!od_room.power || !od_room.power.obj) {
-				if(Game.time%101%4 == 3) {
+			if(!od_room.inviderCore || !od_room.inviderCore.obj) {
+				if(Game.time%1 == 0) {
 					const room = Game.rooms[roomName];
 					const obj = room.find(FIND_HOSTILE_STRUCTURES)
 													.filter((hs) => hs.level !== undefined)
@@ -132,7 +132,7 @@ const observer = {
 				if(od_room.inviderCore.timeToDecay < Game.time) {
 					od_room.inviderCore = undefined;
 				}
-				if(Game.time%101%4 == 3) {
+				if(Game.time%1 == 0) {
 					console.log('🎃👀', Math.trunc(Game.time/10000), Game.time%10000
 													, JSON.stringify({main:'observedRoom', roomName:roomName, inviderCore:od_room.inviderCore}));
 				}
