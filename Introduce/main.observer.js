@@ -34,22 +34,6 @@ const observer = {
 	},
 
 	run: function() {
-		
-		cash.getAllMyObservers()
-				.forEach(function(o,i) {
-          const o_rooms = observer.getConfig(o.room.name);
-          const o_room = o_rooms[Game.time%o_rooms.length];
-					const err = o.observeRoom(o_room);
-					if(observer.rooms[o_room] === undefined) {
-						observer.rooms[o_room] = {lst_time:Game.time+1};
-					}
-					observer.rooms[o_room].lst_time = Game.time+1;
-					if(err == OK) {
-						console.log('👀🌀! ⚠️', Math.trunc(Game.time/10000), Game.time%10000
-																 , JSON.stringify({main:'observeRoom', room:o.room.name, o_room:o_room, err:err, o_rooms:o_rooms, observer:o}));
-					}
-		});
-		
 		Object.keys(observer.rooms).filter((roomName) => observer.rooms[roomName].lst_time == Game.time)
 									.forEach(function(roomName,i) {
 			const od_room = observer.rooms[roomName];
@@ -142,6 +126,21 @@ const observer = {
 				}
 			}
 
+		});
+
+		cash.getAllMyObservers()
+				.forEach(function(o,i) {
+          const o_rooms = observer.getConfig(o.room.name);
+          const o_room = o_rooms[Game.time%o_rooms.length];
+					const err = o.observeRoom(o_room);
+					if(observer.rooms[o_room] === undefined) {
+						observer.rooms[o_room] = {lst_time:Game.time+1};
+					}
+					observer.rooms[o_room].lst_time = Game.time+1;
+					if(err == OK) {
+						console.log('👀🌀! ⚠️', Math.trunc(Game.time/10000), Game.time%10000
+																 , JSON.stringify({main:'observeRoom', room:o.room.name, o_room:o_room, err:err, o_rooms:o_rooms, observer:o}));
+					}
 		});
 		
 	}
