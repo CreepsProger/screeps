@@ -45,7 +45,7 @@ var flags = {
 		// config == {"W27S26":['W26S25','W26S26'], "W29S29":['W26S25','W26S26']}
 		// return config[roomName];
 		const prefix = roomName + '.observe:';
-		if(flags.flags[prefix] === undefined || flags.flags[prefix][roomName] === undefined) {
+		if(flags.flags[prefix] === undefined) {
 			const json = Object.keys(Game.flags)
 													.filter((name) => name.substring(0,prefix.length) == prefix && Game.flags[name].color != COLOR_RED)
 													.sort((l,r) => l.localeCompare(r))
@@ -53,16 +53,16 @@ var flags = {
 													.reduce((p,c) => p+c, '{ ');
 			try {
 				if(json != '{ ')
-					flags.flags[prefix][roomName] = JSON.parse(json);
+					flags.flags[prefix] = JSON.parse(json);
 			}
 			catch (e) {
 				console.log( '💉📜⛔', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify({flags:'getObserverConfig', json:json, e_name:e.name, e_message:e.message }));
 			}
 		}
-		if(flags.flags[prefix] === undefined || flags.flags[prefix][roomName] === undefined)
+		if(flags.flags[prefix] === undefined)
 			return [];
-		return flags.flags[prefix][roomName];
+		return flags.flags[prefix];
 	},
 
 	getRoomPowerConfig: function(roomName) {
