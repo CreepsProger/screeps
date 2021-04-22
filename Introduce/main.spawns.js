@@ -1388,6 +1388,10 @@ var spawns = {
 						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][H], 1051, 2);
 						if(Game.cpu.bucket >= 5000 && Sp13 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 1054, 2);
 					}
+					if(observer.shouldSpawnForDeposit('W50S56')) {
+						if(Sp12 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][H], 1061, 2);
+						if(Game.cpu.bucket >= 5000 && Sp12 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 1064, 2);
+					}
 
 					if(Sp9 && !All && upgrade) spawns.tryCreateCreep(spawn,   CARIER[7][L], 5023);
 					if(Sp2 && !All && upgrade) spawns.tryCreateCreep(spawn, TRANSPORT[4][L],5023);
