@@ -485,7 +485,7 @@ var role = {
 		}
 		if(!target && (!creep.getActiveBodyparts(WORK) || UU) && (creep.memory.rerun || UU) &&
 			!!creep.room.storage &&
-			 //!creep.room.storage.my &&
+			 !creep.room.storage.my &&
 			 Object.keys(creep.room.storage.store).length > 0 ) {
 					target = creep.room.storage;
 			if(!!target) return target;
