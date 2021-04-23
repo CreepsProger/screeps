@@ -896,7 +896,7 @@ var spawns = {
 						if(Sp15 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][S+3], 5402);
 						if(Sp15 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5404);
 						if(Sp15 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][H], 5401);
-						if(Sp15 && !All)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5405);
+						if(Sp15 && !All && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5405);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W21S23')) {
 						const fG = flags.getFlag('541G');
