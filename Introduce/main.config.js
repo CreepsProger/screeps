@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 707,
+	version: 708,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -2037,6 +2037,43 @@ var config = {
 								}
 								, escape_path:
 								{ W55S57: 'W54S57'
+								}
+							},
+							W54S58:
+							{ containers: {weight: 823}
+							, sites:
+								[ {x:34, y:25, type:STRUCTURE_CONTAINER}
+								, {x:34, y:26, type:STRUCTURE_CONTAINER}
+								]
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 820, max_weight: 829}
+								, {name: '2', time: 0, min_weight: 820, max_weight: 829}
+								, {name: '3', time: 0, min_weight: 820, max_weight: 829}
+								, {name: '4', time: 0, min_weight: 820, max_weight: 829}
+								, {name: '5', time: 0, min_weight: 820, max_weight: 829}
+								, {name: '6', time: 0, min_weight: 820, max_weight: 829}
+								, {name: '7', time: 0, min_weight: 820, max_weight: 829}
+								, {name: '8', time: 0, min_weight: 820, max_weight: 829}
+								]
+							, claiming:
+								[ {name: '1', time: 0, min_weight: 820, max_weight: 829}
+								, {name: '2', time: 0, min_weight: 820, max_weight: 829}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 820, max_weight: 829}
+								, {name: '2', time: 0, min_weight: 820, max_weight: 829}
+								, {name: '3', time: 0, min_weight: 820, max_weight: 829}
+								, {name: '4', time: 0, min_weight: 820, max_weight: 829}
+								, {name: '5', time: 0, min_weight: 820, max_weight: 829}
+								, {name: '6', time: 0, min_weight: 820, max_weight: 829}
+								]
+							, heal_room:
+								{ shard: 'shard0', room: 'W54S57'}
+							, path_rooms:
+								{ W54S57: 'W54S58'
+								}
+								, escape_path:
+								{ W54S58: 'W54S57'
 								}
 							},
 							W50S52:
