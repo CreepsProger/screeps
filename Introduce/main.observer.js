@@ -117,7 +117,7 @@ const observer = {
 			else {
 				od_room.inviderCore.obj = Game.getObjectById(od_room.inviderCore.id);
 				od_room.inviderCore.timeToDecay = Game.time + od_room.inviderCore.obj.ticksToDecay;
-				if(od_room.inviderCore.timeToDecay < Game.time) {
+				if(!od_room.inviderCore.obj || od_room.inviderCore.timeToDecay < Game.time) {
 					od_room.inviderCore = undefined;
 				}
 				if(Game.time%1000 < 6) {
