@@ -1370,6 +1370,16 @@ var spawns = {
             if(All)	spawns.tryCreateCreep(spawn, CARIER[7][L], 761);
 						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 765);
 						//if(Sp13 && !All)	spawns.tryCreateCreep(spawn,  UPGRADER[L], 765);
+						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W55S57')) {
+							if(Sp13 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 817);
+						}
+						else {
+							if(conditions.TO_SPAWN_ROOM_CLAIMER('W55S57')) {
+								if(Sp13 && !All)	spawns.tryCreateCreep(spawn, CLAIMER[7][H], 810);
+							}
+							if(Sp13 && !All)	spawns.tryCreateCreep(spawn, WORKER[5][L], 814);
+							if(Sp13 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][L], 811);
+						}
 					}
 
 					if(observer.shouldSpawnForDeposit('W50S52')) {
