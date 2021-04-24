@@ -1380,6 +1380,26 @@ var spawns = {
 							if(Sp13 && !All)	spawns.tryCreateCreep(spawn, WORKER[5][L], 814);
 							if(Sp13 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][L], 811);
 						}
+						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W54S58')) {
+							if(Sp13 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 827);
+						}
+						else {
+							if(conditions.TO_SPAWN_ROOM_CLAIMER('W54S58')) {
+								if(Sp13 && !All)	spawns.tryCreateCreep(spawn, CLAIMER[7][H], 820);
+							}
+							if(Sp13 && !All)	spawns.tryCreateCreep(spawn, WORKER[5][L], 824);
+							if(Sp13 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][L], 821);
+						}
+						if(conditions.TO_SPAWN_ROOM_DEFENDERS('W56S57')) {
+							if(Sp13 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 837);
+						}
+						else {
+							if(conditions.TO_SPAWN_ROOM_CLAIMER('W56S57')) {
+								if(Sp13 && !All)	spawns.tryCreateCreep(spawn, CLAIMER[7][H], 830);
+							}
+							if(Sp13 && !All)	spawns.tryCreateCreep(spawn, WORKER[5][L], 834);
+							if(Sp13 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][L], 831);
+						}
 					}
 
 					if(observer.shouldSpawnForDeposit('W50S52')) {
