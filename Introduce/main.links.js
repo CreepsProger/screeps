@@ -152,7 +152,10 @@ var links = {
 		//, { from: '606c0103e4f71a7dc14b0add', to: '606c5c0a4f9c9e8416e2b3e4'}
 		 // can't harvest from 'to' if 'noto_ifnotfull' is not full
 		 // can't trasfer to 'from' if 'from_full' is full
-		 , { from: '606c0103e4f71a7dc14b0add', to: '606bf19c11a48494f0af712b', _noto_ifnotfull: '606c5c0a4f9c9e8416e2b3e4'}
+		 , { from: '606c0103e4f71a7dc14b0add', to: '606bf19c11a48494f0af712b', _noto_ifnotfull: '6083dd420436cceb117bbe87'}
+		 , { from: '6082fe479bf8df15ef3d6c33', to: '606bf19c11a48494f0af712b', _noto_ifnotfull: '606c5c0a4f9c9e8416e2b3e4'}
+		 , { from: '606c0103e4f71a7dc14b0add', to: '60740882c2b047ea7ba4f7e7', _noto_ifnotfull: '6083dd420436cceb117bbe87'}
+		 , { from: '6082fe479bf8df15ef3d6c33', to: '60740882c2b047ea7ba4f7e7', _noto_ifnotfull: '606c5c0a4f9c9e8416e2b3e4'}
 		 //, { from: '606bf19c11a48494f0af712b', to: '606c5c0a4f9c9e8416e2b3e4', nofrom_iffull: '606c5c0a4f9c9e8416e2b3e4'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W21S23
