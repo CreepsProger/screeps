@@ -641,16 +641,20 @@ var spawns = {
 						const fG = flags.getFlag('20G');
 						const G = 7 + ((!fG)? 0:10-fG.color); //WHITE = 7+0
 						if(Sp6 && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[G][L], 206);
+						if(Sp15 && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[G][L], 206);
 						if(Sp6 && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[G][L], 216);
 						if(Sp6 && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[G][L], 226);
 						if(Sp6 && !All && tm == 1) spawns.tryCreateCreep(spawn, ATTACKER[G][M], 207);
+						if(Sp15 && !All && tm == 1) spawns.tryCreateCreep(spawn, ATTACKER[G][M], 207);
 						if(Sp6 && !All && tm == 1) spawns.tryCreateCreep(spawn, ATTACKER[G][M], 217);
 						if(Sp6 && !All && tm == 1) spawns.tryCreateCreep(spawn, ATTACKER[G][M], 227);
 						if(Sp6 && !All && tm == 2) spawns.tryCreateCreep(spawn, ATTACKER[G][H], 208);
+						if(Sp15 && !All && tm == 2) spawns.tryCreateCreep(spawn, ATTACKER[G][H], 208);
 						if(Sp6 && !All && tm == 2) spawns.tryCreateCreep(spawn, ATTACKER[G][H], 218);
 						if(Sp6 && !All && tm == 2) spawns.tryCreateCreep(spawn, ATTACKER[G][H], 228);
 						
-						if(Sp15 && !All && tm == 3) spawns.tryCreateCreep(spawn,  UPGRADER[M], 205);
+						if(Sp6 && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[7][M], 205);
+						if(Sp15 && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[7][M], 205);
 						if(Sp6  && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[7][L], 204);
 						if(Sp15 && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[7][L], 204);
 						if((Sp6 || Sp15) && !All && tm == 3) spawns.tryCreateCreep(spawn, CARIER[7][L], 201);
