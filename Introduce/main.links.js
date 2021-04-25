@@ -344,15 +344,18 @@ var links = {
 	 },
 
    run: function() {
-		 links.links.forEach(function(link) {
-			 const from = Game.getObjectById(link.from);
-			 const to = (!!link.end)? Game.getObjectById(link.end):Game.getObjectById(link.to);
-			 if(!!from && !!to &&
-				  !!from.store && from.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
-					!!to.store && to.store.getFreeCapacity(RESOURCE_ENERGY) > 100) {
-				 from.transferEnergy(to);
-			 }
-		 });
+		 links.links
+			 			.map((e) => 		( e.from_obj = Game.getObjectById(e.from)
+														, e.to_obj = (!!e.end)? Game.getObjectById(e.end):Game.getObjectById(e.to)
+														, e))
+		 				.filter((e) => 	!!e.from_obj && !!e.from_obj.store &&
+														!!e.to_obj && !!e.to_obj.store &&
+														e.from_obj.store.getUsedCapacity(RESOURCE_ENERGY) > 0 &&
+									 					e.to_obj.store.getFreeCapacity(RESOURCE_ENERGY) > 100)
+						.sort((l,r) =>  l.from_obj.store.getFreeCapacity(RESOURCE_ENERGY) * l.to_obj.store.getUsedCapacity(RESOURCE_ENERGY)
+														-
+														r.from_obj.store.getFreeCapacity(RESOURCE_ENERGY) * r.to_obj.store.getUsedCapacity(RESOURCE_ENERGY))
+			 			.map((e) => 		e.from_obj.transferEnergy(e.to_obj));
 	 }
 };
 
