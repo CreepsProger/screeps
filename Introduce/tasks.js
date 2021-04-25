@@ -1125,6 +1125,23 @@ var tasks = {
 			}
 			else {
 				if(creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0) {
+					const link = links.getTargetEndLinkToHarvest(creep);
+					if(!!link) {
+						const err = creep.withdraw(link,RESOURCE_ENERGY);
+						if(OK == err) {
+							creep.say('🔗⚡');
+							return true;
+						}
+						creep.say('🔗⚡'+err);
+						if(ERR_NOT_IN_RANGE == err) {
+							const err = tools.moveTo(creep, link);
+							if(OK == err) {
+								creep.say('🔜🔗⚡');
+								return true;
+							}
+							creep.say('🔜🔗⚡'+err);
+						}
+					}
 					const sot = tools.getStorageOrTerminal(creep);
 					if(!!sot) {
 						const err = creep.withdraw(sot,RESOURCE_ENERGY);
