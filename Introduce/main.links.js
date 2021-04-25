@@ -152,13 +152,13 @@ var links = {
 		 // can't harvest from 'to' if 'noto_ifnotfull' is not full
 		 // can't trasfer to 'from' if 'from_full' is full
 		 , { from: '606c0103e4f71a7dc14b0add', to: '606bf19c11a48494f0af712b',      harvest_from_to_if_full: ['6083dd420436cceb117bbe87','606c5c0a4f9c9e8416e2b3e4']}
-		 , { from: '6082fe479bf8df15ef3d6c33', to: '606bf19c11a48494f0af712b',      harvest_from_to_if_full: ['6083dd420436cceb117bbe87','606c5c0a4f9c9e8416e2b3e4']}
 		 , { from: '606c0103e4f71a7dc14b0add', to: '60740882c2b047ea7ba4f7e7',      harvest_from_to_if_full: ['6083dd420436cceb117bbe87','606c5c0a4f9c9e8416e2b3e4']}
 		 , { from: '6082fe479bf8df15ef3d6c33', to: '60740882c2b047ea7ba4f7e7',      harvest_from_to_if_full: ['6083dd420436cceb117bbe87','606c5c0a4f9c9e8416e2b3e4']}
+		 , { from: '6082fe479bf8df15ef3d6c33', to: '606bf19c11a48494f0af712b',      harvest_from_to_if_full: ['6083dd420436cceb117bbe87','606c5c0a4f9c9e8416e2b3e4']}
 		 , { from: '606bf19c11a48494f0af712b', end: '6083dd420436cceb117bbe87', no_transfer_to_from_if_full: ['6083dd420436cceb117bbe87','606c5c0a4f9c9e8416e2b3e4']}
+		 , { from: '60740882c2b047ea7ba4f7e7', end: '606c5c0a4f9c9e8416e2b3e4', no_transfer_to_from_if_full: ['6083dd420436cceb117bbe87','606c5c0a4f9c9e8416e2b3e4']}
 		 , { from: '606bf19c11a48494f0af712b', end: '606c5c0a4f9c9e8416e2b3e4', no_transfer_to_from_if_full: ['6083dd420436cceb117bbe87','606c5c0a4f9c9e8416e2b3e4']}
 		 , { from: '60740882c2b047ea7ba4f7e7', end: '6083dd420436cceb117bbe87', no_transfer_to_from_if_full: ['6083dd420436cceb117bbe87','606c5c0a4f9c9e8416e2b3e4']}
-		 , { from: '60740882c2b047ea7ba4f7e7', end: '606c5c0a4f9c9e8416e2b3e4', no_transfer_to_from_if_full: ['6083dd420436cceb117bbe87','606c5c0a4f9c9e8416e2b3e4']}
 		 // W21S23
 		 , { from: '607c7411438aa8cb0ea6cf98', to: '607c8e1c7180d07754def934'}
 		 , { from: '607c7172bb148fb0417856c9', to: '607c8e1c7180d07754def934'}
