@@ -610,9 +610,11 @@ var tasks = {
 		}
 		const boostConfig = flags.getBoostConfig(creep);
 		if(!!boostConfig && boostConfig.length > 0) {
-			const ressToBoost = boostConfig.filter((res) => !creep.body.some((b,i) => tools.nvl(b.boost,'-') == res)); 
+			const ressToBoost = boostConfig. sort((l, r) => ((!r.length)? 1:(r.length==1?0:r[1])) - ((!l.length)? 1:(l.length==1?0:l[1]))) //mandatory first
+																			.filter((res) => !creep.body.some((b,i) => tools.nvl(b.boost,'-') == (!res.length)? res:res[0])); 
 			if(!!ressToBoost && ressToBoost.length > 0) {
-				const resToBoost = ressToBoost[0];
+				const resToBoost = (!ressToBoost[0].length)? ressToBoost[0]:ressToBoost[0][0];
+				const mandatory = (!ressToBoost[0].length)? 1:ressToBoost[0][1];
 // 				console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
 // 							, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
 // 																, room:creep.room.name, resToBoost:resToBoost, getLabsToInOut:labs.getLabsToInOut(creep.room.name)}));
@@ -641,8 +643,10 @@ var tasks = {
 						console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
 														, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
 																							, room:creep.room.name, err:err, labToBoost:labToBoost}));
+						
 					}
-					return true;
+					if(!!mandatory)
+						return true;
 				}
 			}
 		}
