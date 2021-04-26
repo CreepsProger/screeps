@@ -119,13 +119,16 @@ var spawns = {
 
 				const roomBoostConf = flags.getRoomBoostConfig(spawn.room.name);
 				const boostConf = (!roomBoostConf)? roomBoostConf:roomBoostConf[weight];
-				if(!!boostConf) { // ["XGH2O","XKH2O","XZHO2"]
+				if(!!boostConf) { // ["XGH2O","XKH2O","XZHO2"] or  [["XGH2O",0],"XKH2O",["XZHO2",1]]
 					console.log( '🏋️‍♂️', Math.trunc(Game.time/10000), Game.time%10000
 														  , JSON.stringify({weight:weight, spawn:spawn, boostConf:boostConf}));
 					const labs = cash.getLabs(spawn.room.name);
-					const readyBoosts = boostConf.filter((b) => labs.some((l) => !!l.mineralType && l.mineralType == b &&
+					const readyBoosts = boostConf.filter((b) => labs.some((l) => (!b.length && !!l.mineralType && l.mineralType == b &&
 																														        	 !!l.energy && l.energy >= 1000 &&
-																													          	 !!l.mineralAmount && l.mineralAmount >= 1500 ));
+																													          	 !!l.mineralAmount && l.mineralAmount >= 1500)
+																																||     (!!b.length && b[1] == 1 && !!l.mineralType && l.mineralType == b[0] &&// check only mandatory
+																														        	 !!l.energy && l.energy >= 1000 &&
+																													          	 !!l.mineralAmount && l.mineralAmount >= 1500) ));
 					if(readyBoosts.length != boostConf.length) {
 						console.log('🏋️‍♂️🚫', Math.trunc(Game.time/10000), Game.time%10000
 											           , JSON.stringify( { tasks:'tryCreateCreep', newName:newName
