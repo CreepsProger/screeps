@@ -123,16 +123,16 @@ var spawns = {
 					console.log( '🏋️‍♂️', Math.trunc(Game.time/10000), Game.time%10000
 														  , JSON.stringify({weight:weight, spawn:spawn, boostConf:boostConf}));
 					const labs = cash.getLabs(spawn.room.name);
-					const readyBoosts = boostConf.filter((b) => labs.some((l) => (!b.length &&// check only mandatory
+					const readyBoosts = boostConf.filter((b) => labs.some((l) => ((typeof b === 'string' || b instanceof String) &&// check only mandatory
 																														        	 !!l.mineralType && l.mineralType == b &&
 																														        	 !!l.energy && l.energy >= 1000 &&
 																													          	 !!l.mineralAmount && l.mineralAmount >= 1500)
-																																||     (!!b.length && b.length > 1 && b[1] == 1 && 
+																																||     (!(typeof b === 'string' || b instanceof String) && !!b.length && b.length > 1 && b[1] == 1 && 
 																														        	 !!l.mineralType && l.mineralType == b[0] &&// check only mandatory
 																														        	 !!l.energy && l.energy >= 1000 &&
 																													          	 !!l.mineralAmount && l.mineralAmount >= 1500)
-																															  ||     (!!b.length && b.length == 1)
-																															  ||     (!!b.length && b.length > 1 && b[1] == 0)));
+																															  ||     (!(typeof b === 'string' || b instanceof String) && !!b.length && b.length == 1)
+																															  ||     (!(typeof b === 'string' || b instanceof String) && !!b.length && b.length > 1 && b[1] == 0)));
 					if(readyBoosts.length != boostConf.length) {
 						console.log('🏋️‍♂️🚫', Math.trunc(Game.time/10000), Game.time%10000
 											           , JSON.stringify( { tasks:'tryCreateCreep', newName:newName
