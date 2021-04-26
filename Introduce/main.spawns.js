@@ -463,8 +463,7 @@ var spawns = {
 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, CARIER[7][H], 231);
 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[7][L], 232);
 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[7][H], 234);
-						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[7][H], 235);					
-// 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, UPGRADER[L], 235);
+ 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, UPGRADER[L], 235);
   					if(Sp1 && !All && upgrade) spawns.tryCreateCreep(spawn, CARIER[7][L], 5013);
 					}
 
