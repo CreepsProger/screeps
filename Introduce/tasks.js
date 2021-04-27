@@ -631,6 +631,10 @@ var tasks = {
 																.map((lab) => (lab.em = lab.e*lab.m,lab)) 
 																.sort((l,r) => r.em - l.em)
 																.shift();
+				if(!mandatory)
+					console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
+							, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
+																, room:creep.room.name, resToBoost:resToBoost, ressToBoost:ressToBoost, labToBoost:labToBoost}));
 				if(!!labToBoost) { 
 					const resToBoost = labToBoost.lab.mineralType;
 // 					console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
