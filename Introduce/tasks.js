@@ -644,6 +644,7 @@ var tasks = {
 					if(err == ERR_NOT_IN_RANGE) {
 						const err2 = tools.moveTo(creep, labToBoost.lab);
 						creep.say((OK == err2)?'🔜💉':'🔜💉'+err2);
+						return true;
 					}
 					else {
 						creep.say((OK == err)?'💉':'💉'+err);
