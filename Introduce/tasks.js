@@ -612,13 +612,14 @@ var tasks = {
 		if(!!boostConfig && boostConfig.length > 0) {
 			const ressToBoost = boostConfig. sort((l, r) => ((typeof r === 'string' || r instanceof String)? 1:(r.length==1?0:r[1])) - ((typeof l === 'string' || l instanceof String)? 1:(l.length==1?0:l[1]))) //mandatory first
 																			.filter((res) => !creep.body.some((b,i) => tools.nvl(b.boost,'-') == ((typeof res === 'string' || res instanceof String)? res:res[0])));
+			const ressToBoostflat = ressToBoost.flat(2);
 			if(!!ressToBoost && ressToBoost.length > 0) {
 				const first = ressToBoost[0];
 				const resToBoost = (typeof first === 'string' || first instanceof String)? first:first[0];
 				const mandatory = (typeof first === 'string' || first instanceof String)? 1:first[1];
-// 				console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
-// 							, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
-// 																, room:creep.room.name, resToBoost:resToBoost, getLabsToInOut:labs.getLabsToInOut(creep.room.name)}));
+				console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
+							, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
+																, room:creep.room.name, resToBoost:resToBoost, ressToBoostflat:ressToBoostflat, getLabsToInOut:labs.getLabsToInOut(creep.room.name)}));
 				const labToBoost = labs.getLabsToInOut(creep.room.name)
 																.filter((lab) => !!lab.lab.mineralType &&
 																				lab.lab.store[lab.lab.mineralType] > 30 &&
