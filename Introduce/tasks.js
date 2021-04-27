@@ -620,7 +620,7 @@ var tasks = {
 				if(!mandatory)
 					console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
 							, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
-																, room:creep.room.name, resToBoost:resToBoost, getLabsToInOut:labs.getLabsToInOut(creep.room.name)}));
+																, room:creep.room.name, resToBoost:resToBoost, ressToBoost:ressToBoost, getLabsToInOut:labs.getLabsToInOut(creep.room.name)}));
 				const labToBoost = labs.getLabsToInOut(creep.room.name)
 																.filter((lab) => !!lab.lab.mineralType &&
 																				lab.lab.store[lab.lab.mineralType] > 30 &&
