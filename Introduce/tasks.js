@@ -625,7 +625,7 @@ var tasks = {
 																.filter((lab) => !!lab.lab.mineralType &&
 																				lab.lab.store[lab.lab.mineralType] > 30 &&
 																				tools.nvl(lab.lab.store.getUsedCapacity(RESOURCE_ENERGY),0) > 20 &&
-																				ressToBoost.includes(lab.lab.mineralType) )
+																				resToBoost == lab.lab.mineralType )
 																.map((lab) => (lab.m = lab.lab.store[lab.lab.mineralType],lab)) 
 																.map((lab) => (lab.e = tools.nvl(lab.lab.store.getUsedCapacity(RESOURCE_ENERGY),0),lab)) 
 																.map((lab) => (lab.em = lab.e*lab.m,lab)) 
