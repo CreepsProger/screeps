@@ -617,10 +617,10 @@ var tasks = {
 				const resToBoost = (typeof first === 'string' || first instanceof String)? first:first[0];
 				const mandatory = (typeof first === 'string' || first instanceof String)? 1:first[1];
 // 				const ressToBoostflat = ressToBoost.flat(2);
-				if(!mandatory)
-					console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
-							, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
-																, room:creep.room.name, resToBoost:resToBoost, ressToBoost:ressToBoost, getLabsToInOut:labs.getLabsToInOut(creep.room.name)}));
+// 				if(!mandatory)
+// 					console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
+// 							, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
+// 																, room:creep.room.name, resToBoost:resToBoost, ressToBoost:ressToBoost, getLabsToInOut:labs.getLabsToInOut(creep.room.name)}));
 				const labToBoost = labs.getLabsToInOut(creep.room.name)
 																.filter((lab) => !!lab.lab.mineralType &&
 																				lab.lab.store[lab.lab.mineralType] > 30 &&
@@ -631,10 +631,10 @@ var tasks = {
 																.map((lab) => (lab.em = lab.e*lab.m,lab)) 
 																.sort((l,r) => r.em - l.em)
 																.shift();
-				if(!mandatory)
-					console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
-							, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
-																, room:creep.room.name, resToBoost:resToBoost, ressToBoost:ressToBoost, labToBoost:labToBoost}));
+// 				if(!mandatory)
+// 					console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
+// 							, JSON.stringify( { tasks:'onRun.boost', creep:creep.name
+// 																, room:creep.room.name, resToBoost:resToBoost, ressToBoost:ressToBoost, labToBoost:labToBoost}));
 				if(!!labToBoost) { 
 					const resToBoost = labToBoost.lab.mineralType;
 // 					console.log('💉', Math.trunc(Game.time/10000), Game.time%10000
