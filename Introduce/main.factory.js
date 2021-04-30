@@ -103,7 +103,13 @@ const factory = {
 		while(to_run > 0 && err != OK) {
 			const line = Math.floor(to_run%base);
 			const product = f.config[line][0];
-			if(terminals.getShardAvgAmount(product) < config.getMaxAvgAmountToProduce(product)) {
+			if(product = RESOURCE_ENERGY || product = RESOURCE_BATTERY) {
+				if((product = RESOURCE_ENERGY && terminals.getShardAvgAmount(RESOURCE_ENERGY) < 250000) ||
+					 (product = RESOURCE_BATTERY && terminals.getShardAvgAmount(RESOURCE_ENERGY) > 300000)) {
+					err = f.produce(product);
+				}
+			}
+			else if(terminals.getShardAvgAmount(product) < config.getMaxAvgAmountToProduce(product)) {
 				err = f.produce(product);
 			}
 			to_run = Math.floor(to_run/base);
