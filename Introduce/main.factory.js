@@ -103,9 +103,9 @@ const factory = {
 		while(to_run > 0 && err != OK) {
 			const line = Math.floor(to_run%base);
 			const product = f.config[line][0];
-			if(product = RESOURCE_ENERGY || product = RESOURCE_BATTERY) {
-				if((product = RESOURCE_ENERGY && terminals.getShardAvgAmount(RESOURCE_ENERGY) < 250000) ||
-					 (product = RESOURCE_BATTERY && terminals.getShardAvgAmount(RESOURCE_ENERGY) > 300000)) {
+			if(product == RESOURCE_ENERGY || product == RESOURCE_BATTERY) {
+				if((product == RESOURCE_ENERGY && terminals.getShardAvgAmount(RESOURCE_ENERGY) < 250000) ||
+					 (product == RESOURCE_BATTERY && terminals.getShardAvgAmount(RESOURCE_ENERGY) > 300000)) {
 					err = f.produce(product);
 				}
 			}
