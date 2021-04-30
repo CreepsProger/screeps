@@ -932,6 +932,10 @@ var spawns = {
 						if(Sp15 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5411);
 					}
 					else {
+						const fG = flags.getFlag('541G');
+						const G = 7 + ((!fG)? 0:10-fG.color); //WHITE = 7+0
+						if(Sp6 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][M], 5417);
+						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][M], 5417);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5412);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5414);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][H], 5411);
