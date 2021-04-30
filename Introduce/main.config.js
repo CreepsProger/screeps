@@ -47,6 +47,8 @@ var config = {
 			if(!commodity.level) {
 				if(res == RESOURCE_ENERGY)
 					return 300000;
+				if(res == RESOURCE_BATTERY)
+					return 700000;
 				return 2000;
 			}
 			if(commodity.level == 1 && res != 'composite')
