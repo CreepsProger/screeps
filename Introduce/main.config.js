@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 720,
+	version: 721,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -733,6 +733,9 @@ var config = {
 								, {name: '4', time: 0, min_weight: 470, max_weight: 479}
 								, {name: '5', time: 0, min_weight: 470, max_weight: 479}
 								, {name: '6', time: 0, min_weight: 470, max_weight: 479}
+								, {name: '7', time: 0, min_weight: 470, max_weight: 479}
+								, {name: '8', time: 0, min_weight: 470, max_weight: 479}
+								, {name: '9', time: 0, min_weight: 470, max_weight: 479}
 								]
 							, claiming:
 								[ {name: '1', time: 0, min_weight: 470, max_weight: 479}
@@ -741,19 +744,31 @@ var config = {
 							, attacker:
 								[ {name: '1', time: 0, min_weight: 470, max_weight: 479}
 								, {name: '2', time: 0, min_weight: 470, max_weight: 479}
+								, {name: '3', time: 0, min_weight: 470, max_weight: 479}
+								, {name: '4', time: 0, min_weight: 470, max_weight: 479}
+								, {name: '5', time: 0, min_weight: 470, max_weight: 479}
 								]
 							, heal_room:
 								{ shard: 'shard0', room: 'W57S51'}
 							, path_rooms:
-								{ W57S52: 'W58S52', W57S52y:20, W58S52: 'W59S52', W58S52y:15
-								, W59S52: 'W59S51'
-								, W57S51: 'W58S51', W58S51: 'W59S51'
-								, W54S51: 'W55S51', W55S51: 'W56S51', W56S51: 'W57S51'
-								, W56S52: 'W56S51'
-								, W56S53: 'W56S52', W56S52: 'W57S52'
-								, W57S55: 'W57S54', W57S54: 'W56S54', W57S54y:4, W56S54: 'W56S53'
-								, W58S54: 'W57S54'
-								, W54S53: 'W55S53', W55S53: 'W56S53'
+								{ shard1:
+									{ shard2_W30S30:'W30S30', W30S30: 'shard0'
+									, W29S31: 'W30S31', W30S31: 'W30S30'
+									, W29S29: 'W29S30', W29S30: 'W30S30'
+									, W28S29: 'W28S30', W28S30: 'W29S30'
+									}
+								, shard0:
+									{ shard1_W30S30: 'W60S50', W60S50: 'W60S51', W60S51: 'W59S51'
+									, W57S52: 'W58S52', W57S52y:20, W58S52: 'W59S52', W58S52y:15
+									, W59S52: 'W59S51'
+									, W57S51: 'W58S51', W58S51: 'W59S51'
+									, W54S51: 'W55S51', W55S51: 'W56S51', W56S51: 'W57S51'
+									, W56S52: 'W56S51'
+									, W56S53: 'W56S52', W56S52: 'W57S52'
+									, W57S55: 'W57S54', W57S54: 'W56S54', W57S54y:4, W56S54: 'W56S53'
+									, W58S54: 'W57S54'
+									, W54S53: 'W55S53', W55S53: 'W56S53'
+									}
 								}
 								, escape_path:
 								{ W59S51: 'W58S51', W58S51: 'W57S51'
