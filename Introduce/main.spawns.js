@@ -288,9 +288,9 @@ var spawns = {
 						, [           7000007,       1700000017,     110000000011,           150015]  //  6 2300
 						, [          18000018,       2500000025,     250000000025,           250025]  //  7 5600
 						, [          25000025,       2005000025,     200005000025,          5200025]  //  8 12900
-						, [          25000025,       1807000025,     180007000025,          7180025]  //  9 
-						, [          25000025,       1510000025,     150010000025,         10150025]  // 10 
-						, [          40000010,       4000000010,     400000000010,           400010]  // 11 
+						, [          20000010,       4002000006,     400002000006,          2400006]  //  9 
+						, [          25000025,       1807000025,     180007000025,          7180025]  // 10 
+						, [          25000025,       1510000025,     150010000025,         10150025]  // 11 
 						, [          40000010,       3010000010,     300010000010,         10300010]  // 12 
 						, [  1000000030000010,  500003005000010,  500300005000010, 1000000010101010]  // 13 
 						, [  1000000030000010, 1000002505000010, 1000250005000010, 1000000005250010]  // 14
@@ -959,7 +959,10 @@ var spawns = {
 					else {
 						const fG = flags.getFlag('541G');
 						const G = 7 + ((!fG)? 0:10-fG.color); //WHITE = 7+0
+						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][L], 5416);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][M], 5417);
+						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][H], 5418);
+						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][S], 5419);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5412);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5414);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][H], 5411);
@@ -978,7 +981,7 @@ var spawns = {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W22S24')) {
 							if(Sp16 && !All)	spawns.tryCreateCreep(spawn, CLAIMER[7][H], 5420);
 						}
-						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[6][S], 5424);
+						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][L], 5424);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5421);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W22S22')) {
