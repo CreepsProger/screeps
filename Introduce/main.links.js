@@ -141,6 +141,11 @@ var links = {
 		 , { from: '606e6efb3b6b3f035a63453e', to: '6067de588c32091c95fdd798'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 // W59S51
+		 , { from: '6088a820e2f47805f35e3b8b', to: '60887cfbdbfd121d0b725d00'}
+		 , { from: '6088a820e2f47805f35e3b8b', to: '60887cfbdbfd121d0b725d00'}
+		 , { from: '608d141a2f78991070ebd3c4', to: '60887cfbdbfd121d0b725d00'}
+		 , { from: '608d141a2f78991070ebd3c4', to: '60887cfbdbfd121d0b725d00'}
      //shard2
 		 // W31S29
 		 , { from: '6075427b5c14295f6dfa87b8', to: '60752abed90f9e58c2383e9d'}
