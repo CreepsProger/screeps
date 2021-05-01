@@ -20,6 +20,15 @@ var spawns = {
 										.map((rmp) => rmp.setPublic(isPublic))
 										.filter((err) => err != OK);
    },
+	
+	setRampartPublic: function(pos, isPublic = true) {
+		const room = Game.rooms[pos.roomName];
+		if(!room) return;
+		const errs = cash.getMyBuildings(room)
+										.filter((b) => !!b && !!b.structureType && b.structureType == STRUCTURE_RAMPART && b.pos==pos)
+										.map((rmp) => rmp.setPublic(isPublic))
+										.filter((err) => err != OK);
+   },
 
    work_efficiency: function(type,range) {
        var RAs = Math.trunc(type%10000000000/100000000);
@@ -908,6 +917,17 @@ var spawns = {
 						if(Sp15 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5404);
 						if(Sp15 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][H], 5401);
 						if(Sp15 && !All && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5405);
+					}
+					const trapPos = RoomPosition(41,27,'W21S23');
+					const NA = flags.getFlag('W21S23' + '.NA');
+					const isTrapFull = trapPos.findInRange(FIND_HOSTILE_CREEPS, 0);
+					if(isTrapFull) {
+						spawns.setRampartPublic(new RoomPosition(42,27,'W21S23'),false).length;
+						NA.setColor(COLOR_RED);
+					}
+					else {
+						spawns.setRampartPublic(new RoomPosition(42,27,'W21S23'))
+						NA.setColor(COLOR_GREEN);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W21S23')) {
 						const fG = flags.getFlag('541G');
