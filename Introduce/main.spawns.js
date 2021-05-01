@@ -25,7 +25,7 @@ var spawns = {
 		const room = Game.rooms[pos.roomName];
 		if(!room) return;
 		const errs = cash.getMyBuildings(room)
-										.filter((b) => !!b && !!b.structureType && b.structureType == STRUCTURE_RAMPART && b.pos==pos)
+										.filter((b) => !!b && !!b.structureType && b.structureType == STRUCTURE_RAMPART && b.pos.isEqualTo(pos))
 										.map((rmp) => rmp.setPublic(isPublic))
 										.filter((err) => err != OK);
    },
@@ -920,9 +920,9 @@ var spawns = {
 					}
 // 					var W21S23_NA = flags.getFlag('W21S23.NA');
 					var NA = Game.flags['W21S23.NA'];
-					const roomW21S23 = Game.rooms['W21S23'];
+					var roomW21S23 = Game.rooms['W21S23'];
 // 					const W21S23_NA = flags.getFlag(roomW21S23.name + '.NA');
-					const trapPos = roomW21S23.getPositionAt(41,27);
+					var trapPos = roomW21S23.getPositionAt(41,27);
 					const isTrapFull = trapPos.findInRange(FIND_HOSTILE_CREEPS, 0).length > 0;
 					if(isTrapFull) {
 						spawns.setRampartPublic(roomW21S23.getPositionAt(42,27),false);
