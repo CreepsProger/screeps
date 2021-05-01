@@ -918,17 +918,16 @@ var spawns = {
 						if(Sp15 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][H], 5401);
 						if(Sp15 && !All && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5405);
 					}
+					var W21S23_NA = flags.getFlag('W21S23.NA');
 					const roomW21S23 = Game.rooms['W21S23'];
 // 					const W21S23_NA = flags.getFlag(roomW21S23.name + '.NA');
 					const trapPos = roomW21S23.getPositionAt(41,27);
 					const isTrapFull = trapPos.findInRange(FIND_HOSTILE_CREEPS, 0).length > 0;
 					if(isTrapFull) {
-						const W21S23_NA = flags.getFlag('W21S23.NA');
 						spawns.setRampartPublic(roomW21S23.getPositionAt(42,27),false);
 						W21S23_NA.setColor(COLOR_RED);
 					}
 					else {
-						const W21S23_NA = flags.getFlag('W21S23.NA');
 						spawns.setRampartPublic(roomW21S23.getPositionAt(42,27))
 						W21S23_NA.setColor(COLOR_GREEN);
 					}
