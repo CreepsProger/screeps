@@ -103,7 +103,7 @@ var role = {
 					if(towers.length > 0) {
 						target = towers.reduce((p,c) => !!p && !!p.store && !!c && !!c.store &&
 												creep.pos.getRangeTo(p) * (p.store.getUsedCapacity(RESOURCE_ENERGY) + 500)
-												<
+												>
 												creep.pos.getRangeTo(c) * (c.store.getUsedCapacity(RESOURCE_ENERGY) + 500)
 												? p:c);
 					}
