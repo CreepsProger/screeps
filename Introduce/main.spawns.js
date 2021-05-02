@@ -963,6 +963,7 @@ var spawns = {
 						boost5417.setColor(COLOR_RED)
 						const fG = flags.getFlag('541G');
 						const G = 7 + ((!fG)? 0:10-fG.color); //WHITE = 7+0
+						if(Sp16 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 5413);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][L], 5416);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][M], 5417);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][H], 5418);
@@ -1046,9 +1047,9 @@ var spawns = {
 						if(Game.cpu.bucket >= 8000 && Sp15 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 5544, 2);
 					}
 
-					if(Game.cpu.bucket >= 8000) {
+					if(Game.cpu.bucket >= 8000) {/*
 						if(Sp6 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 5413);
-						if(Sp15 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 5413);
+						if(Sp15 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 5413);*/
 						if(Sp6 && !All) spawns.tryCreateCreep(spawn, WORKER[9][M], 209);
 						if(Sp6 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 203);
 						if(Sp15 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 203);
