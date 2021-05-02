@@ -934,7 +934,9 @@ var spawns = {
 // 						W21S23_NA.setColor(COLOR_GREEN);
 						NA.setColor(COLOR_GREEN);
 					}
-					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W21S23')) {
+					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W21S23')) { 
+						var boost5417 = Game.flags['W21S23.boosts: \"5417\":[\"XZHO2\",\"XLHO2\"]'];
+						boost5417.setColor(COLOR_GREEN)
 						const fG = flags.getFlag('541G');
 						const G = 7 + ((!fG)? 0:10-fG.color); //WHITE = 7+0
 						/*if(Sp6 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][L], 5416);
@@ -957,6 +959,8 @@ var spawns = {
 						if(Sp15 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5411);*/
 					}
 					else {
+						var boost5417 = Game.flags['W21S23.boosts: \"5417\":[\"XZHO2\",\"XLHO2\"]'];
+						boost5417.setColor(COLOR_RED)
 						const fG = flags.getFlag('541G');
 						const G = 7 + ((!fG)? 0:10-fG.color); //WHITE = 7+0
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][L], 5416);
