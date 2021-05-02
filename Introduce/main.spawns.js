@@ -944,7 +944,7 @@ var spawns = {
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][L], 5416);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][M], 5417);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][H], 5418);
-						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5412);
+						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][M], 5412);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5414);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, UPGRADER[S], 5415);
 					}
@@ -958,7 +958,7 @@ var spawns = {
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][L], 5416);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][M], 5417);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][H], 5418);
-						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5412);
+						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][L], 5412);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5414);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, UPGRADER[S], 5415);
 						if(Sp16 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 5413);
