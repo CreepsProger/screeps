@@ -138,7 +138,7 @@ var towers = {
 			if(!tower.pos)
 				return;
 
-			const NAT = flags.flags.NAT && flags.flags.NAT.pos.roomName == tower.pos.roomName;
+			const NAT = !!flags.getFlag(tower.pos.roomName+'.NAT');
 			const R = flags.flags.R;
 			const NR = flags.flags.NR;
 			const NR1 = flags.flags.NR1;
@@ -153,6 +153,19 @@ var towers = {
 				target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
 						 filter: (hostile) => {
 							 return (hostile.pos.x%48 > 1 || hostile.pos.y%48 > 1) && tools.getWeight(hostile.name)==0;
+						 }
+					 });
+				if(!!target && OK == tower.attack(target)) {
+					delete towers.sleep[i];
+				}
+				else target = null;
+			}
+			else {
+				target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+						 filter: (hostile) => {
+							 return (hostile.pos.x%48 > 1 || hostile.pos.y%48 > 1) &&
+								 tools.getWeight(hostile.name)==0 &&
+								 hostile.owner == 'Invider';
 						 }
 					 });
 				if(!!target && OK == tower.attack(target)) {
