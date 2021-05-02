@@ -51,6 +51,7 @@ var role = {
 
 	checkOn: function(creep) {
 		if(!creep.memory[role.name].on &&
+			 !creep.memory.withdrawing &&
 			 Object.keys(creep.store).length > 0+(creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0) &&
 			 (creep.store.getFreeCapacity() == 0 || creep.store.getUsedCapacity(RESOURCE_ENERGY) == 0 || (creep.memory.rerun && creep.store.getFreeCapacity() > 0) || tasks.needToTransfer(creep))
 			) {
