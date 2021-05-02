@@ -165,7 +165,7 @@ var towers = {
 						 filter: (hostile) => {
 							 return (hostile.pos.x%48 > 1 || hostile.pos.y%48 > 1) &&
 								 tools.getWeight(hostile.name)==0 &&
-								 hostile.owner == 'Invader';
+								 hostile.owner.username == 'Invader';
 						 }
 					 });
 				if(!!target && OK == tower.attack(target)) {
