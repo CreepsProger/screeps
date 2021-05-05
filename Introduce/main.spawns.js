@@ -925,12 +925,14 @@ var spawns = {
 					var trapPos = roomW21S23.getPositionAt(41,27);
 					const isTrapFull = trapPos.findInRange(FIND_HOSTILE_CREEPS, 0).length > 0;
 					if(isTrapFull) {
-						spawns.setRampartPublic(roomW21S23.getPositionAt(42,27),false);
+						spawns.setRampartPublic(roomW21S23.getPositionAt(44,26),false);
+						spawns.setRampartPublic(roomW21S23.getPositionAt(44,28),false);
 // 						W21S23_NA.setColor(COLOR_RED);
 						NA.setColor(COLOR_RED);
 					}
 					else {
-						spawns.setRampartPublic(roomW21S23.getPositionAt(42,27))
+						spawns.setRampartPublic(roomW21S23.getPositionAt(44,26));
+						spawns.setRampartPublic(roomW21S23.getPositionAt(44,28));
 // 						W21S23_NA.setColor(COLOR_GREEN);
 						NA.setColor(COLOR_GREEN);
 					}
