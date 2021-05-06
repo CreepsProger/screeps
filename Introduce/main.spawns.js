@@ -941,7 +941,7 @@ var spawns = {
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][H], 5418);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][M], 5412);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5414);
-						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, UPGRADER[S], 5415);
+						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5415);
 					}
 					else {
 						var boost5417 = Game.flags['W21S23.boosts: \"5417\":[\"XZHO2\",\"XLHO2\"]'];
@@ -955,7 +955,7 @@ var spawns = {
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[G][H], 5418);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][L], 5412);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5414);
-						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, UPGRADER[S], 5415);
+						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5415);
 						if(Sp16 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 5413);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W22S24')) {
