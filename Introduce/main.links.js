@@ -177,10 +177,12 @@ var links = {
 		 , { from: '606bf19c11a48494f0af712b', end: '606c5c0a4f9c9e8416e2b3e4', no_transfer_to_from_if_full: ['6083dd420436cceb117bbe87','606c5c0a4f9c9e8416e2b3e4']}
 		 , { from: '60740882c2b047ea7ba4f7e7', end: '6083dd420436cceb117bbe87', no_transfer_to_from_if_full: ['6083dd420436cceb117bbe87','606c5c0a4f9c9e8416e2b3e4']}
 		 // W21S23
+		 , { from: '6094366eddd0210b62066f39', to: '607c8e1c7180d07754def934'}
 		 , { from: '607c7411438aa8cb0ea6cf98', to: '607c8e1c7180d07754def934'}
 		 , { from: '607c7172bb148fb0417856c9', to: '607c8e1c7180d07754def934'}
 		 , { from: '607c7411438aa8cb0ea6cf98', to: '608899dcc31e8d4b042866bc'}
 		 , { from: '607c7172bb148fb0417856c9', to: '608899dcc31e8d4b042866bc'}
+		 , { from: '6094366eddd0210b62066f39', to: '608899dcc31e8d4b042866bc'}
 		 // W29S29
 		 , { from: '5ec2330dce2f77348cbbc2ae', to: '5ec1fb20a882200050a21624'}
 		 , { from: '5ec7eef883db9c68a817960e', to: '5ec1fb20a882200050a21624'}
