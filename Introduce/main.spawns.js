@@ -922,7 +922,7 @@ var spawns = {
 					var NA = Game.flags['W21S23.NA'];
 					var roomW21S23 = Game.rooms['W21S23'];
 // 					const W21S23_NA = flags.getFlag(roomW21S23.name + '.NA');
-					var trapPos = roomW21S23.getPositionAt(41,27);
+					var trapPos = roomW21S23.getPositionAt(43,27);
 					const isTrapFull = trapPos.findInRange(FIND_HOSTILE_CREEPS, 0).length > 0;
 					if(isTrapFull) {
 						spawns.setRampartPublic(roomW21S23.getPositionAt(44,26),false);
