@@ -222,11 +222,17 @@ const power = {
 								return;
 							}
 						}
-						if(tools.nvl(source.ticksToRegeneration,0) < 255)
+						if(tools.nvl(source.ticksToRegeneration,0) < 250) {
+							tools.timeOn(time, source.ticksToRegeneration);
 							return;
-						if(tools.nvl(source.ticksToRegeneration,0) > 295)
-							return;
-						tools.timeOn(time);
+						}
+						if(!!source.effects) {
+							const effect = source.effects.find((e) => e.effect == PWR && e.ticksRemaining > 0);
+							if(!!effect) {
+								tools.timeOn(time, effect.ticksRemaining);
+								return;
+							}
+						}
 						const err = pc.usePower(PWR, source);
 						pc.say(err? '⚡⚠️'+err:'⚡');
 						if(err != OK) {
