@@ -244,7 +244,7 @@ var role = {
 					}
 				}
 
-				if(!target && Healler && canHeal) {
+				if(!target && Healler && canHeal && !Dismantler) {
 					target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
 						filter: (mycreep) => {
 							const attack_count = mycreep.body.reduce((p,c) => p += (c.type == RANGED_ATTACK || c.type == ATTACK),0);
