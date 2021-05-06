@@ -1183,7 +1183,7 @@ var spawns = {
 						if(tools.getInviderCoreLevel('W56S54') == 6) {
 						}
 					}
-					else if(Game.cpu.bucket >= 5000) {
+					else if(Game.cpu.bucket >= constants.CPU_BUCKET_TO_SPAWN_CENTRAL_ROOMS) {
 						if(Sp5 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 568);
 						if(Sp8 && !All)	spawns.tryCreateCreep(spawn,  WORKER[8][L], 564);
             if(Sp8 && !All)	spawns.tryCreateCreep(spawn,  CARIER[6][H], 561);
@@ -1235,7 +1235,7 @@ var spawns = {
 							if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[13][H], 638);
 						}
 					}
-					else if(Game.cpu.bucket >= 6000) {
+					else if(Game.cpu.bucket >= constants.CPU_BUCKET_TO_SPAWN_CENTRAL_ROOMS) {
 						if(Sp7 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 638);
 						if(Sp8 && !All)	spawns.tryCreateCreep(spawn,   WORKER[8][L], 634);
             if(Sp8 && !All)	spawns.tryCreateCreep(spawn,   CARIER[6][H], 631);
@@ -1247,7 +1247,7 @@ var spawns = {
 								if(Sp8)	spawns.tryCreateCreep(spawn, ATTACKER[8][M], 697);
 							}
 						}
-						else if(Game.cpu.bucket >= 7000) {
+						else if(Game.cpu.bucket >= constants.CPU_BUCKET_TO_SPAWN_CENTRAL_ROOMS) {
 							if(Sp7 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 698);
 							if(Sp8 && !All)	spawns.tryCreateCreep(spawn,   WORKER[8][L], 694);
 							if(Sp8 && !All)	spawns.tryCreateCreep(spawn,   CARIER[6][H], 691);
@@ -1261,7 +1261,7 @@ var spawns = {
 						if(tools.getInviderCoreLevel('W54S54') == 4) {
 						}
 					}
-					else if(Game.cpu.bucket >= 8000) {
+					else if(Game.cpu.bucket >= constants.CPU_BUCKET_TO_SPAWN_CENTRAL_ROOMS) {
 						if(Sp7 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 628);
 						if(Sp8 && !All)	spawns.tryCreateCreep(spawn,   WORKER[8][L], 624);
             if(Sp8 && !All)	spawns.tryCreateCreep(spawn,   CARIER[6][H], 621);
@@ -1272,7 +1272,7 @@ var spawns = {
 							if(Sp10)	spawns.tryCreateCreep(spawn, ATTACKER[8][M], 687);
 						}
 					}
-					else if(Game.cpu.bucket >= 9000) {
+					else if(Game.cpu.bucket >= constants.CPU_BUCKET_TO_SPAWN_CENTRAL_ROOMS) {
 						if(Sp5 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[9][H], 688);
 						if(Sp8 && !All)	spawns.tryCreateCreep(spawn, WORKER[8][L], 684);
             if(Sp8 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][H], 681);
@@ -1434,33 +1434,33 @@ var spawns = {
 						}
 					}
 
-					if(observer.shouldSpawnForDeposit('W50S52')) {
+					if(observer.shouldSpawnForDeposit('W50S52') && Game.cpu.bucket > constants.CPU_BUCKET_TO_SPAWN_BOOSTED_DEPOSITER) {
 						if(Sp12 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][H], 1001, 2);
-						if(Game.cpu.bucket >= 5000 && Sp12 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 1004, 2);
+						if(Sp12 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 1004, 2);
 					}
-					if(observer.shouldSpawnForDeposit('W52S60')) {
+					if(observer.shouldSpawnForDeposit('W52S60') && Game.cpu.bucket > constants.CPU_BUCKET_TO_SPAWN_BOOSTED_DEPOSITER) {
 						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][H], 1011, 2);
-						if(Game.cpu.bucket >= 5000 && Sp13 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 1014, 2);
+						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 1014, 2);
 					}
-					if(observer.shouldSpawnForDeposit('W50S55')) {
+					if(observer.shouldSpawnForDeposit('W50S55') && Game.cpu.bucket > constants.CPU_BUCKET_TO_SPAWN_BOOSTED_DEPOSITER) {
 						if(Sp12 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][H], 1021, 2);
-						if(Game.cpu.bucket >= 5000 && Sp12 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 1024, 2);
+						if(Sp12 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 1024, 2);
 					}
-					if(observer.shouldSpawnForDeposit('W49S60')) {
+					if(observer.shouldSpawnForDeposit('W49S60') && Game.cpu.bucket > constants.CPU_BUCKET_TO_SPAWN_BOOSTED_DEPOSITER) {
 						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][H], 1031, 2);
-						if(Game.cpu.bucket >= 5000 && Sp13 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 1034, 2);
+						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 1034, 2);
 					}
-					if(observer.shouldSpawnForDeposit('W55S50')) {
+					if(observer.shouldSpawnForDeposit('W55S50') && Game.cpu.bucket > constants.CPU_BUCKET_TO_SPAWN_DEPOSITER) {
 						if(Sp6 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][L], 1041, 2);
-						if(Game.cpu.bucket >= 5000 && Sp6 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 1044, 2);
+						if(Sp6 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 1044, 2);
 					}
-					if(observer.shouldSpawnForDeposit('W56S60')) {
+					if(observer.shouldSpawnForDeposit('W56S60') && Game.cpu.bucket > constants.CPU_BUCKET_TO_SPAWN_BOOSTED_DEPOSITER) {
 						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][H], 1051, 2);
-						if(Game.cpu.bucket >= 5000 && Sp13 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 1054, 2);
+						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 1054, 2);
 					}
-					if(observer.shouldSpawnForDeposit('W50S56')) {
+					if(observer.shouldSpawnForDeposit('W50S56') && Game.cpu.bucket > constants.CPU_BUCKET_TO_SPAWN_BOOSTED_DEPOSITER) {
 						if(Sp12 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][H], 1061, 2);
-						if(Game.cpu.bucket >= 5000 && Sp12 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 1064, 2);
+						if(Sp12 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 1064, 2);
 					}
 
 					if(Sp14 && !All && upgrade) spawns.tryCreateCreep(spawn,   CARIER[6][L], 5023);
