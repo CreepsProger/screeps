@@ -127,9 +127,13 @@ var links = {
 		 , { from: '608d35f214ed2160411e75c6', to: '608bb6da5a6bdd0937fee79a'}
 		 // W57S55
 		 , { from: '605de22cfac58c035bd6bbef', to: '605de61e985bf911c9555c72'}
-		 , { from: '60601b8507732f3d96e827b6', to: '605de61e985bf911c9555c72'}
 		 , { from: '605de22cfac58c035bd6bbef', to: '606610369118fc6dd0f053d4'}
 		 , { from: '60601b8507732f3d96e827b6', to: '606610369118fc6dd0f053d4'}
+		 , { from: '60601b8507732f3d96e827b6', to: '605de61e985bf911c9555c72'}
+		 , { from: '60911a7ad112d9c92a1fc03c', to: '606610369118fc6dd0f053d4'}
+		 , { from: '60913de9c6a77874dafdecec', to: '605de61e985bf911c9555c72'}
+		 , { from: '60913de9c6a77874dafdecec', to: '606610369118fc6dd0f053d4'}
+		 , { from: '60911a7ad112d9c92a1fc03c', to: '605de61e985bf911c9555c72'}
 		 // W57S56
 		 , { from: '60649984bdf9e1aa7c1c715e', to: '6064cbe20e1ec265977c7945'}
 		 , { from: '606c5f01e970ce547bde8f77', to: '6064cbe20e1ec265977c7945'}
