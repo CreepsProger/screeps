@@ -656,27 +656,20 @@ var spawns = {
 						const tm = Math.floor(Game.time%1200 / 300);
 						const fG = flags.getFlag('20G');
 						const G = 7 + ((!fG)? 0:10-fG.color); //WHITE = 7+0
-						if(Sp6 && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[G][L], 206);
-						if(Sp15 && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[G][L], 206);
+						if((Sp6 || Sp15) && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[G][L], 206);
 						if(Sp6 && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[G][L], 216);
 						if(Sp6 && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[G][L], 226);
-						if(Sp6 && !All && tm == 1) spawns.tryCreateCreep(spawn, ATTACKER[G][M], 207);
-						if(Sp15 && !All && tm == 1) spawns.tryCreateCreep(spawn, ATTACKER[G][M], 207);
+						if((Sp6 || Sp15) && !All && tm == 1) spawns.tryCreateCreep(spawn, ATTACKER[G][M], 207);
 						if(Sp6 && !All && tm == 1) spawns.tryCreateCreep(spawn, ATTACKER[G][M], 217);
 						if(Sp6 && !All && tm == 1) spawns.tryCreateCreep(spawn, ATTACKER[G][M], 227);
-						if(Sp6 && !All && tm == 2) spawns.tryCreateCreep(spawn, ATTACKER[G][H], 208);
-						if(Sp15 && !All && tm == 2) spawns.tryCreateCreep(spawn, ATTACKER[G][H], 208);
+						if((Sp6 || Sp15) && !All && tm == 2) spawns.tryCreateCreep(spawn, ATTACKER[G][H], 208);
 						if(Sp6 && !All && tm == 2) spawns.tryCreateCreep(spawn, ATTACKER[G][H], 218);
 						if(Sp6 && !All && tm == 2) spawns.tryCreateCreep(spawn, ATTACKER[G][H], 228);
 						
-						if(Sp6 && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[7][M], 205);
-						if(Sp15 && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[7][M], 205);
-						if(Sp6  && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[7][L], 204);
-						if(Sp15 && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[7][L], 204);
+						if((Sp6 || Sp15) && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[7][M], 205);
+						if((Sp6 || Sp15) && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[7][L], 204);
+						if((Sp6 || Sp15) && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[9][M], 209);
 						if((Sp6 || Sp15) && !All && tm == 3) spawns.tryCreateCreep(spawn, CARIER[7][L], 201);
-// 						if(Sp6 && !All && tm == 3) spawns.tryCreateCreep(spawn,CLAIMER[5][H], 220);
-// 						if(Sp6 && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[7][L], 224);
-// 						if(Sp6 && !All && tm == 3) spawns.tryCreateCreep(spawn, CARIER[7][L], 221);
 
 						if(Sp6)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5214);
 						if(Sp6)	spawns.tryCreateCreep(spawn, CARIER[7][M], 5211);
@@ -998,48 +991,43 @@ var spawns = {
 
 					if(observer.shouldSpawnForDeposit('W30S29')) {
 						if(Sp1 && !All)	spawns.tryCreateCreep(spawn, CARIER[5][L], 5461, 2);
-						if(Game.cpu.bucket >= 8000 && Sp1 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5464, 2);
+						if(Game.cpu.bucket >= 8500 && Sp1 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5464, 2);
 					}
 					if(observer.shouldSpawnForDeposit('W27S30')) {
 						if(Sp3 && !All)	spawns.tryCreateCreep(spawn, CARIER[5][L], 5471, 2);
-						if(Game.cpu.bucket >= 8000 && Sp3 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5474, 2);
+						if(Game.cpu.bucket >= 8500 && Sp3 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5474, 2);
 					}
 					if(observer.shouldSpawnForDeposit('W25S30')) {
 						if(Sp3 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5501, 2);
-						if(Game.cpu.bucket >= 8000 && Sp3 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5504, 2);
+						if(Game.cpu.bucket >= 8500 && Sp3 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5504, 2);
 					}
 					if(observer.shouldSpawnForDeposit('W30S31')) {
 						if(Sp4 && !All)	spawns.tryCreateCreep(spawn, CARIER[5][L], 5481, 2);
-						if(Game.cpu.bucket >= 8000 && Sp4 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5484, 2);
+						if(Game.cpu.bucket >= 8500 && Sp4 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5484, 2);
 					}
 					if(observer.shouldSpawnForDeposit('W20S23')) {
 						if(Sp6 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5491, 2);
-						if(Game.cpu.bucket >= 8000 && Sp6 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5494, 2);
+						if(Game.cpu.bucket >= 8500 && Sp6 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5494, 2);
 					}
 					if(observer.shouldSpawnForDeposit('W20S30')) {
 						if(Sp15 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][H], 5511, 2);
-						if(Game.cpu.bucket >= 8000 && Sp15 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 5514, 2);
+						if(Game.cpu.bucket >= 8100 && Sp15 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 5514, 2);
 					}
 					if(observer.shouldSpawnForDeposit('W30S26')) {
 						if(Sp9 && !All)	spawns.tryCreateCreep(spawn, CARIER[5][L], 5521, 2);
-						if(Game.cpu.bucket >= 8000 && Sp9 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5524, 2);
+						if(Game.cpu.bucket >= 8500 && Sp9 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[M], 5524, 2);
 					}
 					if(observer.shouldSpawnForDeposit('W19S30')) {
 						if(Sp15 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][H], 5531, 2);
-						if(Game.cpu.bucket >= 8000 && Sp15 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 5534, 2);
+						if(Game.cpu.bucket >= 8100 && Sp15 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 5534, 2);
 					}
 					if(observer.shouldSpawnForDeposit('W22S30')) {
 						if(Sp15 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][H], 5541, 2);
-						if(Game.cpu.bucket >= 8000 && Sp15 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 5544, 2);
+						if(Game.cpu.bucket >= 8100 && Sp15 && !All)	spawns.tryCreateCreep(spawn, DEPOSITER[H], 5544, 2);
 					}
 
-					if(Game.cpu.bucket >= 8000) {/*
-						if(Sp6 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 5413);
-						if(Sp15 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 5413);*/
-						if(Sp6 && !All) spawns.tryCreateCreep(spawn, WORKER[9][M], 209);
-						if(Sp15 && !All) spawns.tryCreateCreep(spawn, WORKER[9][M], 209);
-						if(Sp6 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 203);
-						if(Sp15 && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 203);
+					if(Game.cpu.bucket >= 8000) {
+						if((Sp6 || Sp15) && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 203);
 						if(Sp1 && !All && upgrade) spawns.tryCreateCreep(spawn, TRANSPORT[4][L], 233);
 						if(Sp1 && !All && upgrade) spawns.tryCreateCreep(spawn, TRANSPORT[4][L], 473);
 						if(Sp2 && !All && upgrade) spawns.tryCreateCreep(spawn, CARIER[7][L], 473);
