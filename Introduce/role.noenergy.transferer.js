@@ -210,6 +210,7 @@ var role = {
 			if(!target && creep.memory.rerun) {
 				for(const resourceType in creep.store) {
 					creep.drop(resourceType);
+					creep.memory.dont_harvest_nonenergy = true;
 				}
 			}
 
