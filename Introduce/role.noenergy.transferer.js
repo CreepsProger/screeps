@@ -188,7 +188,9 @@ var role = {
 			return creep.room.terminal;
 		}
 
-		return config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
+		if(my_room != this_room)
+			config.findPathToMyRoom(creep,constants.ROLE_ENERGY_HARVESTING);
+		return undefined;
 	},
 
 	run: function(creep,executer = undefined) {
@@ -205,6 +207,11 @@ var role = {
 			// if(tools.getWeight(creep.name) >= 424) {
 			// 	console.log(creep, JSON.stringify({this_room:creep.room.name, target:target}));
 			// }
+			if(!target && creep.memory.rerun) {
+				for(const resourceType in creep.store) {
+					creep.drop(resourceType);
+				}
+			}
 
 			if(target) {
 
