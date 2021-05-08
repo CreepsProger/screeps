@@ -912,6 +912,7 @@ var spawns = {
 						if(Sp15 && !All && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5405);
 					}
 // 					var W21S23_NA = flags.getFlag('W21S23.NA');
+					var NAT = Game.flags['W21S23.NAT'];
 					var NA = Game.flags['W21S23.NA'];
 					var roomW21S23 = Game.rooms['W21S23'];
 // 					const W21S23_NA = flags.getFlag(roomW21S23.name + '.NA');
@@ -922,12 +923,14 @@ var spawns = {
 						spawns.setRampartPublic(roomW21S23.getPositionAt(44,28),false);
 // 						W21S23_NA.setColor(COLOR_RED);
 						NA.setColor(COLOR_RED);
+						NAT.setColor(COLOR_RED);
 					}
 					else {
 						spawns.setRampartPublic(roomW21S23.getPositionAt(44,26));
 						spawns.setRampartPublic(roomW21S23.getPositionAt(44,28));
 // 						W21S23_NA.setColor(COLOR_GREEN);
 						NA.setColor(COLOR_GREEN);
+						NAT.setColor(COLOR_GREEN);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W21S23')) { 
 						const boost5417 = Game.flags['W21S23.boosts: \"5417\":[\"XZHO2\",\"XLHO2\"]'];
