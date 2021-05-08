@@ -51,7 +51,7 @@ var roleWithdrawer = {
 										 	(!!DP1 && DP1.pos.roomName == creep.room.name && DP1.pos.findPathTo(tombstone).length < 5) ||
 										 	(!!DP2 && DP2.pos.roomName == creep.room.name && DP2.pos.findPathTo(tombstone).length < 5)
 										) && !(!!NW1 && NW1.pos.roomName == my_room && NW1.pos.getRangeTo(tombstone) < 11-NW1.color) &&
-										(W || tools.checkTarget(executer,tombstone.id));
+										(W || tools.checkTarget(executer,tombstone.id) );
 						}
 				});
 				if(tombstones.length > 0) {
@@ -85,7 +85,8 @@ var roleWithdrawer = {
 				if(!!target.store) {
 					const resources = Object.keys(target.store).sort((l,r) => r.length - l.length);
 					resources.forEach(function(resource,i) {
-						if(err == OK)
+						if(err == OK &&
+							 (!creep.memory.dont_harvest_nonenergy||resource == RESOURCE_ENERGY))
 							err = creep.withdraw(target, resource);
 						// if(err != OK)
 						// 	console.log(creep, 'withdrawing ', resource, ' err:', err);
