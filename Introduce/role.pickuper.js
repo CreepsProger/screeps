@@ -52,7 +52,8 @@ var rolePickuper = {
 										 (!!DP1 && DP1.pos.roomName == creep.room.name && DP1.pos.findPathTo(dropped).length < 5) ||
 										 (!!DP2 && DP2.pos.roomName == creep.room.name && DP2.pos.findPathTo(dropped).length < 5)) &&
 								!(!!NP1 && NP1.pos.roomName == my_room && NP1.pos.getRangeTo(dropped) < 11-NP1.color) &&
-								(P || tools.checkTarget(executer,dropped.id));
+								(P || tools.checkTarget(executer,dropped.id) &&
+								(!creep.memory.dont_harvest_nonenergy||dropped.resourceType == RESOURCE_ENERGY) );
 						}
 					});
 					if(droppeds.length > 0) {
