@@ -494,7 +494,7 @@ var spawns = {
 						const tm = Math.floor(Game.time%1000 / 200);
 						const fG = flags.getFlag('1G');
 						const G = 7 + ((!fG)? 0:10-fG.color); //WHITE = 7+0
-						if(Sp1 && !All && tm == 0) spawns.tryCreateCreep(spawn, CLAIMER[3][H], 10);
+						if(Sp1 && !All) spawns.tryCreateCreep(spawn, CLAIMER[3][H], 10);
 						if(Sp1 && !All && tm == 0) spawns.tryCreateCreep(spawn, CARIER[7][L], 11);
 						if(Sp1 && !All && tm == 0) spawns.tryCreateCreep(spawn, WORKER[7][M], 14);
 						if(Sp1 && !All && tm == 0) spawns.tryCreateCreep(spawn, WORKER[7][M], 15);
