@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 731,
+	version: 732,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -4972,7 +4972,7 @@ var config = {
 									, W29S31: 'W30S31', W30S31: 'W30S30'
 									}
 								, shard2:
-									{ shard1_W30S30: 'W30S30', W30S30: 'shard2'
+									{ shard1_W30S30: 'W30S30', W30S30: 'shard3'
 									, W31S29: 'W30S29', W30S29: 'W30S30'
 									}
 								, shard3:
