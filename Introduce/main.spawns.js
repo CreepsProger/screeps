@@ -463,6 +463,23 @@ var spawns = {
 				if(energyShardAvgAmount > 300000)
 					Memory.shardHarvestEnable = false;
 				const harvest = Memory.shardHarvestEnable;
+				
+				if(Game.shard.name == 'shard3') {
+
+					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W31S28')) {
+  					if(Sp1)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 17);
+  				}
+  				else {
+						if(Sp1 && !All) spawns.tryCreateCreep(spawn, CLAIMER[3][H], 10);
+						if(Sp1 && !All) spawns.tryCreateCreep(spawn, CARIER[7][L], 11);
+						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[7][M], 12);
+						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[7][M], 14);
+						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[7][M], 15);/*
+ 						if(Sp1 && !All) spawns.tryCreateCreep(spawn,  UPGRADER[L], 15);
+  					if(Sp1 && !All && upgrade) spawns.tryCreateCreep(spawn, CARIER[7][L], 5013);*/
+					}
+
+				}
 
         if(Game.shard.name == 'shard2') {
 
@@ -474,7 +491,13 @@ var spawns = {
 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[7][L], 232);
 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[7][H], 234);
  						if(Sp1 && !All) spawns.tryCreateCreep(spawn, UPGRADER[L], 235);
-  					if(Sp1 && !All && upgrade) spawns.tryCreateCreep(spawn, CARIER[7][L], 5013);
+						const tm = Math.floor(Game.time%1000 / 200);
+						const fG = flags.getFlag('1G');
+						const G = 7 + ((!fG)? 0:10-fG.color); //WHITE = 7+0
+						if(Sp1 && !All && tm == 0) spawns.tryCreateCreep(spawn, CLAIMER[3][H], 10);
+						if(Sp1 && !All && tm == 0) spawns.tryCreateCreep(spawn, CARIER[7][L], 11);
+						if(Sp1 && !All && tm == 0) spawns.tryCreateCreep(spawn, WORKER[7][M], 14);
+						if(Sp1 && !All && tm == 0) spawns.tryCreateCreep(spawn, WORKER[7][M], 15);
 					}
 
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W31S28')) {
@@ -486,6 +509,11 @@ var spawns = {
 						}
 						if(Sp1 && !All)	spawns.tryCreateCreep(spawn, WORKER[5][M], 244);
 						if(Sp1 && !All)	spawns.tryCreateCreep(spawn, CARIER[5][L], 241);
+					}
+
+					if(Game.cpu.bucket >= 8000) {
+  					if(Sp1 && !All && upgrade) spawns.tryCreateCreep(spawn, CARIER[7][L], 5013);
+						if(Sp1 && !All && upgrade) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 13);
 					}
 
 				}
