@@ -22,42 +22,9 @@ var links = {
 		 , { from: '5e7dd868b4377d741d9d7465', to: '5ec53bba22f7dfb9523ee365'}
 		 , { from: '5ec581c69c43ed5323c83b91', to: '5ec53bba22f7dfb9523ee365'}
 		 //shard3
-		 // W27S34
-		 , { from: '5edf420a6dec0d838308c7bd', to: '5edf42a953cb0e5bc901492c'}
-		 , { from: '5ee458245db87b5b4dbabe4e', to: '5edf42a953cb0e5bc901492c'}
-		 , { from: '5edf420a6dec0d838308c7bd', to: '5eeaf4d273d53001ea317dae'}
-		 , { from: '5ee458245db87b5b4dbabe4e', to: '5eeaf4d273d53001ea317dae'}
-		 , { from: '5eff032796ad284938095fc4', to: '5edf42a953cb0e5bc901492c'}
-		 , { from: '5eff013f3ec9f5aa91d318bc', to: '5edf42a953cb0e5bc901492c'}
-		 , { from: '5eff032796ad284938095fc4', to: '5eeaf4d273d53001ea317dae'}
-		 , { from: '5eff013f3ec9f5aa91d318bc', to: '5eeaf4d273d53001ea317dae'}
-		 // W26S33
-		 , { from: '5e61d337f15a48007bf5b603', to: '5e8b58f3932a5a2a414fe7d5'}
-		 , { from: '5e6778dfcfa64f5485786f84', to: '5e8b58f3932a5a2a414fe7d5'}
-		 , { from: '5edc83cadad212d9040c80c4', to: '5e8b58f3932a5a2a414fe7d5'}
-		 , { from: '5eda0e80b44c3e2348c66db0', to: '5e8b58f3932a5a2a414fe7d5'}
-		 , { from: '5eda0e80b44c3e2348c66db0', to: '5e5ab4f1142d6b46f3c86280'}
-		 , { from: '5edc83cadad212d9040c80c4', to: '5e5ab4f1142d6b46f3c86280'}
-		 , { from: '5e61d337f15a48007bf5b603', to: '5e5ab4f1142d6b46f3c86280'}
-		 , { from: '5e6778dfcfa64f5485786f84', to: '5e5ab4f1142d6b46f3c86280'}
-		 // W28S35
-		 , { from: '5e8c2759c2f2cccfed24f937', to: '5e8c18b345cd496629f60413'}
-		 , { from: '5e907d35346c517957d236f0', to: '5e8c18b345cd496629f60413'}
-		 , { from: '5ed15e21a6e675dd396ef3fb', to: '5e8c18b345cd496629f60413'}
-		 , { from: '5ed1b72606548f56f5085822', to: '5e8c18b345cd496629f60413'}
-		 , { from: '5ed1b72606548f56f5085822', to: '5e97e3b51ddfadb9843d28cc'}
-		 , { from: '5ed15e21a6e675dd396ef3fb', to: '5e97e3b51ddfadb9843d28cc'}
-		 , { from: '5e8c2759c2f2cccfed24f937', to: '5e97e3b51ddfadb9843d28cc'}
-		 , { from: '5e907d35346c517957d236f0', to: '5e97e3b51ddfadb9843d28cc'}
-		 // W29S32
-		 , { from: '5ea806187e4c0781d6d8c6c3', to: '5ead90415ed8e6655882a2c3'}
-		 , { from: '5e9b91270a28a6137925c1e9', to: '5ead90415ed8e6655882a2c3'}
-		 , { from: '5ece9bffe2933a85f35ecb44', to: '5ead90415ed8e6655882a2c3'}
-		 , { from: '5ece924fe78f994c37e42f19', to: '5ead90415ed8e6655882a2c3'}
-		 , { from: '5ece924fe78f994c37e42f19', to: '5ead142d34cf58108260b4fc'}
-		 , { from: '5ece9bffe2933a85f35ecb44', to: '5ead142d34cf58108260b4fc'}
-		 , { from: '5ea806187e4c0781d6d8c6c3', to: '5ead142d34cf58108260b4fc'}
-		 , { from: '5e9b91270a28a6137925c1e9', to: '5ead142d34cf58108260b4fc'}
+		 // W31S28
+		 , { from: '6099588f46bc5c48dfc26207', to: '60995512e0fde357a4889f1a'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 //shard0
 		 // W54S51
 		 , { from: '5f113f8fb8bd4609cef0cf6d', to: '5f1139b60fa8678edc0322df'}
