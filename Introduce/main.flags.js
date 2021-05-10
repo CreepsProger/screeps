@@ -509,7 +509,7 @@ var flags = {
 	Limits: function(Limits) {
 
 		if(Game.shard.name == 'shard1' && Limits.color == 9) {
-			Game.cpu.setShardLimits({shard0:10,shard1:180,shard2:15,shard3:15});
+			Game.cpu.setShardLimits({shard0:10,shard1:180,shard2:20,shard3:10});
 		}
 		if(Game.shard.name == 'shard0' && Limits.color == 4) {
 			Game.cpu.setShardLimits({shard0:175,shard1:5,shard2:5,shard3:5});;
