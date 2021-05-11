@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 732,
+	version: 733,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -4709,8 +4709,8 @@ var config = {
 								, {name: 'F', time: 0, min_weight: 200, max_weight: 209}
 								]
 							,
-							//heal_room: 'W19S31'
-							heal_room: 'W20S31'
+							heal_room: 'W19S31'
+							//heal_room: 'W20S31'
 							, path_rooms:
 							  { shard1:
 									{ W21S29: 'W20S29'
@@ -4720,8 +4720,8 @@ var config = {
 									}
 								, shard2:
 									{ shard1_W20S30: 'W20S30'
-									, W20S30: 'W19S30'//, W20S30y:43
-									//, W20S30: 'W20S31', W20S31: 'W19S31'
+									//, W20S30: 'W19S30'//, W20S30y:43
+									, W20S30: 'W20S31', W20S31: 'W19S31'
 									, W19S30: 'W19S31'
 									, W20S31: 'W19S31'
 									, W18S31: 'W19S31'
