@@ -230,6 +230,7 @@ const power = {
 							tools.timeOn(time, source.ticksToRegeneration);
 							return;
 						}
+						tools.timeOn(time);
 						const err = pc.usePower(PWR, source);
 						pc.say(err? '⚡⚠️'+err:'⚡');
 						if(err != OK) {
