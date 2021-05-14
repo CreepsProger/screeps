@@ -526,12 +526,6 @@ var spawns = {
 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[7][H], 5014);
   					if(Sp1) spawns.tryCreateCreep(spawn, CARIER[7][M], 5011);
 						if(Sp1 && upgrade) spawns.tryCreateCreep(spawn, UPGRADER[L], 5015);
-						const tm = Math.floor(Game.time%1000 / 200);
-						const fG = flags.getFlag('1G');
-						const G = 7 + ((!fG)? 0:10-fG.color); //WHITE = 7+0
-						if(Sp1 && !All && tm == 0) spawns.tryCreateCreep(spawn, CARIER[7][L], 11);
-						if(Sp1 && !All && tm == 0) spawns.tryCreateCreep(spawn, WORKER[7][M], 14);
-						if(Sp1 && !All && tm == 0) spawns.tryCreateCreep(spawn, WORKER[7][M], 15);
   				}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W29S31')) {
 						if(Sp4 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5087);
@@ -540,12 +534,6 @@ var spawns = {
 						if(Sp4 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5084);
 						if(Sp4)	spawns.tryCreateCreep(spawn, CARIER[7][M], 5081);
 						if(Sp4 && !All && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5085);
-						const tm = Math.floor(Game.time%1000 / 200);
-						const fG = flags.getFlag('1G');
-						const G = 7 + ((!fG)? 0:10-fG.color); //WHITE = 7+0
-						if(Sp4 && !All && tm == 0) spawns.tryCreateCreep(spawn, CARIER[7][L], 11);
-						if(Sp4 && !All && tm == 0) spawns.tryCreateCreep(spawn, WORKER[7][M], 14);
-						if(Sp4 && !All && tm == 0) spawns.tryCreateCreep(spawn, WORKER[7][M], 15);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W28S29')) {
 						if(Sp12)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5027);
