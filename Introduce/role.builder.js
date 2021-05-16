@@ -73,7 +73,7 @@ var roleBuilder = {
 				}
 				const NB = flags.flags.NB;
 				const NB1 = flags.flags.NB1;
-				const NB2 = flags.flags.NB2;
+				var NB2 = flags.flags.NB2;
                                 const fn_filter = function(cs) {
 							if(!NB || NB.pos.roomName != my_room) {
 								 if(!!NB1 && NB1.pos.roomName == this_room &&
