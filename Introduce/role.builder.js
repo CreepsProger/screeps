@@ -93,7 +93,9 @@ var roleBuilder = {
 						(this_room_is_being_claiming && creep.memory.rerun) ||
 						(a_room_without_controller && creep.memory.rerun) ||
 						UU || B || BB)) {
-					target = creep.pos.findInRange(FIND_CONSTRUCTION_SITES,3, {filter: fn_filter });
+					target = creep.pos.findInRange(FIND_CONSTRUCTION_SITES,3, {filter: fn_filter })
+														.sort((l,r) => l.pos.getRangeTo(creep.pos) - r..pos.getRangeTo(creep.pos))
+														.shift();
 				}
 
 				if(!target &&
