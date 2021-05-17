@@ -25,6 +25,8 @@ var links = {
 		 // W31S28
 		 , { from: '6099588f46bc5c48dfc26207', to: '60995512e0fde357a4889f1a'}
 		 , { from: '6099588f46bc5c48dfc26207', to: '609dc9d860f5d7150c9422db'}
+		 , { from: '60a1503bf2a3dc62978512cc', to: '60995512e0fde357a4889f1a'}
+		 , { from: '60a1503bf2a3dc62978512cc', to: '609dc9d860f5d7150c9422db'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 //shard0
 		 // W54S51
