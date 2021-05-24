@@ -473,8 +473,7 @@ var spawns = {
 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, CARIER[7][H], 11);
 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[7][H], 12);
 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[7][H], 14);
-						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[7][H], 15);
-						//if(Sp1 && !All) spawns.tryCreateCreep(spawn,  UPGRADER[L], 15);
+						if(Sp1 && !All) spawns.tryCreateCreep(spawn,  UPGRADER[L], 15);
 						//if(Sp1 && !All && upgrade) spawns.tryCreateCreep(spawn, CARIER[7][L], 5013);
 					}
 
