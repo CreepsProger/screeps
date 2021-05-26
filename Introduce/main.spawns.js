@@ -1461,6 +1461,15 @@ var spawns = {
 						if(Sp14)	spawns.tryCreateCreep(spawn, CARIER[7][H], 471);
 						if(Sp14 && !All)	spawns.tryCreateCreep(spawn, UPGRADER[L], 475);
 					}
+					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W52S56')) {
+						if(Sp12 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[7][M], 847);
+					}
+					else {
+						if(Sp12 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][M], 844);
+						if(Sp12 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][L], 841);
+						if(Sp12 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][M], 845);
+						if(Sp12 && !All)	spawns.tryCreateCreep(spawn, UPGRADER[L], 845);
+					}
 
 					if(observer.shouldSpawnForDeposit('W50S52') && Game.cpu.bucket > constants.CPU_BUCKET_TO_SPAWN_BOOSTED_DEPOSITER) {
 						if(Sp12 && !All)	spawns.tryCreateCreep(spawn, CARIER[6][H], 1001, 2);
