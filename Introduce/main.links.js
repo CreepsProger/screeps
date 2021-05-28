@@ -107,6 +107,10 @@ var links = {
 		 // W57S56
 		 , { from: '60649984bdf9e1aa7c1c715e', to: '6064cbe20e1ec265977c7945'}
 		 , { from: '606c5f01e970ce547bde8f77', to: '6064cbe20e1ec265977c7945'}
+		 , { from: '609d60fd7491c1724b14847b', to: '6064cbe20e1ec265977c7945'}
+		 , { from: '609eb2cd14ed2111a6265263', to: '6064cbe20e1ec265977c7945'}
+		 , { from: '60781ee8ac5c1d5bf8b33be1', to: '6064cbe20e1ec265977c7945'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W52S54
