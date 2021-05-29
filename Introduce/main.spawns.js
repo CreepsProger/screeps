@@ -1023,9 +1023,9 @@ var spawns = {
 					}
 					else {
 						if(conditions.TO_SPAWN_ROOM_CLAIMER('W23S21')) {
-							if(Sp16 && !All)	spawns.tryCreateCreep(spawn, CLAIMER[7][L], 5590);
+							if(Sp16 && !All)	spawns.tryCreateCreep(spawn, CLAIMER[4][L], 5590);
 						}
-						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[7][S], 5599);
+						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5599);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][L], 5594);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5591);
 					}
