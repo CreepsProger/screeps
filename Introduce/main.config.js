@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 735,
+	version: 736,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -409,6 +409,7 @@ var config = {
 									, W54S55: 'W54S56', W54S56: 'W54S57'
 									, W22S24: 'W22S23', W22S23: 'W21S23'
 									, W22S21: 'W22S22', W22S22: 'W22S23'
+									, W23S22: 'W23S21'
 									, W30S29: 'W29S29'
 									, W31S28: 'W31S29'
 									, W53S57: 'W54S57', W55S57: 'W54S57', W54S58: 'W54S57'
@@ -4783,6 +4784,102 @@ var config = {
 								, W20S27: 'W21S27', W21S27: 'W21S28'
 								}
 							},
+							W23S21:
+							{ containers: {weight: 5593}
+							, towers: {mw:2000000, mr:2000000}
+							, sites:
+							 	[ //{x:18, y:23, type:STRUCTURE_CONTAINER}
+							 	]
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 5590, max_weight: 5599}
+								, {name: '2', time: 0, min_weight: 5590, max_weight: 5599}
+								, {name: '3', time: 0, min_weight: 5590, max_weight: 5599}
+								, {name: '4', time: 0, min_weight: 5590, max_weight: 5599}
+								, {name: '5', time: 0, min_weight: 5590, max_weight: 5599}
+								, {name: '6', time: 0, min_weight: 5590, max_weight: 5599}
+								]
+							, claiming:
+							 	[ {name: '1', time: 0, min_weight: 5590, max_weight: 5599}
+								, {name: '2', time: 0, min_weight: 5590, max_weight: 5599}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 5590, max_weight: 5599}
+								, {name: '2', time: 0, min_weight: 5590, max_weight: 5599}
+								, {name: '3', time: 0, min_weight: 5590, max_weight: 5599}
+								, {name: '4', time: 0, min_weight: 5590, max_weight: 5599}
+								]
+							, heal_room:
+								{ shard: 'shard1', room: 'W21S23'}
+							, path_rooms:
+								{ W29S31: 'W30S31', W30S31: 'W30S30', W30S30: 'W29S30'
+								, W29S30: 'W29S29', W29S30x:32, W29S29: 'W28S29'
+								, W28S29: 'W27S29', W28S29y:30, W27S29: 'W26S29', W27S29y:9
+								, W26S29: 'W25S29', W25S29: 'W24S29'
+								, W24S28: 'W24S29', W24S29: 'W23S29', W23S29: 'W23S28'
+								, W23S28: 'W22S28', W22S28: 'W21S28'
+								, W24S27: 'W25S27', W25S27: 'W26S27', W27S24: 'W27S25', W27S25: 'W27S26', W27S26: 'W26S26', W26S26: 'W26S27'
+								, W26S27: 'W26S28', W26S28: 'W25S28', W25S28: 'W24S28'
+								, W29S27: 'W28S27', W28S27: 'W27S27', W27S27: 'W27S28'
+								, W27S28: 'W26S28', W26S28: 'W26S29'
+								, W21S28: 'W21S27', W21S28x:38
+								, W21S27: 'W20S27', W20S27: 'W20S26', W20S26: 'W20S25', W20S25: 'W20S24'
+								, W20S24: 'W20S23', W20S23: 'W21S23', W21S23: 'W22S23', W22S23: 'W22S22'
+								, W22S22: 'W23S22', W23S22: 'W23S21'
+								}
+								, escape_path:
+								{ W23S21: 'W23S22', W23S22: 'W22S22', W22S22: 'W22S23', W22S23: 'W21S23', W21S23: 'W20S23'
+								, W20S23: 'W20S24', W20S24: 'W20S25', W20S25: 'W20S26', W20S26: 'W20S27'
+								, W20S27: 'W21S27', W21S27: 'W21S28'
+								}
+							},
+							W23S22:
+							{ containers: {weight: 5603}
+							, towers: {mw:2000000, mr:2000000}
+							, sites:
+							 	[ //{x:18, y:23, type:STRUCTURE_CONTAINER}
+							 	]
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 5600, max_weight: 5609}
+								, {name: '2', time: 0, min_weight: 5600, max_weight: 5609}
+								, {name: '3', time: 0, min_weight: 5600, max_weight: 5609}
+								, {name: '4', time: 0, min_weight: 5600, max_weight: 5609}
+								, {name: '5', time: 0, min_weight: 5600, max_weight: 5609}
+								, {name: '6', time: 0, min_weight: 5600, max_weight: 5609}
+								]
+							, claiming:
+							 	[ {name: '1', time: 0, min_weight: 5600, max_weight: 5609}
+								, {name: '2', time: 0, min_weight: 5600, max_weight: 5609}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 5600, max_weight: 5609}
+								, {name: '2', time: 0, min_weight: 5600, max_weight: 5609}
+								, {name: '3', time: 0, min_weight: 5600, max_weight: 5609}
+								, {name: '4', time: 0, min_weight: 5600, max_weight: 5609}
+								]
+							, heal_room:
+								{ shard: 'shard1', room: 'W21S23'}
+							, path_rooms:
+								{ W29S31: 'W30S31', W30S31: 'W30S30', W30S30: 'W29S30'
+								, W29S30: 'W29S29', W29S30x:32, W29S29: 'W28S29'
+								, W28S29: 'W27S29', W28S29y:30, W27S29: 'W26S29', W27S29y:9
+								, W26S29: 'W25S29', W25S29: 'W24S29'
+								, W24S28: 'W24S29', W24S29: 'W23S29', W23S29: 'W23S28'
+								, W23S28: 'W22S28', W22S28: 'W21S28'
+								, W24S27: 'W25S27', W25S27: 'W26S27', W27S24: 'W27S25', W27S25: 'W27S26', W27S26: 'W26S26', W26S26: 'W26S27'
+								, W26S27: 'W26S28', W26S28: 'W25S28', W25S28: 'W24S28'
+								, W29S27: 'W28S27', W28S27: 'W27S27', W27S27: 'W27S28'
+								, W27S28: 'W26S28', W26S28: 'W26S29'
+								, W21S28: 'W21S27', W21S28x:38
+								, W21S27: 'W20S27', W20S27: 'W20S26', W20S26: 'W20S25', W20S25: 'W20S24'
+								, W20S24: 'W20S23', W20S23: 'W21S23', W21S23: 'W22S23', W22S23: 'W22S22'
+								, W22S22: 'W23S22'
+								}
+								, escape_path:
+								{ W23S22: 'W22S22', W22S22: 'W22S23', W22S23: 'W21S23', W21S23: 'W20S23'
+								, W20S23: 'W20S24', W20S24: 'W20S25', W20S25: 'W20S26', W20S26: 'W20S27'
+								, W20S27: 'W21S27', W21S27: 'W21S28'
+								}
+							}
 							//,
 						}
 					}
