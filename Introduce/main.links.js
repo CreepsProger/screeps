@@ -143,6 +143,13 @@ var links = {
 		 , { from: '6075427b5c14295f6dfa87b8', to: '6078ceeec30a9f3e05aee3c4'}
 		 , { from: '6075352f234567e1c96e85b7', to: '6078ceeec30a9f3e05aee3c4'}
      //shard1
+		 // W22S21
+		 , { from: '60b3608f7f382d866bf5dcf5', to: '60b35de3364c59a062a21225'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W21S29
 		 // can't harvest from 'to' if 'noto_ifnotfull' is not full
 		 // can't trasfer to 'from' if 'from_full' is full
