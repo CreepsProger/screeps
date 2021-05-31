@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 750,
+	version: 751,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -408,7 +408,8 @@ var config = {
 									, W55S55: 'W55S54', W55S54: 'W55S53', W55S54x:25, W56S55: 'W57S55', W56S55y:14, W57S54: 'W57S55'
 									, W54S55: 'W54S56', W54S56: 'W54S57'
 									, W22S24: 'W22S23', W22S23: 'W21S23'
-									, W23S22: 'W22S22', W22S22: 'W22S21'
+									, W23S23: 'W23S22', W23S22: 'W23S21'
+									, W22S22: 'W22S21'
 									, W21S22: 'W22S22'
 									, W30S29: 'W29S29'
 									, W31S28: 'W31S29'
