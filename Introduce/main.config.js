@@ -4475,13 +4475,13 @@ var config = {
 								, {name: '4', time: 0, min_weight: 5490, max_weight: 5499}
 								]
 							, heal_room:
-								{ shard: 'shard1', room: 'W21S28'}
+								{ shard: 'shard1', room: 'W21S23'}
 							, path_rooms:
 								{ W21S23: 'W20S23'
 								, W21S28: 'W21S27', W21S27: 'W20S27', W20S27: 'W20S26', W20S26: 'W20S25', W20S25: 'W20S24', W20S24: 'W20S23'
 								}
 							, escape_path:
-								{ W20S23: 'W20S24', W20S24: 'W20S25', W20S25: 'W20S26', W20S26: 'W20S27', W20S27: 'W21S27', W21S27: 'W21S28'
+								{ W20S23: 'W21S23'
 								}
 							},
 							W25S30:
