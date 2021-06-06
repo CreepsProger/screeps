@@ -146,6 +146,10 @@ var links = {
 		 , { from: '6075427b5c14295f6dfa87b8', to: '6078ceeec30a9f3e05aee3c4'}
 		 , { from: '6075352f234567e1c96e85b7', to: '6078ceeec30a9f3e05aee3c4'}
      //shard1
+		 // W24S21
+		 , { from: '60bcb94f0981d91d961eab14', to: '60bcb6d4e15a1d269f17dbdd'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W23S21
 		 , { from: '60b7b2192f1a91ac0743a866', to: '60b7aeb97890494606dcf514'}
 		 , { from: '60bca7475b8946e41c6aedcd', to: '60b7aeb97890494606dcf514'}
