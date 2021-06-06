@@ -1559,6 +1559,9 @@ var spawns = {
 						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[7][M], 857);
 					}
 					else {
+							if(conditions.TO_SPAWN_ROOM_CLAIMER('W57S59')) {
+								if(Sp13 && !All)	spawns.tryCreateCreep(spawn, CLAIMER[4][H], 850);
+							}
 						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 859);
 						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][M], 854);
 						if(Sp13 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][L], 851);
