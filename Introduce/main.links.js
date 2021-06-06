@@ -148,6 +148,7 @@ var links = {
      //shard1
 		 // W23S21
 		 , { from: '60b7b2192f1a91ac0743a866', to: '60b7aeb97890494606dcf514'}
+		 , { from: '60bca7475b8946e41c6aedcd', to: '60b7aeb97890494606dcf514'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W22S21
 		 , { from: '60b3608f7f382d866bf5dcf5', to: '60b35de3364c59a062a21225'}
