@@ -1539,8 +1539,10 @@ var spawns = {
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W59S51')) {
 						if(Sp14 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[7][M], 477);
+						spawns.setRampartsPublic('W59S51',false);
 					}
 					else {
+						spawns.setRampartsPublic('W59S51')
 						if(Sp14 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 474);
 						if(Sp14)	spawns.tryCreateCreep(spawn, CARIER[7][H], 471);
 						if(Sp14 && !All && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 475);
