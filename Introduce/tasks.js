@@ -1173,7 +1173,7 @@ var tasks = {
 																			t.store.getFreeCapacity(RESOURCE_ENERGY) > 100 &&
 																			creep.pos.getRangeTo(t) < 7)
 											.shift();
-				if(!target) {
+				if(!!target) {
 					err = creep.transfer(target, RESOURCE_ENERGY);
 				}
 				else {
