@@ -1167,8 +1167,19 @@ var tasks = {
 					}
 					return true;
 				}
-				target = tasks.getRepairTarget(creep);
-				const err = creep.repair(target);
+				var err = OK;
+				target = cash.getTowers(creep.room)
+											.filter((t) => !!t && !! t.my && !!t.store &&
+																			t.store.getFreeCapacity(RESOURCE_ENERGY) > 100 &&
+																			creep.pos.getRangeTo(t) < 7)
+											.shift();
+				if(!target) {
+					err = creep.transfer(target, RESOURCE_ENERGY);
+				}
+				else {
+					target = tasks.getRepairTarget(creep);
+					err = creep.repair(target);
+				}
 				if(err != ERR_NOT_IN_RANGE) {
 					creep.say((OK == err)?'🧯':'🧯'+err);
 				}
