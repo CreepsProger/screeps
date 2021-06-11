@@ -24,7 +24,7 @@ module.exports.loop = function () {
 	if(!conditions.TO_SPAWN_MAIN_ROOMS() && Game.time % 4 > 1)
 		return;
 	
-	if(Game.shard.name == 'shard2' && Game.time % 3 > 1)
+	if(Game.shard.name == 'shard2' && Game.time % 9 > 7)
 		return;
 
 	var t = 0;
