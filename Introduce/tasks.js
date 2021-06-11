@@ -1170,7 +1170,7 @@ var tasks = {
 				var err = OK;
 				target = cash.getTowers(creep.room)
 											.filter((t) => !!t && !! t.my && !!t.store &&
-																			t.store.getFreeCapacity(RESOURCE_ENERGY) > 100 &&
+																			t.store.getFreeCapacity(RESOURCE_ENERGY) > 700 &&
 																			creep.pos.getRangeTo(t) < 7)
 											.shift();
 				if(!!target) {
