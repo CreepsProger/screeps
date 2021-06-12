@@ -93,21 +93,22 @@ module.exports.loop = function () {
 
 	Memory.cpu_main_part.clearing = Math.round((Memory.cpu_main_part.clearing+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 
-	if(Game.shard.name != 'shard2') {
 	metrix.run();					Memory.cpu_main_part.metrix = Math.round((Memory.cpu_main_part.metrix+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	config.run();					Memory.cpu_main_part.config = Math.round((Memory.cpu_main_part.config+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
-	flags.run();					Memory.cpu_main_part.flags = Math.round((Memory.cpu_main_part.flags+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
+	if(Game.shard.name != 'shard2')
+		flags.run();					Memory.cpu_main_part.flags = Math.round((Memory.cpu_main_part.flags+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	event_processor.run();Memory.cpu_main_part.event_processor = Math.round((Memory.cpu_main_part.event_processor+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	links.run();					Memory.cpu_main_part.links = Math.round((Memory.cpu_main_part.links+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	towers.run();					Memory.cpu_main_part.towers = Math.round((Memory.cpu_main_part.towers+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	spawns.run();					Memory.cpu_main_part.spawns = Math.round((Memory.cpu_main_part.spawns+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
-	terminals.run();			Memory.cpu_main_part.terminals = Math.round((Memory.cpu_main_part.terminals+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
-	labs.run();						Memory.cpu_main_part.labs = Math.round((Memory.cpu_main_part.labs+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
-	factory.run();				Memory.cpu_main_part.factory = Math.round((Memory.cpu_main_part.factory+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
-	power.run();					Memory.cpu_main_part.power = Math.round((Memory.cpu_main_part.power+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
-	observer.run();				Memory.cpu_main_part.observer = Math.round((Memory.cpu_main_part.observer+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
-	metrix.output();			Memory.cpu_main_part.metrix2 = Math.round((Memory.cpu_main_part.metrix2+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();	
+	if(Game.shard.name != 'shard2') {
+		terminals.run();			Memory.cpu_main_part.terminals = Math.round((Memory.cpu_main_part.terminals+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
+		labs.run();						Memory.cpu_main_part.labs = Math.round((Memory.cpu_main_part.labs+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
+		factory.run();				Memory.cpu_main_part.factory = Math.round((Memory.cpu_main_part.factory+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
+		power.run();					Memory.cpu_main_part.power = Math.round((Memory.cpu_main_part.power+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
+		observer.run();				Memory.cpu_main_part.observer = Math.round((Memory.cpu_main_part.observer+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	}
+	metrix.output();			Memory.cpu_main_part.metrix2 = Math.round((Memory.cpu_main_part.metrix2+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();	
 
 	delete Memory.cpu;
 	Memory.cpu = { creep: {max_dt: 0, creep: '', dt: 0, t: Math.round((Game.cpu.getUsed()) * 100)/100, n:1}
