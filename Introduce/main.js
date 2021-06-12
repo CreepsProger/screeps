@@ -24,7 +24,7 @@ module.exports.loop = function () {
 	if(!conditions.TO_SPAWN_MAIN_ROOMS() && Game.time % 4 > 1)
 		return;
 	
-	if(Game.shard.name == 'shard2' && Game.time % 10 > 1) {
+	if(Game.shard.name == 'shard2' && Game.cpu.bucket < 1000) {
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 								, JSON.stringify({ '🛐':Game.cpu.limit, "🛒":Game.cpu.bucket}))
 		return;
