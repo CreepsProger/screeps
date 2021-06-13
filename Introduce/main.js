@@ -21,13 +21,10 @@ const attacker = require('role.attacker');
 
 module.exports.loop = function () {
 	
-	if(!conditions.TO_SPAWN_MAIN_ROOMS() && Game.time % 4 > 1)
-		return;
-	
-	if(Game.shard.name == 'shard2' /* && Game.cpu.bucket < 1000 */ ) {
+	if(!conditions.TO_SPAWN_MAIN_ROOMS() && Game.time % 4 > 1) {
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 								, JSON.stringify({ '🛐':Game.cpu.limit, "🛒":Game.cpu.bucket}))
-// 		return;
+		return;
 	}
 
 	var t = 0;
@@ -95,8 +92,7 @@ module.exports.loop = function () {
 
 	metrix.run();					Memory.cpu_main_part.metrix = Math.round((Memory.cpu_main_part.metrix+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	config.run();					Memory.cpu_main_part.config = Math.round((Memory.cpu_main_part.config+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
-// 	if(Game.shard.name != 'shard2')
-		flags.run();					Memory.cpu_main_part.flags = Math.round((Memory.cpu_main_part.flags+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
+	flags.run();					Memory.cpu_main_part.flags = Math.round((Memory.cpu_main_part.flags+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	event_processor.run();Memory.cpu_main_part.event_processor = Math.round((Memory.cpu_main_part.event_processor+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	links.run();					Memory.cpu_main_part.links = Math.round((Memory.cpu_main_part.links+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	towers.run();					Memory.cpu_main_part.towers = Math.round((Memory.cpu_main_part.towers+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
