@@ -928,7 +928,7 @@ var flags = {
 		}
 		catch (e) {
 			console.log( '⛔', Math.trunc(Game.time/10000), Game.time%10000
-                    , JSON.stringify({main.flags:'catch', Buy:Buy, e_name:e.name, e_message:e.message, e_stack:e.stack }));  		
+                    , JSON.stringify({flags:'catch', Buy:Buy, e_name:e.name, e_message:e.message, e_stack:e.stack }));  		
 		} 
 	},
 	//Deal: market deal 
