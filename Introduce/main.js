@@ -103,11 +103,12 @@ module.exports.loop = function () {
 	spawns.run();					Memory.cpu_main_part.spawns = Math.round((Memory.cpu_main_part.spawns+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 	if(Game.shard.name != 'shard2') {
 		terminals.run();			Memory.cpu_main_part.terminals = Math.round((Memory.cpu_main_part.terminals+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
+	}
 		labs.run();						Memory.cpu_main_part.labs = Math.round((Memory.cpu_main_part.labs+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 		factory.run();				Memory.cpu_main_part.factory = Math.round((Memory.cpu_main_part.factory+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 		power.run();					Memory.cpu_main_part.power = Math.round((Memory.cpu_main_part.power+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
 		observer.run();				Memory.cpu_main_part.observer = Math.round((Memory.cpu_main_part.observer+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();
-	}
+
 	metrix.output();			Memory.cpu_main_part.metrix2 = Math.round((Memory.cpu_main_part.metrix2+Game.cpu.getUsed()-t)*100)/100; t = Game.cpu.getUsed();	
 
 	delete Memory.cpu;
