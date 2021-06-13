@@ -30,6 +30,8 @@ const observer = {
 		const od_inviderCore = observer.getInviderCore(roomName);
 		if (!od_inviderCore)
 			return undefined;
+		if (!od_inviderCore.obj)
+			return undefined;
 		return od_inviderCore.obj.level;
 	},
 
