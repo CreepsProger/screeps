@@ -21,7 +21,7 @@ const attacker = require('role.attacker');
 
 module.exports.loop = function () {
 	
-	if(!conditions.TO_SPAWN_MAIN_ROOMS() && Game.time % 5 > 0 || !flags.getFlag('STOP')) {
+	if(!conditions.TO_SPAWN_MAIN_ROOMS() && Game.time % 5 > 0 || !!flags.getFlag('STOP')) {
 		console.log( '⏳', Math.trunc(Game.time/10000), Game.time%10000
 								, JSON.stringify({ '🛐':Game.cpu.limit, "🛒":Game.cpu.bucket}))
 		return;
