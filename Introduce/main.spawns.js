@@ -672,24 +672,6 @@ var spawns = {
 						if(Sp6 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5217);
 					}
 					else {
-						const tm = Math.floor(Game.time%1200 / 300);
-						const fG = flags.getFlag('20G');
-						const G = 7 + ((!fG)? 0:10-fG.color); //WHITE = 7+0
-						if((Sp6 || Sp15) && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[G][L], 206);
-						if(Sp6 && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[G][L], 216);
-						if(Sp6 && !All && tm == 0) spawns.tryCreateCreep(spawn, ATTACKER[G][L], 226);
-						if((Sp6 || Sp15) && !All && tm == 1) spawns.tryCreateCreep(spawn, ATTACKER[G][M], 207);
-						if(Sp6 && !All && tm == 1) spawns.tryCreateCreep(spawn, ATTACKER[G][M], 217);
-						if(Sp6 && !All && tm == 1) spawns.tryCreateCreep(spawn, ATTACKER[G][M], 227);
-						if((Sp6 || Sp15) && !All && tm == 2) spawns.tryCreateCreep(spawn, ATTACKER[G][H], 208);
-						if(Sp6 && !All && tm == 2) spawns.tryCreateCreep(spawn, ATTACKER[G][H], 218);
-						if(Sp6 && !All && tm == 2) spawns.tryCreateCreep(spawn, ATTACKER[G][H], 228);
-						
-						if((Sp6 || Sp15) && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[7][M], 205);
-						if((Sp6 || Sp15) && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[7][L], 204);
-						if((Sp6 || Sp15) && !All && tm == 3) spawns.tryCreateCreep(spawn, WORKER[9][M], 209);
-						if((Sp6 || Sp15) && !All && tm == 3) spawns.tryCreateCreep(spawn, CARIER[7][L], 201);
-
 						if(Sp6)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5214);
 						if(Sp6)	spawns.tryCreateCreep(spawn, CARIER[7][M], 5211);
 						if(Sp6 && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5215);
@@ -1138,7 +1120,6 @@ var spawns = {
 					}
 
 					if(Game.cpu.bucket >= 8000) {
-						if((Sp6 || Sp15) && !All) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 203);
 						if(Sp1 && !All && upgrade) spawns.tryCreateCreep(spawn, TRANSPORT[4][L], 233);
 						if(Sp1 && !All && upgrade) spawns.tryCreateCreep(spawn, TRANSPORT[4][L], 473);
 						if(Sp1 && !All && upgrade) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 13);
