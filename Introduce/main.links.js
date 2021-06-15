@@ -34,7 +34,7 @@ var links = {
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W52S56
 		 , { from: '60ba24a26d5bb2f71ac6df58', to: '60ba1bcc3bba2ae1661b3251'}
-		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: '60ba24a26d5bb2f71ac6df58', to: '60bbc4f300143e81d9c0c3df'}
 		 // W54S51
 		 , { from: '5f113f8fb8bd4609cef0cf6d', to: '5f1139b60fa8678edc0322df'}
 		 , { from: '5f113f8fb8bd4609cef0cf6d', to: '5f367cadeb9719134d9389e4'}
