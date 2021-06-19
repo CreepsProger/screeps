@@ -105,6 +105,7 @@ const factory = {
 			const product = f.config[line][0];
 			var avg = terminals.getShardAvgAmount(product);
 			var max = config.getMaxAvgAmountToProduce(product);
+			var need_self;
 			if(product == RESOURCE_ENERGY || product == RESOURCE_BATTERY) {
 				if((product == RESOURCE_ENERGY && terminals.getShardAvgAmount(RESOURCE_ENERGY) < 300000) ||
 					 (product == RESOURCE_BATTERY && terminals.getShardAvgAmount(RESOURCE_ENERGY) > 350000)) {
@@ -118,7 +119,9 @@ const factory = {
 				else if (true) {
 					const ff = factory.getToIn(f,product);
 					if (!!ff.in && ff.in.amount > 0) {
-						err = f.produce(product);
+						need_self = ff.in.amount;
+						if(need_self > 500)
+							err = f.produce(product);
 					}
 				}
 				else {
@@ -126,7 +129,7 @@ const factory = {
 				}
 			}
 			to_run = Math.floor(to_run/base);
-			result.push({[f.pos.roomName]:line, err:err, product:product, avg:avg, max:max});
+			result.push({[f.pos.roomName]:line, err:err, product:product, avg:avg, max:max, need_self:need_self});
 		}
 		return result;
 	},
