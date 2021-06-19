@@ -105,7 +105,7 @@ const factory = {
 			const product = f.config[line][0];
 			var avg = terminals.getShardAvgAmount(product);
 			var max = config.getMaxAvgAmountToProduce(product);
-			var need_self;
+			var need_self = -1;
 			if(product == RESOURCE_ENERGY || product == RESOURCE_BATTERY) {
 				if((product == RESOURCE_ENERGY && terminals.getShardAvgAmount(RESOURCE_ENERGY) < 300000) ||
 					 (product == RESOURCE_BATTERY && terminals.getShardAvgAmount(RESOURCE_ENERGY) > 350000)) {
