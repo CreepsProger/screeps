@@ -115,7 +115,7 @@ const factory = {
 				if(avg < max) {
 					err = f.produce(product);
 				}
-				else {
+				else if (true) {
 					const ff = factory.getToIn(f,product);
 					if (!!ff.in && ff.in.amount > 0) {
 						err = f.produce(product);
