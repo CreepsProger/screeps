@@ -120,7 +120,7 @@ const factory = {
 					const ff = factory.getToIn(f,product);
 					if (!!ff.in && ff.in.amount > 0) {
 						need_self = ff.in.amount;
-						if(need_self > 500)
+						if(need_self > 2000)
 							err = f.produce(product);
 					}
 				}
