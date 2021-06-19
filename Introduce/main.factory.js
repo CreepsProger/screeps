@@ -116,6 +116,12 @@ const factory = {
 					err = f.produce(product);
 				}
 				else {
+					const ff = factory.getToIn(f,product);
+					if (!!ff.in && ff.in.amount > 0) {
+						err = f.produce(product);
+					}
+				}
+				else {
 					err = -20
 				}
 			}
