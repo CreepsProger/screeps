@@ -103,17 +103,24 @@ const factory = {
 		while(to_run > 0 && err != OK) {
 			const line = Math.floor(to_run%base);
 			const product = f.config[line][0];
+			var avg = terminals.getShardAvgAmount(product);
+			var max = config.getMaxAvgAmountToProduce(product);
 			if(product == RESOURCE_ENERGY || product == RESOURCE_BATTERY) {
 				if((product == RESOURCE_ENERGY && terminals.getShardAvgAmount(RESOURCE_ENERGY) < 300000) ||
 					 (product == RESOURCE_BATTERY && terminals.getShardAvgAmount(RESOURCE_ENERGY) > 350000)) {
 					err = f.produce(product);
 				}
 			}
-			else if(terminals.getShardAvgAmount(product) < config.getMaxAvgAmountToProduce(product)) {
-				err = f.produce(product);
+			else {
+				if(avg < max) {
+					err = f.produce(product);
+				}
+				else {
+					err = -20
+				}
 			}
 			to_run = Math.floor(to_run/base);
-			result.push({[f.pos.roomName]:line, err:err, product:product});
+			result.push({[f.pos.roomName]:line, err:err, product:product, avg:avg, max:max});
 		}
 		return result;
 	},
