@@ -275,7 +275,7 @@ var spawns = {
 						 //        TTClRrAaHhWwCcMm
 						],
 	
-	DEPOSITER: [ 240224, 320216, 300415, 400105  // 0  000
+	DEPOSITER: [ 240224, 320216, 300415, 400305  // 0  000
 						 // TTClRrAaHhWwCcMm
 						],
 
