@@ -29,6 +29,9 @@ var links = {
 		 , { from: '60a1503bf2a3dc62978512cc', to: '609dc9d860f5d7150c9422db'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 //shard0
+		 // W57S59
+		 , { from: '60ce858e2cd09948f00f799b', to: '60cf4fde6dc6923b1a3e1663'}
+		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W53S53
 		 , { from: '60c8589166a27593083b84bd', to: '60c8119b84663822a8ff0a7c'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
