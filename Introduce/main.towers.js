@@ -152,7 +152,8 @@ var towers = {
 			if(!NAT) {
 				target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
 						 filter: (hostile) => {
-							 return (hostile.pos.x%48 > 1 || hostile.pos.y%48 > 1) && tools.getWeight(hostile.name)==0;
+							 return (hostile.pos.x%48 > 1 || hostile.pos.y%48 > 1) && tools.getWeight(hostile.name)==0 &&
+								 !hostile.pos.lookFor(LOOK_STRUCTURES).some((r) => r.structureType == STRUCTURE_RAMPART)
 						 }
 					 });
 				if(!!target && OK == tower.attack(target)) {
