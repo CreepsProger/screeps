@@ -166,7 +166,7 @@ var towers = {
 							 return (hostile.pos.x%48 > 1 || hostile.pos.y%48 > 1) &&
 								 tools.getWeight(hostile.name)==0 &&
 								 hostile.owner.username == 'Invader' &&
-								 hostile.pos.lookFor(LOOK_STRUCTURES).some((r) => r.structureType == STRUCTURE_RAMPART)
+								 !hostile.pos.lookFor(LOOK_STRUCTURES).some((r) => r.structureType == STRUCTURE_RAMPART)
 						 }
 					 });
 				if(!!target && OK == tower.attack(target)) {
