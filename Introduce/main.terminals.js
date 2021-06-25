@@ -19,9 +19,11 @@ var terminals = {
 																								.reduce((amount,a) => amount+a,0);
 			const amount = all.reduce((amount,t) => amount + terminals.getAmount(t,resource), inCreeps);
 			const amountWithoutDeals = all.reduce((amount,t) => amount + terminals.getAmountWithoutDeal(t,resource), inCreeps);
+			const commodity = COMMODITIES[res];
+			const more_precisely = !!commodity && !!commodity.level && commodity.level > 2;
 			terminals.shardValues[resource] = { time:Game.time
 																				, amount:amount
-																				, avgAmount:Math.floor(amount/all.length)
+																				, avgAmount:more_precisely? amount/all.length:Math.floor(amount/all.length)
 																				, avgAmountWithoutDeals:Math.floor(amountWithoutDeals/all.length)};
 		}
 	},
@@ -176,11 +178,11 @@ var terminals = {
 		const resources = Object.keys(creep.room.storage.store).filter((k) => k != RESOURCE_ENERGY);
 		if(resources.length == 0)
 			return null;
-		const surplus = resources.filter((r) => terminals.getStorageAmountAvgDiff(t,r) > 1/*1*/);
+		const surplus = resources.filter((r) => terminals.getStorageAmountAvgDiff(t,r) > 0.05/*1*/);
 		if(surplus.length == 0)
 			return null;
 		const mr = surplus.sort((l,r) => terminals.getStorageAmountAvgDiff(t,r) - terminals.getStorageAmountAvgDiff(t,l))[0];
-		const ret = {resource:mr, amount:terminals.getStorageAmountAvgDiff(creep,mr)-1/*1*/, avg:terminals.getShardAvgAmount(mr)};
+		const ret = {resource:mr, amount:terminals.getStorageAmountAvgDiff(creep,mr)-0/*1*/, avg:terminals.getShardAvgAmount(mr)};
 		
 // 		if(!!ret) {
 // 			console.log( '✒️'
