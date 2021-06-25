@@ -140,11 +140,11 @@ var terminals = {
 		const resources = Object.keys(t.store).filter((k) => k != RESOURCE_ENERGY);
 		if(resources.length == 0)
 			return null;
-		const deficit = resources.filter((r) => terminals.getStorageAmountAvgDiff(t,r) < 0);
+		const deficit = resources.filter((r) => terminals.getStorageAmountAvgDiff(t,r) < -0.05/*-1*/);
 		if(deficit.length == 0)
 			return null;
 		const mr = deficit.sort((l,r) => terminals.getStorageAmountAvgDiff(t,l) - terminals.getStorageAmountAvgDiff(t,r) )[0];
-		const ret = {resource:mr, amount: 1-terminals.getStorageAmountAvgDiff(t,mr), avg:terminals.getShardAvgAmount(mr)};
+		const ret = {resource:mr, amount: /*-1*/0-terminals.getStorageAmountAvgDiff(t,mr), avg:terminals.getShardAvgAmount(mr)};
 		
  		if(!!ret) {/*
  			console.log( '✒️'
