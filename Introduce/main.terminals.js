@@ -23,7 +23,7 @@ var terminals = {
 			const more_precisely = !!commodity && !!commodity.level && commodity.level > 2;
 			terminals.shardValues[resource] = { time:Game.time
 																				, amount:amount
-																				, avgAmount:more_precisely? amount/all.length:Math.floor(amount/all.length)
+																				, avgAmount:(more_precisely? amount/all.length:Math.floor(amount/all.length))
 																				, avgAmountWithoutDeals:Math.floor(amountWithoutDeals/all.length)};
 		}
 	},
