@@ -15,7 +15,7 @@ var terminals = {
 		const value = terminals.shardValues[resource];
 		if(value === undefined || value.time < Game.time) {
 			const all = terminals.getAllMyTerminalsToSpread();
-			const inCreeps =  Object.keys(Game.creeps).map((n) => tools.nvl(Game.creeps[n].store[resource],0))у
+			const inCreeps =  Object.keys(Game.creeps).map((n) => tools.nvl(Game.creeps[n].store[resource],0))
 																								.reduce((amount,a) => amount+a,0);
 			const amount = all.reduce((amount,t) => amount + terminals.getAmount(t,resource), inCreeps);
 			const amountWithoutDeals = all.reduce((amount,t) => amount + terminals.getAmountWithoutDeal(t,resource), inCreeps);
