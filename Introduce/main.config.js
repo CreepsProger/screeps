@@ -52,15 +52,15 @@ var config = {
 				return 2000;
 			}
 			if(commodity.level == 1 && res != 'composite')
-				return 1;
+				return 0;
 			if(commodity.level == 2 && res != 'crystal')
-				return 2;
+				return 0;
 			if(commodity.level == 3 && res != 'liquid')
-				return 3;
+				return 0;
 			if(commodity.level == 4)
-				return 4;
+				return 0;
 			if(commodity.level == 5)
-				return 5;
+				return 0;
 			return 3000;
 		}
 		return 10000;
