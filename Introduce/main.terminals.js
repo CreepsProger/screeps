@@ -20,7 +20,7 @@ var terminals = {
 			const amount = all.reduce((amount,t) => amount + terminals.getAmount(t,resource), inCreeps);
 			const amountWithoutDeals = all.reduce((amount,t) => amount + terminals.getAmountWithoutDeal(t,resource), inCreeps);
 			const commodity = COMMODITIES[resource];
-			const more_precisely = !!commodity && !!commodity.level && commodity.level > 2;
+			const more_precisely = !!commodity && !!commodity.level && commodity.level > 5;
 			terminals.shardValues[resource] = { time:Game.time
 																				, amount:amount
 																				, avgAmount:(more_precisely? amount/all.length:Math.floor(amount/all.length))
