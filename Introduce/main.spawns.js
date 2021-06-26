@@ -981,6 +981,7 @@ var spawns = {
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5589);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5585);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][M], 5584);
+						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][M/*H*/], 5582);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5581);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W23S21')) {
