@@ -894,26 +894,24 @@ var spawns = {
 						if(Sp15 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][H], 5401);
 						if(Sp15 && !All && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5405);
 					}
-// 					var W21S23_NA = flags.getFlag('W21S23.NA');
-					var NAT = Game.flags['W21S23.NAT'];
-					var NA = Game.flags['W21S23.NA'];
-					var roomW21S23 = Game.rooms['W21S23'];
-// 					const W21S23_NA = flags.getFlag(roomW21S23.name + '.NA');
-					var trapPos = roomW21S23.getPositionAt(43,27);
-					const isTrapFull = trapPos.findInRange(FIND_HOSTILE_CREEPS, 0).length > 0;
-					if(isTrapFull) {
-						spawns.setRampartPublic(roomW21S23.getPositionAt(44,26),false);
-						spawns.setRampartPublic(roomW21S23.getPositionAt(44,28),false);
-// 						W21S23_NA.setColor(COLOR_RED);
-						NA.setColor(COLOR_RED);
-						NAT.setColor(COLOR_RED);
-					}
-					else {
-						spawns.setRampartPublic(roomW21S23.getPositionAt(44,26));
-						spawns.setRampartPublic(roomW21S23.getPositionAt(44,28));
-// 						W21S23_NA.setColor(COLOR_GREEN);
-						NA.setColor(COLOR_GREEN);
-						NAT.setColor(COLOR_GREEN);
+					{
+						var NAT = Game.flags['W21S23.NAT'];
+						var NA = Game.flags['W21S23.NA'];
+						var roomW21S23 = Game.rooms['W21S23'];
+						var trapPos = roomW21S23.getPositionAt(43,27);
+						const isTrapFull = trapPos.findInRange(FIND_HOSTILE_CREEPS, 0).length > 0;
+						if(isTrapFull) {
+							spawns.setRampartPublic(roomW21S23.getPositionAt(44,26),false);
+							spawns.setRampartPublic(roomW21S23.getPositionAt(44,28),false);
+							NA.setColor(COLOR_RED);
+							NAT.setColor(COLOR_RED);
+						}
+						else {
+							spawns.setRampartPublic(roomW21S23.getPositionAt(44,26));
+							spawns.setRampartPublic(roomW21S23.getPositionAt(44,28));
+							NA.setColor(COLOR_GREEN);
+							NAT.setColor(COLOR_GREEN);
+						}
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W21S23')) { 
 						const boost5417 = Game.flags['W21S23.boosts: \"5417\":[\"XZHO2\",\"XLHO2\"]'];
@@ -974,6 +972,37 @@ var spawns = {
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, WORKER[5][L], 5444);
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][L], 5441);
 					}
+
+					{
+						var NAT = Game.flags['W22S21.NAT'];
+						var NA = Game.flags['W22S21.NA'];
+						var roomW22S21 = Game.rooms['W22S21'];
+						var trapPos1 = roomW21S23.getPositionAt(44,8);
+						const isTrap1Full = trapPos1.findInRange(FIND_HOSTILE_CREEPS, 0).length > 0;
+						if(isTrap1Full) {
+							spawns.setRampartPublic(roomW22S21.getPositionAt(45,8),false);
+							NA.setColor(COLOR_RED);
+							NAT.setColor(COLOR_RED);
+						}
+						else {
+							spawns.setRampartPublic(roomW22S21.getPositionAt(45,8));
+							NA.setColor(COLOR_GREEN);
+							NAT.setColor(COLOR_GREEN);
+						}
+						var trapPos2 = roomW22S21.getPositionAt(46,13);
+						const isTrap2Full = trapPos2.findInRange(FIND_HOSTILE_CREEPS, 0).length > 0;
+						if(isTrap2Full) {
+							spawns.setRampartPublic(roomW22S21.getPositionAt(47,12),false);
+							NA.setColor(COLOR_RED);
+							NAT.setColor(COLOR_RED);
+						}
+						else {
+							spawns.setRampartPublic(roomW22S21.getPositionAt(47,12));
+							NA.setColor(COLOR_GREEN);
+							NAT.setColor(COLOR_GREEN);
+						}
+					}					
+					
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W22S21')) {
 						if(Sp16 && !All)	spawns.tryCreateCreep(spawn, ATTACKER[5][M], 5587);
 					}
