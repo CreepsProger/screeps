@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 777,
+	version: 778,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -5414,6 +5414,59 @@ var config = {
 								}
 							, escape_path:
 								{ W21S30: 'W20S30', W20S30: 'W20S29', W20S29: 'W21S29'
+								}
+							},
+							W19S25:
+							{ containers: {weight: 5693}
+							, towers: {mw:11000000, mr:11000000}
+							, sites:
+							 	[ //{x:18, y:23, type:STRUCTURE_CONTAINER}
+							 	]
+							, energy_harvesting:
+								[ {name: '1', time: 0, min_weight: 5690, max_weight: 5699}
+								, {name: '2', time: 0, min_weight: 5690, max_weight: 5699}
+								, {name: '3', time: 0, min_weight: 5690, max_weight: 5699}
+								, {name: '4', time: 0, min_weight: 5690, max_weight: 5699}
+								, {name: '5', time: 0, min_weight: 5690, max_weight: 5699}
+								, {name: '6', time: 0, min_weight: 5690, max_weight: 5699}
+								, {name: '7', time: 0, min_weight: 5690, max_weight: 5699}
+								, {name: '8', time: 0, min_weight: 5690, max_weight: 5699}
+								, {name: '9', time: 0, min_weight: 5690, max_weight: 5699}
+								]
+							, claiming:
+							 	[ {name: '1', time: 0, min_weight: 5690, max_weight: 5699}
+								, {name: '2', time: 0, min_weight: 5690, max_weight: 5699}
+								]
+							, attacker:
+								[ {name: '1', time: 0, min_weight: 5690, max_weight: 5699}
+								, {name: '2', time: 0, min_weight: 5690, max_weight: 5699}
+								, {name: '3', time: 0, min_weight: 5690, max_weight: 5699}
+								, {name: '4', time: 0, min_weight: 5690, max_weight: 5699}
+								, {name: '5', time: 0, min_weight: 5690, max_weight: 5699}
+								, {name: '6', time: 0, min_weight: 5690, max_weight: 5699}
+								, {name: '7', time: 0, min_weight: 5690, max_weight: 5699}
+								, {name: '8', time: 0, min_weight: 5690, max_weight: 5699}
+								, {name: '9', time: 0, min_weight: 5690, max_weight: 5699}
+								]
+							, heal_room:
+								{ shard: 'shard1', room: 'W21S28'}
+							, path_rooms:
+								{ W29S31: 'W30S31', W30S31: 'W30S30', W30S30: 'W29S30'
+								, W29S30: 'W29S29', W29S30x:32, W29S29: 'W28S29'
+								, W28S29: 'W27S29', W28S29y:30, W27S29: 'W26S29', W27S29y:9
+								, W26S29: 'W25S29', W25S29: 'W24S29'
+								, W24S28: 'W24S29', W24S29: 'W23S29', W23S29: 'W23S28'
+								, W23S28: 'W22S28', W22S28: 'W21S28'
+								, W24S27: 'W25S27', W25S27: 'W26S27', W27S26: 'W26S26', W26S26: 'W26S27', W26S27: 'W26S28', W26S28: 'W25S28', W25S28: 'W24S28'
+								, W29S27: 'W28S27', W28S27: 'W27S27', W27S27: 'W27S28'
+								, W27S28: 'W26S28', W26S28: 'W26S29'
+								, W21S28: 'W21S27', W21S28x:38
+								, W21S27: 'W20S27', W20S27: 'W20S26', W20S26: 'W19S26', W19S26: 'W19S25'
+								, W21S23: 'W20S23', W20S23: 'W20S24', W20S24: 'W20S25', W20S25: 'W20S26'
+								}
+								, escape_path:
+								{ W19S25: 'W19S26', W19S26: 'W20S26', W20S26: 'W20S27'
+								, W20S27: 'W21S27', W21S27: 'W21S28'
 								}
 							},
 							//,
