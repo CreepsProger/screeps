@@ -168,10 +168,12 @@ var links = {
 		 , { from: '60bca7475b8946e41c6aedcd', to: '60c7769f7c7fd08a4180e66c'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W22S21
-		 , { from: '60b3608f7f382d866bf5dcf5', to: '60b35de3364c59a062a21225'}
-		 , { from: '60bd21ef2856e64b2995111b', to: '60b35de3364c59a062a21225'}
-		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
-		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
+		 , { from: '60b3608f7f382d866bf5dcf5', to: '60b35de3364c59a062a21225',      harvest_from_to_if_full: ['60d6e7330981d94a1f29c1bb','60d6e7330981d94a1f29c1bb']}
+		 , { from: '60bd21ef2856e64b2995111b', to: '60b35de3364c59a062a21225',      harvest_from_to_if_full: ['60d6e7330981d94a1f29c1bb','60d6e7330981d94a1f29c1bb']}
+		 , { from: '60b3608f7f382d866bf5dcf5', to: '60c1074a18e265696de0ca25',      harvest_from_to_if_full: ['60d6e7330981d94a1f29c1bb','60d6e7330981d94a1f29c1bb']}
+		 , { from: '60bd21ef2856e64b2995111b', to: '60c1074a18e265696de0ca25',      harvest_from_to_if_full: ['60d6e7330981d94a1f29c1bb','60d6e7330981d94a1f29c1bb']}
+		 , { from: '60b35de3364c59a062a21225', end: '60d6e7330981d94a1f29c1bb', no_transfer_to_from_if_full: ['60d6e7330981d94a1f29c1bb','60d6e7330981d94a1f29c1bb']}
+		 , { from: '60c1074a18e265696de0ca25', end: '60d6e7330981d94a1f29c1bb', no_transfer_to_from_if_full: ['60d6e7330981d94a1f29c1bb','60d6e7330981d94a1f29c1bb']}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W21S29
