@@ -231,7 +231,7 @@ var role = {
 		const sot = tools.getStorageOrTerminal(creep);
 
 		if(!target && !!sot &&
-			 Memory.stop_upgrading == false &&
+			 !Memory.stop_upgrading &&
 			 creep.getActiveBodyparts(WORK) &&
 			 energy > constants.STOP_UPGRADING_ENERGY + creep.store.getFreeCapacity(RESOURCE_ENERGY)) {
 				return sot;
