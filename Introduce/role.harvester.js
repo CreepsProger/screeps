@@ -229,6 +229,12 @@ var role = {
 				energy -= constants.MIN_STORAGE_ENERGY;
 		
 		const sot = tools.getStorageOrTerminal(creep);
+		
+		const LL  = !!flags.flags.LL && flags.flags.LL.pos.roomName == my_room;
+		if(LL) {
+				console.log('✔️', Math.trunc(Game.time/10000), Game.time%10000
+											, JSON.stringify({LL:LL, creep:creep.name, target:target, sot:sot, energy:energy, stop_upgrading:!!Memory.stop_upgrading}));
+		}
 
 		if(!target && !!sot &&
 			 !Memory.stop_upgrading &&
