@@ -198,11 +198,11 @@ var role = {
 				return target;
 		}
 
-		const LL  = !!flags.flags.LL && flags.flags.LL.pos.roomName == my_room;
-		if(LL) {
-				console.log('✔️', Math.trunc(Game.time/10000), Game.time%10000
-											, JSON.stringify({LL:LL, creep:creep.name, target:target}));
-		}
+// 		const LL  = !!flags.flags.LL && flags.flags.LL.pos.roomName == my_room;
+// 		if(LL) {
+// 				console.log('✔️', Math.trunc(Game.time/10000), Game.time%10000
+// 											, JSON.stringify({LL:LL, creep:creep.name, target:target}));
+// 		}
 
 		if(creep.getActiveBodyparts(WORK) && !UU && !B && !cash.needToRenew(creep)) {
 			const extractor = creep.pos.findClosestByPath(FIND_STRUCTURES, {
