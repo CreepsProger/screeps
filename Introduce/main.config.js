@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 781,
+	version: 782,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -358,12 +358,51 @@ var config = {
 		return tools.moveTo(creep,target);
 	},
 
+	checkStopUpgrading: function() {
+		var storages = _.filter(Game.structures, function(structure) {
+			return (structure.structureType == STRUCTURE_STORAGE) &&
+			structure.store.getUsedCapacity(RESOURCE_ENERGY) +
+			(!structure.room.terminal? 0:structure.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY))
+			< constants.STOP_UPGRADING_ENERGY + constants.MIN_TERMINAL_ENERGY + constants.MIN_STORAGE_ENERGY;
+		});
+		if(storages.length > 0) {
+			return true;
+		}
+		return false;
+	},
+
+	checkStartUpgrading: function() {
+		var storages = _.filter(Game.structures, function(structure) {
+			return (structure.structureType == STRUCTURE_STORAGE) &&
+			structure.store.getUsedCapacity(RESOURCE_ENERGY) +
+			(!structure.room.terminal? 0:structure.room.terminal.store.getUsedCapacity(RESOURCE_ENERGY))
+			< constants.START_UPGRADING_ENERGY + constants.MIN_TERMINAL_ENERGY + constants.MIN_STORAGE_ENERGY;
+		});
+		if(storages.length == 0) {
+			return true;
+		}
+		return false;
+	},
+
+	updateStopUpgradingCondition: function(creep) {
+		if (Memory.stop_upgrading === undefined) {
+			Memory.stop_upgrading = true;
+		}
+		if(config.checkStopUpgrading()) {
+			Memory.stop_upgrading = true;
+		}
+		if(config.checkStartUpgrading()) {
+			Memory.stop_upgrading = false;
+		}
+	},
+
 	init: function() {
-		// if(Memory.config === undefined ||
-		// 	 Memory.config.v === undefined ||
-	  if(!config.Memory ||
+		if(Game.time%constants.TICKS_TO_CHECK_STOP_UPGRADING == 0)
+				config.updateStopUpgradingCondition();
+		if(!config.Memory ||
 			 !config.Memory.v ||
 			  config.Memory.v != config.version) {
+			config.updateStopUpgradingCondition();
 			Memory.config	=
 			{ v: config.version
 			,	main_path:{ W29S37: 'W28S37'
