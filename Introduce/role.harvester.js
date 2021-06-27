@@ -114,6 +114,7 @@ var role = {
 		const UU = XU || !!flags.flags.UU && flags.flags.UU.pos.roomName == my_room;
 		const BB = XU || !!flags.flags.BB && flags.flags.BB.pos.roomName == my_room;
 		const CONT = !!flags.getFlag(this_room + '.cont.' + tools.getWeight(creep.name)); 
+		const BUILD = !!flags.getFlag(this_room + '.build.' + tools.getWeight(creep.name)); 
 
 		if(!target &&
 			 (!creep.getActiveBodyparts(WORK) || U) &&
@@ -237,7 +238,7 @@ var role = {
 		}
 
 		if(!target && !!sot &&
-			 !Memory.stop_upgrading &&
+			 (!Memory.stop_upgrading || BUILD) &&
 			 creep.getActiveBodyparts(WORK) &&
 			 energy > constants.STOP_UPGRADING_ENERGY + creep.store.getFreeCapacity(RESOURCE_ENERGY)) {
 				return sot;
