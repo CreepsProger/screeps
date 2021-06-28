@@ -352,7 +352,7 @@ var spawns = {
 
 		var spawn_names = Object.keys(Game.spawns).filter((s,i)=> i%constants.TICKS_TO_SPAWN == I);
 
-		for(var name in spawn_names) {
+		spawn_names.forEach(function(name) {
 			var spawn = Game.spawns[name];
 			console.log('✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'spawn:'
