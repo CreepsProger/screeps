@@ -1654,7 +1654,7 @@ var spawns = {
 
 			}
 
-			if(spawn.spawning) {
+			if(!!spawn && spawn.spawning) {
 				spawn.spawning.setDirections([TOP, TOP_LEFT, LEFT, BOTTOM_LEFT, BOTTOM, BOTTOM_RIGHT, RIGHT, TOP_RIGHT]);
 
 				var spawningCreep = Game.creeps[spawn.spawning.name];
