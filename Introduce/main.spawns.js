@@ -1663,7 +1663,7 @@ var spawns = {
 															 , spawn.pos.y
 															 , {align: 'left', opacity: 0.8});
 			}
-		}
+		}); // forEach
 	}
 };
 
