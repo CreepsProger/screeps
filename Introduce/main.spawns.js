@@ -356,7 +356,7 @@ var spawns = {
 			var spawn = Game.spawns[name];
 			console.log('✒️', Math.trunc(Game.time/10000), Game.time%10000
 									, 'spawn:'
-									, JSON.stringify({spawn:spawn, spawn_names:spawn_names, I:I}));
+									, JSON.stringify({name:name, spawn:spawn, spawn_names:spawn_names, I:I}));
 
 			if(!!spawn && !spawn.spawning && Nspawns) {
 
