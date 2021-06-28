@@ -354,11 +354,11 @@ var spawns = {
 
 		for(var name in spawn_names) {
 			var spawn = Game.spawns[name];
-			// console.log('✒️', Math.trunc(Game.time/10000), Game.time%10000
-			// 						, 'spawn:'
-			// 						, JSON.stringify(spawn));
+			console.log('✒️', Math.trunc(Game.time/10000), Game.time%10000
+									, 'spawn:'
+									, JSON.stringify(spawn));
 
-			if(!spawn.spawning && Nspawns) {
+			if(!spawn && !spawn.spawning && Nspawns) {
 
 				var controller = spawn.room.controller;
 				const CL = controller.level;
