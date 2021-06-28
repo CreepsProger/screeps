@@ -353,7 +353,7 @@ var spawns = {
 		var spawn_names = Object.keys(Game.spawns).filter((s,i)=> i%constants.TICKS_TO_SPAWN == I);
 
 		for(var name in spawn_names) {
-			var spawn = Game.spawns[Object.keys(Game.spawns)[I]];
+			var spawn = Game.spawns[name];
 			// console.log('✒️', Math.trunc(Game.time/10000), Game.time%10000
 			// 						, 'spawn:'
 			// 						, JSON.stringify(spawn));
