@@ -358,7 +358,7 @@ var spawns = {
 									, 'spawn:'
 									, JSON.stringify(spawn));
 
-			if(!spawn && !spawn.spawning && Nspawns) {
+			if(!!spawn && !spawn.spawning && Nspawns) {
 
 				var controller = spawn.room.controller;
 				const CL = controller.level;
