@@ -354,9 +354,10 @@ var spawns = {
 
 		spawn_names.forEach(function(name) {
 			var spawn = Game.spawns[name];
-			console.log('✒️', Math.trunc(Game.time/10000), Game.time%10000
-									, 'spawn:'
-									, JSON.stringify({name:name, spawn:spawn, spawn_names:spawn_names, I:I}));
+
+// 			console.log('✒️', Math.trunc(Game.time/10000), Game.time%10000
+// 									, 'spawn:'
+// 									, JSON.stringify({name:name, spawn:spawn, spawn_names:spawn_names, I:I}));
 
 			if(!!spawn && !spawn.spawning && Nspawns) {
 
