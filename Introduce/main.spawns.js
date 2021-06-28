@@ -350,8 +350,9 @@ var spawns = {
 		if(!!rerun && I == 0)
 			Memory.CreepsNeedsByWeight = {};
 
-		// for(var name in Game.spawns)
-     {
+		var spawn_names = Object.keys(Game.spawns).filter((s,i)=> i%constants.TICKS_TO_SPAWN == I);
+
+		for(var name in spawn_names) {
 			var spawn = Game.spawns[Object.keys(Game.spawns)[I]];
 			// console.log('✒️', Math.trunc(Game.time/10000), Game.time%10000
 			// 						, 'spawn:'
