@@ -10,12 +10,14 @@ var terminals = {
 	},
 	
 	isMyOrderToST: function(roomName) {
-		const N = cash.getAllMyTerminals().filter((t,i) => !!t).length;
+		const N = 10;
+		const I = cash.getAllMyTerminals().map((t,i) => (!!t && t.room.name == roomName)?i:0).reduce((sum,c)=> sum+c);
+		const i = I%N;
 		const time_slot_size = Math.floor(3000 / N);
 		const time_slot_nth =  Math.floor((Game.time % 3000) / time_slot_size);
-		const prev_time_slot_nth =  Math.floor(((Game.time - 1) % 3000) / time_slot_size);
-		const ok = cash.getAllMyTerminals().filter((t,i) => !!t)[time_slot_nth].room.name == roomName;
-		if(prev_time_slot_nth != prev_time_slot_nth) {
+		const prev_time_slot_nth =  Math.floor(((Game.time - 10) % 3000) / time_slot_size);
+		const ok = (i == time_slot_nth);
+		if(prev_time_slot_nth != prev_time_slot_nth || ok) {
 			console.log('ST 🔃️', Math.trunc(Game.time/10000), Game.time%10000
 									, JSON.stringify( { roomName:roomName
 																		 , ok:ok
