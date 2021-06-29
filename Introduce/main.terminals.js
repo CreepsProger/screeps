@@ -10,10 +10,10 @@ var terminals = {
 	},
 	
 	isMyOrderToST: function(roomName) {
-		const N = Math.min(10,cash.getAllMyTerminals().length);
+		const N = Math.min(20,cash.getAllMyTerminals().length);
 		const I = cash.getAllMyTerminals().map((t,i) => (!!t && t.room.name == roomName)?i:0).reduce((sum,c)=> sum+c);
 		const i = I%N;
-		const time_slot_size = Math.floor(3000 / N);
+		const time_slot_size = Math.floor(4000 / N);
 		const time_slot_nth =  Math.floor((Game.time % 3000) / time_slot_size);
 		const prev_time_slot_nth =  Math.floor(((Game.time - 10) % 3000) / time_slot_size);
 		const ok = (i == time_slot_nth);
