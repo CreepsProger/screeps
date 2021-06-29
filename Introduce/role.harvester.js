@@ -268,7 +268,7 @@ var role = {
 		if(!creep.getActiveBodyparts(WORK) &&
 			 (st.time + st.multi <= Game.time) &&
 			 creep.memory.rerun &&
-			 ((Game.time % 500/10 < 20/2 && Game.cpu.bucket > 2000) || Game.cpu.bucket > 8000 || ST)) {
+			 (terminals.isMyOrderToST(creep.room.name) || Game.cpu.bucket > 8000 || ST)) {
 
 			const labToOutExtra = labs.getLabsToOut(creep.room.name)
 													.filter((e) => e.amount == 3000)
