@@ -19,7 +19,7 @@ var terminals = {
 		const ok = (i == time_slot_nth);
 		const time_slot_left = ((time_slot_nth+1) * time_slot_size) - (Game.time % 3000);
 		const current_rooms = cash.getAllMyTerminals().filter((t,i) => i%N == time_slot_nth).map((t)=> t.room.name);
-		if(ok) {
+		if(ok && N > 1) {
 			console.log('ST 🔃️', Math.trunc(Game.time/10000), Game.time%10000
 									, JSON.stringify( { roomName:roomName
 																		 , ok:ok
