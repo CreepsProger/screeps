@@ -8,6 +8,25 @@ var terminals = {
 	getAllMyTerminalsToSpread: function() {
 		return cash.getAllMyTerminals().filter((t) => !!t && !!t.store && !!t.room && !!t.room.storage && !!t.room.storage.store);
 	},
+	
+	isMyOrderToST: function(roomName) {
+		const N = cash.getAllMyTerminals().filter((t,i) => !!t).length;
+		const time_slot_size = Math.floor(3000 / N);
+		const time_slot_nth =  Math.floor((Game.time % 3000) / time_slot_size);
+		const prev_time_slot_nth =  Math.floor(((Game.time - 1) % 3000) / time_slot_size);
+		const ok = cash.getAllMyTerminals().filter((t,i) => !!t)[time_slot_nth].room.name == roomName;
+		if(prev_time_slot_nth != prev_time_slot_nth) {
+			console.log('ST 🔃️', Math.trunc(Game.time/10000), Game.time%10000
+									, JSON.stringify( { roomName:roomName
+																		 , ok:ok
+																		 , N:N
+																		 , time_slot_size:time_slot_size
+																		 , time_slot_nth:time_slot_nth
+																		 , prev_time_slot_nth:prev_time_slot_nth
+																		 }));
+		}
+		return ok;
+	},
 
 	shardValues:{},
 
