@@ -39,7 +39,7 @@ const observer = {
 		Object.keys(observer.rooms).filter((roomName) => observer.rooms[roomName].lst_time == Game.time)
 									.forEach(function(roomName,i) {
 			const od_room = observer.rooms[roomName];
-			const maxLastCooldown = 300;
+			const maxLastCooldown = 200;
 
 			if(false) {
 				console.log('👀', Math.trunc(Game.time/10000), Game.time%10000
