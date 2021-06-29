@@ -10,7 +10,7 @@ var terminals = {
 	},
 	
 	isMyOrderToST: function(roomName) {
-		const N = 10;
+		const N = Math.min(10,cash.getAllMyTerminals().filter((t,i) => !!t).length);
 		const I = cash.getAllMyTerminals().map((t,i) => (!!t && t.room.name == roomName)?i:0).reduce((sum,c)=> sum+c);
 		const i = I%N;
 		const time_slot_size = Math.floor(3000 / N);
