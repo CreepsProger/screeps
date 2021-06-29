@@ -2611,6 +2611,10 @@ var config = {
 							{ shard: 'shard0', room: 'W29S29'}
 						, path_rooms:
 							{ W27S24: 'W27S25', W27S25: 'W27S26', W27S26: 'W26S26', W26S26: 'W26S27'
+							, W24S21: 'W24S20', W24S20: 'W23S20', W23S20: 'W23S21', W23S21: 'W22S21'
+							, W22S21: 'W22S22', W22S22: 'W22S23', W22S23: 'W21S23', W21S23: 'W20S23'
+							, W20S23: 'W20S24', W20S24: 'W20S25', W20S25: 'W20S26', W20S26: 'W20S27'
+							, W20S27: 'W21S27', W21S28: 'W22S28', W22S28: 'W23S28', W23S28: 'W23S29'
 							}
 							, escape_path:
 							{
