@@ -17,7 +17,7 @@ var terminals = {
 		const time_slot_nth =  Math.floor((Game.time % 3000) / time_slot_size);
 		const prev_time_slot_nth =  Math.floor(((Game.time - 10) % 3000) / time_slot_size);
 		const ok = (i == time_slot_nth);
-		if(prev_time_slot_nth != prev_time_slot_nth || ok) {
+		if((prev_time_slot_nth != prev_time_slot_nth) || ok || true) {
 			console.log('ST 🔃️', Math.trunc(Game.time/10000), Game.time%10000
 									, JSON.stringify( { roomName:roomName
 																		 , ok:ok
