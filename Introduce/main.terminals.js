@@ -18,14 +18,13 @@ var terminals = {
 		const prev_time_slot_nth =  Math.floor(((Game.time - 10) % 3000) / time_slot_size);
 		const ok = (i == time_slot_nth);
 		const current_rooms = cash.getAllMyTerminals().filter((t,i) => i%N == time_slot_nth).map((t)=> t.room.name);
-		if((prev_time_slot_nth != prev_time_slot_nth) || ok) {
+		if(ok) {
 			console.log('ST 🔃️', Math.trunc(Game.time/10000), Game.time%10000
 									, JSON.stringify( { roomName:roomName
 																		 , ok:ok
 																		 , N:N
 																		 , time_slot_size:time_slot_size
 																		 , time_slot_nth:time_slot_nth
-																		 , prev_time_slot_nth:prev_time_slot_nth
 																		 , current_rooms:current_rooms
 																		 }));
 		}
