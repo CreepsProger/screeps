@@ -12,7 +12,7 @@ var terminals = {
 	isMyOrderToST: function(roomName) {
 		const fGST = flags.getFlag('GST');
 		const GST = ((!fGST)? 3000:5500-fGST.color*500); // WHITE=500 PURPLE=4500
-		const N = Math.min(20,cash.getAllMyTerminals().length);
+		const N = cash.getAllMyTerminals().length;
 		const I = cash.getAllMyTerminals().map((t,i) => (!!t && t.room.name == roomName)?i:0).reduce((sum,c)=> sum+c);
 		const i = I%N;
 		const time_slot_size = Math.floor(GST / N);
