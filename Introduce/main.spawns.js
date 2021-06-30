@@ -740,7 +740,7 @@ var spawns = {
 					}
 					else {
 						if(Sp9 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5274);
-						if(Sp9)	spawns.tryCreateCreep(spawn, CARIER[7][M], 5271);
+						if(Sp9 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][M], 5271);
 						if(Sp9 && upgrade && !All)	spawns.tryCreateCreep(spawn, UPGRADER[L], 5275);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W26S26')) {
