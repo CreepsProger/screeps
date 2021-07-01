@@ -11,6 +11,12 @@ var terminals = {
 	},
 	
 	nextOrderST: function(roomName) {
+		if(true) {
+			console.log('nextOrderST 🔃️🔃️', Math.trunc(Game.time/10000), Game.time%10000
+									, JSON.stringify( { roomName:roomName
+																		 , ok:true
+																		 }));
+		}
 	},
 	
 	isMyOrderST: function(roomName) {
