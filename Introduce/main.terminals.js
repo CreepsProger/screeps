@@ -38,19 +38,11 @@ var terminals = {
 // 		const ok = (i == time_slot_nth);
 // 		const time_slot_left = ((time_slot_nth+1) * time_slot_size) - (Game.time % GST);
 		const current_rooms = terminals.getAllMyTerminalsToSpread().filter((t,i) => i%N == terminals.orderST).map((t) => t.room.name);
-		const indexes = terminals.getAllMyTerminalsToSpread().map((t,ind) => ind);
-		const indexes2 = terminals.getAllMyTerminalsToSpread().map((t,ind) => (t.room.name == roomName)?ind:0);
-		const i = indexes2.reduce((sum,c) => sum+c,0);
-		const ok2 = (i == terminals.orderST);
 		const ok = current_rooms.some((name) => name == roomName);
-		if(ok || ok2) {
+		if(ok) {
 			console.log('ST 🔃️', Math.trunc(Game.time/10000), Game.time%10000
 									, JSON.stringify( { roomName:roomName
 																		 , ok:ok
-																		 , ok2:ok2
-																		 , i:i
-																		 , indexes
-																		 , indexes2
 																		 , orderST:terminals.orderST
 // 																		 , GST:GST
 																		 , N:N
