@@ -40,11 +40,12 @@ var terminals = {
 		const current_rooms = terminals.getAllMyTerminalsToSpread().filter((t,i) => i%N == terminals.orderST).map((t)=> t.room.name);
 		const i = terminals.getAllMyTerminalsToSpread().map((t,ind) => (t.room.name == roomName)?ind:0).reduce((sum,c)=> sum+c,0);
 		const ok = (i == terminals.orderST);
-// 		const ok = current_rooms.find(roomName);
-		if(!!ok) {
+		const ok2 = current_rooms.some((name) => name == roomName);
+		if(ok || ok2) {
 			console.log('ST 🔃️', Math.trunc(Game.time/10000), Game.time%10000
 									, JSON.stringify( { roomName:roomName
 																		 , ok:ok
+																		 , ok:ok2
 																		 , i:i
 																		 , orderST:terminals.orderST
 // 																		 , GST:GST
