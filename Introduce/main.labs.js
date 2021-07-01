@@ -44,8 +44,10 @@ const labs = {
 																				, to_empty:(labs.getConfLabRes(conf,i) != '-' && tools.nvl(lab.mineralType,labs.getConfLabRes(conf,i)) != labs.getConfLabRes(conf,i))
 																				, toRun:labs.getConfLabAgs(conf,i), configRes:labs.getConfLabRes(conf,i), lab:lab}}) 
 								.map((e) => ( e.to_run = Math.abs(tools.nvl(e.toRun,0))
-													  , e.l_reag = ls[Math.floor(e.to_run/10%10)].mineralType
-													  , e.r_reag = ls[Math.floor(e.to_run%10)].mineralType
+													  , e.l_i = Math.floor(e.to_run/10%10)
+													  , e.r_i = Math.floor(e.to_run%10)
+													  , e.l_reag = (e.l_i<ls.length)?ls[e.l_i].mineralType:'-'
+													  , e.r_reag = (e.l_r<ls.length)?ls[e.r_i].mineralType:'-'
 													  , e.reaction = !!REACTIONS[e.l_reag]?REACTIONS[e.l_reag][e.r_reag]:null
 														, e.to_boost = e.to_run - Math.floor(e.to_run) > 0
 													  , e.toEmpty = !!e.to_empty || (!!e.reaction && tools.nvl(e.lab.mineralType,e.reaction) != e.reaction && !e.to_boost)
