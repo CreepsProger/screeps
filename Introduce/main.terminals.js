@@ -45,6 +45,7 @@ var terminals = {
 									, JSON.stringify( { roomName:roomName
 																		 , ok:ok
 																		 , i:i
+																		 , orderST:terminals.orderST
 // 																		 , GST:GST
 																		 , N:N
 // 																		 , time_slot_size:time_slot_size
