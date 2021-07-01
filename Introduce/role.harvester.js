@@ -66,6 +66,7 @@ var role = {
 		}
 	},
 	
+	MAX_ST_MULTI:8,
 	st: {
 	},
 	getST: function(creepName) {
@@ -81,8 +82,9 @@ var role = {
 	postponeST: function(creepName) {
 		const st = role.getST(creepName);
 		st.time = Game.time;
-		if(st.multi < 8)
+		if(st.multi < role.MAX_ST_MULTI)
 			st.multi *= 2;
+		return st.multy;
 	},
 
 	getTarget: function(creep,executer) {
@@ -268,7 +270,7 @@ var role = {
 		if(!creep.getActiveBodyparts(WORK) &&
 			 (st.time + st.multi <= Game.time) &&
 			 creep.memory.rerun &&
-			 (terminals.isMyOrderToST(creep.room.name) || Game.cpu.bucket > 8000 || ST)) {
+			 (terminals.isMyOrderST(creep.room.name) || Game.cpu.bucket > 8000 || ST)) {
 
 			const labToOutExtra = labs.getLabsToOut(creep.room.name)
 													.filter((e) => e.amount == 3000)
@@ -367,7 +369,8 @@ var role = {
 				return res_to_send;
 			}
 			
-			role.postponeST(creep.name);
+			if(role.postponeST(creep.name) >= role.MAX_ST_MULTI)
+				terminals.nextOrderST(creep.room.name);
 		}
 		
 
