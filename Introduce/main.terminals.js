@@ -40,7 +40,7 @@ var terminals = {
 		const current_rooms = cash.getAllMyTerminals().filter((t,i) => i%N == terminals.orderST).map((t)=> t.room.name);
 		const i = cash.getAllMyTerminals().map((t,i) => (!!t && t.room.name == roomName)?i:0).reduce((sum,c)=> sum+c);
 		const ok = (i == terminals.orderST);
-		if(ok) {
+		if(!!ok) {
 			console.log('ST 🔃️', Math.trunc(Game.time/10000), Game.time%10000
 									, JSON.stringify( { roomName:roomName
 																		 , ok:ok
