@@ -13,13 +13,14 @@ var terminals = {
 	orderST: 0,
 
 	nextOrderST: function(roomName) {
+		const N = cash.getAllMyTerminals().filter((t) => !!t).length;
+		terminals.orderST = (terminals.orderST+1)%N;
 		if(true) {
-			const N = cash.getAllMyTerminals().length - 1;
+
 			console.log('nextOrderST 🔃️🔃️', Math.trunc(Game.time/10000), Game.time%10000
 									, JSON.stringify( { roomName:roomName
 																		 , orderST:terminals.orderST
 																		 , N:N
-																		 , nextOrderST:++terminals.orderST
 																		 }));
 			
 		}
@@ -28,7 +29,7 @@ var terminals = {
 	isMyOrderST: function(roomName) {
 // 		const fGST = flags.getFlag('GST');
 // 		const GST = ((!fGST)? 3000:5500-fGST.color*500); // WHITE=500 PURPLE=4500
-// 		const N = cash.getAllMyTerminals().length;
+		const N = cash.getAllMyTerminals().filter((t) => !!t).length;
 // 		const I = cash.getAllMyTerminals().map((t,i) => (!!t && t.room.name == roomName)?i:0).reduce((sum,c)=> sum+c);
 // 		const i = I%N;
 // 		const time_slot_size = Math.floor(GST / N);
@@ -36,7 +37,7 @@ var terminals = {
 // 		const prev_time_slot_nth =  Math.floor(((Game.time - 10) % GST) / time_slot_size);
 // 		const ok = (i == time_slot_nth);
 // 		const time_slot_left = ((time_slot_nth+1) * time_slot_size) - (Game.time % GST);
-// 		const current_rooms = cash.getAllMyTerminals().filter((t,i) => i%N == time_slot_nth).map((t)=> t.room.name);
+		const current_rooms = cash.getAllMyTerminals().filter((t,i) => i%N == terminals.orderST).map((t)=> t.room.name);
 		const i = cash.getAllMyTerminals().map((t,i) => (!!t && t.room.name == roomName)?i:0).reduce((sum,c)=> sum+c);
 		const ok = (i == terminals.orderST);
 		if(ok) {
@@ -49,7 +50,7 @@ var terminals = {
 // 																		 , time_slot_size:time_slot_size
 // 																		 , time_slot_nth:time_slot_nth
 // 																		 , time_slot_left:time_slot_left
-// 																		 , current_rooms:current_rooms
+																		 , current_rooms:current_rooms
 																		 }));
 		}
 		return ok;
