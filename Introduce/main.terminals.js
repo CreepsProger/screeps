@@ -45,7 +45,7 @@ var terminals = {
 			console.log('ST 🔃️', Math.trunc(Game.time/10000), Game.time%10000
 									, JSON.stringify( { roomName:roomName
 																		 , ok:ok
-																		 , ok:ok2
+																		 , ok2:ok2
 																		 , i:i
 																		 , orderST:terminals.orderST
 // 																		 , GST:GST
