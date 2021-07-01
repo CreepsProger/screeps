@@ -37,16 +37,18 @@ var terminals = {
 // 		const prev_time_slot_nth =  Math.floor(((Game.time - 10) % GST) / time_slot_size);
 // 		const ok = (i == time_slot_nth);
 // 		const time_slot_left = ((time_slot_nth+1) * time_slot_size) - (Game.time % GST);
-		const current_rooms = terminals.getAllMyTerminalsToSpread().filter((t,i) => i%N == terminals.orderST).map((t)=> t.room.name);
-		const i = terminals.getAllMyTerminalsToSpread().map((t,ind) => (t.room.name == roomName)?ind:0).reduce((sum,c)=> sum+c,0);
-		const ok = (i == terminals.orderST);
-		const ok2 = current_rooms.some((name) => name == roomName);
+		const current_rooms = terminals.getAllMyTerminalsToSpread().filter((t,i) => i%N == terminals.orderST).map((t) => t.room.name);
+		const indexes = terminals.getAllMyTerminalsToSpread().map((t,ind) => (t.room.name == roomName)?ind:0);
+		const i = indexes.reduce((sum,c) => sum+c,0);
+		const ok2 = (i == terminals.orderST);
+		const ok = current_rooms.some((name) => name == roomName);
 		if(ok || ok2) {
 			console.log('ST 🔃️', Math.trunc(Game.time/10000), Game.time%10000
 									, JSON.stringify( { roomName:roomName
 																		 , ok:ok
 																		 , ok2:ok2
 																		 , i:i
+																		 , indexes
 																		 , orderST:terminals.orderST
 // 																		 , GST:GST
 																		 , N:N
