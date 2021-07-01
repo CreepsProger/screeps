@@ -46,7 +46,7 @@ var terminals = {
 																		 , ok:ok
 																		 , i:i
 // 																		 , GST:GST
-// 																		 , N:N
+																		 , N:N
 // 																		 , time_slot_size:time_slot_size
 // 																		 , time_slot_nth:time_slot_nth
 // 																		 , time_slot_left:time_slot_left
