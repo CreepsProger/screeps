@@ -10,7 +10,10 @@ var terminals = {
 		return cash.getAllMyTerminals().filter((t) => !!t && !!t.store && !!t.room && !!t.room.storage && !!t.room.storage.store);
 	},
 	
-	isMyOrderToST: function(roomName) {
+	nextOrderST: function(roomName) {
+	},
+	
+	isMyOrderST: function(roomName) {
 		const fGST = flags.getFlag('GST');
 		const GST = ((!fGST)? 3000:5500-fGST.color*500); // WHITE=500 PURPLE=4500
 		const N = cash.getAllMyTerminals().length;
