@@ -748,6 +748,9 @@ var flags = {
 				{
 				const roomName = fSell.pos.roomName;
 				const terminal = Game.rooms[roomName].terminal;
+				if(!terminal) {
+					return
+				}
 				if(!!terminal.cooldown) {
 					n++;
 					tools.timeOn(time, terminal.cooldown);
