@@ -366,7 +366,7 @@ var cash = {
 		return cash.getEntry(cash.all_my_terminals, STRUCTURE_TERMINAL, 0, () => {
 			return _.filter(Game.structures,
 				 (structure) => !!structure.my && structure.structureType == STRUCTURE_TERMINAL);
-			 });
+			 }).filter((s) => !!s && !!s.my && !!s.store);;
  	},
 	
 	all_my_factories: {},
@@ -374,7 +374,7 @@ var cash = {
 		return cash.getEntry(cash.all_my_factories, STRUCTURE_FACTORY, 0, () => {
 			return _.filter(Game.structures,
 				 (structure) => !!structure.my && structure.structureType == STRUCTURE_FACTORY);
-			 });
+			 }).filter((s) => !!s && !!s.my && !!s.store);;
  	},
 	
 	all_my_nukers: {},
@@ -382,7 +382,7 @@ var cash = {
 		return cash.getEntry(cash.all_my_nukers, STRUCTURE_NUKER, 0, () => {
 			return _.filter(Game.structures,
 				 (structure) => !!structure.my && structure.structureType == STRUCTURE_NUKER);
-			 });
+			 }).filter((s) => !!s && !!s.my && !!s.store);;
  	},
 
 	getTotalEnergy: function() {
@@ -396,7 +396,7 @@ var cash = {
 		return cash.getEntry(cash.all_my_towers, STRUCTURE_TOWER, 0, () => {
 			return _.filter(Game.structures,
 				 (structure) => !!structure.my && structure.structureType == STRUCTURE_TOWER);
-			 });
+			 }).filter((s) => !!s && !!s.my && !!s.store);;
  	},
 
 	all_my_storages: {},
