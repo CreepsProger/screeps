@@ -23,7 +23,7 @@ var config = {
 	
 	goToYourPlace: function(pc) {
 		const place = flags.getFlag(pc.name);
-		if(!!place && place.pos != pc.pos) {
+		if(!!place && (place.pos.x != pc.pos.x || place.pos.y != pc.pos.y)) {
 			pc.moveTo(place);
 			console.log( '👨‍🚒🔜🏖️', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { config:'goToYourPlace', pc:pc, place:place}));
