@@ -26,12 +26,19 @@ var tools = {
 	
 	isInWay: function(creep) {
 		if(creep.room.name == 'W29S29' &&
-			 ((creep.pos.x == 13 && creep.pos.y == 28) ||
+			 ((creep.pos.x == 11 && creep.pos.y == 28) ||
+				(creep.pos.x == 12 && creep.pos.y == 27) ||
+				(creep.pos.x == 12 && creep.pos.y == 31) ||
+				(creep.pos.x == 13 && creep.pos.y == 26) ||
+				(creep.pos.x == 13 && creep.pos.y == 28) ||
+				(creep.pos.x == 13 && creep.pos.y == 31) ||
 				(creep.pos.x == 14 && creep.pos.y == 29) ||
 				(creep.pos.x == 14 && creep.pos.y == 30) ||
 				(creep.pos.x == 15 && creep.pos.y == 29) ||
 				(creep.pos.x == 15 && creep.pos.y == 31) ||
-				(creep.pos.x == 16 && creep.pos.y == 30)))
+				(creep.pos.x == 16 && creep.pos.y == 28) ||
+				(creep.pos.x == 16 && creep.pos.y == 30) ||
+				(creep.pos.x == 17 && creep.pos.y == 29)))
 			return true;
 		if(creep.room.name == 'W26S33' &&
 			 ((creep.pos.x == 28 && creep.pos.y == 20) ||
