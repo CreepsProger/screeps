@@ -23,12 +23,11 @@ var config = {
 	
 	goToYourPlace: function(pc) {
 		const place = flags.getFlag(pc.name);
-		if(true) {
-			console.log( '📦🏨📜', Math.trunc(Game.time/10000), Game.time%10000
+		if(!!place && place.pos != ps.pos) {
+			pc.moveTo(place);
+			console.log( '👨‍🚒🔜🏖️', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { config:'goToYourPlace', pc:pc, place:place}));
 		}
-		if(!!place && place.pos != ps.pos)
-			pc.moveTo(place);
 	},
 
 	getRole: function(creep, role_name) {
