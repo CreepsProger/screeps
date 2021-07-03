@@ -10,6 +10,12 @@ const power = {
 		return config.getPowerConfig(roomName, pcName);
 	},
 
+	goToYourPlace: function(pc) {
+		const place = flags.getFlag(pc.name);
+		if(!!place)
+			pc.move(place.pos);
+	},
+
 	run: function() {
 		
 		cash.getAllMyPowerSpawns()
@@ -303,6 +309,7 @@ const power = {
 																						 , err:err, pcName:pcName, pc:pc}));
 					}
 				}
+				power.goToYourPlace(pc);
 				tools.dontGetInWay(pc);
 				
 			}
