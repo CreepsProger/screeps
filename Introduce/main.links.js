@@ -156,7 +156,7 @@ var links = {
 		 , { from: '6075352f234567e1c96e85b7', to: '6078ceeec30a9f3e05aee3c4'}
      //shard1
 		 // W26S28
-		 , { from: '60d95878ff956951488e3987', to: '60d94a3709e61736e3d4cb54'}
+		 , { from: '60d95878ff956951488e3987', to: '60e02b741127c55bece34d30'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W24S21
 		 , { from: '60bcb94f0981d91d961eab14', to: '60bcb6d4e15a1d269f17dbdd'}
