@@ -157,6 +157,7 @@ var links = {
      //shard1
 		 // W26S28
 		 , { from: '60d95878ff956951488e3987', to: '60e02b741127c55bece34d30'}
+		 , { from: '60d95878ff956951488e3987', to: '60e05b8d5b89461adf7abcba'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W24S21
 		 , { from: '60bcb94f0981d91d961eab14', to: '60bcb6d4e15a1d269f17dbdd'}
