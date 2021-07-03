@@ -11,9 +11,7 @@ const power = {
 	},
 
 	goToYourPlace: function(pc) {
-		const place = config.goToYourPlace(pc);
-		if(!!place)
-			pc.move(place.pos);
+		config.goToYourPlace(pc);
 	},
 
 	run: function() {
