@@ -28,7 +28,7 @@ var config = {
                     , JSON.stringify( { config:'goToYourPlace', pc:pc, place:place}));
 		}
 		if(!!place)
-			pc.move(place.pos);
+			pc.moveTo(place);
 	},
 
 	getRole: function(creep, role_name) {
