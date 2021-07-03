@@ -27,7 +27,7 @@ var config = {
 			console.log( '📦🏨📜', Math.trunc(Game.time/10000), Game.time%10000
                     , JSON.stringify( { config:'goToYourPlace', pc:pc, place:place}));
 		}
-		if(!!place)
+		if(!!place && place.pos != ps.pos)
 			pc.moveTo(place);
 	},
 
