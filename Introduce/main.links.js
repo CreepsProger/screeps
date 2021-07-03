@@ -205,9 +205,9 @@ var links = {
 		 , { from: '5ed7b1004ac3afa92b4f7ab5', to: '5ec1fb20a882200050a21624'}
 		 , { from: '5f1a87f5cf16123a66582ae0', to: '5ec1fb20a882200050a21624'}
 		 , { from: '5f1b1a27a6832536693fffd6', to: '5ec1fb20a882200050a21624'}
-		 , { from: '5f1b1a27a6832536693fffd6', to: '60df383ba26a92461287f187'}
-		 , { from: '5ec7eef883db9c68a817960e', to: '60df383ba26a92461287f187'}
-		 , { from: '5ed7b1004ac3afa92b4f7ab5', to: '60df383ba26a92461287f187'}
+		 , { from: '5f1b1a27a6832536693fffd6', to: '60df383ba26a92461287f187', harvest_from_to_if_full: ['5ec1fb20a882200050a21624']}
+		 , { from: '5ec7eef883db9c68a817960e', to: '60df383ba26a92461287f187', harvest_from_to_if_full: ['5ec1fb20a882200050a21624']}
+		 , { from: '5ed7b1004ac3afa92b4f7ab5', to: '60df383ba26a92461287f187', harvest_from_to_if_full: ['5ec1fb20a882200050a21624']}
 		 , { from: '60df383ba26a92461287f187', to: '5ec1fb20a882200050a21624'}
      // W28S29
      , { from: '5ec8e23e1d709fc4992a1bc9', to: '60e01bdd2f1a91c35d561852'}
