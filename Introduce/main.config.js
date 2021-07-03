@@ -21,6 +21,12 @@ var config = {
 	
 	Memory: {},
 	
+	goToYourPlace: function(pc) {
+		const place = flags.getFlag(pc.name);
+		if(!!place)
+			pc.move(place.pos);
+	},
+
 	getRole: function(creep, role_name) {
 		if(!config.Memory[role_name])
 			config.Memory[role_name] = {};
