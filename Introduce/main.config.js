@@ -7,7 +7,7 @@ var git = '$Format:%H$';
 
 var config = {
 
-	version: 789,
+	version: 790,
 
 	log_flags: ['MC','MCF ','M'],
 
@@ -23,6 +23,10 @@ var config = {
 	
 	goToYourPlace: function(pc) {
 		const place = flags.getFlag(pc.name);
+		if(true) {
+			console.log( '📦🏨📜', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify( { config:'goToYourPlace', pc:pc, place:place}));
+		}
 		if(!!place)
 			pc.move(place.pos);
 	},
