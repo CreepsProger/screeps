@@ -182,11 +182,11 @@ const power = {
 					}
 					cash.getFactories(roomName)
 						.forEach(function(factory,i) {//"effects":[{"power":19,"effect":19,"level":2,"ticksRemaining":923}],
-						if(!!factory.cooldown) {
+						if(!!factory && !!factory.cooldown) {
 								tools.timeOn(time, factory.cooldown); 
 								return;
 						}
-						if(!!factory.effects) {
+						if(!!factory && !!factory.effects) {
 							const effect = factory.effects.find((e) => e.effect == PWR && e.ticksRemaining > 0);
 							if(!!effect) {
 								tools.timeOn(time, effect.ticksRemaining);
