@@ -488,7 +488,7 @@ var spawns = {
 					}
 
 					if(Game.cpu.bucket >= 8000) {
-  					if(Sp1 && !All && upgrade) spawns.tryCreateCreep(spawn, CARIER[7][L], 5013);
+  					if(Sp1 && !All && (upgrade || !!flags.getFlag('3'))) spawns.tryCreateCreep(spawn, CARIER[7][L], 5013);
 						if(Sp1 && !All && upgrade) spawns.tryCreateCreep(spawn, TRANSPORT[3][L], 13);
 					}
 
