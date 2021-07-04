@@ -15,7 +15,7 @@ var terminals = {
 
 	nextOrderST: function(roomName) {
 		const N = terminals.getAllMyTerminalsToSpread().length;
-		terminals.orderST = terminals.getAllMyTerminalsToSpread().findIndex(roomName);
+		terminals.orderST = terminals.getAllMyTerminalsToSpread().findIndex((t) => t.pos.roomName == roomName);
 		if(terminals.orderST < 0 || terminals.orderST >= N)
 			terminals.orderST = (terminals.orderST+1)%N;
 		if(true) {
