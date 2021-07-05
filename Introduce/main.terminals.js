@@ -12,6 +12,7 @@ var terminals = {
 	
 	orderST: 0,
 	latestTimeST: 0,
+	changedTime: 0,
 
 	nextOrderST: function(roomName) {
 		const N = terminals.getAllMyTerminalsToSpread().length;
@@ -37,8 +38,10 @@ var terminals = {
 	},
 	
 	isMyOrderST: function(roomName) {
-		if(Game.time - terminals.latestTimeST > 10) 
+		if(Game.time - terminals.latestTimeST > 10 && terminals.changedTime != Game.time) {
+			terminals.changedTime = Game.time
 			terminals.nextOrderST(roomName);
+		}
 		const N = terminals.getAllMyTerminalsToSpread().length;
 		const current_rooms = terminals.getAllMyTerminalsToSpread().filter((t,i) => i%N == terminals.orderST).map((t) => t.room.name);
 		const ok = current_rooms.some((name) => name == roomName);
