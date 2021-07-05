@@ -15,14 +15,14 @@ var terminals = {
 
 	nextOrderST: function(roomName) {
 		const N = terminals.getAllMyTerminalsToSpread().length;
-		const nextOrderST = terminals.getAllMyTerminalsToSpread().findIndex((t) => t.pos.roomName == roomName);
+// 		const nextOrderST = terminals.getAllMyTerminalsToSpread().findIndex((t) => t.pos.roomName == roomName);
 		
-		if(nextOrderST >= terminals.orderST)
-			terminals.orderST = nextOrderST;
-		else(terminals.orderST >= N-2)
-			terminals.orderST = nextOrderST;
+// 		if(nextOrderST >= terminals.orderST)
+// 			terminals.orderST = nextOrderST;
+// 		else(terminals.orderST >= N-2)
+// 			terminals.orderST = nextOrderST;
 		
-		if(terminals.orderST < 0 || terminals.orderST >= N)
+// 		if(terminals.orderST < 0 || terminals.orderST >= N)
 			terminals.orderST = (terminals.orderST+1)%N;
 		
 		if(true) {
