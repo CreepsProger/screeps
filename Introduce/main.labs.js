@@ -132,6 +132,8 @@ const labs = {
   },
 	
 	findNextConfigN: function(roomName, conf) {
+		/**/console.log('⚗️⚖️', Math.trunc(Game.time/10000), Game.time%10000
+                    , JSON.stringify( { "labs":'findNextConfigN?', roomName:roomName, conf:conf}));/**/
 		const ret = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 				.map((i) =>  labs.getAmountResourcesForConfigN(roomName,conf,i))
 				.filter((e) => !!e.isNotDef)
