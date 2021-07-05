@@ -1189,7 +1189,7 @@ var spawns = {
 					}
 					else {
 						if(Sp1 && !All) spawns.tryCreateCreep(spawn, WORKER[7][H], 404);
-						if(Sp1) spawns.tryCreateCreep(spawn, CARIER[7][M], 401);
+						if(Sp1 && !All) spawns.tryCreateCreep(spawn, CARIER[7][M], 401);
 						if(Sp1 && !All && upgrade) spawns.tryCreateCreep(spawn, UPGRADER[L], 405);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W57S53')) {
@@ -1227,7 +1227,7 @@ var spawns = {
 					}
 					else {
 						if(Sp4 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 444);
-						if(Sp4)	spawns.tryCreateCreep(spawn, CARIER[7][M], 441);
+						if(Sp4 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][M], 441);
 						if(Sp4 && !All && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 445);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W57S51')) {
@@ -1235,7 +1235,7 @@ var spawns = {
 					}
 					if(true) {
 						if(Sp2 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][L], 454);
-						if(Sp2)	spawns.tryCreateCreep(spawn, CARIER[7][M], 451);
+						if(Sp2 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][M], 451);
 						if(Sp2 && !All && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 455);
 					}
           if(conditions.TO_SPAWN_ROOM_DEFENDERS('W55S51')) {
@@ -1243,7 +1243,7 @@ var spawns = {
 					}
 					else {
 						if(Sp6 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 464);
-						if(Sp6)	spawns.tryCreateCreep(spawn, CARIER[7][M], 461);
+						if(Sp6 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][M], 461);
 						if(Sp6 && !All && upgrade)	spawns.tryCreateCreep(spawn,  UPGRADER[L], 465);
 					}
           if(conditions.TO_SPAWN_ROOM_DEFENDERS('W58S51')) {
@@ -1271,7 +1271,7 @@ var spawns = {
 					}
 					else {
 						if(Sp9 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 514);
-            if(Sp9)	spawns.tryCreateCreep(spawn, CARIER[7][M], 511);
+            if(Sp9 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][M], 511);
 						if(Sp9 && !All && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 515);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W54S51')) {
@@ -1279,7 +1279,7 @@ var spawns = {
 					}
 					else {
 						if(Sp3 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 524);
-            if(Sp3)	spawns.tryCreateCreep(spawn, CARIER[7][M], 521);
+            if(Sp3 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][M], 521);
 						if(Sp3 && !All && upgrade)	spawns.tryCreateCreep(spawn, UPGRADER[L], 525);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W52S51')) {
@@ -1307,7 +1307,7 @@ var spawns = {
 					}
 					else {
 						if(Sp5 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 554);
-            if(Sp5)	spawns.tryCreateCreep(spawn, CARIER[7][H], 551);
+            if(Sp5 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][H], 551);
 						if(Sp5 && !All && upgrade)	spawns.tryCreateCreep(spawn,  UPGRADER[L], 555);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W56S54') &&
@@ -1335,7 +1335,7 @@ var spawns = {
 					}
 					else {
 						if(Sp7 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 594);
-            if(Sp7)	spawns.tryCreateCreep(spawn, CARIER[7][H], 591);
+            if(Sp7 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][H], 591);
 						if(Sp7 && !All && upgrade)	spawns.tryCreateCreep(spawn,  UPGRADER[L], 595);
 					}
 					if(conditions.TO_SPAWN_ROOM_DEFENDERS('W55S52')) {
