@@ -25,7 +25,7 @@ var terminals = {
 // 		if(terminals.orderST < 0 || terminals.orderST >= N)
 			terminals.orderST = (terminals.orderST+1)%N;
 		
-		if(true) {
+		if(N>1) {
 			console.log('nextOrderST 🔃️🔃️', Math.trunc(Game.time/10000), Game.time%10000
 									, JSON.stringify( { roomName:roomName
 																		 , N:N
@@ -43,13 +43,14 @@ var terminals = {
 		const current_rooms = terminals.getAllMyTerminalsToSpread().filter((t,i) => i%N == terminals.orderST).map((t) => t.room.name);
 		const ok = current_rooms.some((name) => name == roomName);
 		if(ok) {
-			console.log('ST 🔃️', Math.trunc(Game.time/10000), Game.time%10000
-									, JSON.stringify( { roomName:roomName
-																		 , N:N
-																		 , orderST:terminals.orderST
-																		 , latestTimeST:terminals.latestTimeST
-																		 , current_rooms:current_rooms
-																		 }));
+			if(N>1)
+				console.log('ST 🔃️', Math.trunc(Game.time/10000), Game.time%10000
+										, JSON.stringify( { roomName:roomName
+																			 , N:N
+																			 , orderST:terminals.orderST
+																			 , latestTimeST:terminals.latestTimeST
+																			 , current_rooms:current_rooms
+																			 }));
 			terminals.latestTimeST = Game.time;
 		}
 		return ok;
