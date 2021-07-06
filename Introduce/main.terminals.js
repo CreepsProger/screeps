@@ -234,12 +234,12 @@ var terminals = {
 		const mr = surplus.sort((l,r) => terminals.getStorageAmountAvgDiff(t,r) - terminals.getStorageAmountAvgDiff(t,l))[0];
 		const ret = {resource:mr, amount:terminals.getStorageAmountAvgDiff(creep,mr)-1/*1*/, avg:terminals.getShardAvgAmount(mr)};
 		
-// 		if(!!ret) {
-// 			console.log( '✒️'
-// 									, Math.trunc(Game.time/10000), Game.time%10000
-// 									, JSON.stringify( { terminals:'getResourceToSend', creep:creep.name
-// 																		, room:creep.room.name, ret:ret, surplus:surplus} ));
-// 		}
+		if(!!ret) {
+			console.log( '✒️'
+									, Math.trunc(Game.time/10000), Game.time%10000
+									, JSON.stringify( { terminals:'getResourceToSend', creep:creep.name
+																		, room:creep.room.name, ret:ret, surplus:surplus} ));
+		}
 		return ret;
 	},
 	
