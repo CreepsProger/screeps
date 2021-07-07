@@ -168,8 +168,10 @@ var links = {
 		 // W23S21
 		 , { from: '60b7b2192f1a91ac0743a866', to: '60b7aeb97890494606dcf514'}
 		 , { from: '60bca7475b8946e41c6aedcd', to: '60b7aeb97890494606dcf514'}
+		 , { from: '60e220099b45a70d30c9edc7', to: '60b7aeb97890494606dcf514'}
 		 , { from: '60b7b2192f1a91ac0743a866', to: '60c7769f7c7fd08a4180e66c'}
 		 , { from: '60bca7475b8946e41c6aedcd', to: '60c7769f7c7fd08a4180e66c'}
+		 , { from: '60e220099b45a70d30c9edc7', to: '60c7769f7c7fd08a4180e66c'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W22S21
 		 , { from: '60b3608f7f382d866bf5dcf5', to: '60b35de3364c59a062a21225',      harvest_from_to_if_full: ['60d71557d968045b4476480d','60d7cc3d47c8aa4bbfd1328f']}
