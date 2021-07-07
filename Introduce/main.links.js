@@ -37,6 +37,7 @@ var links = {
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W57S59
 		 , { from: '60ce858e2cd09948f00f799b', to: '60cf4fde6dc6923b1a3e1663'}
+		 , { from: '60ce858e2cd09948f00f799b', to: '60e598b7c83096cbf7e44ddb'}
 		 , { from: 'aaaaaaaaaaaaaaaaaaaaaaaa', to: 'bbbbbbbbbbbbbbbbbbbbbbbb'}
 		 // W53S53
 		 , { from: '60c8589166a27593083b84bd', to: '60c8119b84663822a8ff0a7c'}
