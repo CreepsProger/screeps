@@ -602,6 +602,7 @@ var spawns = {
 					}
 					else {
 						if(Sp18 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][H], 5101);
+						if(Sp8 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][H], 5101);
 						if(Sp18 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5104);
 						if(Sp18 && !All)	spawns.tryCreateCreep(spawn, WORKER[7][H], 5105);
 						if(Sp8 && !All)	spawns.tryCreateCreep(spawn, CARIER[7][H], 5101);
